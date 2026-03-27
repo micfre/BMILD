@@ -1,7 +1,5 @@
-# BMILD - Breakthrough Method for Interactive Leads Development
-
 ![BMad Method](banner-bmild.png)
-
+# Breakthrough Method for Interactive Leads Development
 ![Version](https://img.shields.io/badge/ver-0.1-blue)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
