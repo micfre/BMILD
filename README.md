@@ -1,4 +1,7 @@
 # BMILD - Breakthrough Method for Interactive Leads Development
+```
+v0.1
+```
 
 BMILD is a set of agent Skills designed for leading complex development tasks through persona-driven interactions (Product Manager, Architect, UX Designer, Developer, QA, etc.).
 BMILD heavily leverages BMAD-METHOD's approach but narrows it and simplifies it. I enjoy many aspects of BMAD, particularly Party Mode, but overall it is process-heavy and can promote fatigue for many tasks.
@@ -53,9 +56,7 @@ It's just files, so can be shared across teams with version control
 
 BMILD is inherently incompatible with BMAD because the skills have the same or similar listening triggers, and an agent could flip a BMAD skill or a BMILD skill non-deterministically.
  - When you want to use BMILD, put `bmild-*` skills in the agent skills folder
- - When you no longer want to use BMILD, delete `bmild-*` skills from the agent skills folder
-
-Resolution is simple: uninstall BMAD skills and ensure BMILD skills remain in the Skills folder appropriate to your development environment.
+ - When you no longer want to use BMILD, delete `bmild-*` skills from the agent skills folder. BMILD creates memory file structure in the project root directorey at plans\ so those files will remain (and you probably want them to)
 
 ## Differences from BMAD
 
