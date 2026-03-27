@@ -14,7 +14,7 @@ BMILD is Skill-native and dependency-free, requires no "installation" (just drop
 - Reduced number of agent personas, less juggling
 - No installation, and easy backout if it's not a good fit for you
 
-**BMILD is not better\* than BMAD, but it has some improvements**
+**BMILD is not better than BMAD\*, but it has some improvements**
 
 - Built-in memory that is written by the agent personas themselves, without any orchestrator required
   - An understanding of efforts that are platform-wide (major horizontal refactors) or feature-specific
@@ -53,7 +53,7 @@ It's just files, so can be shared across teams with version control
 ### BMAD Compatibility
 
 BMILD is inherently incompatible with BMAD because the skills have the same or similar listening triggers, and an agent could flip a BMAD skill or a BMILD skill non-deterministically.
- - When you want to use BMILD, put `bmild-*` skills in the agent skills folder
+ - When you want to use BMILD, put `bmild-*` skills in the agent skills folder and delete (or archive) `bmad-*` skills
  - When you no longer want to use BMILD, delete `bmild-*` skills from the agent skills folder. BMILD creates memory file structure in the project root directorey at plans\ so those files will remain (and you probably want them to)
 
 ## Differences from BMAD
@@ -93,6 +93,13 @@ BMILD is inherently incompatible with BMAD because the skills have the same or s
 
 - BMAD has first-class support for Claude Code, Cursor and Codex CLI
 - BMILD doesn't need IDE- or harness-specific tooling, as it leverages the Skills standard (only folder structure is different)
+
+## Anticipated roadmap
+
+- 0.2 Persona breadth stable
+- 0.3 Persona interactivity stable
+- 0.4 Dogfood version
+- 0.5 First public version
 
 ## Folder structure
 
@@ -188,7 +195,7 @@ All referenced materials are used in accordance with their respective MIT licens
 
 ---
 
-\* - I have no desire to offend any die hard BMAD adherents, I am here myself because I chose BMAD over alternatives for my own work, and I am simply offering an alternative that I have shaped and grown to appreciate. The only thing I am perhaps overly fond of is the name, I do like it
+\* I have no desire to offend any die hard BMAD adherents, I am here myself because I chose BMAD over alternatives for my own work, and I am simply offering an alternative that I have shaped. The only thing I am perhaps overly fond of is the name, I do like it
 
 \*\* at the time I am writing this, based on early version 6 releases
 

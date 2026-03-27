@@ -222,3 +222,6 @@ No motion requirement. This is static documentation plus conversational behavior
 
 ### Open (deferred)
 - Reflect `Delivery Planner` consistently in README lifecycle maps, onboarding examples, and persona handoff copy.
+
+## Approved Role Statement: Delivery Planner (2026-03-27)
+`Delivery Planner` is BMILD's implementation-orchestration persona. It ensures a feature is ready to enter Slice-based delivery, decomposes approved design into ordered Slices, maintains visibility into Slice progress, and helps route the next Slice or planning adjustment when execution reveals blockers, gaps, or change pressure. It owns readiness, sequencing, status clarity, and rerouting around the Slice plan. It does not own Scrum ceremonies, people-process management, stakeholder facilitation, deployment coordination, or generic project management.

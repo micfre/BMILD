@@ -19,6 +19,8 @@ BMILD's promise is a narrower, milder BMAD: simpler, less formal, and more adapt
 ## Requirements
 ### Must Have
 - BMILD must visibly cover the full intended lifecycle: ideation, product framing with PRD documentation, UX design, architecture, slice planning, development, and QA for both test augmentation and debugging.
+- The `Delivery Planner` role must cover the BMILD equivalents of implementation-readiness checking, Slice-plan creation, and Slice-progress routing/status visibility.
+- The `Delivery Planner` role must be responsible for ensuring a feature is ready to enter Slice-based implementation and for helping users understand what Slice should happen next during execution.
 - Users must be able to enter at any lifecycle stage conversationally, without needing to study the full docs first.
 - Personas must situate themselves by reading existing feature or platform context before asking discovery questions.
 - Personas must avoid signaling that they are encountering the platform or feature for the first time when relevant context already exists.
@@ -37,6 +39,7 @@ BMILD's promise is a narrower, milder BMAD: simpler, less formal, and more adapt
 
 ### Out of Scope
 - Recreating BMAD's full persona roster or pursuing persona-count parity.
+- Introducing Scrum ceremonies, sprint ritual management, or people-process facilitation under a BMILD label.
 - Adding new workflow modes beyond brainstorming, advanced elicitation, and interactive leads.
 - Introducing installers, automation scripts, or scripted onboarding.
 - Expanding Interactive Leads beyond the current primary-persona set in the near term.
@@ -54,15 +57,16 @@ BMILD's promise is a narrower, milder BMAD: simpler, less formal, and more adapt
 
 ## Open Questions
 - What exact public-facing persona roster should BMILD present as canonical, given the distinction between the broader working set and the four personas hardcoded into Interactive Leads?
-- Should `planner` be renamed, and if so, what name better communicates release planning and Slice decomposition without adding process baggage?
 - What specific handoff language or protocol changes should be standardized across all primary personas?
 - What threshold of observed confusion is sufficient to justify adding a helper persona instead of solving the issue through naming, onboarding, or handoff improvements?
 - What BMAD concepts or persona expectations most need explicit migration guidance in `README.md` or onboarding?
+- What exact user-facing verbs should describe `Delivery Planner` so users understand that it checks readiness, creates Slices, tracks Slice progress, and reroutes work when implementation uncovers change?
 
 ## Assumptions
 - The current risk is primarily one of clarity, perceived coverage, and lifecycle navigation rather than a proven need for many additional personas.
 - Documentation is important for onboarding, but normal-course lifecycle movement should be guided mostly by persona behavior and handoffs.
 - Keeping the primary interaction model compact is more important than maximizing persona specialization.
+- BMAD distributes planning and in-flight coordination across the Scrum Master persona and separate readiness / sprint-status workflows; BMILD can consolidate the equivalent user need into `Delivery Planner` without inheriting Scrum framing.
 - Helper personas may be acceptable if evidence shows that real users are leaving the product flow to ask for orientation externally.
 
 ## IL Session: Rename `planner` to `Delivery Planner` (2026-03-27)
@@ -83,3 +87,6 @@ BMILD's promise is a narrower, milder BMAD: simpler, less formal, and more adapt
 
 ### Open (deferred)
 - Apply `Delivery Planner` consistently across public docs, onboarding prompts, skill descriptions, and handoff language.
+
+## Approved Role Statement: Delivery Planner (2026-03-27)
+`Delivery Planner` is BMILD's implementation-orchestration persona. It ensures a feature is ready to enter Slice-based delivery, decomposes approved design into ordered Slices, maintains visibility into Slice progress, and helps route the next Slice or planning adjustment when execution reveals blockers, gaps, or change pressure. It owns readiness, sequencing, status clarity, and rerouting around the Slice plan. It does not own Scrum ceremonies, people-process management, stakeholder facilitation, deployment coordination, or generic project management.
