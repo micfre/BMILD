@@ -4,13 +4,12 @@ BMILD is a set of agent Skills designed for leading complex development tasks th
 BMILD heavily leverages BMAD-METHOD's approach but narrows it and simplifies it. I enjoy many aspects of BMAD, particularly Party Mode, but overall it is process-heavy and can promote fatigue for many tasks.
 BMILD is Skill-native and dependency-free, requires no "installation" (just drop folders in the right place) and is just as easily backed out.
 
-
 ## Assuming you have awareness of BMAD, and that's why you are here:
 
 **BMILD is simpler and Skills-native**
 
 - Reduced number of agent personas, less juggling
-- No installation, and easy backout if it's not a good fit
+- No installation, and easy backout if it's not a good fit for you
 
 **BMILD is not better than BMAD, but it has some improvements**
 
@@ -37,15 +36,16 @@ You have to believe this to believe that BMILD is a good fit for your way of wor
 
 1. Put the `.agents/skills` directory where your IDE or CLI will find it
 2. Call on the PM persona, Faisal, to get started with your idea
-3. Party Mode is called Interacive Leads here, but you can just call for a debate at any time
+3. Party Mode is called Interacive Leads here, but you can just call for a "debate" at any time
 
 ## The Longer Version
 
-## IDE and CLI support
+### IDE and CLI support
 
-BMILD is Skills-native and will work with any IDE or CLI that supports agent skills.
+BMILD is Skills-native and will work with any IDE or CLI that supports agent Skills.
+It's just files, so can be shared across teams with version control
 
-## BMAD Compatibility
+### BMAD Compatibility
 
 BMILD is inherently incompatible with BMAD because the skills have the same or similar listening triggers, and an agent could flip a BMAD skill or a BMILD skill non-deterministically.
  - When you want to use BMILD, put `bmild-*` skills in the agent skills folder
@@ -71,9 +71,15 @@ Resolution is simple: uninstall BMAD skills and ensure BMILD skills remain in th
 - BMILD, as a highly-opinionated deviation, believes that context window is a more important dimension around which to subdivide a development
 - BMILD uses features (primary value delivery unit) and slices (single-context window development unit) to decompose the spec into delivered work
 
+- BMAD has very good artifact storage which acts as its memory
+- BMILD has "orchestrator-less" context memory which is written directly by the personas themselves
+
+- BMAD decomposes scope into Agile-defined Epics and Stories
+- BMILD tunes to one context window for the development slice, specifically taregting 170K which is 70% of the common 246K context window of many modern coding agents**
+
 - BMAD has an ambiguous (in my opinion) process to debug issues uncovered in testing. Use Dev persona? QA persona?
 - BMAD has a broken debug prompt (in my opinion) which railroads the agent into choosing a single domain or service layer and a single cause for observed problems
-- BMILD instead leverages a simple and effective debug prompt adapted from Kilo Code, which causes the agent to consider many options and test hypotheses before modifying code
+- BMILD instead implements a strict 7-step RCA (root cause analysis) protocol, which forces a 5-7 breadth-first hypothesis and ranked mental model for fixes, backed by instrumentation before touching code.
 
 - BMAD is transitioning* to a Skill-centric approach, but many or most of the workflows are managed in several, deep proprietary workflow files with a Skill "wrapper" in place
 - BMILD is fully Skill-native, it doesn't call other code, it doesn't have deeply nested workflows
@@ -161,3 +167,4 @@ BMILD is built upon and inspired by the following projects:
 All referenced materials are used in accordance with their respective MIT licenses.
 
 * at the time I am writing this, based on early version 6 releases
+** of course 1 million token context windows exist, but context recall degrades sharply at higher token utilization (the "Lost in the Middle" phenomenon or as demonstrated by "Needle in a Haystack" / NIAH benchmarks)
