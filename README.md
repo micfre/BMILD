@@ -14,10 +14,10 @@ BMILD is Skill-native and dependency-free, requires no "installation" (just drop
 **BMILD is not better than BMAD, but it has some improvements**
 
 - Built-in memory that is written by the agent personas themselves, without any orchestrator required
-  o An understanding of efforts that are platform-wide (major horizontal refactors) or feature-specific
-  o Sequential efforts are just as easy to get into as the greenfield project, memory is not confused by several coincident or completed projects in the memory workspace
+  - An understanding of efforts that are platform-wide (major horizontal refactors) or feature-specific
+  - Sequential efforts are just as easy to get into as the greenfield project, memory is not confused by several coincident or completed projects in the memory workspace
 - Greatly improved debugging workflow
-  o Implements a strict 7-step RCA (root cause analysis) protocol, which forces a 5-7 breadth-first hypothesis and ranked mental model for fixes, backed by instrumentation before touching code
+  - Implements a strict 7-step RCA (root cause analysis) protocol, which forces a breadth-first hypothesis and ranked options for fixes, backed by instrumentation before touching code
 - I have no desire to offend any die hard BMAD adherents, I am here myself because I chose BMAD over alternatives for my own work, and I am simply offering an alternative that I have shaped and grown to appreciate
 - The only thing I am perhaps overly fond of is the name, I do like it
 
