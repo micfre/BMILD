@@ -1,13 +1,144 @@
-# BMILD (Modular, Integrated Lead-Driven Development)
+# BMILD - Breakthrough Method for Interactive Leads Development
 
-BMILD is a modular, dependency-free architecture for leading complex development tasks through persona-driven interactions (Product Managers, Architects, UX Designers, Developers, QA, etc.).
+BMILD is a set of agent Skills designed for leading complex development tasks through persona-driven interactions (Product Manager, Architect, UX Designer, Developer, QA, etc.).
+BMILD heavily leverages BMAD-METHOD's approach but narrows it and simplifies it. I enjoy many aspects of BMAD, particularly Party Mode, but overall it is process-heavy and can promote fatigue for many tasks.
+BMILD is Skill-native and dependency-free, requires no "installation" (just drop folders in the right place) and is just as easily backed out.
 
-## Core Principles
 
-- **Modular**: Skills are self-contained and generic.
-- **Genericized**: No project-specific dependencies. High-level rules are hoisted into Skill metadata.
+## Assuming you have awareness of BMAD, and that's why you are here:
+
+**BMILD is simpler and Skills-native**
+
+- Reduced number of agent personas, less juggling
+- No installation, and easy backout if it's not a good fit
+
+**BMILD is not better than BMAD, but it has some improvements**
+
+- Built-in memory
+- I have no desire to offend any die hard BMAD adherents, I am here myself because I chose BMAD over alternatives for my own work, and I am simply offering an alternative that I have shaped and grown to appreciate
+- The only thing I am perhaps overly fond of is the name, I do like it
+
+**BMILD is opinionated**
+
+You have to believe this to believe that BMILD is a good fit for your way of working:
+- AI development benefits greatly from a spec-driven approach and this upfront investment pays dividends
+- AI development is not the same as "human" development when it comes to development effort (story points) and communication friction, for which epics, stories, sprints are heavily weighted to help manage — and therefore AI development does not benefit from directly replicating these aspects of Agile when it comes to scope decomposition, atomic development units and debugging workflow
+  - AI will make it up or ignore it if it is not properly specified, so it's worth taking the time to properly specify it
+  - AI needs good context management -- not an INVESTable story -- to produce good code, so build development slices around context windows not stories
+
+## If you are new to BMAD and BMILD, here's what it can do for you:
+
+# Core Principles
+
 - **Persona-Driven**: Interactions mimic a cross-functional team.
 - **Spec-Driven**: Every step is guided by clear design contracts.
+
+## Quick Start
+
+1. Put the `.agents/skills` directory where your IDE or CLI will find it
+2. Call on the PM persona, Faisal, to get started with your idea
+3. Party Mode is called Interacive Leads here, but you can just call for a debate at any time
+
+## The Longer Version
+
+## IDE and CLI support
+
+BMILD is Skills-native and will work with any IDE or CLI that supports agent skills.
+
+## BMAD Compatibility
+
+BMILD is inherently incompatible with BMAD because the skills have the same or similar listening triggers, and an agent could flip a BMAD skill or a BMILD skill non-deterministically.
+ - When you want to use BMILD, put `bmild-*` skills in the agent skills folder
+ - When you no longer want to use BMILD, delete `bmild-*` skills from the agent skills folder
+
+Resolution is simple: uninstall BMAD skills and ensure BMILD skills remain in the Skills folder appropriate to your development environment.
+
+## Differences from BMAD
+
+- BMAD has many more agents and discrete workflows
+- BMILD has six agents with broader yet non-overlapped domains and perspectives that still cover the end-to-end development lifecycle
+
+- BMAD offers highly valuable advanced elicitation, Party Mode, and brainstorming modes
+- BMILD offers these three as well, renaming Party Mode to Interactive Leads but you can just ask for a debate
+
+- BMAD has personas with names and icons
+- BMILD drops the icons in favor of equally-clear but less cute colored squares, and tones down the ceremony, and replaces names with some of the greats I have worked with in my past experience (I would be tickled if they recognized themselves)
+
+- BMAD is well-tuned for large, greenfield projects and is less well-tuned for sequential feature development
+- BMILD responds well to greenfield, platform-level brownfield (large refactors) and feature-specific development. In fact, it's the first question that the PM will ask you
+
+- BMAD follows Agile principles closely through the full lifecycle, no surprise, that's the intent and it does it well
+- BMILD, as a highly-opinionated deviation, believes that context window is a more important dimension around which to subdivide a development
+- BMILD uses features (primary value delivery unit) and slices (single-context window development unit) to decompose the spec into delivered work
+
+- BMAD has an ambiguous (in my opinion) process to debug issues uncovered in testing. Use Dev persona? QA persona?
+- BMAD has a broken debug prompt (in my opinion) which railroads the agent into choosing a single domain or service layer and a single cause for observed problems
+- BMILD instead leverages a simple and effective debug prompt adapted from Kilo Code, which causes the agent to consider many options and test hypotheses before modifying code
+
+- BMAD is transitioning* to a Skill-centric approach, but many or most of the workflows are managed in several, deep proprietary workflow files with a Skill "wrapper" in place
+- BMILD is fully Skill-native, it doesn't call other code, it doesn't have deeply nested workflows
+
+- BMAD has first-class support for Claude Code, Cursor and Codex CLI
+- BMILD doesn't need IDE- or harness-specific tooling, as it leverages the Skills standard (only folder structure is different)
+
+## Folder structure
+
+### Agent skills
+
+```
+.agents/
+└── skills/
+    ├── bmild-arch/          # Architect
+    ├── bmild-brainstorming/ # Brainstorming facilitator
+    ├── bmild-dev/           # Developer
+    ├── bmild-elicit/        # Advanced Elicitation
+    ├── bmild-il/            # Interactive Leads
+    ├── bmild-planner/       # Planner
+    ├── bmild-pm/            # Product Manager
+    ├── bmild-qa/            # QA
+    └── bmild-ux/            # UX Designer
+```
+
+Each skill folder contains a `SKILL.md` and, for multi-step skills, a `steps/` subdirectory.
+
+### Supported IDEs and CLIs
+
+Many agentic environments will support the Skill folder pattern. Put `.agents/skills` folder in the path expected by your tool:
+
+| Environment | Scan Location |
+| :--- | :--- |
+| **Antigravity** | `.agents/skills/` |
+| **Claude Code** | `.claude/skills/` |
+| **Cursor** | `.cursor/skills/` |
+| **Kilo Code** | `.kilo/skills/` |
+| **Opencode** | `.opencode/skills/` |
+| **OpenAI Codex CLI** | `skills/` or `.codex/skills/` |
+| **VS Code Copilot** | `.github/skills/` |
+
+### BMILD memory
+
+BMILD's memory lives in a `plans/` directory at your project root. Personas read and write here to maintain context across sessions. You can structure this alongside your project source or keep it separate — the personas resolve all paths relative to the project root.
+
+```
+plans/
+├── platform/                    # Platform-level context (greenfield or large refactors)
+│   ├── _context.md              # Index of live documents — all personas read this first
+│   ├── spec.md                  # PM output: problem statement, requirements, success criteria
+│   ├── ux-design.md             # UX output: interaction model, visual language, flows
+│   ├── system-design.md         # Arch output: schema, API contracts, tech decisions
+│   └── slices.md                # Planner output: platform-level Slice registry
+└── features/
+    └── <feature-name>/          # One folder per feature
+        ├── _context.md          # Index of live documents for this feature
+        ├── spec.md              # PM output
+        ├── ux-design.md         # UX output
+        ├── system-design.md     # Arch output
+        ├── slices.md            # Planner output: Slice registry
+        ├── slice-<N>.md         # One file per Slice
+        └── rca-<slug>.md        # QA output: root cause analysis
+```
+
+`_context.md` is the entry point for every persona. It lists documents that are currently `live` (in-use) vs. `archived`. Personas load only what is live and only what is relevant to the current engagement mode.
 
 ## Available Skills
 
@@ -20,6 +151,13 @@ BMILD is a modular, dependency-free architecture for leading complex development
 - **Interactive Leads (IL)**: Structured multi-persona design debate.
 - **Advanced Elicitation**: Stress-tests and refines outputs.
 
-## Getting Started
+## Acknowledgements
 
-Follow the persona-specific instructions within the `.agents/skills` directory to use this system with your AI coding assistant.
+BMILD is built upon and inspired by the following projects:
+
+- **[BMAD-METHOD](https://github.com/the-bmad-group/bmad)**: Core persona archetypes and interactive patterns (Interactive Leads, Advanced Elicitation, Brainstorming) are adapted from the BMAD project.
+- **[Kilo Code](https://github.com/kilo-code)**: The systematic debugging methodology used by the QA persona is adapted from Kilo Code's diagnostic prompts.
+
+All referenced materials are used in accordance with their respective MIT licenses.
+
+* at the time I am writing this, based on early version 6 releases
