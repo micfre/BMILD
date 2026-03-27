@@ -1,4 +1,4 @@
-# BMILD Agent Skills
+# Agents
 
 The output of this project are the agent skills located in the `.agents/skills/` directory. Other files support development, testing and version control of the agent skills.
 

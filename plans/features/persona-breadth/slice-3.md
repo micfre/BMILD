@@ -1,0 +1,31 @@
+---
+feature: persona-breadth
+slice: 3
+status: todo
+updated: 2026-03-27
+---
+
+## Intent
+Turn `README.md` into a stage-based discovery and onboarding surface that helps new users and BMAD migrants know where to start and who comes next.
+
+## Scope
+- In: restructure `README.md` around promise, start-here routing, canonical lifecycle roster, handoff explanation, BMAD migration guidance, modes, and memory model.
+- In: add concise invocation examples and make BMILD's "mild" positioning clearer without turning the README into a manifesto.
+- Out of scope for this Slice: editing individual persona skill files beyond references necessary for README alignment, or adding non-README docs except those explicitly required by Slice 4.
+
+## Design Contracts (must honour)
+- `ux-design.md §Navigation & Information Architecture` — `README.md` should act as the primary discovery and decision surface.
+- `ux-design.md §Screens / Views > README Discovery Surface` — the README must be scannable, stage-based, and migration-aware.
+- `ux-design.md §Interaction Model` — the first visible routing should be action-oriented rather than "meet the personas."
+- `system-design.md §Canonical Persona Registry Contract` — present the ordered lifecycle roster and keep special modes separate.
+- `system-design.md §Rename Contract: \`planner\` -> \`Delivery Planner\`` — public-facing naming must be consistent.
+
+## Acceptance Criteria
+- [ ] `README.md` contains a stage-based "Start Here" section that helps users identify a sensible first persona.
+- [ ] `README.md` presents the canonical lifecycle roster in a consistent order, with `Delivery Planner` in place.
+- [ ] `README.md` explains persona handoffs and context-first behavior clearly enough that users know how BMILD moves from stage to stage.
+- [ ] `README.md` includes BMAD migration guidance based on user intent rather than persona parity.
+- [ ] The README remains concise enough to scan, with philosophy moved below the initial routing decision.
+
+## Implementation Notes
+<!-- Alex fills this in after implementation. Sonia leaves this empty. -->

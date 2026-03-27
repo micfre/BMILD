@@ -124,9 +124,9 @@ Many agentic environments will support the Skill folder pattern. Put `.agents/sk
 | **Antigravity** | `.agents/skills/` |
 | **Claude Code** | `.claude/skills/` |
 | **Cursor** | `.cursor/skills/` |
-| **Kilo Code** | `.kilo/skills/` |
+| **Kilo Code** | `.kilocode/skills/` |
 | **Opencode** | `.opencode/skills/` |
-| **OpenAI Codex** | `skills/` or `.codex/skills/` |
+| **OpenAI Codex** | `.agents/skills/` |
 | **VS Code Copilot** | `.github/skills/` |
 
 ### BMILD memory
