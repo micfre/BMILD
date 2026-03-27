@@ -2,6 +2,20 @@
 
 The output of this project are the agent skills located in the `.agents/skills/` directory. Other files support development, testing and version control of the agent skills.
 
+## Skill Development Guidelines
+
+BMILD skills must follow these API-like design principles:
+
+1. **Design the Signature First (`description`)**: 
+   The `description` field in the frontmatter is the function signature. It must be specific about when to trigger and explicitly state what boundaries it does not cover (e.g., "Not for architectural design").
+2. **Top-of-Body Directives**: 
+   Immediately following the frontmatter, standardize the framing:
+   - **Persona**: 1-2 sentences defining the character and angle.
+   - **Thinking mode**: (Optional) e.g., use an explicit deep reasoning mode for complex architectural decisions.
+   - **Modes**: Outline specific execution modes (e.g., "Feature mode", "Platform mode", "Review mode").
+3. **Teach Reasoning**: 
+   Do not just list rules. Explain what goes wrong without the pattern, how to diagnose it, and provide before/after examples.
+
 ## Target platforms
 
 - Antigravity
