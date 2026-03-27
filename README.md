@@ -20,7 +20,7 @@ BMILD is Skill-native and dependency-free, requires no "installation" (just drop
   - An understanding of efforts that are platform-wide (major horizontal refactors) or feature-specific
   - Sequential efforts are just as easy to get into as the greenfield project, memory is not confused by several coincident or completed projects in the memory workspace
 - Greatly improved debugging workflow
-  - Implements a strict 7-step RCA (root cause analysis) protocol, which forces a breadth-first hypothesis and ranked options for fixes, backed by instrumentation before touching code
+  - Implements a strict 7-step RCA (root cause analysis) protocol, which forces a breadth-first hypothesis and ranked options narrowing for fixes, backed by instrumentation before touching code
 - I have no desire to offend any die hard BMAD adherents, I am here myself because I chose BMAD over alternatives for my own work, and I am simply offering an alternative that I have shaped and grown to appreciate. The only thing I am perhaps overly fond of is the name, I do like it
 
 **BMILD is opinionated**
@@ -152,14 +152,20 @@ plans/
 
 ## Available Skills
 
-- **Alex (Developer)**: Implements Slices following design contracts.
+### Personas
+
 - **Faisal (PM)**: Problem framing, user needs, requirements elicitation.
 - **Katrina (UX Designer)**: Interaction model, visual design, user flows.
 - **Lance (Architect)**: System design, database schema, API contracts.
-- **Rahat (QA)**: Root cause analysis, diagnosis, quality gates.
 - **Sonia (Planner)**: Decomposes designed features into ordered, implementable Slices.
-- **Interactive Leads (IL)**: Structured multi-persona design debate.
+- **Alex (Developer)**: Implements Slices following design contracts.
+- **Rahat (QA)**: Root cause analysis, diagnosis, quality gates.
+
+### Special modes
+
 - **Advanced Elicitation**: Stress-tests and refines outputs.
+- **Interactive Leads (debate)**: Structured multi-persona design debate.
+- **Brainstorming**: Facilitated brainstorming session.
 
 ## Acknowledgements
 
@@ -171,4 +177,5 @@ BMILD is built upon and inspired by the following projects:
 All referenced materials are used in accordance with their respective MIT licenses.
 
 \* at the time I am writing this, based on early version 6 releases
+
 \*\* of course 1 million token context windows exist, but context recall degrades sharply at higher token utilization (the "Lost in the Middle" phenomenon or as demonstrated by "Needle in a Haystack" / NIAH benchmarks)
