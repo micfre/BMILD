@@ -1,3 +1,6 @@
+# BMAD references
+_bmad*
+
 # Logs
 logs/
 *.log
@@ -122,3 +125,4 @@ dist/
 .Trashes
 ehthumbs.db
 Thumbs.db
+*Zone.Identifier

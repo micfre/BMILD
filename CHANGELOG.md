@@ -17,3 +17,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Initial release
+
+## [Roadmap]
+
+Anticipated roadmap:
+
+- 0.2 persona breadth stable
+- 0.3 persona interactivity stable
+- 0.4 dogfood version
+- 0.5 public version
