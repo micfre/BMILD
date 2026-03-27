@@ -14,14 +14,13 @@ BMILD is Skill-native and dependency-free, requires no "installation" (just drop
 - Reduced number of agent personas, less juggling
 - No installation, and easy backout if it's not a good fit for you
 
-**BMILD is not better than BMAD, but it has some improvements**
+**BMILD is not better\* than BMAD, but it has some improvements**
 
 - Built-in memory that is written by the agent personas themselves, without any orchestrator required
   - An understanding of efforts that are platform-wide (major horizontal refactors) or feature-specific
   - Sequential efforts are just as easy to get into as the greenfield project, memory is not confused by several coincident or completed projects in the memory workspace
 - Greatly improved debugging workflow
   - Implements a strict root cause analysis protocol, which forces a breadth-first hypothesis generation before narrowing options for fixes, backed by instrumentation, before touching code
-- I have no desire to offend any die hard BMAD adherents, I am here myself because I chose BMAD over alternatives for my own work, and I am simply offering an alternative that I have shaped and grown to appreciate. The only thing I am perhaps overly fond of is the name, I do like it
 
 **BMILD is opinionated**
 
@@ -88,7 +87,7 @@ BMILD is inherently incompatible with BMAD because the skills have the same or s
 - BMILD has the QA persona handle both test implementation and issue resolution, using a strict RCA and evidence-led protocol before any code is touched. Dev can do it for typos and direct fixes, but QA does it so much better
 
 
-- BMAD is transitioning* to a Skill-centric approach, but many or most of the workflows are managed in several, deep proprietary workflow files with a Skill "wrapper" in place
+- BMAD is transitioning*** to a Skill-centric approach, but many or most of the workflows are managed in several, deep proprietary workflow files with a Skill "wrapper" in place
 - BMILD is fully Skill-native, it doesn't call other code, it doesn't have deeply nested workflows
 
 
@@ -117,16 +116,23 @@ Each skill folder contains a `SKILL.md` and, for multi-step skills, a `steps/` s
 
 ### Supported IDEs and CLIs
 
-Many agentic environments will support the Skill folder pattern. Put `.agents/skills` folder in the path expected by your tool:
+Many agentic environments will support the Skill folder pattern. Put Skills found in `.agents/skills` folder in the path expected by your tool:
+
+Direct drop-in:
 
 | Environment | Scan Location |
 | :--- | :--- |
 | **Antigravity** | `.agents/skills/` |
+| **OpenAI Codex** | `.agents/skills/` |
+
+Relocate to:
+
+| Environment | Scan Location |
+| :--- | :--- |
 | **Claude Code** | `.claude/skills/` |
 | **Cursor** | `.cursor/skills/` |
 | **Kilo Code** | `.kilocode/skills/` |
 | **Opencode** | `.opencode/skills/` |
-| **OpenAI Codex** | `.agents/skills/` |
 | **VS Code Copilot** | `.github/skills/` |
 
 ### BMILD memory
@@ -182,6 +188,8 @@ All referenced materials are used in accordance with their respective MIT licens
 
 ---
 
-\* at the time I am writing this, based on early version 6 releases
+\* - I have no desire to offend any die hard BMAD adherents, I am here myself because I chose BMAD over alternatives for my own work, and I am simply offering an alternative that I have shaped and grown to appreciate. The only thing I am perhaps overly fond of is the name, I do like it
 
-\*\* of course 1 million token context windows exist, but context recall degrades sharply at higher token utilization (the "Lost in the Middle" phenomenon or as demonstrated by "Needle in a Haystack" / NIAH benchmarks)
+\*\* at the time I am writing this, based on early version 6 releases
+
+\*\*\* of course 1 million token context windows exist, but context recall degrades sharply at higher token utilization (the "Lost in the Middle" phenomenon or as demonstrated by "Needle in a Haystack" / NIAH benchmarks)
