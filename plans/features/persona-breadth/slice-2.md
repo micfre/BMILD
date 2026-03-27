@@ -1,7 +1,7 @@
 ---
 feature: persona-breadth
 slice: 2
-status: todo
+status: done
 updated: 2026-03-27
 ---
 
@@ -25,11 +25,14 @@ Standardize the primary personas so they load context first, narrate what they f
 - `spec.md §Requirements > Must Have` — the role must cover BMILD equivalents of readiness checking, Slice-plan creation, and Slice-progress routing/status visibility.
 
 ## Acceptance Criteria
-- [ ] Each primary persona's instructions explicitly require loading live context before substantive questioning or routing.
-- [ ] Each primary persona's opening instructions require a brief narration of loaded context and current stage/gap.
-- [ ] Each primary persona's closing or handoff instructions require naming the next persona explicitly when a handoff is appropriate.
-- [ ] `Delivery Planner` instructions explicitly cover implementation readiness, Slice sequencing, Slice progress visibility, and rerouting when implementation reveals gaps or blockers.
-- [ ] Persona-specific responsibilities and voice remain distinct after the standardization.
+- [x] Each primary persona's instructions explicitly require loading live context before substantive questioning or routing.
+- [x] Each primary persona's opening instructions require a brief narration of loaded context and current stage/gap.
+- [x] Each primary persona's closing or handoff instructions require naming the next persona explicitly when a handoff is appropriate.
+- [x] `Delivery Planner` instructions explicitly cover implementation readiness, Slice sequencing, Slice progress visibility, and rerouting when implementation reveals gaps or blockers.
+- [x] Persona-specific responsibilities and voice remain distinct after the standardization.
 
 ## Implementation Notes
 <!-- Alex fills this in after implementation. Sonia leaves this empty. -->
+- Standardized the activation and handoff contracts across `bmild-pm`, `bmild-ux`, `bmild-arch`, `bmild-planner`, `bmild-dev`, and `bmild-qa` without flattening their domain-specific language.
+- Kept the folder name `bmild-planner` for compatibility while reinforcing the user-facing `Delivery Planner` role in the prompt text and handoff wording.
+- Treated the missing `plans/platform/_context.md` in this repo as an allowed absence and updated affected skills to check for it explicitly.

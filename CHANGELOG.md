@@ -12,6 +12,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Documentation improvements
 - Example output from Interactive Leads debate
 
+### Changed
+
+- Standardized PM, UX, Architect, Delivery Planner, Dev, and QA skill prompts around context-first openings and explicit next-persona handoffs
+- Expanded the Delivery Planner skill contract to cover readiness checks, Slice sequencing, Slice status visibility, and rerouting when implementation exposes blockers or gaps
+- Reworked `README.md` into a stage-based discovery surface with lifecycle routing, explicit handoff guidance, and BMAD intent mapping
+- Added `ONBOARDING.md` as a compact first-run and BMAD migration guide that reinforces midstream entry and the Delivery Planner role
+
 ## [0.1]
 
 ### Added

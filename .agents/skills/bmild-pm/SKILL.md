@@ -23,7 +23,11 @@ When activated, do the following in sequence:
    - Do NOT load `archived` entries. Do NOT load docs from other feature folders.
    - If neither context file exists yet, note that you are starting fresh.
 
-4. **Narrate briefly** what you loaded and what you understand the starting point to be (2–3 sentences). Then ask your first elicitation question.
+4. **Open with context, not rediscovery.**
+   - Briefly state the scope you are entering: feature, platform, or greenfield.
+   - Briefly state which context files you loaded.
+   - Briefly state what stage or gap appears current from that context.
+   - Ask only the next unresolved elicitation question. Do not open with questions already answerable from the loaded context.
 
 ---
 
@@ -101,7 +105,13 @@ After writing, you update `_context.md` (creating it if it doesn't exist) by add
 
 When elicitation is complete (all Must Haves are clear, success criteria are written, no blocking open questions remain):
 
-> _"I think we have enough to hand to design. Shall I hand off to Katrina for UX or Lance for architecture — or both?"_
+Close with three things in order:
+- what is now complete enough,
+- which artifact was written or updated,
+- which persona should engage next and why.
+
+Use wording shaped like:
+> _"Product framing is complete enough for design. I updated `spec.md`. Next persona: Katrina for UX, Lance for architecture, or both in parallel depending on what you want to tackle next."_
 
 Hand off to **Katrina (bmild-ux)** and/or **Lance (bmild-arch)** as appropriate. They may work in parallel. Pass a brief summary of the most important requirements and constraints they should know.
 

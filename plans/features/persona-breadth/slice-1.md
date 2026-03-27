@@ -1,7 +1,7 @@
 ---
 feature: persona-breadth
 slice: 1
-status: todo
+status: done
 updated: 2026-03-27
 ---
 
@@ -25,11 +25,13 @@ Establish the canonical public persona roster and adopt `Delivery Planner` as th
 - `spec.md §Approved Role Statement: Delivery Planner (2026-03-27)` — public-facing wording must cover readiness, sequencing, status clarity, and rerouting while excluding Scrum/process ownership.
 
 ## Acceptance Criteria
-- [ ] All user-facing references changed in this Slice use `Delivery Planner` instead of `Planner`.
-- [ ] Touched user-facing references describe `Delivery Planner` as more than a rename-only role and include the approved implementation-orchestration scope where appropriate.
-- [ ] Any retained filesystem or trigger naming mismatch is not exposed as the primary user-facing label.
-- [ ] The canonical lifecycle roster is internally consistent across all files touched in this Slice.
-- [ ] No new workflow modes, personas, or installer/script behavior are introduced.
+- [x] All user-facing references changed in this Slice use `Delivery Planner` instead of `Planner`.
+- [x] Touched user-facing references describe `Delivery Planner` as more than a rename-only role and include the approved implementation-orchestration scope where appropriate.
+- [x] Any retained filesystem or trigger naming mismatch is not exposed as the primary user-facing label.
+- [x] The canonical lifecycle roster is internally consistent across all files touched in this Slice.
+- [x] No new workflow modes, personas, or installer/script behavior are introduced.
 
 ## Implementation Notes
-<!-- Alex fills this in after implementation. Sonia leaves this empty. -->
+- Updated `.agents/skills/bmild-planner/SKILL.md` to present Sonia as `Delivery Planner` in user-facing metadata and instructions while preserving the `bmild-planner` folder name for compatibility.
+- Updated `README.md` references to the planner role, skill tree comments, memory structure comments, and available-skills roster so the public-facing label and role scope are consistent.
+- Deferred broader README information-architecture work and handoff wording changes to later Slices, per Slice boundary.

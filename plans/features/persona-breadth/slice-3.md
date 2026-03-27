@@ -1,7 +1,7 @@
 ---
 feature: persona-breadth
 slice: 3
-status: todo
+status: done
 updated: 2026-03-27
 ---
 
@@ -23,12 +23,15 @@ Turn `README.md` into a stage-based discovery and onboarding surface that helps 
 - `spec.md §Approved Role Statement: Delivery Planner (2026-03-27)` — README wording must reflect the approved scope without drifting into generic project-management language.
 
 ## Acceptance Criteria
-- [ ] `README.md` contains a stage-based "Start Here" section that helps users identify a sensible first persona.
-- [ ] `README.md` presents the canonical lifecycle roster in a consistent order, with `Delivery Planner` in place.
-- [ ] `README.md` explains `Delivery Planner` strongly enough that users understand it covers readiness, Slice planning, status visibility, and rerouting.
-- [ ] `README.md` explains persona handoffs and context-first behavior clearly enough that users know how BMILD moves from stage to stage.
-- [ ] `README.md` includes BMAD migration guidance based on user intent rather than persona parity.
-- [ ] The README remains concise enough to scan, with philosophy moved below the initial routing decision.
+- [x] `README.md` contains a stage-based "Start Here" section that helps users identify a sensible first persona.
+- [x] `README.md` presents the canonical lifecycle roster in a consistent order, with `Delivery Planner` in place.
+- [x] `README.md` explains `Delivery Planner` strongly enough that users understand it covers readiness, Slice planning, status visibility, and rerouting.
+- [x] `README.md` explains persona handoffs and context-first behavior clearly enough that users know how BMILD moves from stage to stage.
+- [x] `README.md` includes BMAD migration guidance based on user intent rather than persona parity.
+- [x] The README remains concise enough to scan, with philosophy moved below the initial routing decision.
 
 ## Implementation Notes
 <!-- Alex fills this in after implementation. Sonia leaves this empty. -->
+- Rewrote `README.md` around lifecycle-stage entry so the first meaningful choice is where to start, not how BMILD compares to BMAD.
+- Added explicit sections for the canonical lifecycle roster, `Delivery Planner`, handoff behavior, and BMAD intent mapping while keeping special modes separate from the main working set.
+- Preserved the existing install path, memory model, roadmap, and acknowledgements sections, but moved the philosophy/comparison material below the primary routing content.
