@@ -2,7 +2,7 @@
 
 ![BMad Method](banner-bmild.png)
 
-[![Version]https://img.shields.io/badge/ver-0.1-blue]
+![Version](https://img.shields.io/badge/ver-0.1-blue)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 BMILD is a set of agent Skills designed for leading complex development tasks through persona-driven interactions (Product Manager, Architect, UX Designer, Developer, QA, etc.).
@@ -128,7 +128,7 @@ Many agentic environments will support the Skill folder pattern. Put `.agents/sk
 | **Cursor** | `.cursor/skills/` |
 | **Kilo Code** | `.kilo/skills/` |
 | **Opencode** | `.opencode/skills/` |
-| **OpenAI Codex CLI** | `skills/` or `.codex/skills/` |
+| **OpenAI Codex** | `skills/` or `.codex/skills/` |
 | **VS Code Copilot** | `.github/skills/` |
 
 ### BMILD memory
