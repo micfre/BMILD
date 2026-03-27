@@ -4,7 +4,7 @@
 ![Footing](https://img.shields.io/badge/Footing-unstable-yellow)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-BMILD is a small set of agent skills for moving from idea to shipped work without a heavy workflow wrapper. It keeps the lifecycle explicit, keeps the persona roster compact, and expects personas to read project context before they question or route you.
+BMILD is a set of agent Skills for moving from idea to shipped work without a heavy workflow wrapper. It keeps the lifecycle explicit, keeps the persona roster compact, and expects personas to read project context before they question you or start work.
 
 ## Start Here
 
@@ -24,8 +24,9 @@ You do not need to start at the beginning. Pick the stage you are in and invoke 
 
 - "Faisal, help me frame a new feature for bulk account deactivation."
 - "Katrina, design the onboarding flow for this feature."
-- "Lance, design the backend contracts for persona breadth."
-- "Sonia, decompose this feature into implementation slices."
+- "Lance, design the backend contracts for this service."
+- "Everyone, let's debate how to deal with cross-cutting on this requirement."
+- "Sonia, assign this feature into implementation slices."
 - "Alex, implement slice 2."
 - "Rahat, verify slice 2 and review the test coverage."
 
@@ -41,17 +42,6 @@ BMILD's canonical lifecycle roster is:
 6. **QA**: verification, diagnosis, and regression protection
 
 This is the primary working set. BMILD deliberately keeps it compact.
-
-## Delivery Planner
-
-`Delivery Planner` is BMILD's implementation-orchestration role. Sonia does four things:
-
-- Confirms the feature is ready to enter Slice-based delivery
-- Decomposes approved design into ordered `slice-<N>.md` files
-- Keeps Slice progress visible through `slices.md`
-- Helps reroute the plan when implementation reveals a blocker, missing dependency, or design gap
-
-This role does not own Scrum ceremonies, stakeholder management, deployment coordination, or generic project management. It exists to keep the handoff from design to implementation clear and to keep in-flight Slice work legible.
 
 ## How Handoffs Work
 
@@ -214,10 +204,10 @@ BMILD and BMAD should not be installed side by side when their trigger phrases o
 
 ## Roadmap
 
-- 0.2 Persona breadth stable
-- 0.3 Persona interactivity stable
-- 0.4 Dogfood version
-- 0.5 First public version
+- v0.2 Persona breadth stable
+- v0.3 Persona interactivity stable
+- v0.4 Dogfood version
+- v0.5 First public version
 
 ## Acknowledgements
 
