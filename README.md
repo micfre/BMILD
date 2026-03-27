@@ -1,7 +1,9 @@
 # BMILD - Breakthrough Method for Interactive Leads Development
-```
-v0.1
-```
+
+![BMad Method](banner-bmild.png)
+
+[![Version]https://img.shields.io/badge/ver-0.1-blue]
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 BMILD is a set of agent Skills designed for leading complex development tasks through persona-driven interactions (Product Manager, Architect, UX Designer, Developer, QA, etc.).
 BMILD heavily leverages BMAD-METHOD's approach but narrows it and simplifies it. I enjoy many aspects of BMAD, particularly Party Mode, but overall it is process-heavy and can promote fatigue for many tasks.
@@ -20,7 +22,7 @@ BMILD is Skill-native and dependency-free, requires no "installation" (just drop
   - An understanding of efforts that are platform-wide (major horizontal refactors) or feature-specific
   - Sequential efforts are just as easy to get into as the greenfield project, memory is not confused by several coincident or completed projects in the memory workspace
 - Greatly improved debugging workflow
-  - Implements a strict 7-step RCA (root cause analysis) protocol, which forces a breadth-first hypothesis and ranked options narrowing for fixes, backed by instrumentation before touching code
+  - Implements a strict root cause analysis protocol, which forces a breadth-first hypothesis generation before narrowing options for fixes, backed by instrumentation, before touching code
 - I have no desire to offend any die hard BMAD adherents, I am here myself because I chose BMAD over alternatives for my own work, and I am simply offering an alternative that I have shaped and grown to appreciate. The only thing I am perhaps overly fond of is the name, I do like it
 
 **BMILD is opinionated**
@@ -42,7 +44,7 @@ You have to believe this to believe that BMILD is a good fit for your way of wor
 
 1. Put the `.agents/skills` directory where your IDE or CLI will find it
 2. Call on the PM persona, Faisal, to get started with your idea
-3. Party Mode is called Interacive Leads here, but you can just call for a "debate" at any time
+3. Party Mode is called Interactive Leads here, but you can just call for a "debate" at any time
 
 ## The Longer Version
 
@@ -62,31 +64,35 @@ BMILD is inherently incompatible with BMAD because the skills have the same or s
 - BMAD has many more agents and discrete workflows
 - BMILD has six agents with broader yet non-overlapped domains and perspectives that still cover the end-to-end development lifecycle
 
+
 - BMAD offers highly valuable advanced elicitation, Party Mode, and brainstorming modes
-- BMILD offers these three as well, renaming Party Mode to Interactive Leads but you can just ask for a debate
+- BMILD offers these three as well, renaming Party Mode to Interactive Leads but you can always just ask for a "debate"
+
 
 - BMAD has personas with names and icons
-- BMILD drops the icons in favor of equally-clear but less cute colored squares, and tones down the ceremony, and replaces names with some of the greats I have worked with in my past experience (I would be tickled if they recognized themselves)
+- BMILD drops the icons in favor of equally-clear but less-cute colored squares, and tones down the ceremony, and replaces names with some of the greats I have worked with in my past experience (I would be tickled if they recognized themselves)
+
 
 - BMAD is well-tuned for large, greenfield projects and is less well-tuned for sequential feature development
 - BMILD responds well to greenfield, platform-level brownfield (large refactors) and feature-specific development. In fact, it's the first question that the PM will ask you
+
 
 - BMAD follows Agile principles closely through the full lifecycle, no surprise, that's the intent and it does it well
 - BMILD, as a highly-opinionated deviation, believes that context window is a more important dimension around which to subdivide a development
 - BMILD uses features (primary value delivery unit) and slices (single-context window development unit) to decompose the spec into delivered work
 
-- BMAD has very good artifact storage which acts as its memory
-- BMILD has "orchestrator-less" context memory which is written directly by the personas themselves
 
 - BMAD decomposes scope into Agile-defined Epics and Stories
-- BMILD tunes to one context window for the development slice, specifically taregting 170K which is 70% of the common 246K context window of many modern coding agents**
+- BMILD tunes to one context window for the development slice, specifically targeting 170K tokens which is ~70% of the common 250K effective context window of many modern coding agents**
 
-- BMAD has an ambiguous (in my opinion) process to debug issues uncovered in testing. Use Dev persona? QA persona?
+
 - BMAD has a broken debug prompt (in my opinion) which railroads the agent into choosing a single domain or service layer and a single cause for observed problems
 - BMILD has the QA persona handle both test implementation and issue resolution, using a strict RCA and evidence-led protocol before any code is touched. Dev can do it for typos and direct fixes, but QA does it so much better
 
+
 - BMAD is transitioning* to a Skill-centric approach, but many or most of the workflows are managed in several, deep proprietary workflow files with a Skill "wrapper" in place
 - BMILD is fully Skill-native, it doesn't call other code, it doesn't have deeply nested workflows
+
 
 - BMAD has first-class support for Claude Code, Cursor and Codex CLI
 - BMILD doesn't need IDE- or harness-specific tooling, as it leverages the Skills standard (only folder structure is different)
@@ -175,6 +181,8 @@ BMILD is built upon and inspired by the following projects:
 - **[Kilo Code](https://github.com/kilo-code)**: The systematic debugging methodology used by the QA persona is adapted from Kilo Code's debug prompt.
 
 All referenced materials are used in accordance with their respective MIT licenses.
+
+---
 
 \* at the time I am writing this, based on early version 6 releases
 
