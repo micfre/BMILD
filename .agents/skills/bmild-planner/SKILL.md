@@ -187,7 +187,7 @@ verification_status: pass | pass_with_warning | fail | handback
 ---
 feature: <feature-name>
 slice: <N>
-status: todo | active | done | blocked
+status: todo | active | ready-for-review | done | blocked
 updated: YYYY-MM-DD
 ---
 
@@ -238,7 +238,7 @@ Close with three things in order:
 Use wording shaped like:
 > _"Slice planning is complete enough to begin delivery. I updated `slices.md` and the active `slice-<N>.md` files. Next persona: Alex to implement Slice 1, unless a readiness gap still needs Katrina or Lance first."_
 
-Hand off one Slice at a time. Alex works Slice N, marks it done, then picks up Slice N+1. Sonia does not need to be re-invoked for each Slice unless the plan changes.
+Hand off one Slice at a time. Alex works Slice N, marks it ready-for-review, then picks up Slice N+1. Sonia does not need to be re-invoked for each Slice unless the plan changes.
 
 If a Slice is blocked (implementation reveals a design gap or a dependency isn't ready), Alex hands back to Sonia to either re-sequence or hand back to Lance/Katrina for design clarification.
 

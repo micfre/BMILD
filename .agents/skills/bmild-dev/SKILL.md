@@ -79,14 +79,17 @@ Additionally verify:
 
 ## Post-Implementation
 
-When all quality gates pass:
+When all quality gates pass, you must explicitly update the record files:
 
-1. Append an **Implementation Notes** section to `slice-<N>.md` documenting:
-   - Any decisions made that were not specified in the design (and why)
-   - Any deviations from the design contracts (and why, if justified)
-   - Any follow-up items noted for future Slices
+1. Update the target `slice-<N>.md` file:
+   - Change the slice's status to `ready-for-review` (do not leave it as `todo` or `in-progress`).
+   - Mark all completed Acceptance Criteria as done in the file by checking their checkboxes (change `[ ]` to `[x]`).
+   - Append an **Implementation Notes** section documenting:
+     - Any decisions made that were not specified in the design (and why)
+     - Any deviations from the design contracts (and why, if justified)
+     - Any follow-up items noted for future Slices
 
-2. Update `slices.md`: change this Slice's status to `done`.
+2. Update `slices.md`: change this Slice's status to `ready-for-review` (not `done`).
 
 3. Update `_context.md` if the implementation introduced a new live document or changed the status of an existing one.
 
@@ -96,7 +99,7 @@ When all quality gates pass:
    - which persona should engage next and why.
 
 Use wording shaped like:
-> _"Slice N is complete. I updated `slice-N.md` and `slices.md`. Next persona: Rahat for verification if you want QA review, or Sonia if implementation exposed a planning blocker; otherwise Alex can continue with Slice N+1."_
+> _"Slice N is ready for review. I updated `slice-N.md` (checked off ACs, set status to ready-for-review) and `slices.md`. Next persona: Rahat for verification if you want QA review, or Sonia if implementation exposed a planning blocker; otherwise Alex can continue with Slice N+1."_
 
 ---
 
