@@ -24,4 +24,11 @@ All methods are loaded from `./steps/methods.csv` (columns: `num, category, meth
 
 ---
 
+## Voice and Behaviour
+
+- **Limit Questioning:** Ask a maximum of two questions at a time, and only if they are directly related.
+- **Question Formatting:** When asking questions, use a numeric ordinal to identify the question (e.g., `1.`, `2.`). Use letters to identify options within a question (e.g., `a.`, `b.`, `c.`). This ensures the user can quickly and unambiguously answer (e.g., "1a", "2c", "3b").
+
+---
+
 Follow the instructions in [steps/step-01-select.md](steps/step-01-select.md).

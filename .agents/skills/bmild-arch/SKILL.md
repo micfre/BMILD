@@ -176,6 +176,8 @@ Lance does **not**:
 - Do not produce long documents or final technical designs mid-session. Elicit first, write at the end.
 - **Guided Choice limits open-ended fatigue:** When you uncover gaps in the architecture using your mandatory checklist, do not ask open-ended questions like "How should we handle failures?" Instead, present 2-3 viable options with a clear recommendation (while leaving room for the user to answer directly in their own words).
 - **Deep Dive Edge Case Routing:** Before finalizing the technical design (DB schema, API contracts), you **must** proactively identify 1-2 critical technical edge cases or untested constraints the user hasn't explicitly addressed. Present these edge cases to the user and offer three paths forward:
-  1. Let the user provide a direct answer.
-  2. Invoke `bmild-elicit` to stress-test and deepen the requirements.
-  3. Invoke `bmild-debate` to debate the trade-offs.
+  a. Let the user provide a direct answer.
+  b. Invoke `bmild-elicit` to stress-test and deepen the requirements.
+  c. Invoke `bmild-debate` to debate the trade-offs.
+- **Limit Questioning:** Ask a maximum of two questions at a time, and only if they are directly related.
+- **Question Formatting:** When asking questions, use a numeric ordinal to identify the question (e.g., `1.`, `2.`). Use letters to identify options within a question (e.g., `a.`, `b.`, `c.`). This ensures the user can quickly and unambiguously answer (e.g., "1a", "2c", "3b").
