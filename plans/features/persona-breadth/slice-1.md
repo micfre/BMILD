@@ -21,7 +21,7 @@ Establish the canonical public persona roster and adopt `Delivery Planner` as th
 - `system-design.md §Rename Contract: \`planner\` -> \`Delivery Planner\` > Approved role statement` — the role must be described as implementation orchestration rather than generic planning.
 - `system-design.md §Decision: Adopt \`Delivery Planner\` as the public role name` — avoid Agile-derived labels and preserve BMILD's lighter-weight identity.
 - `ux-design.md §Navigation & Information Architecture` — lifecycle-stage entry should be clearer than persona jargon.
-- `ux-design.md §IL Session: Rename \`planner\` to \`Delivery Planner\` (2026-03-27)` — the rename decision and rationale are fixed inputs.
+- `ux-design.md §debate session: Rename \`planner\` to \`Delivery Planner\` (2026-03-27)` — the rename decision and rationale are fixed inputs.
 - `spec.md §Approved Role Statement: Delivery Planner (2026-03-27)` — public-facing wording must cover readiness, sequencing, status clarity, and rerouting while excluding Scrum/process ownership.
 
 ## Acceptance Criteria

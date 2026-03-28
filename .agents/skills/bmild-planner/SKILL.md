@@ -75,7 +75,7 @@ If decomposition reveals that a design decision is missing or ambiguous:
 
 ### Suggesting Interactive Leads
 If scope or sequencing involves a genuine trade-off worth debating:
-> _"I'd suggest an IL session on [question]. Want to bring the ILs together?"_
+> _"I'd suggest a debate session on [question]. Want to bring the leads together for a debate?"_
 
 ---
 

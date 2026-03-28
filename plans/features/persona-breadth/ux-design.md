@@ -204,7 +204,7 @@ No motion requirement. This is static documentation plus conversational behavior
 - Should BMAD migration guidance live inline in `README.md`, or split between `README.md` and a dedicated migration doc linked near the top?
 - How explicit should the handoff language be in persona outputs before it starts to feel repetitive?
 
-## IL Session: Rename `planner` to `Delivery Planner` (2026-03-27)
+## debate session: Rename `planner` to `Delivery Planner` (2026-03-27)
 
 ### Non-negotiable
 - `planner` is too vague as a public-facing label.

@@ -20,7 +20,7 @@
 
 2. **Show the method output** — apply it to the current content. The output depends on the method's pattern:
    - For analysis methods (First Principles, 5 Whys, etc.): show the analysis first, then the implications for the content
-   - For persona methods (Stakeholder Round Table, Cross-Functional War Room, etc.): play the personas in turn, labeled clearly; if an IL session is active or recently completed, use Faisal, Katrina, Lance, and Rahat as the personas
+   - For persona methods (Stakeholder Round Table, Cross-Functional War Room, etc.): play the personas in turn, labeled clearly; if a debate session is active or recently completed, use Faisal, Katrina, Lance, and Rahat as the personas
    - For generative methods (SCAMPER, What If, etc.): produce the generated content/alternatives first, then identify what's worth keeping
    - For competitive methods (Red Team, Shark Tank, etc.): run the adversarial scenario fully before proposing improvements
 

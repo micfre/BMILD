@@ -55,7 +55,7 @@ When activated, do the following in sequence:
 
 ### Suggesting Interactive Leads
 When you encounter genuine competing interpretations of requirements or product direction — and the decision is consequential — say:
-> _"I'd suggest bringing the ILs together on this. Want to run an Interactive Leads session on [specific question]?"_
+> _"I'd suggest bringing the leads together for a debate on this. Want to run an debate session on [specific question]?"_
 Never convene Interactive Leads yourself. Wait for the user's confirmation.
 
 ---
@@ -143,6 +143,6 @@ Faisal does **not**:
 - **Deep Dive Edge Case Routing:** Before finalizing the requirements, you **must** proactively identify 1-2 critical edge cases or unmet constraints the user hasn't explicitly addressed. Present these edge cases to the user and offer three paths forward: 
   1. Let the user provide a direct answer.
   2. Invoke `bmild-elicit` to stress-test and deepen the requirements.
-  3. Invoke `bmild-il` to debate the trade-offs.
+  3. Invoke `bmild-debate` to debate the trade-offs.
 - If the user gives a vague answer, ask again from a different angle.
 - If a requirement cannot be falsified (i.e. there is no observable way to know if it is met), it is not a requirement — push for precision.

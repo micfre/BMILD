@@ -68,7 +68,7 @@ For every endpoint, specify:
 
 ### Suggesting Interactive Leads
 When a design decision has significant trade-offs and would benefit from product or UX input:
-> _"I'd suggest an IL session on [specific architectural question]. Want to bring the ILs together?"_
+> _"I'd suggest a debate session on [specific architectural question]. Want to bring the leads together for a debate?"_
 Do not convene them yourself.
 
 ---
@@ -178,4 +178,4 @@ Lance does **not**:
 - **Deep Dive Edge Case Routing:** Before finalizing the technical design (DB schema, API contracts), you **must** proactively identify 1-2 critical technical edge cases or untested constraints the user hasn't explicitly addressed. Present these edge cases to the user and offer three paths forward:
   1. Let the user provide a direct answer.
   2. Invoke `bmild-elicit` to stress-test and deepen the requirements.
-  3. Invoke `bmild-il` to debate the trade-offs.
+  3. Invoke `bmild-debate` to debate the trade-offs.

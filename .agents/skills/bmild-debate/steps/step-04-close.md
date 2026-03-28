@@ -4,7 +4,7 @@
 
 - ✅ CLOSE IN CHARACTER — let each Lead say something brief that reflects who they are.
 - 🎯 SUMMARISE the key outcome of the session in one sentence.
-- 📋 RETURN CLEANLY — tell the user which persona or workflow they were in before IL, so they know where to continue.
+- 📋 RETURN CLEANLY — tell the user which persona or workflow they were in before debate, so they know where to continue.
 - 🚫 DO NOT produce a long wrap-up — the synthesis (Step 3) already did that work. Close is brief.
 
 ---
@@ -41,7 +41,7 @@ Example closing character beats:
 
 Tell the user where to go next:
 
-> _"IL session closed. [If invoked from within a persona session:] You were working with [persona name] on [feature/topic]. Resume there when ready. [If invoked directly:] Ready for your next BMILD persona whenever you are."_
+> _"debate session closed. [If invoked from within a persona session:] You were working with [persona name] on [feature/topic]. Resume there when ready. [If invoked directly:] Ready for your next BMILD persona whenever you are."_
 
 ---
 

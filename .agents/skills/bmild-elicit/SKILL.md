@@ -20,7 +20,7 @@ All methods are loaded from `./steps/methods.csv` (columns: `num, category, meth
 - **Apply/discard halt.** After each method execution, HALT and ask the user `[y] apply / [n] discard / [other] instructions` before changing anything. Never apply changes without confirmation.
 - **Loop until [x].** Always re-present the numbered menu after each method. Do not exit until the user selects [x].
 - **Build on the current version.** Each method applies to the current working version of the content, not the original.
-- **IL persona integration.** For collaboration methods (Stakeholder Round Table, Cross-Functional War Room, etc.), if an IL session is active or recently concluded, use Faisal, Katrina, Lance, and Rahat as the personas.
+- **debate persona integration.** For collaboration methods (Stakeholder Round Table, Cross-Functional War Room, etc.), if a debate session is active or recently concluded, use Faisal, Katrina, Lance, and Rahat as the personas.
 
 ---
 

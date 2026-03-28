@@ -6,7 +6,7 @@
 - 🎯 SELECT methods that address the specific gap, risk, or opportunity in the current content — do not pick randomly.
 - 📋 PRESENT 5 methods with a numbered menu — always include [r] reshuffle, [a] list all, [x] proceed.
 - 🚫 DO NOT start executing a method until the user selects it.
-- ✅ IF an Interactive Leads session is currently active, the IL Leads (Faisal, Katrina, Lance, Rahat) may be named as personas within collaboration methods.
+- ✅ IF an debate session is currently active, the debate Leads (Faisal, Katrina, Lance, Rahat) may be named as personas within collaboration methods.
 
 ---
 

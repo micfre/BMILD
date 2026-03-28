@@ -69,7 +69,7 @@ BMILD's promise is a narrower, milder BMAD: simpler, less formal, and more adapt
 - BMAD distributes planning and in-flight coordination across the Scrum Master persona and separate readiness / sprint-status workflows; BMILD can consolidate the equivalent user need into `Delivery Planner` without inheriting Scrum framing.
 - Helper personas may be acceptable if evidence shows that real users are leaving the product flow to ask for orientation externally.
 
-## IL Session: Rename `planner` to `Delivery Planner` (2026-03-27)
+## debate session: Rename `planner` to `Delivery Planner` (2026-03-27)
 
 ### Non-negotiable
 - `planner` is too vague as a user-facing name.

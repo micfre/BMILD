@@ -144,7 +144,7 @@ Relocate to:
     ├── bmild-brainstorming/ # Brainstorming facilitator
     ├── bmild-dev/           # Developer
     ├── bmild-elicit/        # Advanced Elicitation
-    ├── bmild-il/            # Interactive Leads
+    ├── bmild-debate/            # Interactive Leads
     ├── bmild-planner/       # Delivery Planner
     ├── bmild-pm/            # Product Manager
     ├── bmild-qa/            # QA

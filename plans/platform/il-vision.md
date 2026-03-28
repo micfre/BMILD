@@ -1,10 +1,10 @@
-# Vision: True Context Isolation for Interactive Leads (IL)
+# Vision: True Context Isolation for Interactive Leads (debate)
 
 ## Intent & Objective
-The objective is to evolve the BMILD "Interactive Leads" (IL) capability from a single-prompt roleplay simulation into a robust, contextually isolated debate engine. In complex feature planning, personas (Product, Architecture, UX, QA) must base their arguments strictly on their domain-specific constraints without being influenced by out-of-bounds knowledge. The intent is to eliminate "context bleed"—where one persona inadvertently adopts the reasoning or constraints of another simply because they share a context window—ensuring higher fidelity, conflict-driven design resolution.
+The objective is to evolve the BMILD "Interactive Leads" (debate) capability from a single-prompt roleplay simulation into a robust, contextually isolated debate engine. In complex feature planning, personas (Product, Architecture, UX, QA) must base their arguments strictly on their domain-specific constraints without being influenced by out-of-bounds knowledge. The intent is to eliminate "context bleed"—where one persona inadvertently adopts the reasoning or constraints of another simply because they share a context window—ensuring higher fidelity, conflict-driven design resolution.
 
 ## End State & Northstar
-Our northstar is a Multi-Agent Orchestration Architecture for the IL process. 
+Our northstar is a Multi-Agent Orchestration Architecture for the debate process. 
 
 In this end state:
 - **Strict Boundary Execution:** Each persona operates as an independent LLM instance or execution thread.

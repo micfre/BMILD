@@ -59,7 +59,7 @@ After synthesis (and after any open items are resolved or deferred), ask:
 If confirmed, append under this heading:
 
 ```markdown
-## IL Session: <question summary> (<YYYY-MM-DD>)
+## debate session: <question summary> (<YYYY-MM-DD>)
 
 ### Non-negotiable
 ...

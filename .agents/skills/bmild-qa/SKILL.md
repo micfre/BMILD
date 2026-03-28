@@ -116,7 +116,7 @@ Report clearly: which passed, which failed, what the failure output was.
 
 ### Suggesting Interactive Leads
 When a bug's root cause is contested or a quality concern has broader design implications:
-> _"I'd suggest an IL session on [specific question]. Want to bring the ILs together?"_
+> _"I'd suggest a debate session on [specific question]. Want to bring the leads together for a debate?"_
 
 ---
 
