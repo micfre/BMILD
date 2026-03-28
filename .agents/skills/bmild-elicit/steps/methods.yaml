@@ -1,0 +1,349 @@
+- num: 1
+  category: collaboration
+  method_name: Stakeholder Round Table
+  description: |
+    Convene multiple personas to contribute diverse perspectives - essential for requirements gathering and finding balanced solutions across competing interests
+  output_pattern: perspectives → synthesis → alignment
+
+- num: 2
+  category: collaboration
+  method_name: Expert Panel Review
+  description: |
+    Assemble domain experts for deep specialized analysis - ideal when technical depth and peer review quality are needed
+  output_pattern: expert views → consensus → recommendations
+
+- num: 3
+  category: collaboration
+  method_name: Debate Club Showdown
+  description: |
+    Two personalities argue opposing positions while a moderator scores points - great for exploring controversial decisions and finding middle ground
+  output_pattern: thesis → antithesis → synthesis
+
+- num: 4
+  category: collaboration
+  method_name: User Persona Focus Group
+  description: |
+    Gather your product's user personas to react to proposals and share frustrations - essential for validating features and discovering unmet needs
+  output_pattern: reactions → concerns → priorities
+
+- num: 5
+  category: collaboration
+  method_name: Time Traveler Council
+  description: |
+    Past-you and future-you advise present-you on decisions - powerful for gaining perspective on long-term consequences vs short-term pressures
+  output_pattern: past wisdom → present choice → future impact
+
+- num: 6
+  category: collaboration
+  method_name: Cross-Functional War Room
+  description: |
+    Product manager + engineer + designer tackle a problem together - reveals trade-offs between feasibility desirability and viability
+  output_pattern: constraints → trade-offs → balanced solution
+
+- num: 7
+  category: collaboration
+  method_name: Mentor and Apprentice
+  description: |
+    Senior expert teaches junior while junior asks naive questions - surfaces hidden assumptions through teaching
+  output_pattern: explanation → questions → deeper understanding
+
+- num: 8
+  category: collaboration
+  method_name: Good Cop Bad Cop
+  description: |
+    Supportive persona and critical persona alternate - finds both strengths to build on and weaknesses to address
+  output_pattern: encouragement → criticism → balanced view
+
+- num: 9
+  category: collaboration
+  method_name: Improv Yes-And
+  description: |
+    Multiple personas build on each other's ideas without blocking - generates unexpected creative directions through collaborative building
+  output_pattern: idea → build → build → surprising result
+
+- num: 10
+  category: collaboration
+  method_name: Customer Support Theater
+  description: |
+    Angry customer and support rep roleplay to find pain points - reveals real user frustrations and service gaps
+  output_pattern: complaint → investigation → resolution → prevention
+
+- num: 11
+  category: advanced
+  method_name: Tree of Thoughts
+  description: |
+    Explore multiple reasoning paths simultaneously then evaluate and select the best - perfect for complex problems with multiple valid approaches
+  output_pattern: paths → evaluation → selection
+
+- num: 12
+  category: advanced
+  method_name: Graph of Thoughts
+  description: |
+    Model reasoning as an interconnected network of ideas to reveal hidden relationships - ideal for systems thinking and discovering emergent patterns
+  output_pattern: nodes → connections → patterns
+
+- num: 13
+  category: advanced
+  method_name: Thread of Thought
+  description: |
+    Maintain coherent reasoning across long contexts by weaving a continuous narrative thread - essential for RAG systems and maintaining consistency
+  output_pattern: context → thread → synthesis
+
+- num: 14
+  category: advanced
+  method_name: Self-Consistency Validation
+  description: |
+    Generate multiple independent approaches then compare for consistency - crucial for high-stakes decisions where verification matters
+  output_pattern: approaches → comparison → consensus
+
+- num: 15
+  category: advanced
+  method_name: Meta-Prompting Analysis
+  description: |
+    Step back to analyze the approach structure and methodology itself - valuable for optimizing prompts and improving problem-solving
+  output_pattern: current → analysis → optimization
+
+- num: 16
+  category: advanced
+  method_name: Reasoning via Planning
+  description: |
+    Build a reasoning tree guided by world models and goal states - excellent for strategic planning and sequential decision-making
+  output_pattern: model → planning → strategy
+
+- num: 17
+  category: competitive
+  method_name: Red Team vs Blue Team
+  description: |
+    Adversarial attack-defend analysis to find vulnerabilities - critical for security testing and building robust solutions
+  output_pattern: defense → attack → hardening
+
+- num: 18
+  category: competitive
+  method_name: Shark Tank Pitch
+  description: |
+    Entrepreneur pitches to skeptical investors who poke holes - stress-tests business viability and forces clarity on value proposition
+  output_pattern: pitch → challenges → refinement
+
+- num: 19
+  category: competitive
+  method_name: Code Review Gauntlet
+  description: |
+    Senior devs with different philosophies review the same code - surfaces style debates and finds consensus on best practices
+  output_pattern: reviews → debates → standards
+
+- num: 20
+  category: technical
+  method_name: Architecture Decision Records
+  description: |
+    Multiple architect personas propose and debate architectural choices with explicit trade-offs - ensures decisions are well-reasoned and documented
+  output_pattern: options → trade-offs → decision → rationale
+
+- num: 21
+  category: technical
+  method_name: Rubber Duck Debugging Evolved
+  description: |
+    Explain your code to progressively more technical ducks until you find the bug - forces clarity at multiple abstraction levels
+  output_pattern: simple → detailed → technical → aha
+
+- num: 22
+  category: technical
+  method_name: Algorithm Olympics
+  description: |
+    Multiple approaches compete on the same problem with benchmarks - finds optimal solution through direct comparison
+  output_pattern: implementations → benchmarks → winner
+
+- num: 23
+  category: technical
+  method_name: Security Audit Personas
+  description: |
+    Hacker + defender + auditor examine system from different threat models - comprehensive security review from multiple angles
+  output_pattern: vulnerabilities → defenses → compliance
+
+- num: 24
+  category: technical
+  method_name: Performance Profiler Panel
+  description: |
+    Database expert + frontend specialist + DevOps engineer diagnose slowness - finds bottlenecks across the full stack
+  output_pattern: symptoms → analysis → optimizations
+
+- num: 25
+  category: creative
+  method_name: SCAMPER Method
+  description: |
+    Apply seven creativity lenses (Substitute/Combine/Adapt/Modify/Put/Eliminate/Reverse) - systematic ideation for product innovation
+  output_pattern: S→C→A→M→P→E→R
+
+- num: 26
+  category: creative
+  method_name: Reverse Engineering
+  description: |
+    Work backwards from desired outcome to find implementation path - powerful for goal achievement and understanding endpoints
+  output_pattern: end state → steps backward → path forward
+
+- num: 27
+  category: creative
+  method_name: What If Scenarios
+  description: |
+    Explore alternative realities to understand possibilities and implications - valuable for contingency planning and exploration
+  output_pattern: scenarios → implications → insights
+
+- num: 28
+  category: creative
+  method_name: Random Input Stimulus
+  description: |
+    Inject unrelated concepts to spark unexpected connections - breaks creative blocks through forced lateral thinking
+  output_pattern: random word → associations → novel ideas
+
+- num: 29
+  category: creative
+  method_name: Exquisite Corpse Brainstorm
+  description: |
+    Each persona adds to the idea seeing only the previous contribution - generates surprising combinations through constrained collaboration
+  output_pattern: contribution → handoff → contribution → surprise
+
+- num: 30
+  category: creative
+  method_name: Genre Mashup
+  description: |
+    Combine two unrelated domains to find fresh approaches - innovation through unexpected cross-pollination
+  output_pattern: domain A + domain B → hybrid insights
+
+- num: 31
+  category: research
+  method_name: Literature Review Personas
+  description: |
+    Optimist researcher + skeptic researcher + synthesizer review sources - balanced assessment of evidence quality
+  output_pattern: sources → critiques → synthesis
+
+- num: 32
+  category: research
+  method_name: Thesis Defense Simulation
+  description: |
+    Student defends hypothesis against committee with different concerns - stress-tests research methodology and conclusions
+  output_pattern: thesis → challenges → defense → refinements
+
+- num: 33
+  category: research
+  method_name: Comparative Analysis Matrix
+  description: |
+    Multiple analysts evaluate options against weighted criteria - structured decision-making with explicit scoring
+  output_pattern: options → criteria → scores → recommendation
+
+- num: 34
+  category: risk
+  method_name: Pre-mortem Analysis
+  description: |
+    Imagine future failure then work backwards to prevent it - powerful technique for risk mitigation before major launches
+  output_pattern: failure scenario → causes → prevention
+
+- num: 35
+  category: risk
+  method_name: Failure Mode Analysis
+  description: |
+    Systematically explore how each component could fail - critical for reliability engineering and safety-critical systems
+  output_pattern: components → failures → prevention
+
+- num: 36
+  category: risk
+  method_name: Challenge from Critical Perspective
+  description: |
+    Play devil's advocate to stress-test ideas and find weaknesses - essential for overcoming groupthink
+  output_pattern: assumptions → challenges → strengthening
+
+- num: 37
+  category: risk
+  method_name: Identify Potential Risks
+  description: |
+    Brainstorm what could go wrong across all categories - fundamental for project planning and deployment preparation
+  output_pattern: categories → risks → mitigations
+
+- num: 38
+  category: risk
+  method_name: Chaos Monkey Scenarios
+  description: |
+    Deliberately break things to test resilience and recovery - ensures systems handle failures gracefully
+  output_pattern: break → observe → harden
+
+- num: 39
+  category: core
+  method_name: First Principles Analysis
+  description: |
+    Strip away assumptions to rebuild from fundamental truths - breakthrough technique for innovation and solving impossible problems
+  output_pattern: assumptions → truths → new approach
+
+- num: 40
+  category: core
+  method_name: 5 Whys Deep Dive
+  description: |
+    Repeatedly ask why to drill down to root causes - simple but powerful for understanding failures
+  output_pattern: why chain → root cause → solution
+
+- num: 41
+  category: core
+  method_name: Socratic Questioning
+  description: |
+    Use targeted questions to reveal hidden assumptions and guide discovery - excellent for teaching and self-discovery
+  output_pattern: questions → revelations → understanding
+
+- num: 42
+  category: core
+  method_name: Critique and Refine
+  description: |
+    Systematic review to identify strengths and weaknesses then improve - standard quality check for drafts
+  output_pattern: strengths/weaknesses → improvements → refined
+
+- num: 43
+  category: core
+  method_name: Explain Reasoning
+  description: |
+    Walk through step-by-step thinking to show how conclusions were reached - crucial for transparency
+  output_pattern: steps → logic → conclusion
+
+- num: 44
+  category: core
+  method_name: Expand or Contract for Audience
+  description: |
+    Dynamically adjust detail level and technical depth for target audience - matches content to reader capabilities
+  output_pattern: audience → adjustments → refined content
+
+- num: 45
+  category: learning
+  method_name: Feynman Technique
+  description: |
+    Explain complex concepts simply as if teaching a child - the ultimate test of true understanding
+  output_pattern: complex → simple → gaps → mastery
+
+- num: 46
+  category: learning
+  method_name: Active Recall Testing
+  description: |
+    Test understanding without references to verify true knowledge - essential for identifying gaps
+  output_pattern: test → gaps → reinforcement
+
+- num: 47
+  category: philosophical
+  method_name: Occam's Razor Application
+  description: |
+    Find the simplest sufficient explanation by eliminating unnecessary complexity - essential for debugging
+  output_pattern: options → simplification → selection
+
+- num: 48
+  category: philosophical
+  method_name: Trolley Problem Variations
+  description: |
+    Explore ethical trade-offs through moral dilemmas - valuable for understanding values and difficult decisions
+  output_pattern: dilemma → analysis → decision
+
+- num: 49
+  category: retrospective
+  method_name: Hindsight Reflection
+  description: |
+    Imagine looking back from the future to gain perspective - powerful for project reviews
+  output_pattern: future view → insights → application
+
+- num: 50
+  category: retrospective
+  method_name: Lessons Learned Extraction
+  description: |
+    Systematically identify key takeaways and actionable improvements - essential for continuous improvement
+  output_pattern: experience → lessons → actions

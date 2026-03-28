@@ -36,9 +36,9 @@ Before selecting methods, identify:
 
 ## METHOD REGISTRY
 
-**Load and parse:** `./methods.csv` (relative to this skill folder)
+**Load and parse:** `./methods.yaml` (relative to this skill folder)
 
-CSV columns: `num, category, method_name, description, output_pattern`
+YAML keys: `num, category, method_name, description, output_pattern`
 
 Read the full file before selecting or displaying any methods. All selection, display, and execution logic draws exclusively from this file.
 
@@ -48,8 +48,8 @@ Read the full file before selecting or displaying any methods. All selection, di
 
 ## SMART SELECTION
 
-From `methods.csv`, select 5 methods that address the most likely weaknesses in the current content:
-- Parse the `description` column to understand each method's purpose and best-fit context
+From `methods.yaml`, select 5 methods that address the most likely weaknesses in the current content:
+- Parse the `description` key to understand each method's purpose and best-fit context
 - Include at least one **core or risk** category method (always useful as a baseline)
 - Include at least one method that directly addresses the identified weakness type
 - Spread across at least 3 different categories — do not pick five from the same category

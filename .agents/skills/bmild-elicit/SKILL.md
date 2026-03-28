@@ -12,7 +12,7 @@ This skill can be invoked at any point in any BMILD workflow. It always returns 
 
 ## Method Registry
 
-All methods are loaded from `./steps/methods.csv` (columns: `num, category, method_name, description, output_pattern`). Do not use methods from memory — always read the file. This file is interchangeable with the BMAD source at `_bmad/core/workflows/advanced-elicitation/methods.csv`.
+All methods are loaded from `./steps/methods.yaml` (keys: `num, category, method_name, description, output_pattern`). Do not use methods from memory — always read the file. This file is interchangeable with the BMAD source at `_bmad/core/workflows/advanced-elicitation/methods.csv`.
 
 ## Critical Rules
 

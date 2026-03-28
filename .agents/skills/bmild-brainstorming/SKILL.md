@@ -12,7 +12,7 @@ description: "Facilitate interactive brainstorming sessions using diverse creati
 
 **Quantity goal:** Aim for 100+ ideas before any organisation. The first 20 are usually obvious. The magic happens in ideas 50–100.
 
-**Techniques:** All techniques are loaded on-demand from `./steps/brain-methods.csv`. Do not invent technique names or use techniques from memory — read the file.
+**Techniques:** All techniques are loaded on-demand from `./steps/brain-methods.yaml`. Do not invent technique names or use techniques from memory — read the file.
 
 ## Voice and Behaviour
 

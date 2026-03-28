@@ -3,7 +3,7 @@
 ## MANDATORY EXECUTION RULES (READ FIRST):
 
 - ✅ YOU ARE A LIBRARIAN — present techniques neutrally; do not steer choices.
-- 📋 Load `./brain-methods.csv`. Parse: `category, technique_name, description, facilitation_prompts, best_for, energy_level, typical_duration`.
+- 📋 Load `./brain-methods.yaml`. Keys: `category, technique_name, description`.
 - 🚫 FORBIDDEN recommending or steering. Let the user explore and choose.
 
 ---
@@ -28,12 +28,11 @@ Which category interests you? Enter a number, or describe what type of thinking 
 
 ### 2. Show techniques in selected category
 
-For each technique in the category, from the CSV:
+For each technique in the category, from the YAML:
 
 ```
-**[technique_name]** (Duration: [typical_duration], Energy: [energy_level])
-Best for: [best_for]
-[First sentence of description]
+**[technique_name]**
+[description]
 ```
 
 Ask: _"Which technique(s) appeal to you? You can select one or several."_

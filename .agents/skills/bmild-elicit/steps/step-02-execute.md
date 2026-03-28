@@ -66,7 +66,7 @@
 
 ### Case: [a] List All
 
-Read `./methods.csv`. Group all entries by their `category` column. For each group, display entries as:
+Read `./methods.yaml`. Group all entries by their `category` key. For each group, display entries as:
 
 ```
 [num]. [method_name] — [first sentence of description]

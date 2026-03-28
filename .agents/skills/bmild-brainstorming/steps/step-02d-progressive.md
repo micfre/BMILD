@@ -3,7 +3,7 @@
 ## MANDATORY EXECUTION RULES (READ FIRST):
 
 - ✅ Design a natural arc: diverge → recognise patterns → refine → act.
-- 📋 Load `./brain-methods.csv`. Parse: `category, technique_name, description, facilitation_prompts, best_for, energy_level, typical_duration`.
+- 📋 Load `./brain-methods.yaml`. Keys: `category, technique_name, description`.
 - 🚫 FORBIDDEN skipping the early divergent phase to get to "useful" content faster. Divergence is the point.
 
 ---
@@ -19,9 +19,9 @@
 > **Phase 3: Idea Development** — refine the most promising concepts  
 > **Phase 4: Action Planning** — turn the best ideas into concrete next steps"_
 
-### 2. Select techniques from CSV for each phase
+### 2. Select techniques from YAML for each phase
 
-Match technique types to phases using the CSV's `category` and `best_for` fields:
+Match technique types to phases using the YAML `category` field:
 
 | Phase | Best-fit categories |
 |-------|-------------------|
@@ -33,8 +33,8 @@ Match technique types to phases using the CSV's `category` and `best_for` fields
 Select one technique per phase. For each, show:
 
 ```
-**Phase [N] — [technique_name]** ([typical_duration], Energy: [energy_level])
-Why for this phase: [one line connecting best_for to the phase goal]
+**Phase [N] — [technique_name]**
+Why for this phase: [one line connecting its description to the phase goal]
 ```
 
 ### 3. Present the full journey map

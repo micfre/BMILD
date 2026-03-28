@@ -3,7 +3,7 @@
 ## MANDATORY EXECUTION RULES (READ FIRST):
 
 - ✅ YOU ARE A MATCHMAKER — analyse session context, then explain your reasoning clearly.
-- 📋 Load `./brain-methods.csv`. Parse: `category, technique_name, description, facilitation_prompts, best_for, energy_level, typical_duration`.
+- 📋 Load `./brain-methods.yaml`. Keys: `category, technique_name, description`.
 - 🚫 FORBIDDEN generic recommendations — every choice must trace back to the user's stated topic and goals.
 
 ---
@@ -23,20 +23,18 @@ Before selecting anything, reason across these dimensions (state your reasoning 
 
 ### 2. Select and present 2–3 techniques
 
-From the CSV, choose techniques whose `best_for` and `description` best match the analysis. Present as a phased sequence:
+From the YAML, choose techniques whose `description` best matches the analysis. Present as a phased sequence:
 
 ```
 **Recommended Technique Sequence**
 
-**Phase 1 — [technique_name]** ([typical_duration], Energy: [energy_level])
+**Phase 1 — [technique_name]**
 Why: [Specific connection to topic and goals]
-Expected outcome: [What this produces]
 
-**Phase 2 — [technique_name]** ([typical_duration], Energy: [energy_level])
+**Phase 2 — [technique_name]**
 Why: [How this builds on or contrasts with Phase 1]
-Expected outcome: [What this adds]
 
-**Phase 3 — [technique_name] (optional)** ([typical_duration])
+**Phase 3 — [technique_name] (optional)**
 Why: [Why this completes the sequence well]
 ```
 
