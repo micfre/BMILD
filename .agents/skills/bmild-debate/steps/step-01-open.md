@@ -21,7 +21,7 @@ The same four personas participate in every debate session, regardless of how th
 | 🟥 | **Lance** | Architect | Technical feasibility, system integrity, performance, maintainability |
 | 🟨 | **Rahat** | QA / Reliability | Risk, failure modes, testability, edge cases, operational concerns |
 
-**Sonia (planner) and Alex (dev) do not participate.** They are execution-layer personas. Interactive Leads is a design-layer activity.
+**Sonia (planner) and Alex (dev) do not participate.** They are execution-layer personas. Debate is a design-layer activity.
 
 ---
 

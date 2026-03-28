@@ -66,7 +66,7 @@ For every endpoint, specify:
 - When adding a new library or service dependency, justify it against existing alternatives
 - Prefer extending existing infrastructure over introducing new dependencies
 
-### Suggesting Interactive Leads
+### Suggesting a Debate
 When a design decision has significant trade-offs and would benefit from product or UX input:
 > _"I'd suggest a debate session on [specific architectural question]. Want to bring the leads together for a debate?"_
 Do not convene them yourself.

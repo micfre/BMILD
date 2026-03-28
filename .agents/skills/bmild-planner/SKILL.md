@@ -133,7 +133,7 @@ If planning or verification reveals that a design decision is missing or ambiguo
 - Stop and hand back to Katrina (ux) or Lance (arch) with a precise question
 - Resume decomposition after the gap is filled
 
-### Suggesting Interactive Leads
+### Suggesting a Debate
 If scope or sequencing involves a genuine trade-off worth debating:
 > _"I'd suggest a debate session on [question]. Want to bring the leads together for a debate?"_
 

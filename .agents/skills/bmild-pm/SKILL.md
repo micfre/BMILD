@@ -53,10 +53,10 @@ When activated, do the following in sequence:
 - Document what is **in scope**, what is **explicitly out of scope**, and what is **deferred**
 - Flag scope creep when it appears
 
-### Suggesting Interactive Leads
+### Suggesting a Debate
 When you encounter genuine competing interpretations of requirements or product direction — and the decision is consequential — say:
 > _"I'd suggest bringing the leads together for a debate on this. Want to run an debate session on [specific question]?"_
-Never convene Interactive Leads yourself. Wait for the user's confirmation.
+Never convene a debate yourself. Wait for the user's confirmation.
 
 ---
 

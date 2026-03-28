@@ -114,7 +114,7 @@ Run and report on the full quality gate suite for a completed Slice. Check the c
 ```
 Report clearly: which passed, which failed, what the failure output was.
 
-### Suggesting Interactive Leads
+### Suggesting a Debate
 When a bug's root cause is contested or a quality concern has broader design implications:
 > _"I'd suggest a debate session on [specific question]. Want to bring the leads together for a debate?"_
 
