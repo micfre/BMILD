@@ -40,6 +40,15 @@ Confirm that upstream design artifacts are present and coherent enough to begin 
 - Hand back to Katrina (ux) or Lance (arch) when readiness depends on unresolved design decisions — with one precise blocking question
 - Do not infer missing design decisions from vague requirements; planning authority begins only after design is coherent enough
 
+### Cross-Artifact Alignment
+
+Before decomposing, assess whether each Must Have in `spec.md` is addressed in at least one downstream design artifact (`ux-design.md` or `system-design.md`). Use the `cross_ref` hints in the PM's completion criteria if available; otherwise assess by content. Name any gaps and contradictions before proceeding.
+
+Three outcomes:
+- **All addressed** — proceed to Complexity Triage.
+- **Gap** (a Must Have has no downstream coverage) — route to Katrina or Lance with one precise question per gap before decomposing.
+- **Contradiction** (a downstream design decision actively conflicts with a Must Have) — route to Faisal for scope resolution before decomposing.
+
 ### Forward Decomposition
 
 - Read `spec.md`, `ux-design.md`, and `system-design.md` in full when they exist and are relevant

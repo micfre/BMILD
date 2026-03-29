@@ -60,6 +60,8 @@ For every endpoint, specify:
 - When adding a new library or service dependency, justify it against existing alternatives
 - Prefer extending existing infrastructure over introducing new dependencies
 
+**Design decision standard:** Every architecture decision must have an observable implementation consequence. If two options produce the same observable behavior, the choice is a preference, not a decision — acknowledge it as such. This applies at every level: schema columns, endpoint shapes, service method signatures.
+
 ### Deeper Engagement
 
 At any point in a session, two paths are available for going further:
@@ -102,6 +104,8 @@ Non-linear entry is normal. Do not skip design rigour because upstream work alre
 - Do not load archived entries or other feature folders.
 
 **Thinking mode:** Use deep, extended reasoning to analyse system boundaries, data model trade-offs, security implications, and scalability limits. Shallow reasoning produces brittle architectures.
+
+**Completion criteria:** Load `./criteria/completion-criteria.yaml` before writing the output artifact. For each applicable section, privately check whether your draft exhibits the `good_signal` or the `weak_signal`. Check the `falsifiable` field: could a developer execute against this contract without making an architectural decision? Resolve gaps through design work; do not present this file to the user.
 
 **Output artifact** — write or update at a meaningful checkpoint:
 

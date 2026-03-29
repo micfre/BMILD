@@ -1,0 +1,95 @@
+meta:
+  artifact: system-design.md
+  governed_by: bmild-arch
+  loading_note: >
+    Load before writing the output artifact. For each section that applies, privately
+    check whether your draft exhibits the good_signal or the weak_signal. Check the
+    falsifiable field: could a developer execute against this contract without making
+    an architectural decision? Resolve gaps through design work; do not present this
+    file to the user.
+
+sections:
+
+  - id: tech_stack
+    required: false
+    applies_when: platform engagement or any new runtime, framework, or library dependency
+    cross_ref: []
+    falsifiable: >
+      A developer can determine the runtime version, framework, and key library choices
+      for every new component introduced, without asking a follow-up architecture
+      question.
+    good_signal: >
+      Every new technology choice names the specific version or version constraint,
+      its role, and why it was chosen over at least one alternative. Existing choices
+      are confirmed unchanged or explicitly superseded.
+    weak_signal: >
+      Choices named without version or rationale, or a stack described at category
+      level ("use a relational database") without specifying the product.
+
+  - id: database_schema
+    required: false
+    applies_when: any change to persisted data structures
+    cross_ref:
+      - spec.md
+    falsifiable: >
+      A developer can run the code-first migration tool against this schema spec and
+      produce the correct migration without resolving any ambiguity.
+    good_signal: >
+      Every table change specifies column names, types, nullability, defaults, PKs,
+      FKs, indexes, and uniqueness constraints at the column level. Migration intent
+      is stated (what the migration tool is expected to generate).
+    weak_signal: >
+      Columns described without types or nullability, constraints stated in prose
+      without specifying enforcement layer (ORM vs app vs DB), or migration intent
+      absent.
+
+  - id: api_contracts
+    required: false
+    applies_when: any client-server or service-to-service boundary is introduced or changed
+    cross_ref:
+      - spec.md
+      - ux-design.md
+    falsifiable: >
+      A frontend developer and a backend developer can implement both sides of each
+      endpoint independently and their implementations will integrate correctly on
+      first attempt.
+    good_signal: >
+      Every endpoint specifies method, path, auth requirement, all request fields with
+      types and required/optional status, and all response shapes with status codes and
+      error meanings. Pagination, filtering, and sorting behavior is explicit if applicable.
+    weak_signal: >
+      Endpoints described without response shapes, or error conditions described
+      abstractly ("returns an error if something goes wrong") without status codes
+      or distinguishable error payloads.
+
+  - id: service_contracts
+    required: false
+    applies_when: any internal service layer method is introduced or changed
+    cross_ref:
+      - spec.md
+    falsifiable: >
+      A developer can write a unit test for a service method's inputs, outputs, and
+      error cases from this contract alone, without reading the implementation.
+    good_signal: >
+      Every service method specifies parameter names and types, return type, and all
+      error conditions it throws or returns. Side effects (writes, events, queue
+      messages) are named.
+    weak_signal: >
+      Methods described by intent only ("handles user creation") without parameter or
+      return type specification, or error conditions stated in aggregate rather than
+      per-method.
+
+  - id: dependency_decisions
+    required: false
+    applies_when: any new external library, service, or infrastructure component is introduced
+    cross_ref: []
+    falsifiable: >
+      A reviewer can evaluate whether the dependency was justified by reading this
+      section alone, without access to the original discussion.
+    good_signal: >
+      The dependency is justified against at least one alternative with explicit
+      trade-off rationale. The constraint it imposes on the existing system (versioning,
+      security surface, build process) is acknowledged.
+    weak_signal: >
+      Dependency named without alternatives considered, or justification is a claim
+      ("it is the best option") without evidence or trade-off.

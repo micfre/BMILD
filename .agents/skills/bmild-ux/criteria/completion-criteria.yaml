@@ -1,0 +1,103 @@
+meta:
+  artifact: ux-design.md
+  governed_by: bmild-ux
+  loading_note: >
+    Load before writing the output artifact. For each section that applies, privately
+    check whether your draft exhibits the good_signal or the weak_signal. Check the
+    falsifiable field: is there an observable user behavior or testable screen state
+    that confirms this section is complete? Resolve gaps through design work; do not
+    present this file to the user.
+
+sections:
+
+  - id: information_architecture
+    required: true
+    cross_ref:
+      - spec.md
+    falsifiable: >
+      A reviewer can enumerate all screens and their navigation relationships by
+      reading this section alone, without inferring structure from other sections.
+    good_signal: >
+      All screens are named, their hierarchy is explicit, how a user moves between
+      them is stated (link, button, redirect, etc.), and the data visible at each
+      level is identified.
+    weak_signal: >
+      Screen names are listed without hierarchy or navigation paths, or the data
+      displayed on each view is left to inference.
+
+  - id: user_flows
+    required: true
+    cross_ref:
+      - spec.md
+    falsifiable: >
+      A tester can write a test script for the happy path and at least one error path
+      for each flow from this section alone.
+    good_signal: >
+      Each flow names its trigger, each step, the success exit condition, and at least
+      one failure exit condition. Empty states and loading states are identified per
+      flow.
+    weak_signal: >
+      Flows cover only the happy path, or steps are described at a level of abstraction
+      that a developer would need to make UX decisions to implement.
+
+  - id: interaction_model
+    required: true
+    cross_ref:
+      - spec.md
+    falsifiable: >
+      For each interactive element, a developer can state what triggers it, what it
+      produces, and what state it holds, without asking a follow-up UX question.
+    good_signal: >
+      For every non-trivial UI element: the trigger is named, the response is stated,
+      state transitions are explicit. Form validation rules are expressed as user-
+      observable conditions. Modal and dialog lifecycles are closed (open + dismiss
+      + completion paths all specified).
+    weak_signal: >
+      Elements are named but their behavior is described qualitatively ("it should
+      be responsive") or left to implementation convention.
+
+  - id: visual_design_language
+    required: false
+    applies_when: platform engagement or introducing new design tokens
+    cross_ref: []
+    falsifiable: >
+      A frontend developer can implement a new screen that is visually consistent
+      with existing screens using only this section as reference, without asking
+      a design question.
+    good_signal: >
+      Colour roles are mapped to values. Typography defines family, weight, and size
+      for each text role. Spacing uses a named scale. Component visual states are
+      enumerated (default, hover, active, disabled, focused, error).
+    weak_signal: >
+      Colors or typography described qualitatively ("modern", "clean"), or component
+      states partially specified leaving some states undefined.
+
+  - id: edge_states
+    required: true
+    cross_ref:
+      - spec.md
+    falsifiable: >
+      A QA engineer can write test cases for each edge state on each screen without
+      inferring the intended behavior.
+    good_signal: >
+      Every screen has an explicit description of its empty state, loading state, and
+      error state. Error messages are specified, not just referenced.
+    weak_signal: >
+      Edge states mentioned in aggregate ("handle errors appropriately") rather than
+      per view, or error states that defer copy to the developer.
+
+  - id: accessibility
+    required: false
+    applies_when: any new interactive element or screen is introduced
+    cross_ref: []
+    falsifiable: >
+      An accessibility tester can verify compliance for each interactive element by
+      checking this section against the documented requirements.
+    good_signal: >
+      Keyboard navigation paths are described. Focus management on modal open/close
+      is explicit. Colour contrast requirements reference a specific standard
+      (e.g., WCAG AA). Screen reader labels are specified for non-text elements.
+    weak_signal: >
+      Accessibility addressed with a single statement ("must be accessible") or WCAG
+      cited without specifying which success criteria apply to the interactive elements
+      introduced.
