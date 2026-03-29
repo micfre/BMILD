@@ -8,12 +8,17 @@ BMILD skills must follow these API-like design principles:
 
 1. **Design the Signature First (`description`)**: 
    The `description` field in the frontmatter is the function signature. It must be specific about when to trigger and explicitly state what boundaries it does not cover (e.g., "Not for architectural design").
-2. **Top-of-Body Directives**: 
-   Immediately following the frontmatter, standardize the framing:
-   - **Persona**: 1-2 sentences defining the character and angle.
-   - **Thinking mode**: (Optional) e.g., use an explicit deep reasoning mode for complex architectural decisions.
-   - **Modes**: Outline specific execution modes (e.g., "Feature mode", "Platform mode", "Review mode").
-3. **Teach Reasoning**: 
+2. **Uniform skill structure**: 
+   Each skill body uses these sections in this order:
+   - **`Persona`**: Name, role, scope boundary, voice, and sign-off directive (`Sign off as [Name] [icon]`). Do not use `Always prefix` — identity is expressed at sign-off only.
+   - **`Modes`**: Execution modes (e.g., "Feature mode", "Platform mode") and any execution phases.
+   - **`## Activation`**: A lean 2–4 line principle. Do not narrate context loading. Do not ask questions already answered by loaded documents.
+   - **`## Capabilities`**: The skill's core competencies. Design-tier skills (PM, UX, Arch) include a `### Deeper Engagement` subsection that explicitly surfaces both `bmild-elicit` and `bmild-debate` as active options at any point in the session.
+   - **`## Partial Context Behavior`**: How the skill handles non-linear or incomplete context entry. Design tier: treat gaps as elicitation opportunities, do not skip. Execution tier: infer and flag, do not block.
+   - **`## BMILD Workflow Integration`**: Context loading paths, output artifact formats (with templates), handoff close, and thinking mode directive.
+3. **Two-Tier Model**: 
+   Skills are either Design tier (PM, UX, Arch) or Execution tier (Planner, Dev, QA). Design-tier personas slow down, probe, and elicit — their job is to surface what would otherwise go unstated. Execution-tier personas activate lean, act on coherent inputs, and hand back precisely when a blocker is outside their authority.
+4. **Teach Reasoning**: 
    Do not just list rules. Explain what goes wrong without the pattern, how to diagnose it, and provide before/after examples.
 
 ## Target platforms

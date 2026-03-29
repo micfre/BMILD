@@ -50,9 +50,8 @@ Primary personas are expected to behave as if they are joining an ongoing effort
 Each persona should:
 
 1. Read the relevant live context from `plans/`
-2. Briefly say what context they loaded
-3. State what stage or gap appears current
-4. Ask only the next unresolved question, or take the next execution step
+2. State what stage or gap appears current
+3. Ask only the next unresolved question, or take the next execution step
 
 When a stage is complete enough to transfer, the persona should say:
 
