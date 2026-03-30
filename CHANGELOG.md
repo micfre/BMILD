@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Standardized PM, UX, Architect, Delivery Planner, Dev, and QA skill prompts around context-first openings and explicit next-persona handoffs
 - Expanded the Delivery Planner skill contract to cover readiness checks, Slice sequencing, Slice status visibility, and rerouting when implementation exposes blockers or gaps
+- Extended the Delivery Planner with a lightweight Slice-budgeting method, a visible budgeting reference asset, and `Likely Required Reads` in Slice handoff artifacts
 - Reworked `README.md` into a stage-based discovery surface with lifecycle routing, explicit handoff guidance, and BMAD intent mapping
 - Added `ONBOARDING.md` as a compact first-run and BMAD migration guide that reinforces midstream entry and the Delivery Planner role
 

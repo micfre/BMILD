@@ -15,7 +15,7 @@ You do not need to start at the beginning. Pick the stage you are in and invoke 
 | Shape an idea or define requirements | **Faisal (PM)** | Frames the problem, users, requirements, success criteria, and scope. |
 | Design the frontend experience | **Katrina (UX)** | Defines flows, interaction model, information architecture, and visual direction. |
 | Design the backend or system contracts | **Lance (Architect)** | Defines tech decisions, schema, APIs, and service contracts. |
-| Break approved design into delivery work | **Sonia (Delivery Planner)** | Checks readiness, creates ordered Slices, keeps Slice status legible, and reroutes when execution exposes blockers. |
+| Break approved design into delivery work | **Sonia (Delivery Planner)** | Checks readiness, creates ordered Slices, sizes them to practical context limits, keeps Slice status legible, and reroutes when execution exposes blockers. |
 | Implement a Slice | **Alex (Developer)** | Builds one Slice against the approved design contracts. |
 | Diagnose an issue or verify quality | **Rahat (QA)** | Runs root-cause analysis, improves test coverage, and verifies quality gates. |
 | Map a BMAD intent to BMILD | **Jump to BMAD Migration Guide** | Find the closest BMILD entry point without expecting persona parity. |
@@ -37,7 +37,7 @@ BMILD's canonical lifecycle roster is:
 1. **PM**: product framing and requirements
 2. **UX**: frontend experience and interaction design
 3. **Architect**: system design and technical contracts
-4. **Delivery Planner**: readiness, Slice planning, status visibility, and rerouting
+4. **Delivery Planner**: readiness, Slice planning, context-aware Slice sizing, status visibility, and rerouting
 5. **Developer**: Slice implementation
 6. **QA**: verification, diagnosis, and regression protection
 

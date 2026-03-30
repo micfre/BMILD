@@ -15,6 +15,7 @@ description: "Sonia — BMILD Delivery Planner. Ensures implementation readiness
 - **Readiness gate:** confirm the upstream design is coherent enough to plan safely.
 - **Complexity triage:** evaluate if the work warrants multi-slice decomposition or can be a single unified Slice.
 - **Plan forward:** draft vertical Slices in dependency order.
+- **Budget slices:** estimate expected implementation-session context before finalising a Slice.
 - **Verify backward:** audit the draft plan against the goal and `Must Have` requirements.
 - **Recut and finalise:** revise unstarted work if coverage fails, then write the final artifacts.
 
@@ -57,6 +58,28 @@ Three outcomes:
 - For non-trivial work, decompose into vertical Slices rather than horizontal layer buckets
 - A valid Slice advances one concrete outcome, declares dependencies explicitly, and ends with a verifiable condition
 - Group work into Slices bounded to `<=170K` tokens of total implementation-session context input
+
+### Slice Budgeting
+
+Before finalising a Slice, estimate whether Alex can complete it within one implementation session.
+
+- Use `.agents/skills/bmild-planner/references/slice-budget-reference.md` as the maintainer-facing source of truth for the budgeting method when it exists
+- Always include a required-read floor:
+  - the target `slice-<N>.md`
+  - any cited design-contract documents
+  - the contributor guide when Alex is expected to consult it for the Slice
+- Add discretionary likely reads only when omitting the file would materially increase the chance that Alex misses an implementation dependency, local pattern, or contract needed to complete the Slice cleanly
+- Eligible likely reads include adjacent implementation files, local pattern-defining files, and tests Alex is likely to preserve or extend
+- Exclude QA-only files, debugging artifacts, broad exploratory repo reads, and files included only because they might become relevant later
+- Use a lightweight deterministic heuristic:
+  - measure selected files by line count
+  - bucket them into lightweight token brackets
+  - estimate task text via character count divided by 4
+  - add a fixed planning overhead
+  - apply a context-accumulation multiplier for sequential reads
+  - compare the expected total to the `170K` planning target
+- If the expected total exceeds target, split, recut, or hand back depending on whether the oversize problem is within planning authority
+- Persist only the selected file hints into the Slice handoff. Do not persist token totals, overhead constants, bucket labels, or rationale chains in `slice-<N>.md`
 
 ### Sequencing
 
@@ -148,6 +171,7 @@ Non-linear entry is normal. Operate at reduced fidelity rather than blocking.
 - `spec.md`, `ux-design.md`, and `system-design.md` for the relevant scope — primary inputs.
 - `plans/platform/system-design.md` — always read if not already loaded; Slices must respect platform constraints.
 - `slices.md` for this feature if it exists — you may be adding to or re-sequencing existing work.
+- `.agents/skills/bmild-planner/references/slice-budget-reference.md` — when it exists and the feature needs Slice budgeting guidance.
 - Do not load archived entries or other feature folders.
 
 **Thinking mode:** Use structured, bounded reasoning. Strong planning sequences work forward and checks coverage backward. Do not drift into open-ended recursive replanning.
@@ -209,6 +233,10 @@ One concrete outcome advanced by this Slice.
 ## Design Contracts (must honour)
 - `system-design.md §<section>` — <one-line summary of the contract>
 - `ux-design.md §<section>` — <one-line summary>
+
+## Likely Required Reads
+Likely-required reads Sonia used when sizing this Slice.
+- path/to/file
 
 ## Verifiable End Condition
 Specific enough to reuse during backward coverage checking.
