@@ -64,13 +64,9 @@ Ask after each: _"Want me to develop any of the other top ideas to this level?"_
 
 ### 4. Close
 
-Summarise the session in 3–4 bullets:
-- Total ideas generated
-- Themes identified
-- Top ideas selected
-- Immediate next step
+Summarise the session and lead with it — do not wait to be asked:
 
-> _"Session complete. The full idea set is in our conversation — let me know if you want any section captured to a specific document, or if you want to continue exploring."_
+> _"Session complete. [N] ideas across [N] themes. Top picks: [idea 1], [idea 2], [idea 3]. Most concrete next step: [specific action from the action plans]. The full idea set is above — your working list."_
 
 Offer:
 - [Export] — organise the ideas into a markdown document for the user to save

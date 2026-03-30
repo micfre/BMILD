@@ -4,8 +4,8 @@
 
 - ✅ APPLY the selected method to the CURRENT version of the content — not the original if it has already been enhanced.
 - 🎯 SHOW THE WORK — present what the method revealed, not just the changed output.
-- 📋 ASK apply or discard before changing anything. HALT and wait for the response.
-- ✅ ONLY apply changes if the user confirms. If they say no, discard entirely.
+- 📋 APPLY clear improvements consistent with the user’s stated direction — report what was applied. HALT and ask only when the method produces competing alternatives or genuinely ambiguous direction.
+- ✅ The user can always say "undo" or "revert" to reverse an applied change. Do not pre-interrupt forward progress with approval gates for non-ambiguous improvements.
 - 🔁 ALWAYS re-present the 1-5, [r], [a], [x] menu after each method — iteration is the point.
 - 🚫 DO NOT exit until user selects [x].
 
@@ -29,20 +29,18 @@
    - What gap was found
    - What improvement is being proposed
 
-4. **HALT and ask:**
-   > _"Apply these changes to the content? [y] Yes / [n] No / [other] Instructions"_
-   
-   Wait for the user's response before continuing.
+4. **Apply or ask — based on clarity:**
 
-5. **If Yes:** Apply the changes to the working version of the content. Confirm:
-   > _"Applied. Working content updated."_
+   **If the method produces a clear improvement consistent with the user’s stated direction:**
+   Apply the changes to the working content immediately, then confirm:
+   > _"Applied. Working content updated — [one-line summary of what changed]. Say 'undo' to revert."_
 
-6. **If No:** Discard. Do not reference the proposed changes again. Confirm:
-   > _"Discarded. Working content unchanged."_
+   **If the method produces competing alternatives or genuinely ambiguous direction:**
+   Surface the choice and halt:
+   > _"[Brief description of the tension or alternatives]. Which direction? [y] Apply first option / [n] Discard / [other] Instructions"_
+   Wait for the user’s response before continuing.
 
-7. **If other instruction:** Follow the instruction given, then re-present the menu.
-
-8. **Re-present the menu** (same 5 methods, unless reshuffled):
+5. **Re-present the menu** after applying or resolving:
    ```
    Continue elicitation:
    1. [Method Name]
@@ -118,5 +116,5 @@ After displaying, prompt: _"Select any method by number, or return to [r] your c
 ### Case: Multiple numbers (user types e.g. "1, 3")
 
 - Execute methods in sequence on the current content
-- Apply each only if confirmed
+- Apply each using the same judgment rule: clear improvement → apply and report; ambiguous direction → halt and ask
 - Re-present the menu after both are done

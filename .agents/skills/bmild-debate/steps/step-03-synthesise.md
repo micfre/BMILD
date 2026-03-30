@@ -6,7 +6,7 @@
 - 🎯 DO NOT FLATTEN TENSIONS — name them honestly. The user deserves to know what is genuinely unresolved.
 - 📋 THREE CATEGORIES ONLY — non-negotiable, preference, open. Do not create a fourth.
 - 🚫 DO NOT recommend a decision for the user — surface the trade-offs and let them decide.
-- ✅ OFFER TO APPEND synthesis to the relevant spec document after user confirms.
+- ✅ APPLY agreed changes to the relevant spec documents and APPEND the synthesis record after open items are resolved. Do not ask permission — apply and report what changed.
 
 ---
 
@@ -50,13 +50,16 @@ Wait for the user to answer. Then either:
 
 ---
 
-## DOCUMENT OFFER
+## DOCUMENT APPLICATION
 
-After synthesis (and after any open items are resolved or deferred), ask:
+After synthesis is complete and open items are resolved or explicitly deferred, apply changes to the relevant spec documents. Do not ask for permission — apply and report.
 
-> _"Do you want me to append this synthesis to [most relevant spec document — e.g. `system-design.md`, `ux-design.md`, or `spec.md`]?"_
+**What to apply:**
+- **Non-negotiables:** ensure each is reflected in the appropriate section of `spec.md`, `ux-design.md`, or `system-design.md`. If a non-negotiable contradicts existing content, update the existing content to match.
+- **Resolved open items:** apply the agreed resolution in the appropriate spec section. Remove the item from Open Questions if it is now settled.
+- **Deferred open items:** ensure they appear explicitly as Open Questions or Assumptions in the spec — not in the synthesis block alone.
 
-If confirmed, append under this heading:
+After applying factual changes, append the synthesis record under this heading in the most relevant spec document:
 
 ```markdown
 ## debate session: <question summary> (<YYYY-MM-DD>)
@@ -71,13 +74,17 @@ If confirmed, append under this heading:
 ...
 ```
 
+Then state what was done:
+
+> _"I’ve updated `[document(s)]` to reflect the agreed decisions — [brief list of what changed]. The synthesis record has been appended."_
+
 Update `_context.md` if the document was newly created or significantly changed.
 
 ---
 
 ## NEXT STEP
 
-After synthesis and document offer, ask:
+After applying document changes, ask:
 
 > _"Do you want to keep the session open for another question, or shall we close?"_
 

@@ -63,7 +63,7 @@ Three outcomes:
 
 Before finalising a Slice, estimate whether Alex can complete it within one implementation session.
 
-- Use `.agents/skills/bmild-planner/references/slice-budget-reference.md` as the maintainer-facing source of truth for the budgeting method when it exists
+- Use `./references/slice-budget-reference.md` as the maintainer-facing source of truth for the budgeting method when it exists
 - Always include a required-read floor:
   - the target `slice-<N>.md`
   - any cited design-contract documents
@@ -171,7 +171,7 @@ Non-linear entry is normal. Operate at reduced fidelity rather than blocking.
 - `spec.md`, `ux-design.md`, and `system-design.md` for the relevant scope — primary inputs.
 - `plans/platform/system-design.md` — always read if not already loaded; Slices must respect platform constraints.
 - `slices.md` for this feature if it exists — you may be adding to or re-sequencing existing work.
-- `.agents/skills/bmild-planner/references/slice-budget-reference.md` — when it exists and the feature needs Slice budgeting guidance.
+- `./references/slice-budget-reference.md` — when it exists and the feature needs Slice budgeting guidance.
 - Do not load archived entries or other feature folders.
 
 **Thinking mode:** Use structured, bounded reasoning. Strong planning sequences work forward and checks coverage backward. Do not drift into open-ended recursive replanning.
