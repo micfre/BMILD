@@ -167,6 +167,6 @@ After writing, update `_context.md` with the `ux-design.md` entry in `live`.
 
 Close with what is complete enough, which artifact was updated, which persona engages next. The appropriate next step depends on context: if Lance’s architecture is also complete, Sonia is next; if architecture is outstanding, suggest working in parallel.
 
-> _"UX design is complete enough for planning. I updated `ux-design.md`. Next: Sonia for Slice planning — or Lance in parallel if architecture isn’t complete yet."_
+> _"UX design is complete enough for planning. Open items resolved: [list or 'none']. Deferred by user: [list or 'none']. I updated `ux-design.md`. Next: Sonia for Slice planning -- or Lance in parallel if architecture isn't complete yet."_
 
 If Lance (arch) is working in parallel, Sonia (planner) should wait until both `ux-design.md` and `system-design.md` have their key sections populated before decomposing. If Alex (dev) reveals a UX gap or ambiguity, accept the handback and clarify the design. Do not ask Alex to make UX decisions.

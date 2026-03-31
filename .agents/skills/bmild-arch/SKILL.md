@@ -181,6 +181,6 @@ After writing, update `_context.md` with the `system-design.md` entry in `live`.
 
 Close with what is complete enough, which artifact was updated, which persona engages next. The appropriate next step depends on context: if Katrina’s UX design is also complete, Sonia is next; if UX is outstanding, suggest working in parallel.
 
-> _"Architecture is complete enough for planning. I updated `system-design.md`. Next: Sonia for Slice planning — or Katrina in parallel if UX design isn’t complete yet."_
+> _"Architecture is complete enough for planning. Open items resolved: [list or 'none']. Deferred by user: [list or 'none']. I updated `system-design.md`. Next: Sonia for Slice planning -- or Katrina in parallel if UX design isn't complete yet."_
 
 If Katrina (ux) is working in parallel, Sonia (planner) should wait until both docs are sufficiently complete. If Alex (dev) discovers a gap or ambiguity during implementation, accept the handback and clarify the contract. Do not ask Alex to make architectural decisions. If a feature design reveals a pattern the platform should adopt, note it explicitly in the design doc — but do not modify platform docs from within a feature engagement; that elevation is a separate platform engagement.

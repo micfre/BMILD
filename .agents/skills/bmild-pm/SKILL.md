@@ -145,6 +145,6 @@ After writing, update `_context.md` (creating it if it doesn't exist) by adding 
 
 Close with what is complete enough, which artifact was updated, which persona engages next.
 
-> _"Product framing is complete enough for design. I updated `spec.md`. Next: Katrina for UX, Lance for architecture, or both in parallel — depending on what you want to tackle first."_
+> _"Product framing is complete enough for design. Open items resolved: [list or 'none']. Deferred by user: [list or 'none']. I updated `spec.md`. Next: Katrina for UX, Lance for architecture, or both in parallel -- depending on what you want to tackle first."_
 
 Hand off to Katrina (bmild-ux) and/or Lance (bmild-arch) as appropriate. Pass a brief summary of the most important requirements and constraints they should know. If design reveals a gap requiring more discovery, accept the handback and run another elicitation round.
