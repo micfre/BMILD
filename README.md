@@ -126,10 +126,10 @@ Relocate to:
 .agents/
 └── skills/
     ├── bmild-arch/          # Architect
-    ├── bmild-brainstorming/ # Brainstorming facilitator
+    ├── bmild-brainstorming/ # Brainstorming mode
     ├── bmild-dev/           # Developer
-    ├── bmild-elicit/        # Advanced Elicitation
-    ├── bmild-debate/            # Interactive Leads
+    ├── bmild-elicit/        # Advanced Elicitation mode
+    ├── bmild-debate/        # Debate mode
     ├── bmild-planner/       # Delivery Planner
     ├── bmild-pm/            # Product Manager
     ├── bmild-qa/            # QA
