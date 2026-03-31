@@ -195,11 +195,11 @@ BMILD and BMAD should not be installed side by side when their trigger phrases o
 - **Alex (Developer)**: Slice implementation
 - **Rahat (QA)**: root cause analysis, diagnosis, quality gates
 
-### Special Modes
+### Advanced Interactive Modes
 
-- **Advanced Elicitation**
-- **Interactive Leads**
 - **Brainstorming**
+- **Debate**
+- **Elicitation**
 
 ## Roadmap
 
@@ -214,6 +214,7 @@ BMILD is built upon and inspired by the following projects:
 
 - **[BMAD-METHOD](https://github.com/the-bmad-group/bmad)**: core persona archetypes and interactive patterns are adapted from BMAD.
 - **[Kilo Code](https://github.com/kilo-code)**: the QA debugging methodology is adapted from Kilo Code's debug prompt.
+- **[Tokencast](https://github.com/krulewis/tokencast)**: the tokenizer algorithm used by Planner persona adapted from krulewis' version in tokencast.
 
 All referenced materials are used in accordance with their respective MIT licenses.
 
