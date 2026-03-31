@@ -3,7 +3,7 @@
 ![Version](https://img.shields.io/github/v/tag/micfre/BMILD?label=Version&color=blue)
 ![Release](https://img.shields.io/badge/Footing-Pre--release-orange)
 
-![Release](https://img.shields.io/github/v/release/micfre/REPO?include_prereleases&label=Footing)
+![Release](https://img.shields.io/github/v/release/micfre/BMILD?include_prereleases&label=Footing)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
