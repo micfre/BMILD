@@ -1,10 +1,6 @@
 ![BMad Method](banner-bmild.png)
 # Breakthrough Method for Interactive Leads Development
-![Version](https://img.shields.io/github/v/tag/micfre/BMILD?label=Version&color=blue)
-![Release](https://img.shields.io/badge/Footing-Pre--release-orange)
-
-![Release](https://img.shields.io/github/v/release/micfre/BMILD?include_prereleases&label=Footing)
-
+![Release](https://img.shields.io/github/v/release/micfre/BMILD?include_prereleases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 BMILD is a set of agent Skills for moving from idea to shipped work without a heavy workflow wrapper. It keeps the lifecycle explicit, keeps the persona roster compact, and expects personas to read project context before they question you or start work.
