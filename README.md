@@ -1,6 +1,6 @@
 ![BMad Method](banner-bmild.png)
 # Breakthrough Method for Interactive Leads Development
-![Version](https://img.shields.io/badge/Ver-0.1-blue)
+![Version](https://img.shields.io/github/v/tag/micfre/BMILD?label=Version&color=blue)
 ![Footing](https://img.shields.io/badge/Footing-unstable-yellow)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
@@ -111,7 +111,7 @@ BMILD is also opinionated:
 1. Put the `.agents/skills` directory where your IDE or CLI expects skills.
 2. Invoke the persona for the stage you are in.
 3. Let that persona read context and route the next handoff.
-4. If you want a compact first-run guide, read [ONBOARDING.md](ONBOARDING.md).
+4. If you want a compact first-run guide, read [BMILD_ONBOARDING.md](BMILD_ONBOARDING.md).
 
 ### Supported IDEs and CLIs
 
