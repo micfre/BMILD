@@ -2,7 +2,7 @@
 external_references/
 
 # Ignored folders
-
+dist/
 plans/
 test/
 tmp/
