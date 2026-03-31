@@ -6,6 +6,13 @@ set -e
 # Grab version from VERSION file
 VERSION=$(cat VERSION)
 
+# Define output directory and filename
+DIST_DIR="dist"
+FILENAME="release-v${VERSION}-linux-macos-dor_agents.tar.gz"
+
+# Create dist directory if it doesn't exist
+mkdir -p "$DIST_DIR"
+
 # --- Pre-release Warning and Pause ---
 # Skip interactive prompt if running in CI (e.g. GitHub Actions)
 if [[ -z "${CI}" ]]; then
@@ -35,13 +42,6 @@ else
         echo "Release v${VERSION}" > dist/release-notes.md
     fi
 fi
-
-# Define output directory and filename
-DIST_DIR="dist"
-FILENAME="release-v${VERSION}-linux_macos-dot_agents.tar.gz"
-
-# Create dist directory if it doesn't exist
-mkdir -p "$DIST_DIR"
 
 echo "Packaging release v${VERSION}..."
 
