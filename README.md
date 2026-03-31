@@ -12,11 +12,11 @@ No installer. No dependencies. No separate orchestrator. Only Skill-native files
 
 ## You should care about this if
 
-You believe -- or want to believe -- two things:
+You believe, as I do:
 
 1. **AI development benefits enormously from a spec-driven approach.** The upfront investment in properly specifying what you're building pays dividends when the agent writes code. AI will make it up or ignore it if it isn't properly specified, with long-horizon "iterate and fix" as the cost.
 
-2. **AI development is not human development.** Epics, stories, sprints, and story points exist to manage communication friction and estimate human effort. AI doesn't have those problems. What AI needs is good context management -- development units sized to context windows, not story points -- and clear design contracts to build against.
+2. **AI development is not human development.** Epics, stories, sprints, and story points exist to manage communication friction and estimate human effort. AI doesn't have those problems. What AI needs more is good context management -- development units sized to context windows, not story points -- and clear design contracts to build against.
 
 This is the reason that BMILD exists. If you want the full Agile ceremony with AI, [BMAD](https://github.com/the-bmad-group/bmad) does that well and BMILD has grown directly out of it.
 
@@ -26,12 +26,12 @@ Nine skill folders. Each contains a prompt that gives your AI agent a persona wi
 
 | Persona | Role | What they actually do |
 | :--- | :--- | :--- |
-| **Faisal** 🟦 | Product Manager | Asks "WHY?" relentlessly. Won't let you ship vague requirements. Challenges your first answer, your second answer, and probably your third. |
-| **Katrina** 🟩 | UX Designer | Owns the complete frontend experience. Advocates for users without losing sight of what's buildable. Decisive, not decorative. |
-| **Lance** 🟥 | Architect | Names the cost of every choice. Produces implementable contracts -- schema columns, endpoint shapes, service signatures -- not high-level boxes and arrows. |
-| **Sonia** 🟧 | Delivery Planner | Zero tolerance for ambiguity in implementation inputs. Sizes work to fit context windows, not story points. |
-| **Alex** 🟪 | Developer | Matches existing patterns, doesn't invent new ones. Reads the repo's conventions before writing a line. Ultra-succinct, implementation-focused. |
-| **Rahat** 🟨 | QA & Reliability | Diagnoses before fixing. Breadth-first hypothesis generation RCA protocol. Never proposes a code change until root cause is confirmed by evidence. |
+| **Faisal**&nbsp;🟦 | Product Manager | Asks "WHY?" relentlessly. Won't let you ship vague requirements. Challenges your first answer, your second answer, and probably your third. |
+| **Katrina**&nbsp;🟩 | UX Designer | Owns the complete frontend experience. Advocates for users without losing sight of what's buildable. Decisive, not decorative. |
+| **Lance**&nbsp;🟥 | Architect | Names the cost of every choice. Produces implementable contracts -- schema columns, endpoint shapes, service signatures -- not high-level boxes and arrows. |
+| **Sonia**&nbsp;🟧 | Delivery Planner | Zero tolerance for ambiguity in implementation inputs. Sizes work to fit context windows, not story points. |
+| **Alex**&nbsp;🟪 | Developer | Matches existing patterns, doesn't invent new ones. Reads the repo's conventions before writing a line. Ultra-succinct, implementation-focused. |
+| **Rahat**&nbsp;🟨 | QA & Reliability | Diagnoses before fixing. Breadth-first hypothesis generation RCA protocol. Never proposes a code change until root cause is confirmed by evidence. |
 
 Plus three interactive modes that work across personas:
 

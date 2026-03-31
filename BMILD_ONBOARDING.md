@@ -1,18 +1,18 @@
 # Getting Started with BMILD
 
-BMILD doesn't care what stage you're at. You can start from a blank idea or drop into a half-built project. The personas read your existing context before they speak, so they meet you where you are.
+You will generally enter BMILD with one of the design-tier agents: PM, UX or Arch. BMILD will read any existing context from the plans\ folder if it exists, so you can start from a blank idea or drop into a half-built project.
 
 ## Your first 30 seconds
 
-1. Copy `.agents/skills/` into your project (or relocate to your IDE's expected path — see [README](README.md)).
+1. Copy `.agents/skills/` into your project (or relocate to your IDE's expected path -- see [README](README.md)).
 2. Open your AI coding agent.
 3. Say something like:
 
 > *Faisal, I want to build a notification system that aggregates alerts from multiple sources into a single feed.*
 
-Faisal will push back. He'll ask who the users are, what problem exists today, what success looks like, what's out of scope. He'll challenge your first answer. This is the point — the spec gets stronger before anyone draws a screen or writes a schema.
+Faisal will push back. He'll ask who the users are, what problem exists today, what success looks like, what's out of scope. He'll probably challenge your answer. This is the point, the spec gets stronger before anyone draws a screen or writes a schema.
 
-When he's done, he'll tell you who should engage next (usually Katrina or Lance) and why.
+When he's done, he'll tell you who should engage next (usually Katrina or Lance).
 
 ## Pick your entry point
 
@@ -25,7 +25,7 @@ When he's done, he'll tell you who should engage next (usually Katrina or Lance)
 | I have a slice ready to build | **Alex** 🟪 | `Alex, implement slice 3.` |
 | Something is broken | **Rahat** 🟨 | `Rahat, diagnose this failure.` |
 
-You can also enter mid-conversation with any persona. They read `plans/` to pick up where you — or another persona — left off:
+You can also enter mid-conversation with any persona. They read `plans/` to pick up where you, or another persona, left off:
 
 - `Katrina, continue the UX design for [feature].`
 - `Sonia, what slice should happen next?`
@@ -48,37 +48,37 @@ You don't need to memorize the workflow. They route it.
 
 ## Speeding up or slowing down
 
-The design personas (Faisal, Katrina, Lance) are deliberately slow. They probe and challenge because vague specs produce bad code. If you feel like they're asking too many questions — that tension is intentional. The payoff comes downstream when Alex builds against contracts that are actually clear.
+The design personas (Faisal, Katrina, Lance) are deliberate. They probe and challenge because vague specs produce bad code. The payoff comes downstream when Alex builds against contracts that are actually clear.
 
 If you want to push a design output further, you have two tools:
 
-- **Elicit** — Say `elicit this` to stress-test whatever was just produced. Works on requirements, UX designs, architecture decisions, anything. 20+ structured methods to find what's missing.
-- **Debate** — Say `debate this` to get Faisal, Katrina, Lance, and Rahat arguing across perspectives. Real disagreement, not polite consensus. Useful when a decision has more than one defensible answer.
+- **Elicit** -- Say `elicit this` to stress-test whatever was just produced. Works on requirements, UX designs, architecture decisions, anything. 20+ structured methods to find what's missing.
+- **Debate** -- Say `debate this` to get Faisal, Katrina, Lance, and Rahat arguing across perspectives. Real disagreement, not polite consensus. Useful when a decision has more than one defensible answer.
 
 The execution personas (Sonia, Alex, Rahat) are deliberately fast. They activate lean and get to the work. Sonia sizes slices to context windows. Alex matches existing code patterns before writing new ones. Rahat diagnoses before fixing. Minimal ceremony, maximum signal.
 
 ## Coming from BMAD
 
-If you've used BMAD, the transition is straightforward. BMILD doesn't try to replicate BMAD persona-for-persona — it consolidates.
+If you've used BMAD, the transition is straightforward. BMILD doesn't try to replicate BMAD persona-for-persona -- it consolidates.
 
 What's the same:
 - Spec-driven approach
-- Interactive modes (Party Mode → Debate, Advanced Elicitation, Brainstorming)
+- Interactive modes (Party Mode -> Debate, Advanced Elicitation, Brainstorming)
 - Context-aware persona handoffs
 - Structured output artifacts
 
 What's different:
 - 6 personas covering the full lifecycle instead of 12+
-- No `npx install` — just copy the skill folders
+- No `npx install` -- just copy the skill folders
 - Features and Slices replace Epics and Stories
 - Slices are sized to context windows (~170K tokens), not story points
-- No orchestrator — personas manage their own memory in `plans/`
-- No IDE-specific tooling — works anywhere that reads skill folders
+- No orchestrator -- personas manage their own memory in `plans/`
+- No IDE-specific tooling -- works anywhere that reads skill folders
 
 What's intentionally missing:
 - Scrum ceremony (sprints, burndown, velocity)
 - A help agent (personas route each other)
-- Multiple planning personas — Sonia handles readiness, sequencing, status, and rerouting
+- Multiple planning personas -- Sonia handles readiness, sequencing, status, and rerouting
 
 ## The plans/ directory
 
@@ -103,8 +103,8 @@ plans/
         └── rca-<slug>.md
 ```
 
-`_context.md` is the entry point. Personas load only what's live and relevant — they don't re-read the entire history every time.
+`_context.md` is the entry point. Personas load only what's live and relevant -- they don't re-read the entire history every time.
 
 ## Backing out
 
-Remove the `bmild-*` folders from your skills directory. That's it. The `plans/` files stay in your project unless you choose to delete them — they're just markdown.
+Remove the `bmild-*` folders from your skills directory. That's it. The `plans/` files stay in your project unless you choose to delete them -- they're just markdown.
