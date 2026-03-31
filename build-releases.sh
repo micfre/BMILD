@@ -19,6 +19,23 @@ if [[ -z "${CI}" ]]; then
     read -p "Press Enter to continue or Ctrl+C to abort..." ANY_KEY
 fi
 
+# --- Release Notes Extraction ---
+if [[ -z "${CI}" ]]; then
+    # Locally, we just note we're building. 
+    # The CI will handle the actual extraction for the GitHub Release.
+    echo "Preparing version ${VERSION}..."
+else
+    # In CI, extract the section for this version from CHANGELOG.md
+    # Look for the line starting with ## [VERSION] and capture until the next ## line
+    echo "Extracting release notes from CHANGELOG.md..."
+    sed -n "/## \[${VERSION}\]/,/## \[/p" CHANGELOG.md | sed '$d' > dist/release-notes.md
+    
+    if [ ! -s dist/release-notes.md ]; then
+        echo "Warning: Could not extract release notes for version ${VERSION}. Using generic message."
+        echo "Release v${VERSION}" > dist/release-notes.md
+    fi
+fi
+
 # Define output directory and filename
 DIST_DIR="dist"
 FILENAME="release-v${VERSION}-linux_macos-dot_agents.tar.gz"
