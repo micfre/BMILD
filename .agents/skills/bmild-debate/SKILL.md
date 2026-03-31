@@ -30,7 +30,7 @@ These four personas participate in every debate session. Apply their voices from
 
 ## Invocation phrases
 
-_"Debate"_ · _"debate session"_ · _"Bring the leads together"_ · _"Ask for a debate"_ · _"Ask for consensus"_
+_"debate"_ · _"debate session"_ · _"ask for a debate"_
 
 ---
 

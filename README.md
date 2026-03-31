@@ -6,7 +6,7 @@
 
 BMILD is a handful of carefully crafted prompts that give you and your AI coding agent a cross-functional team. Drop the skill folders next to your code, call on a persona by name, and get spec-driven development without the ceremony.
 
-No installer. No dependencies. No orchestrator. Only Skill-native files.
+No installer. No dependencies. No separate orchestrator. Only Skill-native files.
 
 ---
 
@@ -14,11 +14,11 @@ No installer. No dependencies. No orchestrator. Only Skill-native files.
 
 You believe -- or want to believe -- two things:
 
-1. **AI development benefits enormously from a spec-driven approach.** The upfront investment in properly specifying what you're building pays dividends when the agent writes code. AI will make it up or ignore it if it isn't properly specified, and no amount of "iterate and fix" will recoup the time lost.
+1. **AI development benefits enormously from a spec-driven approach.** The upfront investment in properly specifying what you're building pays dividends when the agent writes code. AI will make it up or ignore it if it isn't properly specified, with long-horizon "iterate and fix" as the cost.
 
 2. **AI development is not human development.** Epics, stories, sprints, and story points exist to manage communication friction and estimate human effort. AI doesn't have those problems. What AI needs is good context management -- development units sized to context windows, not story points -- and clear design contracts to build against.
 
-If that resonates, read on. If you want the full Agile ceremony with AI, [BMAD](https://github.com/the-bmad-group/bmad) does that well and BMILD wouldn't exist without it.
+This is the reason that BMILD exists. If you want the full Agile ceremony with AI, [BMAD](https://github.com/the-bmad-group/bmad) does that well and BMILD has grown directly out of it.
 
 ## What is it, really?
 
@@ -35,9 +35,9 @@ Nine skill folders. Each contains a prompt that gives your AI agent a persona wi
 
 Plus three interactive modes that work across personas:
 
-- **Debate** 🌀 -- A structured multi-persona design session. Faisal, Katrina, Lance, and Rahat argue it out -- real tensions, not diplomatic consensus. Think of it as BMAD's "Party Mode" but named for what it actually does.
-- **Elicit** ⚡ -- Stress-test any output. 20+ structured methods to push requirements, UX decisions, or architecture past "good enough" into genuinely strong.
-- **Brainstorm** 💡 -- Open-ended ideation designed to get past the first 20 obvious ideas. Anti-bias protocols prevent the LLM from clustering around a single direction.
+- **Debate** 🌀: A structured multi-persona design debate session. Faisal, Katrina, Lance, and Rahat argue it out -- surfacing tensions, not diplomatic consensus. Think of it like BMAD's "Party Mode" but named for what it actually does.
+- **Elicit** ⚡: Stress-test any output. 20+ structured methods to push requirements, UX decisions, or architecture past "good enough" into genuinely strong.
+- **Brainstorm** 💡: Open-ended ideation designed to get past the first 20 obvious ideas. Anti-bias protocols prevent the LLM from clustering around a single direction.
 
 ## How it works
 
@@ -47,7 +47,7 @@ The personas are designed around a two-tier model:
 
 **Execution tier** (Sonia, Alex, Rahat) -- These personas lean into speed. They activate lean, act on coherent inputs, and hand back precisely when a blocker is outside their authority. Less ceremony, more working code.
 
-The pivot between tiers is where BMILD earns its keep. The spec gets the scrutiny it deserves. The code gets written without theatrical gates.
+Sonia, as the pivot between tiers, is where BMILD earns its keep. The spec gets the scrutiny it deserves. It is structurally unavoidable to bypass the readiness checks, the user does not need to remember to separatly call on a readiness skill before planning development deliverables. Sonia takes care of this and lets you know it's ready. Then the code gets written without theatrical gates.
 
 ### Handoffs
 
