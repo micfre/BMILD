@@ -1,60 +1,110 @@
-# Onboarding
+# Getting Started with BMILD
 
-BMILD can join at any stage. You do not need to start from scratch.
+BMILD doesn't care what stage you're at. You can start from a blank idea or drop into a half-built project. The personas read your existing context before they speak, so they meet you where you are.
 
-## What Stage Are You At?
+## Your first 30 seconds
 
-Pick the closest match and invoke that persona directly.
+1. Copy `.agents/skills/` into your project (or relocate to your IDE's expected path — see [README](README.md)).
+2. Open your AI coding agent.
+3. Say something like:
 
-| Stage | Start with | Example |
+> *Faisal, I want to build a notification system that aggregates alerts from multiple sources into a single feed.*
+
+Faisal will push back. He'll ask who the users are, what problem exists today, what success looks like, what's out of scope. He'll challenge your first answer. This is the point — the spec gets stronger before anyone draws a screen or writes a schema.
+
+When he's done, he'll tell you who should engage next (usually Katrina or Lance) and why.
+
+## Pick your entry point
+
+| Where you are | Who to call | What to say |
 | :--- | :--- | :--- |
-| I have an idea and need to define the work | **Faisal (PM)** | `Faisal, help me frame a feature for account recovery.` |
-| I know what the feature is and need the UX worked out | **Katrina (UX)** | `Katrina, design the onboarding flow for this feature.` |
-| I need backend or system contracts | **Lance (Architect)** | `Lance, design the API and data model for this feature.` |
-| UX and architecture are ready and I need implementation slices | **Sonia (Delivery Planner)** | `Sonia, check readiness and decompose this feature into slices.` |
-| I have a Slice ready to build | **Alex (Developer)** | `Alex, implement slice 3.` |
-| Something is broken or I need verification | **Rahat (QA)** | `Rahat, verify slice 3 and identify any coverage gaps.` |
+| I have an idea | **Faisal** 🟦 | `Faisal, help me frame a feature for [idea].` |
+| I know what to build, need the UX | **Katrina** 🟩 | `Katrina, design the user experience for [feature].` |
+| I need backend contracts | **Lance** 🟥 | `Lance, design the API and data model for [feature].` |
+| Design is done, need implementation plan | **Sonia** 🟧 | `Sonia, check readiness and decompose into slices.` |
+| I have a slice ready to build | **Alex** 🟪 | `Alex, implement slice 3.` |
+| Something is broken | **Rahat** 🟨 | `Rahat, diagnose this failure.` |
 
-## Midstream Entry
+You can also enter mid-conversation with any persona. They read `plans/` to pick up where you — or another persona — left off:
 
-BMILD personas are expected to read the live context in `plans/` before they question you or route the next step.
-
-That means you can enter mid-lifecycle and say:
-
-- `Katrina, continue the UX design for persona breadth.`
-- `Sonia, what Slice should happen next?`
+- `Katrina, continue the UX design for [feature].`
+- `Sonia, what slice should happen next?`
 - `Alex, continue with slice 4.`
-- `Rahat, verify the completed Slice before handoff.`
 
-The persona should tell you what context it loaded, what stage seems current, and who should engage next when it reaches a handoff boundary.
+## What the personas will do
 
-## If You Are Coming From BMAD
+Every persona follows the same activation pattern:
 
-BMILD is intentionally narrower. It does not try to mirror BMAD persona-for-persona.
+1. Read the relevant live context from `plans/`
+2. Tell you what stage or gap appears current
+3. Ask only the next unresolved question, or take the next action
 
-Use BMILD by intent:
+When they're done with their stage, they'll tell you:
+- What's now complete
+- What artifact was written or updated
+- Who should engage next and why
 
-| BMAD-style need | BMILD start point |
-| :--- | :--- |
-| Product framing or PRD work | **Faisal (PM)** |
-| UX design | **Katrina (UX)** |
-| Architecture and technical contracts | **Lance (Architect)** |
-| Readiness checks, release planning, or slice decomposition | **Sonia (Delivery Planner)** |
-| Implementation | **Alex (Developer)** |
-| Debugging, RCA, regression coverage, or verification | **Rahat (QA)** |
+You don't need to memorize the workflow. They route it.
 
-What BMILD intentionally does not replicate:
+## Speeding up or slowing down
 
-- Large persona catalogs
-- Scrum ceremony language
-- Separate status-planning personas when `Delivery Planner` already owns readiness, sequencing, status clarity, and rerouting
+The design personas (Faisal, Katrina, Lance) are deliberately slow. They probe and challenge because vague specs produce bad code. If you feel like they're asking too many questions — that tension is intentional. The payoff comes downstream when Alex builds against contracts that are actually clear.
 
-## Suggested First Move
+If you want to push a design output further, you have two tools:
 
-- New feature: start with **Faisal**
-- Existing feature that needs design: start with **Katrina** or **Lance**
-- Approved design ready for breakdown: start with **Sonia**
-- Active implementation: start with **Alex**
-- Bug, regression, or release confidence question: start with **Rahat**
+- **Elicit** — Say `elicit this` to stress-test whatever was just produced. Works on requirements, UX designs, architecture decisions, anything. 20+ structured methods to find what's missing.
+- **Debate** — Say `debate this` to get Faisal, Katrina, Lance, and Rahat arguing across perspectives. Real disagreement, not polite consensus. Useful when a decision has more than one defensible answer.
 
-If you want the broader positioning and lifecycle map, go back to [README.md](README.md).
+The execution personas (Sonia, Alex, Rahat) are deliberately fast. They activate lean and get to the work. Sonia sizes slices to context windows. Alex matches existing code patterns before writing new ones. Rahat diagnoses before fixing. Minimal ceremony, maximum signal.
+
+## Coming from BMAD
+
+If you've used BMAD, the transition is straightforward. BMILD doesn't try to replicate BMAD persona-for-persona — it consolidates.
+
+What's the same:
+- Spec-driven approach
+- Interactive modes (Party Mode → Debate, Advanced Elicitation, Brainstorming)
+- Context-aware persona handoffs
+- Structured output artifacts
+
+What's different:
+- 6 personas covering the full lifecycle instead of 12+
+- No `npx install` — just copy the skill folders
+- Features and Slices replace Epics and Stories
+- Slices are sized to context windows (~170K tokens), not story points
+- No orchestrator — personas manage their own memory in `plans/`
+- No IDE-specific tooling — works anywhere that reads skill folders
+
+What's intentionally missing:
+- Scrum ceremony (sprints, burndown, velocity)
+- A help agent (personas route each other)
+- Multiple planning personas — Sonia handles readiness, sequencing, status, and rerouting
+
+## The plans/ directory
+
+BMILD personas read and write a `plans/` directory at your project root. You don't manage this — they do. The structure is:
+
+```
+plans/
+├── platform/              # For greenfield or large refactors
+│   ├── _context.md        # What's live vs. archived
+│   ├── spec.md            # PM output
+│   ├── ux-design.md       # UX output
+│   ├── system-design.md   # Arch output
+│   └── slices.md          # Planner output
+└── features/
+    └── <feature-name>/    # One per feature
+        ├── _context.md
+        ├── spec.md
+        ├── ux-design.md
+        ├── system-design.md
+        ├── slices.md
+        ├── slice-<N>.md
+        └── rca-<slug>.md
+```
+
+`_context.md` is the entry point. Personas load only what's live and relevant — they don't re-read the entire history every time.
+
+## Backing out
+
+Remove the `bmild-*` folders from your skills directory. That's it. The `plans/` files stay in your project unless you choose to delete them — they're just markdown.
