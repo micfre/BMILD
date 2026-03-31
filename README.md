@@ -47,7 +47,7 @@ The personas are designed around a two-tier model:
 
 **Execution tier** (Sonia, Alex, Rahat) -- These personas lean into speed. They activate lean, act on coherent inputs, and hand back precisely when a blocker is outside their authority. Less ceremony, more working code.
 
-Sonia, as the pivot between tiers, is where BMILD earns its keep. The spec gets the scrutiny it deserves. It is structurally unavoidable to bypass the readiness checks, the user does not need to remember to separatly call on a readiness skill before planning development deliverables. Sonia takes care of this and lets you know it's ready. Then the code gets written without theatrical gates.
+Sonia, as the pivot between tiers, is where BMILD earns its keep. The spec gets the scrutiny it deserves. It is structurally unavoidable to bypass the readiness checks, the user does not need to remember to separately call on a readiness skill before planning development deliverables. Sonia takes care of this and lets you know it's ready. Then the code gets written without theatrical gates.
 
 ### Handoffs
 
@@ -86,12 +86,13 @@ Or jump in wherever makes sense:
 
 - Have a design but need it built? → `Sonia, decompose this into slices.`
 - Something's broken? → `Rahat, diagnose this.`
+- Need to step outside of the box? → `Brainstorm this.`
 - Want to challenge something you just produced? → `Elicit this.`
 - Need cross-functional input on a hard decision? → `Debate this.`
 
 ### Supported environments
 
-BMILD works anywhere that supports the agent skills pattern. It's just folders with markdown files.
+BMILD works anywhere that supports the agent Skills pattern. It's just folders with markdown (and YAML) files so it's portable and shareable across the team with simple version control through github.
 
 **Drop-in** (skills are already scanned from `.agents/`):
 
@@ -118,21 +119,21 @@ You get the full lifecycle -- requirements, UX, architecture, planning, implemen
 
 ### vs. BMAD
 
-BMILD is built on BMAD. The persona archetypes, the interactive modes (Party Mode → Debate, Advanced Elicitation, Brainstorming), and the spec-driven approach all come from BMAD. This is not a competitor -- it's a narrower extraction.
+BMILD is built on BMAD-METHOD. The persona archetypes, the interactive modes (Party Mode → Debate, Advanced Elicitation, Brainstorming) are derived from BMAD. This is not a competitor or trying to be 'better' in the abstract, but rather it's a milder and narrower extraction.
 
 Where BMILD diverges:
 
 - **6 personas instead of 12+.** Broader per-persona scope, less juggling, no domain overlap. And an easier mental model of who to talk to.
 - **No installer.** BMAD uses an installer. BMILD is file copy. BMILD stays equally usable across any environment that supports agent Skills, not by the installer support that's been built.
 - **Skill-native.** Workflows aren't managed by proprietary workflow files with skill wrappers. The prompts are self-contained.
-- **Slices replace stories.** Development units are sized to ~170K tokens of implementation-session context, not Agile story semantics. The evidence is that important stuff gets lost in the middle of large context window -- `Needle in a Haystack` aka context rot -- and scope decomposition is driven by this physic rather than Agile/INVEST story format.
+- **Slices replace stories.** Development units are sized with a lightweight tokenizer to an implementation-session context window, not to Agile story semantics. The evidence is that important stuff gets lost in the middle of large context window -- `Needle in a Haystack` aka context rot -- and scope decomposition is driven by this physic rather than Agile/INVEST story format.
 - **Less ceremony.** The design personas insist on thoroughness. The execution personas strip away everything that doesn't contribute to working code. BMILD deliberately avoids performative theatre, gates that exist to look rigorous rather than to catch real problems.
-- **Integrated readiness gate.** BMAD has a readiness verification skill, but it's a separate step you invoke before implementation. In BMILD, the equivalent is built into the Delivery Planner -- Sonia can't decompose work into Slices without first verifying that every Must Have in the spec has downstream coverage in UX or architecture. The gate is structurally unavoidable, not a ceremony you remember to run.
-- **Structured RCA.** A strict 7-step root cause analysis protocol with mandatory breadth-first hypotheses, ranked by fit/frequency/recency, validated by instrumentation before any code is touched. BMAD's debugging workflow, in my experience, too-quickly funnel the agent into a single domain and single cause prematurely.
+- **Integrated readiness gate.** BMAD has a readiness verification skill, but it's a separate step you invoke before implementation. In BMILD, the equivalent is built into the Delivery Planner -- Sonia can't decompose work into Slices without first verifying that every Must Have in the spec has downstream coverage in UX or architecture. The gate is structurally unavoidable, not a step you must remember to run.
+- **Structured degugging.** A strict 7-step root cause analysis protocol with mandatory breadth-first hypotheses, ranked by fit/frequency/recency, validated by instrumentation before any code is touched. BMAD's debugging workflow, in my experience, too-quickly funnels the agent into a single domain and single cause.
 
 ### BMAD compatibility
 
-BMILD and BMAD should not be installed side by side -- their trigger phrases overlap and an agent could flip non-deterministically. When you want to use BMILD, put `bmild-*` skills in the skills folder. When you stop, remove them. Any `plans/` memory files stay in your project.
+BMILD and BMAD should not be installed side-by-side as their trigger phrases overlap and an agent could flip non-deterministically. When you want to use BMILD, put `bmild-*` skills in the skills folder. If you want to stop, remove them. Any `plans/` memory files stay in your project.
 
 ## Roadmap
 
@@ -146,7 +147,7 @@ BMILD and BMAD should not be installed side by side -- their trigger phrases ove
 BMILD is built upon and inspired by:
 
 - **[BMAD-METHOD](https://github.com/the-bmad-group/bmad)**: The persona archetypes and interactive patterns are adapted from BMAD. BMILD wouldn't exist without the foundation BMAD laid.
-- **[Kilo Code](https://github.com/kilo-code)**: The QA debugging methodology is adapted from Kilo Code's diagnostic prompts.
-- **[Tokencast](https://github.com/krulewis/tokencast)**: The tokenizer algorithm used by the Planner persona is adapted from krulewis' implementation.
+- **[Kilo Code](https://github.com/kilo-code)**: The QA debugging methodology is adapted from Kilo Code's Debug prompt.
+- **[Tokencast](https://github.com/krulewis/tokencast)**: The tokenizer algorithm used by the Planner persona is adapted from krulewis' implementation in Tokencast.
 
 All referenced materials are used in accordance with their respective MIT licenses.
