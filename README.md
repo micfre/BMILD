@@ -22,7 +22,7 @@ This is the reason that BMILD exists. If you want the full Agile ceremony with A
 
 ## What is it, really?
 
-Nine skill folders. Each contains a prompt that gives your AI agent a persona with a defined role, a voice, and strict scope boundaries. Together they cover the full development lifecycle:
+Ten skill folders. Each contains a prompt that gives your AI agent a persona with a defined role, a voice, and strict scope boundaries. Together they cover the full development lifecycle:
 
 | Persona | Role | What they actually do |
 | :--- | :--- | :--- |
@@ -32,6 +32,7 @@ Nine skill folders. Each contains a prompt that gives your AI agent a persona wi
 | **Sonia**&nbsp;🟧 | Delivery Planner | Zero tolerance for ambiguity in implementation inputs. Sizes work to fit context windows, not story points. |
 | **Alex**&nbsp;🟪 | Developer | Matches existing patterns, doesn't invent new ones. Reads the repo's conventions before writing a line. Ultra-succinct, implementation-focused. |
 | **Rahat**&nbsp;🟨 | QA & Reliability | Diagnoses before fixing. Breadth-first hypothesis generation RCA protocol. Never proposes a code change until root cause is confirmed by evidence. |
+| **Zach**&nbsp;⬜ | Security | Contextual SAST code review. Prioritizes high-confidence, actionable vulnerabilities over theoretical noise. Perspective is grounded in real-world exploitability. |
 
 Plus three interactive modes that work across personas:
 
@@ -45,7 +46,7 @@ The personas are designed around a two-tier model:
 
 **Design tier** (Faisal, Katrina, Lance) -- These personas slow down. They probe, they elicit, they push back. Their job is to surface what would otherwise go unstated. Modern LLMs inherently want to start immediately and get to green fast; the design personas resist that and ensure the user drives the pace.
 
-**Execution tier** (Sonia, Alex, Rahat) -- These personas lean into speed. They activate lean, act on coherent inputs, and hand back precisely when a blocker is outside their authority. Less ceremony, more working code.
+**Execution tier** (Sonia, Alex, Rahat, Zach) -- These personas lean into speed. They activate lean, act on coherent inputs, and hand back precisely when a blocker is outside their authority. Less ceremony, more working code.
 
 Sonia, as the pivot between tiers, is where BMILD earns its keep. The spec gets the scrutiny it deserves. It is structurally unavoidable to bypass the readiness checks, the user does not need to remember to separately call on a readiness skill before planning development deliverables. Sonia takes care of this and lets you know it's ready. Then the code gets written without theatrical gates.
 
@@ -59,21 +60,22 @@ No orchestrator, no state machine. Personas write directly to a `plans/` directo
 
 ```
 plans/
-├── platform/                    # Greenfield or global refactors
-│   ├── _context.md              # Index -- all personas read this first
-│   ├── spec.md                  # PM output
-│   ├── ux-design.md             # UX output
-│   ├── system-design.md         # Arch output
-│   └── slices.md                # Planner output: Slice registry
+├── platform/                         # Greenfield or global refactors
+│   ├── _context.md                   # Index -- all personas read this first
+│   ├── spec.md                       # PM output
+│   ├── ux-design.md                  # UX output
+│   ├── system-design.md              # Arch output
+│   └── slices.md                     # Planner output: Slice registry
 └── features/
-    └── <feature-name>/          # One folder per feature
+    └── <feature-name>/               # One folder per feature
         ├── _context.md
         ├── spec.md
         ├── ux-design.md
         ├── system-design.md
         ├── slices.md
-        ├── slice-<N>.md         # One file per Slice
-        └── rca-<slug>.md        # QA root cause analysis
+        ├── slice-<N>.md              # One file per Slice
+        ├── rca-<slug>.md             # QA root cause analysis
+        └── security-review-<slug>.md # Sec security findings
 ```
 
 ## Getting started
@@ -123,17 +125,19 @@ BMILD is built on BMAD-METHOD. The persona archetypes, the interactive modes (Pa
 
 Where BMILD diverges:
 
-- **6 personas instead of 12+.** Broader per-persona scope, less juggling, no domain overlap. And an easier mental model of who to talk to.
+- **7 personas instead of 12+.** Broader per-persona scope, less juggling, no domain overlap. And an easier mental model of who to talk to.
 - **No installer.** BMAD uses an installer. BMILD is file copy. BMILD stays equally usable across any environment that supports agent Skills, not by the installer support that's been built.
 - **Skill-native.** Workflows aren't managed by proprietary workflow files with skill wrappers. The prompts are self-contained.
-- **Slices replace stories.** Development units are sized with a lightweight tokenizer to an implementation-session context window, not to Agile story semantics. The evidence is that important stuff gets lost in the middle of large context window -- `Needle in a Haystack` aka context rot -- and scope decomposition is driven by this physic rather than Agile/INVEST story format.
+- **Slices replace stories.** Development units are sized with a lightweight tokenizer to an implementation-session context window, not to Agile story semantics. The evidence is that important stuff gets lost in the middle of large context window -- see 'Needle in a Haystack/NIAH' benchmarks -- and scope decomposition is driven by this physic rather than Agile/INVEST story format.
 - **Less ceremony.** The design personas insist on thoroughness. The execution personas strip away everything that doesn't contribute to working code. BMILD deliberately avoids performative theatre, gates that exist to look rigorous rather than to catch real problems.
 - **Integrated readiness gate.** BMAD has a readiness verification skill, but it's a separate step you invoke before implementation. In BMILD, the equivalent is built into the Delivery Planner -- Sonia can't decompose work into Slices without first verifying that every Must Have in the spec has downstream coverage in UX or architecture. The gate is structurally unavoidable, not a step you must remember to run.
-- **Structured degugging.** A strict 7-step root cause analysis protocol with mandatory breadth-first hypotheses, ranked by fit/frequency/recency, validated by instrumentation before any code is touched. BMAD's debugging workflow, in my experience, too-quickly funnels the agent into a single domain and single cause.
+- **Structured degugging.** A strict 7-step root cause analysis protocol with mandatory breadth-first hypotheses, ranked by fit/frequency/recency, validated by evidence before any code is touched. Many debugging flows can, and BMAD's does in my experience, funnel the agent into postulating a single domain and single cause prematurely.
 
 ### BMAD compatibility
 
 BMILD and BMAD should not be installed side-by-side as their trigger phrases overlap and an agent could flip non-deterministically. When you want to use BMILD, put `bmild-*` skills in the skills folder. If you want to stop, remove them. Any `plans/` memory files stay in your project.
+
+BMILD doesn't look at BMAD planning artifacts, but this could change in the future.
 
 ## Roadmap
 

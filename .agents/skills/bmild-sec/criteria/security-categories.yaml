@@ -1,0 +1,101 @@
+# bmild-sec/criteria/security-categories.yaml
+meta:
+  artifact: security-review.md
+  governed_by: bmild-sec
+  loading_note: >
+    Load before reviewing code. Use the categories and exclusions defined here to assess
+    vulnerabilities. STRICTLY adhere to the false positive filtering rules. Do not report
+    any issues that fall under the hard exclusions or do not meet the minimum confidence
+    threshold (0.8).
+
+categories:
+  - id: input_validation
+    name: Input Validation Vulnerabilities
+    issues:
+      - SQL injection via unsanitized user input
+      - Command injection in system calls or subprocesses
+      - XXE injection in XML parsing
+      - Template injection in templating engines
+      - NoSQL injection in database queries
+      - Path traversal in file operations
+
+  - id: authentication_authorization
+    name: Authentication & Authorization Issues
+    issues:
+      - Authentication bypass logic
+      - Privilege escalation paths
+      - Session management flaws
+      - JWT token vulnerabilities
+      - Authorization logic bypasses
+
+  - id: crypto_secrets
+    name: Crypto & Secrets Management
+    issues:
+      - Hardcoded API keys, passwords, or tokens
+      - Weak cryptographic algorithms or implementations
+      - Improper key storage or management
+      - Cryptographic randomness issues
+      - Certificate validation bypasses
+
+  - id: injection_code_execution
+    name: Injection & Code Execution
+    issues:
+      - Remote code execution via deseralization
+      - Pickle injection in Python
+      - YAML deserialization vulnerabilities
+      - Eval injection in dynamic code execution
+      - XSS vulnerabilities in web applications (reflected, stored, DOM-based)
+
+  - id: data_exposure
+    name: Data Exposure
+    issues:
+      - Sensitive data logging or storage
+      - PII handling violations
+      - API endpoint data leakage
+      - Debug information exposure
+
+filtering:
+  hard_exclusions:
+    - Denial of Service (DOS) vulnerabilities or resource exhaustion attacks.
+    - Secrets or credentials stored on disk if they are otherwise secured.
+    - Rate limiting concerns or service overload scenarios.
+    - Memory consumption or CPU exhaustion issues.
+    - Lack of input validation on non-security-critical fields without proven security impact.
+    - Input sanitization concerns for GitHub Action workflows unless clearly triggerable via untrusted input.
+    - A lack of hardening measures (only flag concrete vulnerabilities).
+    - Race conditions or timing attacks that are theoretical rather than practical.
+    - Vulnerabilities related to outdated third-party libraries.
+    - Memory safety issues (buffer overflows, use-after-free) in memory-safe languages like Rust.
+    - Files that are only unit tests or only used as part of running tests.
+    - Log spoofing concerns (outputting un-sanitized user input to logs).
+    - SSRF vulnerabilities that only control the path (must control host or protocol).
+    - Including user-controlled content in AI system prompts.
+    - Regex injection or Regex DOS concerns.
+    - Insecure documentation (findings in markdown files).
+    - A lack of audit logs.
+
+  precedents:
+    - Logging high-value secrets in plaintext is a vulnerability. Logging URLs is safe.
+    - UUIDs are unguessable and do not need validation.
+    - Environment variables and CLI flags are trusted values.
+    - Resource management issues (memory/file leaks) are not valid.
+    - Tabnabbing, XS-Leaks, prototype pollution, and open redirects require extremely high confidence.
+    - React and Angular are generally secure against XSS unless dangerouslySetInnerHTML (etc.) is used.
+    - GitHub Action workflow vulnerabilities must be concrete with a clear attack path.
+    - Client-side JS/TS code does not need permission/auth checks if handled on the backend.
+    - Jupyter notebook (*.ipynb) vulnerabilities must have a specific untrusted input attack path.
+    - Logging non-PII data is not a vulnerability; only flag secrets, passwords, or PII.
+    - Command injection in shell scripts requires a specific attack path for untrusted input.
+
+  confidence_scoring:
+    threshold: 0.8
+    scale:
+      "0.9-1.0": Certain exploit path identified, tested if possible
+      "0.8-0.9": Clear vulnerability pattern with known exploitation methods
+      "0.7-0.8": Suspicious pattern requiring specific conditions to exploit (do not report unless impactful)
+      "Below 0.7": Don't report (too speculative)
+
+  severity_guidelines:
+    high: Directly exploitable vulnerabilities leading to RCE, data breach, or authentication bypass
+    medium: Vulnerabilities requiring specific conditions but with significant impact
+    low: Defense-in-depth issues or lower-impact vulnerabilities

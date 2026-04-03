@@ -19,7 +19,7 @@ BMILD skills must follow these API-like design principles:
 3. **Skill Structure**:
    Keep skill structure aligned across all personas to the extent that is reasonable to do to. Avoid patching a single skill as this may solve the local issue but will lead to drift that makes skills behave differently over time and create for more maintanace overhead.
 4. **Two-Tier Model**: 
-   Skills are either Design tier (PM, UX, Arch) or Execution tier (Planner, Dev, QA). Design-tier personas slow down, probe, and elicit -- their job is to surface what would otherwise go unstated. Execution-tier personas activate lean, act on coherent inputs, and hand back precisely when a blocker is outside their authority. The Planner sits at the boundary: her readiness gate is the structural checkpoint that ensures design-tier scrutiny was sufficient before execution-tier speed takes over.
+   Skills are either Design tier (PM, UX, Arch) or Execution tier (Planner, Dev, QA, Sec). Design-tier personas slow down, probe, and elicit -- their job is to surface what would otherwise go unstated. Execution-tier personas activate lean, act on coherent inputs, and hand back precisely when a blocker is outside their authority. The Planner sits at the boundary: her readiness gate is the structural checkpoint that ensures design-tier scrutiny was sufficient before execution-tier speed takes over.
 5. **Teach Reasoning**: 
    Do not just list rules. Explain what goes wrong without the pattern, how to diagnose it, and provide before/after examples.
 
@@ -54,7 +54,8 @@ plans/
         ├── system-design.md     # Arch output
         ├── slices.md            # Planner output: Slice registry
         ├── slice-<N>.md         # One file per Slice
-        └── rca-<slug>.md        # QA output: root cause analysis
+        ├── rca-<slug>.md        # QA output: root cause analysis
+        └── security-review-<slug>.md # Sec output: security findings
 ```
 
 `_context.md` is the entry point for every persona. It lists documents that are currently `live` (in-use) vs. `archived`. Personas load only what is live and only what is relevant to the current engagement mode.
