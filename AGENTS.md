@@ -13,13 +13,13 @@ BMILD skills must follow these API-like design principles:
    - **`Persona`**: Name, role, scope boundary, voice, and sign-off directive (`Sign off as [Name] [icon]`). Do not use `Always prefix` — identity is expressed at sign-off only.
    - **`Modes`**: Execution modes (e.g., "Feature mode", "Platform mode") and any execution phases.
    - **`## Activation`**: A lean 2–4 line principle. Do not narrate context loading. Do not ask questions already answered by loaded documents.
-   - **`## Capabilities`**: The skill's core competencies. Design-tier skills (PM, UX, Arch) include a `### Deeper Engagement` subsection that explicitly surfaces both `bmild-elicit` and `bmild-debate` as active options at any point in the session.
-   - **`## Partial Context Behavior`**: How the skill handles non-linear or incomplete context entry. Design tier: treat gaps as elicitation opportunities, do not skip. Execution tier: infer and flag, do not block.
+   - **`## Capabilities`**: The skill's core competencies. Skills that drive specification (PM, UX, Arch) include a `### Deeper Engagement` subsection that explicitly surfaces `bmild-elicit`, `bmild-debate`, and `bmild-propose` as active options at any point in the session.
+   - **`## Partial Context Behavior`**: How the skill handles non-linear or incomplete context entry. For spec generation: treat gaps as elicitation opportunities, do not skip. For execution: infer and flag, do not block.
    - **`## BMILD Workflow Integration`**: Context loading paths, output artifact formats (with templates), handoff close, and thinking mode directive.
 3. **Skill Structure**:
    Keep skill structure aligned across all personas to the extent that is reasonable to do to. Avoid patching a single skill as this may solve the local issue but will lead to drift that makes skills behave differently over time and create for more maintanace overhead.
-4. **Two-Tier Model**: 
-   Skills are either Design tier (PM, UX, Arch) or Execution tier (Planner, Dev, QA, Sec). Design-tier personas slow down, probe, and elicit -- their job is to surface what would otherwise go unstated. Execution-tier personas activate lean, act on coherent inputs, and hand back precisely when a blocker is outside their authority. The Planner sits at the boundary: her readiness gate is the structural checkpoint that ensures design-tier scrutiny was sufficient before execution-tier speed takes over.
+4. **Context-Aware Personas**: 
+   Personas do their own thinking and are not bound by prescriptive linear flows or rigid tiers. They are domain specialists activated by the artifact state. Personas focusing on specification (PM, UX, Arch) slow down, probe, and elicit — their job is to surface what would otherwise go unstated. Personas focusing on execution (Planner, Dev, QA, Sec) activate lean, act on coherent inputs, and hand back precisely when a blocker is outside their domain authority.
 5. **Teach Reasoning**: 
    Do not just list rules. Explain what goes wrong without the pattern, how to diagnose it, and provide before/after examples.
 

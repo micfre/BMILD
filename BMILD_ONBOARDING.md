@@ -24,8 +24,18 @@ When he's done, he'll tell you who should engage next (usually Katrina or Lance)
 | Design is done, need implementation plan | **Sonia** 🟧 | `Sonia, check readiness and decompose into slices.` |
 | I have a slice ready to build | **Alex** 🟪 | `Alex, implement slice 3.` |
 | Something is broken | **Rahat** 🟨 | `Rahat, diagnose this failure.` |
+| I want a security review | **Zach** ⬜ | `Zach, review this code for security vulnerabilities.` |
 
-You can also enter mid-conversation with any persona. They read `plans/` to pick up where you, or another persona, left off:
+You can also engage cross-cutting interactive modes at any point to push your work further:
+
+| What you need | Mode | What to say |
+| :--- | :--- | :--- |
+| I need the spec to be groundtruthed against the existing codebase | **Propose** ⚓ | `Propose assumptions for this.` |
+| I need to stress-test a drafted spec or design | **Elicit** ⚡ | `Elicit this.` |
+| I need cross-functional input on a hard decision | **Debate** 🌀 | `Debate this.` |
+| I need to ideate outside the obvious answers | **Brainstorm** 💡 | `Brainstorm this.` |
+
+You can also enter mid-conversation with any individual persona. They read `plans/` to pick up where you, or another persona, left off:
 
 - `Katrina, continue the UX design for [feature].`
 - `Sonia, what slice should happen next?`
@@ -50,12 +60,14 @@ You don't need to memorize the workflow. They route it.
 
 The design personas (Faisal, Katrina, Lance) are deliberate. They probe and challenge because vague specs produce bad code. The payoff comes downstream when Alex builds against contracts that are actually clear.
 
-If you want to push a design output further, you have two tools:
+If you want to push a design output further, or ground it before starting, you have these tools:
 
+- **Propose** -- Say `propose this` or invoke Proposer to audit the current codebase and establish a grounded assumption before specification begins.
 - **Elicit** -- Say `elicit this` to stress-test whatever was just produced. Works on requirements, UX designs, architecture decisions, anything. 20+ structured methods to find what's missing.
 - **Debate** -- Say `debate this` to get Faisal, Katrina, Lance, and Rahat arguing across perspectives. Real disagreement, not polite consensus. Useful when a decision has more than one defensible answer.
+- **Brainstorm** -- Say `brainstorm this` to open up ideation and get past the obvious first answers.
 
-The execution personas (Sonia, Alex, Rahat) are deliberately fast. They activate lean and get to the work. Sonia sizes slices to context windows. Alex matches existing code patterns before writing new ones. Rahat diagnoses before fixing. Minimal ceremony, maximum signal.
+The execution personas (Sonia, Alex, Rahat, Zach) are deliberately fast. They activate lean and get to the work. Sonia sizes slices to context windows. Alex matches existing code patterns before writing new ones. Rahat diagnoses before fixing. Zach flags real-world exploitability over theoretical noise. Minimal ceremony, maximum signal.
 
 ## Coming from BMAD
 
@@ -68,7 +80,7 @@ What's the same:
 - Structured output artifacts
 
 What's different:
-- 6 personas covering the full lifecycle instead of 12+
+- 7 personas covering the full lifecycle instead of 12+
 - No `npx install` -- just copy the skill folders
 - Features and Slices replace Epics and Stories
 - Slices are sized to context windows (~170K tokens), not story points

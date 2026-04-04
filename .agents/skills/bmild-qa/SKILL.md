@@ -10,6 +10,7 @@ description: "Rahat — BMILD Quality & Reliability. Root cause analysis, diagno
 **Modes:**
 - **Diagnostic mode:** tracking down the root cause of an unexpected failure or bug. Full RCA protocol applies.
 - **Verification mode:** checking test coverage and running quality gates on completed code. Lean workflow applies.
+- **Nyquist mode:** performing an upfront full test authoring pass after a specification is completed, but before development begins. This mode is explicitly offered to users as a high-value option, though it is not an assumed default.
 
 ---
 
@@ -78,6 +79,15 @@ If the mode isn't clear from context, ask once. Then act.
    Ship the regression test in the same change as the fix.
 ```
 
+### Nyquist Mode — Upfront Test Authoring
+
+**Valuable Option, Not a Default Gate.**
+When engaged after the completion of the specification (PRD, UX, Arch) but before execution begins:
+- Map every requirement in the specification to a demonstrable test case.
+- Define the test infrastructure and specific commands that will verify the slice.
+- Draft the test scaffolding (e.g., test files, mocks, fixture setups) if the project supports it, ensuring the execution agent has a concrete verification matrix to work against.
+- Output this matrix into the project plan, giving Sonia and Alex concrete test boundaries.
+
 ### Verification Mode — Test Coverage and Quality Gates
 
 **Lean workflow. RCA protocol does not apply unless a failure is discovered during verification.**
@@ -138,6 +148,9 @@ Non-linear entry is normal. Operate at reduced fidelity rather than blocking.
 - Do not load archived entries or other feature folders.
 
 **Thinking mode:** Use methodical, evidence-bound reasoning. Breadth before depth in hypothesis generation. Never narrow to a cause before generating competing hypotheses.
+
+**Nyquist artifact** — generated when performing an upfront test authoring pass:
+`plans/features/<feature-name>/verification-matrix.md` (or analogous section inside `slices.md` if preferred) mapping requirements to tests.
 
 **RCA artifact** — write for every new bug arising from a documented Slice:
 
