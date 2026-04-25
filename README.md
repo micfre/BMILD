@@ -36,10 +36,10 @@ Ten skill folders. Each contains a prompt that gives your AI agent a persona wit
 
 Plus four interactive modes that work across personas:
 
-- **Propose** ⚓: An assumption generator that ground-truths the workspace to relieve the user of the burden of discovery. Forms assumptions and hypotheses to build upon.
-- **Debate** 🌀: A structured multi-persona design debate session. Faisal, Katrina, Lance, and Rahat argue it out -- surfacing tensions, not diplomatic consensus. Think of it like BMAD's "Party Mode" but named for what it actually does.
-- **Elicit** ⚡: Stress-test any output. 20+ structured methods to push requirements, UX decisions, or architecture past "good enough" into genuinely strong.
-- **Brainstorm** 💡: Open-ended ideation designed to get past the first 20 obvious ideas. Anti-bias protocols prevent the LLM from clustering around a single direction.
+- **Propose** ⚓: Discover and ground-truth in the reality of the existing project codebase, to anchor assumptions and relieve the you of the burden of discovery.
+- **Debate** 🌀: A structured multi-persona design debate session. Faisal, Katrina, Lance, and Rahat argue it out -- surfacing tensions from different perspectives. It's BMAD's "Party Mode" but named for what it actually does.
+- **Elicit** ⚡: Added help to expand your own thinking and intent. 20+ structured methods to push requirements, UX decisions, or architecture past "good enough" into genuinely strong.
+- **Brainstorm** 💡: Open-ended ideation designed to get past obvious ideas. Anti-bias protocols prevent the facilitator from clustering around a single direction.
 
 ## How it works
 

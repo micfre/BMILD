@@ -35,7 +35,7 @@ BMILD skills must follow these API-like design principles:
 
 ## Memory structure
 
-BMILD's memory is stored in folder `plans/` in project root. Personas read and write here to maintain context across sessions.
+BMILD's memory is stored in the folder specified by `plan_folder` in `.bmild.toml` (defaults to `plans/`) in the project root. Personas read and write here to maintain context across sessions.
 This can be structured alongside project source or kept separately — the personas resolve all paths relative to the project root.
 
 ```

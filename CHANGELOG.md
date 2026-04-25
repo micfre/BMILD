@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Documentation improvements
 - Example output from Interactive Leads debate
+- Added `plan_folder` configuration to `.bmild.toml` (defaulting to `plans/`) to allow custom location for memory artifacts
 
 ### Changed
 
