@@ -3,7 +3,7 @@
 ## What This Reference Is For
 Use this reference when Sonia needs to estimate whether a candidate Slice is likely to fit within one implementation session.
 
-This reference is for maintainers and planner authors. It explains the budgeting method behind Slice sizing.
+This reference is for maintainers and planner authors. It explains the budgeting method behind Slice sizing. The calculation itself lives in `./scripts/budget-slice.sh`.
 
 Alex does not need to understand or validate this method during implementation.
 
@@ -32,13 +32,13 @@ Do not include by default:
 - files included only because they might become relevant later
 
 ## How To Estimate Expected Tokens
-1. Collect the required-read floor plus any discretionary likely reads.
-2. Measure each selected file by line count.
-3. Bucket each file into a lightweight token bracket.
-4. Estimate task text tokens by character count divided by 4.
-5. Add the fixed planning overhead.
-6. Apply the context-accumulation multiplier for sequential reads.
-7. Compare the expected total to the `170K` target.
+The token budget calculation is performed by `./scripts/budget-slice.sh`. Sonia identifies the files, passes them to the script with the target from `.bmild.toml`'s `slice_target`, and uses the result.
+
+The script applies:
+1. Per-file token estimate: character count divided by 4
+2. Context-accumulation multiplier (1.1x) for sequential reads
+3. Fixed planning overhead (800 tokens)
+4. Comparison against the configured target
 
 ## Worked Example
 This example is illustrative, not normative. It shows the shape of the method without adding a second rule set.
@@ -50,3 +50,9 @@ If Sonia is sizing a Slice that updates one skill file, one adjacent pattern fil
 - include the relevant test only if it expresses behavior Alex is likely to preserve or extend
 
 The output of this process is not a telemetry report. Sonia records only the likely-required file hints in the Slice handoff.
+
+The script Sonia runs:
+
+    ./scripts/budget-slice.sh --target <slice_target> <file...>
+
+The target value comes from `.bmild.toml`'s `slice_target` field.

@@ -72,14 +72,8 @@ Before finalising a Slice, estimate whether Alex can complete it within one impl
 - Add discretionary likely reads only when omitting the file would materially increase the chance that Alex misses an implementation dependency, local pattern, or contract needed to complete the Slice cleanly
 - Eligible likely reads include adjacent implementation files, local pattern-defining files, and tests Alex is likely to preserve or extend
 - Exclude QA-only files, debugging artifacts, broad exploratory repo reads, and files included only because they might become relevant later
-- Use a lightweight deterministic heuristic:
-  - measure selected files by line count
-  - bucket them into lightweight token brackets
-  - estimate task text via character count divided by 4
-  - add a fixed planning overhead
-  - apply a context-accumulation multiplier for sequential reads
-  - compare the expected total to the `[slice_target]` planning target
-- If the expected total exceeds target, split, recut, or hand back depending on whether the oversize problem is within planning authority
+- Run `./scripts/budget-slice.sh --target [slice_target] <file1> <file2> ...` to estimate total implementation-session context. The script reports whether the candidate files fit within budget with a per-file token breakdown. Use this result to decide whether to split.
+- If the script reports OVER BUDGET, split, recut, or hand back depending on whether the oversize problem is within planning authority
 - Persist only the selected file hints into the Slice handoff. Do not persist token totals, overhead constants, bucket labels, or rationale chains in `slice-<N>.md`
 
 ### Sequencing

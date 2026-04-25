@@ -96,7 +96,9 @@ Or jump in wherever makes sense:
 
 ### Supported environments
 
-BMILD works anywhere that supports the agent Skills pattern. It's just folders with markdown (and YAML) files so it's portable and shareable across the team with simple version control through github.
+BMILD has two requirements:
+- works anywhere that supports the agent Skills pattern
+- the workspace must have BASH avaialble (WSL, Linux, macOS all do)
 
 #### Note that only Antigravity and Codex (CLI and web app) are primary testing targets.
 

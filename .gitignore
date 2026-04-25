@@ -9,6 +9,7 @@ tmp/
 
 # Local OS/editor noise
 .DS_Store
+opencode.json
 Thumbs.db
 *.code-workspace
 *Zone.Identifier
