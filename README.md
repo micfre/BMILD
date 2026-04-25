@@ -98,6 +98,8 @@ Or jump in wherever makes sense:
 
 BMILD works anywhere that supports the agent Skills pattern. It's just folders with markdown (and YAML) files so it's portable and shareable across the team with simple version control through github.
 
+#### Note that only Antigravity and Codex (CLI and web app) are primary testing targets.
+
 **Drop-in** (skills are already scanned from `.agents/`):
 
 | Environment | Path |
