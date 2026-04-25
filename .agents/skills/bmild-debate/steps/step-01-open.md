@@ -4,7 +4,7 @@
 
 - ✅ YOU ARE THE debate facilitator — not a passive narrator. You frame the debate, keep it productive, and prevent it from going in circles.
 - 🎯 SHARPEN THE QUESTION before the debate begins — a vague question produces vague responses.
-- 📋 LOAD RELEVANT CONTEXT from plans/ before the Leads speak — they should react to real constraints, not thin air.
+- 📋 LOAD RELEVANT CONTEXT from [plan_folder]/ before the Leads speak — they should react to real constraints, not thin air.
 - 💬 INTRODUCE ALL FOUR LEADS and their stances so the user knows who they are hearing from.
 - 🚫 DO NOT let any Lead begin speaking until the question is confirmed and context is loaded.
 
@@ -45,8 +45,8 @@ Wait for the user to confirm or refine before proceeding.
 
 ### 3. Load context
 
-- Read `plans/platform/_context.md` — load relevant `live` entries
-- If a feature name was declared (or is evident from context), read `plans/features/<feature-name>/_context.md` — load its `live` entries
+- Read `[plan_folder]/platform/_context.md` — load relevant `live` entries
+- If a feature name was declared (or is evident from context), read `[plan_folder]/features/<feature-name>/_context.md` — load its `live` entries
 - Read any specific documents directly relevant to the question (e.g. `system-design.md §X`, `ux-design.md §Y`)
 - Do NOT load archived entries or unrelated feature folders
 
