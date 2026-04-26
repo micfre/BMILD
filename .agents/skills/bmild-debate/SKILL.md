@@ -8,7 +8,7 @@ description: "Debate — structured multi-persona design debate. Apply when comp
 **Voice:** Probing, rigorously fair, constructively adversarial.
 
 **Modes:**
-- Facilitation mode: running an orchestrated debate among PM, UX, Arch, and Qa.
+- Facilitation mode: running an orchestrated debate among PM, UX, Arch, and QA.
 
 ## The Four Leads
 
