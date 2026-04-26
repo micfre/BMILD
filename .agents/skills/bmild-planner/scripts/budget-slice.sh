@@ -6,6 +6,24 @@ OVERHEAD=800
 MULTIPLIER=110
 FILES=()
 
+resolve_path() {
+  local target="$1"
+  if command -v realpath >/dev/null 2>&1; then
+    realpath "$target"
+  elif readlink -f . >/dev/null 2>&1; then
+    readlink -f "$target"
+  else
+    # macOS fallback for BSD readlink
+    local dir
+    while [[ -L "$target" ]]; do
+      dir="$(dirname "$target")"
+      target="$(readlink "$target")"
+      [[ "$target" != /* ]] && target="$dir/$target"
+    done
+    echo "$target"
+  fi
+}
+
 usage() {
   echo "Usage: budget-slice.sh --target <tokens> <file...>"
   echo ""
@@ -44,7 +62,7 @@ for f in "${FILES[@]}"; do
     continue
   fi
   if [[ -L "$f" ]]; then
-    f="$(readlink -f "$f")"
+    f="$(resolve_path "$f")"
   fi
   lines=$(wc -l < "$f")
   chars=$(wc -c < "$f")
@@ -59,30 +77,54 @@ grand_total=$(( accumulated + OVERHEAD ))
 if [[ $grand_total -le $TARGET ]]; then
   status="WITHIN BUDGET"
   delta=$(( TARGET - grand_total ))
-  delta_msg="headroom: ${delta}"
 else
   status="OVER BUDGET"
   delta=$(( grand_total - TARGET ))
-  delta_msg="over by: ${delta}"
 fi
 
-echo "${status}  (${delta_msg})"
-echo "Target: ${TARGET}  Estimated: ${grand_total}"
-echo "  File tokens (raw): ${total_raw}"
-echo "  After accumulation (1.1x): ${accumulated}"
-echo "  Planning overhead: ${OVERHEAD}"
-echo ""
-echo "Files (${#file_rows[@]}):"
+cat <<EOF
+{
+  "status": "${status}",
+  "budget": {
+    "target": ${TARGET},
+    "estimated_total": ${grand_total},
+    "delta": ${delta},
+    "raw_file_tokens": ${total_raw},
+    "planning_overhead": ${OVERHEAD}
+  },
+  "files": [
+EOF
 
+first=1
 for row in "${file_rows[@]}"; do
   IFS='|' read -r est lines path <<< "$row"
-  printf "  %7s  %s  (%s lines)\n" "~${est}" "$path" "$lines"
+  # Escape quotes and backslashes for JSON string validity
+  path="${path//\\/\\\\}"
+  path="${path//\"/\\\"}"
+  if [[ $first -eq 1 ]]; then
+    first=0
+  else
+    echo ","
+  fi
+  printf '    { "path": "%s", "tokens": %s, "lines": %s }' "$path" "$est" "$lines"
 done
 
-if [[ ${#skipped[@]} -gt 0 ]]; then
-  echo ""
-  echo "Skipped (${#skipped[@]}):"
-  for s in "${skipped[@]}"; do
-    echo "  $s  (not found)"
-  done
-fi
+echo ""
+echo '  ],'
+echo '  "skipped_files": ['
+
+first=1
+for s in "${skipped[@]}"; do
+  s="${s//\\/\\\\}"
+  s="${s//\"/\\\"}"
+  if [[ $first -eq 1 ]]; then
+    first=0
+  else
+    echo ","
+  fi
+  printf '    "%s"' "$s"
+done
+
+echo ""
+echo "  ]"
+echo "}"

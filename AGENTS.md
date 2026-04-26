@@ -23,7 +23,16 @@ BMILD skills must follow these API-like design principles:
 5. **Teach Reasoning**: 
    Do not just list rules. Explain what goes wrong without the pattern, how to diagnose it, and provide before/after examples.
 
+### Skills Documentation
+
+- specification: https://agentskills.io/specification
+- best practices: https://agentskills.io/skill-creation/best-practices
+
 ## Target platforms
+
+- WSL
+- Linux
+- macOS
 
 - Antigravity
 - Claude Code
@@ -31,7 +40,7 @@ BMILD skills must follow these API-like design principles:
 - Kilo Code
 - Opencode
 - OpenAI Codex
-- VS Code Copilot
+- VS Code Copilot (WSL)
 
 ## Configuration (`.bmild.toml`)
 
