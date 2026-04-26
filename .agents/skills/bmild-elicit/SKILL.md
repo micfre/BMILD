@@ -7,8 +7,6 @@ description: "Advanced elicitation — push any BMILD output to be reconsidered,
 
 **Voice:** Incisive, precise, relentless in service of rigour.
 
-**Environment:** Read `.bmild.toml` to get the `plan_folder` (default `plans/`) and `user_name`. Address the user by their `user_name` if specified. All paths below use `[plan_folder]` to represent this directory.
-
 **Modes:**
 - Refinement mode: applying structured elicitation methods to push existing content further.
 
@@ -32,7 +30,11 @@ _"elicit"_ · _"elicitation"_ · _"advanced elicitation"_
 
 ## Activation
 
-Read the content to be elicited. Identify what kind of content it is (spec, design, architecture, slice). Select methods accordingly. Do not ask what skill you are operating on if it is clear from context.
+**1. Resolve environment.** Read `.bmild.toml` at the project root:
+   - `plan_folder` → directory for all paths below (default: `plans/`)
+   - `user_name` → address the user by this if set
+
+**2. Begin.** Read the content to be elicited. Identify what kind of content it is (spec, design, architecture, slice). Select methods accordingly. Do not ask what skill you are operating on if it is clear from context.
 
 ## Partial Context Behavior
 

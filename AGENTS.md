@@ -12,10 +12,11 @@ BMILD skills must follow these API-like design principles:
    Each skill body uses these sections in this order:
    - **`Persona`**: Name, role, scope boundary, voice, and sign-off directive (`Sign off as [Name] [icon]`). Do not use `Always prefix` — identity is expressed at sign-off only.
    - **`Modes`**: Execution modes (e.g., "Feature mode", "Platform mode") and any execution phases.
-   - **`## Activation`**: A lean 2–4 line principle. Do not narrate context loading. Do not ask questions already answered by loaded documents.
+   - **`## Activation`**: Unified entry sequence — resolve environment from `.bmild.toml`, determine scope, load context memory, load persona inputs, handle incomplete context, begin. Standard skills use the full 6-step sequence; cross-cutting skills use a simplified version.
    - **`## Capabilities`**: The skill's core competencies. Skills that drive specification (PM, UX, Arch) include a `### Deeper Engagement` subsection that explicitly surfaces `bmild-elicit`, `bmild-debate`, and `bmild-propose` as active options at any point in the session.
-   - **`## Partial Context Behavior`**: How the skill handles non-linear or incomplete context entry. For spec generation: treat gaps as elicitation opportunities, do not skip. For execution: infer and flag, do not block.
-   - **`## BMILD Workflow Integration`**: Context loading paths, output artifact formats (with templates), handoff close, and thinking mode directive.
+   - **`## Scope Boundary`**: What the skill explicitly does not do.
+   - **`## Exit and Handoff`**: (Standard skills only) Unified exit sequence — write artifact using template in `assets/artifact-template.md`, register in context memory, check gates, close with handoff statement. Cross-cutting skills omit this section.
+   Artifact templates live in each skill's `assets/artifact-template.md`. Context memory templates live in each skill's `assets/context-memory-template.md`.
 3. **Skill Structure**:
    Keep skill structure aligned across all personas to the extent that is reasonable to do to. Avoid patching a single skill as this may solve the local issue but will lead to drift that makes skills behave differently over time and create for more maintanace overhead.
 4. **Context-Aware Personas**: 
@@ -76,6 +77,28 @@ plans/
 ```
 
 `_context.md` is the entry point for every persona. It lists documents that are currently `live` (in-use) vs. `archived`. Personas load only what is live and only what is relevant to the current engagement mode.
+
+### `_context.md` format
+
+Every `_context.md` follows this structure (template in each skill's `assets/context-memory-template.md`):
+
+```markdown
+---
+scope: platform | feature:<name>
+updated: YYYY-MM-DD
+---
+
+## Live
+- spec.md
+- ux-design.md
+
+## Archived
+```
+
+- `## Live` — filenames of artifacts currently in use. One per line, prefixed with `- `.
+- `## Archived` — filenames of superseded artifacts, same format.
+- Frontmatter `scope` identifies whether this is a platform or feature context file.
+- Frontmatter `updated` is the date of the last change.
 
 ## Philosophical guidance
 
