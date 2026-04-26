@@ -57,7 +57,7 @@ BMILD's memory is stored in the folder specified by `plan_folder` in `.bmild.tom
 This can be structured alongside project source or kept separately — the personas resolve all paths relative to the project root.
 
 ```
-plans/
+plans/ (or your custom plan_folder)
 ├── _system/                     # Global constraints, shared architecture, tech stack
 │   ├── _context.md              # Index of live documents — all personas read this first
 │   ├── _rollup.md               # Central registry of all active features/initiatives

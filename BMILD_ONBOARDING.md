@@ -1,6 +1,6 @@
 # Getting Started with BMILD
 
-You will generally enter BMILD with one of the design-tier agents: PM, UX or Arch. BMILD will read any existing context from the plans\ folder if it exists, so you can start from a blank idea or drop into a half-built project.
+You will generally enter BMILD with one of the design-tier agents: PM, UX or Arch. BMILD will read any existing context from the configured memory folder if it exists, so you can start from a blank idea or drop into a half-built project.
 
 ## Your first 30 seconds
 
@@ -35,7 +35,7 @@ You can also engage cross-cutting interactive modes at any point to push your wo
 | I need cross-functional input on a hard decision | **Debate** 🌀 | `Debate this.` |
 | I need to ideate outside the obvious answers | **Brainstorm** 💡 | `Brainstorm this.` |
 
-You can also enter mid-conversation with any individual persona. They read `plans/` to pick up where you, or another persona, left off:
+You can also enter mid-conversation with any individual persona. They read the memory folder to pick up where you, or another persona, left off:
 
 - `Katrina, continue the UX design for [feature].`
 - `Sonia, what slice should happen next?`
@@ -45,7 +45,7 @@ You can also enter mid-conversation with any individual persona. They read `plan
 
 Every persona follows the same activation pattern:
 
-1. Read the relevant live context from `plans/`
+1. Read the relevant live context from the memory folder
 2. Tell you what stage or gap appears current
 3. Ask only the next unresolved question, or take the next action
 
@@ -84,7 +84,7 @@ What's different:
 - No `npx install` -- just copy the skill folders
 - Features and Slices replace Epics and Stories
 - Slices are sized to context windows (~170K tokens), not story points
-- No orchestrator -- personas manage their own memory in `plans/`
+- No orchestrator -- personas manage their own memory
 - No IDE-specific tooling -- works anywhere that reads skill folders
 
 What's intentionally missing:
@@ -92,12 +92,20 @@ What's intentionally missing:
 - A help agent (personas route each other)
 - Multiple planning personas -- Sonia handles readiness, sequencing, status, and rerouting
 
-## The plans/ directory
+## Configuration (`.bmild.toml`)
 
-BMILD personas read and write a `plans/` directory at your project root. You don't manage this — they do. The structure is:
+Project-level settings are defined in `.bmild.toml` at the repository root:
+
+- `plan_folder`: (Default: `"plans/"`) Directory where BMILD's memory artifacts are stored.
+- `user_name`: (Optional) Your preferred name, used by personas to address you.
+- `slice_target`: (Default: `170000`) Target context token limit for sizing implementation slices.
+
+## The memory directory
+
+BMILD personas read and write to the directory specified by `plan_folder` (defaults to `plans/`) at your project root. You don't manage this — they do. The structure is:
 
 ```
-plans/
+plans/ (or your custom plan_folder)
 ├── _system/                     # Global constraints, shared architecture, tech stack
 │   ├── _context.md              # Index of live documents — all personas read this first
 │   ├── _rollup.md               # Central registry of all active features/initiatives
@@ -118,4 +126,4 @@ plans/
 
 ## Backing out
 
-Remove the `bmild-*` folders from your skills directory. That's it. The `plans/` files stay in your project unless you choose to delete them -- they're just markdown.
+Remove the `bmild-*` folders from your skills directory. That's it. The memory files stay in your project unless you choose to delete them -- they're just markdown.

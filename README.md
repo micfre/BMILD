@@ -53,14 +53,22 @@ Sonia, as the pivot between tiers, is where BMILD earns its keep. The spec gets 
 
 ### Handoffs
 
-Personas read project context from `plans/` before they speak. They tell you what stage appears current, what's complete, and who should engage next. You don't have to remember the workflow -- they do, and they route it.
+Personas read project context from the configured memory folder before they speak. They tell you what stage appears current, what's complete, and who should engage next. You don't have to remember the workflow -- they do, and they route it.
+
+### Configuration (`.bmild.toml`)
+
+Project-level settings are defined in `.bmild.toml` at the repository root. The personas read these configurations to dynamically adapt their behavior.
+
+- `plan_folder`: (Default: `"plans/"`) Directory where BMILD's memory artifacts (specs, designs, slices) are stored.
+- `user_name`: (Optional) The user's preferred name. Used by named personas to address the user personally in their conversational responses.
+- `slice_target`: (Default: `170000`) Target context token limit for sizing vertical implementation slices.
 
 ### Memory
 
-No orchestrator, no state machine. Personas write directly to a `plans/` directory at your project root using plain markdown. The `_context.md` file in each folder tracks what's live vs archived. Personas load only what's relevant.
+No orchestrator, no state machine. Personas write directly to the folder specified by `plan_folder` in `.bmild.toml` (defaults to `plans/`) at your project root using plain markdown. The `_context.md` file in each folder tracks what's live vs archived. Personas load only what's relevant.
 
 ```
-plans/
+plans/ (or your custom plan_folder)
 ├── _system/                     # Global constraints, shared architecture, tech stack
 │   ├── _context.md              # Index of live documents — all personas read this first
 │   ├── _rollup.md               # Central registry of all active features/initiatives
@@ -139,7 +147,7 @@ Where BMILD diverges:
 
 ### BMAD compatibility
 
-BMILD and BMAD should not be installed side-by-side as their trigger phrases overlap and an agent could flip non-deterministically. When you want to use BMILD, put `bmild-*` skills in the skills folder. If you want to stop, remove them. Any `plans/` memory files stay in your project.
+BMILD and BMAD should not be installed side-by-side as their trigger phrases overlap and an agent could flip non-deterministically. When you want to use BMILD, put `bmild-*` skills in the skills folder. If you want to stop, remove them. Any memory files stay in your project.
 
 BMILD doesn't look at BMAD planning artifacts, but this could change in the future.
 
