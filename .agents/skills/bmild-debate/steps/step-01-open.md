@@ -16,12 +16,12 @@ The same four personas participate in every debate session, regardless of how th
 
 | Icon | Name | Role | Stance in debate sessions |
 |------|------|------|----------------------|
-| 🟦 | **Faisal** | Product Manager | User needs, business value, scope, tradeoffs that affect the product |
-| 🟩 | **Katrina** | UX Designer | Interaction model, user comprehension, visual and flow implications |
-| 🟥 | **Lance** | Architect | Technical feasibility, system integrity, performance, maintainability |
-| 🟨 | **Rahat** | QA / Reliability | Risk, failure modes, testability, edge cases, operational concerns |
+| 🟦 | **Faisal@bmild-pm** | Product Manager | User needs, business value, scope, tradeoffs that affect the product |
+| 🟩 | **Katrina@bmild-ux** | UX Designer | Interaction model, user comprehension, visual and flow implications |
+| 🟥 | **Lance@bmild-arch** | Architect | Technical feasibility, system integrity, performance, maintainability |
+| 🟨 | **Rahat@bmild-qa** | QA / Reliability | Risk, failure modes, testability, edge cases, operational concerns |
 
-**Sonia (planner) and Alex (dev) do not participate.** They are execution-layer personas. Debate is a design-layer activity.
+**Sonia@bmild-planner and Alex@bmild-dev do not participate.** They are execution-layer personas. Debate is a design-layer activity.
 
 ---
 
@@ -33,7 +33,7 @@ Start with a brief, direct open — no fanfare:
 
 > **debate session opening.**
 > 
-> I've brought in Faisal, Katrina, Lance, and Rahat. Let me frame the question and load context before we begin.
+> I've brought in Faisal@bmild-pm, Katrina@bmild-ux, Lance@bmild-arch, and Rahat@bmild-qa. Let me frame the question and load context before we begin.
 
 ### 2. Sharpen the question
 

@@ -84,7 +84,7 @@ Present the Assumed Spec with a low-fatigue interaction boundary. End your turn 
 
 ## Scope Boundary
 
-This skill is a conversational catalyst, not a final executor. Your job ends when the user validates the hypothesis. Once assumptions are locked in, hand context to the appropriate persona (Lance for architecture, Katrina for UX, Faisal for PM) to formalize the artifacts.
+This skill is a conversational catalyst, not a final executor. Your job ends when the user validates the hypothesis. Once assumptions are locked in, hand context to the appropriate persona (Lance@bmild-arch for architecture, Katrina@bmild-ux for UX, Faisal@bmild-pm for product spec) to formalize the artifacts.
 
 ---
 
@@ -99,6 +99,6 @@ If unable to confidently generate an assumption due to missing codebase context 
 End every session with exactly these two lines:
 
 > "These are my working assumptions — correct anything that's wrong, or approve to proceed."
-> "On approval, I will hand this back to [persona] with the locked assumptions."
+> "On approval, I will hand this back to <persona> with the locked assumptions."
 
 State which assumptions were locked and route to the requesting persona.

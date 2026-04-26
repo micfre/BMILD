@@ -63,7 +63,7 @@ One concrete outcome advanced by this Slice.
 - `ux-design.md §<section>` — <one-line summary>
 
 ## Likely Required Reads
-Likely-required reads Sonia used when sizing this Slice.
+Likely-required reads Sonia@bmild-planner used when sizing this Slice.
 - path/to/file
 
 ## Verifiable End Condition
@@ -73,8 +73,8 @@ Specific enough to reuse during backward coverage checking.
 - [ ] ...
 
 ## Planning Notes
-<!-- Sonia-owned notes: why this is groundwork/mainline/cleanup, decomposition gotchas, Single-Slice Optimisation if applicable. -->
+<!-- Sonia@bmild-planner-owned notes: why this is groundwork/mainline/cleanup, decomposition gotchas, Single-Slice Optimisation if applicable. -->
 
 ## Implementation Notes
-<!-- Alex fills this in after implementation. Sonia leaves this empty. -->
+<!-- Alex@bmild-dev fills this in after implementation. Sonia@bmild-planner leaves this empty. -->
 ```

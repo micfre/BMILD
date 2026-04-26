@@ -26,8 +26,8 @@ Present the synthesis clearly under three headings:
 **Preference** — where Leads differed, but the trade-off is low-stakes or reversible:
 | Option | Who favours it | Why | Cost |
 |--------|---------------|-----|------|
-| A | Katrina, Faisal | [reason] | [cost] |
-| B | Lance | [reason] | [cost] |
+| A | Katrina@bmild-ux, Faisal@bmild-pm | [reason] | [cost] |
+| B | Lance@bmild-arch | [reason] | [cost] |
 
 **Open** — genuinely unresolved; requires a decision before design can proceed:
 - [Open question 1] — implication if unresolved: [impact]

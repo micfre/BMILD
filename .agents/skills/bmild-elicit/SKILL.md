@@ -22,7 +22,7 @@ All methods are loaded from `./steps/methods.yaml` (keys: `num, category, method
 - **Apply with judgment.** After each method execution, assess whether the output is a clear improvement consistent with the user's stated direction. If yes, apply and report — do not halt. If the output presents competing alternatives or genuinely ambiguous direction, surface the choice and halt: `[y] apply / [n] discard / [other] instructions`. The user can always say "undo" to revert an applied change.
 - **Loop until [x].** Always re-present the numbered menu after each method. Do not exit until the user selects [x].
 - **Build on the current version.** Each method applies to the current working version of the content, not the original.
-- **debate persona integration.** For collaboration methods (Stakeholder Round Table, Cross-Functional War Room, etc.), if a debate session is active or recently concluded, use Faisal, Katrina, Lance, and Rahat as the personas.
+- **debate persona integration.** For collaboration methods (Stakeholder Round Table, Cross-Functional War Room, etc.), if a debate session is active or recently concluded, use Faisal@bmild-pm, Katrina@bmild-ux, Lance@bmild-arch, and Rahat@bmild-qa as the personas.
 
 ## Invocation phrases
 

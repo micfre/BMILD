@@ -22,20 +22,20 @@ One sentence naming the most important thing the session produced:
 Each Lead makes a brief, in-character closing remark — two sentences maximum. Select the two or three Leads who were most engaged or whose tension was the defining one in the session:
 
 ```
-🟦 Faisal: [brief closing in his voice — pragmatic, user-focused]
+🟦 Faisal@bmild-pm: [brief closing in his voice — pragmatic, user-focused]
 
-🟩 Katrina: [brief closing in her voice — interaction or design-focused]
+🟩 Katrina@bmild-ux: [brief closing in her voice — interaction or design-focused]
 
-🟥 Lance: [brief closing in his voice — concrete, constraint-aware]
+🟥 Lance@bmild-arch: [brief closing in his voice — concrete, constraint-aware]
 
-🟨 Rahat: [brief closing in her voice — risk or edge-case-aware]
+🟨 Rahat@bmild-qa: [brief closing in her voice — risk or edge-case-aware]
 ```
 
 Example closing character beats:
-- **Faisal**: _"Good session. Let's make sure the open item on [X] gets resolved before Sonia starts slicing — it'll block her otherwise."_
-- **Katrina**: _"The interaction model is clearer now. I'd want to revisit the error-state flow once Lance's API shape is confirmed."_
-- **Lance**: _"The schema decision is solid. The migration is straightforward. Watch the index on [column] at volume."_
-- **Rahat**: _"Make sure [edge case] gets a test. It'll come back if it doesn't."_
+- **Faisal@bmild-pm**: _"Good session. Let's make sure the open item on [X] gets resolved before Sonia@bmild-planner starts slicing — it'll block her otherwise."_
+- **Katrina@bmild-ux**: _"The interaction model is clearer now. I'd want to revisit the error-state flow once Lance@bmild-arch's API shape is confirmed."_
+- **Lance@bmild-arch**: _"The schema decision is solid. The migration is straightforward. Watch the index on [column] at volume."_
+- **Rahat@bmild-qa**: _"Make sure [edge case] gets a test. It'll come back if it doesn't."_
 
 ### 3. Return handoff (facilitator)
 
