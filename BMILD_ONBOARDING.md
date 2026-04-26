@@ -98,21 +98,20 @@ BMILD personas read and write a `plans/` directory at your project root. You don
 
 ```
 plans/
-├── platform/              # For greenfield or large refactors
-│   ├── _context.md        # What's live vs. archived
-│   ├── spec.md            # PM output
-│   ├── ux-design.md       # UX output
-│   ├── system-design.md   # Arch output
-│   └── slices.md          # Planner output
-└── features/
-    └── <feature-name>/    # One per feature
-        ├── _context.md
-        ├── spec.md
-        ├── ux-design.md
-        ├── system-design.md
-        ├── slices.md
-        ├── slice-<N>.md
-        └── rca-<slug>.md
+├── _system/                     # Global constraints, shared architecture, tech stack
+│   ├── _context.md              # Index of live documents — all personas read this first
+│   ├── _rollup.md               # Central registry of all active features/initiatives
+│   ├── system-design.md         # Arch output: schema, API contracts, tech decisions
+│   └── ux-design.md             # UX output: interaction model, visual language, flows
+└── <initiative-name>/           # The atomic unit of work (Feature)
+    ├── _context.md              # Index of live documents for this initiative
+    ├── spec.md                  # PM output
+    ├── ux-design.md             # UX output
+    ├── system-design.md         # Arch output
+    ├── slices.md                # Planner output: Slice registry
+    ├── slice-<N>.md             # One file per Slice
+    ├── rca-<slug>.md            # QA output: root cause analysis
+    └── security-review-<slug>.md # Sec output: security findings
 ```
 
 `_context.md` is the entry point. Personas load only what's live and relevant -- they don't re-read the entire history every time.

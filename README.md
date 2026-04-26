@@ -61,22 +61,20 @@ No orchestrator, no state machine. Personas write directly to a `plans/` directo
 
 ```
 plans/
-├── platform/                         # Greenfield or global refactors
-│   ├── _context.md                   # Index -- all personas read this first
-│   ├── spec.md                       # PM output
-│   ├── ux-design.md                  # UX output
-│   ├── system-design.md              # Arch output
-│   └── slices.md                     # Planner output: Slice registry
-└── features/
-    └── <feature-name>/               # One folder per feature
-        ├── _context.md
-        ├── spec.md
-        ├── ux-design.md
-        ├── system-design.md
-        ├── slices.md
-        ├── slice-<N>.md              # One file per Slice
-        ├── rca-<slug>.md             # QA root cause analysis
-        └── security-review-<slug>.md # Sec security findings
+├── _system/                     # Global constraints, shared architecture, tech stack
+│   ├── _context.md              # Index of live documents — all personas read this first
+│   ├── _rollup.md               # Central registry of all active features/initiatives
+│   ├── system-design.md         # Arch output: schema, API contracts, tech decisions
+│   └── ux-design.md             # UX output: interaction model, visual language, flows
+└── <initiative-name>/           # The atomic unit of work (Feature)
+    ├── _context.md              # Index of live documents for this initiative
+    ├── spec.md                  # PM output
+    ├── ux-design.md             # UX output
+    ├── system-design.md         # Arch output
+    ├── slices.md                # Planner output: Slice registry
+    ├── slice-<N>.md             # One file per Slice
+    ├── rca-<slug>.md            # QA output: root cause analysis
+    └── security-review-<slug>.md # Sec output: security findings
 ```
 
 ## Getting started

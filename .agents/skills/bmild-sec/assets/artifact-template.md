@@ -1,8 +1,8 @@
-Write `[plan_folder]/features/<feature-name>/security-review-<slug>.md` only when vulnerabilities are found. No artifact is written for a clean review.
+Write `[plan_folder]/<initiative-name>/security-review-<slug>.md` only when vulnerabilities are found. No artifact is written for a clean review.
 
 ```markdown
 ---
-feature: <feature-name>
+scope: <initiative-name> | _system
 slug: <slug>
 slice: <N>
 status: open | resolved

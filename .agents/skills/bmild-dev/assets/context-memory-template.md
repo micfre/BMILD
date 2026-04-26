@@ -1,5 +1,5 @@
 ---
-scope: <platform | feature:name>
+scope: <initiative-name> | _system
 updated: YYYY-MM-DD
 ---
 

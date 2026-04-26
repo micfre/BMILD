@@ -2,7 +2,7 @@
 
 ```markdown
 ---
-feature: <feature-name> | platform
+scope: <initiative-name> | _system
 status: active | complete | archived
 updated: YYYY-MM-DD
 author: bmild-planner
@@ -38,7 +38,7 @@ verification_status: pass | pass_with_warning | fail | handback
 
 ```markdown
 ---
-feature: <feature-name>
+scope: <initiative-name> | _system
 slice: <N>
 status: todo | active | ready-for-review | done | blocked
 updated: YYYY-MM-DD

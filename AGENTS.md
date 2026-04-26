@@ -11,7 +11,7 @@ BMILD skills must follow these API-like design principles:
 2. **Uniform skill structure**: 
    Each skill body uses these sections in this order:
    - **`Persona`**: Name, role, scope boundary, voice, and sign-off directive (`Sign off as [Name] [icon]`). Do not use `Always prefix` — identity is expressed at sign-off only.
-   - **`Modes`**: Execution modes (e.g., "Feature mode", "Platform mode") and any execution phases.
+   - **`Modes`**: Execution modes (e.g., "Diagnostic mode", "Implementation mode") and any execution phases.
    - **`## Activation`**: Unified entry sequence — resolve environment from `.bmild.toml`, determine scope, load context memory, load persona inputs, handle incomplete context, begin. Standard skills use the full 6-step sequence; cross-cutting skills use a simplified version.
    - **`## Capabilities`**: The skill's core competencies. Skills that drive specification (PM, UX, Arch) include a `### Deeper Engagement` subsection that explicitly surfaces `bmild-elicit`, `bmild-debate`, and `bmild-propose` as active options at any point in the session.
    - **`## Scope Boundary`**: What the skill explicitly does not do.
@@ -58,22 +58,20 @@ This can be structured alongside project source or kept separately — the perso
 
 ```
 plans/
-├── platform/                    # Platform-level context (greenfield or large refactors)
+├── _system/                     # Global constraints, shared architecture, tech stack
 │   ├── _context.md              # Index of live documents — all personas read this first
-│   ├── spec.md                  # PM output: problem statement, requirements, success criteria
-│   ├── ux-design.md             # UX output: interaction model, visual language, flows
+│   ├── _rollup.md               # Central registry of all active features/initiatives
 │   ├── system-design.md         # Arch output: schema, API contracts, tech decisions
-│   └── slices.md                # Planner output: platform-level Slice registry
-└── features/
-    └── <feature-name>/          # One folder per feature
-        ├── _context.md          # Index of live documents for this feature
-        ├── spec.md              # PM output
-        ├── ux-design.md         # UX output
-        ├── system-design.md     # Arch output
-        ├── slices.md            # Planner output: Slice registry
-        ├── slice-<N>.md         # One file per Slice
-        ├── rca-<slug>.md        # QA output: root cause analysis
-        └── security-review-<slug>.md # Sec output: security findings
+│   └── ux-design.md             # UX output: interaction model, visual language, flows
+└── <initiative-name>/           # The atomic unit of work (Feature)
+    ├── _context.md              # Index of live documents for this initiative
+    ├── spec.md                  # PM output
+    ├── ux-design.md             # UX output
+    ├── system-design.md         # Arch output
+    ├── slices.md                # Planner output: Slice registry
+    ├── slice-<N>.md             # One file per Slice
+    ├── rca-<slug>.md            # QA output: root cause analysis
+    └── security-review-<slug>.md # Sec output: security findings
 ```
 
 `_context.md` is the entry point for every persona. It lists documents that are currently `live` (in-use) vs. `archived`. Personas load only what is live and only what is relevant to the current engagement mode.
@@ -84,7 +82,7 @@ Every `_context.md` follows this structure (template in each skill's `assets/con
 
 ```markdown
 ---
-scope: platform | feature:<name>
+scope: <initiative-name> | _system
 updated: YYYY-MM-DD
 ---
 
@@ -97,7 +95,7 @@ updated: YYYY-MM-DD
 
 - `## Live` — filenames of artifacts currently in use. One per line, prefixed with `- `.
 - `## Archived` — filenames of superseded artifacts, same format.
-- Frontmatter `scope` identifies whether this is a platform or feature context file.
+- Frontmatter `scope` identifies the initiative or if it is the global `_system` context.
 - Frontmatter `updated` is the date of the last change.
 
 ## Philosophical guidance

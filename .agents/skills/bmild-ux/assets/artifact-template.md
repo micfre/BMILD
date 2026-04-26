@@ -1,6 +1,6 @@
 ```markdown
 ---
-feature: <feature-name> | platform
+scope: <initiative-name> | _system
 updated: YYYY-MM-DD
 author: bmild-ux
 ---

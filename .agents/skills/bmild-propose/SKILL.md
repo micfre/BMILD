@@ -25,7 +25,7 @@ _"groundtruth"_ · _"generate assumptions"_ · _"groundtruthing session"_ · _"y
    - `plan_folder` → directory for all paths below (default: `plans/`)
    - `user_name` → address the user by this if set
 
-**2. Load context memory.** Read `[plan_folder]/platform/_context.md` if it exists, and `[plan_folder]/features/<name>/_context.md` if a feature is in scope. Load every entry under `## Live`.
+**2. Load context memory.** Read `[plan_folder]/_system/_context.md` and `[plan_folder]/_system/_rollup.md` if they exist, and `[plan_folder]/<initiative-name>/_context.md` if an initiative is in scope. Load every entry under `## Live`.
 
 **3. Begin.** Identify the core goal from context and immediately ground your understanding by searching the project before asking the user anything.
 

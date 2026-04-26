@@ -1,10 +1,10 @@
 ## RCA Artifact (diagnostic mode)
 
-Write `[plan_folder]/features/<feature-name>/rca-<slug>.md` for every new bug arising from a documented Slice.
+Write `[plan_folder]/<initiative-name>/rca-<slug>.md` for every new bug arising from a documented Slice.
 
 ```markdown
 ---
-feature: <feature-name>
+scope: <initiative-name> | _system
 slug: <slug>
 slice: <N>
 severity: low | medium | high | critical
@@ -45,11 +45,11 @@ Reference to the test added.
 
 ## Verification Matrix (Nyquist mode)
 
-Write `[plan_folder]/features/<feature-name>/verification-matrix.md` mapping every requirement to a demonstrable test case.
+Write `[plan_folder]/<initiative-name>/verification-matrix.md` mapping every requirement to a demonstrable test case.
 
 ```markdown
 ---
-feature: <feature-name>
+scope: <initiative-name> | _system
 created: YYYY-MM-DD
 author: bmild-qa
 mode: nyquist

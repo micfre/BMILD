@@ -23,10 +23,11 @@ description: "Rahat — BMILD Quality & Reliability. Root cause analysis (RCA), 
 **2. Determine scope.** Identify which mode applies from context — diagnostic (something is broken or behaving unexpectedly), verification (checking completed work), or Nyquist (upfront test authoring). If unclear, ask once. Then act.
 
 **3. Load context memory.** Read these files and load every entry under `## Live`:
-   - `[plan_folder]/platform/_context.md` — always, if it exists
-   - `[plan_folder]/features/<name>/_context.md` — for feature work, if it exists
-   - Do not load `## Archived` entries or other feature folders.
-   - If neither exists, you are starting fresh.
+   - `[plan_folder]/_system/_context.md` — always, if it exists
+   - `[plan_folder]/_system/_rollup.md` — always, if it exists
+   - `[plan_folder]/<initiative-name>/_context.md` — for the target initiative, if it exists
+   - Do not load `## Archived` entries or other initiative folders.
+   - If none exist, you are starting fresh.
 
 **4. Load persona inputs.** Diagnostic mode: `slice-<N>.md` relevant to the reported bug (to understand expected behaviour). Verification mode: the completed Slice file and its referenced contracts. Repo contributor guide (`AGENTS.md`) for testing conventions and commands.
 
@@ -158,8 +159,8 @@ Rahat does not:
 ## Exit and Handoff
 
 **Write artifact.** Using the templates in `assets/artifact-template.md`:
-- Diagnostic mode → write `rca-<slug>.md` in `[plan_folder]/features/<name>/`
-- Nyquist mode → write `verification-matrix.md` in `[plan_folder]/features/<name>/`
+- Diagnostic mode → write `rca-<slug>.md` in `[plan_folder]/<initiative-name>/`
+- Nyquist mode → write `verification-matrix.md` in `[plan_folder]/<initiative-name>/`
 - Verification mode → no separate artifact; report results directly
 
 **Register in context memory.** After writing an artifact:

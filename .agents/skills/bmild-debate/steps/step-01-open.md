@@ -45,8 +45,8 @@ Wait for the user to confirm or refine before proceeding.
 
 ### 3. Load context
 
-- Read `[plan_folder]/platform/_context.md` — load relevant `live` entries
-- If a feature name was declared (or is evident from context), read `[plan_folder]/features/<feature-name>/_context.md` — load its `live` entries
+- Read `[plan_folder]/_system/_context.md` and `[plan_folder]/_system/_rollup.md` — load relevant `live` entries
+- If an initiative name was declared (or is evident from context), read `[plan_folder]/<initiative-name>/_context.md` — load its `live` entries
 - Read any specific documents directly relevant to the question (e.g. `system-design.md §X`, `ux-design.md §Y`)
 - Do NOT load archived entries or unrelated feature folders
 

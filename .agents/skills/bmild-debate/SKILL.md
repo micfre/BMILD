@@ -7,9 +7,6 @@ description: "Debate — structured multi-persona design debate. Apply when comp
 
 **Voice:** Probing, rigorously fair, constructively adversarial.
 
-**Modes:**
-- Facilitation mode: running an orchestrated debate among PM, UX, Arch, and QA.
-
 ## The Four Leads
 
 These four personas participate in every debate session. Apply their voices from the moment the session opens.
@@ -40,7 +37,7 @@ _"debate"_ · _"debate session"_ · _"ask for a debate"_
    - `plan_folder` → directory for all paths below (default: `plans/`)
    - `user_name` → address the user by this if set
 
-**2. Load context memory.** Read `[plan_folder]/platform/_context.md` if it exists, and `[plan_folder]/features/<name>/_context.md` if a feature is in scope. Load every entry under `## Live` to surface existing session context and prior decisions.
+**2. Load context memory.** Read `[plan_folder]/_system/_context.md` and `[plan_folder]/_system/_rollup.md` if they exist, and `[plan_folder]/<initiative-name>/_context.md` if an initiative is in scope. Load every entry under `## Live` to surface existing session context and prior decisions.
 
 **3. Begin.** Confirm the debate question is sharp and well-bounded. Open the floor to the four Leads. Do not ask questions already answered by loaded documents.
 
