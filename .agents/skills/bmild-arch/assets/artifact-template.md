@@ -5,16 +5,18 @@ updated: YYYY-MM-DD
 author: bmild-arch
 ---
 
-## Tech Stack
-| Layer | Choice | Notes |
-|-------|--------|-------|
-| Runtime | ... | |
-| Framework | ... | |
-| UI Components | ... | |
-| ORM | ... | |
-| ...
+## 1. Architecture Vision & Context
+- How this initiative fits into the broader system architecture and current codebase reality.
 
-## Database Schema Changes
+## 2. Architectural Decisions (ADRs)
+### Decision: <title>
+- **Context:** Why we need to decide.
+- **Alternatives Considered:** (Structured evaluation)
+  - Option A | Pros | Cons | Complexity (Impact + Risk)
+  - Option B | Pros | Cons | Complexity (Impact + Risk)
+- **Decision & Rationale:** Why we chose the path.
+
+## 3. Data Model & Schema Changes
 ### Table: <table_name>
 | Column | Type | Nullable | Default | Notes |
 |--------|------|----------|---------|-------|
@@ -24,7 +26,7 @@ Indexes: ...
 Constraints: ...
 Migration intent: ...
 
-## API Contracts
+## 4. API & Integration Contracts
 ### <METHOD> <path>
 **Auth:** required | public | admin only
 
@@ -36,21 +38,16 @@ Migration intent: ...
 **Response:**
 - `200`: `{ ... }`
 - `400`: `{ error: string }` — when ...
-- `404`: — when ...
 
-## Service Contracts
+## 5. Service Contracts
 ### <ServiceName>.<methodName>(params): ReturnType
 Description. Throws: ...
 
-## Architectural Decisions
-### Decision: <title>
-- **Decided:** ...
-- **Rationale:** ...
-- **Alternatives considered:** ...
-- **Implementation discretion:** ...
-
-## Open Technical Questions
+## 6. Open Technical Questions
 Questions to resolve before or during implementation.
+
+## 7. Consequence-Driven Technical Assumptions
+- **Assumption:** [Description] | **Confidence:** [Low/Med/High] | **Consequence if wrong:** [Impact]
 
 ## Archived Decisions
 <!-- Decisions superseded by later work -->

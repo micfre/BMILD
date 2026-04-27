@@ -5,29 +5,32 @@ updated: YYYY-MM-DD
 author: bmild-pm
 ---
 
-## Problem Statement
-One sentence.
+## 1. Problem Framing & Executive Summary
+- The core problem, why it needs solving now, and the target audience.
 
-## Context
-Why now. What triggered this.
+## 2. Success Criteria
+- Falsifiable success metrics (How we know it works).
 
-## Users / Stakeholders
-Who is affected and how.
+## 3. Scope & Prioritization
+- **Phase 1 (MVP):** Absolute essentials to validate the idea.
+- **Phase 2 (Growth):** Fast follows and enhancements.
+- **Phase 3 (Vision):** Long-term expansion.
+- **Explicitly Out of Scope:** What we are actively choosing not to do.
 
-## Requirements
-### Must Have
+## 4. Functional Requirements
+- (Map directly to the phases above)
+### Phase 1 (MVP)
 - ...
-### Should Have
-- ...
-### Out of Scope
+### Phase 2 (Growth)
 - ...
 
-## Success Criteria
-How we know this is done and working.
+## 5. Non-Functional Requirements & Pitfalls
+- **Constraints:** Scale, performance, usability, domain compliance.
+- **Pitfalls:** Explicit market, technical, or resource risks (What could cause this to fail and how to mitigate).
 
-## Open Questions
+## 6. Open Questions
 Questions that must be resolved before or during design.
 
-## Assumptions
-Explicit assumptions being made.
+## 7. Consequence-Driven Assumptions
+- **Assumption:** [Description] | **Confidence:** [Low/Med/High] | **Consequence if wrong:** [Impact]
 ```

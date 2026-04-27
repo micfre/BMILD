@@ -30,7 +30,6 @@ You can also engage cross-cutting interactive modes at any point to push your wo
 
 | What you need | Mode | What to say |
 | :--- | :--- | :--- |
-| I need the spec to be groundtruthed against the existing codebase | **Propose** ⚓ | `Propose assumptions for this.` |
 | I need to stress-test a drafted spec or design | **Elicit** ⚡ | `Elicit this.` |
 | I need cross-functional input on a hard decision | **Debate** 🌀 | `Debate this.` |
 | I need to ideate outside the obvious answers | **Brainstorm** 💡 | `Brainstorm this.` |
@@ -62,7 +61,6 @@ The design personas (Faisal, Katrina, Lance) are deliberate. They probe and chal
 
 If you want to push a design output further, or ground it before starting, you have these tools:
 
-- **Propose** -- Say `propose this` or invoke Proposer to audit the current codebase and establish a grounded assumption before specification begins.
 - **Elicit** -- Say `elicit this` to stress-test whatever was just produced. Works on requirements, UX designs, architecture decisions, anything. 20+ structured methods to find what's missing.
 - **Debate** -- Say `debate this` to get Faisal, Katrina, Lance, and Rahat arguing across perspectives. Real disagreement, not polite consensus. Useful when a decision has more than one defensible answer.
 - **Brainstorm** -- Say `brainstorm this` to open up ideation and get past the obvious first answers.

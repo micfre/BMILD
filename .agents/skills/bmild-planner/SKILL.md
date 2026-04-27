@@ -69,12 +69,12 @@ Three outcomes:
 
 ### Forward Decomposition
 
-- Read `spec.md`, `ux-design.md`, and `system-design.md` in full when they exist and are relevant
-- Identify all discrete units of implementation work implied by the approved design
+- Read `spec.md`, `ux-design.md`, and `system-design.md` in full when they exist and are relevant.
+- Identify all discrete units of implementation work implied by the approved design. You must decompose the entire initiative, including both Phase 1 (MVP) and Phase 2 (Growth), unless explicitly marked out of scope.
 - **Single-Slice Optimisation:** if the required change is confined to a single file, a single localised component, or represents a cohesive atomic update, output exactly one Slice. Do not artificially invent groundwork or cleanup Slices for trivial changes.
 - For non-trivial work, decompose into vertical Slices rather than horizontal layer buckets. Slice decomposition is a continuous decision led strictly by context window dimensions and logical autonomy constraints. Do not default to arbitrary heuristic counts (like 3 slices); make it 1, 5, or 10 based purely on the volume of work.
-- A valid Slice advances one concrete outcome, declares dependencies explicitly, and ends with a verifiable condition
-- Group work into Slices bounded to `<=[slice_target]` tokens of total implementation-session context input
+- A valid Slice advances one concrete outcome, declares dependencies explicitly, and ends with a verifiable condition.
+- Group work into Slices bounded to `<=[slice_target]` tokens of total implementation-session context input.
 
 ### Slice Budgeting
 
@@ -92,11 +92,12 @@ Three outcomes:
 
 ### Sequencing
 
-- Order Slices by logical dependency, not by an automatic layer-first rule
-- If a schema, API, UI, or cleanup change belongs to the same concrete outcome, keep it in the same vertical Slice where practical
-- Shared groundwork may come first and cleanup may come last when they are necessary and explicitly justified
-- Document dependencies explicitly (the `Depends On` column in `slices.md`)
-- Keep the next recommended Slice visible to the user when reporting status
+- **MVP-Driven Priority:** You must sequence slices strictly according to Faisal@bmild-pm's prioritisation. All Phase 1 (MVP) slices must be sequenced to complete entirely before any Phase 2 slices begin. Protect the MVP delivery timeline.
+- Order Slices by logical dependency, not by an automatic layer-first rule.
+- If a schema, API, UI, or cleanup change belongs to the same concrete outcome, keep it in the same vertical Slice where practical.
+- Shared groundwork may come first and cleanup may come last when they are necessary and explicitly justified.
+- Document dependencies explicitly (the `Depends On` column in `slices.md`).
+- Keep the next recommended Slice visible to the user when reporting status.
 
 ### Backward Coverage Verification
 

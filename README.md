@@ -34,9 +34,8 @@ Ten skill folders. Each contains a prompt that gives your AI agent a persona wit
 | **Rahat**&nbsp;🟨 | QA & Reliability | Diagnoses before fixing. Breadth-first hypothesis generation RCA protocol. Never proposes a code change until root cause is confirmed by evidence. |
 | **Zach**&nbsp;⬜ | Security | Contextual SAST code review. Prioritizes high-confidence, actionable vulnerabilities over theoretical noise. Perspective is grounded in real-world exploitability. |
 
-Plus four interactive modes that work across personas:
+Plus three interactive modes that work across personas:
 
-- **Propose** ⚓: Discover and ground-truth in the reality of the existing project codebase, to anchor assumptions and relieve the you of the burden of discovery.
 - **Debate** 🌀: A structured multi-persona design debate session. Faisal, Katrina, Lance, and Rahat argue it out -- surfacing tensions from different perspectives. It's BMAD's "Party Mode" but named for what it actually does.
 - **Elicit** ⚡: Added help to expand your own thinking and intent. 20+ structured methods to push requirements, UX decisions, or architecture past "good enough" into genuinely strong.
 - **Brainstorm** 💡: Open-ended ideation designed to get past obvious ideas. Anti-bias protocols prevent the facilitator from clustering around a single direction.
@@ -97,7 +96,6 @@ Or jump in wherever makes sense:
 - Something's broken? → `Rahat, diagnose this.`
 - Need to step outside of the box? → `Brainstorm this.`
 - Want to challenge something you just produced? → `Elicit this.`
-- Have an abstract intent but no spec? → `Propose an approach for this based on what we see in the codebase.`
 - Need cross-functional input on a hard decision? → `Debate this.`
 
 ### Supported environments
