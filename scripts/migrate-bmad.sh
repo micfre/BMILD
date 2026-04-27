@@ -109,7 +109,7 @@ if [[ -d "$IMPL_DIR" ]]; then
 
     PARTS=()
     for EPIC in $(echo "${!EPIC_STORIES[@]}" | tr ' ' '\n' | sort -n); do
-        NUMS=($(echo "${EPIC_STORIES[$EPIC]}" | tr ' ' '\n' | sort -n | uniq))
+        mapfile -t NUMS < <(echo "${EPIC_STORIES[$EPIC]}" | tr ' ' '\n' | sort -n | uniq)
         if [[ ${#NUMS[@]} -gt 0 ]]; then
             FIRST=${NUMS[0]}
             LAST=${NUMS[-1]}
