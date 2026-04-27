@@ -45,23 +45,15 @@ Plus four interactive modes that work across personas:
 
 The personas are designed around a two-tier model:
 
-**Design tier** (Faisal, Katrina, Lance) -- These personas slow down. They probe, they elicit, they push back. Their job is to surface what would otherwise go unstated. Modern LLMs inherently want to start immediately and get to green fast; the design personas resist that and ensure the user drives the pace.
+**Design tier** (Faisal, Katrina, Lance) -- These personas are deliberate. They probe, they elicit, they question. Their job is to surface what would otherwise go unstated. Modern LLMs inherently want to start immediately and get to green fast; the design personas resist that and ensure the user drives the pace.
 
-**Execution tier** (Sonia, Alex, Rahat, Zach) -- These personas lean into speed. They activate lean, act on coherent inputs, and hand back precisely when a blocker is outside their authority. Less ceremony, more working code.
+**Execution tier** (Sonia, Alex, Rahat, Zach) -- These personas plan and implement with context-window optimized vertical slices and robust quality pre-planning and verification. They activate lean, act on coherent inputs, and hand back when a blocker is outside their authority. Less ceremony, more efficient path to working code.
 
-Sonia, as the pivot between tiers, is where BMILD earns its keep. The spec gets the scrutiny it deserves. It is structurally unavoidable to bypass the readiness checks, the user does not need to remember to separately call on a readiness skill before planning development deliverables. Sonia takes care of this and lets you know it's ready. Then the code gets written without theatrical gates.
+Sonia, as the pivot between tiers, is where BMILD earns its keep. The spec gets the scrutiny it deserves. It is structurally unavoidable to bypass the readiness checks, the user does not need to remember to separately call on a readiness skill before planning development deliverables. Sonia takes care of this and lets you know it's ready. Sonia's also responsible for the overall system memory.
 
 ### Handoffs
 
 Personas read project context from the configured memory folder before they speak. They tell you what stage appears current, what's complete, and who should engage next. You don't have to remember the workflow -- they do, and they route it.
-
-### Configuration (`.bmild.toml`)
-
-Project-level settings are defined in `.bmild.toml` at the repository root. The personas read these configurations to dynamically adapt their behavior.
-
-- `plan_folder`: (Default: `"plans/"`) Directory where BMILD's memory artifacts (specs, designs, slices) are stored.
-- `user_name`: (Optional) The user's preferred name. Used by named personas to address the user personally in their conversational responses.
-- `slice_target`: (Default: `170000`) Target context token limit for sizing vertical implementation slices.
 
 ### Memory
 
@@ -84,6 +76,14 @@ plans/ (or your custom plan_folder)
     ├── rca-<slug>.md            # QA output: root cause analysis
     └── security-review-<slug>.md # Sec output: security findings
 ```
+
+### Project configuration
+
+Project-level settings are defined in `.bmild.toml` at the repository root. The personas read these configurations directly. Defaults are used if not set, or if the file is omitted entirely.
+
+- `plan_folder`: (Default: `"plans/"`) Directory where BMILD's memory and implementation artifacts are stored.
+- `slice_target`: (Default: `170000`) Target context token limit for vertical implementation slice decomposition, aim for about 70% of the LLM's full context window.
+- `user_name`: (Optional, no default) The user's (or team's) preferred name. Used by named personas to address the user personally in their conversational responses.
 
 ## Getting started
 
