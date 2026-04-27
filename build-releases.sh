@@ -23,7 +23,7 @@ if [[ -z "${CI}" ]]; then
     echo "CRITICAL: Ensure you have COMMITTED and PUSHED all your changes"
     echo "to the current branch BEFORE continuing."
     echo "****************************************************************"
-    read -p "Press Enter to continue or Ctrl+C to abort..." ANY_KEY
+    read -r -p "Press Enter to continue or Ctrl+C to abort..." _
 fi
 
 # --- Release Notes Extraction ---

@@ -15,7 +15,7 @@ jobs:
       - name: Run ShellCheck
         uses: ludeeus/action-shellcheck@master
         with:
-          ignore_paths: external_references/
+          ignore_paths: external_references
 
   lint-markdown:
     name: Lint Markdown

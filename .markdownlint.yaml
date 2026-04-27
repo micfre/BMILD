@@ -1,0 +1,18 @@
+# Markdownlint configuration for BMILD
+default: true
+
+# MD013/line-length: Prompts and specs often have long lines
+MD013: false
+
+# MD033/no-inline-html: Personas use HTML badges and symbols
+MD033: false
+
+# MD041/first-line-h1: Files often start with frontmatter or banners
+MD041: false
+
+# MD024/no-duplicate-heading: Recurring section names are common in skill files
+MD024:
+  siblings_only: true
+
+# MD036/no-emphasis-as-heading: Bold lines are sometimes used as structural markers
+MD036: false
