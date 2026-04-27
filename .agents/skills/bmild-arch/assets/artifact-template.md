@@ -2,7 +2,7 @@
 ---
 scope: <initiative-name> | _system
 updated: YYYY-MM-DD
-author: bmild-arch
+author: [user_name] + Lance (Arch)
 ---
 
 ## 1. Architecture Vision & Context

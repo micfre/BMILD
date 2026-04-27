@@ -2,7 +2,7 @@
 ---
 scope: <initiative-name> | _system
 updated: YYYY-MM-DD
-author: bmild-ux
+author: [user_name] + Katrina (UX)
 ---
 
 ## 1. Initiative Context & Flow Goals

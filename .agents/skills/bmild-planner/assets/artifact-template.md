@@ -5,7 +5,7 @@
 scope: <initiative-name> | _system
 status: active | complete | archived
 updated: YYYY-MM-DD
-author: bmild-planner
+author: [user_name] + Sonia (Planner)
 planning_method: plan-forward-verify-backward
 verification_status: pass | pass_with_warning | fail | handback
 ---

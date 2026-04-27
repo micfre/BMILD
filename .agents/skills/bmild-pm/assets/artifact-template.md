@@ -2,7 +2,7 @@
 ---
 scope: <initiative-name> | _system
 updated: YYYY-MM-DD
-author: bmild-pm
+author: [user_name] + Faisal (PM)
 ---
 
 ## 1. Problem Framing & Executive Summary

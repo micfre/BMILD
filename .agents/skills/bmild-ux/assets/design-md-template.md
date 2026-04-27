@@ -2,7 +2,7 @@
 ---
 scope: _system
 updated: YYYY-MM-DD
-author: bmild-ux
+author: [user_name] + Katrina (UX)
 ---
 
 # Global Design System (DESIGN.md)

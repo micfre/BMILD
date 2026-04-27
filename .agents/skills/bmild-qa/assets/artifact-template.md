@@ -51,7 +51,7 @@ Write `[plan_folder]/<initiative-name>/verification-matrix.md` mapping every req
 ---
 scope: <initiative-name> | _system
 created: YYYY-MM-DD
-author: bmild-qa
+author: [user_name] + Rahat (QA)
 mode: nyquist
 ---
 
