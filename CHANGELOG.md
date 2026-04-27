@@ -11,24 +11,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Documentation improvements
-- Example output from Interactive Leads debate
-- Added `plan_folder` configuration to `.bmild.toml` (defaulting to `plans/`) to allow custom location for memory artifacts
+- **New Security Persona**: Introduced **Zach (Security)** for security-focused code and architecture review.
+- **Configurable Artifact Location**: Added `plan_folder` to `.bmild.toml` for custom memory artifact paths.
+- **Personalized Authorship**: All specs and artifacts now track personalized authorship (e.g., "Mike + Faisal (PM)").
+- **Algorithmic Tokenizer**: BASH-based tokenizer for deterministic Slice budgeting and context window management.
+- **Onboarding Guide**: Added `ONBOARDING.md` for first-run setup and migration from legacy BMAD workflows.
+- **Assumptions Interactive Mode**: New mode for groundtruthing specifications against the existing codebase.
 
 ### Changed
 
-- Standardized PM, UX, Architect, Delivery Planner, Dev, and QA skill prompts around context-first openings and explicit next-persona handoffs
-- Expanded the Delivery Planner skill contract to cover readiness checks, Slice sequencing, Slice status visibility, and rerouting when implementation exposes blockers or gaps
-- Extended the Delivery Planner with a lightweight Slice-budgeting method, a visible budgeting reference asset, and `Likely Required Reads` in Slice handoff artifacts
-- Reworked `README.md` into a stage-based discovery surface with lifecycle routing, explicit handoff guidance, and BMAD intent mapping
-- Added `ONBOARDING.md` as a compact first-run and BMAD migration guide that reinforces midstream entry and the Delivery Planner role
-- Added pre-handoff engagement gates to PM, UX, and Arch: each lead must walk the user through outstanding domain-specific Open Questions and unvalidated Assumptions, and confirm the output artifact is written, before offering handoff; handoff target is now context-adaptive rather than hard-coded
-- Added conversational issue communication requirement to PM, UX, and Arch: when any design-tier lead surfaces an open issue requiring user direction, they must explain it in conversation (state issue, options, recommendation) rather than logging it silently to the spec
-- Fixed Arch feature-mode context rule: Lance no longer requires `plans/platform/system-design.md` to exist before designing a feature; proceeds from available context and surfaces missing platform constraints as assumptions instead of blocking
-- Debate synthesis is now execution-first: after synthesis is confirmed and open items are resolved, the facilitator applies all agreed factual changes to the relevant spec documents and appends the synthesis record, then reports what changed; passive "offer to append" and "cleanup" framing removed
-- Elicit apply/discard halt softened to judgment-based: clear improvements are applied and reported without halting; halt is retained only when a method produces competing alternatives or genuinely ambiguous direction; user can say "undo" to revert
-- Brainstorming session close is now execution-first: the facilitator proactively synthesizes and presents the summary rather than waiting to be asked
-- Fixed two hardcoded absolute paths in Delivery Planner (`bmild-planner`) to use relative paths (`./references/slice-budget-reference.md`), ensuring portability across IDEs that install skills in different root locations
+- **Implicit Context Memory**: Refactored to a universal, non-stateful persistence model for both system and initiative-scoped development.
+- **Unified Skill Lifecycle**: Standardized activation and exit sequences across all personas for consistent environment resolution and handoff hygiene.
+- **Enhanced Design Elicitation**: Added pre-handoff engagement gates (open questions/assumptions) and conversational issue communication to PM, UX, and Arch personas.
+- **Execution-First Synthesis**: Refined Debate, Brainstorming, and Propose skills to proactively apply agreed changes to specifications.
+- **Expanded Delivery Planner**: Upgraded Sonia with readiness checks, Slice sequencing, status visibility, and automated rerouting.
+- **Documentation Overhaul**: Reworked `README.md` into a stage-based discovery surface with explicit lifecycle routing.
+
+### Fixed
+
+- Improved inter-agent scope awareness and handoff hygiene across all personas.
+- Fixed Arch feature-mode context rule to allow designing features without pre-existing platform constraints.
+- Resolved hardcoded absolute paths in Delivery Planner references to ensure portability.
+- Fixed mode inference for PM persona when handling greenfield vs. brownfield projects.
+
 
 ## [0.1]
 
