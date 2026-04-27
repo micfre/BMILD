@@ -1,15 +1,27 @@
 # Markdownlint configuration for BMILD
 default: true
 
+# MD007/ul-indent: Standard 2-space indentation for unordered lists
+MD007:
+  indent: 2
+
 # MD013/line-length: Prompts and specs often have long lines
 MD013: false
 
-# MD026/punctuation in headings: Relax allowable punctuation
-MD026:
-  punctuation: ".,;:!"
+# MD026/no-trailing-punctuation: Headings in documentation often have punctuation
+MD026: false
+
+# MD032/blanks-around-lists: Relax blanks around lists (avoids issues in custom HTML tags)
+MD032: false
 
 # MD033/no-inline-html: Personas use HTML badges and symbols
 MD033: false
+
+# MD038/no-space-in-code: Relax spaces inside code spans (e.g. ` - `)
+MD038: false
+
+# MD040/fenced-code-language: Relax language tags for nested/template examples
+MD040: false
 
 # MD041/first-line-h1: Expect frontmatter, not h1
 MD041: false
@@ -21,3 +33,6 @@ MD046:
 # MD049/emphasis style: Expect asterisk, not underscore
 MD049:
   style: asterisk
+
+# MD060/table-column-style: Allow mixed padded/compact table columns
+MD060: false

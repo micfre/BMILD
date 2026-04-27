@@ -10,77 +10,90 @@ When an existing package already does what you need, you can reference it direct
 
 <Tabs sync={false}>
   <Tab title="uvx">
-    [uvx](https://docs.astral.sh/uv/guides/tools/) runs Python packages in isolated environments with aggressive caching. It ships with [uv](https://docs.astral.sh/uv/).
 
-    ```bash theme={null}
-    uvx ruff@0.8.0 check .
-    uvx black@24.10.0 .
-    ```
+[uvx](https://docs.astral.sh/uv/guides/tools/) runs Python packages in isolated environments with aggressive caching. It ships with [uv](https://docs.astral.sh/uv/).
 
-    * Not bundled with Python — requires a separate install.
-    * Fast. Caches aggressively so repeat runs are near-instant.
+```bash theme={null}
+uvx ruff@0.8.0 check .
+uvx black@24.10.0 .
+```
+
+* Not bundled with Python — requires a separate install.
+* Fast. Caches aggressively so repeat runs are near-instant.
+
   </Tab>
 
   <Tab title="pipx">
-    [pipx](https://pipx.pypa.io/) runs Python packages in isolated environments. Available via OS package managers (`apt install pipx`, `brew install pipx`).
 
-    ```bash theme={null}
-    pipx run 'black==24.10.0' .
-    pipx run 'ruff==0.8.0' check .
-    ```
+[pipx](https://pipx.pypa.io/) runs Python packages in isolated environments. Available via OS package managers (`apt install pipx`, `brew install pipx`).
 
-    * Not bundled with Python — requires a separate install.
-    * A mature alternative to `uvx`. While `uvx` has become the standard recommendation, `pipx` remains a reliable option with broader OS package manager availability.
+```bash theme={null}
+pipx run 'black==24.10.0' .
+pipx run 'ruff==0.8.0' check .
+```
+
+* Not bundled with Python — requires a separate install.
+* A mature alternative to `uvx`. While `uvx` has become the standard recommendation, `pipx` remains a reliable option with broader OS package manager availability.
+
   </Tab>
 
   <Tab title="npx">
-    [npx](https://docs.npmjs.com/cli/commands/npx) runs npm packages, downloading them on demand. It ships with npm (which ships with Node.js).
 
-    ```bash theme={null}
-    npx eslint@9 --fix .
-    npx create-vite@6 my-app
-    ```
+[npx](https://docs.npmjs.com/cli/commands/npx) runs npm packages, downloading them on demand. It ships with npm (which ships with Node.js).
 
-    * Bundled with Node.js — no extra install needed.
-    * Downloads the package, runs it, and caches it for future use.
-    * Pin versions with `npx package@version` for reproducibility.
+```bash theme={null}
+npx eslint@9 --fix .
+npx create-vite@6 my-app
+```
+
+* Bundled with Node.js — no extra install needed.
+* Downloads the package, runs it, and caches it for future use.
+* Pin versions with `npx package@version` for reproducibility.
+
   </Tab>
 
   <Tab title="bunx">
-    [bunx](https://bun.sh/docs/cli/bunx) is Bun's equivalent of `npx`. It ships with [Bun](https://bun.sh/).
 
-    ```bash theme={null}
-    bunx eslint@9 --fix .
-    bunx create-vite@6 my-app
-    ```
+[bunx](https://bun.sh/docs/cli/bunx) is Bun's equivalent of `npx`. It ships with [Bun](https://bun.sh/).
 
-    * Drop-in replacement for `npx` in Bun-based environments.
-    * Only appropriate when the user's environment has Bun rather than Node.js.
+```bash theme={null}
+bunx eslint@9 --fix .
+bunx create-vite@6 my-app
+```
+
+* Drop-in replacement for `npx` in Bun-based environments.
+* Only appropriate when the user's environment has Bun rather than Node.js.
+
   </Tab>
 
   <Tab title="deno run">
-    [deno run](https://docs.deno.com/runtime/reference/cli/run/) runs scripts directly from URLs or specifiers. It ships with [Deno](https://deno.com/).
 
-    ```bash theme={null}
-    deno run npm:create-vite@6 my-app
-    deno run --allow-read npm:eslint@9 -- --fix .
-    ```
+[deno run](https://docs.deno.com/runtime/reference/cli/run/) runs scripts directly from URLs or specifiers. It ships with [Deno](https://deno.com/).
 
-    * Permission flags (`--allow-read`, etc.) are required for filesystem/network access.
-    * Use `--` to separate Deno flags from the tool's own flags.
+```bash theme={null}
+deno run npm:create-vite@6 my-app
+deno run --allow-read npm:eslint@9 -- --fix .
+```
+
+* Permission flags (`--allow-read`, etc.) are required for filesystem/network access.
+* Use `--` to separate Deno flags from the tool's own flags.
+
   </Tab>
 
   <Tab title="go run">
-    [go run](https://pkg.go.dev/cmd/go#hdr-Compile_and_run_Go_program) compiles and runs Go packages directly. It is built into the `go` command.
 
-    ```bash theme={null}
-    go run golang.org/x/tools/cmd/goimports@v0.28.0 .
-    go run github.com/golangci/golangci-lint/cmd/golangci-lint@v1.62.0 run
-    ```
+[go run](https://pkg.go.dev/cmd/go#hdr-Compile_and_run_Go_program) compiles and runs Go packages directly. It is built into the `go` command.
 
-    * Built into Go — no extra tooling needed.
-    * Pin versions or use `@latest` to make the command explicit.
+```bash theme={null}
+go run golang.org/x/tools/cmd/goimports@v0.28.0 .
+go run github.com/golangci/golangci-lint/cmd/golangci-lint@v1.62.0 run
+```
+
+* Built into Go — no extra tooling needed.
+* Pin versions or use `@latest` to make the command explicit.
+
   </Tab>
+
 </Tabs>
 
 **Tips for one-off commands in skills:**
@@ -104,7 +117,7 @@ List available scripts in your `SKILL.md` so the agent knows they exist:
 
 Then instruct the agent to run them:
 
-````markdown SKILL.md theme={null}
+`````markdown
 ## Workflow
 
 1. Run the validation script:
@@ -112,11 +125,12 @@ Then instruct the agent to run them:
    bash scripts/validate.sh "$INPUT_FILE"
    ```
 
-2. Process the results:
+1. Process the results:
+
    ```bash
    python3 scripts/process.py --input results.json
    ```
-````
+`````
 
 <Note>
   The same relative-path convention works in support files like `references/*.md` — script execution paths (in code blocks) are relative to the **skill directory root**, because the agent runs commands from there.
@@ -130,101 +144,101 @@ Several languages support inline dependency declarations:
 
 <Tabs sync={false}>
   <Tab title="Python">
-    [PEP 723](https://peps.python.org/pep-0723/) defines a standard format for inline script metadata. Declare dependencies in a TOML block inside `# ///` markers:
+[PEP 723](https://peps.python.org/pep-0723/) defines a standard format for inline script metadata. Declare dependencies in a TOML block inside `# ///` markers:
 
-    ```python scripts/extract.py theme={null}
-    # /// script
-    # dependencies = [
-    #   "beautifulsoup4",
-    # ]
-    # ///
+```python scripts/extract.py theme={null}
+# /// script
+# dependencies = [
+#   "beautifulsoup4",
+# ]
+# ///
 
-    from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup
 
-    html = '<html><body><h1>Welcome</h1><p class="info">This is a test.</p></body></html>'
-    print(BeautifulSoup(html, "html.parser").select_one("p.info").get_text())
-    ```
+html = '<html><body><h1>Welcome</h1><p class="info">This is a test.</p></body></html>'
+print(BeautifulSoup(html, "html.parser").select_one("p.info").get_text())
+```
 
-    Run with [uv](https://docs.astral.sh/uv/) (recommended):
+Run with [uv](https://docs.astral.sh/uv/) (recommended):
 
-    ```bash theme={null}
-    uv run scripts/extract.py
-    ```
+```bash theme={null}
+uv run scripts/extract.py
+```
 
-    `uv run` creates an isolated environment, installs the declared dependencies, and runs the script. [pipx](https://pipx.pypa.io/) (`pipx run scripts/extract.py`) also supports PEP 723.
+`uv run` creates an isolated environment, installs the declared dependencies, and runs the script. [pipx](https://pipx.pypa.io/) (`pipx run scripts/extract.py`) also supports PEP 723.
 
-    * Pin versions with [PEP 508](https://peps.python.org/pep-0508/) specifiers: `"beautifulsoup4>=4.12,<5"`.
-    * Use `requires-python` to constrain the Python version.
-    * Use `uv lock --script` to create a lockfile for full reproducibility.
+* Pin versions with [PEP 508](https://peps.python.org/pep-0508/) specifiers: `"beautifulsoup4>=4.12,<5"`.
+* Use `requires-python` to constrain the Python version.
+* Use `uv lock --script` to create a lockfile for full reproducibility.
   </Tab>
 
   <Tab title="Deno">
-    Deno's `npm:` and `jsr:` import specifiers make every script self-contained by default:
+Deno's `npm:` and `jsr:` import specifiers make every script self-contained by default:
 
-    ```typescript scripts/extract.ts theme={null}
-    #!/usr/bin/env -S deno run
+```typescript scripts/extract.ts theme={null}
+#!/usr/bin/env -S deno run
 
-    import * as cheerio from "npm:cheerio@1.0.0";
+import * as cheerio from "npm:cheerio@1.0.0";
 
-    const html = `<html><body><h1>Welcome</h1><p class="info">This is a test.</p></body></html>`;
-    const $ = cheerio.load(html);
-    console.log($("p.info").text());
-    ```
+const html = `<html><body><h1>Welcome</h1><p class="info">This is a test.</p></body></html>`;
+const $ = cheerio.load(html);
+console.log($("p.info").text());
+```
 
-    ```bash theme={null}
-    deno run scripts/extract.ts
-    ```
+```bash theme={null}
+deno run scripts/extract.ts
+```
 
-    * Use `npm:` for npm packages, `jsr:` for Deno-native packages.
-    * Version specifiers follow semver: `@1.0.0` (exact), `@^1.0.0` (compatible).
-    * Dependencies are cached globally. Use `--reload` to force re-fetch.
-    * Packages with native addons (node-gyp) may not work — packages that ship pre-built binaries work best.
+* Use `npm:` for npm packages, `jsr:` for Deno-native packages.
+* Version specifiers follow semver: `@1.0.0` (exact), `@^1.0.0` (compatible).
+* Dependencies are cached globally. Use `--reload` to force re-fetch.
+* Packages with native addons (node-gyp) may not work — packages that ship pre-built binaries work best.
   </Tab>
 
   <Tab title="Bun">
-    Bun auto-installs missing packages at runtime when no `node_modules` directory is found. Pin versions directly in the import path:
+Bun auto-installs missing packages at runtime when no `node_modules` directory is found. Pin versions directly in the import path:
 
-    ```typescript scripts/extract.ts theme={null}
-    #!/usr/bin/env bun
+```typescript scripts/extract.ts theme={null}
+#!/usr/bin/env bun
 
-    import * as cheerio from "cheerio@1.0.0";
+import * as cheerio from "cheerio@1.0.0";
 
-    const html = `<html><body><h1>Welcome</h1><p class="info">This is a test.</p></body></html>`;
-    const $ = cheerio.load(html);
-    console.log($("p.info").text());
-    ```
+const html = `<html><body><h1>Welcome</h1><p class="info">This is a test.</p></body></html>`;
+const $ = cheerio.load(html);
+console.log($("p.info").text());
+```
 
-    ```bash theme={null}
-    bun run scripts/extract.ts
-    ```
+```bash theme={null}
+bun run scripts/extract.ts
+```
 
-    * No `package.json` or `node_modules` needed. TypeScript works natively.
-    * Packages are cached globally. First run downloads; subsequent runs are near-instant.
-    * If a `node_modules` directory exists anywhere up the directory tree, auto-install is disabled and Bun falls back to standard Node.js resolution.
+* No `package.json` or `node_modules` needed. TypeScript works natively.
+* Packages are cached globally. First run downloads; subsequent runs are near-instant.
+* If a `node_modules` directory exists anywhere up the directory tree, auto-install is disabled and Bun falls back to standard Node.js resolution.
   </Tab>
 
   <Tab title="Ruby">
-    Bundler ships with Ruby since 2.6. Use `bundler/inline` to declare gems directly in the script:
+Bundler ships with Ruby since 2.6. Use `bundler/inline` to declare gems directly in the script:
 
-    ```ruby scripts/extract.rb theme={null}
-    require 'bundler/inline'
+```ruby scripts/extract.rb theme={null}
+require 'bundler/inline'
 
-    gemfile do
-      source 'https://rubygems.org'
-      gem 'nokogiri'
-    end
+gemfile do
+  source 'https://rubygems.org'
+  gem 'nokogiri'
+end
 
-    html = '<html><body><h1>Welcome</h1><p class="info">This is a test.</p></body></html>'
-    doc = Nokogiri::HTML(html)
-    puts doc.at_css('p.info').text
-    ```
+html = '<html><body><h1>Welcome</h1><p class="info">This is a test.</p></body></html>'
+doc = Nokogiri::HTML(html)
+puts doc.at_css('p.info').text
+```
 
-    ```bash theme={null}
-    ruby scripts/extract.rb
-    ```
+```bash theme={null}
+ruby scripts/extract.rb
+```
 
-    * Pin versions explicitly (`gem 'nokogiri', '~> 1.16'`) — there is no lockfile.
-    * An existing `Gemfile` or `BUNDLE_GEMFILE` env var in the working directory can interfere.
+* Pin versions explicitly (`gem 'nokogiri', '~> 1.16'`) — there is no lockfile.
+* An existing `Gemfile` or `BUNDLE_GEMFILE` env var in the working directory can interfere.
   </Tab>
 </Tabs>
 

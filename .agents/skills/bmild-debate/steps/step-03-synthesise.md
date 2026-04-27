@@ -27,7 +27,7 @@ Present the synthesis clearly under three headings:
 **Preference** — where Leads differed, but the trade-off is low-stakes or reversible:
 
 | Option | Who favours it | Why | Cost |
-|--------|---------------|-----|------|
+| --- | --- | --- | --- |
 | A | Katrina@bmild-ux, Faisal@bmild-pm | [reason] | [cost] |
 | B | Lance@bmild-arch | [reason] | [cost] |
 

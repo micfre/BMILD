@@ -26,4 +26,6 @@ jobs:
         uses: davidanson/markdownlint-cli2-action@v16
         with:
           globs: |
-            .agents/skills/**/*.md
+            *.md
+            .agents/**/*.md
+            docs/**/*.md

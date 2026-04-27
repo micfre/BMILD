@@ -52,9 +52,10 @@ The `SKILL.md` file must contain YAML frontmatter followed by Markdown content.
     version: "1.0"
   ---
   ```
+
 </Card>
 
-#### `name` field
+### `name` field
 
 The required `name` field:
 
@@ -92,9 +93,10 @@ The required `name` field:
   ```yaml theme={null}
   name: pdf--processing  # consecutive hyphens not allowed
   ```
+
 </Card>
 
-#### `description` field
+### `description` field
 
 The required `description` field:
 
@@ -114,9 +116,10 @@ The required `description` field:
   ```yaml theme={null}
   description: Helps with PDFs.
   ```
+
 </Card>
 
-#### `license` field
+### `license` field
 
 The optional `license` field:
 
@@ -129,9 +132,10 @@ The optional `license` field:
   ```yaml theme={null}
   license: Proprietary. LICENSE.txt has complete terms
   ```
+
 </Card>
 
-#### `compatibility` field
+### `compatibility` field
 
 The optional `compatibility` field:
 
@@ -153,13 +157,14 @@ The optional `compatibility` field:
   ```yaml theme={null}
   compatibility: Requires Python 3.14+ and uv
   ```
+
 </Card>
 
 <Note>
   Most skills do not need the `compatibility` field.
 </Note>
 
-#### `metadata` field
+### `metadata` field
 
 The optional `metadata` field:
 
@@ -175,9 +180,10 @@ The optional `metadata` field:
     author: example-org
     version: "1.0"
   ```
+
 </Card>
 
-#### `allowed-tools` field
+### `allowed-tools` field
 
 The optional `allowed-tools` field:
 
@@ -190,6 +196,7 @@ The optional `allowed-tools` field:
   ```yaml theme={null}
   allowed-tools: Bash(git:*) Bash(jq:*) Read
   ```
+
 </Card>
 
 ### Body content

@@ -42,7 +42,7 @@
 
 5. **Re-present the menu** after applying or resolving:
 
-   ```
+   ```text
    Continue elicitation:
    1. [Method Name]
    2. [Method Name]

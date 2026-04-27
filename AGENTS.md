@@ -6,9 +6,9 @@ The output of this project are the agent skills located in the `.agents/skills/`
 
 BMILD skills must follow these API-like design principles:
 
-1. **Design the Signature First (`description`)**: 
+1. **Design the Signature First (`description`)**:
    The `description` field in the frontmatter is the function signature. It must be specific about when to trigger and explicitly state what boundaries it does not cover (e.g., "Not for architectural design").
-2. **Uniform skill structure**: 
+2. **Uniform skill structure**:
    Each skill body uses these sections in this order:
    - **`Persona`**: Name, role, scope boundary, voice, and sign-off directive (`Sign off as [Name] [icon]`). Do not use `Always prefix` — identity is expressed at sign-off only.
    - **`Modes`**: Execution modes (e.g., "Diagnostic mode", "Implementation mode") and any execution phases.
@@ -19,15 +19,15 @@ BMILD skills must follow these API-like design principles:
    Artifact templates live in each skill's `assets/artifact-template.md`. Context memory templates live in each skill's `assets/context-memory-template.md`.
 3. **Skill Structure**:
    Keep skill structure aligned across all personas to the extent that is reasonable to do to. Avoid patching a single skill as this may solve the local issue but will lead to drift that makes skills behave differently over time and create for more maintanace overhead.
-4. **Context-Aware Personas**: 
+4. **Context-Aware Personas**:
    Personas do their own thinking and are not bound by prescriptive linear flows or rigid tiers. They are domain specialists activated by the artifact state. Personas focusing on specification (PM, UX, Arch) slow down, probe, and elicit — their job is to surface what would otherwise go unstated. Personas focusing on execution (Planner, Dev, QA, Sec) activate lean, act on coherent inputs, and hand back precisely when a blocker is outside their domain authority.
-5. **Teach Reasoning**: 
+5. **Teach Reasoning**:
    Do not just list rules. Explain what goes wrong without the pattern, how to diagnose it, and provide before/after examples.
 
 ### Skills Documentation
 
-- specification: https://agentskills.io/specification
-- best practices: https://agentskills.io/skill-creation/best-practices
+- specification: <https://agentskills.io/specification>
+- best practices: <https://agentskills.io/skill-creation/best-practices>
 
 ## Target platforms
 

@@ -49,6 +49,7 @@ Every persona follows the same activation pattern:
 3. Ask only the next unresolved question, or take the next action
 
 When they're done with their stage, they'll tell you:
+
 - What's now complete
 - What artifact was written or updated
 - Who should engage next and why
@@ -72,12 +73,14 @@ The execution personas (Sonia, Alex, Rahat, Zach) are deliberately fast. They ac
 If you've used BMAD, the transition is straightforward. BMILD doesn't try to replicate BMAD persona-for-persona -- it consolidates.
 
 What's the same:
+
 - Spec-driven approach
 - Interactive modes (Party Mode -> Debate, Advanced Elicitation, Brainstorming)
 - Context-aware persona handoffs
 - Structured output artifacts
 
 What's different:
+
 - 7 personas covering the full lifecycle instead of 12+
 - No `npx install` -- just copy the skill folders
 - Features and Slices replace Epics and Stories
@@ -86,6 +89,7 @@ What's different:
 - No IDE-specific tooling -- works anywhere that reads skill folders
 
 What's intentionally missing:
+
 - Scrum ceremony (sprints, burndown, velocity)
 - A help agent (personas route each other)
 - Multiple planning personas -- Sonia handles readiness, sequencing, status, and rerouting
