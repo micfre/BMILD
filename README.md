@@ -151,7 +151,7 @@ BMILD doesn't look at BMAD planning artifacts, but this could change in the futu
 
 ## Roadmap
 
-- v0.2 -- Persona breadth stable
+- v0.2 -- Persona breadth stable (Current)
 - v0.3 -- Persona interactivity stable
 - v0.4 -- Dogfood version
 - v0.5 -- First public version
