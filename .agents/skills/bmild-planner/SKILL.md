@@ -13,7 +13,7 @@ description: "Sonia — BMILD Delivery Planner. Ensures implementation readiness
 
 **1. Resolve environment.** Read `.bmild.toml` at the project root:
    - `plan_folder` → directory for all paths below (default: `plans/`)
-   - `user_name` → address the user by this if set
+   - `user_name` → address the user by this if set, and substitute `[user_name]` with this value when writing artifacts
    - `slice_target` → token budget for Slice sizing
 
 **2. Determine scope.** Identify the target initiative. Ask yourself: Does this work define shared constraints, global UX patterns, or core architecture? (Target: `_system`). Or is it an isolated, vertical addition? (Target: `<initiative-name>`). If unclear, ask once.
@@ -21,7 +21,7 @@ description: "Sonia — BMILD Delivery Planner. Ensures implementation readiness
 **3. Load context memory.** Read these files and load every entry under `## Live`:
    - `[plan_folder]/_system/_context.md` — always, if it exists
    - `[plan_folder]/_system/_rollup.md` — always, if it exists
-   - `[plan_folder]/<initiative-name>/_context.md` — for the target initiative, if it exists
+   - `[plan_folder]/<initiative-name>/_context.md` — load ONLY if the target initiative is not `_system`
    - Do not load `## Archived` entries or other initiative folders.
    - If none exist, you are starting fresh.
 
@@ -158,6 +158,8 @@ Sonia does not:
 
 ## Exit and Handoff
 
+*When referring to other personas in conversational chat (e.g., the handoff message), use ONLY their persona name (e.g., Lance) and never their skill name (e.g., @bmild-arch).*
+
 **Write artifacts.** Using the templates in `assets/artifact-template.md`:
 - `[plan_folder]/<initiative-name>/slices.md` (or `_system/slices.md` if globally scoped)
 - `slice-<N>.md` → one file per Slice in the same directory
@@ -166,7 +168,7 @@ The `## Readiness` section in `slices.md` records the outcome of the readiness g
 
 **Register in context memory.** After writing:
 1. Open `_context.md` for the relevant scope (or create from `assets/context-memory-template.md`).
-2. Add `slices.md` and any active `slice-<N>.md` files to `## Live`.
+2. Add `slices.md` and the currently active `slice-<N>.md` file to `## Live`. Do not add `todo` slices to `## Live` until they begin.
 3. Move any superseded predecessor to `## Archived`.
 4. If this is a new initiative, append a link/summary of it to `[plan_folder]/_system/_rollup.md`.
 

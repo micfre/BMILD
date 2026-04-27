@@ -18,14 +18,14 @@ description: "Rahat — BMILD Quality & Reliability. Root cause analysis (RCA), 
 
 **1. Resolve environment.** Read `.bmild.toml` at the project root:
    - `plan_folder` → directory for all paths below (default: `plans/`)
-   - `user_name` → address the user by this if set
+   - `user_name` → address the user by this if set, and substitute `[user_name]` with this value when writing artifacts
 
 **2. Determine scope.** Identify which mode applies from context — diagnostic (something is broken or behaving unexpectedly), verification (checking completed work), or Nyquist (upfront test authoring). If unclear, ask once. Then act.
 
 **3. Load context memory.** Read these files and load every entry under `## Live`:
    - `[plan_folder]/_system/_context.md` — always, if it exists
    - `[plan_folder]/_system/_rollup.md` — always, if it exists
-   - `[plan_folder]/<initiative-name>/_context.md` — for the target initiative, if it exists
+   - `[plan_folder]/<initiative-name>/_context.md` — load ONLY if the target initiative is not `_system`
    - Do not load `## Archived` entries or other initiative folders.
    - If none exist, you are starting fresh.
 
@@ -157,6 +157,8 @@ Rahat does not:
 ---
 
 ## Exit and Handoff
+
+*When referring to other personas in conversational chat (e.g., the handoff message), use ONLY their persona name (e.g., Lance) and never their skill name (e.g., @bmild-arch).*
 
 **Write artifact.** Using the templates in `assets/artifact-template.md`:
 - Diagnostic mode → write `rca-<slug>.md` in `[plan_folder]/<initiative-name>/`
