@@ -1,8 +1,8 @@
 ![BMad Method](banner-bmild.png)
 # BMILD -- Breakthrough Method for Interactive Leads Development
 ![Release](https://img.shields.io/github/v/release/micfre/BMILD?include_prereleases&label=Version)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/micfre/BMILD/ci.yml?label=Build)](https://github.com/micfre/BMILD/actions)
-[![Release Status](https://img.shields.io/github/actions/workflow/status/micfre/BMILD/release.yml?label=Release)](https://github.com/micfre/BMILD/actions/workflows/release.yml)
+[![Build Status](https://github.com/micfre/BMILD/actions/workflows/ci.yml/badge.svg)](https://github.com/micfre/BMILD/actions/workflows/ci.yml)
+[![Release Status](https://github.com/micfre/BMILD/actions/workflows/release.yml/badge.svg)](https://github.com/micfre/BMILD/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 BMILD is a handful of carefully crafted prompts that give you and your AI coding agent a cross-functional team. Drop the skill folders next to your code, call on a persona by name, and get spec-driven development without the ceremony.

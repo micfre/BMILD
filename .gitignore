@@ -9,7 +9,6 @@ tmp/
 
 # Local OS/editor noise
 .DS_Store
-.github/
 .serena/
 opencode.json
 Thumbs.db
