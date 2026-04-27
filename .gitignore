@@ -16,6 +16,3 @@ Thumbs.db
 *.code-workspace
 *Zone.Identifier
 *.swp
-
-# Itself
-.gitignore
