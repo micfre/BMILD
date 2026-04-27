@@ -105,7 +105,7 @@ Or jump in wherever makes sense:
 
 BMILD has two requirements:
 - works anywhere that supports the agent Skills pattern
-- the workspace must have BASH avaialble (WSL, Linux, macOS all do)
+- the workspace must have BASH available (WSL, Linux, macOS all do)
 
 #### Note that only Antigravity and Codex (CLI and web app) are primary testing targets.
 
@@ -142,15 +142,15 @@ Where BMILD diverges:
   - **Broader persona scope.** Fewer personas, broader per-persona scope, personas adapt to context without routing you into brittle stepwise flows. And an easier mental model of who to talk to.
   - **Portable, no installer.** BMAD uses an installer. BMILD is file copy. BMILD stays equally usable across any environment that supports agent Skills. Distribute to the team effortlessly via github. Reuse across local repos with symlinks.
   - **Less ceremony.** The design personas insist on thoroughness. The execution personas strip away everything that doesn't contribute to working code. BMILD deliberately avoids performative theatre, gates that exist to look rigorous rather than to catch real problems.
-Functionally:
+- Functionally:
   - **Context-bounded vertical Slices.** Atomic development units are sized with a lightweight tokenizer to an implementation-session context window, not to Agile story semantics. The evidence is that important stuff gets lost in the middle of large context window -- see 'Needle in a Haystack/NIAH' benchmarks -- and scope decomposition is driven by this physic. Slice planning also sequences based on MVP/growth/vision cuts specified in the product spec.
   - **Integrated readiness gate.** BMAD has a readiness verification skill, but it's a separate step you invoke before implementation. In BMILD, the equivalent is built into the Delivery Planner -- Sonia can't decompose work into Slices without first verifying that every Must Have in the spec has downstream coverage in UX or architecture. The gate is structurally unavoidable, not a step you must remember to run.
-  - **Structured degugging.** A strict 7-step root cause analysis protocol with mandatory breadth-first hypotheses, ranked by fit/frequency/recency, validated by evidence before any code is touched. Many debugging flows can prematurely funnel the agent into postulating a single domain and single cause.
-Semantically:
-  -- **Party Mode:** → Debate. "Start a debate on this topic." The leads come together. <span style="font-variant: small-caps;">Currently operates in a single context window, does not spawn subagents (which is a cool trick BMAD is implementing).</span>
-  -- **Advanced Elicitation:** → Elicit. "Help me articulate this topic." Intelligent objective-oriented probing.
-  -- **Brainstorming:** → Brainstorm. "Start a brainstorm on this topic." Operates essentially the same.
-  -- **Epics, Stories:** → Initiatives, Slices.
+  - **Structured debugging.** A strict 7-step root cause analysis protocol with mandatory breadth-first hypotheses, ranked by fit/frequency/recency, validated by evidence before any code is touched. Many debugging flows can prematurely funnel the agent into postulating a single domain and single cause.
+- Semantically:
+  - **Party Mode:** → Debate. "Start a debate on this topic." The leads come together. *<small>Currently operates in a single context window, does not spawn subagents (which is a cool trick BMAD is implementing).</small>*
+  - **Advanced Elicitation:** → Elicit. "Help me articulate this topic." Intelligent objective-oriented probing.
+  - **Brainstorming:** → Brainstorm. "Start a brainstorm on this topic." Operates essentially the same.
+  - **Epics, Stories:** → Initiatives, Slices.
 
 ### BMAD compatibility
 
