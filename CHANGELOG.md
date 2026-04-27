@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.0] - 2026-04-26
 
+## [0.1]
+
 ### Added
 
 - **New Security Persona**: Introduced **Zach (Security)** for security-focused code and architecture review.
@@ -33,13 +35,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed Arch feature-mode context rule to allow designing features without pre-existing platform constraints.
 - Resolved hardcoded absolute paths in Delivery Planner references to ensure portability.
 - Fixed mode inference for PM persona when handling greenfield vs. brownfield projects.
-
-
-## [0.1]
-
-### Added
-
-- Initial release
 
 ## [Roadmap]
 
