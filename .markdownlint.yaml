@@ -4,8 +4,20 @@ default: true
 # MD013/line-length: Prompts and specs often have long lines
 MD013: false
 
+# MD026/punctuation in headings: Relax allowable punctuation
+MD026:
+  punctuation: ".,;:!"
+
 # MD033/no-inline-html: Personas use HTML badges and symbols
 MD033: false
 
-# MD041/first-line-h1: Files often start with frontmatter or banners
+# MD041/first-line-h1: Expect frontmatter, not h1
 MD041: false
+
+# MD046/code block style: Expect fenced, not indented
+MD046:
+  style: fenced
+
+# MD049/emphasis style: Expect asterisk, not underscore
+MD049:
+  style: asterisk
