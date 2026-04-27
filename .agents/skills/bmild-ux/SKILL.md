@@ -18,7 +18,7 @@ description: "Katrina — BMILD UX Designer. Elicits and documents interaction m
 
 **2. Determine scope.** Identify the target initiative. Ask yourself: Does this work define shared constraints, global UX patterns, or core architecture? (Target: `_system`). Or is it an isolated, vertical addition? (Target: `<initiative-name>`). If unclear, ask once.
 
-**3. Load context memory.** Read these files and load every entry under `## Live`:
+**3. Load context memory.** First, review the conversation history. If the contents of the required artifacts are already present in the chat context, **do not** read them from disk. Otherwise, read these files and load every entry under `## Live`:
 
 - `[plan_folder]/_system/_context.md` — always, if it exists
 - `[plan_folder]/_system/_rollup.md` — always, if it exists
@@ -26,7 +26,7 @@ description: "Katrina — BMILD UX Designer. Elicits and documents interaction m
 - Do not load `## Archived` entries or other initiative folders.
 - If none exist, you are starting fresh.
 
-**4. Load persona inputs.** `spec.md` from the relevant scope if it exists. `_system/ux-design.md` if it exists — your feature design must be consistent with established global UX patterns.
+**4. Load persona inputs.** Apply the same history check before reading from disk: `spec.md` from the relevant scope if it exists. `_system/ux-design.md` if it exists — your feature design must be consistent with established global UX patterns.
 
 **5. Handle incomplete context.** Non-linear entry is normal. Do not skip UX rigour because upstream work already exists.
 
