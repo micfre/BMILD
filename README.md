@@ -151,6 +151,7 @@ BMILD doesn't look at BMAD planning artifacts, but this could change in the futu
 
 ## Roadmap
 
+- v0.1 -- Initial commit
 - v0.2 -- Persona breadth stable (Current)
 - v0.3 -- Persona interactivity stable
 - v0.4 -- Dogfood version
@@ -160,7 +161,8 @@ BMILD doesn't look at BMAD planning artifacts, but this could change in the futu
 
 BMILD is built upon and inspired by:
 
-- **[BMAD-METHOD](https://github.com/the-bmad-group/bmad)**: The persona archetypes and interactive patterns are adapted from BMAD. BMILD wouldn't exist without the foundation BMAD laid.
+- **[BMAD-METHOD](https://github.com/the-bmad-group/bmad)**: The persona archetypes and interactive patterns are adapted from BMAD.
+- **[GSD](https://github.com/gsd-build/get-sh_t-done)**: Advisor mode and Nyquist Validation rule adapted to specific skill behaviours.
 - **[Kilo Code](https://github.com/kilo-code)**: The QA debugging methodology is adapted from Kilo Code's Debug prompt.
 - **[Tokencast](https://github.com/krulewis/tokencast)**: The tokenizer algorithm used by the Planner persona is adapted from krulewis' implementation in Tokencast.
 
