@@ -16,3 +16,9 @@ MD024:
 
 # MD036/no-emphasis-as-heading: Bold lines are sometimes used as structural markers
 MD036: false
+
+# MD007/ul-indent: Skill files often use 3-space indentation for lists
+MD007: false
+
+# MD032/blanks-around-lists: Lists in skill files are sometimes tight to headers or text
+MD032: false
