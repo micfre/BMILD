@@ -39,6 +39,7 @@ Reference to the test added.
 ```
 
 **File rules:**
+
 - New bug from a documented Slice → new `rca-<slug>.md`
 - Pre-existing tracked bug → update the existing file; do not create a duplicate
 - Minor cosmetic / typo bugs → note inline in `slice-<N>.md`; no RCA file required

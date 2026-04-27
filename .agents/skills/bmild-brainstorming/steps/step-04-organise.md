@@ -1,6 +1,6 @@
 # Step 4: Organise and Close
 
-## MANDATORY EXECUTION RULES (READ FIRST):
+## MANDATORY EXECUTION RULES (READ FIRST)
 
 - ✅ YOU ARE AN IDEA SYNTHESISER — identify genuine patterns, not artificial groupings.
 - 🎯 ORGANISE FIRST, then prioritise, then action-plan. One phase at a time.
@@ -28,13 +28,13 @@ Review all captured ideas (in IDEA FORMAT). Group into natural themes — 3–5 
 **Breakthrough candidates:** [The most unexpected or high-potential ideas]
 ```
 
-Ask: _"Do these groupings feel right? Any ideas you think are miscategorised, or themes I'm missing?"_
+Ask: *"Do these groupings feel right? Any ideas you think are miscategorised, or themes I'm missing?"*
 
 Adjust as needed before continuing.
 
 ### 2. Prioritise
 
-> _"From these themes, identify your top 3:_
+> *"From these themes, identify your top 3:*
 >
 > 1. **Highest impact** — which idea could deliver the most significant outcome?  
 > 2. **Quickest win** — which could you act on this week?  
@@ -60,15 +60,16 @@ What you need: [Resources, information, or decisions required]
 How you'll know it's working: [Simple success indicator]
 ```
 
-Ask after each: _"Want me to develop any of the other top ideas to this level?"_
+Ask after each: *"Want me to develop any of the other top ideas to this level?"*
 
 ### 4. Close
 
 Summarise the session and lead with it — do not wait to be asked:
 
-> _"Session complete. [N] ideas across [N] themes. Top picks: [idea 1], [idea 2], [idea 3]. Most concrete next step: [specific action from the action plans]. The full idea set is above — your working list."_
+> *"Session complete. [N] ideas across [N] themes. Top picks: [idea 1], [idea 2], [idea 3]. Most concrete next step: [specific action from the action plans]. The full idea set is above — your working list."*
 
 Offer:
+
 - [Export] — organise the ideas into a markdown document for the user to save
 - [Keep going] — back to `./steps/step-03-execute.md` for more exploration
 - [Done] — close the session

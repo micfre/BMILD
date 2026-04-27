@@ -1,6 +1,6 @@
 # Step 2a: Browse Techniques
 
-## MANDATORY EXECUTION RULES (READ FIRST):
+## MANDATORY EXECUTION RULES (READ FIRST)
 
 - ✅ YOU ARE A LIBRARIAN — present techniques neutrally; do not steer choices.
 - 📋 Load `./brain-methods.yaml`. Keys: `category, technique_name, description`.
@@ -35,13 +35,13 @@ For each technique in the category, from the YAML:
 [description]
 ```
 
-Ask: _"Which technique(s) appeal to you? You can select one or several."_
+Ask: *"Which technique(s) appeal to you? You can select one or several."*
 
 ### 3. Confirm selection
 
 List what was chosen and why it suits the session topic (brief — one line per technique).
 
-Ask: _"Ready to start with these? Or would you like to browse another category first?"_
+Ask: *"Ready to start with these? Or would you like to browse another category first?"*
 
 ### 4. Hand off
 

@@ -1,6 +1,6 @@
 # Step 2: Execute — Method Application and Iteration
 
-## MANDATORY EXECUTION RULES (READ FIRST):
+## MANDATORY EXECUTION RULES (READ FIRST)
 
 - ✅ APPLY the selected method to the CURRENT version of the content — not the original if it has already been enhanced.
 - 🎯 SHOW THE WORK — present what the method revealed, not just the changed output.
@@ -33,14 +33,15 @@
 
    **If the method produces a clear improvement consistent with the user’s stated direction:**
    Apply the changes to the working content immediately, then confirm:
-   > _"Applied. Working content updated — [one-line summary of what changed]. Say 'undo' to revert."_
+   > *"Applied. Working content updated — [one-line summary of what changed]. Say 'undo' to revert."*
 
    **If the method produces competing alternatives or genuinely ambiguous direction:**
    Surface the choice and halt:
-   > _"[Brief description of the tension or alternatives]. Which direction? [y] Apply first option / [n] Discard / [other] Instructions"_
+   > *"[Brief description of the tension or alternatives]. Which direction? [y] Apply first option / [n] Discard / [other] Instructions"*
    Wait for the user’s response before continuing.
 
 5. **Re-present the menu** after applying or resolving:
+
    ```
    Continue elicitation:
    1. [Method Name]
@@ -83,7 +84,7 @@ Format:
 ...
 ```
 
-After displaying, prompt: _"Select any method by number, or return to [r] your current 5 / [x] proceed."_
+After displaying, prompt: *"Select any method by number, or return to [r] your current 5 / [x] proceed."*
 
 ---
 
@@ -91,19 +92,19 @@ After displaying, prompt: _"Select any method by number, or return to [r] your c
 
 1. Present a brief summary of what the elicitation session produced:
    > **Elicitation complete.**
-   > 
+   >
    > Methods applied: [list]  
    > Key improvements made: [2–4 bullets]  
    > Changes discarded: [if any]
 
 2. Present the final working version of the content.
 
-3. Ask: _"Do you want to save this enhanced version to [document name]?"_
+3. Ask: *"Do you want to save this enhanced version to [document name]?"*
    - If yes: write it to the appropriate spec document (or the section within it) and update `_context.md` if the document changed meaningfully.
    - If no: leave the content in the conversation for the user to apply manually.
 
 4. Return cleanly to the invoking context:
-   > _"Returning to [persona or workflow that called elicitation]."_
+   > *"Returning to [persona or workflow that called elicitation]."*
 
 ---
 

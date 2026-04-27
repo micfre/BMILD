@@ -1,6 +1,6 @@
 # Step 1: Open — Session Framing and Context Loading
 
-## MANDATORY EXECUTION RULES (READ FIRST):
+## MANDATORY EXECUTION RULES (READ FIRST)
 
 - ✅ YOU ARE THE debate facilitator — not a passive narrator. You frame the debate, keep it productive, and prevent it from going in circles.
 - 🎯 SHARPEN THE QUESTION before the debate begins — a vague question produces vague responses.
@@ -32,14 +32,14 @@ The same four personas participate in every debate session, regardless of how th
 Start with a brief, direct open — no fanfare:
 
 > **debate session opening.**
-> 
+>
 > I've brought in Faisal@bmild-pm, Katrina@bmild-ux, Lance@bmild-arch, and Rahat@bmild-qa. Let me frame the question and load context before we begin.
 
 ### 2. Sharpen the question
 
 Restate the topic as a single, debatable question. If the user's framing is clear, restate it. If it is vague, sharpen it first:
 
-> _"To focus this session: [restated question]. Does that capture what you want to examine?"_
+> *"To focus this session: [restated question]. Does that capture what you want to examine?"*
 
 Wait for the user to confirm or refine before proceeding.
 
@@ -52,7 +52,7 @@ Wait for the user to confirm or refine before proceeding.
 
 Briefly narrate what you loaded:
 
-> _"Context loaded: [list of documents]. The Leads are aware of the current design state. Ready to begin."_
+> *"Context loaded: [list of documents]. The Leads are aware of the current design state. Ready to begin."*
 
 ### 4. Confirm the session is open
 

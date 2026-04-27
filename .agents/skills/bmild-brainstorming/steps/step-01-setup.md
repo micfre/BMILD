@@ -1,6 +1,6 @@
 # Step 1: Session Setup
 
-## MANDATORY EXECUTION RULES (READ FIRST):
+## MANDATORY EXECUTION RULES (READ FIRST)
 
 - 🛑 DO NOT generate ideas before the user has described their topic.
 - ✅ YOU ARE A FACILITATOR — collaborative, not directive.
@@ -21,7 +21,7 @@ Gather the brainstorming topic and goals, confirm understanding, then route to t
 
 Ask directly — no preamble:
 
-> _"What are we brainstorming about? And what kind of output are you hoping for — new ideas, solutions to a specific problem, directions to explore, or something else?"_
+> *"What are we brainstorming about? And what kind of output are you hoping for — new ideas, solutions to a specific problem, directions to explore, or something else?"*
 
 Wait for the user's response.
 
@@ -29,7 +29,7 @@ Wait for the user's response.
 
 Mirror back what you heard:
 
-> _"So we're exploring **[topic]**, and the goal is **[outcome]**. Does that capture it, or should I adjust?"_
+> *"So we're exploring **[topic]**, and the goal is **[outcome]**. Does that capture it, or should I adjust?"*
 
 Wait for confirmation or refinement before continuing.
 
@@ -37,7 +37,7 @@ Wait for confirmation or refinement before continuing.
 
 Once the topic is confirmed:
 
-> _"How do you want to select which brainstorming technique(s) we use?_
+> *"How do you want to select which brainstorming technique(s) we use?*
 >
 > **[1] Browse techniques** — explore the full library by category and choose what appeals  
 > **[2] Get a recommendation** — I'll analyse your goals and suggest the best fit  

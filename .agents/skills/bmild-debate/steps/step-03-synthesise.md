@@ -1,6 +1,6 @@
 # Step 3: Synthesise — Consolidate and Decide
 
-## MANDATORY EXECUTION RULES (READ FIRST):
+## MANDATORY EXECUTION RULES (READ FIRST)
 
 - ✅ YOU ARE THE SYNTHESISER — played by the facilitator, not by any Lead.
 - 🎯 DO NOT FLATTEN TENSIONS — name them honestly. The user deserves to know what is genuinely unresolved.
@@ -19,17 +19,20 @@ Present the synthesis clearly under three headings:
 ### 🔷 Synthesis
 
 **Non-negotiable** — what all four Leads agree on, or what is constrained by existing platform decisions:
+
 - [Point 1]
 - [Point 2]
 - ...
 
 **Preference** — where Leads differed, but the trade-off is low-stakes or reversible:
+
 | Option | Who favours it | Why | Cost |
 |--------|---------------|-----|------|
 | A | Katrina@bmild-ux, Faisal@bmild-pm | [reason] | [cost] |
 | B | Lance@bmild-arch | [reason] | [cost] |
 
 **Open** — genuinely unresolved; requires a decision before design can proceed:
+
 - [Open question 1] — implication if unresolved: [impact]
 - [Open question 2] — implication if unresolved: [impact]
 
@@ -39,12 +42,13 @@ Present the synthesis clearly under three headings:
 
 If there are open items, do not let the synthesis end there. Run targeted elicitation immediately:
 
-> _"There are [N] open questions. Let me ask them directly:_
-> 
+> *"There are [N] open questions. Let me ask them directly:*
+>
 > 1. [Question 1 — tightest possible phrasing]
 > 2. [Question 2]"_
 
 Wait for the user to answer. Then either:
+
 - **Update the synthesis** with the resolved answers (move items from Open to Non-negotiable or Preference), or
 - **Trigger another debate round** if the answers reveal new tensions (load `./steps/step-02-debate.md`)
 
@@ -55,6 +59,7 @@ Wait for the user to answer. Then either:
 After synthesis is complete and open items are resolved or explicitly deferred, apply changes to the relevant spec documents. Do not ask for permission — apply and report.
 
 **What to apply:**
+
 - **Non-negotiables:** ensure each is reflected in the appropriate section of `spec.md`, `ux-design.md`, or `system-design.md`. If a non-negotiable contradicts existing content, update the existing content to match.
 - **Resolved open items:** apply the agreed resolution in the appropriate spec section. Remove the item from Open Questions if it is now settled.
 - **Deferred open items:** ensure they appear explicitly as Open Questions or Assumptions in the spec — not in the synthesis block alone.
@@ -76,7 +81,7 @@ After applying factual changes, append the synthesis record under this heading i
 
 Then state what was done:
 
-> _"I’ve updated `[document(s)]` to reflect the agreed decisions — [brief list of what changed]. The synthesis record has been appended."_
+> *"I’ve updated `[document(s)]` to reflect the agreed decisions — [brief list of what changed]. The synthesis record has been appended."*
 
 Update `_context.md` if the document was newly created or significantly changed.
 
@@ -86,7 +91,7 @@ Update `_context.md` if the document was newly created or significantly changed.
 
 After applying document changes, ask:
 
-> _"Do you want to keep the session open for another question, or shall we close?"_
+> *"Do you want to keep the session open for another question, or shall we close?"*
 
 - Another question → load `./steps/step-01-open.md` (new question, same context)
 - Done → load `./steps/step-04-close.md`

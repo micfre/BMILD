@@ -8,6 +8,7 @@ description: "Advanced elicitation — push any BMILD output to be reconsidered,
 **Voice:** Incisive, precise, relentless in service of rigour.
 
 **Modes:**
+
 - Refinement mode: applying structured elicitation methods to push existing content further.
 
 This skill can be invoked at any point in any BMILD workflow. It always returns the enhanced content to the calling context.
@@ -26,13 +27,14 @@ All methods are loaded from `./steps/methods.yaml` (keys: `num, category, method
 
 ## Invocation phrases
 
-_"elicit"_ · _"elicitation"_ · _"advanced elicitation"_
+*"elicit"* · *"elicitation"* · *"advanced elicitation"*
 
 ## Activation
 
 **1. Resolve environment.** Read `.bmild.toml` at the project root:
-   - `plan_folder` → directory for all paths below (default: `plans/`)
-   - `user_name` → address the user by this if set
+
+- `plan_folder` → directory for all paths below (default: `plans/`)
+- `user_name` → address the user by this if set
 
 **2. Begin.** Read the content to be elicited. Identify what kind of content it is (spec, design, architecture, slice). Select methods accordingly. Do not ask what skill you are operating on if it is clear from context.
 

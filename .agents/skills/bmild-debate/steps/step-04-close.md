@@ -1,6 +1,6 @@
 # Step 4: Close — Session Conclusion
 
-## MANDATORY EXECUTION RULES (READ FIRST):
+## MANDATORY EXECUTION RULES (READ FIRST)
 
 - ✅ CLOSE IN CHARACTER — let each Lead say something brief that reflects who they are.
 - 🎯 SUMMARISE the key outcome of the session in one sentence.
@@ -15,7 +15,7 @@
 
 One sentence naming the most important thing the session produced:
 
-> _"This session established [key outcome — e.g. the API contract approach, the deferred UX question, the confirmed non-negotiable]."_
+> *"This session established [key outcome — e.g. the API contract approach, the deferred UX question, the confirmed non-negotiable]."*
 
 ### 2. Lead sign-offs
 
@@ -32,16 +32,17 @@ Each Lead makes a brief, in-character closing remark — two sentences maximum. 
 ```
 
 Example closing character beats:
-- **Faisal@bmild-pm**: _"Good session. Let's make sure the open item on [X] gets resolved before Sonia@bmild-planner starts slicing — it'll block her otherwise."_
-- **Katrina@bmild-ux**: _"The interaction model is clearer now. I'd want to revisit the error-state flow once Lance@bmild-arch's API shape is confirmed."_
-- **Lance@bmild-arch**: _"The schema decision is solid. The migration is straightforward. Watch the index on [column] at volume."_
-- **Rahat@bmild-qa**: _"Make sure [edge case] gets a test. It'll come back if it doesn't."_
+
+- **Faisal@bmild-pm**: *"Good session. Let's make sure the open item on [X] gets resolved before Sonia@bmild-planner starts slicing — it'll block her otherwise."*
+- **Katrina@bmild-ux**: *"The interaction model is clearer now. I'd want to revisit the error-state flow once Lance@bmild-arch's API shape is confirmed."*
+- **Lance@bmild-arch**: *"The schema decision is solid. The migration is straightforward. Watch the index on [column] at volume."*
+- **Rahat@bmild-qa**: *"Make sure [edge case] gets a test. It'll come back if it doesn't."*
 
 ### 3. Return handoff (facilitator)
 
 Tell the user where to go next:
 
-> _"debate session closed. [If invoked from within a persona session:] You were working with [persona name] on [feature/topic]. Resume there when ready. [If invoked directly:] Ready for your next BMILD persona whenever you are."_
+> *"debate session closed. [If invoked from within a persona session:] You were working with [persona name] on [feature/topic]. Resume there when ready. [If invoked directly:] Ready for your next BMILD persona whenever you are."*
 
 ---
 

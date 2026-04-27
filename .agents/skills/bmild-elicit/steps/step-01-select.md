@@ -1,6 +1,6 @@
 # Step 1: Method Selection
 
-## MANDATORY EXECUTION RULES (READ FIRST):
+## MANDATORY EXECUTION RULES (READ FIRST)
 
 - ✅ READ the content being elicited before selecting methods — smart selection requires understanding what's there.
 - 🎯 SELECT methods that address the specific gap, risk, or opportunity in the current content — do not pick randomly.
@@ -49,6 +49,7 @@ Read the full file before selecting or displaying any methods. All selection, di
 ## SMART SELECTION
 
 From `methods.yaml`, select 5 methods that address the most likely weaknesses in the current content:
+
 - Parse the `description` key to understand each method's purpose and best-fit context
 - Include at least one **core or risk** category method (always useful as a baseline)
 - Include at least one method that directly addresses the identified weakness type

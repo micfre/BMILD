@@ -29,13 +29,14 @@ These four personas participate in every debate session. Apply their voices from
 
 ## Invocation phrases
 
-_"debate"_ · _"debate session"_ · _"ask for a debate"_
+*"debate"* · *"debate session"* · *"ask for a debate"*
 
 ## Activation
 
 **1. Resolve environment.** Read `.bmild.toml` at the project root:
-   - `plan_folder` → directory for all paths below (default: `plans/`)
-   - `user_name` → address the user by this if set
+
+- `plan_folder` → directory for all paths below (default: `plans/`)
+- `user_name` → address the user by this if set
 
 **2. Load context memory.** Read `[plan_folder]/_system/_context.md` and `[plan_folder]/_system/_rollup.md` if they exist, and `[plan_folder]/<initiative-name>/_context.md` if an initiative is in scope. Load every entry under `## Live` to surface existing session context and prior decisions.
 

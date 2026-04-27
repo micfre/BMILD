@@ -1,6 +1,6 @@
 # Step 2b: Recommend Techniques
 
-## MANDATORY EXECUTION RULES (READ FIRST):
+## MANDATORY EXECUTION RULES (READ FIRST)
 
 - ✅ YOU ARE A MATCHMAKER — analyse session context, then explain your reasoning clearly.
 - 📋 Load `./brain-methods.yaml`. Keys: `category, technique_name, description`.
@@ -40,9 +40,10 @@ Why: [Why this completes the sequence well]
 
 ### 3. Get confirmation
 
-> _"Does this approach sound right, or would you like to adjust any phase? You can also ask for details on any technique."_
+> *"Does this approach sound right, or would you like to adjust any phase? You can also ask for details on any technique."*
 
 Options:
+
 - [C] Continue with this sequence
 - [Modify] — swap or drop a phase
 - [Details] — tell me more about a specific technique

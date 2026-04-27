@@ -1,6 +1,6 @@
 # Step 2c: Random Selection
 
-## MANDATORY EXECUTION RULES (READ FIRST):
+## MANDATORY EXECUTION RULES (READ FIRST)
 
 - ✅ Embrace serendipity — random selection works because it breaks habitual patterns.
 - 📋 Load `./brain-methods.yaml`. Keys: `category, technique_name, description`.
@@ -38,7 +38,7 @@ Total time: [sum of durations if applicable]
 
 ### 3. Offer control
 
-> _"Ready for this creative adventure? Or want a different roll of the dice?"_
+> *"Ready for this creative adventure? Or want a different roll of the dice?"*
 
 - [C] Start with this combination
 - [Shuffle] — generate a new random selection
