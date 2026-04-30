@@ -13,17 +13,15 @@ No installer. No dependencies. No separate orchestrator. Only Skill-native files
 
 ---
 
-## You should care about this if
+## BMILD exists to
 
-You believe, as I do:
+1. **Help the user create solid specs and verifible code.** The upfront investment in properly specifying what you're building pays dividends when the agent writes code. AI will make it up or ignore it if it isn't properly specified, with long-horizon "iterate and fix" as the cost.
 
-1. **AI development benefits enormously from a spec-driven approach.** The upfront investment in properly specifying what you're building pays dividends when the agent writes code. AI will make it up or ignore it if it isn't properly specified, with long-horizon "iterate and fix" as the cost.
-
-2. **AI development is not human development.** Epics, stories, sprints, and story points exist to manage communication friction and estimate human effort. AI doesn't have those problems. What AI needs more is good context management -- development units sized to context windows, not story points -- and clear design contracts to build against.
+2. **Eliminate high ceremony of frameworks that rigidly emulate AGILE ceremony.** Epics, stories, sprints, and story points exist to manage communication friction and estimate human effort. AI doesn't have those problems. What AI needs more is good context management -- development units sized to context windows, not story points -- and clear design contracts to build against.
 
 This is the reason that BMILD exists. If you want the full Agile ceremony with AI, [BMAD](https://github.com/the-bmad-group/bmad) does that well and BMILD has grown directly out of it.
 
-## What is it, really?
+## BMILD is built with
 
 Ten skill folders. Each contains a prompt that gives your AI agent a persona with a defined role, a voice, and strict scope boundaries. Together they cover the full development lifecycle:
 
@@ -43,7 +41,7 @@ Plus three interactive modes that work across personas:
 - **Elicit** ⚡: Added help to expand your own thinking and intent. 20+ structured methods to push requirements, UX decisions, or architecture past "good enough" into genuinely strong.
 - **Brainstorm** 💡: Open-ended ideation designed to get past obvious ideas. Anti-bias protocols prevent the facilitator from clustering around a single direction.
 
-## How it works
+## BMILD works through
 
 The personas are designed around a two-tier model:
 
@@ -126,13 +124,13 @@ BMILD has two requirements:
 | **Opencode** | `.opencode/skills/` |
 | **VS Code Copilot** | `.github/skills/` |
 
-## What makes BMILD different
+## BMILD is different than
 
-### vs. no framework at all
+### no framework at all
 
 You get the full lifecycle -- requirements, UX, architecture, planning, implementation, QA -- without installing anything or learning a new tool. The prompts enforce quality gates that prevent the common failure: the agent builds what it understood, not what you meant.
 
-### vs. BMAD
+### BMAD
 
 BMILD is built on BMAD-METHOD. The persona archetypes and the interactive modes are derived from BMAD. BMILD takes a narrower and less rigid approach to building high-quality specs.
 
@@ -160,13 +158,18 @@ BMILD doesn't look at BMAD planning artifacts, but this could change in the futu
 
 ## Roadmap
 
+```
 - v0.1 -- Initial commit
 - v0.2 -- Persona breadth stable (Current)
+  - persona count and breadth stable
+  - focus is on activation, midcourse behaviour, handoff
+  - refining non-linear entry context and adaptive progress behaviour
 - v0.3 -- Persona interactivity stable
 - v0.4 -- Dogfood version
 - v0.5 -- First public version
+```
 
-## Acknowledgements
+## BMILD thanks the OSS community
 
 BMILD is built upon and inspired by:
 

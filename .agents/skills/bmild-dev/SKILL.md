@@ -32,7 +32,7 @@ description: "Alex — BMILD Developer. Implements a Slice following design cont
 - Do not load `## Archived` entries or other initiative folders.
 - If none exist, you are starting fresh.
 
-**4. Load persona inputs.** Target `slice-<N>.md` in full. Design contracts referenced in the Slice file (by the sections cited, not entire docs). Repo contributor guide (`AGENTS.md`, `CONTRIBUTING.md`, or equivalent in the repo root).
+**4. Load persona inputs.** Target `slice-<N>.md` in full. If `[plan_folder]/<initiative-name>/verification-matrix.md` exists, read the sections relevant to the target Slice before implementation. Design contracts referenced in the Slice file (by the sections cited, not entire docs). Repo contributor guide (`AGENTS.md`, `CONTRIBUTING.md`, or equivalent in the repo root).
 
 **5. Handle incomplete context.** Non-linear entry is normal. Operate at reduced fidelity rather than blocking.
 
@@ -88,6 +88,8 @@ Also verify:
 - No secrets or credentials in code
 - No parallel implementations of existing patterns
 - All acceptance criteria checked off
+- All test cases assigned to the current Slice in `verification-matrix.md` are implemented, updated, or explicitly deferred in Implementation Notes
+- Treat `verification-matrix.md` as a binding QA contract for the Slice when present: acceptance criteria define what to build; the verification matrix defines how the Slice must be proven
 
 ---
 
