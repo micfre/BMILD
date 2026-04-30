@@ -17,7 +17,7 @@ No installer. No dependencies. No separate orchestrator. Only Skill-native files
 
 1. **Help the user create solid specs and verifible code.** The upfront investment in properly specifying what you're building pays dividends when the agent writes code. AI will make it up or ignore it if it isn't properly specified, with long-horizon "iterate and fix" as the cost.
 
-2. **Eliminate high ceremony of frameworks that rigidly emulate AGILE ceremony.** Epics, stories, sprints, and story points exist to manage communication friction and estimate human effort. AI doesn't have those problems. What AI needs more is good context management -- development units sized to context windows, not story points -- and clear design contracts to build against.
+2. **Eliminate high process cost of frameworks that rigidly emulate AGILE ceremony.** Epics, stories, sprints, and story points exist to manage communication friction and estimate human effort. AI doesn't have those problems. What AI needs more is good context management -- development units sized to context windows, not story points -- and clear, verifiable design contracts to build against.
 
 This is the reason that BMILD exists. If you want the full Agile ceremony with AI, [BMAD](https://github.com/the-bmad-group/bmad) does that well and BMILD has grown directly out of it.
 
@@ -132,7 +132,7 @@ You get the full lifecycle -- requirements, UX, architecture, planning, implemen
 
 ### BMAD
 
-BMILD is built on BMAD-METHOD. The persona archetypes and the interactive modes are derived from BMAD. BMILD takes a narrower and less rigid approach to building high-quality specs.
+BMILD is built on BMAD-METHOD. The persona archetypes and the interactive modes are derived from BMAD. BMILD takes a narrower and simpler approach to building high-quality specs.
 
 Where BMILD diverges:
 
@@ -143,7 +143,7 @@ Where BMILD diverges:
 - Functionally:
   - **Context-bounded vertical Slices.** Atomic development units are sized with a lightweight tokenizer to an implementation-session context window, not to Agile story semantics. The evidence is that important stuff gets lost in the middle of large context window -- see 'Needle in a Haystack/NIAH' benchmarks -- and scope decomposition is driven by this physic. Slice planning also sequences based on MVP/growth/vision cuts specified in the product spec.
   - **Integrated readiness gate.** BMAD has a readiness verification skill, but it's a separate step you invoke before implementation. In BMILD, the equivalent is built into the Delivery Planner -- Sonia can't decompose work into Slices without first verifying that every Must Have in the spec has downstream coverage in UX or architecture. The gate is structurally unavoidable, not a step you must remember to run.
-  - **Structured debugging.** A strict 7-step root cause analysis protocol with mandatory breadth-first hypotheses, ranked by fit/frequency/recency, validated by evidence before any code is touched. Many debugging flows can prematurely funnel the agent into postulating a single domain and single cause.
+  - **Structured debugging.** A breadth-first root cause analysis protocol ranked by fit/frequency/recency before any code is touched. Many debugging flows can prematurely funnel the agent into anchoring on a single domain and single cause.
 - Semantically:
   - **Party Mode:** → Debate. "Start a debate on this topic." The leads come together. *<small>Currently operates in a single context window, does not spawn subagents (which is a cool trick BMAD is implementing).</small>*
   - **Advanced Elicitation:** → Elicit. "Help me articulate this topic." Intelligent objective-oriented probing.
@@ -160,6 +160,8 @@ BMILD doesn't look at BMAD planning artifacts, but this could change in the futu
 
 ```
 - v0.1 -- Initial commit
+  - added Zach security persona
+  - removed Propose interactive skill and embedded Advisor Mode-style capability within design-tier personas
 - v0.2 -- Persona breadth stable (Current)
   - persona count and breadth stable
   - focus is on activation, midcourse behaviour, handoff
@@ -174,7 +176,7 @@ BMILD doesn't look at BMAD planning artifacts, but this could change in the futu
 BMILD is built upon and inspired by:
 
 - **[BMAD-METHOD](https://github.com/the-bmad-group/bmad)**: The persona archetypes and interactive patterns are adapted from BMAD.
-- **[GSD](https://github.com/gsd-build/get-shit-done)**: Advisor mode and Nyquist Validation rule adapted to specific skill behaviours.
+- **[GSD](https://github.com/gsd-build/get-shit-done)**: Advisor Mode and Nyquist Validation rule adapted to specific skill behaviours.
 - **[Kilo Code](https://github.com/kilo-code)**: The QA debugging methodology is adapted from Kilo Code's Debug prompt.
 - **[Tokencast](https://github.com/krulewis/tokencast)**: The tokenizer algorithm used by the Planner persona is adapted from krulewis' implementation in Tokencast.
 
