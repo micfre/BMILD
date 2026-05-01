@@ -27,15 +27,17 @@ Progress:
    > **Applying: [Method Name]**
 
 **Step 2: Show the method output** — apply it to the current content. The output depends on the method's pattern:
-   - For analysis methods (First Principles, 5 Whys, etc.): show the analysis first, then the implications for the content
-   - For persona methods (Stakeholder Round Table, Cross-Functional War Room, etc.): play the personas in turn, labeled clearly; if a debate session is active or recently completed, use Faisal@bmild-pm, Katrina@bmild-ux, Lance@bmild-arch, and Rahat@bmild-qa as the personas
-   - For generative methods (SCAMPER, What If, etc.): produce the generated content/alternatives first, then identify what's worth keeping
-   - For competitive methods (Red Team, Shark Tank, etc.): run the adversarial scenario fully before proposing improvements
+
+- For analysis methods (First Principles, 5 Whys, etc.): show the analysis first, then the implications for the content
+- For persona methods (Stakeholder Round Table, Cross-Functional War Room, etc.): play the personas in turn, labeled clearly; if a debate session is active or recently completed, use Faisal@bmild-pm, Katrina@bmild-ux, Lance@bmild-arch, and Rahat@bmild-qa as the personas
+- For generative methods (SCAMPER, What If, etc.): produce the generated content/alternatives first, then identify what's worth keeping
+- For competitive methods (Red Team, Shark Tank, etc.): run the adversarial scenario fully before proposing improvements
 
 **Step 3: Summarise what changed or was revealed** in 2–3 bullet points:
-   - What assumption was surfaced
-   - What gap was found
-   - What improvement is being proposed
+
+- What assumption was surfaced
+- What gap was found
+- What improvement is being proposed
 
 **Step 4: Apply or ask — based on clarity:**
 
@@ -115,8 +117,9 @@ Progress:
 **Step 2:** Present the final working version of the content.
 
 **Step 3:** Ask: *"Do you want to save this enhanced version to [document name]?"*
-   - If yes: write it to the appropriate spec document (or the section within it) and update `_context.md` if the document changed meaningfully.
-   - If no: leave the content in the conversation for the user to apply manually.
+
+- If yes: write it to the appropriate spec document (or the section within it) and update `_context.md` if the document changed meaningfully.
+- If no: leave the content in the conversation for the user to apply manually.
 
 **Step 4:** Return cleanly to the invoking context:
    > *"Returning to [persona or workflow that called elicitation]."*

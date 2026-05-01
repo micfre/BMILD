@@ -21,22 +21,25 @@ Progress:
 - [ ] Step 3: Identify the most likely weakness.
 
 **Step 1: What content are we eliciting?**
-   - State the document, section, or decision being examined (one sentence)
-   - If not explicitly stated by the user, infer from conversation context
+
+- State the document, section, or decision being examined (one sentence)
+- If not explicitly stated by the user, infer from conversation context
 
 **Step 2: What type of content is it?**
-   - Requirements / problem framing → favour: core, risk, collaboration methods
-   - UX design / interaction model → favour: creative, collaboration, risk methods
-   - Architecture / system design → favour: technical, advanced, risk methods
-   - Slice decomposition / planning → favour: core, risk, structural methods
-   - RCA / diagnosis → favour: core (5 Whys, First Principles), technical, risk methods
+
+- Requirements / problem framing → favour: core, risk, collaboration methods
+- UX design / interaction model → favour: creative, collaboration, risk methods
+- Architecture / system design → favour: technical, advanced, risk methods
+- Slice decomposition / planning → favour: core, risk, structural methods
+- RCA / diagnosis → favour: core (5 Whys, First Principles), technical, risk methods
 
 **Step 3: What is the most likely weakness?**
-   - Vague requirements → Socratic Questioning, First Principles, Critique and Refine
-   - Untested assumptions → Pre-mortem, Challenge from Critical Perspective, Self-Consistency Validation
-   - Missing perspectives → Stakeholder Round Table, Cross-Functional War Room, User Persona Focus Group
-   - Complexity / hidden coupling → Tree of Thoughts, Architecture Decision Records, Failure Mode Analysis
-   - Over-engineered solution → Occam's Razor, Reverse Engineering, First Principles
+
+- Vague requirements → Socratic Questioning, First Principles, Critique and Refine
+- Untested assumptions → Pre-mortem, Challenge from Critical Perspective, Self-Consistency Validation
+- Missing perspectives → Stakeholder Round Table, Cross-Functional War Room, User Persona Focus Group
+- Complexity / hidden coupling → Tree of Thoughts, Architecture Decision Records, Failure Mode Analysis
+- Over-engineered solution → Occam's Razor, Reverse Engineering, First Principles
 
 ---
 
