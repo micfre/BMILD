@@ -121,7 +121,6 @@ done < <(find "$skills_dir" -path '*/steps/*.md' -print0)
 
 table_targets=(
   "$skills_dir"
-  "$root/README.md"
   "$root/AGENTS.md"
   "$root/CHANGELOG.md"
   "$root/docs/bmild-skill-best-practices-evaluation.md"

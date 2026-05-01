@@ -25,13 +25,15 @@ These are the reasons that BMILD exists. If you want the full Agile ceremony wit
 
 Ten skill folders. Each contains a prompt that gives your AI agent a persona with a defined role, a voice, and strict scope boundaries. Together they cover the full development lifecycle:
 
-- **Faisal** 🟦: Product Manager. Asks "WHY?" relentlessly. Won't let you ship vague requirements.
-- **Katrina** 🟩: UX Designer. Owns the complete frontend experience and advocates for users without losing sight of what's buildable.
-- **Lance** 🟥: Architect. Names the cost of every choice and produces implementable contracts.
-- **Sonia** 🟧: Delivery Planner. Sizes implementation Slices to context windows, not story points.
-- **Alex** 🟪: Developer. Matches existing patterns and reads repo conventions before writing code.
-- **Rahat** 🟨: QA & Reliability. Diagnoses before fixing and preserves verification evidence.
-- **Zach** ⬜: Security. Performs contextual SAST focused on high-confidence, actionable vulnerabilities.
+| Persona | Role | What they actually do |
+| :--- | :--- | :--- |
+| **Faisal**&nbsp;🟦 | Product Manager | Asks "WHY?" relentlessly. Won't let you ship vague requirements. Challenges your first answer, your second answer, and probably your third. |
+| **Katrina**&nbsp;🟩 | UX Designer | Owns the complete frontend experience. Advocates for users without losing sight of what's buildable. Decisive, not decorative. |
+| **Lance**&nbsp;🟥 | Architect | Names the cost of every choice. Produces implementable contracts -- schema columns, endpoint shapes, service signatures -- not high-level boxes and arrows. |
+| **Sonia**&nbsp;🟧 | Delivery Planner | Zero tolerance for ambiguity in implementation inputs. Sizes work to fit context windows, not story points. |
+| **Alex**&nbsp;🟪 | Developer | Matches existing patterns, doesn't invent new ones. Reads the repo's conventions before writing a line. Ultra-succinct, implementation-focused. |
+| **Rahat**&nbsp;🟨 | QA & Reliability | Diagnoses before fixing. Breadth-first hypothesis generation RCA protocol. Never proposes a code change until root cause is confirmed by evidence. |
+| **Zach**&nbsp;⬜ | Security | Contextual SAST code review. Prioritizes high-confidence, actionable vulnerabilities over theoretical noise. Perspective is grounded in real-world exploitability. |
 
 Plus three interactive modes that work across personas:
 
@@ -116,7 +118,7 @@ Run the local structural validator after editing skills:
 scripts/validate-skills.sh .
 ```
 
-It checks frontmatter names, description length, required BMILD sections, standard persona handoff sections, `Progress:` checklists for ordered workflows, and accidental markdown table rows in the BMILD-authored skill/docs surface.
+It checks frontmatter names, description length, required BMILD sections, standard persona handoff sections, `Progress:` checklists for ordered workflows, and accidental markdown table rows in BMILD skill surfaces and validator-owned docs.
 
 ## Getting started
 
@@ -142,16 +144,20 @@ BMILD has two requirements:
 
 **Drop-in** (skills are already scanned from `.agents/`):
 
-- Antigravity: `.agents/skills/`
-- OpenAI Codex: `.agents/skills/`
+| Environment | Path |
+| :--- | :--- |
+| **Antigravity** | `.agents/skills/` |
+| **OpenAI Codex** | `.agents/skills/` |
 
 **Relocate to** (copy `bmild-*` folders into the expected path):
 
-- Claude Code: `.claude/skills/`
-- Cursor: `.cursor/skills/`
-- Kilo Code: `.kilocode/skills/`
-- Opencode: `.opencode/skills/`
-- VS Code Copilot: `.github/skills/`
+| Environment | Path |
+| :--- | :--- |
+| **Claude Code** | `.claude/skills/` |
+| **Cursor** | `.cursor/skills/` |
+| **Kilo Code** | `.kilocode/skills/` |
+| **Opencode** | `.opencode/skills/` |
+| **VS Code Copilot** | `.github/skills/` |
 
 ## BMILD is different than
 
