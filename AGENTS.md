@@ -6,8 +6,8 @@ The output of this project are the agent skills located in the `.agents/skills/`
 
 BMILD skills must follow these API-like design principles:
 
-1. **Design the Signature First (`description`)**:
-   The `description` field in the frontmatter is the function signature. It must be specific about when to trigger and explicitly state what boundaries it does not cover (e.g., "Not for architectural design").
+1. **Follow the Spec**:
+   The official specification in `docs/` is authoritative — mirror and enforce its rules across skills (triggers, frontmatter, structure, and behavior).
 2. **Uniform skill structure**:
    Each skill body uses these sections in this order:
    - **`Persona`**: Name, role, scope boundary, voice, and sign-off directive (`Sign off as [Name] [icon]`). Do not use `Always prefix` — identity is expressed at sign-off only.
@@ -23,6 +23,8 @@ BMILD skills must follow these API-like design principles:
    Personas do their own thinking and are not bound by prescriptive linear flows or rigid tiers. They are domain specialists activated by the artifact state. Personas focusing on specification (PM, UX, Arch) slow down, probe, and elicit — their job is to surface what would otherwise go unstated. Personas focusing on execution (Planner, Dev, QA, Sec) activate lean, act on coherent inputs, and hand back precisely when a blocker is outside their domain authority.
 5. **Teach Reasoning**:
    Do not just list rules. Explain what goes wrong without the pattern, how to diagnose it, and provide before/after examples.
+6. **Prefer Subtle, Iterative Changes**:
+   Treat feedback as refinements. Make small, deliberate edits rather than broad rewrites; each change should be reversible and minimal.
 
 ### Skills Documentation
 

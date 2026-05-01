@@ -17,9 +17,9 @@ No installer. No dependencies. No separate orchestrator. Only Skill-native files
 
 1. **Help the user create solid specs and verifible code.** The upfront investment in properly specifying what you're building pays dividends when the agent writes code. AI will make it up or ignore it if it isn't properly specified, with long-horizon "iterate and fix" as the cost.
 
-2. **Eliminate high process cost of frameworks that rigidly emulate AGILE ceremony.** Epics, stories, sprints, and story points exist to manage communication friction and estimate human effort. AI doesn't have those problems. What AI needs more is good context management -- development units sized to context windows, not story points -- and clear, verifiable design contracts to build against.
+2. **Eliminate high process cost of frameworks that rigidly emulate Agile ceremony.** Epics, stories, sprints, and story points exist to manage communication friction and estimate human effort. AI doesn't have those problems. What AI needs more is good context management -- development units sized to context windows, not story points -- and clear, verifiable design contracts to build against.
 
-This is the reason that BMILD exists. If you want the full Agile ceremony with AI, [BMAD](https://github.com/the-bmad-group/bmad) does that well and BMILD has grown directly out of it.
+These are the reasons that BMILD exists. If you want the full Agile ceremony with AI, [BMAD](https://github.com/the-bmad-group/bmad) does that well and BMILD has grown directly out of it.
 
 ## BMILD is built with
 
@@ -161,7 +161,9 @@ BMILD doesn't look at BMAD planning artifacts, but this could change in the futu
 ```
 - v0.1 -- Initial commit
   - added Zach security persona
-  - removed Propose interactive skill and embedded Advisor Mode-style capability within design-tier personas
+  - removed Propose interactive skill and embedded Advisor Mode-style capability within
+  design-tier personas
+  - flattened context memory, remove distinction between platform and feature docs
 - v0.2 -- Persona breadth stable (Current)
   - persona count and breadth stable
   - focus is on activation, midcourse behaviour, handoff
