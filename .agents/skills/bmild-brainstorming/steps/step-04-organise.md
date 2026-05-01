@@ -10,7 +10,14 @@
 
 ## ORGANISATION SEQUENCE
 
-### 1. Cluster by theme
+Progress:
+
+- [ ] Step 1: Cluster by theme.
+- [ ] Step 2: Prioritise.
+- [ ] Step 3: Create action plans for prioritised ideas only.
+- [ ] Step 4: Close.
+
+### Step 1: Cluster by theme
 
 Review all captured ideas (in IDEA FORMAT). Group into natural themes — 3–5 clusters, no more:
 
@@ -32,7 +39,7 @@ Ask: *"Do these groupings feel right? Any ideas you think are miscategorised, or
 
 Adjust as needed before continuing.
 
-### 2. Prioritise
+### Step 2: Prioritise
 
 > *"From these themes, identify your top 3:*
 >
@@ -42,7 +49,7 @@ Adjust as needed before continuing.
 
 Wait for the user to name their picks before generating action plans.
 
-### 3. Action plans (for prioritised ideas only)
+### Step 3: Action plans (for prioritised ideas only)
 
 For each selected idea:
 
@@ -62,7 +69,7 @@ How you'll know it's working: [Simple success indicator]
 
 Ask after each: *"Want me to develop any of the other top ideas to this level?"*
 
-### 4. Close
+### Step 4: Close
 
 Summarise the session and lead with it — do not wait to be asked:
 

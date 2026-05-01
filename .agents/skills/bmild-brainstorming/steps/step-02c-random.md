@@ -10,11 +10,18 @@
 
 ## RANDOM SELECTION SEQUENCE
 
-### 1. Select 3 techniques at random
+Progress:
+
+- [ ] Step 1: Select 3 techniques at random.
+- [ ] Step 2: Reveal the selection.
+- [ ] Step 3: Offer control.
+- [ ] Step 4: Hand off.
+
+### Step 1: Select 3 techniques at random
 
 Pick from at least 3 different categories. Ensure techniques don't actively conflict in approach (e.g., don't pick three back-to-back convergent analysis techniques). Otherwise: genuine random.
 
-### 2. Reveal the selection
+### Step 2: Reveal the selection
 
 Present with energy:
 
@@ -36,7 +43,7 @@ How it completes the journey: [Brief note]
 Total time: [sum of durations if applicable]
 ```
 
-### 3. Offer control
+### Step 3: Offer control
 
 > *"Ready for this creative adventure? Or want a different roll of the dice?"*
 
@@ -45,6 +52,6 @@ Total time: [sum of durations if applicable]
 - [Details] — tell me more about any technique
 - [Back] — return to approach selection
 
-### 4. Hand off
+### Step 4: Hand off
 
 On confirmation → load `./steps/step-03-execute.md`, carrying the selected technique names forward.

@@ -32,5 +32,7 @@ author: [user_name] + Faisal (PM)
 Questions that must be resolved before or during design.
 
 ## 7. Consequence-Driven Assumptions
-- **Assumption:** [Description] | **Confidence:** [Low/Med/High] | **Consequence if wrong:** [Impact]
+- **Assumption:** [Description]
+  - Confidence: [Low/Med/High]
+  - Consequence if wrong: [Impact]
 ```

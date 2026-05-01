@@ -8,20 +8,42 @@ updated: YYYY-MM-DD
 author: [user_name] + Sonia (Planner)
 planning_method: plan-forward-verify-backward
 verification_status: pass | pass_with_warning | fail | handback
+approved_scope: MVP | named phase | full initiative
 ---
 
 ## Readiness
 
-| Check | Result | Detail |
-|-------|--------|--------|
-| Upstream artifacts present | pass / gap / handback | [one-line justification] |
-| Cross-artifact alignment | pass / gap / contradiction | [one-line per finding, or "all Must Haves covered"] |
-| Coverage verified | pass / pass-with-warning / fail | [one-line justification] |
+- Upstream artifacts present:
+  - Result: pass / gap / handback
+  - Detail: [one-line justification]
+- Cross-artifact alignment:
+  - Result: pass / gap / contradiction
+  - Detail: [one-line per finding, or "all Must Haves covered"]
+- Coverage verified:
+  - Result: pass / pass-with-warning / fail
+  - Detail: [one-line justification]
 
-| # | Intent | Status | Depends On | Verifiable End Condition | Slice Type |
-|---|--------|--------|------------|--------------------------|------------|
-| 1 | ... | todo | — | ... | groundwork |
-| 2 | ... | todo | 1 | ... | mainline |
+## Slice Registry
+
+- Slice 1:
+  - Intent: ...
+  - Status: todo
+  - Depends on: none
+  - Verifiable end condition: ...
+  - Slice type: groundwork
+- Slice 2:
+  - Intent: ...
+  - Status: todo
+  - Depends on: Slice 1
+  - Verifiable end condition: ...
+  - Slice type: mainline
+
+## Roadmap / Deferred Phases
+- [Future phase item]:
+  - Phase: Growth / later named phase
+  - Status: roadmap / blocked_placeholder
+  - Reason not authored as Slice: [out of approved scope / missing UX / user did not request full-initiative planning]
+  - Required future artifact or decision: ...
 
 ## Coverage Verification
 - Goal being checked: ...
@@ -34,6 +56,40 @@ verification_status: pass | pass_with_warning | fail | handback
 - Warning note: ... <!-- include only if verification passed with warning -->
 ```
 
+## verification-matrix.md
+
+```markdown
+---
+scope: <initiative-name> | _system
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+author: [user_name] + Sonia (Planner)
+mode: nyquist-readiness
+status: draft | active | partially_implemented | verified | blocked
+---
+
+## Test Infrastructure
+- Commands: ...
+- Tools: ...
+- Required fixtures or mocks: ...
+
+## Requirement Coverage Matrix
+- Requirement: ...
+  - Source: `spec.md §...` / `ux-design.md §...` / `system-design.md §...`
+  - Covered by Slice: Slice <N>
+  - Test case / verification action: ...
+  - Type: unit / integration / e2e / manual
+  - Status: draft / implemented / passed / failed / blocked
+  - Created by: Sonia
+  - Implementation consumer: Alex
+  - Verification owner: Rahat
+  - Evidence: [test file, command, manual check, or pending]
+  - Next owner: Alex / Rahat / Lance / Katrina / none
+
+## Open Verification Questions
+- ...
+```
+
 ## slice-\<N\>.md
 
 ```markdown
@@ -42,6 +98,8 @@ scope: <initiative-name> | _system
 slice: <N>
 status: todo | active | ready-for-review | done | blocked
 updated: YYYY-MM-DD
+qa_status: not_started | blocked | ready_for_verification | verified | failed
+security_status: not_reviewed | not_applicable | review_requested | findings_open | cleared
 ---
 
 ## Intent
@@ -64,7 +122,23 @@ One concrete outcome advanced by this Slice.
 
 ## Likely Required Reads
 Likely-required reads Sonia@bmild-planner used when sizing this Slice.
-- path/to/file
+- Slice-local contracts:
+  - path/to/file
+- Existing implementation boundary:
+  - path/to/file
+- Upstream domain truth:
+  - path/to/file
+- Closest prior art:
+  - path/to/file
+- Quality and proof boundaries:
+  - path/to/file
+
+## Likely Required Reads Check
+- Existing contract file considered: yes / no / not applicable — [path or reason]
+- Existing runner/orchestrator/route/entrypoint considered: yes / no / not applicable — [path or reason]
+- Canonical schema/config/manifest/registry considered: yes / no / not applicable — [path or reason]
+- Closest prior implementation/prototype/test considered: yes / no / not applicable — [path or reason]
+- Verification/comparator/artifact-writer boundary considered: yes / no / not applicable — [path or reason]
 
 ## Verifiable End Condition
 Specific enough to reuse during backward coverage checking.
@@ -77,4 +151,9 @@ Specific enough to reuse during backward coverage checking.
 
 ## Implementation Notes
 <!-- Alex@bmild-dev fills this in after implementation. Sonia@bmild-planner leaves this empty. -->
+
+## QA / Security Follow-up
+- Open QA items: ...
+- Open security items: ...
+- Resolution notes: ...
 ```

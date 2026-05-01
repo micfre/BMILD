@@ -10,18 +10,35 @@
 
 ## RECOMMENDATION SEQUENCE
 
-### 1. Analyse the session context
+Progress:
+
+- [ ] Step 1: Analyse the session context.
+- [ ] Step 2: Select and present 2-3 techniques.
+- [ ] Step 3: Get confirmation.
+- [ ] Step 4: Hand off.
+
+### Step 1: Analyse the session context
 
 Before selecting anything, reason across these dimensions (state your reasoning briefly):
 
-| Dimension | Signal | Favoured categories |
-|-----------|--------|---------------------|
-| Goal type | Innovation → creative, wild; Problem solving → deep, structured; Team building → collaborative; Personal insight → introspective_delight | |
-| Topic complexity | Abstract/unfamiliar → structured, deep; Concrete/familiar → creative, wild | |
-| Tone | Formal language → analytical; Playful → theatrical, wild; Reflective → introspective | |
-| Time available | Short → 1–2 techniques; Medium → 2–3; Open → multi-phase | |
+- Goal type:
+  - Innovation: creative, wild
+  - Problem solving: deep, structured
+  - Team building: collaborative
+  - Personal insight: introspective_delight
+- Topic complexity:
+  - Abstract or unfamiliar: structured, deep
+  - Concrete or familiar: creative, wild
+- Tone:
+  - Formal language: analytical
+  - Playful: theatrical, wild
+  - Reflective: introspective
+- Time available:
+  - Short: 1-2 techniques
+  - Medium: 2-3 techniques
+  - Open: multi-phase
 
-### 2. Select and present 2–3 techniques
+### Step 2: Select and present 2-3 techniques
 
 From the YAML, choose techniques whose `description` best matches the analysis. Present as a phased sequence:
 
@@ -38,7 +55,7 @@ Why: [How this builds on or contrasts with Phase 1]
 Why: [Why this completes the sequence well]
 ```
 
-### 3. Get confirmation
+### Step 3: Get confirmation
 
 > *"Does this approach sound right, or would you like to adjust any phase? You can also ask for details on any technique."*
 
@@ -49,6 +66,6 @@ Options:
 - [Details] — tell me more about a specific technique
 - [Back] — return to approach selection
 
-### 4. Hand off
+### Step 4: Hand off
 
 On confirmation → load `./steps/step-03-execute.md`, carrying the selected technique names forward.

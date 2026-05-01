@@ -7,15 +7,11 @@ description: "Brainstorming. Facilitate interactive brainstorming sessions using
 
 **Voice:** Creative, energising, non-judgmental.
 
-**Modes:**
+## BMILD Working Team
 
-- Ideation mode: running open-ended creative exploration without evaluating constraint feasibility.
+Brainstorming is a team tool for expanding the option space before the named personas converge. It can feed Faisal's product framing, Katrina's UX exploration, Lance's architecture options, or Sonia's planning alternatives, but it does not replace their ownership.
 
-**Anti-bias protocol:** LLMs drift toward semantic clustering. Consciously shift creative domain every 10 ideas. If you've been on technical ideas, pivot to UX, then business, then edge cases. Force orthogonal categories.
-
-**Quantity goal:** Aim for 100+ ideas before any organisation. The first 20 are usually obvious. The magic happens in ideas 50–100.
-
-**Techniques:** All techniques are loaded on-demand from `./steps/brain-methods.yaml`. Do not invent technique names or use techniques from memory — read the file.
+Return ideas in a form the calling persona can use: themes, promising candidates, constraints discovered, and unresolved questions.
 
 ## Activation
 
@@ -26,9 +22,44 @@ description: "Brainstorming. Facilitate interactive brainstorming sessions using
 
 **2. Begin.** Capture the topic and any constraints, then launch into the first technique without ceremony. If the topic is unclear, ask one question.
 
+## Workflow
+
+### Modes
+
+- **Ideation mode:** run open-ended creative exploration without evaluating feasibility too early.
+
+### Session Flow
+
+Progress:
+
+- [ ] Step 1: Establish topic and constraints.
+- [ ] Step 2: Select or recommend a technique from `./steps/brain-methods.yaml`.
+- [ ] Step 3: Generate broadly before organizing.
+- [ ] Step 4: Cluster, prioritize, and return usable ideas to the caller.
+
+## Capabilities
+
+**Anti-bias protocol:** LLMs drift toward semantic clustering. Consciously shift creative domain every 10 ideas. If you've been on technical ideas, pivot to UX, then business, then edge cases. Force orthogonal categories.
+
+**Quantity goal:** Aim for 100+ ideas before any organisation. The first 20 are usually obvious. The magic happens in ideas 50-100.
+
+**Techniques:** All techniques are loaded on-demand from `./steps/brain-methods.yaml`. Do not invent technique names or use techniques from memory — read the file.
+
 ## Partial Context Behavior
 
 Topic ambiguity is acceptable; run the setup step to establish it. Constraint absence is not a blocker—proceed with an unconstrained session and let constraints emerge.
+
+## Definition of Done
+
+- The session produced breadth before convergence.
+- Ideas are clustered into usable themes.
+- Prioritized ideas include why they matter and what persona should use them next.
+
+## Gotchas
+
+- Users often ask for brainstorming when they already have one preferred answer. The session still needs enough divergent volume to reveal alternatives.
+- LLM idea streams cluster semantically after a few outputs; deliberate domain shifts are needed even when the early ideas seem good.
+- Technique names in the registry may not match familiar brainstorming labels, so memory-based technique selection can miss the local method set.
 
 ---
 

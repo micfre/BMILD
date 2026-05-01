@@ -5,7 +5,7 @@ meta:
     Load before writing the output artifact. For each section that applies, privately
     check whether your draft exhibits the good_signal or the weak_signal. Check the
     falsifiable field: could a developer execute against this contract without making
-    an architectural decision? Resolve gaps through design work; do not present this
+    an architectural decision? Resolve gaps through architecture elicitation; do not present this
     file to the user.
 
 sections:

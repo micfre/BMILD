@@ -15,7 +15,7 @@ No installer. No dependencies. No separate orchestrator. Only Skill-native files
 
 ## BMILD exists to
 
-1. **Help the user create solid specs and verifible code.** The upfront investment in properly specifying what you're building pays dividends when the agent writes code. AI will make it up or ignore it if it isn't properly specified, with long-horizon "iterate and fix" as the cost.
+1. **Help the user create solid specs and verifiable code.** The upfront investment in properly specifying what you're building pays dividends when the agent writes code. AI will make it up or ignore it if it isn't properly specified, with long-horizon "iterate and fix" as the cost.
 
 2. **Eliminate high process cost of frameworks that rigidly emulate Agile ceremony.** Epics, stories, sprints, and story points exist to manage communication friction and estimate human effort. AI doesn't have those problems. What AI needs more is good context management -- development units sized to context windows, not story points -- and clear, verifiable design contracts to build against.
 
@@ -25,15 +25,13 @@ These are the reasons that BMILD exists. If you want the full Agile ceremony wit
 
 Ten skill folders. Each contains a prompt that gives your AI agent a persona with a defined role, a voice, and strict scope boundaries. Together they cover the full development lifecycle:
 
-| Persona | Role | What they actually do |
-| :--- | :--- | :--- |
-| **Faisal**&nbsp;🟦 | Product Manager | Asks "WHY?" relentlessly. Won't let you ship vague requirements. Challenges your first answer, your second answer, and probably your third. |
-| **Katrina**&nbsp;🟩 | UX Designer | Owns the complete frontend experience. Advocates for users without losing sight of what's buildable. Decisive, not decorative. |
-| **Lance**&nbsp;🟥 | Architect | Names the cost of every choice. Produces implementable contracts -- schema columns, endpoint shapes, service signatures -- not high-level boxes and arrows. |
-| **Sonia**&nbsp;🟧 | Delivery Planner | Zero tolerance for ambiguity in implementation inputs. Sizes work to fit context windows, not story points. |
-| **Alex**&nbsp;🟪 | Developer | Matches existing patterns, doesn't invent new ones. Reads the repo's conventions before writing a line. Ultra-succinct, implementation-focused. |
-| **Rahat**&nbsp;🟨 | QA & Reliability | Diagnoses before fixing. Breadth-first hypothesis generation RCA protocol. Never proposes a code change until root cause is confirmed by evidence. |
-| **Zach**&nbsp;⬜ | Security | Contextual SAST code review. Prioritizes high-confidence, actionable vulnerabilities over theoretical noise. Perspective is grounded in real-world exploitability. |
+- **Faisal** 🟦: Product Manager. Asks "WHY?" relentlessly. Won't let you ship vague requirements.
+- **Katrina** 🟩: UX Designer. Owns the complete frontend experience and advocates for users without losing sight of what's buildable.
+- **Lance** 🟥: Architect. Names the cost of every choice and produces implementable contracts.
+- **Sonia** 🟧: Delivery Planner. Sizes implementation Slices to context windows, not story points.
+- **Alex** 🟪: Developer. Matches existing patterns and reads repo conventions before writing code.
+- **Rahat** 🟨: QA & Reliability. Diagnoses before fixing and preserves verification evidence.
+- **Zach** ⬜: Security. Performs contextual SAST focused on high-confidence, actionable vulnerabilities.
 
 Plus three interactive modes that work across personas:
 
@@ -55,6 +53,30 @@ Sonia, as the pivot between tiers, is where BMILD earns its keep. The spec gets 
 
 Personas read project context from the configured memory folder before they speak. They tell you what stage appears current, what's complete, and who should engage next. You don't have to remember the workflow -- they do, and they route it.
 
+Handoffs are obligations, not exits. Each persona passes a usable contract to the next teammate:
+
+- Faisal passes problem framing, success criteria, and MVP/Growth priority.
+- Katrina passes observable UX flows, states, and interaction decisions.
+- Lance passes implementable architecture contracts.
+- Sonia passes phase-scoped Slices, likely required reads, and verification boundaries.
+- Alex passes checked acceptance criteria, implementation notes, and user verification actions.
+- Rahat passes persistent verification evidence and documented defects.
+- Zach passes only high-confidence security findings with owner and remediation path.
+
+Advanced modes are team tools. Debate resolves consequential ambiguity, Elicit strengthens a draft, and Brainstorm expands options before convergence.
+
+### Artifact Flow
+
+BMILD artifacts have owners and consumers:
+
+- `spec.md`: created by Faisal; consumed by Katrina, Lance, Sonia, Rahat, and Zach.
+- `ux-design.md`: created by Katrina; consumed by Lance, Sonia, Alex, Rahat, and Zach.
+- `system-design.md`: created by Lance; consumed by Sonia, Alex, Rahat, and Zach.
+- `slices.md` and `slice-<N>.md`: created by Sonia; consumed and updated by Alex; verified by Rahat and Zach.
+- `verification-matrix.md`: created by Sonia when proof boundaries matter; repaired or expanded by Rahat; consumed by Alex.
+- `rca-<slug>.md`: created by Rahat for confirmed defects; consumed by Alex; closed by Rahat after regression evidence passes.
+- `security-review-<slug>.md`: created by Zach for exploitable findings; consumed by Alex or design-tier personas; closed by Zach after remediation is verified.
+
 ### Memory
 
 No orchestrator, no state machine. Personas write directly to the folder specified by `plan_folder` in `.bmild.toml` (defaults to `plans/`) at your project root using plain markdown. The `_context.md` file in each folder tracks what's live vs archived. Personas load only what's relevant.
@@ -71,6 +93,7 @@ plans/ (or your custom plan_folder)
     ├── spec.md                  # PM output
     ├── ux-design.md             # UX output
     ├── system-design.md         # Arch output
+    ├── verification-matrix.md   # Planner/QA proof map
     ├── slices.md                # Planner output: Slice registry
     ├── slice-<N>.md             # One file per Slice
     ├── rca-<slug>.md            # QA output: root cause analysis
@@ -84,6 +107,16 @@ Project-level settings are defined in `.bmild.toml` at the repository root. The 
 - `plan_folder`: (Default: `"plans/"`) Directory where BMILD's memory and implementation artifacts are stored.
 - `slice_target`: (Default: `170000`) Target context token limit for vertical implementation slice decomposition, aim for about 70% of the LLM's full context window.
 - `user_name`: (Optional, no default) The user's (or team's) preferred name. Used by named personas to address the user personally in their conversational responses.
+
+### Skill validation
+
+Run the local structural validator after editing skills:
+
+```sh
+scripts/validate-skills.sh .
+```
+
+It checks frontmatter names, description length, required BMILD sections, standard persona handoff sections, `Progress:` checklists for ordered workflows, and accidental markdown table rows in the BMILD-authored skill/docs surface.
 
 ## Getting started
 
@@ -109,20 +142,16 @@ BMILD has two requirements:
 
 **Drop-in** (skills are already scanned from `.agents/`):
 
-| Environment | Path |
-| :--- | :--- |
-| **Antigravity** | `.agents/skills/` |
-| **OpenAI Codex** | `.agents/skills/` |
+- Antigravity: `.agents/skills/`
+- OpenAI Codex: `.agents/skills/`
 
 **Relocate to** (copy `bmild-*` folders into the expected path):
 
-| Environment | Path |
-| :--- | :--- |
-| **Claude Code** | `.claude/skills/` |
-| **Cursor** | `.cursor/skills/` |
-| **Kilo Code** | `.kilocode/skills/` |
-| **Opencode** | `.opencode/skills/` |
-| **VS Code Copilot** | `.github/skills/` |
+- Claude Code: `.claude/skills/`
+- Cursor: `.cursor/skills/`
+- Kilo Code: `.kilocode/skills/`
+- Opencode: `.opencode/skills/`
+- VS Code Copilot: `.github/skills/`
 
 ## BMILD is different than
 

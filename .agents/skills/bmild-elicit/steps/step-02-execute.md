@@ -15,21 +15,29 @@
 
 ### Case: User selects a number (1–5)
 
-1. **Name the method** at the top of your response:
+Progress:
+
+- [ ] Step 1: Name the method.
+- [ ] Step 2: Show the method output.
+- [ ] Step 3: Summarise what changed or was revealed.
+- [ ] Step 4: Apply or ask based on clarity.
+- [ ] Step 5: Re-present the menu.
+
+**Step 1: Name the method** at the top of your response:
    > **Applying: [Method Name]**
 
-2. **Show the method output** — apply it to the current content. The output depends on the method's pattern:
+**Step 2: Show the method output** — apply it to the current content. The output depends on the method's pattern:
    - For analysis methods (First Principles, 5 Whys, etc.): show the analysis first, then the implications for the content
    - For persona methods (Stakeholder Round Table, Cross-Functional War Room, etc.): play the personas in turn, labeled clearly; if a debate session is active or recently completed, use Faisal@bmild-pm, Katrina@bmild-ux, Lance@bmild-arch, and Rahat@bmild-qa as the personas
    - For generative methods (SCAMPER, What If, etc.): produce the generated content/alternatives first, then identify what's worth keeping
    - For competitive methods (Red Team, Shark Tank, etc.): run the adversarial scenario fully before proposing improvements
 
-3. **Summarise what changed or was revealed** in 2–3 bullet points:
+**Step 3: Summarise what changed or was revealed** in 2–3 bullet points:
    - What assumption was surfaced
    - What gap was found
    - What improvement is being proposed
 
-4. **Apply or ask — based on clarity:**
+**Step 4: Apply or ask — based on clarity:**
 
    **If the method produces a clear improvement consistent with the user’s stated direction:**
    Apply the changes to the working content immediately, then confirm:
@@ -40,7 +48,7 @@
    > *"[Brief description of the tension or alternatives]. Which direction? [y] Apply first option / [n] Discard / [other] Instructions"*
    Wait for the user’s response before continuing.
 
-5. **Re-present the menu** after applying or resolving:
+**Step 5: Re-present the menu** after applying or resolving:
 
    ```text
    Continue elicitation:
@@ -90,20 +98,27 @@ After displaying, prompt: *"Select any method by number, or return to [r] your c
 
 ### Case: [x] Proceed
 
-1. Present a brief summary of what the elicitation session produced:
+Progress:
+
+- [ ] Step 1: Present a brief summary of what the elicitation session produced.
+- [ ] Step 2: Present the final working version of the content.
+- [ ] Step 3: Ask whether to save the enhanced version.
+- [ ] Step 4: Return cleanly to the invoking context.
+
+**Step 1:** Present a brief summary of what the elicitation session produced:
    > **Elicitation complete.**
    >
    > Methods applied: [list]  
    > Key improvements made: [2–4 bullets]  
    > Changes discarded: [if any]
 
-2. Present the final working version of the content.
+**Step 2:** Present the final working version of the content.
 
-3. Ask: *"Do you want to save this enhanced version to [document name]?"*
+**Step 3:** Ask: *"Do you want to save this enhanced version to [document name]?"*
    - If yes: write it to the appropriate spec document (or the section within it) and update `_context.md` if the document changed meaningfully.
    - If no: leave the content in the conversation for the user to apply manually.
 
-4. Return cleanly to the invoking context:
+**Step 4:** Return cleanly to the invoking context:
    > *"Returning to [persona or workflow that called elicitation]."*
 
 ---

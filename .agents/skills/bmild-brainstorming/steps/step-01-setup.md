@@ -17,7 +17,14 @@ Gather the brainstorming topic and goals, confirm understanding, then route to t
 
 ## SETUP SEQUENCE
 
-### 1. Open the session
+Progress:
+
+- [ ] Step 1: Open the session.
+- [ ] Step 2: Confirm understanding.
+- [ ] Step 3: Offer technique approach.
+- [ ] Step 4: Route to the selected approach.
+
+### Step 1: Open the session
 
 Ask directly — no preamble:
 
@@ -25,7 +32,7 @@ Ask directly — no preamble:
 
 Wait for the user's response.
 
-### 2. Confirm understanding
+### Step 2: Confirm understanding
 
 Mirror back what you heard:
 
@@ -33,7 +40,7 @@ Mirror back what you heard:
 
 Wait for confirmation or refinement before continuing.
 
-### 3. Offer technique approach
+### Step 3: Offer technique approach
 
 Once the topic is confirmed:
 
@@ -44,7 +51,7 @@ Once the topic is confirmed:
 > **[3] Random selection** — surprise yourself with an unexpected combination  
 > **[4] Progressive flow** — a structured journey from broad exploration to actionable ideas"_
 
-### 4. Route to the selected approach
+### Step 4: Route to the selected approach
 
 - [1] → load `./steps/step-02a-browse.md`
 - [2] → load `./steps/step-02b-recommend.md`

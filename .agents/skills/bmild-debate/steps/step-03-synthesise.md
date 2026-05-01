@@ -26,10 +26,14 @@ Present the synthesis clearly under three headings:
 
 **Preference** — where Leads differed, but the trade-off is low-stakes or reversible:
 
-| Option | Who favours it | Why | Cost |
-| --- | --- | --- | --- |
-| A | Katrina@bmild-ux, Faisal@bmild-pm | [reason] | [cost] |
-| B | Lance@bmild-arch | [reason] | [cost] |
+- Option A:
+  - Favoured by: Katrina@bmild-ux, Faisal@bmild-pm
+  - Why: [reason]
+  - Cost: [cost]
+- Option B:
+  - Favoured by: Lance@bmild-arch
+  - Why: [reason]
+  - Cost: [cost]
 
 **Open** — genuinely unresolved; requires a decision before design can proceed:
 
@@ -57,6 +61,14 @@ Wait for the user to answer. Then either:
 ## DOCUMENT APPLICATION
 
 After synthesis is complete and open items are resolved or explicitly deferred, apply changes to the relevant spec documents. Do not ask for permission — apply and report.
+
+Progress:
+
+- [ ] Step 1: Apply non-negotiables to the appropriate spec/design document.
+- [ ] Step 2: Apply resolved open items and remove them from Open Questions if settled.
+- [ ] Step 3: Record deferred open items as Open Questions or Assumptions.
+- [ ] Step 4: Append the synthesis record.
+- [ ] Step 5: Update `_context.md` if a document was newly created or significantly changed.
 
 **What to apply:**
 

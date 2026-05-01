@@ -25,7 +25,16 @@ Every captured idea uses this structure:
 
 ## EXECUTION SEQUENCE
 
-### 1. Open the technique
+Progress:
+
+- [ ] Step 1: Open the technique.
+- [ ] Step 2: Facilitate one element at a time.
+- [ ] Step 3: Run energy checkpoint every 4-5 exchanges.
+- [ ] Step 4: Transition techniques when applicable.
+- [ ] Step 5: Offer deep-dive option.
+- [ ] Step 6: Complete the check.
+
+### Step 1: Open the technique
 
 Name the technique and set the coaching frame:
 
@@ -33,7 +42,7 @@ Name the technique and set the coaching frame:
 
 State the technique's primary goal and energy level (from the CSV's `facilitation_prompts` and `energy_level`).
 
-### 2. Facilitate one element at a time
+### Step 2: Facilitate one element at a time
 
 Use the `facilitation_prompts` from the CSV to drive the exploration. Present one prompt, wait for the user's response, then:
 
@@ -41,7 +50,7 @@ Use the `facilitation_prompts` from the CSV to drive the exploration. Present on
 - **If the response is rich:** Build on it — *"Great — let's take that further. What if [extension of their idea]?"*
 - **If the user seems stuck:** Offer an angle — *"Here's a starting point: [gentle prompt from the CSV]. Which direction does that pull you?"*
 
-### 3. Energy checkpoint (every 4–5 exchanges)
+### Step 3: Energy checkpoint (every 4-5 exchanges)
 
 Check in without breaking flow:
 
@@ -49,7 +58,7 @@ Check in without breaking flow:
 
 Default: continue exploring unless the user signals they want to move on.
 
-### 4. Technique transition
+### Step 4: Technique transition
 
 When moving to the next technique (user-initiated or natural completion):
 
@@ -59,7 +68,7 @@ When moving to the next technique (user-initiated or natural completion):
 >
 > *Now into **[Next Technique]** — this one will [brief note on what it adds]. Ready?"*
 
-### 5. Deep-dive option
+### Step 5: Deep-dive option
 
 At any point, if a promising idea emerges that deserves more rigorous treatment, offer:
 
@@ -67,7 +76,7 @@ At any point, if a promising idea emerges that deserves more rigorous treatment,
 
 Do not invoke `bmild-elicit` autonomously — suggest it and wait for confirmation.
 
-### 6. Completion check
+### Step 6: Completion check
 
 Only offer to move to organisation when:
 

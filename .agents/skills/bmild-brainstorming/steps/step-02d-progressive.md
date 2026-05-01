@@ -10,7 +10,15 @@
 
 ## PROGRESSIVE FLOW SEQUENCE
 
-### 1. Explain the journey
+Progress:
+
+- [ ] Step 1: Explain the journey.
+- [ ] Step 2: Select techniques from YAML for each phase.
+- [ ] Step 3: Present the full journey map.
+- [ ] Step 4: Handle customisation.
+- [ ] Step 5: Hand off.
+
+### Step 1: Explain the journey
 
 > *"Progressive flow mirrors natural creativity — start wild and broad, then systematically narrow toward action. Four phases:*
 >
@@ -19,16 +27,18 @@
 > **Phase 3: Idea Development** — refine the most promising concepts  
 > **Phase 4: Action Planning** — turn the best ideas into concrete next steps"_
 
-### 2. Select techniques from YAML for each phase
+### Step 2: Select techniques from YAML for each phase
 
 Match technique types to phases using the YAML `category` field:
 
-| Phase | Best-fit categories |
-|-------|-------------------|
-| 1 — Expansive Exploration | creative, wild, theatrical_exploration |
-| 2 — Pattern Recognition | deep_analysis, structured_thinking |
-| 3 — Idea Development | structured_thinking, collaborative |
-| 4 — Action Planning | deep_analysis, structured_thinking |
+- Phase 1: Expansive Exploration
+  - Best-fit categories: creative, wild, theatrical_exploration
+- Phase 2: Pattern Recognition
+  - Best-fit categories: deep_analysis, structured_thinking
+- Phase 3: Idea Development
+  - Best-fit categories: structured_thinking, collaborative
+- Phase 4: Action Planning
+  - Best-fit categories: deep_analysis, structured_thinking
 
 Select one technique per phase. For each, show:
 
@@ -37,7 +47,7 @@ Select one technique per phase. For each, show:
 Why for this phase: [one line connecting its description to the phase goal]
 ```
 
-### 3. Present the full journey map
+### Step 3: Present the full journey map
 
 Show all four phases together with total time, then ask:
 
@@ -50,10 +60,10 @@ Options:
 - [Details] — tell me more about a specific phase or technique
 - [Back] — return to approach selection
 
-### 4. Handle customisation
+### Step 4: Handle customisation
 
 If the user wants to swap a phase technique: load the alternatives from the CSV for that category and let them pick.
 
-### 5. Hand off
+### Step 5: Hand off
 
 On confirmation → load `./steps/step-03-execute.md`, carrying all four technique names and their phase order forward.

@@ -12,10 +12,12 @@ The emotional response and core interaction philosophy.
 
 ## 2. Visual Design Foundation
 ### Colour Palette
-| Role | Value | Notes |
-|------|-------|-------|
-| Primary | ... | |
-| Semantic (Error) | ... | |
+- Primary:
+  - Value: ...
+  - Notes: ...
+- Semantic error:
+  - Value: ...
+  - Notes: ...
 
 ### Typography & Spacing
 - **Font Families:** ...

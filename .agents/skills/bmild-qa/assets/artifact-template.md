@@ -11,6 +11,8 @@ severity: low | medium | high | critical
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
 status: open | resolved
+owner: Rahat
+next_owner: Alex | Lance | Katrina | none
 ---
 
 ## Symptom
@@ -36,6 +38,11 @@ What was changed and why.
 
 ## Regression Test
 Reference to the test added.
+
+## Closure Evidence
+- Fixed by: [commit / file refs / Slice notes]
+- Verification command: ...
+- Result: pass / fail / blocked
 ```
 
 **File rules:**
@@ -54,16 +61,35 @@ scope: <initiative-name> | _system
 created: YYYY-MM-DD
 author: [user_name] + Rahat (QA)
 mode: nyquist
+status: draft | active | partially_implemented | verified | blocked
 ---
 
 ## Test Infrastructure
 Commands and tools used to run tests.
 
 ## Requirement Coverage Matrix
-| Requirement (spec ref) | Test Case | Type (unit/integration/e2e) | Status |
-|---|---|---|---|
-| Must Have 1: ... | ... | ... | draft |
-| Must Have 2: ... | ... | ... | draft |
+- Requirement: Must Have 1 ...
+  - Spec ref: ...
+  - Covered by Slice: ...
+  - Test case / verification action: ...
+  - Type: unit / integration / e2e / manual
+  - Status: draft / implemented / passed / failed / blocked
+  - Created by: Sonia / Rahat
+  - Implementation consumer: Alex
+  - Verification owner: Rahat
+  - Evidence: [test file, command, manual check, or pending]
+  - Next owner: Alex / Rahat / Lance / Katrina / none
+- Requirement: Must Have 2 ...
+  - Spec ref: ...
+  - Covered by Slice: ...
+  - Test case / verification action: ...
+  - Type: unit / integration / e2e / manual
+  - Status: draft / implemented / passed / failed / blocked
+  - Created by: Sonia / Rahat
+  - Implementation consumer: Alex
+  - Verification owner: Rahat
+  - Evidence: [test file, command, manual check, or pending]
+  - Next owner: Alex / Rahat / Lance / Katrina / none
 
 ## Test Scaffolding
 Files, mocks, fixture setups required.

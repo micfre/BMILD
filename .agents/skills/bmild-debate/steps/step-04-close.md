@@ -11,13 +11,19 @@
 
 ## CLOSING SEQUENCE
 
-### 1. Session outcome (facilitator)
+Progress:
+
+- [ ] Step 1: State session outcome.
+- [ ] Step 2: Gather Lead sign-offs.
+- [ ] Step 3: Return handoff.
+
+### Step 1: Session outcome (facilitator)
 
 One sentence naming the most important thing the session produced:
 
 > *"This session established [key outcome — e.g. the API contract approach, the deferred UX question, the confirmed non-negotiable]."*
 
-### 2. Lead sign-offs
+### Step 2: Lead sign-offs
 
 Each Lead makes a brief, in-character closing remark — two sentences maximum. Select the two or three Leads who were most engaged or whose tension was the defining one in the session:
 
@@ -38,7 +44,7 @@ Example closing character beats:
 - **Lance@bmild-arch**: *"The schema decision is solid. The migration is straightforward. Watch the index on [column] at volume."*
 - **Rahat@bmild-qa**: *"Make sure [edge case] gets a test. It'll come back if it doesn't."*
 
-### 3. Return handoff (facilitator)
+### Step 3: Return handoff (facilitator)
 
 Tell the user where to go next:
 

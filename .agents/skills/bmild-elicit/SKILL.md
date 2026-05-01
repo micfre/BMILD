@@ -7,23 +7,13 @@ description: "Advanced elicitation. Push any BMILD output to be reconsidered, re
 
 **Voice:** Incisive, precise, relentless in service of rigour.
 
-**Modes:**
-
-- Refinement mode: applying structured elicitation methods to push existing content further.
-
 This skill can be invoked at any point in any BMILD workflow. It always returns the enhanced content to the calling context.
 
-## Method Registry
+## BMILD Working Team
 
-All methods are loaded from `./steps/methods.yaml` (keys: `num, category, method_name, description, output_pattern`). Do not use methods from memory — always read the file. This file is interchangeable with the BMAD source at `_bmad/core/workflows/advanced-elicitation/methods.csv`.
+Elicitation is a refinement tool for any BMILD artifact or decision. It helps the calling persona improve content without taking ownership away from that persona.
 
-## Critical Rules
-
-- **Context-sensitive selection.** Read and understand the content being elicited before selecting any methods. Smart selection requires knowing what's there.
-- **Apply with judgment.** After each method execution, assess whether the output is a clear improvement consistent with the user's stated direction. If yes, apply and report — do not halt. If the output presents competing alternatives or genuinely ambiguous direction, surface the choice and halt: `[y] apply / [n] discard / [other] instructions`. The user can always say "undo" to revert an applied change.
-- **Loop until [x].** Always re-present the numbered menu after each method. Do not exit until the user selects [x].
-- **Build on the current version.** Each method applies to the current working version of the content, not the original.
-- **debate persona integration.** For collaboration methods (Stakeholder Round Table, Cross-Functional War Room, etc.), if a debate session is active or recently concluded, use Faisal@bmild-pm, Katrina@bmild-ux, Lance@bmild-arch, and Rahat@bmild-qa as the personas.
+Return improved content and the reasoning behind the improvement to the caller. Do not create a parallel workflow or force a handoff unless the refinement exposes a domain decision the caller cannot own.
 
 ## Activation
 
@@ -34,9 +24,51 @@ All methods are loaded from `./steps/methods.yaml` (keys: `num, category, method
 
 **2. Begin.** Read the content to be elicited. Identify what kind of content it is (spec, design, architecture, slice). Select methods accordingly. Do not ask what skill you are operating on if it is clear from context.
 
+## Workflow
+
+### Modes
+
+- **Refinement mode:** apply structured elicitation methods to push existing content further.
+
+### Elicitation Flow
+
+Progress:
+
+- [ ] Step 1: Understand the current content and artifact type.
+- [ ] Step 2: Select context-appropriate methods from `./steps/methods.yaml`.
+- [ ] Step 3: Apply improvements when they clearly strengthen the content and match user direction.
+- [ ] Step 4: Surface competing alternatives when judgment is required.
+- [ ] Step 5: Continue until the user exits with `[x]`, then return cleanly to the calling context.
+
+## Capabilities
+
+### Method Registry
+
+All methods are loaded from `./steps/methods.yaml` (keys: `num, category, method_name, description, output_pattern`). Do not use methods from memory — always read the file. This file is interchangeable with the BMAD source at `_bmad/core/workflows/advanced-elicitation/methods.csv`.
+
+### Critical Rules
+
+- **Context-sensitive selection.** Read and understand the content being elicited before selecting any methods. Smart selection requires knowing what's there.
+- **Apply with judgment.** After each method execution, assess whether the output is a clear improvement consistent with the user's stated direction. If yes, apply and report — do not halt. If the output presents competing alternatives or genuinely ambiguous direction, surface the choice and halt: `[y] apply / [n] discard / [other] instructions`. The user can always say "undo" to revert an applied change.
+- **Loop until [x].** Always re-present the numbered menu after each method. Do not exit until the user selects [x].
+- **Build on the current version.** Each method applies to the current working version of the content, not the original.
+- **debate persona integration.** For collaboration methods (Stakeholder Round Table, Cross-Functional War Room, etc.), if a debate session is active or recently concluded, use Faisal@bmild-pm, Katrina@bmild-ux, Lance@bmild-arch, and Rahat@bmild-qa as the personas.
+
 ## Partial Context Behavior
 
 If invoked without prior content in session, ask the user to paste or describe what should be elicited. Do not invent content to work on.
+
+## Definition of Done
+
+- The content is stronger by a named criterion: clarity, completeness, risk coverage, decision quality, or testability.
+- Applied changes are distinguishable from discarded or unresolved alternatives.
+- The calling persona knows what to do with the refined content.
+
+## Gotchas
+
+- Elicitation usually starts with the target content already in the current context; reloading artifacts can accidentally elicit stale text.
+- Some methods produce provocative alternatives rather than direct improvements. Those require user choice before application.
+- Refined content can cross domain boundaries: a better UX phrasing may expose an architecture decision, but Katrina still cannot make Lance's contract decision.
 
 ---
 

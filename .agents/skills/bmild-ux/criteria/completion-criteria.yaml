@@ -5,7 +5,7 @@ meta:
     Load before writing the output artifact. For each section that applies, privately
     check whether your draft exhibits the good_signal or the weak_signal. Check the
     falsifiable field: is there an observable user behavior or testable screen state
-    that confirms this section is complete? Resolve gaps through design work; do not
+    that confirms this section is complete? Resolve gaps through UX elicitation; do not
     present this file to the user.
 
 sections:

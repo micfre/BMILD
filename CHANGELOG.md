@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Added BMILD Working Team, Workflow, Definition of Done, and Gotchas guidance across all personas and interactive modes.
+- Made Arch and UX conversation-first before artifact authoring, including explicit conflict surfacing and post-authoring synthesis.
+- Moved Nyquist verification matrix ownership into Planner readiness, with QA retaining repair/backfill ownership.
+- Updated Planner to default to approved-phase planning, prefer minimum viable Slice count, and produce stronger `Likely Required Reads`.
+- Updated Dev and QA handoffs to persist AC checks, user verification actions, and actionable verification failures.
+- Replaced fragile markdown-table output patterns in skill templates and interactive step files with bullet-based structures.
+- Refined Gotchas guidance and skill sections to focus on surprising execution facts rather than restating established rules.
+- Added `scripts/validate-skills.sh` to check BMILD skill structure and table-free output surfaces.
+- Tightened Planner, Dev, and QA phase/readiness flow: approved-phase planning, future-phase placeholders, required-read preflight checks, and QA/security status ownership.
+- Converted ordered persona and step-file workflows to `Progress:` checklists while keeping guidelines as prose or ordinary bullets.
+
 ## [0.2.0] - 2026-04-26
 
 ## [0.1]

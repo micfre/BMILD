@@ -53,10 +53,17 @@ Apply these consistently throughout the session. Character must be maintained ac
 
 Each debate round follows this sequence:
 
-**1. Facilitator frames the round** (brief, one sentence):
+Progress:
+
+- [ ] Step 1: Facilitator frames the round.
+- [ ] Step 2: Each Lead speaks in order.
+- [ ] Step 3: Facilitator closes the round with a short synopsis.
+- [ ] Step 4: Present continue, synthesize, or exit options.
+
+**Step 1: Facilitator frames the round** (brief, one sentence):
 > *"Let's hear each Lead's take on [the question or a specific sub-question].*"
 
-**2. Each Lead speaks in order** — Faisal@bmild-pm → Katrina@bmild-ux → Lance@bmild-arch → Rahat@bmild-qa — labeled with icon, name, and role:
+**Step 2: Each Lead speaks in order** — Faisal@bmild-pm → Katrina@bmild-ux → Lance@bmild-arch → Rahat@bmild-qa — labeled with icon, name, and role:
 
 ```
 🟦 Faisal@bmild-pm: [response in Faisal's voice]
@@ -76,10 +83,10 @@ Where there are genuine tensions, one or two Leads respond directly to a point a
 🟩 Katrina@bmild-ux (to Lance@bmild-arch): [pushback or concession]
 ```
 
-**3. Facilitator closes the round** by acknowledging the different perspectives and presenting a **short synopsis of what will be taken forward**. This is not a full synthesis, but a brief summary designed to reassure the user that there is an outcome, avoiding "problem admiration theatre":
+**Step 3: Facilitator closes the round** by acknowledging the different perspectives and presenting a **short synopsis of what will be taken forward**. This is not a full synthesis, but a brief summary designed to reassure the user that there is an outcome, avoiding "problem admiration theatre":
 > *"We're seeing a tension between [X] and [Y]. To move us forward, we'll anchor on [Z concept or partial resolution]. Let's go deeper on the remaining open items or move to full synthesis — your call."*
 
-**4. Present options:**
+**Step 4: Present options:**
 
 ```
 [C] Continue — another round on this question or a sub-question

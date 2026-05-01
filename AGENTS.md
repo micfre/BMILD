@@ -11,20 +11,30 @@ BMILD skills must follow these API-like design principles:
 2. **Uniform skill structure**:
    Each skill body uses these sections in this order:
    - **`Persona`**: Name, role, scope boundary, voice, and sign-off directive (`Sign off as [Name] [icon]`). Do not use `Always prefix` — identity is expressed at sign-off only.
-   - **`Modes`**: Execution modes (e.g., "Diagnostic mode", "Implementation mode") and any execution phases.
+   - **`## BMILD Working Team`**: Positive frame for how the skill contributes to the team value chain, which teammates depend on its output, why interactivity matters, and when advanced team tools such as `bmild-debate`, `bmild-elicit`, or `bmild-brainstorming` are useful.
    - **`## Activation`**: Unified entry sequence — resolve environment from `.bmild.toml`, determine scope, load context memory, load persona inputs, handle incomplete context, begin. Standard skills use the full 6-step sequence; cross-cutting skills use a simplified version.
-   - **`## Capabilities`**: The skill's core competencies. Skills that drive specification (PM, UX, Arch) include a `### Deeper Engagement` subsection that explicitly surfaces `bmild-debate` as an active option at any point in the session.
+   - **`## Workflow`**: Linear process, mode variants, retry loops, and the first actionable "begin" behaviour. Modes are workflow modifiers, not a separate instruction set. True ordered work uses a `Progress:` checklist with `- [ ] Step N: ...`; general guidelines use prose or ordinary bullets.
+   - **`## Capabilities`**: The skill's toolkit, domain competencies, escalation options, and reusable techniques. Skills that drive specification (PM, UX, Arch) include a `### Deeper Engagement` subsection that explicitly surfaces `bmild-debate` as an active option at any point in the session.
+   - **`## Definition of Done`**: Quality bar, success criteria, verification checks, and evidence required before handoff.
    - **`## Scope Boundary`**: What the skill explicitly does not do.
    - **`## Exit and Handoff`**: (Standard skills only) Unified exit sequence — write artifact using template in `assets/artifact-template.md`, register in context memory, check gates, close with handoff statement. Cross-cutting skills omit this section.
+   - **`## Gotchas`**: High-value corrections from real execution traces. Use for facts that defy reasonable assumptions or steer unpredicted events; do not restate rules already established elsewhere.
    Artifact templates live in each skill's `assets/artifact-template.md`. Context memory templates live in each skill's `assets/context-memory-template.md`.
 3. **Skill Structure**:
    Keep skill structure aligned across all personas to the extent that is reasonable to do to. Avoid patching a single skill as this may solve the local issue but will lead to drift that makes skills behave differently over time and create for more maintanace overhead.
 4. **Context-Aware Personas**:
    Personas do their own thinking and are not bound by prescriptive linear flows or rigid tiers. They are domain specialists activated by the artifact state. Personas focusing on specification (PM, UX, Arch) slow down, probe, and elicit — their job is to surface what would otherwise go unstated. Personas focusing on execution (Planner, Dev, QA, Sec) activate lean, act on coherent inputs, and hand back precisely when a blocker is outside their domain authority.
-5. **Teach Reasoning**:
+5. **Context Loading Policy**:
+   - PM and Dev usually reload memory artifacts because they often run in fresh windows, except for explicit quick-fix or clearly in-context continuation work.
+   - UX and Arch may skip disk reads only when the required artifact contents are visibly present in the current conversation and are not likely stale; otherwise reload.
+   - Planner, QA, and Sec always reload relevant live artifacts because errors cascade from stale planning, verification, and review context.
+   - Advanced modes (Debate, Brainstorming, Elicit) prefer the current conversation context and only read memory when the invoked topic cannot be grounded from chat.
+6. **Teach Reasoning**:
    Do not just list rules. Explain what goes wrong without the pattern, how to diagnose it, and provide before/after examples.
-6. **Prefer Subtle, Iterative Changes**:
+7. **Prefer Subtle, Iterative Changes**:
    Treat feedback as refinements. Make small, deliberate edits rather than broad rewrites; each change should be reversible and minimal.
+8. **Avoid fragile markdown tables in skill outputs**:
+   Some harnesses render or parse tables poorly. Prefer compact bullet structures for conversational output and artifact templates unless a table is clearly more reliable in the target environment.
 
 ### Skills Documentation
 
@@ -70,6 +80,7 @@ plans/ (or your custom plan_folder)
     ├── spec.md                  # PM output
     ├── ux-design.md             # UX output
     ├── system-design.md         # Arch output
+    ├── verification-matrix.md   # Planner/QA proof map for requirements and Slices
     ├── slices.md                # Planner output: Slice registry
     ├── slice-<N>.md             # One file per Slice
     ├── rca-<slug>.md            # QA output: root cause analysis
@@ -99,6 +110,16 @@ updated: YYYY-MM-DD
 - `## Archived` — filenames of superseded artifacts, same format.
 - Frontmatter `scope` identifies the initiative or if it is the global `_system` context.
 - Frontmatter `updated` is the date of the last change.
+
+### Cross-artifact flow
+
+- `spec.md`: created by Faisal; consumed by Katrina, Lance, Sonia, Rahat, and Zach; validated through coverage checks and verification matrix entries.
+- `ux-design.md`: created by Katrina; consumed by Lance, Sonia, Alex, Rahat, and Zach; validated through observable user-state checks.
+- `system-design.md`: created by Lance; consumed by Sonia, Alex, Rahat, and Zach; validated through implementability, testability, and security review.
+- `slices.md` and `slice-<N>.md`: created by Sonia; consumed and updated by Alex; verified by Rahat and Zach; recut by Sonia when implementation reveals a planning problem.
+- `verification-matrix.md`: created by Sonia during readiness when proof boundaries matter; repaired or expanded by Rahat; consumed by Alex; validated by Rahat during verification.
+- `rca-<slug>.md`: created or updated by Rahat for confirmed defects; consumed by Alex for fixes; closed by Rahat after evidence shows the regression is covered.
+- `security-review-<slug>.md`: created by Zach when exploitable findings exist; consumed by Alex for implementation fixes or Lance/Katrina for design changes; closed by Zach after remediation is verified.
 
 ## Philosophical guidance
 

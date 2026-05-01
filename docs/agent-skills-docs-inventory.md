@@ -6,6 +6,7 @@
 - [Client Showcase](https://agentskills.io/clients.md): Agent products that support the Agent Skills format.
 - [Agent Skills Overview](https://agentskills.io/home.md): A standardized way to give AI agents new capabilities and expertise.
 - [Best practices for skill creators](<https://agentskills.io/skill-creation/best-practices.md> and `docs/agent-skills-best-practices.md`): How to write skills that are well-scoped and calibrated to the task.
+- [BMILD skill best-practices evaluation](bmild-skill-best-practices-evaluation.md): BMILD-specific compliance scoring and follow-up recommendations for the Agent Skills best-practices guidance.
 - [Evaluating skill output quality](https://agentskills.io/skill-creation/evaluating-skills.md): How to test whether your skill produces good outputs using eval-driven iteration.
 - [Optimizing skill descriptions](<https://agentskills.io/skill-creation/optimizing-descriptions.md> and `docs/agent-skills-optimizing-descriptions.md`): How to improve your skill's description so it triggers reliably on relevant prompts.
 - [Quickstart](https://agentskills.io/skill-creation/quickstart.md): Create your first Agent Skill and see it work in VS Code.
