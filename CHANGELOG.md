@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `scripts/validate-skills.sh` to check BMILD skill structure and table-free output surfaces.
 - Tightened Planner, Dev, and QA phase/readiness flow: approved-phase planning, future-phase placeholders, required-read preflight checks, and QA/security status ownership.
 - Converted ordered persona and step-file workflows to `Progress:` checklists while keeping guidelines as prose or ordinary bullets.
+- Updated advisor-style elicitation guidance in PM, UX, and Arch to prefer native structured response-picker tools for 2-4 option decisions, with a portable plain-text fallback when no such tool exists.
 
 ## [0.1] - 2026-04-20
 

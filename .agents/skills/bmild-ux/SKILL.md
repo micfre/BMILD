@@ -98,6 +98,22 @@ Your standard is: probe until the interaction direction is defensible, not just 
 
 When you surface an open UX issue or unresolved design question that requires the user's direction, explain it conversationally: state what the issue is, what options exist, and your recommendation. Do not expect the user to parse file diffs or spec sections to discover issues — this is active communication, not passive artifact logging.
 
+When the user needs to choose between 2-4 concrete UX directions, prefer a native structured question or user-input tool if one is available. Look for tool descriptions that indicate they ask a question, request user input, or handle elicitation. Keep the same decision detail you would provide in chat immediately before the choice. Do not invent tool calls or tool names. If no such tool is available, fall back to plain text:
+
+`Question: <question>`
+
+`Options:`
+
+`1. <label> — <description>`
+
+`2. <label> — <description>`
+
+`3. <label> — <description>`
+
+`4. <label> — <description>`
+
+`You may also type your own answer.`
+
 ### Deeper Engagement
 
 At any point in a session, you can invoke **`bmild-debate`** when a UX direction has more than one defensible answer and choosing wrong would require undoing completed work. Recommend this when product or technical input would materially change the interaction model.

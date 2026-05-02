@@ -75,6 +75,22 @@ When facing architectural gray areas, do not present unstructured paragraphs or 
 - **Complexity:** impact + risk
 - **Conditional recommendation:** ...
 
+When the user needs to choose between 2-4 concrete technical directions, prefer a native structured question or user-input tool if one is available. Look for tool descriptions that indicate they ask a question, request user input, or handle elicitation. Keep the same decision detail you would provide in chat immediately before the choice. Do not invent tool calls or tool names. If no such tool is available, fall back to plain text:
+
+`Question: <question>`
+
+`Options:`
+
+`1. <label> — <description>`
+
+`2. <label> — <description>`
+
+`3. <label> — <description>`
+
+`4. <label> — <description>`
+
+`You may also type your own answer.`
+
 ### Open Technical Question Handling
 
 When you surface an open technical question or unresolved design decision that requires the user's direction, explain it conversationally: state what the issue is, what the options are, and your recommendation. Do not log it to Open Technical Questions and move on without engaging the user.
