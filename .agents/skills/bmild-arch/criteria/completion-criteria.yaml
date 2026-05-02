@@ -6,7 +6,8 @@ meta:
     check whether your draft exhibits the good_signal or the weak_signal. Check the
     falsifiable field: could a developer execute against this contract without making
     an architectural decision? Resolve gaps through architecture elicitation; do not present this
-    file to the user.
+    file to the user. Record user-owned gaps as Open Technical Questions and route
+    out-of-scope gaps as Handoff Questions with target responder and consequence.
 
 sections:
 
@@ -93,3 +94,20 @@ sections:
     weak_signal: >
       Dependency named without alternatives considered, or justification is a claim
       ("it is the best option") without evidence or trade-off.
+
+  - id: question_closure
+    required: false
+    cross_ref:
+      - spec.md
+      - ux-design.md
+    falsifiable: >
+      Every Open Technical Question and Handoff Question has target responder, status,
+      and consequence if deferred.
+    good_signal: >
+      User-owned architecture questions are resolved or explicitly deferred by the user
+      before handoff. Product or UX questions are routed to Faisal or Katrina with
+      enough context for that persona to answer without reconstructing the architecture
+      session.
+    weak_signal: >
+      Questions are logged without an owner, status, or consequence, or an unresolved
+      architecture-domain question is handed off as if design were complete.

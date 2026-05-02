@@ -22,6 +22,9 @@ approved_scope: MVP | named phase | full initiative
 - Coverage verified:
   - Result: pass / pass-with-warning / fail
   - Detail: [one-line justification]
+- Question closure:
+  - Result: pass / gap / routed / deferred_by_user
+  - Detail: [all Open and Handoff Questions resolved, explicitly deferred, or routed with target responder and documented action]
 
 ## Slice Registry
 
@@ -148,6 +151,7 @@ Specific enough to reuse during backward coverage checking.
 
 ## Planning Notes
 <!-- Sonia@bmild-planner-owned notes: why this is groundwork/mainline/cleanup, decomposition gotchas, Single-Slice Optimisation if applicable. -->
+- Budget estimate: <estimated_total>/<target> tokens, WITHIN BUDGET | OVER BUDGET; skipped files: <none/list>.
 
 ## Implementation Notes
 <!-- Alex@bmild-dev fills this in after implementation. Sonia@bmild-planner leaves this empty. -->

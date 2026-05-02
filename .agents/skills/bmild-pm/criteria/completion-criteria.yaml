@@ -4,8 +4,9 @@ meta:
   loading_note: >
     Load before writing the output artifact. For each section that applies, privately
     check whether your draft exhibits the good_signal or the weak_signal. Resolve gaps
-    through further elicitation or record them as Open Questions. Do not present this
-    file to the user.
+    through further elicitation, record user-owned gaps as Open Product Questions,
+    or route out-of-scope gaps as Handoff Questions with target responder and
+    consequence. Do not present this file to the user.
 
 sections:
 
@@ -101,11 +102,27 @@ sections:
     required: false
     cross_ref: []
     good_signal: >
-      Each open question names a specific decision that, if resolved differently, would
-      materially change a Must Have requirement or a downstream design artifact.
+      Each user-owned Open Product Question names a specific decision that, if resolved
+      differently, would materially change a Must Have requirement or a downstream
+      design artifact. Each question includes target responder, status, recommendation,
+      and consequence if deferred.
     weak_signal: >
       Questions that could be answered without changing any requirement ("what colour
-      should the button be?"), or questions that are purely rhetorical.
+      should the button be?"), questions that are purely rhetorical, or questions
+      without a target responder.
+
+  - id: handoff_questions
+    required: false
+    cross_ref:
+      - ux-design.md
+      - system-design.md
+    good_signal: >
+      Each out-of-scope question is routed as a UX Handoff Question or Architecture
+      Handoff Question with target responder, status, context or recommendation, and
+      consequence if deferred.
+    weak_signal: >
+      Product-owned questions are misfiled as handoff questions, or handoff questions
+      lack a target persona or consequence.
 
   - id: assumptions
     required: false

@@ -19,7 +19,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `scripts/validate-skills.sh` to check BMILD skill structure and table-free output surfaces.
 - Tightened Planner, Dev, and QA phase/readiness flow: approved-phase planning, future-phase placeholders, required-read preflight checks, and QA/security status ownership.
 - Converted ordered persona and step-file workflows to `Progress:` checklists while keeping guidelines as prose or ordinary bullets.
-- Updated advisor-style elicitation guidance in PM, UX, and Arch to prefer native structured response-picker tools for 2-4 option decisions, with a portable plain-text fallback when no such tool exists.
+- Updated design-tier decision interaction in PM, UX, and Arch to use labelled option blocks and prefer native structured response-picker tools for constrained choices, with a portable plain-text fallback when no such tool exists.
+- Added target responder, status, and deferral-consequence fields for design-tier Open Questions and Handoff Questions, with Planner readiness checks for question closure.
+- Added first-person voice guidance to all seven named personas.
+- Updated Planner slice budgeting guidance to invoke the skill-local tokenizer with `bash` and persist the returned token estimate in Slice Planning Notes.
 
 ## [0.1] - 2026-04-20
 

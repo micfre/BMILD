@@ -6,7 +6,8 @@ meta:
     check whether your draft exhibits the good_signal or the weak_signal. Check the
     falsifiable field: is there an observable user behavior or testable screen state
     that confirms this section is complete? Resolve gaps through UX elicitation; do not
-    present this file to the user.
+    present this file to the user. Record user-owned gaps as Open UX Questions and
+    route out-of-scope gaps as Handoff Questions with target responder and consequence.
 
 sections:
 
@@ -101,3 +102,19 @@ sections:
       Accessibility addressed with a single statement ("must be accessible") or WCAG
       cited without specifying which success criteria apply to the interactive elements
       introduced.
+
+  - id: question_closure
+    required: false
+    cross_ref:
+      - spec.md
+      - system-design.md
+    falsifiable: >
+      Every Open UX Question and Handoff Question has target responder, status, and
+      consequence if deferred.
+    good_signal: >
+      User-owned UX questions are resolved or explicitly deferred by the user before
+      handoff. Product or architecture questions are routed to Faisal or Lance with
+      enough context for that persona to answer without reconstructing the UX session.
+    weak_signal: >
+      Questions are logged without an owner, status, or consequence, or an unresolved
+      UX-domain question is handed off as if design were complete.

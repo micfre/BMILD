@@ -27,5 +27,29 @@ Must include error paths and edge cases (unhappy paths).
 Component-level behaviour specific to this feature. What triggers what. What state is held where.
 
 ## 6. Open UX Questions
-Questions to resolve before or during implementation.
+User-owned UX questions. Must be resolved or explicitly deferred by the user before UX handoff.
+
+- Question: ...
+  - Target responder: User
+  - Status: unresolved | resolved | deferred_by_user
+  - Recommendation: ...
+  - Consequence if deferred: ...
+
+## 7. Product Handoff Questions
+Questions outside UX scope that Faisal must resolve.
+
+- Question: ...
+  - Target responder: Faisal
+  - Status: unresolved | resolved | deferred_by_user
+  - Context or recommendation: ...
+  - Consequence if deferred: ...
+
+## 8. Architecture Handoff Questions
+Questions outside UX scope that Lance must resolve.
+
+- Question: ...
+  - Target responder: Lance
+  - Status: unresolved | resolved | deferred_by_user
+  - Context or recommendation: ...
+  - Consequence if deferred: ...
 ```

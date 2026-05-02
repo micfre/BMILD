@@ -27,9 +27,9 @@ BMILD is strongest where it encodes real lifecycle expertise, artifact handoffs,
 - Progressive disclosure: mostly compliant.
   - Advanced modes already use step files. Standard personas still keep core workflow in `SKILL.md`, which is appropriate because the rules are always relevant.
 - Match specificity to fragility: mostly compliant.
-  - Context loading, artifact writing, QA documentation, and Slice budgeting are now prescriptive. Advisor-style discussion remains flexible.
+  - Context loading, artifact writing, QA documentation, and Slice budgeting are now prescriptive. Design-tier decision interaction now prefers labelled options and native response-picker tools for constrained choices while keeping explanations conversational.
 - Provide defaults, not menus: mostly compliant.
-  - Advisor-style option blocks are now default for competing options; Debate/Elicit are recommended only when the local persona should not resolve alone.
+  - Labelled decision option blocks are now default for competing options; Debate/Elicit are recommended only when the local persona should not resolve alone.
 - Favor procedures over declarations: mostly compliant.
   - Modes are now workflow variants and "begin" behavior routes into process rather than artifact generation.
 - Gotchas sections: compliant.

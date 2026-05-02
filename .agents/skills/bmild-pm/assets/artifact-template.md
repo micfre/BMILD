@@ -28,10 +28,34 @@ author: [user_name] + Faisal (PM)
 - **Constraints:** Scale, performance, usability, domain compliance.
 - **Pitfalls:** Explicit market, technical, or resource risks (What could cause this to fail and how to mitigate).
 
-## 6. Open Questions
-Questions that must be resolved before or during design.
+## 6. Open Product Questions
+User-owned product questions. Must be resolved or explicitly deferred by the user before product handoff.
 
-## 7. Consequence-Driven Assumptions
+- Question: ...
+  - Target responder: User
+  - Status: unresolved | resolved | deferred_by_user
+  - Recommendation: ...
+  - Consequence if deferred: ...
+
+## 7. UX Handoff Questions
+Questions outside PM scope that Katrina must resolve.
+
+- Question: ...
+  - Target responder: Katrina
+  - Status: unresolved | resolved | deferred_by_user
+  - Context or recommendation: ...
+  - Consequence if deferred: ...
+
+## 8. Architecture Handoff Questions
+Questions outside PM scope that Lance must resolve.
+
+- Question: ...
+  - Target responder: Lance
+  - Status: unresolved | resolved | deferred_by_user
+  - Context or recommendation: ...
+  - Consequence if deferred: ...
+
+## 9. Consequence-Driven Assumptions
 - **Assumption:** [Description]
   - Confidence: [Low/Med/High]
   - Consequence if wrong: [Impact]

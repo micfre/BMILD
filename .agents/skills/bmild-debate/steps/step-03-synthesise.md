@@ -26,11 +26,11 @@ Present the synthesis clearly under three headings:
 
 **Preference** — where Leads differed, but the trade-off is low-stakes or reversible:
 
-- Option A:
+- Option 1:
   - Favoured by: Katrina@bmild-ux, Faisal@bmild-pm
   - Why: [reason]
   - Cost: [cost]
-- Option B:
+- Option 2:
   - Favoured by: Lance@bmild-arch
   - Why: [reason]
   - Cost: [cost]
@@ -65,16 +65,16 @@ After synthesis is complete and open items are resolved or explicitly deferred, 
 Progress:
 
 - [ ] Step 1: Apply non-negotiables to the appropriate spec/design document.
-- [ ] Step 2: Apply resolved open items and remove them from Open Questions if settled.
-- [ ] Step 3: Record deferred open items as Open Questions or Assumptions.
+- [ ] Step 2: Apply resolved open items and remove or mark the matching Open Question or Handoff Question as resolved.
+- [ ] Step 3: Record deferred open items as user-owned Open Questions, persona-owned Handoff Questions, or Assumptions with target responder, status, and consequence.
 - [ ] Step 4: Append the synthesis record.
 - [ ] Step 5: Update `_context.md` if a document was newly created or significantly changed.
 
 **What to apply:**
 
 - **Non-negotiables:** ensure each is reflected in the appropriate section of `spec.md`, `ux-design.md`, or `system-design.md`. If a non-negotiable contradicts existing content, update the existing content to match.
-- **Resolved open items:** apply the agreed resolution in the appropriate spec section. Remove the item from Open Questions if it is now settled.
-- **Deferred open items:** ensure they appear explicitly as Open Questions or Assumptions in the spec — not in the synthesis block alone.
+- **Resolved open items:** apply the agreed resolution in the appropriate artifact section. Remove the item or mark it `resolved` in the matching Open Question or Handoff Question.
+- **Deferred open items:** ensure they appear explicitly as user-owned Open Questions, persona-owned Handoff Questions, or Assumptions in the artifact — not in the synthesis block alone. Preserve target responder and consequence if deferred.
 
 After applying factual changes, append the synthesis record under this heading in the most relevant spec document:
 
