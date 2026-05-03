@@ -35,9 +35,9 @@ Return improved content and the reasoning behind the improvement to the caller. 
 Progress:
 
 - [ ] Step 1: Understand the current content and artifact type.
-- [ ] Step 2: Select context-appropriate methods from `./steps/methods.yaml`.
-- [ ] Step 3: Apply improvements when they clearly strengthen the content and match user direction.
-- [ ] Step 4: Surface competing alternatives when judgment is required.
+- [ ] Step 2: Select the single most salient method from `./steps/methods.yaml` and run it first.
+- [ ] Step 3: Offer 2-3 next-best methods, or invite a natural-language response.
+- [ ] Step 4: Apply improvements when they clearly strengthen the content and match user direction.
 - [ ] Step 5: Continue until the user exits with `[x]`, then return cleanly to the calling context.
 
 ## Capabilities
@@ -49,8 +49,10 @@ All methods are loaded from `./steps/methods.yaml` (keys: `num, category, method
 ### Critical Rules
 
 - **Context-sensitive selection.** Read and understand the content being elicited before selecting any methods. Smart selection requires knowing what's there.
+- **Start proactively, then choose interactively.** Run one best-fit method immediately to maintain forward motion. After that, offer 2-3 next-best methods or a natural-language response; do not run multiple additional methods without user selection.
+- **Use structured choice when available.** For the follow-up technique choice, use the native structured question tool when one is available. If the tool cannot represent method choice plus natural response cleanly, use the text menu and append `Tool choice note: <why text was used instead of a structured question>.`
 - **Apply with judgment.** After each method execution, assess whether the output is a clear improvement consistent with the user's stated direction. If yes, apply and report — do not halt. If the output presents competing alternatives or genuinely ambiguous direction, surface the choice and halt: `[y] apply / [n] discard / [other] instructions`. The user can always say "undo" to revert an applied change.
-- **Loop until [x].** Always re-present the numbered menu after each method. Do not exit until the user selects [x].
+- **Loop until [x].** Always re-present the 2-3 method menu after each method. Do not exit until the user selects [x].
 - **Build on the current version.** Each method applies to the current working version of the content, not the original.
 - **debate persona integration.** For collaboration methods (Stakeholder Round Table, Cross-Functional War Room, etc.), if a debate session is active or recently concluded, use Faisal@bmild-pm, Katrina@bmild-ux, Lance@bmild-arch, and Rahat@bmild-qa as the personas.
 

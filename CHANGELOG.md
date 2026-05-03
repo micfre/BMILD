@@ -20,6 +20,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tightened Planner, Dev, and QA phase/readiness flow: approved-phase planning, future-phase placeholders, required-read preflight checks, and QA/security status ownership.
 - Converted ordered persona and step-file workflows to `Progress:` checklists while keeping guidelines as prose or ordinary bullets.
 - Updated design-tier decision interaction in PM, UX, and Arch to use labelled option blocks and prefer native structured response-picker tools for constrained choices, with a portable plain-text fallback when no such tool exists.
+- Tightened structured-question guidance so PM, UX, and Arch should use native question tools for bounded choices when available, or explicitly state why text fallback was used.
+- Updated Elicit to run one best-fit technique proactively, then ask the user to choose from 2-3 follow-up techniques or respond naturally.
+- Clarified multi-speaker labeling so Debate and Elicit persona methods only repeat icon/name when the speaker changes.
+- Defined documentation ownership: PM identifies required docs, Dev writes them, and QA verifies them against implemented behaviour.
 - Added target responder, status, and deferral-consequence fields for design-tier Open Questions and Handoff Questions, with Planner readiness checks for question closure.
 - Added first-person voice guidance to all seven named personas.
 - Updated Planner slice budgeting guidance to invoke the skill-local tokenizer with `bash` and persist the returned token estimate in Slice Planning Notes.

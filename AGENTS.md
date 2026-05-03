@@ -113,13 +113,14 @@ updated: YYYY-MM-DD
 
 ### Cross-artifact flow
 
-- `spec.md`: created by Faisal; consumed by Katrina, Lance, Sonia, Rahat, and Zach; validated through coverage checks and verification matrix entries.
+- `spec.md`: created by Faisal; consumed by Katrina, Lance, Sonia, Rahat, and Zach; validated through coverage checks and verification matrix entries. Faisal defines required documentation updates here when the initiative affects README, contributor guides, runbooks, release notes, onboarding, or user-facing help.
 - `ux-design.md`: created by Katrina; consumed by Lance, Sonia, Alex, Rahat, and Zach; validated through observable user-state checks.
 - `system-design.md`: created by Lance; consumed by Sonia, Alex, Rahat, and Zach; validated through implementability, testability, and security review.
 - `slices.md` and `slice-<N>.md`: created by Sonia; consumed and updated by Alex; verified by Rahat and Zach; recut by Sonia when implementation reveals a planning problem.
 - `verification-matrix.md`: created by Sonia during readiness when proof boundaries matter; repaired or expanded by Rahat; consumed by Alex; validated by Rahat during verification.
 - `rca-<slug>.md`: created or updated by Rahat for confirmed defects; consumed by Alex for fixes; closed by Rahat after evidence shows the regression is covered.
 - `security-review-<slug>.md`: created by Zach when exploitable findings exist; consumed by Alex for implementation fixes or Lance/Katrina for design changes; closed by Zach after remediation is verified.
+- Documentation files: requirements defined by Faisal, implemented by Alex, and verified by Rahat against the shipped behaviour.
 
 ## Philosophical guidance
 
@@ -133,9 +134,9 @@ There are 3rd-party references in external_references\ which cover alternative a
 Ask for permission to access it when you need to, as it is ignored by default
 Do not make any modifications to any files in external_references\ folders
 
-## Documention
+## Documentation
 
-Keep README, AGENTS and CHANGELOG up to date as project evolves
+Keep README, AGENTS and CHANGELOG up to date as project evolves. PM defines which documentation needs to change, Dev owns the edits, and QA verifies that the resulting documentation matches implemented behaviour.
 
 ## Versioning
 

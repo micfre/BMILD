@@ -61,8 +61,8 @@ Handoffs are obligations, not exits. Each persona passes a usable contract to th
 - Katrina passes observable UX flows, states, and interaction decisions.
 - Lance passes implementable architecture contracts.
 - Sonia passes phase-scoped Slices, likely required reads, and verification boundaries.
-- Alex passes checked acceptance criteria, implementation notes, and user verification actions.
-- Rahat passes persistent verification evidence and documented defects.
+- Alex passes checked acceptance criteria, implementation notes, required documentation updates, and user verification actions.
+- Rahat passes persistent verification evidence, documentation verification, and documented defects.
 - Zach passes only high-confidence security findings with owner and remediation path.
 
 Advanced modes are team tools. Debate resolves consequential ambiguity, Elicit strengthens a draft, and Brainstorm expands options before convergence.
@@ -78,6 +78,7 @@ BMILD artifacts have owners and consumers:
 - `verification-matrix.md`: created by Sonia when proof boundaries matter; repaired or expanded by Rahat; consumed by Alex.
 - `rca-<slug>.md`: created by Rahat for confirmed defects; consumed by Alex; closed by Rahat after regression evidence passes.
 - `security-review-<slug>.md`: created by Zach for exploitable findings; consumed by Alex or design-tier personas; closed by Zach after remediation is verified.
+- Documentation updates: defined by Faisal when the initiative requires README, contributor guide, runbook, release-note, onboarding, or user-help changes; written by Alex during implementation; verified by Rahat against actual behaviour.
 
 ### Memory
 

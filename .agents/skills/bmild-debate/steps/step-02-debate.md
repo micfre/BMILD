@@ -63,7 +63,7 @@ Progress:
 **Step 1: Facilitator frames the round** (brief, one sentence):
 > *"Let's hear each Lead's take on [the question or a specific sub-question].*"
 
-**Step 2: Each Lead speaks in order** — Faisal@bmild-pm → Katrina@bmild-ux → Lance@bmild-arch → Rahat@bmild-qa — labeled with icon, name, and role:
+**Step 2: Each Lead speaks in order** — Faisal@bmild-pm → Katrina@bmild-ux → Lance@bmild-arch → Rahat@bmild-qa — labeled with icon, name, and role only when the speaker changes:
 
 ```
 🟦 Faisal@bmild-pm: [response in Faisal's voice]
@@ -75,7 +75,7 @@ Progress:
 🟨 Rahat@bmild-qa: [response in Rahat's voice]
 ```
 
-Where there are genuine tensions, one or two Leads respond directly to a point another just made. This flows in the same block — no section break or label:
+Where there are genuine tensions, one or two Leads respond directly to a point another just made. Label the reply because the speaker changes, then let that speaker continue across paragraphs without repeating the label:
 
 ```
 🟥 Lance@bmild-arch (to Katrina@bmild-ux): [direct response to Katrina's point]

@@ -6,14 +6,14 @@
 - 🎯 SHOW THE WORK — present what the method revealed, not just the changed output.
 - 📋 APPLY clear improvements consistent with the user’s stated direction — report what was applied. HALT and ask only when the method produces competing alternatives or genuinely ambiguous direction.
 - ✅ The user can always say "undo" or "revert" to reverse an applied change. Do not pre-interrupt forward progress with approval gates for non-ambiguous improvements.
-- 🔁 ALWAYS re-present the 1-5, [r], [a], [x] menu after each method — iteration is the point.
+- 🔁 ALWAYS re-present the 1-3, [r], [a], [x] menu after each method — iteration is the point.
 - 🚫 DO NOT exit until user selects [x].
 
 ---
 
 ## RESPONSE HANDLING
 
-### Case: User selects a number (1–5)
+### Case: User selects a number (1-3)
 
 Progress:
 
@@ -29,7 +29,7 @@ Progress:
 **Step 2: Show the method output** — apply it to the current content. The output depends on the method's pattern:
 
 - For analysis methods (First Principles, 5 Whys, etc.): show the analysis first, then the implications for the content
-- For persona methods (Stakeholder Round Table, Cross-Functional War Room, etc.): play the personas in turn, labeled clearly; if a debate session is active or recently completed, use Faisal@bmild-pm, Katrina@bmild-ux, Lance@bmild-arch, and Rahat@bmild-qa as the personas
+- For persona methods (Stakeholder Round Table, Cross-Functional War Room, etc.): play the personas in turn, labeled clearly; if a debate session is active or recently completed, use Faisal@bmild-pm, Katrina@bmild-ux, Lance@bmild-arch, and Rahat@bmild-qa as the personas. Label a speaker only when the speaker changes; do not repeat icon and name on every paragraph from the same speaker.
 - For generative methods (SCAMPER, What If, etc.): produce the generated content/alternatives first, then identify what's worth keeping
 - For competitive methods (Red Team, Shark Tank, etc.): run the adversarial scenario fully before proposing improvements
 
@@ -57,8 +57,6 @@ Progress:
    1. [Method Name]
    2. [Method Name]
    3. [Method Name]
-   4. [Method Name]
-   5. [Method Name]
    [r] Reshuffle  [a] List all  [x] Proceed
    ```
 
@@ -69,7 +67,7 @@ Progress:
 - Return to `./steps/step-01-select.md` and perform a fresh context analysis and method selection
 - Prioritise methods NOT yet used in this session
 - Aim for diversity across categories
-- Re-present the menu with 5 new selections
+- Re-present the menu with 2-3 new selections
 
 ---
 
@@ -134,6 +132,5 @@ Progress:
 
 ### Case: Multiple numbers (user types e.g. "1, 3")
 
-- Execute methods in sequence on the current content
-- Apply each using the same judgment rule: clear improvement → apply and report; ambiguous direction → halt and ask
-- Re-present the menu after both are done
+- Treat multiple numbers as a request to choose, not permission to run a batch. Ask which one to run first.
+- Re-present the menu after the user chooses one.

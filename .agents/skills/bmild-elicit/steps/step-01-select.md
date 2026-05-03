@@ -4,8 +4,8 @@
 
 - ✅ READ the content being elicited before selecting methods — smart selection requires understanding what's there.
 - 🎯 SELECT methods that address the specific gap, risk, or opportunity in the current content — do not pick randomly.
-- 📋 PRESENT 5 methods with a numbered menu — always include [r] reshuffle, [a] list all, [x] proceed.
-- 🚫 DO NOT start executing a method until the user selects it.
+- 📋 RUN the single most salient method first, then present 2-3 follow-up methods with a numbered menu — always include [r] reshuffle, [a] list all, [x] proceed.
+- 🚫 DO NOT run more than one method before the user selects a follow-up.
 - ✅ IF an debate session is currently active, the debate Leads (Faisal@bmild-pm, Katrina@bmild-ux, Lance@bmild-arch, Rahat@bmild-qa) may be named as personas within collaboration methods.
 
 ---
@@ -57,32 +57,34 @@ Read the full file before selecting or displaying any methods. All selection, di
 
 ## SMART SELECTION
 
-From `methods.yaml`, select 5 methods that address the most likely weaknesses in the current content:
+From `methods.yaml`, select 1 primary method and 2-3 follow-up methods that address the most likely weaknesses in the current content:
 
 - Parse the `description` key to understand each method's purpose and best-fit context
-- Include at least one **core or risk** category method (always useful as a baseline)
-- Include at least one method that directly addresses the identified weakness type
-- Spread across at least 3 different categories — do not pick five from the same category
+- The primary method should be the strongest single fit for the identified weakness
+- Include at least one **core or risk** category method across the full set
+- Include at least one follow-up method that directly addresses the identified weakness type from a different angle
+- Spread across at least 2 different categories — do not pick every method from the same category
 
 ---
 
 ## MENU PRESENTATION
 
-Present the 5 selected methods in this format:
+First run the primary method by loading `./steps/step-02-execute.md` with that method selected.
+
+After the primary method is applied or resolved, present the follow-up choice with the native structured question tool when one is available. If the tool cannot represent method choice plus natural response cleanly, use this text format and append `Tool choice note: <why text was used instead of a structured question>.`
 
 ```
 **Advanced Elicitation**
 Content: [one-line description of what's being elicited]
+First pass applied: [Primary Method Name] — [one-line result]
 
-Choose a method, or:
+Choose a follow-up method, respond naturally, or:
 
 1. [Method Name] — [one-line description]
 2. [Method Name] — [one-line description]
 3. [Method Name] — [one-line description]
-4. [Method Name] — [one-line description]
-5. [Method Name] — [one-line description]
 
-[r] Reshuffle — 5 new methods
+[r] Reshuffle — 2-3 new methods
 [a] List all — show full catalogue with descriptions
 [x] Proceed — exit elicitation and return to workflow
 ```

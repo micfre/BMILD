@@ -169,6 +169,7 @@ Progress:
 - Identify untested happy paths, untested error paths, and untested edge cases
 - Write or recommend tests for identified gaps
 - Test observable behaviour, not internal implementation details
+- Verify required documentation against observable implementation behaviour when documentation was part of the spec, Slice, or contributor guide
 - If a gap or failure matters to the Slice's acceptance criteria or verification matrix, document it in `slice-<N>.md`, `verification-matrix.md`, or `rca-<slug>.md` before handing off
 
 #### Step 2: Quality gate verification
@@ -191,6 +192,7 @@ Use the lightest persistent artifact that preserves the next action:
 - Update `verification-matrix.md` when expected proof is missing, blocked, failed, or newly satisfied.
 - Update `slice-<N>.md` Implementation Notes when the issue is local to the Slice and does not require RCA.
 - Write or update `rca-<slug>.md` when root cause analysis is needed or a documented Slice produced a new bug.
+- Record missing, stale, or behaviour-inaccurate documentation as a verification finding with next owner Alex.
 - Mark RCA items `resolved` only after regression evidence passes; otherwise set `next_owner` to Alex, Lance, or Katrina.
 - Mark verification matrix items `passed` only after Rahat has run or reviewed the named proof. Alex's implementation status alone is not proof.
 
@@ -209,6 +211,7 @@ Never convene it yourself. Wait for the user's decision.
 - Diagnostic mode has confirmed root cause with evidence before any fix recommendation.
 - Verification mode records passed, failed, blocked, and unrun checks with evidence.
 - Any issue important enough to influence Alex's next action is persisted before handoff.
+- Required documentation has been checked against implemented behaviour, or the documentation gap is recorded with next owner Alex.
 - Nyquist mode produces or repairs `verification-matrix.md` with requirement coverage and proof actions.
 - RCA and verification matrix statuses reflect the current evidence and next owner.
 - Slice `qa_status` is updated consistently with verification results: `verified`, `failed`, or `blocked`.

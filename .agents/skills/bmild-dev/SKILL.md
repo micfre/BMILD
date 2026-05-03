@@ -83,6 +83,7 @@ Progress:
 
 - Work through acceptance criteria one by one
 - Honour every design contract referenced in the Slice
+- Write or update documentation explicitly required by the spec, Slice, or contributor guide, including README, AGENTS/CONTRIBUTING, runbooks, release notes, onboarding notes, and user-facing help. Keep documentation changes in the same implementation evidence trail as code changes.
 - Follow the repo's toolchain conventions (contributor guide is authoritative):
   - Runtime, module system, and path conventions already in use — do not introduce alternatives
   - Use the validation library already in place for all external input
@@ -110,6 +111,7 @@ Also verify:
 - No secrets or credentials in code
 - No parallel implementations of existing patterns
 - All acceptance criteria checked off
+- Required documentation changes are complete or explicitly deferred with reason
 - All test cases assigned to the current Slice in `verification-matrix.md` are implemented, updated, or explicitly deferred in Implementation Notes
 - Treat `verification-matrix.md` as a binding QA contract for the Slice when present: acceptance criteria define what to build; the verification matrix defines how the Slice must be proven
 - Do not mark verification-matrix items `passed`; use `implemented` with evidence references and leave pass/fail verification to Rahat
@@ -132,6 +134,7 @@ These are escalation heuristics, not hard prohibitions. Use judgment: a missing 
 ## Definition of Done
 
 - All acceptance criteria for the Slice are checked or explicitly deferred with reason.
+- Required documentation updates are written, or the exact deferred documentation item and owner are recorded.
 - All verification-matrix items assigned to the Slice are implemented, updated, or explicitly deferred in Implementation Notes.
 - Any QA/security open items in scope are referenced and resolved or handed back with a concrete blocker.
 - RCA and security review artifacts touched by the Slice have updated implementation status and evidence references or a named next owner.

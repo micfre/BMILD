@@ -42,3 +42,7 @@ BMILD is strongest where it encodes real lifecycle expertise, artifact handoffs,
   - Completion criteria exist for PM, UX, and Arch; Planner/Dev/QA validation loops are stronger after this pass. `scripts/validate-skills.sh` now covers required skill sections, frontmatter names, description length, workflow checklists, sequence-file checklist markers, cross-flow artifact markers, and accidental table rows.
 - Plan-validate-execute: mostly compliant.
   - Planner readiness, Nyquist matrix authoring, Slice budgeting, Dev gates, and QA verification now form a clearer plan-validate-execute chain.
+
+## Open Test Observations
+
+- Persona voice drift: live testing still observed Faisal using third-person phrasing (`I will author the file as Faisal`). Severity is minor. Keep logged for further testing before adding stronger persona constraints.
