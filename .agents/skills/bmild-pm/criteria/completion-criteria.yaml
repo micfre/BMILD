@@ -98,6 +98,21 @@ sections:
       threshold. Compliance obligations named without citing the specific rule or
       obligation they impose.
 
+  - id: documentation_scope
+    required: true
+    cross_ref:
+      - slice-*.md
+      - verification-matrix.md
+    good_signal: >
+      User, operator, and contributor documentation are each marked required, not
+      required, or deferred_by_user. Required or deferred items name the audience,
+      reason, document or document type, and verification expectation so Alex can
+      write the documentation and Rahat can verify it against shipped behaviour.
+    weak_signal: >
+      Documentation is mentioned generically ("update docs"), missing for one or more
+      audiences, or lacks the reason and verification expectation needed to decide
+      whether implementation satisfied the documentation requirement.
+
   - id: open_questions
     required: false
     cross_ref: []

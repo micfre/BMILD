@@ -28,7 +28,21 @@ author: [user_name] + Faisal (PM)
 - **Constraints:** Scale, performance, usability, domain compliance.
 - **Pitfalls:** Explicit market, technical, or resource risks (What could cause this to fail and how to mitigate).
 
-## 6. Open Product Questions
+## 6. Documentation Requirements
+- **User documentation:** required | not required | deferred_by_user
+  - Reason:
+  - Required updates:
+  - Verification expectation:
+- **Operator documentation:** required | not required | deferred_by_user
+  - Reason:
+  - Required updates:
+  - Verification expectation:
+- **Contributor documentation:** required | not required | deferred_by_user
+  - Reason:
+  - Required updates:
+  - Verification expectation:
+
+## 7. Open Product Questions
 User-owned product questions. Must be resolved or explicitly deferred by the user before product handoff.
 
 - Question: ...
@@ -37,7 +51,7 @@ User-owned product questions. Must be resolved or explicitly deferred by the use
   - Recommendation: ...
   - Consequence if deferred: ...
 
-## 7. UX Handoff Questions
+## 8. UX Handoff Questions
 Questions outside PM scope that Katrina must resolve.
 
 - Question: ...
@@ -46,7 +60,7 @@ Questions outside PM scope that Katrina must resolve.
   - Context or recommendation: ...
   - Consequence if deferred: ...
 
-## 8. Architecture Handoff Questions
+## 9. Architecture Handoff Questions
 Questions outside PM scope that Lance must resolve.
 
 - Question: ...
@@ -55,7 +69,7 @@ Questions outside PM scope that Lance must resolve.
   - Context or recommendation: ...
   - Consequence if deferred: ...
 
-## 9. Consequence-Driven Assumptions
+## 10. Consequence-Driven Assumptions
 - **Assumption:** [Description]
   - Confidence: [Low/Med/High]
   - Consequence if wrong: [Impact]

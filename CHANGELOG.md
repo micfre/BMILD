@@ -24,6 +24,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated Elicit to run one best-fit technique proactively, then ask the user to choose from 2-3 follow-up techniques or respond naturally.
 - Clarified multi-speaker labeling so Debate and Elicit persona methods only repeat icon/name when the speaker changes.
 - Defined documentation ownership: PM identifies required docs, Dev writes them, and QA verifies them against implemented behaviour.
+- Added cross-persona operating stance and scope checkpoint guidance for the seven named personas to anchor mode, scope, role boundary, and handoff closure.
+- Clarified QA authority: Rahat owns tests, verification matrices, RCA artifacts, QA evidence, and findings documentation, while Alex owns production fixes.
+- Tightened QA RCA path rules so initiative-linked defects write under the initiative folder; `_system` is reserved for genuinely global defects.
+- Moved named-persona sign-off guidance out of Persona blocks and removed pronoun labels from named personas.
+- Updated UX activation and DESIGN.md handling so Katrina reads existing `DESIGN.md` for all scopes and preserves existing structure when updating it.
 - Added target responder, status, and deferral-consequence fields for design-tier Open Questions and Handoff Questions, with Planner readiness checks for question closure.
 - Added first-person voice guidance to all seven named personas.
 - Updated Planner slice budgeting guidance to invoke the skill-local tokenizer with `bash` and persist the returned token estimate in Slice Planning Notes.

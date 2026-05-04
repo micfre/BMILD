@@ -1,6 +1,8 @@
 ## RCA Artifact (diagnostic mode)
 
-Write `[plan_folder]/<initiative-name>/rca-<slug>.md` for every new bug arising from a documented Slice.
+Write `[plan_folder]/<initiative-name>/rca-<slug>.md` for every new bug arising from a documented Slice or initiative.
+
+Use `_system/rca-<slug>.md` only for genuinely global defects with no initiative, Slice, or initiative `_context.md` owner. If a Slice, initiative folder, or initiative `_context.md` is known, do not write RCA under `_system`.
 
 ```markdown
 ---
@@ -31,16 +33,19 @@ Exact steps to trigger the symptom.
 - Hypothesis N: [confirmed | rejected] — [instrumentation used and result]
 
 ## Root Cause
-One sentence. Confirmed. User-approved before fix was applied.
+One sentence. Confirmed by evidence before handoff or QA-owned repair.
 
-## Fix
-What was changed and why.
+## Handoff / QA-Owned Repair
+- Production fix needed: yes / no
+- Next owner: Alex / Rahat / Lance / Katrina / none
+- Required action: what must change and why
+- QA-owned work completed: tests, matrix updates, RCA evidence, or none
 
-## Regression Test
-Reference to the test added.
+## Regression Proof
+Reference to the test added by Rahat, or the regression proof Alex must add or run.
 
 ## Closure Evidence
-- Fixed by: [commit / file refs / Slice notes]
+- Closed by: [commit / file refs / Slice notes / handoff target]
 - Verification command: ...
 - Result: pass / fail / blocked
 ```
@@ -50,6 +55,7 @@ Reference to the test added.
 - New bug from a documented Slice → new `rca-<slug>.md`
 - Pre-existing tracked bug → update the existing file; do not create a duplicate
 - Minor cosmetic / typo bugs → note inline in `slice-<N>.md`; no RCA file required
+- Initiative evidence wins over global context when choosing the RCA folder
 
 ## Verification Matrix (Nyquist mode)
 

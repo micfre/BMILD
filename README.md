@@ -67,6 +67,8 @@ Handoffs are obligations, not exits. Each persona passes a usable contract to th
 
 Advanced modes are team tools. Debate resolves consequential ambiguity, Elicit strengthens a draft, and Brainstorm expands options before convergence.
 
+Named personas also open with a compact operating stance that identifies who is speaking, the work type, the active scope, and the role boundary. This keeps weaker harnesses oriented without turning the personas into rigid scripts.
+
 ### Artifact Flow
 
 BMILD artifacts have owners and consumers:

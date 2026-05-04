@@ -10,18 +10,19 @@ BMILD skills must follow these API-like design principles:
    The official specification in `docs/` is authoritative — mirror and enforce its rules across skills (triggers, frontmatter, structure, and behavior).
 2. **Uniform skill structure**:
    Each skill body uses these sections in this order:
-   - **`Persona`**: Name, role, scope boundary, voice, and sign-off directive (`Sign off as [Name] [icon]`). Do not use `Always prefix` — identity is expressed at sign-off only.
+   - **`Persona`**: Name, role, scope boundary, and voice. Do not include pronoun labels. Do not use `Always prefix` — identity is expressed in the opening operating stance and final sign-off only.
    - **`## BMILD Working Team`**: Positive frame for how the skill contributes to the team value chain, which teammates depend on its output, why interactivity matters, and when advanced team tools such as `bmild-debate`, `bmild-elicit`, or `bmild-brainstorming` are useful.
-   - **`## Activation`**: Unified entry sequence — resolve environment from `.bmild.toml`, determine scope, load context memory, load persona inputs, handle incomplete context, begin. Standard skills use the full 6-step sequence; cross-cutting skills use a simplified version.
-   - **`## Workflow`**: Linear process, mode variants, retry loops, and the first actionable "begin" behaviour. Modes are workflow modifiers, not a separate instruction set. True ordered work uses a `Progress:` checklist with `- [ ] Step N: ...`; general guidelines use prose or ordinary bullets.
+   - **`## Activation`**: Unified entry sequence — resolve environment from `.bmild.toml`, determine scope, load context memory, load persona inputs, handle incomplete context, open with one compact operating stance line, then begin. Standard skills use the full sequence; cross-cutting skills use a simplified version.
+   - **`## Workflow`**: Linear process, mode variants, retry loops, scope checkpoints, and the first actionable "begin" behaviour. Modes are workflow modifiers, not a separate instruction set. True ordered work uses a `Progress:` checklist with `- [ ] Step N: ...`; general guidelines use prose or ordinary bullets.
    - **`## Capabilities`**: The skill's toolkit, domain competencies, escalation options, and reusable techniques. Skills that drive specification (PM, UX, Arch) include a `### Deeper Engagement` subsection that explicitly surfaces `bmild-debate` as an active option at any point in the session.
    - **`## Definition of Done`**: Quality bar, success criteria, verification checks, and evidence required before handoff.
    - **`## Scope Boundary`**: What the skill explicitly does not do.
-   - **`## Exit and Handoff`**: (Standard skills only) Unified exit sequence — write artifact using template in `assets/artifact-template.md`, register in context memory, check gates, close with handoff statement. Cross-cutting skills omit this section.
+   - **`## Exit and Handoff`**: (Standard skills only) Unified exit sequence — write artifact using template in `assets/artifact-template.md`, register in context memory, check gates, close with handoff statement, and sign off as `[Name] [icon]`. Cross-cutting skills omit this section.
    - **`## Gotchas`**: High-value corrections from real execution traces. Use for facts that defy reasonable assumptions or steer unpredicted events; do not restate rules already established elsewhere.
    Artifact templates live in each skill's `assets/artifact-template.md`. Context memory templates live in each skill's `assets/context-memory-template.md`.
 3. **Skill Structure**:
    Keep skill structure aligned across all personas to the extent that is reasonable to do to. Avoid patching a single skill as this may solve the local issue but will lead to drift that makes skills behave differently over time and create for more maintanace overhead.
+   Named standard personas open with one compact operating stance line: `[Name] [icon] — <mode/work type>. Scope: <scope>. <boundary statement>.` This anchors identity and mode for weaker harnesses without repeating persona labels across every paragraph. Cross-cutting skills do not use this pattern unless specifically designed for it.
 4. **Context-Aware Personas**:
    Personas do their own thinking and are not bound by prescriptive linear flows or rigid tiers. They are domain specialists activated by the artifact state. Personas focusing on specification (PM, UX, Arch) slow down, probe, and elicit — their job is to surface what would otherwise go unstated. Personas focusing on execution (Planner, Dev, QA, Sec) activate lean, act on coherent inputs, and hand back precisely when a blocker is outside their domain authority.
 5. **Context Loading Policy**:
@@ -121,6 +122,8 @@ updated: YYYY-MM-DD
 - `rca-<slug>.md`: created or updated by Rahat for confirmed defects; consumed by Alex for fixes; closed by Rahat after evidence shows the regression is covered.
 - `security-review-<slug>.md`: created by Zach when exploitable findings exist; consumed by Alex for implementation fixes or Lance/Katrina for design changes; closed by Zach after remediation is verified.
 - Documentation files: requirements defined by Faisal, implemented by Alex, and verified by Rahat against the shipped behaviour.
+
+RCA path rule: initiative-linked defects live in the initiative folder. `_system/rca-<slug>.md` is valid only for genuinely global defects with no initiative, Slice, or initiative `_context.md` owner.
 
 ## Philosophical guidance
 
