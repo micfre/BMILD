@@ -31,7 +31,7 @@ Ten skill folders. Each contains a prompt that gives your AI agent a persona wit
 | **Katrina**&nbsp;🟩 | UX Designer | Owns the complete frontend experience. Advocates for users without losing sight of what's buildable. Decisive, not decorative. |
 | **Lance**&nbsp;🟥 | Architect | Names the cost of every choice. Produces implementable contracts -- schema columns, endpoint shapes, service signatures -- not high-level boxes and arrows. |
 | **Sonia**&nbsp;🟧 | Delivery Planner | Zero tolerance for ambiguity in implementation inputs. Sizes work to fit context windows, not story points. |
-| **Alex**&nbsp;🟪 | Developer | Matches existing patterns, doesn't invent new ones. Reads the repo's conventions before writing a line. Ultra-succinct, implementation-focused. |
+| **Alex**&nbsp;🟪 | Developer | Implements planned Slices, prototypes bounded repo work, and fixes bugs. Matches existing patterns, avoids needless ceremony, and leaves lightweight memory when work could affect future specs. |
 | **Rahat**&nbsp;🟨 | QA & Reliability | Diagnoses before fixing. Breadth-first hypothesis generation RCA protocol. Never proposes a code change until root cause is confirmed by evidence. |
 | **Zach**&nbsp;⬜ | Security | Contextual SAST code review. Prioritizes high-confidence, actionable vulnerabilities over theoretical noise. Perspective is grounded in real-world exploitability. |
 
@@ -61,7 +61,7 @@ Handoffs are obligations, not exits. Each persona passes a usable contract to th
 - Katrina passes observable UX flows, states, and interaction decisions.
 - Lance passes implementable architecture contracts.
 - Sonia passes phase-scoped Slices, likely required reads, and verification boundaries.
-- Alex passes checked acceptance criteria, implementation notes, required documentation updates, and user verification actions.
+- Alex passes checked acceptance criteria for planned Slices, Dev notes for prototype and bug-fix work, required documentation updates, and user verification actions.
 - Rahat passes persistent verification evidence, documentation verification, and documented defects.
 - Zach passes only high-confidence security findings with owner and remediation path.
 
@@ -77,6 +77,7 @@ BMILD artifacts have owners and consumers:
 - `ux-design.md`: created by Katrina; consumed by Lance, Sonia, Alex, Rahat, and Zach.
 - `system-design.md`: created by Lance; consumed by Sonia, Alex, Rahat, and Zach.
 - `slices.md` and `slice-<N>.md`: created by Sonia; consumed and updated by Alex; verified by Rahat and Zach.
+- `dev-note-<slug>.md`: created or updated by Alex for prototype and bug-fix work that changes durable behaviour, leaves reusable code, records fix rationale, or captures facts future specs should not lose.
 - `verification-matrix.md`: created by Sonia when proof boundaries matter; repaired or expanded by Rahat; consumed by Alex.
 - `rca-<slug>.md`: created by Rahat for confirmed defects; consumed by Alex; closed by Rahat after regression evidence passes.
 - `security-review-<slug>.md`: created by Zach for exploitable findings; consumed by Alex or design-tier personas; closed by Zach after remediation is verified.
@@ -101,6 +102,7 @@ plans/ (or your custom plan_folder)
     ├── verification-matrix.md   # Planner/QA proof map
     ├── slices.md                # Planner output: Slice registry
     ├── slice-<N>.md             # One file per Slice
+    ├── dev-note-<slug>.md       # Dev memory for prototype and bug-fix work
     ├── rca-<slug>.md            # QA output: root cause analysis
     └── security-review-<slug>.md # Sec output: security findings
 ```

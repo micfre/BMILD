@@ -23,10 +23,11 @@ BMILD skills must follow these API-like design principles:
 3. **Skill Structure**:
    Keep skill structure aligned across all personas to the extent that is reasonable to do to. Avoid patching a single skill as this may solve the local issue but will lead to drift that makes skills behave differently over time and create for more maintanace overhead.
    Named standard personas open with one compact operating stance line: `[Name] [icon] — <mode/work type>. Scope: <scope>. <boundary statement>.` This anchors identity and mode for weaker harnesses without repeating persona labels across every paragraph. Cross-cutting skills do not use this pattern unless specifically designed for it.
+   Modes describe why the skill is being invoked: user intent, entry condition, or artifact state. Avoid mode names that only describe internal mechanics, effort level, or implementation texture. Author capabilities as shared behaviours plus mode-specific behaviours so common discipline stays consistent while each mode has a clear persistence, handoff, and documentation contract.
 4. **Context-Aware Personas**:
    Personas do their own thinking and are not bound by prescriptive linear flows or rigid tiers. They are domain specialists activated by the artifact state. Personas focusing on specification (PM, UX, Arch) slow down, probe, and elicit — their job is to surface what would otherwise go unstated. Personas focusing on execution (Planner, Dev, QA, Sec) activate lean, act on coherent inputs, and hand back precisely when a blocker is outside their domain authority.
 5. **Context Loading Policy**:
-   - PM and Dev usually reload memory artifacts because they often run in fresh windows, except for explicit quick-fix or clearly in-context continuation work.
+   - PM and Dev usually reload memory artifacts because they often run in fresh windows. Dev may skip BMILD memory reads in Prototype or Bug Fix Mode when the work is local and does not depend on documented behaviour, but should still persist a lightweight Dev note when the change can affect future understanding.
    - UX and Arch may skip disk reads only when the required artifact contents are visibly present in the current conversation and are not likely stale; otherwise reload.
    - Planner, QA, and Sec always reload relevant live artifacts because errors cascade from stale planning, verification, and review context.
    - Advanced modes (Debate, Brainstorming, Elicit) prefer the current conversation context and only read memory when the invoked topic cannot be grounded from chat.
@@ -84,6 +85,7 @@ plans/ (or your custom plan_folder)
     ├── verification-matrix.md   # Planner/QA proof map for requirements and Slices
     ├── slices.md                # Planner output: Slice registry
     ├── slice-<N>.md             # One file per Slice
+    ├── dev-note-<slug>.md       # Dev output for prototype and bug-fix memory
     ├── rca-<slug>.md            # QA output: root cause analysis
     └── security-review-<slug>.md # Sec output: security findings
 ```
@@ -118,6 +120,7 @@ updated: YYYY-MM-DD
 - `ux-design.md`: created by Katrina; consumed by Lance, Sonia, Alex, Rahat, and Zach; validated through observable user-state checks.
 - `system-design.md`: created by Lance; consumed by Sonia, Alex, Rahat, and Zach; validated through implementability, testability, and security review.
 - `slices.md` and `slice-<N>.md`: created by Sonia; consumed and updated by Alex; verified by Rahat and Zach; recut by Sonia when implementation reveals a planning problem.
+- `dev-note-<slug>.md`: created or updated by Alex for Prototype and Bug Fix work that changes durable behaviour, leaves reusable code, records fix rationale, or creates future-spec facts; consumed by Faisal, Katrina, Lance, Sonia, Rahat, and Zach when formalizing, verifying, or reviewing later work.
 - `verification-matrix.md`: created by Sonia during readiness when proof boundaries matter; repaired or expanded by Rahat; consumed by Alex; validated by Rahat during verification.
 - `rca-<slug>.md`: created or updated by Rahat for confirmed defects; consumed by Alex for fixes; closed by Rahat after evidence shows the regression is covered.
 - `security-review-<slug>.md`: created by Zach when exploitable findings exist; consumed by Alex for implementation fixes or Lance/Katrina for design changes; closed by Zach after remediation is verified.
