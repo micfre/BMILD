@@ -58,7 +58,7 @@ Write a Dev note (`dev-note-<slug>.md`) when the work:
 
 If none of these apply and the work is throwaway with no future relevance, no Dev note is required.
 
-When a Dev note is written: use `assets/artifact-template.md` for structure; place it under the relevant initiative folder, or `[plan_folder]/_system/` for genuinely global work; register it in the initiative's `_context.md` `## Live` section.
+When a Dev note is written: use `assets/dev-note-template.md` for structure; place it under the relevant initiative folder, or `[plan_folder]/_system/` for genuinely global work; register it in the initiative's `_context.md` `## Live` section.
 
 No formal handoff is required unless the work reveals a decision that belongs upstream — see the core Escalation Routing table.
 

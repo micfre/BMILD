@@ -68,7 +68,7 @@ Write a Dev note (`dev-note-<slug>.md`) when:
 
 A truly trivial local fix with no future relevance does not require a Dev note.
 
-When a Dev note is written: use `assets/artifact-template.md` for structure; place it under the relevant initiative folder, or `[plan_folder]/_system/` for genuinely global work; register it in the initiative's `_context.md` `## Live` section.
+When a Dev note is written: use `assets/dev-note-template.md` for structure; place it under the relevant initiative folder, or `[plan_folder]/_system/` for genuinely global work; register it in the initiative's `_context.md` `## Live` section.
 
 No formal handoff is required unless a tracked QA or security artifact was implicated — in that case re-evaluate against the Spec-Fix mode before closing.
 
