@@ -133,11 +133,23 @@ It checks frontmatter names, description length, required BMILD sections, standa
 
 Or jump in wherever makes sense:
 
-- Have a design but need it built? → `Sonia, decompose this into slices.`
-- Something's broken? → `Rahat, diagnose this.`
-- Need to step outside of the box? → `Brainstorm this.`
-- Want to challenge something you just produced? → `Elicit this.`
-- Need cross-functional input on a hard decision? → `Debate this.`
+| Where you are | Who to call | What to say |
+| :--- | :--- | :--- |
+| I have an idea | **Faisal** 🟦 | `Faisal, help me frame a feature for [idea].` |
+| I know what to build, need the UX | **Katrina** 🟩 | `Katrina, design the user experience for [feature].` |
+| I need backend contracts | **Lance** 🟥 | `Lance, design the API and data model for [feature].` |
+| Design is done, need implementation plan | **Sonia** 🟧 | `Sonia, check readiness and decompose into slices.` |
+| I have a slice ready to build | **Alex** 🟪 | `Alex, implement slice 3.` |
+| Something is broken | **Rahat** 🟨 | `Rahat, diagnose this failure.` |
+| I want a security review | **Zach** ⬜ | `Zach, review this code for security vulnerabilities.` |
+
+You can also engage the interactive modes at any point:
+
+| What you need | Mode | What to say |
+| :--- | :--- | :--- |
+| Stress-test a spec or design | **Elicit** ⚡ | `Elicit this.` |
+| Cross-functional input on a hard decision | **Debate** 🌀 | `Debate this.` |
+| Ideate outside the obvious answers | **Brainstorm** 💡 | `Brainstorm this.` |
 
 ### Supported environments
 
@@ -163,6 +175,10 @@ BMILD has two requirements:
 | **Kilo Code** | `.kilocode/skills/` |
 | **Opencode** | `.opencode/skills/` |
 | **VS Code Copilot** | `.github/skills/` |
+
+### Backing out
+
+Remove the `bmild-*` folders from your skills directory. The memory files stay in your project unless you choose to delete them — they're plain markdown.
 
 ## BMILD is different than
 
