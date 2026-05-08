@@ -7,6 +7,12 @@
 [![Release Status](https://github.com/micfre/BMILD/actions/workflows/release.yml/badge.svg)](https://github.com/micfre/BMILD/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+
+```
+BMILD is entering a phase of increased churn. Planning artifacts are in flux. An arcitectural shift in persona adaptability and self-steering is in planning (Dev skill is prototype).
+This should stabilize when VERSION is incremented to 0.3.0. Until then, it will remain workable end-to-end though spec/design docs may not be compatible across versions.
+```
+
 BMILD is a handful of carefully crafted prompts that give you and your AI coding agent a cross-functional team. Drop the skill folders next to your code, call on a persona by name, and get spec-driven development without the ceremony.
 
 No installer. No dependencies. No separate orchestrator. Only Skill-native files.
