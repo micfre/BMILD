@@ -13,7 +13,7 @@ Review an architectural spec or system design for security design flaws. Focus o
    - [ ] `[plan_folder]/<initiative-name>/_context.md` if the initiative is named or inferable
    - [ ] `[plan_folder]/<initiative-name>/system-design.md` in full — the primary review target
    - [ ] `[plan_folder]/<initiative-name>/prd.md` and `product-brief.md` for context on user trust model and data sensitivity
-   - [ ] `./criteria/security-categories.yaml`
+   - [ ] `./resources/security-categories.yaml`
 
    If no `system-design.md` exists, flag that high-level security assumptions could not be verified and proceed based on observed implementation context.
 

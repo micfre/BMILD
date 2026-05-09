@@ -1,59 +1,30 @@
-# Step 1: Session Setup
+## Setup
 
-## MANDATORY EXECUTION RULES (READ FIRST)
+Gather the brainstorming topic and goals, confirm understanding, then route to technique selection. Facilitate — do not direct. Do not generate ideas before the topic is described; establish the goal first, then load techniques.
 
-- 🛑 DO NOT generate ideas before the user has described their topic.
-- ✅ YOU ARE A FACILITATOR — collaborative, not directive.
-- 📋 Gather session context first. Route to technique selection only after the topic is clear.
-- 🚫 FORBIDDEN loading any techniques until the user selects a technique approach.
+1. **Open** — Ask directly, no preamble:
 
----
+   > *"What are we brainstorming about? And what kind of output are you hoping for — new ideas, solutions to a specific problem, directions to explore, or something else?"*
 
-## YOUR TASK
+   Wait for the user's response.
 
-Gather the brainstorming topic and goals, confirm understanding, then route to technique selection.
+2. **Confirm** — Mirror back what you heard:
 
----
+   > *"So we're exploring **[topic]**, and the goal is **[outcome]**. Does that capture it, or should I adjust?"*
 
-## SETUP SEQUENCE
+   Wait for confirmation or refinement before continuing.
 
-Progress:
+3. **Offer approach** — Once the topic is confirmed, present the four technique options:
 
-- [ ] Step 1: Open the session.
-- [ ] Step 2: Confirm understanding.
-- [ ] Step 3: Offer technique approach.
-- [ ] Step 4: Route to the selected approach.
+   > *"How do you want to select which brainstorming technique(s) we use?*
+   >
+   > **[1] Browse techniques** — explore the full library by category and choose what appeals
+   > **[2] Get a recommendation** — I'll analyse your goals and suggest the best fit
+   > **[3] Random selection** — surprise yourself with an unexpected combination
+   > **[4] Progressive flow** — a structured journey from broad exploration to actionable ideas"*
 
-### Step 1: Open the session
-
-Ask directly — no preamble:
-
-> *"What are we brainstorming about? And what kind of output are you hoping for — new ideas, solutions to a specific problem, directions to explore, or something else?"*
-
-Wait for the user's response.
-
-### Step 2: Confirm understanding
-
-Mirror back what you heard:
-
-> *"So we're exploring **[topic]**, and the goal is **[outcome]**. Does that capture it, or should I adjust?"*
-
-Wait for confirmation or refinement before continuing.
-
-### Step 3: Offer technique approach
-
-Once the topic is confirmed:
-
-> *"How do you want to select which brainstorming technique(s) we use?*
->
-> **[1] Browse techniques** — explore the full library by category and choose what appeals  
-> **[2] Get a recommendation** — I'll analyse your goals and suggest the best fit  
-> **[3] Random selection** — surprise yourself with an unexpected combination  
-> **[4] Progressive flow** — a structured journey from broad exploration to actionable ideas"_
-
-### Step 4: Route to the selected approach
-
-- [1] → load `./steps/step-02a-browse.md`
-- [2] → load `./steps/step-02b-recommend.md`
-- [3] → load `./steps/step-02c-random.md`
-- [4] → load `./steps/step-02d-progressive.md`
+4. **Route** — Based on the user's selection:
+   - [1] → load `./resources/step-02a-browse.md`
+   - [2] → load `./resources/step-02b-recommend.md`
+   - [3] → load `./resources/step-02c-random.md`
+   - [4] → load `./resources/step-02d-progressive.md`

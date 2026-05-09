@@ -24,7 +24,7 @@ Design the system for a new initiative. Produce concrete, implementable contract
 
    If a user pushes toward closure on an unresolved technical question, name the risk, note it as an open question in the design doc, and defer to their explicit decision.
 
-5. **Write** — Load `./criteria/completion-criteria.yaml` and privately check each section against its `good_signal`, `weak_signal`, and `falsifiable` field before writing. Could a developer execute against this contract without making an architectural decision? Resolve user-owned architecture gaps through elicitation. Route product or UX gaps as Handoff Questions. Write `[plan_folder]/<initiative-name>/system-design.md` using `assets/system-design-template.md`.
+5. **Write** — Load `./resources/completion-criteria.yaml` and privately check each section against its `good_signal`, `weak_signal`, and `falsifiable` field before writing. Could a developer execute against this contract without making an architectural decision? Resolve user-owned architecture gaps through elicitation. Route product or UX gaps as Handoff Questions. Write `[plan_folder]/<initiative-name>/system-design.md` using `assets/system-design-template.md`.
 
 6. **Distillation gate** — Does this initiative's `system-design.md` contain decisions — schema columns, auth patterns, service contracts, shared infrastructure — that future unrelated initiatives must build against? If yes, distill those specific decisions into `plans/ARCHITECTURE.md` using `assets/architecture-template.md`. Local endpoint shapes, initiative-specific data models, and implementation choices do not qualify.
 

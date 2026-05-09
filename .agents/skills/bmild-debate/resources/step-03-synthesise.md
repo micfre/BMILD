@@ -1,109 +1,65 @@
-# Step 3: Synthesise — Consolidate and Decide
+## Synthesise — Consolidate and Decide
 
-## MANDATORY EXECUTION RULES (READ FIRST)
+Synthesise the debate as facilitator — not as any Lead. Name tensions honestly; do not flatten them. Use three categories only: non-negotiable, preference, open. Surface trade-offs and let the user decide — do not recommend a decision. Apply agreed changes to relevant spec documents and append the synthesis record without asking permission — apply and report.
 
-- ✅ YOU ARE THE SYNTHESISER — played by the facilitator, not by any Lead.
-- 🎯 DO NOT FLATTEN TENSIONS — name them honestly. The user deserves to know what is genuinely unresolved.
-- 📋 THREE CATEGORIES ONLY — non-negotiable, preference, open. Do not create a fourth.
-- 🚫 DO NOT recommend a decision for the user — surface the trade-offs and let them decide.
-- ✅ APPLY agreed changes to the relevant spec documents and APPEND the synthesis record after open items are resolved. Do not ask permission — apply and report what changed.
+Present the synthesis under this structure:
 
 ---
-
-## SYNTHESIS STRUCTURE
-
-Present the synthesis clearly under three headings:
-
----
-
-### 🔷 Synthesis
 
 **Non-negotiable** — what all four Leads agree on, or what is constrained by existing platform decisions:
-
 - [Point 1]
 - [Point 2]
-- ...
 
 **Preference** — where Leads differed, but the trade-off is low-stakes or reversible:
-
 - Option 1:
-  - Favoured by: Katrina@bmild-ux, Faisal@bmild-pm
+  - Favoured by: Katrina, Faisal
   - Why: [reason]
   - Cost: [cost]
 - Option 2:
-  - Favoured by: Lance@bmild-arch
+  - Favoured by: Lance
   - Why: [reason]
   - Cost: [cost]
 
 **Open** — genuinely unresolved; requires a decision before design can proceed:
-
 - [Open question 1] — implication if unresolved: [impact]
 - [Open question 2] — implication if unresolved: [impact]
 
 ---
 
-## ELICITATION (if Open items remain)
+1. **Elicit open items** — If there are open items, run targeted elicitation immediately — do not let the synthesis stall:
 
-If there are open items, do not let the synthesis end there. Run targeted elicitation immediately:
+   > *"There are [N] open questions. Let me ask them directly:*
+   >
+   > 1. [Question 1 — tightest possible phrasing]
+   > 2. [Question 2]"*
 
-> *"There are [N] open questions. Let me ask them directly:*
->
-> 1. [Question 1 — tightest possible phrasing]
-> 2. [Question 2]"_
+   After the user answers: update the synthesis (move items from Open to Non-negotiable or Preference) or trigger another debate round if answers reveal new tensions (load `./resources/step-02-debate.md`).
 
-Wait for the user to answer. Then either:
+2. **Apply to documents** — After synthesis is complete and open items are resolved or explicitly deferred, apply changes without asking permission:
+   - [ ] Apply non-negotiables to the appropriate spec/design document — if a non-negotiable contradicts existing content, update to match
+   - [ ] Apply resolved open items in the appropriate artifact section; remove or mark `resolved` in matching Open Question or Handoff Question
+   - [ ] Record deferred open items explicitly as user-owned Open Questions, persona-owned Handoff Questions, or Assumptions — with target responder, status, and consequence
+   - [ ] Append the synthesis record to the most relevant spec document:
 
-- **Update the synthesis** with the resolved answers (move items from Open to Non-negotiable or Preference), or
-- **Trigger another debate round** if the answers reveal new tensions (load `./steps/step-02-debate.md`)
+   ```markdown
+   ## debate session: <question summary> (<YYYY-MM-DD>)
 
----
+   ### Non-negotiable
+   ...
 
-## DOCUMENT APPLICATION
+   ### Preference
+   ...
 
-After synthesis is complete and open items are resolved or explicitly deferred, apply changes to the relevant spec documents. Do not ask for permission — apply and report.
+   ### Open (deferred)
+   ...
+   ```
 
-Progress:
+   - [ ] Update `_context.md` if the document was newly created or significantly changed
 
-- [ ] Step 1: Apply non-negotiables to the appropriate spec/design document.
-- [ ] Step 2: Apply resolved open items and remove or mark the matching Open Question or Handoff Question as resolved.
-- [ ] Step 3: Record deferred open items as user-owned Open Questions, persona-owned Handoff Questions, or Assumptions with target responder, status, and consequence.
-- [ ] Step 4: Append the synthesis record.
-- [ ] Step 5: Update `_context.md` if a document was newly created or significantly changed.
+3. **Report** — State what was done:
 
-**What to apply:**
+   > *"I've updated `[document(s)]` to reflect the agreed decisions — [brief list of what changed]. The synthesis record has been appended."*
 
-- **Non-negotiables:** ensure each is reflected in the appropriate section of `spec.md`, `ux-design.md`, or `system-design.md`. If a non-negotiable contradicts existing content, update the existing content to match.
-- **Resolved open items:** apply the agreed resolution in the appropriate artifact section. Remove the item or mark it `resolved` in the matching Open Question or Handoff Question.
-- **Deferred open items:** ensure they appear explicitly as user-owned Open Questions, persona-owned Handoff Questions, or Assumptions in the artifact — not in the synthesis block alone. Preserve target responder and consequence if deferred.
-
-After applying factual changes, append the synthesis record under this heading in the most relevant spec document:
-
-```markdown
-## debate session: <question summary> (<YYYY-MM-DD>)
-
-### Non-negotiable
-...
-
-### Preference
-...
-
-### Open (deferred)
-...
-```
-
-Then state what was done:
-
-> *"I’ve updated `[document(s)]` to reflect the agreed decisions — [brief list of what changed]. The synthesis record has been appended."*
-
-Update `_context.md` if the document was newly created or significantly changed.
-
----
-
-## NEXT STEP
-
-After applying document changes, ask:
-
-> *"Do you want to keep the session open for another question, or shall we close?"*
-
-- Another question → load `./steps/step-01-open.md` (new question, same context)
-- Done → load `./steps/step-04-close.md`
+4. **Continue or close** — Ask: *"Do you want to keep the session open for another question, or shall we close?"*
+   - Another question → load `./resources/step-01-open.md` (new question, same context)
+   - Done → load `./resources/step-04-close.md`

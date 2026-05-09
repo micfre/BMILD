@@ -37,7 +37,7 @@ Elicit and document the PRD for an initiative with an existing product brief.
    - [ ] Documentation scope has a decision for each audience
    - [ ] Every Handoff Question has target responder, status, recommendation, and consequence if deferred
 
-6. **Write** — Load `./criteria/prd-completion-criteria.yaml` and privately check each section before writing. Write `[plan_folder]/<initiative-name>/prd.md` using `assets/prd-template.md`. Substitute `[user_name]` from `.bmild.toml`.
+6. **Write** — Load `./resources/prd-completion-criteria.yaml` and privately check each section before writing. Write `[plan_folder]/<initiative-name>/prd.md` using `assets/prd-template.md`. Substitute `[user_name]` from `.bmild.toml`.
 
 7. **Gate check** — Walk the user through any remaining Open Product Questions in the product domain. For each: explain the issue, present options, give a recommendation. Do not probe on UX-layer or architecture questions — route those via Handoff Questions. Confirm every documented question has a target responder and status. User-owned Open Product Questions must be resolved or explicitly deferred by the user before handoff.
 

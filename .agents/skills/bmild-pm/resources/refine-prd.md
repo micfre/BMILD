@@ -27,7 +27,7 @@ Revisit and improve existing PM artifacts. Probe what changed, challenge stale c
 
 4. **Elicit refinements** — Probe the specific sections requiring change. Apply the same depth and rigour as initial authoring. Do not skip elicitation because upstream work already exists.
 
-5. **Write** — Load `./criteria/brief-completion-criteria.yaml` and `./criteria/prd-completion-criteria.yaml` and privately check each. Update the relevant artifacts. Use `assets/product-brief-template.md` and `assets/prd-template.md` as structural references. Preserve sections not being changed. Update the `updated` frontmatter date.
+5. **Write** — Load `./resources/brief-completion-criteria.yaml` and `./resources/prd-completion-criteria.yaml` and privately check each. Update the relevant artifacts. Use `assets/product-brief-template.md` and `assets/prd-template.md` as structural references. Preserve sections not being changed. Update the `updated` frontmatter date.
 
 6. **Gate check** — Walk the user through any remaining Open Product Questions. Confirm all user-owned questions are resolved or explicitly deferred. Route UX or architecture gaps as Handoff Questions targeted to Katrina or Lance.
 

@@ -1,82 +1,55 @@
-# Step 4: Organise and Close
+## Organise and Close
 
-## MANDATORY EXECUTION RULES (READ FIRST)
+Synthesise the session output — cluster by theme, prioritise with the user, then build action plans for prioritised ideas only. Identify genuine patterns, not artificial groupings. Organise first, then prioritise, then action-plan — one phase at a time. Do not create action plans for ideas the user has not prioritised.
 
-- ✅ YOU ARE AN IDEA SYNTHESISER — identify genuine patterns, not artificial groupings.
-- 🎯 ORGANISE FIRST, then prioritise, then action-plan. One phase at a time.
-- 🚫 FORBIDDEN creating action plans for ideas that haven't been prioritised by the user.
+1. **Cluster by theme** — Review all captured ideas. Group into natural themes — 3–5 clusters, no more:
 
----
+   ```
+   **Themes emerging from the session:**
 
-## ORGANISATION SEQUENCE
+   **[Theme Name]:** [one-line description of the cluster]
+     - [Idea mnemonic title]
+     - [Idea mnemonic title]
+     - ...
 
-Progress:
+   **[Theme Name]:** ...
 
-- [ ] Step 1: Cluster by theme.
-- [ ] Step 2: Prioritise.
-- [ ] Step 3: Create action plans for prioritised ideas only.
-- [ ] Step 4: Close.
+   **Cross-cutting:** [Ideas that span multiple themes]
+   **Breakthrough candidates:** [The most unexpected or high-potential ideas]
+   ```
 
-### Step 1: Cluster by theme
+   Ask: *"Do these groupings feel right? Any ideas you think are miscategorised, or themes I'm missing?"* Adjust before continuing.
 
-Review all captured ideas (in IDEA FORMAT). Group into natural themes — 3–5 clusters, no more:
+2. **Prioritise** — Ask the user to identify their top 3 across three criteria:
 
-```
-**Themes emerging from the session:**
+   > *"From these themes, identify your top 3:*
+   >
+   > 1. **Highest impact** — which idea could deliver the most significant outcome?
+   > 2. **Quickest win** — which could you act on this week?
+   > 3. **Most innovative** — which breaks from the obvious approaches most strongly?"*
 
-**[Theme Name]:** [one-line description of the cluster]
-  - [Idea mnemonic title]
-  - [Idea mnemonic title]
-  - ...
+   Wait for the user to name their picks before generating action plans.
 
-**[Theme Name]:** ...
+3. **Action plans** — For each selected idea:
 
-**Cross-cutting:** [Ideas that span multiple themes]
-**Breakthrough candidates:** [The most unexpected or high-potential ideas]
-```
+   ```
+   **[Idea mnemonic]: [one-line description]**
 
-Ask: *"Do these groupings feel right? Any ideas you think are miscategorised, or themes I'm missing?"*
+   Why it matters: [Connection to stated session goal]
 
-Adjust as needed before continuing.
+   Next steps:
+   1. [Concrete action this week]
+   2. [Follow-on step]
+   3. [Longer-horizon step if applicable]
 
-### Step 2: Prioritise
+   What you need: [Resources, information, or decisions required]
+   How you'll know it's working: [Simple success indicator]
+   ```
 
-> *"From these themes, identify your top 3:*
->
-> 1. **Highest impact** — which idea could deliver the most significant outcome?  
-> 2. **Quickest win** — which could you act on this week?  
-> 3. **Most innovative** — which breaks from the obvious approaches most strongly?"_
+   After each: *"Want me to develop any of the other top ideas to this level?"*
 
-Wait for the user to name their picks before generating action plans.
+4. **Close** — Summarise and lead with it — do not wait to be asked:
 
-### Step 3: Action plans (for prioritised ideas only)
+   > *"Session complete. [N] ideas across [N] themes. Top picks: [idea 1], [idea 2], [idea 3]. Most concrete next step: [specific action]. The full idea set is above — your working list."*
 
-For each selected idea:
-
-```
-**[Idea mnemonic]: [one-line description]**
-
-Why it matters: [Connection to stated session goal]
-
-Next steps:
-1. [Concrete action this week]
-2. [Follow-on step]
-3. [Longer-horizon step if applicable]
-
-What you need: [Resources, information, or decisions required]
-How you'll know it's working: [Simple success indicator]
-```
-
-Ask after each: *"Want me to develop any of the other top ideas to this level?"*
-
-### Step 4: Close
-
-Summarise the session and lead with it — do not wait to be asked:
-
-> *"Session complete. [N] ideas across [N] themes. Top picks: [idea 1], [idea 2], [idea 3]. Most concrete next step: [specific action from the action plans]. The full idea set is above — your working list."*
-
-Offer:
-
-- [Export] — organise the ideas into a markdown document for the user to save
-- [Keep going] — back to `./steps/step-03-execute.md` for more exploration
-- [Done] — close the session
+   Options: [Export] — markdown document / [Keep going] — back to `./resources/step-03-execute.md` for more exploration / [Done] — close the session.

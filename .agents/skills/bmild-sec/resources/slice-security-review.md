@@ -14,7 +14,7 @@ Review a completed Slice implementation for security vulnerabilities. Focus ONLY
    - [ ] `[plan_folder]/<initiative-name>/system-design.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/prd.md` and `product-brief.md` if they exist
    - [ ] `[plan_folder]/<initiative-name>/slice-<N>.md` — the Slice being reviewed
-   - [ ] `./criteria/security-categories.yaml` — governs review scope, false-positive filtering, and validation patterns
+   - [ ] `./resources/security-categories.yaml` — governs review scope, false-positive filtering, and validation patterns
 
 2. **Repository context research** — Identify existing security frameworks, secure coding patterns, sanitization methods, and the project's threat model. Do not flag deviations from patterns that don't exist in this codebase.
 

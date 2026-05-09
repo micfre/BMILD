@@ -24,7 +24,7 @@ Design the frontend experience for a new initiative. Produce observable, testabl
 
    Probe backward on: empty states, error states, loading states, mobile layout, and accessibility — before closing.
 
-5. **Write** — Load `./criteria/completion-criteria.yaml` and privately check each section against its `good_signal`, `weak_signal`, and `falsifiable` field. Is there an observable user behavior or testable screen state confirming each section is complete? Resolve user-owned UX gaps through elicitation. Route product or architecture gaps as Handoff Questions. Write `[plan_folder]/<initiative-name>/ux-design.md` using `assets/ux-design-template.md`.
+5. **Write** — Load `./resources/completion-criteria.yaml` and privately check each section against its `good_signal`, `weak_signal`, and `falsifiable` field. Is there an observable user behavior or testable screen state confirming each section is complete? Resolve user-owned UX gaps through elicitation. Route product or architecture gaps as Handoff Questions. Write `[plan_folder]/<initiative-name>/ux-design.md` using `assets/ux-design-template.md`.
 
 6. **Distillation gate** — Do this initiative's decisions establish interaction principles, visual language decisions, or UX patterns that all future initiatives must conform to? If yes, distill those specific elements into project-root `DESIGN.md` using `assets/design-md-template.md` for creation, or preserve its existing structure for updates. Initiative-local flows, screen-specific states, and scoped interaction decisions do not qualify.
 

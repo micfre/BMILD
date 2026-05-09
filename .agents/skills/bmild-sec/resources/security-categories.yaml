@@ -1,4 +1,4 @@
-# bmild-sec/criteria/security-categories.yaml
+# bmild-sec/resources/security-categories.yaml
 meta:
   artifact: security-review.md
   governed_by: bmild-sec

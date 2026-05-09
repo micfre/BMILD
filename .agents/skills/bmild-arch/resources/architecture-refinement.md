@@ -23,7 +23,7 @@ Extend or update an existing `system-design.md`. Probe what changed, challenge s
 
    If live product or UX artifacts contain Architecture Handoff Questions targeted to Lance, resolve them in this refinement or explicitly defer them with user consent.
 
-5. **Write** — Load `./criteria/completion-criteria.yaml` and privately re-check the sections being modified. Update `[plan_folder]/<initiative-name>/system-design.md`. Update the `updated` frontmatter date. Use `assets/system-design-template.md` as a structural reference; preserve sections not being changed.
+5. **Write** — Load `./resources/completion-criteria.yaml` and privately re-check the sections being modified. Update `[plan_folder]/<initiative-name>/system-design.md`. Update the `updated` frontmatter date. Use `assets/system-design-template.md` as a structural reference; preserve sections not being changed.
 
 6. **Distillation gate** — Do any refined decisions qualify for distillation to `plans/ARCHITECTURE.md`? Apply the same gate as Architecture-Design mode: cross-initiative schema patterns, auth contracts, or shared infrastructure decisions only.
 

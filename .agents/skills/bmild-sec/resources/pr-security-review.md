@@ -12,7 +12,7 @@ Review a pull request or diff for security vulnerabilities. Focus ONLY on securi
    - [ ] `plans/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md` if an initiative is named or inferable
    - [ ] The PR diff or changed files provided in the message
-   - [ ] `./criteria/security-categories.yaml`
+   - [ ] `./resources/security-categories.yaml`
 
 2. **Scope confirmation** — Confirm the PR scope: which files changed, what behaviour was added or modified. Do not review pre-existing code outside the PR diff.
 

@@ -23,7 +23,7 @@ Extend or update an existing `ux-design.md`. Probe what changed, challenge stale
 
 4. **Probe** — Present what appears settled, what the change affects, and what decisions are newly required. Apply all Design Standards from the core skill. Elicit before modifying; write at a meaningful checkpoint. Do not silently absorb unresolved issues.
 
-5. **Write** — Load `./criteria/completion-criteria.yaml` and privately re-check the sections being modified. Update `[plan_folder]/<initiative-name>/ux-design.md`. Update the `updated` frontmatter date. Preserve sections not being changed.
+5. **Write** — Load `./resources/completion-criteria.yaml` and privately re-check the sections being modified. Update `[plan_folder]/<initiative-name>/ux-design.md`. Update the `updated` frontmatter date. Preserve sections not being changed.
 
 6. **Distillation gate** — Do any refined decisions qualify for distillation to project-root `DESIGN.md`? Apply the same gate as UX-Design mode: global interaction principles and visual language decisions only.
 
