@@ -8,12 +8,11 @@ author: [user_name] + Katrina (UX)
 What specific user behavior we are enabling.
 
 ## 2. Information Architecture & Routing
-Description of new screens, names, routing structure, and URLs.
+New screens, names, routing structure, and URLs.
 
 ## 3. User Journeys & Flows
 ### Flow: <name>
-Step-by-step path: Entry point → steps → exit condition.
-Must include error paths and edge cases (unhappy paths).
+Entry point → steps → exit condition. Include error paths and edge cases.
 
 ## 4. Screens / Views
 ### <Screen Name>
@@ -26,7 +25,6 @@ Must include error paths and edge cases (unhappy paths).
 Component-level behaviour specific to this feature. What triggers what. What state is held where.
 
 ## 6. Open UX Questions
-User-owned UX questions. Must be resolved or explicitly deferred by the user before UX handoff.
 
 - Question: ...
   - Target responder: User
@@ -35,7 +33,6 @@ User-owned UX questions. Must be resolved or explicitly deferred by the user bef
   - Consequence if deferred: ...
 
 ## 7. Product Handoff Questions
-Questions outside UX scope that Faisal must resolve.
 
 - Question: ...
   - Target responder: Faisal
@@ -44,7 +41,6 @@ Questions outside UX scope that Faisal must resolve.
   - Consequence if deferred: ...
 
 ## 8. Architecture Handoff Questions
-Questions outside UX scope that Lance must resolve.
 
 - Question: ...
   - Target responder: Lance

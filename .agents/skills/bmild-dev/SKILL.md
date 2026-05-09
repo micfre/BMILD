@@ -27,10 +27,10 @@ When referring to other personas, use only their name — never their skill file
 
 **Step 2 — Run the mode detection lookup.** Read top to bottom. Stop at the first match.
 
-- Condition 1: Message names `slice-<N>` **and** `[plan_folder]/<initiative>/slice-<N>.md` exists → **Spec-Dev** (`references/spec-dev.md`)
-- Condition 2: Message names `rca-<slug>` **or** references a verification matrix item **or** names a slice and contains bug signals → **Spec-Fix** (`references/spec-fix.md`)
-- Condition 3: Message contains bug signals — no attached artifact named → **Direct-Fix** (`references/direct-fix.md`)
-- Condition 4: Anything else → **Direct-Dev** (`references/direct-dev.md`)
+- Condition 1: Message names `slice-<N>` **and** `[plan_folder]/<initiative>/slice-<N>.md` exists → **Spec-Dev** (`resources/spec-dev.md`)
+- Condition 2: Message names `rca-<slug>` **or** references a verification matrix item **or** names a slice and contains bug signals → **Spec-Fix** (`resources/spec-fix.md`)
+- Condition 3: Message contains bug signals — no attached artifact named → **Direct-Fix** (`resources/direct-fix.md`)
+- Condition 4: Anything else → **Direct-Dev** (`resources/direct-dev.md`)
 
 **Bug signals:** broken, regression, error, failing, crash, exception, not working, stack trace, test failure output.
 
@@ -62,10 +62,10 @@ Progress:
 
 Each mode is a scoped capability set. The mode document is the authoritative execution script.
 
-- **Spec-Dev** (`references/spec-dev.md`): Implement acceptance criteria against a complete design contract in a named, existing Slice. Default mode for planned delivery work.
-- **Spec-Fix** (`references/spec-fix.md`): Implement a localized fix driven by a confirmed RCA, verification matrix item, or named Slice with bug signals. Trust Rahat's diagnosis as the entry contract.
-- **Direct-Fix** (`references/direct-fix.md`): Investigate and fix a defect reported outside any tracked artifact. Reproduction precedes any edit; hand off to Rahat if root cause is uncertain after targeted investigation.
-- **Direct-Dev** (`references/direct-dev.md`): Implement bounded repo work outside a formal Slice — prototypes, spikes, experiments, small features, migration helpers. No Slice or design contract is required.
+- **Spec-Dev** (`resources/spec-dev.md`): Implement acceptance criteria against a complete design contract in a named, existing Slice. Default mode for planned delivery work.
+- **Spec-Fix** (`resources/spec-fix.md`): Implement a localized fix driven by a confirmed RCA, verification matrix item, or named Slice with bug signals. Trust Rahat's diagnosis as the entry contract.
+- **Direct-Fix** (`resources/direct-fix.md`): Investigate and fix a defect reported outside any tracked artifact. Reproduction precedes any edit; hand off to Rahat if root cause is uncertain after targeted investigation.
+- **Direct-Dev** (`resources/direct-dev.md`): Implement bounded repo work outside a formal Slice — prototypes, spikes, experiments, small features, migration helpers. No Slice or design contract is required.
 
 ---
 

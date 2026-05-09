@@ -1,5 +1,3 @@
-Write `[plan_folder]/<initiative-name>/security-review-<slug>.md` only when vulnerabilities are found. No artifact is written for a clean review.
-
 ---
 scope: <initiative-name> | _system
 slug: <slug>

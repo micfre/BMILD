@@ -1,12 +1,3 @@
-## Dev Note
-
-Write `[plan_folder]/<initiative-name>/dev-note-<slug>.md` when Prototype or Bug Fix Mode produces durable behaviour, reusable code, future-spec facts, or follow-up work.
-
-Use `[plan_folder]/_system/dev-note-<slug>.md` only for genuinely global work with no initiative, Slice, or initiative `_context.md` owner.
-
-Durable means code, tests, scripts, config, docs, schema, or user-visible behaviour remains in the repo after handoff.
-
-```markdown
 ---
 scope: <initiative-name> | _system
 slug: <slug>
@@ -49,12 +40,3 @@ What the user asked Alex to build, test, prototype, or fix.
 
 ## Notes for Future Spec or Planning
 - Facts future specs, slices, RCA, or reviews should not lose
-```
-
-**File rules:**
-
-- Prototype with durable behaviour or reusable code → write or update a Dev note.
-- Prototype removed before handoff with no future relevance → no Dev note required.
-- Bug fix with visible behaviour change, regression proof, or non-obvious cause → write or update a Dev note unless an RCA/security artifact already owns the record.
-- Trivial typo or local obvious fix with no future relevance → Dev note optional.
-- Existing RCA/security artifact exists → update that artifact first; create a Dev note only for broader implementation notes.

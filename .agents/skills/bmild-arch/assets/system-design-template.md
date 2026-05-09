@@ -5,12 +5,12 @@ author: [user_name] + Lance (Arch)
 ---
 
 ## 1. Architecture Vision & Context
-- How this initiative fits into the broader system architecture and current codebase reality.
+How this initiative fits into the broader system architecture and current codebase reality.
 
 ## 2. Architectural Decisions (ADRs)
 ### Decision: <title>
 - **Context:** Why we need to decide.
-- **Alternatives Considered:** (Structured evaluation)
+- **Alternatives Considered:**
   - **Option 1:** ...
     - Pros: ...
     - Cons: ...
@@ -53,7 +53,6 @@ Migration intent: ...
 Description. Throws: ...
 
 ## 6. Open Technical Questions
-User-owned architecture questions. Must be resolved or explicitly deferred by the user before architecture handoff.
 
 - Question: ...
   - Target responder: User
@@ -62,7 +61,6 @@ User-owned architecture questions. Must be resolved or explicitly deferred by th
   - Consequence if deferred: ...
 
 ## 7. Product Handoff Questions
-Questions outside architecture scope that Faisal must resolve.
 
 - Question: ...
   - Target responder: Faisal
@@ -71,7 +69,6 @@ Questions outside architecture scope that Faisal must resolve.
   - Consequence if deferred: ...
 
 ## 8. UX Handoff Questions
-Questions outside architecture scope that Katrina must resolve.
 
 - Question: ...
   - Target responder: Katrina
@@ -85,4 +82,3 @@ Questions outside architecture scope that Katrina must resolve.
   - Consequence if wrong: [Impact]
 
 ## 10. Archived Decisions
-<!-- Decisions superseded by later work -->
