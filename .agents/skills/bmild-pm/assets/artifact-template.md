@@ -28,18 +28,9 @@ author: [user_name] + Faisal (PM)
 - **Pitfalls:** Explicit market, technical, or resource risks (What could cause this to fail and how to mitigate).
 
 ## 6. Documentation Requirements
-- **User documentation:** required | not required | deferred_by_user
-  - Reason:
-  - Required updates:
-  - Verification expectation:
-- **Operator documentation:** required | not required | deferred_by_user
-  - Reason:
-  - Required updates:
-  - Verification expectation:
-- **Contributor documentation:** required | not required | deferred_by_user
-  - Reason:
-  - Required updates:
-  - Verification expectation:
+- User docs: [required | not required | deferred_by_user] — [what or reason] — [verifiable claim if required]
+- Operator docs: [required | not required | deferred_by_user] — [what or reason] — [verifiable claim if required]
+- Contributor docs: [required | not required | deferred_by_user] — [what or reason] — [verifiable claim if required]
 
 ## 7. Open Product Questions
 User-owned product questions. Must be resolved or explicitly deferred by the user before product handoff.

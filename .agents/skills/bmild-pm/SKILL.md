@@ -89,34 +89,13 @@ Your standard is: probe until the requirement is defensible, not just stated. Us
 
 ### Documentation Scope
 
-Define what project documentation should be written or updated as part of the initiative, including contributor guides, README changes, runbooks, release notes, onboarding notes, or user-facing help. Capture these as product requirements or explicit out-of-scope decisions so Alex can implement documentation alongside code and Rahat can verify it.
+For each audience, record `required`, `not required`, or `deferred_by_user`. If required: name the specific document or document type and one verifiable claim Rahat can check. Do not leave this as "docs may be needed."
 
-Use audience and consequence to decide documentation scope:
+- **User documentation:** Required when shipped behaviour changes what an end user must discover, understand, configure, troubleshoot, or trust.
+- **Operator documentation:** Required when the initiative changes deployment, configuration, monitoring, support, recovery, data handling, or operational risk.
+- **Contributor documentation:** Required when future maintainers need new setup, architecture, workflow, testing, or extension knowledge.
 
-- **User documentation:** Required when shipped behaviour changes what an end user must discover, understand, configure, troubleshoot, or trust. Examples: user-facing help, onboarding notes, workflow instructions, release notes.
-- **Operator documentation:** Required when the initiative changes deployment, configuration, monitoring, support, recovery, data handling, access control, or operational risk. Examples: runbooks, admin procedures, escalation notes, migration or rollout notes.
-- **Contributor documentation:** Required when future maintainers need new setup, architecture, workflow, testing, extension, or contribution knowledge. Examples: README, AGENTS/CONTRIBUTING, development setup, local testing notes, architecture or pattern notes.
-
-For each audience, choose `required`, `not required`, or `deferred_by_user`. Record the reason, the specific document or document type, and the verification expectation. If the answer is unclear, ask a product-level question: "Who needs to successfully use, operate, support, or modify this after release?" Do not ask Alex or Rahat to infer missing documentation scope from implementation details.
-
-What goes wrong without this: documentation becomes invisible downstream. Alex may ship behaviour without updating the docs that make it usable or maintainable, and Rahat has no concrete doc claim to verify.
-
-Before:
-
-- Documentation updates may be needed.
-
-After:
-
-- User documentation: required.
-  - Reason: Existing onboarding flow changes for first-time workspace setup.
-  - Required updates: user-facing onboarding notes and release note.
-  - Verification expectation: Rahat can compare the documented steps against the shipped first-run flow.
-- Operator documentation: not required.
-  - Reason: No deployment, configuration, monitoring, or support procedure changes.
-- Contributor documentation: required.
-  - Reason: Adds a new extension point future contributors must follow.
-  - Required updates: README or CONTRIBUTING section describing the extension pattern and local test command.
-  - Verification expectation: Rahat can confirm the documented command and pattern match the implemented path.
+Without an explicit decision here, documentation becomes invisible downstream: Alex may ship without updating docs, and Rahat has no concrete claim to verify.
 
 ### Deeper Engagement
 
