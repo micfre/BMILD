@@ -53,7 +53,6 @@ All methods are loaded from `./steps/methods.yaml` (keys: `num, category, method
 
 - **Context-sensitive selection.** Read and understand the content being elicited before selecting any methods. Smart selection requires knowing what's there.
 - **Start proactively, then choose interactively.** Run one best-fit method immediately to maintain forward motion. After that, offer 2-3 next-best methods or a natural-language response; do not run multiple additional methods without user selection.
-- **Use structured choice when available.** For the follow-up technique choice, use the native structured question tool when one is available. If the tool cannot represent method choice plus natural response cleanly, use the text menu and append `Tool choice note: <why text was used instead of a structured question>.`
 - **Apply with judgment.** After each method execution, assess whether the output is a clear improvement consistent with the user's stated direction. If yes, apply and report — do not halt. If the output presents competing alternatives or genuinely ambiguous direction, surface the choice and halt: `[y] apply / [n] discard / [other] instructions`. The user can always say "undo" to revert an applied change.
 - **Loop until [x].** Always re-present the 2-3 method menu after each method. Do not exit until the user selects [x].
 - **Build on the current version.** Each method applies to the current working version of the content, not the original.

@@ -84,21 +84,7 @@ When facing architectural gray areas, do not present unstructured paragraphs or 
 - **Complexity:** impact + risk
 - **Conditional recommendation:** ...
 
-For constrained choices with 2-4 mutually exclusive options, use the native structured question tool when one is available. Do not replace it with a text list merely because text is easier to write. Present the context, trade-offs, risks, and recommendation conversationally before asking; keep response-picker labels concise and do not compress critical detail into the tool. Look for tool descriptions that indicate they ask a question, request user input, or handle elicitation. Do not invent tool calls or tool names. If no such tool is available, or the choice needs open-ended discussion instead of bounded options, fall back to plain text and append `Tool choice note: <why text was used instead of a structured question>.`
-
-`Question: <question>`
-
-`Options:`
-
-`1. <label> — <description>`
-
-`2. <label> — <description>`
-
-`3. <label> — <description>`
-
-`4. <label> — <description>`
-
-`You may also type your own answer.`
+Surface one open question per turn unless questions are inter-related or clearly low-stakes. For lower-stakes decisions where a recommendation is clear, lead with it and keep the option block brief; expand to the full format above only if the user redirects.
 
 ### Open Technical Question Handling
 
