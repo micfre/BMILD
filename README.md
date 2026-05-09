@@ -224,16 +224,9 @@ BMILD doesn't look at BMAD planning artifacts, but this could change in the futu
 
 ```
 - v0.1 -- Initial commit
-  - added Zach security persona
-  - removed Propose interactive skill and embedded Advisor Mode-style capability within
-  design-tier personas
-  - flattened context memory, remove distinction between platform and feature docs
-- v0.2 -- Persona breadth stable (Current)
-  - persona count and breadth stable
-  - focus is on activation, midcourse behaviour, handoff
-  - refining non-linear entry context and adaptive progress behaviour
-- v0.3 -- Persona interactivity stable
-- v0.4 -- Dogfood version
+- v0.2 -- Persona scope stable (Current)
+- v0.3 -- Context memory structure stable
+- v0.4 -- Persona interactivity stable
 - v0.5 -- First public version
 ```
 
@@ -242,7 +235,7 @@ BMILD doesn't look at BMAD planning artifacts, but this could change in the futu
 BMILD is built upon and inspired by:
 
 - **[BMAD-METHOD](https://github.com/the-bmad-group/bmad)**: The persona archetypes and interactive patterns are adapted from BMAD.
-- **[GSD](https://github.com/gsd-build/get-shit-done)**: Advisor Mode and Nyquist Validation rule adapted to specific skill behaviours.
+- **[GSD](https://github.com/gsd-build/get-shit-done)**: Nyquist Validation rule adapted to specific skill behaviours.
 - **[Kilo Code](https://github.com/kilo-code)**: The QA debugging methodology is adapted from Kilo Code's Debug prompt.
 - **[Tokencast](https://github.com/krulewis/tokencast)**: The tokenizer algorithm used by the Planner persona is adapted from krulewis' implementation in Tokencast.
 
