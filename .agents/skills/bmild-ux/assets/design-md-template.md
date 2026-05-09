@@ -1,40 +1,70 @@
-```markdown
 ---
-scope: _system
-updated: YYYY-MM-DD
-author: [user_name] + Katrina (UX)
+version: alpha
+name: <Design system name>
+description: <Optional one-line summary of the design system>
+colors:
+  primary: "<Primary hex color>"
+  secondary: "<Optional secondary hex color>"
+  tertiary: "<Optional tertiary hex color>"
+  neutral: "<Optional neutral hex color>"
+typography:
+  <typography-token-name>:
+    fontFamily: "<Font family>"
+    fontSize: <Dimension>
+    fontWeight: <Number>
+    lineHeight: <Dimension or number>
+    letterSpacing: <Dimension>
+rounded:
+  <scale-level>: <Dimension>
+spacing:
+  <scale-level>: <Dimension or number>
+components:
+  <component-name>:
+    <property-name>: "<Literal value or {token.reference}>"
 ---
 
-# Global Design System (DESIGN.md)
+# DESIGN.md
 
-## 1. Core Experience Vision
-The emotional response and core interaction philosophy.
+## Overview
+<Describe the product's overall feel, brand personality, intended audience, and the emotional response the interface should evoke. Explain what should feel distinctive, what should remain consistent across screens, and what stylistic directions should be avoided.>
 
-## 2. Visual Design Foundation
-### Colour Palette
-- Primary:
-  - Value: ...
-  - Notes: ...
-- Semantic error:
-  - Value: ...
-  - Notes: ...
+## Colors
+<Describe the palette in human terms. Explain the role of each major color family, where it should be used, and where it should be avoided. If the system uses semantic color roles beyond the defaults, describe them here.>
 
-### Typography & Spacing
-- **Font Families:** ...
-- **Size Scale:** ...
-- **Spacing Base Unit:** ...
+- **Primary (<hex>):** <Role and intended usage>
+- **Secondary (<hex>):** <Role and intended usage>
+- **Tertiary (<hex>):** <Role and intended usage>
+- **Neutral (<hex>):** <Role and intended usage>
 
-## 3. Component Strategy
-- **Component Library:** (e.g., ShadCN, Material)
-- **Base Rules:** Overrides or specific global usage patterns.
+## Typography
+<Describe the typography system in prose. Explain the display/body/UI hierarchy, how dense or spacious the text system should feel, and any casing, rhythm, or emphasis rules that should guide implementation.>
 
-## 4. Global UX Patterns
-Standardized behaviors for:
-- Form validation and submission
-- Modals, dialogs, and drawers
-- Error handling and empty states
-- Accessibility and responsive baselines
+## Layout
+<Describe spacing rhythm, content width, alignment discipline, density, grid behavior, and responsive layout principles.>
 
-## 5. Open Global UX Questions
-Questions to resolve about the design system.
-```
+## Elevation & Depth
+<Describe how hierarchy is conveyed visually. If the system is flat, explain what replaces shadows. If it uses elevation, explain the intended shadow, border, blur, or contrast treatment.>
+
+## Shapes
+<Describe corner rounding, silhouette, edge treatment, and the general shape language of the system. Explain which elements should feel sharper, softer, more geometric, or more organic.>
+
+## Components
+<Describe global component styling guidance not fully captured by tokens. Cover the component categories relevant to the project and define important states and behavioral expectations where visual consistency matters.>
+
+- **Buttons:** <Primary, secondary, tertiary, disabled, loading, emphasis rules>
+- **Inputs:** <Labels, helper text, error treatment, focus treatment, density>
+- **Lists / Cards / Navigation / Dialogs / Domain-specific components:** <Guidance as relevant>
+
+## Global UX Patterns
+<Describe global interaction conventions that are not purely visual tokens.>
+
+- <Form validation and submission rule>
+- <Modal, dialog, or drawer lifecycle rule>
+- <Empty, loading, or error state convention>
+- <Accessibility or responsive baseline>
+
+## Do's and Don'ts
+- **Do:** <Specific pattern to preserve>
+- **Do:** <Specific pattern to preserve>
+- **Don't:** <Specific misuse that would break the system>
+- **Don't:** <Specific misuse that would break the system>
