@@ -9,6 +9,41 @@ VERSION=$(cat VERSION)
 # Define output directory and filename
 DIST_DIR="dist"
 FILENAME="release-v${VERSION}-linux-macos-dor_agents.tar.gz"
+STAGING_DIR=$(mktemp -d)
+
+cleanup() {
+    rm -rf "$STAGING_DIR"
+}
+
+trap cleanup EXIT
+
+sync_skill_versions() {
+    local skill_file
+
+    while IFS= read -r skill_file; do
+        awk -v version="$VERSION" '
+            BEGIN {
+                in_frontmatter = 0
+                frontmatter_delimiters = 0
+            }
+            /^---$/ {
+                frontmatter_delimiters++
+                if (frontmatter_delimiters == 1) {
+                    in_frontmatter = 1
+                } else if (frontmatter_delimiters == 2) {
+                    in_frontmatter = 0
+                }
+                print
+                next
+            }
+            in_frontmatter && /^[[:space:]]+version:[[:space:]]*"/ {
+                sub(/version:[[:space:]]*"[^"]*"/, "version: \"" version "\"")
+            }
+            { print }
+        ' "$skill_file" > "${skill_file}.tmp"
+        mv "${skill_file}.tmp" "$skill_file"
+    done < <(find "$STAGING_DIR/.agents/skills" -mindepth 2 -maxdepth 2 -name SKILL.md | sort)
+}
 
 # Create dist directory if it doesn't exist
 mkdir -p "$DIST_DIR"
@@ -18,7 +53,8 @@ mkdir -p "$DIST_DIR"
 if [[ -z "${CI}" ]]; then
     echo "****************************************************************"
     echo "WARNING: This script will TAG the current commit as v${VERSION}"
-    echo "and PUSH it to origin, triggering a GitHub Release."
+    echo "update skill metadata, and PUSH it to origin, thereby"
+    echo "triggering a GitHub Release."
     echo ""
     echo "CRITICAL: Ensure you have COMMITTED and PUSHED all your changes"
     echo "to the current branch BEFORE continuing."
@@ -45,11 +81,16 @@ fi
 
 echo "Packaging release v${VERSION}..."
 
+# Stage release contents so packaged skill versions can be normalized without
+# mutating tracked workspace files.
+cp -R .agents "$STAGING_DIR/.agents"
+sync_skill_versions
+
 # Create the tarball
-# Includes .agents/ folder and BMILD_ONBOARDING.md
+# Includes .agents/ folder
 # Using tar with -z (gzip) and -c (create) -f (file)
 # We use relative paths to ensure the structure is preserved within the archive
-tar -czf "${DIST_DIR}/${FILENAME}" .agents/ BMILD_ONBOARDING.md
+tar -czf "${DIST_DIR}/${FILENAME}" -C "$STAGING_DIR" .agents
 
 echo "Successfully created ${DIST_DIR}/${FILENAME}"
 
