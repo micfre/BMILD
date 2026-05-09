@@ -68,3 +68,9 @@ components:
 - **Do:** <Specific pattern to preserve>
 - **Don't:** <Specific misuse that would break the system>
 - **Don't:** <Specific misuse that would break the system>
+
+## Distillation Log
+
+Append-only. Add an entry each time this document is updated. Format: date | initiative-name | what was distilled.
+
+- [YYYY-MM-DD] | [initiative-name] | [one-line description of what was distilled]

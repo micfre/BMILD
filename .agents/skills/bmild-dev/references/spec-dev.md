@@ -15,14 +15,15 @@ Confirm the Slice file is present at `[plan_folder]/<initiative>/slice-<N>.md`. 
 
 Load in this order:
 
-1. `[plan_folder]/_system/_context.md`
-2. `[plan_folder]/_system/_rollup.md`
-3. `[plan_folder]/<initiative>/_context.md`
-4. Every `## Live` entry relevant to the target Slice — do not load `## Archived` entries or unrelated initiative folders
-5. `slice-<N>.md` in full
-6. Relevant sections of `verification-matrix.md` when present
-7. Design contracts referenced by the Slice
-8. The repo contributor guide (`AGENTS.md`, `CONTRIBUTING.md`, or equivalent)
+1. `plans/CHARTER.md` if it exists
+2. `plans/ARCHITECTURE.md` if it exists
+3. `plans/_rollup.md` if it exists
+4. `[plan_folder]/<initiative>/_context.md`
+5. Every `## Live` entry relevant to the target Slice — do not load `## Archived` entries or unrelated initiative folders
+6. `slice-<N>.md` in full
+7. Relevant sections of `verification-matrix.md` when present
+8. Design contracts referenced by the Slice
+9. The repo contributor guide (`AGENTS.md`, `CONTRIBUTING.md`, or equivalent)
 
 ---
 

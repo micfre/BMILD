@@ -1,0 +1,89 @@
+meta:
+  artifact: product-brief.md
+  governed_by: bmild-pm
+  loading_note: >
+    Load before writing product-brief.md. For each section, privately check whether your
+    draft exhibits the good_signal or the weak_signal. Resolve gaps through elicitation
+    or record as Open Product Questions. Do not present this file to the user.
+
+sections:
+
+  - id: problem
+    required: true
+    good_signal: >
+      Specific user pain named with a condition that could be observed to confirm it
+      exists. Real scenarios, not abstractions. The cost of the status quo is named.
+    weak_signal: >
+      Abstract or solution-framed statement, or a statement that cannot be verified
+      without the missing product itself.
+
+  - id: solution
+    required: true
+    good_signal: >
+      Describes the experience and outcome the product creates, not the implementation.
+      A reader unfamiliar with the domain could picture what users do and feel.
+    weak_signal: >
+      Describes technical implementation, a feature list, or mirrors the problem statement
+      without explaining how anything changes for users.
+
+  - id: target_users
+    required: true
+    cross_ref:
+      - ux-design.md
+    good_signal: >
+      At least one user segment is vivid: named role or archetype, specific need, and what
+      success looks like for them. B2B products name buyer and user separately when they
+      differ. Non-user stakeholders identified separately when relevant.
+    weak_signal: >
+      Generic label ("the user") or a role list without articulating what each segment
+      specifically needs or why they differ.
+
+  - id: competitive_context
+    required: true
+    good_signal: >
+      Names at least one alternative or incumbent approach. States a specific reason this
+      product is different or better. If the advantage is execution speed rather than a
+      technical moat, says so plainly rather than inventing differentiation.
+    weak_signal: >
+      Claims differentiation without naming what it differs from, or uses vague language
+      ("best in class", "superior") without a specific contrast.
+
+  - id: success_criteria
+    required: true
+    good_signal: >
+      Vision-level outcomes that would hold across multiple initiatives. At least one is
+      measurable — a reviewer could check a running product or business metric and
+      determine pass or fail.
+    weak_signal: >
+      Criteria that restate features ("users can do X"), single-initiative goals that do
+      not generalize, or qualitative claims so vague that two reviewers would disagree.
+
+  - id: scope
+    required: true
+    good_signal: >
+      Names what is in for the first initiative and what is explicitly not in scope. Tight
+      enough to act as a boundary document. A downstream persona could read it and know
+      what not to design.
+    weak_signal: >
+      Scope that is actually a feature list, or scope so broad that it excludes nothing
+      and gives no design signal.
+
+  - id: vision
+    required: true
+    good_signal: >
+      States a 2-3 year direction that is more ambitious than the first initiative but
+      still grounded. A reader could identify what this product becomes, not just what it
+      starts as.
+    weak_signal: >
+      Repeats the first initiative scope, uses marketing language without direction, or is
+      so vague it could describe any product in the category.
+
+  - id: open_questions
+    required: false
+    good_signal: >
+      Each question, if resolved differently, would change the vision, user model, or
+      competitive positioning. Target responder, recommendation, and consequence if
+      deferred are present.
+    weak_signal: >
+      Questions about implementation details, questions with no consequence if deferred,
+      or questions without a target responder.

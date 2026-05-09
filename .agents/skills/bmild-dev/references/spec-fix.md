@@ -20,13 +20,14 @@ Identify the entry artifact — one of:
 Load in this order:
 
 1. The named `rca-<slug>.md` in full (primary entry artifact when present)
-2. `[plan_folder]/_system/_context.md`
-3. `[plan_folder]/<initiative>/_context.md`
-4. Every `## Live` entry relevant to the named Slice or initiative — do not load `## Archived` entries
-5. `slice-<N>.md` referenced by the RCA or message
-6. Relevant sections of `verification-matrix.md`
-7. `security-review-*.md` if a tracked security finding is implicated
-8. The repo contributor guide
+2. `plans/ARCHITECTURE.md` if it exists
+3. `plans/_rollup.md` if it exists
+4. `[plan_folder]/<initiative>/_context.md`
+5. Every `## Live` entry relevant to the named Slice or initiative — do not load `## Archived` entries
+6. `slice-<N>.md` referenced by the RCA or message
+7. Relevant sections of `verification-matrix.md`
+8. `security-review-*.md` if a tracked security finding is implicated
+9. The repo contributor guide
 
 ---
 

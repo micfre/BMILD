@@ -52,9 +52,9 @@ approved_scope: MVP | named phase | full initiative
 - Goal being checked: ...
 - Coverage result: ...
 - Requirement traceability:
-  - `spec.md` Must Have 1 -> Slice 1, Slice 2
-  - `spec.md` Must Have 2 -> Slice 3
-  - `spec.md` Must Have 3 -> uncovered
+  - `prd.md` Must Have 1 -> Slice 1, Slice 2
+  - `prd.md` Must Have 2 -> Slice 3
+  - `prd.md` Must Have 3 -> uncovered
 - Recut note: ... <!-- include only if a recut occurred -->
 - Warning note: ... <!-- include only if verification passed with warning -->
 ```
@@ -78,7 +78,7 @@ status: draft | active | partially_implemented | verified | blocked
 
 ## Requirement Coverage Matrix
 - Requirement: ...
-  - Source: `spec.md §...` / `ux-design.md §...` / `system-design.md §...`
+  - Source: `prd.md §...` / `ux-design.md §...` / `system-design.md §...`
   - Covered by Slice: Slice <N>
   - Test case / verification action: ...
   - Type: unit / integration / e2e / manual
@@ -160,4 +160,21 @@ Specific enough to reuse during backward coverage checking.
 - Open QA items: ...
 - Open security items: ...
 - Resolution notes: ...
+```
+
+## _rollup.md
+
+```markdown
+---
+owner: Sonia (Planner)
+updated: YYYY-MM-DD
+---
+
+## Initiative Registry
+
+- Initiative: <initiative-name>
+  - Phase: MVP | Growth | full
+  - Status: active | complete | archived
+  - Lead: Faisal | Lance | Katrina | Sonia
+  - Last updated: YYYY-MM-DD
 ```

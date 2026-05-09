@@ -1,0 +1,112 @@
+meta:
+  artifact: prd.md
+  governed_by: bmild-pm
+  loading_note: >
+    Load before writing prd.md. For each section that applies, privately check whether
+    your draft exhibits the good_signal or the weak_signal. Resolve gaps through further
+    elicitation, record user-owned gaps as Open Product Questions, or route out-of-scope
+    gaps as Handoff Questions with target responder and consequence. Do not present this
+    file to the user.
+
+sections:
+
+  - id: functional_requirements
+    required: true
+    cross_ref:
+      - ux-design.md
+      - system-design.md
+    good_signal: >
+      Requirements are organized by capability area, not by technology or layer. Each FR
+      uses the format: [Actor] can [capability]. Each FR can be read in isolation and
+      answered yes or no by a tester who has never seen the rest of the PRD. No UI
+      details, performance numbers, or technology choices are embedded in FR statements.
+      A UX designer could read only the FRs and know what to design; an architect could
+      read only the FRs and know what to support.
+    weak_signal: >
+      Requirements grouped by technical layer (frontend/backend/database), requirements
+      that describe implementation rather than capability, or requirements so bundled
+      that a tester cannot determine pass or fail from a single FR.
+
+  - id: user_journeys
+    required: false
+    applies_when: any requirement involves user-facing behavior or workflow change
+    cross_ref:
+      - ux-design.md
+    good_signal: >
+      At least one end-to-end sequence: named trigger, actor, ordered steps, and success
+      exit. Edge or failure paths are acknowledged even if not fully specified. A journey
+      requirements summary connects journeys to capability areas named in the FRs.
+    weak_signal: >
+      Only a feature description with no sequence, or a journey that starts and ends at
+      the happy path without identifying the trigger, actor, or what happens on failure.
+
+  - id: scope_and_prioritization
+    required: true
+    good_signal: >
+      Phase 1 (MVP) contains the absolute minimum needed to validate the idea. Phase 2 is
+      clearly post-MVP. Explicitly Out of Scope names things being actively decided
+      against. A planner could read this and sequence delivery without re-negotiating
+      scope boundaries.
+    weak_signal: >
+      MVP that includes everything discussed, Growth items that sound mandatory through
+      stakeholder language, or an out-of-scope list that is empty or too vague to bound
+      design decisions.
+
+  - id: nfr
+    required: false
+    applies_when: any requirement touches performance, scale, data retention, security, compliance, or regulated data handling
+    cross_ref:
+      - system-design.md
+    good_signal: >
+      Each NFR names a threshold and the scenario that triggers it. Regulatory constraints
+      name the specific obligation and the rule it imposes.
+    weak_signal: >
+      Phrases like "should be fast", "must be secure", "highly available" with no
+      threshold. Compliance obligations named without citing the specific rule.
+
+  - id: documentation_scope
+    required: true
+    cross_ref:
+      - slice-*.md
+      - verification-matrix.md
+    good_signal: >
+      User, operator, and contributor documentation are each marked required, not required,
+      or deferred_by_user. Required items name the audience, reason, document or document
+      type, and a verifiable claim Rahat can check against shipped behaviour.
+    weak_signal: >
+      Documentation mentioned generically ("update docs"), missing for one or more
+      audiences, or lacking the verification expectation needed to confirm implementation
+      satisfied the requirement.
+
+  - id: assumptions
+    required: false
+    good_signal: >
+      Each assumption names specifically what would change in the PRD if it turns out to
+      be wrong. Confidence level is stated. The assumption is genuinely uncertain, not a
+      confirmed constraint.
+    weak_signal: >
+      Assumptions listed without a stated consequence of being wrong, or assumptions that
+      are actually constraints already confirmed by evidence.
+
+  - id: open_questions
+    required: false
+    good_signal: >
+      Each user-owned question, if resolved differently, would materially change a
+      functional requirement or a downstream design artifact. Target responder, status,
+      recommendation, and consequence if deferred are present.
+    weak_signal: >
+      Questions answerable without changing any FR, purely rhetorical questions, or
+      questions without a target responder.
+
+  - id: handoff_questions
+    required: false
+    cross_ref:
+      - ux-design.md
+      - system-design.md
+    good_signal: >
+      Each out-of-scope question is routed as a UX Handoff Question or Architecture
+      Handoff Question with target responder, status, context or recommendation, and
+      consequence if deferred.
+    weak_signal: >
+      Product-owned questions misfiled as handoff questions, or handoff questions without
+      a target persona or consequence if deferred.

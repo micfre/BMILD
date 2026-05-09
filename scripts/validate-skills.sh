@@ -144,6 +144,20 @@ for pattern in "${required_artifact_patterns[@]}"; do
   fi
 done
 
+canonical_docs=(
+  "$root/plans/CHARTER.md:plans/CHARTER.md"
+  "$root/plans/ARCHITECTURE.md:plans/ARCHITECTURE.md"
+  "$root/DESIGN.md:DESIGN.md"
+)
+
+for entry in "${canonical_docs[@]}"; do
+  path="${entry%%:*}"
+  label="${entry##*:}"
+  if [[ -f "$path" ]]; then
+    grep -q '^## Distillation Log$' "$path" || report "$label exists but is missing required '## Distillation Log' section"
+  fi
+done
+
 if (( fail )); then
   exit 1
 fi
