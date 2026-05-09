@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Added `version` and `license` metadata to all BMILD skill frontmatter, keeping `bmild-dev` at `0.2.1` and setting the remaining skills to `0.2.0`.
+- Removed unintended whole-template markdown code fences from BMILD asset template files so generated artifacts render as markdown rather than fenced code blocks.
 - Added BMILD Working Team, Workflow, Definition of Done, and Gotchas guidance across all personas and interactive modes.
 - Made Arch and UX conversation-first before artifact authoring, including explicit conflict surfacing and post-authoring synthesis.
 - Moved Nyquist verification matrix ownership into Planner readiness, with QA retaining repair/backfill ownership.

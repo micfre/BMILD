@@ -1,4 +1,3 @@
-```markdown
 ---
 scope: <initiative-name> | _system
 updated: YYYY-MM-DD
@@ -52,4 +51,3 @@ Questions outside UX scope that Lance must resolve.
   - Status: unresolved | resolved | deferred_by_user
   - Context or recommendation: ...
   - Consequence if deferred: ...
-```

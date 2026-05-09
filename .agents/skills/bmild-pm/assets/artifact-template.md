@@ -1,4 +1,3 @@
-```markdown
 ---
 scope: <initiative-name> | _system
 updated: YYYY-MM-DD
@@ -73,4 +72,3 @@ Questions outside PM scope that Lance must resolve.
 - **Assumption:** [Description]
   - Confidence: [Low/Med/High]
   - Consequence if wrong: [Impact]
-```

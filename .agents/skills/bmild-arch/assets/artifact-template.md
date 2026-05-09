@@ -1,4 +1,3 @@
-```markdown
 ---
 scope: <initiative-name> | _system
 updated: YYYY-MM-DD
@@ -87,4 +86,3 @@ Questions outside architecture scope that Katrina must resolve.
 
 ## 10. Archived Decisions
 <!-- Decisions superseded by later work -->
-```

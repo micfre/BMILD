@@ -1,6 +1,5 @@
 Write `[plan_folder]/<initiative-name>/security-review-<slug>.md` only when vulnerabilities are found. No artifact is written for a clean review.
 
-```markdown
 ---
 scope: <initiative-name> | _system
 slug: <slug>
@@ -29,4 +28,3 @@ Found [N] High severity and [M] Medium severity issues.
 - Remediation reference: [file refs / Slice notes / design update]
 - Verification performed by Zach: ...
 - Result: pass / fail / blocked
-```

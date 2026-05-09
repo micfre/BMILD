@@ -1,4 +1,4 @@
-![BMad Method](banner-bmild.png)
+![BMILD](banner-bmild.png)
 
 # BMILD -- Breakthrough Method for Interactive Leads Development
 
