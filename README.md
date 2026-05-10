@@ -80,47 +80,85 @@ Named personas also open with a compact operating stance that identifies who is 
 
 BMILD artifacts have owners and consumers:
 
-- `spec.md`: created by Faisal; consumed by Katrina, Lance, Sonia, Rahat, and Zach.
-- `ux-design.md`: created by Katrina; consumed by Lance, Sonia, Alex, Rahat, and Zach.
-- `system-design.md`: created by Lance; consumed by Sonia, Alex, Rahat, and Zach.
-- `slices.md` and `slice-<N>.md`: created by Sonia; consumed and updated by Alex; verified by Rahat and Zach.
-- `dev-note-<slug>.md`: created or updated by Alex for prototype and bug-fix work that changes durable behaviour, leaves reusable code, records fix rationale, or captures facts future specs should not lose.
-- `verification-matrix.md`: created by Sonia when proof boundaries matter; repaired or expanded by Rahat; consumed by Alex.
-- `rca-<slug>.md`: created by Rahat for confirmed defects; consumed by Alex; closed by Rahat after regression evidence passes.
-- `security-review-<slug>.md`: created by Zach for exploitable findings; consumed by Alex or design-tier personas; closed by Zach after remediation is verified.
-- Documentation updates: defined by Faisal when the initiative requires README, contributor guide, runbook, release-note, onboarding, or user-help changes; written by Alex during implementation; verified by Rahat against actual behaviour.
+- `product-brief.md`: created by Faisal; consumed by Katrina, Lance, Sonia, Rahat, and Zach; defines problem, users, success criteria, scope, and vision. Entry contract for downstream design.
+- `prd.md`: created by Faisal once a brief exists; consumed by Katrina, Lance, Sonia, Rahat, and Zach; defines functional requirements, journeys, prioritization (MVP / Growth), NFRs, and required documentation updates (README, contributor guides, runbooks, release notes, onboarding, user-facing help). Validated through coverage checks and verification matrix entries.
+- `plans/CHARTER.md`: emergent project-level artifact. Seeded or updated by Faisal only when an initiative establishes a project-level invariant (vision, target users, competitive positioning), conflicts with a sibling initiative's `product-brief.md`, or the user explicitly requests it. Consumed by all design-tier personas as a constraint when present; absent on most projects until a coherence-forcing event occurs.
+- `plans/ARCHITECTURE.md`: created and maintained by Lance; carries rationale (tech stack, invariants Alex must respect, migration patterns, alternatives rejected). Cross-links to `AGENTS.md`/`CLAUDE.md`/`README.md` for operator mechanics rather than restating them.
+- Project-root `DESIGN.md`: created and maintained by Katrina; carries durable global UX patterns (palette, typography, global component rules) distilled from initiative-specific UX work.
+- `ux-design.md`: created by Katrina; consumed by Lance, Sonia, Alex, Rahat, and Zach; validated through observable user-state checks.
+- `system-design.md`: created by Lance; consumed by Sonia, Alex, Rahat, and Zach; validated through implementability, testability, and security review.
+- `slices.md` and `slice-<N>.md`: created by Sonia; consumed and updated by Alex; verified by Rahat and Zach; recut by Sonia when implementation reveals a planning problem.
+- `dev-note-<slug>.md`: created or updated by Alex for Prototype and Bug Fix work that changes durable behaviour, leaves reusable code, records fix rationale, or creates future-spec facts; consumed by Faisal, Katrina, Lance, Sonia, Rahat, and Zach when formalizing, verifying, or reviewing later work.
+- `verification-matrix.md`: created by Sonia during readiness when proof boundaries matter; repaired or expanded by Rahat; consumed by Alex; validated by Rahat during verification.
+- `rca-<slug>.md`: created or updated by Rahat for confirmed defects; consumed by Alex for fixes; closed by Rahat after evidence shows the regression is covered.
+- `security-review-<slug>.md`: created by Zach when exploitable findings exist; consumed by Alex for implementation fixes or Lance/Katrina for design changes; closed by Zach after remediation is verified.
+- Documentation files: requirements defined by Faisal, implemented by Alex, and verified by Rahat against the shipped behaviour.
+
+RCA path rule: initiative-linked defects live in the initiative folder. `_system/rca-<slug>.md` is valid only for genuinely global defects with no initiative, Slice, or initiative `_context.md` owner.
 
 ### Memory
 
-No orchestrator, no state machine. Personas write directly to the folder specified by `plan_folder` in `.bmild.toml` (defaults to `plans/`) at your project root using plain markdown. The `_context.md` file in each folder tracks what's live vs archived. Personas load only what's relevant.
+No orchestrator, no state machine. Personas write directly to the folder specified by `plan_folder` in `.bmild.toml` (defaults to `plans/`) at your project root using plain markdown. This can be structured alongside project source or kept separately — the personas resolve all paths relative to the project root.
 
 ```
-plans/ (or your custom plan_folder)
-├── _system/                     # Global constraints, shared architecture, tech stack
-│   ├── _context.md              # Index of live documents — all personas read this first
-│   ├── _rollup.md               # Central registry of all active features/initiatives
-│   ├── system-design.md         # Arch output: schema, API contracts, tech decisions
-│   └── ux-design.md             # UX output: interaction model, visual language, flows
-└── <initiative-name>/           # The atomic unit of work (Feature)
-    ├── _context.md              # Index of live documents for this initiative
-    ├── spec.md                  # PM output
-    ├── ux-design.md             # UX output
-    ├── system-design.md         # Arch output
-    ├── verification-matrix.md   # Planner/QA proof map
-    ├── slices.md                # Planner output: Slice registry
-    ├── slice-<N>.md             # One file per Slice
-    ├── dev-note-<slug>.md       # Dev memory for prototype and bug-fix work
-    ├── rca-<slug>.md            # QA output: root cause analysis
-    └── security-review-<slug>.md # Sec output: security findings
+<project-root>/
+├── DESIGN.md                       # Katrina output: durable global UX patterns (palette, typography, component rules). Project-root because it is a project-wide standard.
+└── plans/ (or your custom plan_folder)
+    ├── CHARTER.md                  # Faisal output: emergent — seeded only when a project-level invariant is established or a cross-initiative conflict is resolved.
+    ├── ARCHITECTURE.md             # Lance output: durable rationale (tech stack, invariants Alex must respect, alternatives rejected). Canonical, plans/-level.
+    ├── _system/                    # Global memory artifacts shared across initiatives.
+    │   ├── _context.md             # Index of globally-live documents.
+    │   └── _rollup.md              # Central registry of all active features/initiatives.
+    └── <initiative-name>/          # The atomic unit of work (Feature / Initiative).
+        ├── _context.md             # Index of live documents for this initiative.
+        ├── product-brief.md        # Faisal output: problem, users, success criteria, scope, vision.
+        ├── prd.md                  # Faisal output: requirements, journeys, prioritization, NFRs, doc scope.
+        ├── ux-design.md            # Katrina output: initiative-specific flows, screen states, interaction rules.
+        ├── system-design.md        # Lance output: schema, API contracts, service contracts, tech choices.
+        ├── verification-matrix.md  # Sonia/Rahat: proof map for requirements and Slices.
+        ├── slices.md               # Sonia output: Slice registry.
+        ├── slice-<N>.md            # One file per Slice.
+        ├── dev-note-<slug>.md      # Alex output: prototype and bug-fix memory.
+        ├── rca-<slug>.md           # Rahat output: root cause analysis.
+        └── security-review-<slug>.md # Zach output: security findings.
 ```
+
+Path rationale:
+- `DESIGN.md` lives at the **project root** as a project-wide standard, treated like `README.md`.
+- `CHARTER.md` and `ARCHITECTURE.md` live at the **`plans/` level** as canonical, durable rationale documents owned by Faisal and Lance respectively.
+- `_context.md` and `_rollup.md` live under **`plans/_system/`** as global memory artifacts.
+- `ARCHITECTURE.md` carries rationale; `AGENTS.md` / `CLAUDE.md` / `README.md` carry operator mechanics. Lance cross-links rather than restating.
+
+`_context.md` is the entry point for every persona. It lists documents that are currently `live` (in-use) vs. `archived`. Personas load only what is live and only what is relevant to the current engagement mode.
+
+Every `_context.md` follows this structure:
+
+```markdown
+---
+scope: <initiative-name> | _system
+updated: YYYY-MM-DD
+---
+
+## Live
+- product-brief.md
+- prd.md
+- ux-design.md
+
+## Archived
+```
+
+- `## Live` — filenames of artifacts currently in use. One per line, prefixed with `- `.
+- `## Archived` — filenames of superseded artifacts, same format.
+- Frontmatter `scope` identifies the initiative or if it is the global `_system` context.
+- Frontmatter `updated` is the date of the last change.
 
 ### Project configuration
 
-Project-level settings are defined in `.bmild.toml` at the repository root. The personas read these configurations directly. Defaults are used if not set, or if the file is omitted entirely.
+Project-level settings are defined in `.bmild.toml` at the repository root. The personas read these configurations to dynamically adapt their behavior.
 
-- `plan_folder`: (Default: `"plans/"`) Directory where BMILD's memory and implementation artifacts are stored.
-- `slice_target`: (Default: `170000`) Target context token limit for vertical implementation slice decomposition, aim for about 70% of the LLM's full context window.
-- `user_name`: (Optional, no default) The user's (or team's) preferred name. Used by named personas to address the user personally in their conversational responses.
+- `plan_folder`: (Default: `"plans/"`) Directory where BMILD's memory artifacts (specs, designs, slices) are stored. Used globally by all personas to read and write context files.
+- `user_name`: (Optional) The user's preferred name. Used by named personas (e.g., Faisal, Katrina, Sonia) to address the user personally in their conversational responses.
+- `slice_target`: (Default: `170000`) Target context token limit for sizing vertical implementation slices. Used by `bmild-planner` (Sonia) when performing Slice Budgeting to evaluate if work exceeds safe token boundaries.
 
 ### Skill validation
 
