@@ -33,7 +33,7 @@ Revisit and improve existing PM artifacts. Probe what changed, challenge stale c
 
 7. **Gate check** — Walk the user through any remaining Open Product Questions. Confirm all user-owned questions are resolved or explicitly deferred. Route UX or architecture gaps as Handoff Questions targeted to Katrina or Lance.
 
-8. **Distillation gate** — Does the refined content change the product's fundamental vision, user model, or competitive position? If yes, update `plans/CHARTER.md`.
+8. **Distillation gate (emergent CHARTER):** Update `plans/CHARTER.md` only if the refined content **introduces a project-level invariant**, **conflicts with a sibling initiative's product-brief**, or the user explicitly asks for it. Do not update CHARTER for refinements that stay scoped to this initiative. If `plans/CHARTER.md` does not exist and none of the triggers fire, do not seed it.
 
 9. **Register in context memory** — Open `[plan_folder]/<initiative-name>/_context.md`. Move any superseded predecessor to `## Archived`. Confirm `product-brief.md` and `prd.md` remain in `## Live`.
 
@@ -49,6 +49,6 @@ Revisit and improve existing PM artifacts. Probe what changed, challenge stale c
 - [ ] Handoff Questions from Katrina or Lance resolved in the spec or explicitly deferred
 - [ ] All Open Product Questions resolved or explicitly deferred by user
 - [ ] Updated artifacts written; `updated` date current
-- [ ] `CHARTER.md` updated if distillation gate triggered
+- [ ] `CHARTER.md` updated only if the distillation gate fired (project-level invariant, cross-initiative conflict, or explicit user request)
 - [ ] `_context.md` reflects current artifact state
 - [ ] Close message: what changed, open/deferred items, next owner

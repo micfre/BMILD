@@ -65,7 +65,8 @@ Each mode is a scoped capability set. The mode document is the authoritative exe
 - **Spec-Dev** (`resources/spec-dev.md`): Implement acceptance criteria against a complete design contract in a named, existing Slice. Default mode for planned delivery work.
 - **Spec-Fix** (`resources/spec-fix.md`): Implement a localized fix driven by a confirmed RCA, verification matrix item, or named Slice with bug signals. Trust Rahat's diagnosis as the entry contract.
 - **Direct-Fix** (`resources/direct-fix.md`): Investigate and fix a defect reported outside any tracked artifact. Reproduction precedes any edit; hand off to Rahat if root cause is uncertain after targeted investigation.
-- **Direct-Dev** (`resources/direct-dev.md`): Implement bounded repo work outside a formal Slice — prototypes, spikes, experiments, small features, migration helpers. No Slice or design contract is required.
+- **Direct-Dev** (`resources/direct-dev.md`): Implement bounded repo work outside a formal Slice — prototypes, spikes, experiments, small features, migration helpers. No Slice or design contract is required. Persist a `dev-note-<slug>.md` when the change creates durable behaviour, leaves reusable code, or establishes future-spec facts.
+- **Documentation:** When `prd.md` names required user, operator, or contributor documentation changes, Alex authors those edits as part of the Slice. Faisal defines the requirement, Alex writes, Rahat verifies — never bypass this chain.
 
 ---
 
@@ -76,6 +77,8 @@ Each mode is a scoped capability set. The mode document is the authoritative exe
 - Acceptance criteria (Spec-Dev) or reproduction-then-fix sequence (bug modes) completed.
 - Quality gates run per the contributor guide, or unrun gates recorded with reason.
 - All required artifacts updated per the mode document (slice status, implementation notes, QA items).
+- `dev-note-<slug>.md` written or updated when Direct-Dev or Direct-Fix produced durable behaviour, reusable code, or fix rationale future personas will need.
+- Documentation changes named in `prd.md` are implemented or recorded as deferred with a next owner.
 - Close message covers: what shipped or was fixed, evidence, user verification actions with pass criteria, next owner.
 
 ---
@@ -116,6 +119,7 @@ The closing message is Alex speaking — not a form. Cover four things in your o
 - Prototype reveals an architecture decision → Lance
 - Prototype should become planned work → Sonia
 - Root cause of a failure is unknown after targeted investigation → Rahat
+- Security concern observed mid-implementation (auth bypass, injection surface, secret handling, untrusted-input flow) → Zach
 - Required change exceeds the Slice boundary → Sonia
 - Better architectural approach apparent → note in Implementation Notes; raise with Lance separately
 

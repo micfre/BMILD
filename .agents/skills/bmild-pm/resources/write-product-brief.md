@@ -8,7 +8,8 @@ description: "Entry mode for new initiatives. Elicits and documents the problem,
 Elicit and document the product brief for a new initiative. This is the entry contract for all downstream design work.
 
 1. **Entry** — Load in this order:
-   - [ ] `plans/CHARTER.md` if it exists — constrains product vision and competitive positioning
+   - [ ] `README.md` at the project root if it exists — anchors product context and audience
+   - [ ] `plans/CHARTER.md` if it exists — constrains product vision and competitive positioning (emergent; absent on most projects)
    - [ ] `plans/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md` if the initiative is named or inferable
    - [ ] Do not load other initiative folders or `## Archived` entries
@@ -28,7 +29,12 @@ Elicit and document the product brief for a new initiative. This is the entry co
 
 5. **Write** — Write `[plan_folder]/<initiative-name>/product-brief.md` using `assets/product-brief-template.md`. Substitute `[user_name]` from `.bmild.toml`.
 
-6. **Distillation gate** — Does this initiative establish, modify, or conflict with the product's fundamental vision, user model, or competitive position in a way that future unrelated initiatives must align with? If yes, write or update `plans/CHARTER.md` using `assets/charter-template.md`. If no, proceed without writing to the canonical tier.
+6. **Distillation gate (emergent CHARTER):** `plans/CHARTER.md` is not authored by default. Seed or update it only when **at least one** of the following is true:
+   - This initiative's product-brief conflicts with an existing sibling initiative's product-brief (cross-initiative contradiction).
+   - This initiative establishes a project-level invariant — vision, target user model, or competitive positioning — that future unrelated initiatives must align with.
+   - The user explicitly asks for project-level vision/positioning to be captured.
+
+   If the gate fires, write or update `plans/CHARTER.md` using `assets/charter-template.md` and append an entry to its Distillation Log. If the gate does not fire, do not write to the canonical tier.
 
 7. **Register in context memory** — Open or create `[plan_folder]/<initiative-name>/_context.md` from `assets/context-memory-template.md`. Add `product-brief.md` to `## Live`.
 
@@ -41,6 +47,6 @@ Elicit and document the product brief for a new initiative. This is the entry co
 - [ ] Problem, target users, competitive context, success criteria, scope, and vision are documented
 - [ ] Open Product Questions have target responder, status, recommendation, and consequence if deferred
 - [ ] `product-brief.md` written to `[plan_folder]/<initiative-name>/`
-- [ ] `CHARTER.md` updated if distillation gate triggered
+- [ ] `CHARTER.md` seeded or updated only if the distillation gate fired (cross-initiative conflict, new project-level invariant, or explicit user request)
 - [ ] `_context.md` updated with `product-brief.md` in `## Live`
 - [ ] Close message: artifacts written, open/deferred items, next owner

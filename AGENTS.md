@@ -10,16 +10,18 @@ BMILD skills must follow these API-like design principles:
    The official specification in `docs/` is authoritative — mirror and enforce its rules across skills (triggers, frontmatter, structure, and behavior).
 2. **Uniform skill structure**:
    Each skill body uses these sections in this order:
-   - **`Persona`**: Name, role, scope boundary, and voice. Do not include pronoun labels. Do not use `Always prefix` — identity is expressed in the opening operating stance and final sign-off only.
-   - **`## BMILD Working Team`**: Positive frame for how the skill contributes to the team value chain, which teammates depend on its output, why interactivity matters, and when advanced team tools such as `bmild-debate`, `bmild-elicit`, or `bmild-brainstorming` are useful.
+   - **`Persona`** (the unlabelled lead paragraph after the frontmatter): Name, role, scope boundary, and voice. Do not include pronoun labels. Do not use `Always prefix` — identity is expressed in the opening operating stance and final sign-off only.
+   - **`## BMILD Working Team`**: Positive frame for how the skill contributes to the team value chain, which teammates depend on its output, why interactivity matters, when advanced team tools such as `bmild-debate`, `bmild-elicit`, or `bmild-brainstorming` are useful, and the persona-name rule (refer to teammates by persona name, never skill name).
    - **`## Activation`**: Unified entry sequence — resolve environment from `.bmild.toml`, determine scope, load context memory, load persona inputs, handle incomplete context, open with one compact operating stance line, then begin. Standard skills use the full sequence; cross-cutting skills use a simplified version.
    - **`## Workflow`**: Linear process, mode variants, retry loops, scope checkpoints, and the first actionable "begin" behaviour. Modes are workflow modifiers, not a separate instruction set. True ordered work uses a `Progress:` checklist with `- [ ] Step N: ...`; general guidelines use prose or ordinary bullets.
-   - **`## Capabilities`**: The skill's toolkit, domain competencies, escalation options, and reusable techniques. Skills that drive specification (PM, UX, Arch) include a `### Deeper Engagement` subsection that explicitly surfaces `bmild-debate` as an active option at any point in the session.
+   - **`## Capabilities`**: The skill's toolkit, named modes, and reusable techniques.
    - **`## Definition of Done`**: Quality bar, success criteria, verification checks, and evidence required before handoff.
+   - **`## Standards`** (named per skill, e.g., `## Elicitation Standards`, `## Design Standards`, `## Planning Standards`, `## Verification Standards`, `## Security Review Standards`, `## Pre-Edit Discipline`): Craft rules that apply across all modes — coaching posture, gap checklists, decision-handling, debate/elicit/brainstorm trigger heuristics, pre-artifact checkpoints. Mode documents govern sequence; this section governs craft.
+   - **`## Exit and Handoff`** (Standard skills only): Unified exit sequence — write artifact using templates in `assets/`, register in context memory, check gates, close with handoff statement, and sign off as `[Name] [icon]`. Cross-cutting skills omit this section. The persona-name rule lives in BMILD Working Team, not here.
    - **`## Scope Boundary`**: What the skill explicitly does not do.
-   - **`## Exit and Handoff`**: (Standard skills only) Unified exit sequence — write artifact using template in `assets/artifact-template.md`, register in context memory, check gates, close with handoff statement, and sign off as `[Name] [icon]`. Cross-cutting skills omit this section.
    - **`## Gotchas`**: High-value corrections from real execution traces. Use for facts that defy reasonable assumptions or steer unpredicted events; do not restate rules already established elsewhere.
-   Artifact templates live in each skill's `assets/artifact-template.md`. Context memory templates live in each skill's `assets/context-memory-template.md`.
+
+   Artifact templates live in each skill's `assets/`. Context memory templates live in each skill's `assets/context-memory-template.md`.
 3. **Skill Structure**:
    Keep skill structure aligned across all personas to the extent that is reasonable to do to. Avoid patching a single skill as this may solve the local issue but will lead to drift that makes skills behave differently over time and create for more maintanace overhead.
    Named standard personas open with one compact operating stance line: `[Name] [icon] — <mode/work type>. Scope: <scope>. <boundary statement>.` This anchors identity and mode for weaker harnesses without repeating persona labels across every paragraph. Cross-cutting skills do not use this pattern unless specifically designed for it.
@@ -72,16 +74,18 @@ This can be structured alongside project source or kept separately — the perso
 
 ```
 plans/ (or your custom plan_folder)
+├── CHARTER.md                   # PM output: emergent — seeded only when a project-level invariant is established or a cross-initiative conflict is resolved
 ├── _system/                     # Global constraints, shared architecture, tech stack
 │   ├── _context.md              # Index of live documents — all personas read this first
 │   ├── _rollup.md               # Central registry of all active features/initiatives
-│   ├── system-design.md         # Arch output: schema, API contracts, tech decisions
-│   └── ux-design.md             # UX output: interaction model, visual language, flows
-└── <initiative-name>/           # The atomic unit of work (Feature)
+│   ├── ARCHITECTURE.md          # Arch output: durable rationale (tech stack, invariants, alternatives rejected)
+│   └── DESIGN.md                # UX output: durable global patterns (palette, typography, component rules)
+└── <initiative-name>/           # The atomic unit of work (Feature / Initiative)
     ├── _context.md              # Index of live documents for this initiative
-    ├── spec.md                  # PM output
-    ├── ux-design.md             # UX output
-    ├── system-design.md         # Arch output
+    ├── product-brief.md         # PM output: problem, users, success criteria, scope, vision
+    ├── prd.md                   # PM output: requirements, journeys, prioritization, NFRs, doc scope
+    ├── ux-design.md             # UX output: initiative-specific flows, screen states, interaction rules
+    ├── system-design.md         # Arch output: schema, API contracts, service contracts, tech choices
     ├── verification-matrix.md   # Planner/QA proof map for requirements and Slices
     ├── slices.md                # Planner output: Slice registry
     ├── slice-<N>.md             # One file per Slice
@@ -89,6 +93,8 @@ plans/ (or your custom plan_folder)
     ├── rca-<slug>.md            # QA output: root cause analysis
     └── security-review-<slug>.md # Sec output: security findings
 ```
+
+`ARCHITECTURE.md` and `DESIGN.md` may live at the project root or under `plans/_system/`, depending on project convention. They carry rationale and durable patterns; operator mechanics (commands, conventions, gates) live in `AGENTS.md`/`CLAUDE.md`/`README.md`. Lance and Katrina cross-link rather than restate.
 
 `_context.md` is the entry point for every persona. It lists documents that are currently `live` (in-use) vs. `archived`. Personas load only what is live and only what is relevant to the current engagement mode.
 
@@ -103,7 +109,8 @@ updated: YYYY-MM-DD
 ---
 
 ## Live
-- spec.md
+- product-brief.md
+- prd.md
 - ux-design.md
 
 ## Archived
@@ -116,7 +123,11 @@ updated: YYYY-MM-DD
 
 ### Cross-artifact flow
 
-- `spec.md`: created by Faisal; consumed by Katrina, Lance, Sonia, Rahat, and Zach; validated through coverage checks and verification matrix entries. Faisal defines required documentation updates here when the initiative affects README, contributor guides, runbooks, release notes, onboarding, or user-facing help.
+- `product-brief.md`: created by Faisal; consumed by Katrina, Lance, Sonia, Rahat, and Zach; defines problem, users, success criteria, scope, and vision. Entry contract for downstream design.
+- `prd.md`: created by Faisal once a brief exists; consumed by Katrina, Lance, Sonia, Rahat, and Zach; defines functional requirements, journeys, prioritization (MVP / Growth), NFRs, and required documentation updates (README, contributor guides, runbooks, release notes, onboarding, user-facing help). Validated through coverage checks and verification matrix entries.
+- `CHARTER.md`: emergent project-level artifact at `plans/CHARTER.md`. Seeded or updated by Faisal only when an initiative establishes a project-level invariant (vision, target users, competitive positioning), conflicts with a sibling initiative's `product-brief.md`, or the user explicitly requests it. Consumed by all design-tier personas as a constraint when present; absent on most projects until a coherence-forcing event occurs.
+- `ARCHITECTURE.md`: created and maintained by Lance; carries rationale (tech stack, invariants Alex must respect, migration patterns, alternatives rejected). Cross-links to `AGENTS.md`/`CLAUDE.md`/`README.md` for operator mechanics rather than restating them.
+- `DESIGN.md`: created and maintained by Katrina; carries durable global UX patterns (palette, typography, global component rules) distilled from initiative-specific UX work.
 - `ux-design.md`: created by Katrina; consumed by Lance, Sonia, Alex, Rahat, and Zach; validated through observable user-state checks.
 - `system-design.md`: created by Lance; consumed by Sonia, Alex, Rahat, and Zach; validated through implementability, testability, and security review.
 - `slices.md` and `slice-<N>.md`: created by Sonia; consumed and updated by Alex; verified by Rahat and Zach; recut by Sonia when implementation reveals a planning problem.

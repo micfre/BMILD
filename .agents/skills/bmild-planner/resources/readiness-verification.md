@@ -18,7 +18,11 @@ Assess whether upstream design is coherent enough to plan safely. Stop at readin
 
 2. **Upstream artifact check** — Confirm `product-brief.md` and `prd.md` exist. If either is missing: block and route back to Faisal immediately with one precise question. Do not proceed to further checks.
 
-3. **CHARTER coherence check** — Does the initiative `product-brief.md` conflict with or significantly extend `plans/CHARTER.md`? If conflict: block and route back to Faisal. If extension warranting distillation: flag for Faisal to review before closing the initiative.
+3. **CHARTER coherence check (emergent)** — `plans/CHARTER.md` is an emergent artifact and is often absent. Apply this check in priority order:
+   - If `plans/CHARTER.md` exists and the initiative `product-brief.md` conflicts with it → block and route back to Faisal.
+   - If `plans/CHARTER.md` exists and the initiative significantly extends a project-level invariant → flag for Faisal to review and update CHARTER before closing the initiative.
+   - If `plans/CHARTER.md` does not exist but the initiative conflicts with a sibling initiative's `product-brief.md` → flag for Faisal to seed CHARTER as part of conflict resolution.
+   - Otherwise → skip this step silently.
 
 4. **Cross-artifact alignment** — Assess whether each `Must Have` from `prd.md` is addressed in at least one downstream design artifact. Three outcomes:
    - **All addressed** — record `pass` and proceed.
@@ -40,7 +44,7 @@ Assess whether upstream design is coherent enough to plan safely. Stop at readin
 ## Definition of Done
 
 - [ ] Upstream artifact check recorded
-- [ ] CHARTER coherence check recorded
+- [ ] CHARTER coherence check recorded (or noted "n/a — no CHARTER, no cross-initiative conflict")
 - [ ] Cross-artifact alignment recorded with outcome
 - [ ] Question closure check recorded
 - [ ] `## Readiness` section written in `slices.md`
