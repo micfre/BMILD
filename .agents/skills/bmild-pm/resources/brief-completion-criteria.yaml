@@ -3,13 +3,18 @@ meta:
   governed_by: bmild-pm
   loading_note: >
     Load before writing product-brief.md. For each section, privately check whether your
-    draft exhibits the good_signal or the weak_signal. Resolve gaps through elicitation
-    or record as Open Product Questions. Do not present this file to the user.
+    draft exhibits the good_signal or the weak_signal. Check the falsifiable field: is
+    there an observable condition that confirms this section is complete? Resolve gaps
+    through elicitation or record as Open Product Questions. Do not present this file
+    to the user.
 
 sections:
 
   - id: problem
     required: true
+    falsifiable: >
+      A reviewer can state the specific pain, name who feels it, and describe how to
+      confirm it exists — without reading any other section.
     good_signal: >
       Specific user pain named with a condition that could be observed to confirm it
       exists. Real scenarios, not abstractions. The cost of the status quo is named.
@@ -19,6 +24,9 @@ sections:
 
   - id: solution
     required: true
+    falsifiable: >
+      A reviewer unfamiliar with the domain can describe what users do and what outcome
+      they get — without reading the problem statement.
     good_signal: >
       Describes the experience and outcome the product creates, not the implementation.
       A reader unfamiliar with the domain could picture what users do and feel.
@@ -30,6 +38,9 @@ sections:
     required: true
     cross_ref:
       - ux-design.md
+    falsifiable: >
+      A reviewer can name each user segment, their distinct need, and what success looks
+      like for them — without inferring from other sections.
     good_signal: >
       At least one user segment is vivid: named role or archetype, specific need, and what
       success looks like for them. B2B products name buyer and user separately when they
@@ -40,6 +51,9 @@ sections:
 
   - id: competitive_context
     required: true
+    falsifiable: >
+      A reviewer can name at least one alternative approach and state the specific reason
+      this product differs — without additional context.
     good_signal: >
       Names at least one alternative or incumbent approach. States a specific reason this
       product is different or better. If the advantage is execution speed rather than a
@@ -50,6 +64,9 @@ sections:
 
   - id: success_criteria
     required: true
+    falsifiable: >
+      At least one criterion can be checked against a running product or business metric
+      with a clear pass or fail threshold. Others are stated as observable outcomes.
     good_signal: >
       Vision-level outcomes that would hold across multiple initiatives. At least one is
       measurable — a reviewer could check a running product or business metric and
@@ -60,6 +77,9 @@ sections:
 
   - id: scope
     required: true
+    falsifiable: >
+      A downstream persona can read this section and determine whether any given feature
+      idea is in scope, out of scope, or deferred — without asking a follow-up question.
     good_signal: >
       Names what is in for the first initiative and what is explicitly not in scope. Tight
       enough to act as a boundary document. A downstream persona could read it and know
@@ -70,6 +90,9 @@ sections:
 
   - id: vision
     required: true
+    falsifiable: >
+      A reviewer can state what this product becomes in 2-3 years and distinguish it from
+      the first initiative scope.
     good_signal: >
       States a 2-3 year direction that is more ambitious than the first initiative but
       still grounded. A reader could identify what this product becomes, not just what it
@@ -78,8 +101,29 @@ sections:
       Repeats the first initiative scope, uses marketing language without direction, or is
       so vague it could describe any product in the category.
 
+  - id: project_context
+    required: false
+    applies_when: brownfield project or platform engagement
+    cross_ref:
+      - system-design.md
+    falsifiable: >
+      A reviewer can determine whether this is greenfield or brownfield and name the
+      domain constraints that shape the work — without reading other artifacts.
+    good_signal: >
+      Greenfield or brownfield is stated explicitly. If brownfield, the existing system
+      constraint that shapes this work is named. Domain is identified at a level of
+      specificity useful to downstream personas (e.g., "multi-tenant SaaS with per-org
+      data isolation" not "enterprise software"). Regulatory or compliance constraints
+      are surfaced if applicable.
+    weak_signal: >
+      No project context stated, or domain described at a level too general to constrain
+      any technical or UX decision.
+
   - id: open_questions
     required: false
+    falsifiable: >
+      Every question names a target responder, a recommendation, and a consequence if
+      deferred. A reviewer can determine ownership and urgency for each.
     good_signal: >
       Each question, if resolved differently, would change the vision, user model, or
       competitive positioning. Target responder, recommendation, and consequence if

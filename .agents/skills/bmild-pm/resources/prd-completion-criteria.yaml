@@ -3,10 +3,11 @@ meta:
   governed_by: bmild-pm
   loading_note: >
     Load before writing prd.md. For each section that applies, privately check whether
-    your draft exhibits the good_signal or the weak_signal. Resolve gaps through further
-    elicitation, record user-owned gaps as Open Product Questions, or route out-of-scope
-    gaps as Handoff Questions with target responder and consequence. Do not present this
-    file to the user.
+    your draft exhibits the good_signal or the weak_signal. Check the falsifiable field:
+    is there an observable condition that confirms this section is complete? Resolve gaps
+    through further elicitation, record user-owned gaps as Open Product Questions, or
+    route out-of-scope gaps as Handoff Questions with target responder and consequence.
+    Do not present this file to the user.
 
 sections:
 
@@ -15,23 +16,48 @@ sections:
     cross_ref:
       - ux-design.md
       - system-design.md
+    falsifiable: >
+      A tester who has never seen the rest of the PRD can read each FR in isolation and
+      determine pass or fail. A UX designer can design for every FR. An architect can
+      support every FR.
     good_signal: >
       Requirements are organized by capability area, not by technology or layer. Each FR
       uses the format: [Actor] can [capability]. Each FR can be read in isolation and
       answered yes or no by a tester who has never seen the rest of the PRD. No UI
       details, performance numbers, or technology choices are embedded in FR statements.
-      A UX designer could read only the FRs and know what to design; an architect could
-      read only the FRs and know what to support.
+      Every FR traces to a user need, success criterion, or journey step from
+      product-brief.md — a reviewer can map each FR to its upstream source.
     weak_signal: >
       Requirements grouped by technical layer (frontend/backend/database), requirements
       that describe implementation rather than capability, or requirements so bundled
-      that a tester cannot determine pass or fail from a single FR.
+      that a tester cannot determine pass or fail from a single FR. FRs with no visible
+      connection to user needs or the product brief.
+
+  - id: coverage_check
+    required: true
+    cross_ref:
+      - product-brief.md
+    falsifiable: >
+      A reviewer can confirm that every capability area implied by the product brief's
+      scope section has at least one FR, and that no FR is orphaned from the brief.
+    good_signal: >
+      The FRs collectively cover all capability areas implied by the product brief scope.
+      If the brief names a capability area (e.g., "user management", "content discovery")
+      that has no FRs, it is acknowledged and either deferred to a named phase or flagged
+      as a gap. No FR exists without a traceable purpose in the brief.
+    weak_signal: >
+      Capability areas from the brief have no corresponding FRs with no acknowledgment,
+      or FRs exist that introduce capabilities the brief never scoped — without flagging
+      the expansion.
 
   - id: user_journeys
     required: false
     applies_when: any requirement involves user-facing behavior or workflow change
     cross_ref:
       - ux-design.md
+    falsifiable: >
+      A tester can write a test script for the happy path and at least one error path
+      for each journey from this section alone.
     good_signal: >
       At least one end-to-end sequence: named trigger, actor, ordered steps, and success
       exit. Edge or failure paths are acknowledged even if not fully specified. A journey
@@ -42,6 +68,9 @@ sections:
 
   - id: scope_and_prioritization
     required: true
+    falsifiable: >
+      A planner can read this section and sequence delivery without re-negotiating scope
+      boundaries. Phase 1 is distinguishable from Phase 2 by a clear test.
     good_signal: >
       Phase 1 (MVP) contains the absolute minimum needed to validate the idea. Phase 2 is
       clearly post-MVP. Explicitly Out of Scope names things being actively decided
@@ -57,18 +86,27 @@ sections:
     applies_when: any requirement touches performance, scale, data retention, security, compliance, or regulated data handling
     cross_ref:
       - system-design.md
+    falsifiable: >
+      Each NFR names a specific threshold and the scenario that triggers it — a tester
+      can write a performance test or compliance check directly from the NFR statement.
     good_signal: >
-      Each NFR names a threshold and the scenario that triggers it. Regulatory constraints
-      name the specific obligation and the rule it imposes.
+      Each NFR names a threshold and the scenario that triggers it. Only categories
+      relevant to this product are included — categories that don't apply are omitted
+      rather than padded. Regulatory constraints name the specific obligation and the
+      rule it imposes.
     weak_signal: >
       Phrases like "should be fast", "must be secure", "highly available" with no
-      threshold. Compliance obligations named without citing the specific rule.
+      threshold. Compliance obligations named without citing the specific rule. NFR
+      categories listed that don't apply to the product, inflating the section.
 
   - id: documentation_scope
     required: true
     cross_ref:
       - slice-*.md
       - verification-matrix.md
+    falsifiable: >
+      For each audience (user, operator, contributor), the documentation decision is
+      recorded and the verifiable claim can be checked against shipped behaviour.
     good_signal: >
       User, operator, and contributor documentation are each marked required, not required,
       or deferred_by_user. Required items name the audience, reason, document or document
@@ -80,6 +118,9 @@ sections:
 
   - id: assumptions
     required: false
+    falsifiable: >
+      For each assumption, a reviewer can state what specifically would change in the
+      PRD if the assumption is wrong.
     good_signal: >
       Each assumption names specifically what would change in the PRD if it turns out to
       be wrong. Confidence level is stated. The assumption is genuinely uncertain, not a
@@ -90,6 +131,9 @@ sections:
 
   - id: open_questions
     required: false
+    falsifiable: >
+      Every question names a target responder, status, recommendation, and consequence if
+      deferred. A reviewer can determine whether any question blocks downstream work.
     good_signal: >
       Each user-owned question, if resolved differently, would materially change a
       functional requirement or a downstream design artifact. Target responder, status,
@@ -103,6 +147,9 @@ sections:
     cross_ref:
       - ux-design.md
       - system-design.md
+    falsifiable: >
+      Each handoff question is routed to a named persona with enough context for that
+      persona to answer without reconstructing the PM session.
     good_signal: >
       Each out-of-scope question is routed as a UX Handoff Question or Architecture
       Handoff Question with target responder, status, context or recommendation, and

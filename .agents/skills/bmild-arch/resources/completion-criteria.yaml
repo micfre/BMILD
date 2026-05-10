@@ -95,6 +95,43 @@ sections:
       Dependency named without alternatives considered, or justification is a claim
       ("it is the best option") without evidence or trade-off.
 
+  - id: architecture_decisions
+    required: false
+    applies_when: any significant technical choice with more than one viable approach
+    cross_ref:
+      - prd.md
+    falsifiable: >
+      For each decision, a reviewer can state what was decided, what alternatives were
+      considered, and why the chosen approach was preferred — without access to the
+      original discussion.
+    good_signal: >
+      Each significant architecture decision documents the context (why a decision was
+      needed), at least two alternatives with pros and cons, the decision and rationale,
+      and the consequence of the choice. Decisions that are preferences (no observable
+      difference between options) are labelled as such.
+    weak_signal: >
+      Decisions stated without alternatives, rationale that is a restatement of the
+      choice rather than a reason for it, or decisions that hide preferences as
+      architectural requirements.
+
+  - id: fr_coverage
+    required: true
+    cross_ref:
+      - prd.md
+    falsifiable: >
+      A reviewer can map each functional requirement from prd.md to at least one
+      architectural element (endpoint, schema, service method, or decision) — no FR is
+      left without an implementable contract.
+    good_signal: >
+      Every functional requirement from prd.md is supported by the system design. If an
+      FR has no corresponding endpoint, schema change, service contract, or decision, it
+      is flagged as a gap or routed as a Handoff Question. The mapping is derivable — a
+      developer can implement each FR by following the contracts in this document.
+    weak_signal: >
+      Functional requirements from the PRD have no visible architectural support, or
+      coverage is assumed without being traceable to specific endpoints, schemas, or
+      service methods.
+
   - id: question_closure
     required: false
     cross_ref:

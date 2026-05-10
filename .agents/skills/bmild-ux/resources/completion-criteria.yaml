@@ -118,3 +118,19 @@ sections:
     weak_signal: >
       Questions are logged without an owner, status, or consequence, or an unresolved
       UX-domain question is handed off as if design were complete.
+
+  - id: fr_coverage
+    required: true
+    cross_ref:
+      - prd.md
+    falsifiable: >
+      A reviewer can map each functional requirement from prd.md to at least one UX
+      design element (screen, flow, interaction, or state) — no FR is left unaddressed.
+    good_signal: >
+      Every functional requirement from prd.md is addressed by the UX design. If an FR
+      has no corresponding screen, flow, or interaction, it is flagged as a gap or
+      routed as a Handoff Question. The mapping is derivable — a reviewer can confirm
+      coverage by tracing FRs through flows and screens.
+    weak_signal: >
+      Functional requirements from the PRD have no visible UX treatment, or coverage is
+      assumed without being traceable to specific design elements.
