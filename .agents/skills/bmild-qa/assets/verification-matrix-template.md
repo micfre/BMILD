@@ -1,9 +1,9 @@
 ---
-scope: <initiative-name> | _system
+scope: "<initiative-name> | _system"
 created: YYYY-MM-DD
-author: [user_name] + Rahat (QA)
+author: "[user_name] + Rahat (QA)"
 mode: nyquist
-status: draft | active | partially_implemented | verified | blocked
+status: "draft | active | partially_implemented | verified | blocked"
 ---
 
 ## Test Infrastructure

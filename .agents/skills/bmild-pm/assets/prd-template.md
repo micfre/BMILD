@@ -1,7 +1,7 @@
 ---
-initiative: <initiative-name>
+initiative: "<initiative-name>"
 updated: YYYY-MM-DD
-author: [user_name] + Faisal (PM)
+author: "[user_name] + Faisal (PM)"
 ---
 
 ## Functional Requirements

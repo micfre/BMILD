@@ -1,7 +1,7 @@
 ---
-scope: <initiative-name> | _system
+scope: "<initiative-name> | _system"
 updated: YYYY-MM-DD
-author: [user_name] + Katrina (UX)
+author: "[user_name] + Katrina (UX)"
 ---
 
 ## 1. Initiative Context & Flow Goals

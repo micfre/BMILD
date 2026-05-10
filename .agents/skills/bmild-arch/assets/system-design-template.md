@@ -1,7 +1,7 @@
 ---
-scope: <initiative-name> | _system
+scope: "<initiative-name> | _system"
 updated: YYYY-MM-DD
-author: [user_name] + Lance (Arch)
+author: "[user_name] + Lance (Arch)"
 ---
 
 ## 1. Architecture Vision & Context

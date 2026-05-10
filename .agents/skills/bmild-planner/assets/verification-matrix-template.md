@@ -1,8 +1,8 @@
 ---
-scope: <initiative-name> | _system
+scope: "<initiative-name> | _system"
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
-author: [user_name] + Sonia (Planner)
+author: "[user_name] + Sonia (Planner)"
 mode: nyquist-readiness
 status: draft | active | partially_implemented | verified | blocked
 ---

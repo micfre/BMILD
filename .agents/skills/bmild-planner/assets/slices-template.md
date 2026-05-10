@@ -1,8 +1,8 @@
 ---
-scope: <initiative-name> | _system
-status: active | complete | archived
+scope: "<initiative-name> | _system"
+status: "active | complete | archived"
 updated: YYYY-MM-DD
-author: [user_name] + Sonia (Planner)
+author: "[user_name] + Sonia (Planner)"
 planning_method: plan-forward-verify-backward
 verification_status: pass | pass_with_warning | fail | handback
 approved_scope: MVP | named phase | full initiative
