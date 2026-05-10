@@ -3,11 +3,15 @@
 # Exit on error
 set -e
 
+# Resolve project root relative to this script's location
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+
 # Grab version from VERSION file
-VERSION=$(cat VERSION)
+VERSION=$(cat "$PROJECT_ROOT/VERSION")
 
 # Define output directory and filename
-DIST_DIR="dist"
+DIST_DIR="$PROJECT_ROOT/dist"
 FILENAME="release-v${VERSION}-linux-macos-dor_agents.tar.gz"
 STAGING_DIR=$(mktemp -d)
 
@@ -71,11 +75,11 @@ else
     # In CI, extract the section for this version from CHANGELOG.md
     # Look for the line starting with ## [VERSION] and capture until the next ## line
     echo "Extracting release notes from CHANGELOG.md..."
-    sed -n "/## \[${VERSION}\]/,/## \[/p" CHANGELOG.md | sed '$d' > dist/release-notes.md
+    sed -n "/## \[${VERSION}\]/,/## \[/p" "$PROJECT_ROOT/CHANGELOG.md" | sed '$d' > "$DIST_DIR/release-notes.md"
     
-    if [ ! -s dist/release-notes.md ]; then
+    if [ ! -s "$DIST_DIR/release-notes.md" ]; then
         echo "Warning: Could not extract release notes for version ${VERSION}. Using generic message."
-        echo "Release v${VERSION}" > dist/release-notes.md
+        echo "Release v${VERSION}" > "$DIST_DIR/release-notes.md"
     fi
 fi
 
@@ -83,7 +87,7 @@ echo "Packaging release v${VERSION}..."
 
 # Stage release contents so packaged skill versions can be normalized without
 # mutating tracked workspace files.
-cp -R .agents "$STAGING_DIR/.agents"
+cp -R "$PROJECT_ROOT/.agents" "$STAGING_DIR/.agents"
 sync_skill_versions
 
 # Create the tarball
