@@ -8,6 +8,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
 # Grab version from VERSION file
+# Crrently 0.2.1
 VERSION=$(cat "$PROJECT_ROOT/VERSION")
 
 # Define output directory and filename
