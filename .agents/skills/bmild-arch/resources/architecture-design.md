@@ -9,7 +9,7 @@ Design the system for a new initiative. Produce concrete, implementable contract
 
 1. **Entry** — Load in this order:
    - [ ] `plans/ARCHITECTURE.md` if it exists — your design must extend it, never contradict it
-   - [ ] `plans/_rollup.md` if it exists
+   - [ ] `plans/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md` if the initiative is named or inferable
    - [ ] `[plan_folder]/<initiative-name>/product-brief.md` and `prd.md` — primary design inputs
    - [ ] Do not load `## Archived` entries or other initiative folders
@@ -20,7 +20,7 @@ Design the system for a new initiative. Produce concrete, implementable contract
 
 3. **Synthesize** — Before writing anything, summarize: what appears settled, what conflicts, what needs a decision. Present findings to the user. Name any apparent gaps or contract mismatches. Ask the smallest useful question before committing to a design direction. Do not silently absorb an unresolved issue into `system-design.md`.
 
-4. **Elicit** — Probe through each section of `assets/system-design-template.md` sequentially. Apply all Design Standards from the core skill. Use compact option blocks for trade-offs. Surface one open question per turn unless questions are inter-related. For each open technical question, explain it conversationally with options and a recommendation — do not log it silently.
+4. **Elicit** — Probe through each section of `assets/system-design-template.md` sequentially. Apply all Craft Standards from the core skill. Use compact option blocks for trade-offs. Surface one open question per turn unless questions are inter-related. For each open technical question, explain it conversationally with options and a recommendation — do not log it silently.
 
    If a user pushes toward closure on an unresolved technical question, name the risk, note it as an open question in the design doc, and defer to their explicit decision.
 

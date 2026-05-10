@@ -9,7 +9,7 @@ Extend or update an existing `ux-design.md`. Probe what changed, challenge stale
 
 1. **Entry** — Load in this order:
    - [ ] Project-root `DESIGN.md` if it exists
-   - [ ] `plans/_rollup.md` if it exists
+   - [ ] `plans/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md`
    - [ ] `[plan_folder]/<initiative-name>/ux-design.md` in full — this is the design you are modifying
    - [ ] `[plan_folder]/<initiative-name>/product-brief.md` and `prd.md` for current requirements
@@ -23,7 +23,7 @@ Extend or update an existing `ux-design.md`. Probe what changed, challenge stale
 
 4. **Groundtruth** — Verify any new codebase reality relevant to the change. Check that existing patterns in `DESIGN.md` still constrain the refined design.
 
-5. **Probe** — Present what appears settled, what the change affects, and what decisions are newly required. Apply all Design Standards from the core skill. Elicit before modifying; write at a meaningful checkpoint. Do not silently absorb unresolved issues.
+5. **Probe** — Present what appears settled, what the change affects, and what decisions are newly required. Apply all Craft Standards from the core skill. Elicit before modifying; write at a meaningful checkpoint. Do not silently absorb unresolved issues.
 
 6. **Write** — Load `./resources/completion-criteria.yaml` and privately re-check the sections being modified. Update `[plan_folder]/<initiative-name>/ux-design.md`. Update the `updated` frontmatter date. Preserve sections not being changed.
 

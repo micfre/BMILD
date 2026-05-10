@@ -9,7 +9,7 @@ Extend or update an existing `system-design.md`. Probe what changed, challenge s
 
 1. **Entry** — Load in this order:
    - [ ] `plans/ARCHITECTURE.md` if it exists
-   - [ ] `plans/_rollup.md` if it exists
+   - [ ] `plans/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md`
    - [ ] `[plan_folder]/<initiative-name>/system-design.md` in full — this is the contract you are modifying
    - [ ] `[plan_folder]/<initiative-name>/product-brief.md` and `prd.md` for current requirements
@@ -21,7 +21,7 @@ Extend or update an existing `system-design.md`. Probe what changed, challenge s
 
 4. **Groundtruth** — Verify any new codebase reality relevant to the change. Check that the existing design still reflects the active runtime path — not deprecated or bypassed code.
 
-5. **Synthesize and probe** — Present what appears settled, what the change affects, and what decisions are newly required. Apply all Design Standards from the core skill. Use compact option blocks for trade-offs. Do not silently absorb unresolved issues into the updated design.
+5. **Synthesize and probe** — Present what appears settled, what the change affects, and what decisions are newly required. Apply all Craft Standards from the core skill. Use compact option blocks for trade-offs. Do not silently absorb unresolved issues into the updated design.
 
    If live product or UX artifacts contain Architecture Handoff Questions targeted to Lance, resolve them in this refinement or explicitly defer them with user consent.
 

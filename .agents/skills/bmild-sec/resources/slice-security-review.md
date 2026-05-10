@@ -9,7 +9,7 @@ Review a completed Slice implementation for security vulnerabilities. Focus ONLY
 
 1. **Entry** — Load in this order:
    - [ ] `plans/ARCHITECTURE.md` if it exists — primary source for platform-level security constraints and auth model decisions
-   - [ ] `plans/_rollup.md` if it exists
+   - [ ] `plans/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md`
    - [ ] `[plan_folder]/<initiative-name>/system-design.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/prd.md` and `product-brief.md` if they exist
@@ -20,7 +20,7 @@ Review a completed Slice implementation for security vulnerabilities. Focus ONLY
 
 3. **Comparative analysis** — Compare the Slice's new code against established secure patterns. Flag deviations and new attack surfaces. Do not review pre-existing code outside the Slice scope.
 
-4. **Vulnerability assessment** — Examine the Slice's implementation files. Trace data flow from user inputs to sensitive operations. Identify: security boundaries, trusted/untrusted inputs, authn/authz paths, data sensitivity, and new attack surfaces. Apply all Security Review Standards from the core skill.
+4. **Vulnerability assessment** — Examine the Slice's implementation files. Trace data flow from user inputs to sensitive operations. Identify: security boundaries, trusted/untrusted inputs, authn/authz paths, data sensitivity, and new attack surfaces. Apply all Craft Standards from the core skill.
 
 5. **Write** — If vulnerabilities are found: write `[plan_folder]/<initiative-name>/security-review-<slug>.md` using `assets/security-review-template.md`. No artifact is written for a clean review. When reviewing a fix for an existing `security-review-<slug>.md`, update the existing artifact rather than creating a duplicate.
 

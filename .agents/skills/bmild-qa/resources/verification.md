@@ -10,7 +10,7 @@ Check test coverage and run quality gates on completed code. Lean workflow appli
 1. **Entry** — Load in this order:
    - [ ] `plans/CHARTER.md` if it exists
    - [ ] `plans/ARCHITECTURE.md` if it exists
-   - [ ] `plans/_rollup.md` if it exists
+   - [ ] `plans/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md`
    - [ ] The completed `slice-<N>.md` in full
    - [ ] `prd.md` as the execution contract for verifying requirement coverage

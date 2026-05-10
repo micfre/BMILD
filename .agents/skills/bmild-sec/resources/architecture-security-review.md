@@ -9,7 +9,7 @@ Review an architectural spec or system design for security design flaws. Focus o
 
 1. **Entry** — Load in this order:
    - [ ] `plans/ARCHITECTURE.md` if it exists
-   - [ ] `plans/_rollup.md` if it exists
+   - [ ] `plans/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md` if the initiative is named or inferable
    - [ ] `[plan_folder]/<initiative-name>/system-design.md` in full — the primary review target
    - [ ] `[plan_folder]/<initiative-name>/prd.md` and `product-brief.md` for context on user trust model and data sensitivity

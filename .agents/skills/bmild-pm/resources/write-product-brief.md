@@ -10,7 +10,7 @@ Elicit and document the product brief for a new initiative. This is the entry co
 1. **Entry** — Load in this order:
    - [ ] `README.md` at the project root if it exists — anchors product context and audience
    - [ ] `plans/CHARTER.md` if it exists — constrains product vision and competitive positioning (emergent; absent on most projects)
-   - [ ] `plans/_rollup.md` if it exists
+   - [ ] `plans/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md` if the initiative is named or inferable
    - [ ] Do not load other initiative folders or `## Archived` entries
 
@@ -18,7 +18,7 @@ Elicit and document the product brief for a new initiative. This is the entry co
 
 2. **Groundtruth** — Before accepting any premise, quickly verify the current state of the codebase. Identify any existing implementation that shapes the product context. Do not invent greenfield solutions in a brownfield environment.
 
-3. **Elicit** — Probe sequentially through the `assets/product-brief-template.md` sections. Do not dump all questions at once. Establish the problem and success criteria before asking about features. Apply all Elicitation Standards from the core skill. For each section, surface one open question at a time; group only when questions are clearly inter-related.
+3. **Elicit** — Probe sequentially through the `assets/product-brief-template.md` sections. Do not dump all questions at once. Establish the problem and success criteria before asking about features. Apply all Craft Standards from the core skill. For each section, surface one open question at a time; group only when questions are clearly inter-related.
 
 4. **Consequence-check** — Before writing, privately verify:
    - [ ] Core problem and who feels it is explicit

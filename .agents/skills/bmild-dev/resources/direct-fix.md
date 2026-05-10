@@ -15,7 +15,7 @@ Investigate and fix a localized defect reported outside a tracked artifact. Repr
 
    Do not load BMILD planning memory unless the message names an initiative, Slice, or RCA — in that case re-evaluate against the core mode detection lookup before proceeding.
 
-2. **Pre-Edit** — Apply core Pre-Edit Discipline before writing any code.
+2. **Pre-Edit** — Apply core Craft Standards (Pre-Edit principles) before writing any code.
 
 3. **Investigate** — Before editing any file:
    - [ ] Reproduce the failure — via test, log, or code-path inspection

@@ -11,7 +11,7 @@ Revise an existing plan when a blocker surfaces, design changes, or a re-sequenc
    - [ ] `plans/CHARTER.md` if it exists
    - [ ] `plans/ARCHITECTURE.md` if it exists
    - [ ] Project-root `DESIGN.md` if it exists
-   - [ ] `plans/_rollup.md` if it exists
+   - [ ] `plans/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md`
    - [ ] `slices.md` in full — read the current plan state before making any changes
    - [ ] All active `slice-<N>.md` files under `## Live`

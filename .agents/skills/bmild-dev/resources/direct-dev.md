@@ -14,7 +14,7 @@ Implement bounded repo work outside a formal Slice. No spec, UX design, architec
 
    Load repo context and the contributor guide. Load BMILD memory only when the request names an initiative, depends on documented behaviour, or might alter durable product or architecture understanding.
 
-2. **Pre-Edit** — Apply core Pre-Edit Discipline before writing any code.
+2. **Pre-Edit** — Apply core Craft Standards (Pre-Edit principles) before writing any code.
 
 3. **Execute** — Implement the smallest coherent change that satisfies the request. Match existing repo patterns. Do not over-engineer toward a spec that does not yet exist.
 

@@ -10,7 +10,7 @@ Track down the root cause of an unexpected failure or bug. Full RCA protocol app
 1. **Entry** — Load in this order:
    - [ ] `plans/CHARTER.md` if it exists
    - [ ] `plans/ARCHITECTURE.md` if it exists
-   - [ ] `plans/_rollup.md` if it exists
+   - [ ] `plans/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md` if the initiative is named or inferable
    - [ ] `slice-<N>.md` relevant to the reported bug (to understand expected behaviour), if applicable
    - [ ] Any linked `verification-matrix.md`, `rca-*.md`, or `security-review-*.md`

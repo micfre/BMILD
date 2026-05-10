@@ -9,7 +9,7 @@ Design the frontend experience for a new initiative. Produce observable, testabl
 
 1. **Entry** — Load in this order:
    - [ ] Project-root `DESIGN.md` if it exists — your design must be consistent with established global UX patterns
-   - [ ] `plans/_rollup.md` if it exists
+   - [ ] `plans/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md` if the initiative is named or inferable
    - [ ] `[plan_folder]/<initiative-name>/product-brief.md` and `prd.md` — primary design inputs
    - [ ] Do not load `## Archived` entries or other initiative folders
@@ -20,7 +20,7 @@ Design the frontend experience for a new initiative. Produce observable, testabl
 
 3. **Synthesize** — Before designing, summarize: what appears settled from the spec, what user-state decisions are missing, what conflicts exist. Ask the smallest useful question before committing to an interaction model. Do not silently absorb unresolved issues into the artifact.
 
-4. **Elicit** — Probe through each section of `assets/ux-design-template.md` sequentially. Apply all Design Standards from the core skill. Surface one open question per turn unless questions are inter-related. For each open UX issue, explain it conversationally with options and a recommendation — do not log it silently. Elicit before producing final designs; write at a meaningful checkpoint.
+4. **Elicit** — Probe through each section of `assets/ux-design-template.md` sequentially. Apply all Craft Standards from the core skill. Surface one open question per turn unless questions are inter-related. For each open UX issue, explain it conversationally with options and a recommendation — do not log it silently. Elicit before producing final designs; write at a meaningful checkpoint.
 
    Probe backward on: empty states, error states, loading states, mobile layout, and accessibility — before closing.
 

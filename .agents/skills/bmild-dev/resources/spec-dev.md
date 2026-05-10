@@ -10,7 +10,7 @@ Implement a well-defined Slice inside a documented initiative.
 1. **Entry** — Confirm `slice-<N>.md` is present at `[plan_folder]/<initiative>/slice-<N>.md`. If missing, flag it and operate at reduced fidelity: work from available contracts, note what you are inferring, and flag what is missing. Load in this order:
    - [ ] `plans/CHARTER.md` if it exists
    - [ ] `plans/ARCHITECTURE.md` if it exists
-   - [ ] `plans/_rollup.md` if it exists
+   - [ ] `plans/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative>/_context.md`
    - [ ] Every `## Live` entry relevant to the Slice — skip `## Archived` and unrelated initiative folders
    - [ ] `slice-<N>.md` in full
@@ -18,7 +18,7 @@ Implement a well-defined Slice inside a documented initiative.
    - [ ] Design contracts referenced by the Slice
    - [ ] Repo contributor guide (`AGENTS.md`, `CONTRIBUTING.md`, or equivalent)
 
-2. **Pre-Edit** — Apply core Pre-Edit Discipline before writing any code.
+2. **Pre-Edit** — Apply core Craft Standards (Pre-Edit principles) before writing any code.
 
 3. **Execute** — Work through acceptance criteria one by one; check each off as you complete it. Honor every design contract referenced by the Slice. Do not resolve a contract gap by inference — route to Sonia with one precise question if a genuine contract is missing or ambiguous. When `verification-matrix.md` is present, treat it as a binding QA contract: mark relevant items `implemented` with evidence references; never mark them `passed` — that belongs to Rahat.
 

@@ -11,14 +11,14 @@ Decompose an entire initiative across all phases. Use only when the user explici
    - [ ] `plans/CHARTER.md` if it exists
    - [ ] `plans/ARCHITECTURE.md` if it exists
    - [ ] Project-root `DESIGN.md` if it exists
-   - [ ] `plans/_rollup.md` if it exists
+   - [ ] `plans/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md`
    - [ ] `product-brief.md`, `prd.md`, `ux-design.md`, and `system-design.md` from the initiative folder — all inputs
    - [ ] `slices.md` if it exists
 
 2. **Readiness gate** — Confirm readiness has passed (check the `## Readiness` section of `slices.md` if it exists, or run readiness checks inline). If readiness has not passed: switch to Readiness-Verification mode before proceeding.
 
-3. **Forward Decomposition — Phase 1 (MVP)** — Identify and decompose all Phase 1 (MVP) work. Apply all Planning Standards from the core skill. Prefer the fewest Slices consistent with dependency safety.
+3. **Forward Decomposition — Phase 1 (MVP)** — Identify and decompose all Phase 1 (MVP) work. Apply all Craft Standards from the core skill. Prefer the fewest Slices consistent with dependency safety.
 
 4. **Forward Decomposition — Future Phases** — For phases beyond MVP:
    - Author implementation-ready Slice files for future phases only when the required UX and architecture artifacts for that phase exist
@@ -35,7 +35,7 @@ Decompose an entire initiative across all phases. Use only when the user explici
 
 9. **Write `slices.md`** — Update `[plan_folder]/<initiative-name>/slices.md` using `assets/slices-template.md`. Include `## Readiness`, `## Slice Registry` (all phases), `## Roadmap / Deferred Phases` (blocked placeholders), and `## Coverage Verification`.
 
-10. **Register in context memory** — Open `[plan_folder]/<initiative-name>/_context.md`. Add `slices.md` and currently active `slice-<N>.md` files to `## Live`. Do not add `todo` Slices to `## Live` until they begin. Add an entry to `plans/_rollup.md` (use `assets/rollup-template.md` if it doesn't exist).
+10. **Register in context memory** — Open `[plan_folder]/<initiative-name>/_context.md`. Add `slices.md` and currently active `slice-<N>.md` files to `## Live`. Do not add `todo` Slices to `## Live` until they begin. Add an entry to `plans/_system/_rollup.md` (use `assets/rollup-template.md` if it doesn't exist).
 
 11. **Close** — Apply the Exit and Handoff format from the core skill.
 

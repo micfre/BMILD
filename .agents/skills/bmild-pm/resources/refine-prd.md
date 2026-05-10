@@ -9,7 +9,7 @@ Revisit and improve existing PM artifacts. Probe what changed, challenge stale c
 
 1. **Entry** — Load in this order:
    - [ ] `plans/CHARTER.md` if it exists
-   - [ ] `plans/_rollup.md` if it exists
+   - [ ] `plans/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md`
    - [ ] `[plan_folder]/<initiative-name>/product-brief.md` in full
    - [ ] `[plan_folder]/<initiative-name>/prd.md` in full (if it exists)
@@ -23,7 +23,7 @@ Revisit and improve existing PM artifacts. Probe what changed, challenge stale c
 
 3. **Brainstorm reconciliation** — If any brainstorming session preceded this artifact, load it and cross-reference its ideas against the current `product-brief.md` and `prd.md`. Identify ideas that were silently dropped — especially soft or qualitative ideas (interaction feel, tone, personality, coaching approach, "what should this feel like") that don't map cleanly to functional requirements. Present findings to the user and ask whether any should be incorporated before proceeding.
 
-4. **Challenge** — Treat all existing content as a starting point. Probe what was assumed vs. what has been validated. Surface any unresolved Open Product Questions or assumptions that haven't been tested. Apply all Elicitation Standards from the core skill.
+4. **Challenge** — Treat all existing content as a starting point. Probe what was assumed vs. what has been validated. Surface any unresolved Open Product Questions or assumptions that haven't been tested. Apply all Craft Standards from the core skill.
 
    If live UX or architecture artifacts contain Product Handoff Questions targeted to Faisal, resolve them in the refined spec or explicitly defer them with user consent.
 

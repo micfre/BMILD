@@ -11,7 +11,7 @@ Assess whether upstream design is coherent enough to plan safely. Stop at readin
    - [ ] `plans/CHARTER.md` if it exists
    - [ ] `plans/ARCHITECTURE.md` if it exists
    - [ ] Project-root `DESIGN.md` if it exists
-   - [ ] `plans/_rollup.md` if it exists
+   - [ ] `plans/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md`
    - [ ] `product-brief.md`, `prd.md`, `ux-design.md`, and `system-design.md` from the initiative folder — any that exist
    - [ ] `slices.md` if it exists — you may be assessing a partially planned initiative

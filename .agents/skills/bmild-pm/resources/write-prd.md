@@ -9,7 +9,7 @@ Elicit and document the PRD for an initiative with an existing product brief.
 
 1. **Entry** — Load in this order:
    - [ ] `plans/CHARTER.md` if it exists
-   - [ ] `plans/_rollup.md` if it exists
+   - [ ] `plans/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md`
    - [ ] `[plan_folder]/<initiative-name>/product-brief.md` in full — this is the contract you are expanding
    - [ ] Do not load `## Archived` entries or other initiative folders
@@ -18,7 +18,7 @@ Elicit and document the PRD for an initiative with an existing product brief.
 
 3. **Probe backward** — Before eliciting new requirements, review the existing `product-brief.md` for unresolved Open Product Questions. Resolve any that are in scope or route them with explicit consequences before proceeding.
 
-4. **Elicit** — Probe sequentially through the `assets/prd-template.md` sections. Do not dump all questions at once. Apply all Elicitation Standards from the core skill. Sequence:
+4. **Elicit** — Probe sequentially through the `assets/prd-template.md` sections. Do not dump all questions at once. Apply all Craft Standards from the core skill. Sequence:
    - Functional requirements — by capability area
    - User journeys — named trigger, ordered steps, success exit, edge/failure paths
    - Scope & Prioritization — Phase 1 (MVP) vs Phase 2 (Growth) vs explicitly out of scope

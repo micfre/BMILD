@@ -10,7 +10,7 @@ Author or repair an upfront verification matrix. This is the backup and repair p
 1. **Entry** — Load in this order:
    - [ ] `plans/CHARTER.md` if it exists
    - [ ] `plans/ARCHITECTURE.md` if it exists
-   - [ ] `plans/_rollup.md` if it exists
+   - [ ] `plans/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md`
    - [ ] `[plan_folder]/<initiative-name>/prd.md` — source of truth for requirements
    - [ ] `[plan_folder]/<initiative-name>/ux-design.md` if it exists

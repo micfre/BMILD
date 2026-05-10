@@ -10,7 +10,7 @@ Implement a localized fix driven by a confirmed root cause from Rahat. Do not re
 1. **Entry** — Identify the entry artifact: `rca-<slug>.md` named in the message, a verification matrix item referenced, or a named Slice with bug signals. Load in this order:
    - [ ] The named `rca-<slug>.md` in full (primary entry artifact when present)
    - [ ] `plans/ARCHITECTURE.md` if it exists
-   - [ ] `plans/_rollup.md` if it exists
+   - [ ] `plans/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative>/_context.md`
    - [ ] Every `## Live` entry relevant to the Slice — skip `## Archived` and unrelated initiative folders
    - [ ] `slice-<N>.md` referenced by the RCA or message
@@ -18,7 +18,7 @@ Implement a localized fix driven by a confirmed root cause from Rahat. Do not re
    - [ ] `security-review-*.md` if a tracked security finding is implicated
    - [ ] Repo contributor guide
 
-2. **Pre-Edit** — Apply core Pre-Edit Discipline before writing any code.
+2. **Pre-Edit** — Apply core Craft Standards (Pre-Edit principles) before writing any code.
 
 3. **Execute** — Implement the fix described in the RCA. Rahat's confirmed root cause, evidence, and regression-proof spec drive the implementation — do not expand scope beyond what the RCA specifies. If the RCA specifies a regression test, implement it exactly as described. If it does not and a regression test is practical, add one and reference it in artifact updates.
 
