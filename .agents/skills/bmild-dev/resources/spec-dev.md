@@ -39,6 +39,7 @@ Implement a well-defined Slice inside a documented initiative.
 ---
 
 ## Definition of Done
+
 - [ ] All acceptance criteria checked, implemented, or explicitly deferred with reason
 - [ ] Verification matrix items `implemented` or `blocked` — never `passed`
 - [ ] Quality gates run, or unrun gates recorded with reason

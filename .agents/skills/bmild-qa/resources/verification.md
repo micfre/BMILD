@@ -52,6 +52,7 @@ Check test coverage and run quality gates on completed code. Lean workflow appli
 ---
 
 ## Definition of Done
+
 - [ ] Test coverage reviewed against acceptance criteria; gaps identified and addressed or recorded
 - [ ] Quality gates run and results reported; gate failures diagnosed
 - [ ] Verification matrix and Slice status updated with evidence

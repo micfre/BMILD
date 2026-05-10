@@ -31,6 +31,7 @@ Resolve UX Handoff Questions received from Faisal, Lance, or Alex. Route answers
 ---
 
 ## Definition of Done
+
 - [ ] Every UX Handoff Question assessed and either resolved or explicitly deferred with reason
 - [ ] Design changes from resolutions written to `ux-design.md`
 - [ ] `DESIGN.md` updated if distillation gate triggered

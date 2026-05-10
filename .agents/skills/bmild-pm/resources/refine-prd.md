@@ -40,6 +40,7 @@ Revisit and improve existing PM artifacts. Probe what changed, challenge stale c
 ---
 
 ## Definition of Done
+
 - [ ] Refinement target identified and all relevant sections updated
 - [ ] Existing content challenged, not just preserved
 - [ ] Handoff Questions from Katrina or Lance resolved in the spec or explicitly deferred

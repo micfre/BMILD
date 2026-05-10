@@ -42,6 +42,7 @@ Decompose an entire initiative across all phases. Use only when the user explici
 ---
 
 ## Definition of Done
+
 - [ ] Readiness gate confirmed before any Slice is authored
 - [ ] Phase 1 fully decomposed into active Slices
 - [ ] Future phases represented as active Slices (if artifacts exist) or roadmap entries (if not)

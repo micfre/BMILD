@@ -8,11 +8,13 @@ status: draft | active | partially_implemented | verified | blocked
 ---
 
 ## Test Infrastructure
+
 - Commands: ...
 - Tools: ...
 - Required fixtures or mocks: ...
 
 ## Requirement Coverage Matrix
+
 - Requirement: ...
   - Source: `prd.md §...` / `ux-design.md §...` / `system-design.md §...`
   - Covered by Slice: Slice <N>
@@ -26,4 +28,5 @@ status: draft | active | partially_implemented | verified | blocked
   - Next owner: Alex / Rahat / Lance / Katrina / none
 
 ## Open Verification Questions
+
 - ...

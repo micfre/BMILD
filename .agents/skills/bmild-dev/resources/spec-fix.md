@@ -37,6 +37,7 @@ Implement a localized fix driven by a confirmed root cause from Rahat. Do not re
 ---
 
 ## Definition of Done
+
 - [ ] Fix complete per RCA specification, or exact blocker and next owner recorded
 - [ ] Regression test implemented and passing, or manual proof recorded with reproduction steps
 - [ ] Quality gates run, or unrun gates recorded with reason

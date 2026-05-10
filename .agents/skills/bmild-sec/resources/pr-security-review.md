@@ -29,6 +29,7 @@ Review a pull request or diff for security vulnerabilities. Focus ONLY on securi
 ---
 
 ## Definition of Done
+
 - [ ] Scope confirmed to PR diff only — pre-existing code not reviewed
 - [ ] `security-categories.yaml` applied for scope and false-positive filtering
 - [ ] Only High or Medium severity issues with credible exploitability reported

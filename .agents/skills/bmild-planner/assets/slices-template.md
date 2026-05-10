@@ -39,6 +39,7 @@ approved_scope: MVP | named phase | full initiative
   - Slice type: mainline
 
 ## Roadmap / Deferred Phases
+
 - [Future phase item]:
   - Phase: Growth / later named phase
   - Status: roadmap / blocked_placeholder
@@ -46,6 +47,7 @@ approved_scope: MVP | named phase | full initiative
   - Required future artifact or decision: ...
 
 ## Coverage Verification
+
 - Goal being checked: ...
 - Coverage result: ...
 - Requirement traceability:

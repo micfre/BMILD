@@ -37,6 +37,7 @@ Revise an existing plan when a blocker surfaces, design changes, or a re-sequenc
 ---
 
 ## Definition of Done
+
 - [ ] Trigger identified and impact scoped to affected Slices only
 - [ ] Completed Slices not modified
 - [ ] At most one recut pass applied to unstarted Slices

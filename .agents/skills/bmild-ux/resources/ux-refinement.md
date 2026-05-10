@@ -34,6 +34,7 @@ Extend or update an existing `ux-design.md`. Probe what changed, challenge stale
 ---
 
 ## Definition of Done
+
 - [ ] Refinement target identified and affected sections updated
 - [ ] Existing decisions challenged, not just preserved
 - [ ] Handoff Questions from Faisal or Lance resolved in the design or explicitly deferred

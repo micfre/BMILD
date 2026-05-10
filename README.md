@@ -7,7 +7,6 @@
 [![Release Status](https://github.com/micfre/BMILD/actions/workflows/release.yml/badge.svg)](https://github.com/micfre/BMILD/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-
 ```
 BMILD is entering a phase of increased churn. Planning artifacts are in flux. An arcitectural shift
 in persona adaptability and self-steering is in planning (Dev skill is prototype). This should

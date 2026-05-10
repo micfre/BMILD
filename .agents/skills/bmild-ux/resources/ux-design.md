@@ -37,6 +37,7 @@ Design the frontend experience for a new initiative. Produce observable, testabl
 ---
 
 ## Definition of Done
+
 - [ ] Groundtruthing findings surfaced before artifact authoring
 - [ ] All UX decisions are observable or testable — preferences are labelled as such
 - [ ] Empty, error, loading, mobile, and accessibility states considered

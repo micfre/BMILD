@@ -37,6 +37,7 @@ Elicit and document the product brief for a new initiative. This is the entry co
 ---
 
 ## Definition of Done
+
 - [ ] Problem, target users, competitive context, success criteria, scope, and vision are documented
 - [ ] Open Product Questions have target responder, status, recommendation, and consequence if deferred
 - [ ] `product-brief.md` written to `[plan_folder]/<initiative-name>/`

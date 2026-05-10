@@ -5,10 +5,13 @@ author: [user_name] + Lance (Arch)
 ---
 
 ## 1. Architecture Vision & Context
+
 How this initiative fits into the broader system architecture and current codebase reality.
 
 ## 2. Architectural Decisions (ADRs)
+
 ### Decision: <title>
+
 - **Context:** Why we need to decide.
 - **Alternatives Considered:**
   - **Option 1:** ...
@@ -24,7 +27,9 @@ How this initiative fits into the broader system architecture and current codeba
 - **Decision & Rationale:** Why we chose the path.
 
 ## 3. Data Model & Schema Changes
+
 ### Table: <table_name>
+
 - Column: ...
   - Type: ...
   - Nullable: yes/no
@@ -36,7 +41,9 @@ Constraints: ...
 Migration intent: ...
 
 ## 4. API & Integration Contracts
+
 ### <METHOD> <path>
+
 **Auth:** required | public | admin only
 
 **Request:**
@@ -49,7 +56,9 @@ Migration intent: ...
 - `400`: `{ error: string }` — when ...
 
 ## 5. Service Contracts
+
 ### <ServiceName>.<methodName>(params): ReturnType
+
 Description. Throws: ...
 
 ## 6. Open Technical Questions
@@ -77,6 +86,7 @@ Description. Throws: ...
   - Consequence if deferred: ...
 
 ## 9. Consequence-Driven Technical Assumptions
+
 - **Assumption:** [Description]
   - Confidence: [Low/Med/High]
   - Consequence if wrong: [Impact]

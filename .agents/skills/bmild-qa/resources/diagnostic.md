@@ -52,6 +52,7 @@ Track down the root cause of an unexpected failure or bug. Full RCA protocol app
 ---
 
 ## Definition of Done
+
 - [ ] Symptom reproduced with exact inputs before any edit
 - [ ] 5–7 distinct hypotheses generated across all plausible layers
 - [ ] 1–2 ranked most-likely candidates explicitly stated

@@ -29,6 +29,7 @@ Implement bounded repo work outside a formal Slice. No spec, UX design, architec
 ---
 
 ## Definition of Done
+
 - [ ] Implementation or prototype complete, or exact blocker and next owner recorded
 - [ ] Quality gates run, or unrun gates recorded with reason
 - [ ] Documentation impact recorded (complete or `none`)

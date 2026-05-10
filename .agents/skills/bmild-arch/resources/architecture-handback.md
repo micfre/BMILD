@@ -31,6 +31,7 @@ Resolve Architecture Handoff Questions received from Faisal, Katrina, or Alex. R
 ---
 
 ## Definition of Done
+
 - [ ] Every Architecture Handoff Question assessed and either resolved or explicitly deferred with reason
 - [ ] Design changes from resolutions written to `system-design.md`
 - [ ] `ARCHITECTURE.md` updated if distillation gate triggered

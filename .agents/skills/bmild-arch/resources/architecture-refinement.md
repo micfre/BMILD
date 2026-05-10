@@ -34,6 +34,7 @@ Extend or update an existing `system-design.md`. Probe what changed, challenge s
 ---
 
 ## Definition of Done
+
 - [ ] Refinement target identified and affected sections updated
 - [ ] Existing decisions challenged, not just preserved
 - [ ] Handoff Questions from Faisal or Katrina resolved in the design or explicitly deferred

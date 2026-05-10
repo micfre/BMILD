@@ -8,11 +8,13 @@ next_owner: Alex | Lance | Katrina
 ---
 
 ## Findings Summary
+
 Found [N] High severity and [M] Medium severity issues.
 
 ## Vulnerabilities
 
 ### Vuln 1: [Category (e.g., XSS)]: `<file>:<line>`
+
 * **Severity:** [High/Medium]
 * **Description:** [Clear description of the vulnerability]
 * **Exploit Scenario:** [Concrete example of how this is exploited]
@@ -23,6 +25,7 @@ Found [N] High severity and [M] Medium severity issues.
 ### Vuln 2: ...
 
 ## Closure Evidence
-- Remediation reference: [file refs / Slice notes / design update]
-- Verification performed by Zach: ...
-- Result: pass / fail / blocked
+
+* Remediation reference: [file refs / Slice notes / design update]
+* Verification performed by Zach: ...
+* Result: pass / fail / blocked

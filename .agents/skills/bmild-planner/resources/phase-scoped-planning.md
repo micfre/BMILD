@@ -41,6 +41,7 @@ Decompose a named phase into implementation-ready Slices. The named phase is the
 ---
 
 ## Definition of Done
+
 - [ ] Readiness gate confirmed before any Slice is authored
 - [ ] Forward decomposition covers only the named phase
 - [ ] Slice count is the minimum viable count consistent with dependency safety, proof boundaries, and context budget

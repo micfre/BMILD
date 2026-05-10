@@ -37,6 +37,7 @@ Investigate and fix a localized defect reported outside a tracked artifact. Repr
 ---
 
 ## Definition of Done
+
 - [ ] Root cause confirmed with evidence before any edit, or escalation to Rahat recorded with full context
 - [ ] Fix complete and scoped to confirmed root cause
 - [ ] Regression test passing, or manual proof sequence recorded

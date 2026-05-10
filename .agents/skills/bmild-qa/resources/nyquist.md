@@ -33,6 +33,7 @@ Author or repair an upfront verification matrix. This is the backup and repair p
 ---
 
 ## Definition of Done
+
 - [ ] Every requirement in the spec mapped to a demonstrable test case
 - [ ] Test infrastructure and commands defined
 - [ ] Test scaffolding drafted if applicable

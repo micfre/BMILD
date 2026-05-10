@@ -6,12 +6,12 @@ author: [user_name] + Faisal (PM)
 
 ## Functional Requirements
 
-### [Capability Area Name]
+### [Capability Area Name 1]
 
 - FR1: [Actor] can [capability]
 - FR2: [Actor] can [capability]
 
-### [Capability Area Name]
+### [Capability Area Name 2]
 
 - FR3: [Actor] can [capability]
 

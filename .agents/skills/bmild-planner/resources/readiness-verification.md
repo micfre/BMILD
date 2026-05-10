@@ -38,6 +38,7 @@ Assess whether upstream design is coherent enough to plan safely. Stop at readin
 ---
 
 ## Definition of Done
+
 - [ ] Upstream artifact check recorded
 - [ ] CHARTER coherence check recorded
 - [ ] Cross-artifact alignment recorded with outcome

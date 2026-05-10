@@ -32,6 +32,7 @@ Review an architectural spec or system design for security design flaws. Focus o
 ---
 
 ## Definition of Done
+
 - [ ] Trust model and data flow analyzed from the design spec
 - [ ] `security-categories.yaml` applied for scope and false-positive filtering
 - [ ] Only High or Medium severity design-level issues reported

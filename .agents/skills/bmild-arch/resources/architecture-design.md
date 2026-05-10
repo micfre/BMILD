@@ -37,6 +37,7 @@ Design the system for a new initiative. Produce concrete, implementable contract
 ---
 
 ## Definition of Done
+
 - [ ] Groundtruthing findings surfaced before artifact authoring
 - [ ] All architecture decisions have observable implementation consequences
 - [ ] `completion-criteria.yaml` privately checked before writing

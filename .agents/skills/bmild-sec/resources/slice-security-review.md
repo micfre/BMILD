@@ -31,6 +31,7 @@ Review a completed Slice implementation for security vulnerabilities. Focus ONLY
 ---
 
 ## Definition of Done
+
 - [ ] Repository security context researched before flagging deviations
 - [ ] `security-categories.yaml` applied for scope and false-positive filtering
 - [ ] Only High or Medium severity issues with credible exploitability reported

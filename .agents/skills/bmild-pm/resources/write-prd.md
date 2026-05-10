@@ -48,6 +48,7 @@ Elicit and document the PRD for an initiative with an existing product brief.
 ---
 
 ## Definition of Done
+
 - [ ] Functional requirements, user journeys, scope/prioritization, NFRs, documentation scope, and assumptions documented
 - [ ] Every Open Product Question resolved or explicitly deferred by user with consequences named
 - [ ] `prd-completion-criteria.yaml` privately checked before writing
