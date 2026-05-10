@@ -16,10 +16,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Make Build Script Executable
-        run: chmod +x build-releases.sh
+        run: chmod +x scripts/build-releases.sh
 
       - name: Package Release Files
-        run: ./build-releases.sh
+        run: ./scripts/build-releases.sh
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
