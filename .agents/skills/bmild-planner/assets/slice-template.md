@@ -43,6 +43,21 @@ One concrete outcome advanced by this Slice.
 - Quality and proof boundaries:
   - path/to/file
 
+## Likely Planned Edits
+
+- Existing files to modify or extend:
+  - path/to/file
+- New files expected to be created:
+  - path/to/file
+- Tests, fixtures, docs, or verification artifacts likely to change:
+  - path/to/file
+
+## New File Estimate
+
+- Estimated new file count: <0/N>
+- Representative source directory for average size: <path/to/src>
+- Why this directory is representative: <one line; prefer the closest stable peer directory for the same artifact type, not a broad mixed tree>
+
 ## Likely Required Reads Check
 
 - Existing contract file considered: yes / no / not applicable — [path or reason]
@@ -61,7 +76,10 @@ Specific enough to reuse during backward coverage checking.
 
 ## Planning Notes
 
-- Budget estimate: <estimated_total>/<target> tokens, WITHIN BUDGET | OVER BUDGET; skipped files: <none/list>.
+- Budgeted reads: <none/list>.
+- Budgeted edits: <none/list>.
+- Budgeted new files: <0/N> from <path/to/src or none>.
+- Budget estimate: <estimated_total>/<target> tokens, WITHIN BUDGET | OVER BUDGET; skipped reads: <none/list>; skipped new: <none/list>; skipped edits: <none/list>.
 
 ## Implementation Notes
 

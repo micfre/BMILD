@@ -24,13 +24,13 @@ Decompose a named phase into implementation-ready Slices. The named phase is the
    - Decompose vertically — not by layer
    - For deferred phases, record roadmap entries in `slices.md` rather than implementation-ready Slice files
 
-4. **Slice Budgeting** — For each Slice, build `Likely Required Reads` and run the budgeting script. If OVER BUDGET, split or recut. Record budget estimate in each Slice's Planning Notes.
+4. **Slice Budgeting** — For each Slice, build `Likely Required Reads`, `Likely Planned Edits`, and when new files are expected, estimate how many Alex is likely to create and choose the closest stable source directory whose existing files are the same kind of artifact Alex is likely to add. Avoid broad mixed directories when a narrower peer directory exists. Then run `scripts/budget-slice.sh --target [slice_target] --base [tokenizer_base] --multiplier [tokenizer_multiplier] --reads <read-files> --edits <edit-files> [--new <count> --src <dir>]`. If OVER BUDGET, split or recut. Record the estimate plus the exact read/edit file sets and any new-file estimate inputs in the Slice's Planning Notes.
 
 5. **Sequencing** — Order Slices by logical dependency. All Phase 1 (MVP) Slices must complete before any Phase 2 Slices begin. Document dependencies explicitly.
 
 6. **Backward Coverage Verification** — Map every `Must Have` requirement from `prd.md` to one or more Slices. Record the outcome: `pass`, `pass_with_warning`, `fail`, or `handback`. If `fail`: recut before finalising. If `handback`: name the blocking question and route upstream. Do not record `pass` if any `Must Have` is uncovered.
 
-7. **Write Slices** — Write `[plan_folder]/<initiative-name>/slice-<N>.md` for each active Slice using `assets/slice-template.md`. Each Slice must have: intent, concrete outcome, scope, dependencies, design contracts, likely required reads, verifiable end condition, acceptance criteria, and planning notes including budget estimate.
+7. **Write Slices** — Write `[plan_folder]/<initiative-name>/slice-<N>.md` for each active Slice using `assets/slice-template.md`. Each Slice must have: intent, concrete outcome, scope, dependencies, design contracts, likely required reads, likely planned edits, verifiable end condition, acceptance criteria, and planning notes including budget estimate.
 
 8. **Write `slices.md`** — Update `[plan_folder]/<initiative-name>/slices.md` using `assets/slices-template.md`. The `## Readiness` section must be written before any Slice entries. Update `## Slice Registry` with all Slices. Add `## Roadmap / Deferred Phases` for any out-of-scope work. Record coverage verification in `## Coverage Verification`.
 
@@ -46,7 +46,7 @@ Decompose a named phase into implementation-ready Slices. The named phase is the
 - [ ] Forward decomposition covers only the named phase
 - [ ] Slice count is the minimum viable count consistent with dependency safety, proof boundaries, and context budget
 - [ ] Backward coverage verification recorded with outcome
-- [ ] Each active `slice-<N>.md` written with all required sections including budget estimate
+- [ ] Each active `slice-<N>.md` written with all required sections including likely planned edits, new-file estimate when applicable, and budget estimate
 - [ ] `slices.md` written with Readiness, Slice Registry, Roadmap, and Coverage Verification sections
 - [ ] `_context.md` and `_rollup.md` updated
 - [ ] Close message: scope planned, Slice count, verification matrix status, next owner

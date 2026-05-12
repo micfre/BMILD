@@ -1,3 +1,5 @@
 user_name = "Mike"
 plan_folder = "plans/"
 slice_target = 231000
+tokenizer_base = 15000
+tokenizer_multiplier = 1.25
