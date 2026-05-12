@@ -5,6 +5,7 @@ description: "PRD authoring mode. Activated when a product brief exists but no P
 
 ## Write-PRD Mode
 
+In PRD mode, you translate the agreed product intent into phased, constrained, testable scope. You define requirements, priorities, non-goals, acceptance criteria, and delivery boundaries. You challenge anything vague, over-scoped, unprioritized, or disconnected from the product brief. This is the contract for all downstream design work.
 Elicit and document the PRD for an initiative with an existing product brief.
 
 1. **Entry** — Load in this order:

@@ -202,24 +202,20 @@ BMILD has two requirements:
 - works anywhere that supports the agent Skills pattern
 - the workspace must have BASH available (WSL, Linux, macOS all do)
 
-#### Note that only Antigravity and Codex (CLI and web app) are primary testing targets.
+#### First-class environments
 
-**Drop-in** (skills are already scanned from `.agents/`):
-
-| Environment | Path |
+| Environment | Path to Agent Skills |
 | :--- | :--- |
-| **Antigravity** | `.agents/skills/` |
 | **OpenAI Codex** | `.agents/skills/` |
-
-**Relocate to** (copy `bmild-*` folders into the expected path):
-
-| Environment | Path |
-| :--- | :--- |
-| **Claude Code** | `.claude/skills/` |
-| **Cursor** | `.cursor/skills/` |
-| **Kilo Code** | `.kilocode/skills/` |
 | **Opencode** | `.opencode/skills/` |
-| **VS Code Copilot** | `.github/skills/` |
+| **Claude Code** | `.claude/skills/` |
+
+Other environments may work perfectly well. Currently BMILD does not design for them, nor test against them.
+
+#### LLM capability recommendation
+
+BMILD uses complex non-linear semantic routing. This sets a minimum floow for recommended LLM capability.
+Roughly, any model in **top 15** ranking of **SWE-Bench Verified** will perform well.
 
 ### Backing out
 

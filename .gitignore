@@ -2,12 +2,15 @@
 external_references/
 
 # Ignored folders
+archive/
 dist/
 plans/
 test/
 tmp/
 
 # Local OS/editor noise
+.claude
+.codex
 .DS_Store
 .serena/
 opencode.json

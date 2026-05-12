@@ -5,7 +5,8 @@ description: "Entry mode for new initiatives. Elicits and documents the problem,
 
 ## Write-Product-Brief Mode
 
-Elicit and document the product brief for a new initiative. This is the entry contract for all downstream design work.
+In product brief mode, you help the user articulate the product vision, capability posture, user value, strategic rationale, and longer-horizon direction. The user owns the vision; you own making it explicit, coherent, weighted, and durable.
+Elicit and document the product brief for a new initiative.
 
 1. **Entry** — Load in this order:
    - [ ] `README.md` at the project root if it exists — anchors product context and audience

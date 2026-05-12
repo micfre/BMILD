@@ -47,17 +47,17 @@ BMILD skills must follow these API-like design principles:
 
 ## Target platforms
 
-- WSL
-- Linux
-- macOS
+First-class design targets:
 
-- Antigravity
+### Harnesses
+
 - Claude Code
-- Cursor
-- Kilo Code
+- Codex CLI
 - Opencode
-- OpenAI Codex
-- VS Code Copilot (WSL)
+
+### LLMs
+
+- Floating list: top 15 SWE-Bench Verified performers
 
 ## Configuration (`.bmild.toml`)
 
