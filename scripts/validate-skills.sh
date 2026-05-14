@@ -10,21 +10,12 @@ section_required=(
   "## BMILD Working Team"
   "## Activation"
   "## Workflow"
-  "## Capabilities"
   "## Definition of Done"
   "## Gotchas"
 )
 
-required_artifact_patterns=(
-  "approved_scope:"
-  "qa_status:"
-  "security_status:"
-  "## Likely Required Reads Check"
-  "next_owner:"
-  "## Closure Evidence"
-)
-
 standard_required=(
+  "## Craft Standards"
   "## Scope Boundary"
   "## Exit and Handoff"
 )
@@ -39,10 +30,25 @@ standard_skills=(
   bmild-ux
 )
 
+cross_cutting_skills=(
+  bmild-brainstorming
+  bmild-debate
+  bmild-elicit
+)
+
 is_standard_skill() {
   local name="$1"
   local item
   for item in "${standard_skills[@]}"; do
+    [[ "$item" == "$name" ]] && return 0
+  done
+  return 1
+}
+
+is_cross_cutting_skill() {
+  local name="$1"
+  local item
+  for item in "${cross_cutting_skills[@]}"; do
     [[ "$item" == "$name" ]] && return 0
   done
   return 1
@@ -84,27 +90,31 @@ while IFS= read -r -d '' skill_file; do
   done
 
   awk '
-    /^## Workflow$/ { in_workflow = 1; has_progress = 0; next }
+    /^## Workflow$/ { in_workflow = 1; has_checklist = 0; next }
     in_workflow && /^## / {
-      if (!has_progress) {
-        print FILENAME " Workflow section missing Progress checklist"
+      if (!has_checklist) {
+        print FILENAME " Workflow section missing step checklist"
         exit 1
       }
       in_workflow = 0
     }
-    in_workflow && /^Progress:$/ { has_progress = 1 }
+    in_workflow && /^- \[ \] Step [0-9]+:/ { has_checklist = 1 }
     END {
-      if (in_workflow && !has_progress) {
-        print FILENAME " Workflow section missing Progress checklist"
+      if (in_workflow && !has_checklist) {
+        print FILENAME " Workflow section missing step checklist"
         exit 1
       }
     }
-  ' "$skill_file" || report "$skill_file missing Progress checklist in Workflow"
+  ' "$skill_file" || report "$skill_file missing step checklist in Workflow"
 
   if is_standard_skill "$skill_name"; then
     for section in "${standard_required[@]}"; do
       grep -q "^${section}$" "$skill_file" || report "$skill_file missing standard section '$section'"
     done
+  fi
+
+  if is_cross_cutting_skill "$skill_name"; then
+    grep -q '^## Capabilities$' "$skill_file" || report "$skill_file missing cross-cutting section '## Capabilities'"
   fi
 done < <(find "$skills_dir" -mindepth 2 -maxdepth 2 -name SKILL.md -print0)
 
@@ -114,8 +124,8 @@ if grep -R --include='*.md' -nE '^### [0-9]+\.' "$skills_dir" >/tmp/bmild-number
 fi
 
 while IFS= read -r -d '' step_file; do
-  if grep -qE '^## .*(SEQUENCE|WORKFLOW|ORCHESTRATION|APPLICATION|IDENTIFICATION)' "$step_file" && ! grep -q '^Progress:$' "$step_file"; then
-    report "$step_file has a sequence-like section without a Progress checklist"
+  if grep -qE '^## .*(SEQUENCE|WORKFLOW|ORCHESTRATION|APPLICATION|IDENTIFICATION)' "$step_file" && ! grep -qE '^- \[ \] Step [0-9]+:' "$step_file"; then
+    report "$step_file has a sequence-like section without a step checklist"
   fi
 done < <(find "$skills_dir" -path '*/steps/*.md' -print0)
 
@@ -132,16 +142,25 @@ if grep -R --include='*.md' -nE '^\|.*\|$' "${table_targets[@]}" >/tmp/bmild-tab
   report "markdown table rows found in checked skill/docs surface"
 fi
 
-artifact_templates=(
-  "$skills_dir/bmild-planner/assets/artifact-template.md"
-  "$skills_dir/bmild-qa/assets/artifact-template.md"
-  "$skills_dir/bmild-sec/assets/artifact-template.md"
+required_template_checks=(
+  "$skills_dir/bmild-planner/assets/slices-template.md:approved_scope:"
+  "$skills_dir/bmild-planner/assets/slice-template.md:qa_status:"
+  "$skills_dir/bmild-planner/assets/slice-template.md:security_status:"
+  "$skills_dir/bmild-planner/assets/slice-template.md:## Likely Required Reads Check"
+  "$skills_dir/bmild-qa/assets/rca-template.md:next_owner:"
+  "$skills_dir/bmild-sec/assets/security-review-template.md:next_owner:"
+  "$skills_dir/bmild-qa/assets/rca-template.md:## Closure Evidence"
+  "$skills_dir/bmild-sec/assets/security-review-template.md:## Closure Evidence"
 )
 
-for pattern in "${required_artifact_patterns[@]}"; do
-  if ! grep -q "$pattern" "${artifact_templates[@]}"; then
-    report "artifact templates missing cross-flow marker '$pattern'"
+for entry in "${required_template_checks[@]}"; do
+  path="${entry%%:*}"
+  pattern="${entry#*:}"
+  if [[ ! -f "$path" ]]; then
+    report "required template missing: $path"
+    continue
   fi
+  grep -q "$pattern" "$path" || report "$path missing required marker '$pattern'"
 done
 
 canonical_docs=(

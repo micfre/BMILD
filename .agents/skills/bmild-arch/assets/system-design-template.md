@@ -61,34 +61,17 @@ Migration intent: ...
 
 Description. Throws: ...
 
-## 6. Open Technical Questions
+## 6. Bounded Assumptions
 
-- Question: ...
-  - Target responder: User
-  - Status: unresolved | resolved | deferred_by_user
-  - Recommendation: ...
-  - Consequence if deferred: ...
+- **Assumption:** [Low-risk, reversible assumption recorded in the consuming artifact]
+  - Confidence: [Low/Med/High]
+  - Consequence if wrong: [Impact]
+  - Revisit trigger: [What evidence or event should force re-evaluation]
 
-## 7. Product Handoff Questions
-
-- Question: ...
-  - Target responder: Faisal
-  - Status: unresolved | resolved | deferred_by_user
-  - Context or recommendation: ...
-  - Consequence if deferred: ...
-
-## 8. UX Handoff Questions
-
-- Question: ...
-  - Target responder: Katrina
-  - Status: unresolved | resolved | deferred_by_user
-  - Context or recommendation: ...
-  - Consequence if deferred: ...
-
-## 9. Consequence-Driven Technical Assumptions
+## 7. Consequence-Driven Technical Assumptions
 
 - **Assumption:** [Description]
   - Confidence: [Low/Med/High]
   - Consequence if wrong: [Impact]
 
-## 10. Archived Decisions
+## 8. Archived Decisions

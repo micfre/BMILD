@@ -24,7 +24,7 @@ Elicit and document the PRD for an initiative with an existing product brief.
 
    Use the highest-signal discovery method appropriate to the task: symbol navigation for known entities, semantic search for behavioural or architectural concepts, and AST-aware analysis for syntax-sensitive pattern matching, migrations, and refactors.
 
-3. **Probe backward** — Before eliciting new requirements, review the existing `product-brief.md` for unresolved Open Product Questions. Resolve any that are in scope or route them with explicit consequences before proceeding.
+3. **Probe backward** — Before eliciting new requirements, review the existing `product-brief.md` for unresolved assumptions, queue items, or scope edges that still need promotion. Resolve what is in scope. Route user-owned gaps through `user-attention.md` and cross-artifact/source issues through `spec-patch-queue.md` before proceeding.
 
 4. **Elicit** — Before the first question, preview the queue: name the categories you expect to cover and give an approximate question count so the user can tell whether this is a short alignment or a deeper session. Then probe sequentially through the `assets/prd-template.md` sections. Do not dump all questions at once. Apply all Craft Standards from the core skill. Sequence:
    - Functional requirements — by capability area
@@ -33,9 +33,7 @@ Elicit and document the PRD for an initiative with an existing product brief.
    - Non-functional requirements — scale, performance, compliance, with thresholds
    - Documentation scope — user, operator, contributor — decision for each
    - Consequence-driven assumptions — for each: confidence level, consequence if wrong
-   - Open Product Questions — surface any remaining gaps
-   - UX Handoff Questions — for Katrina
-   - Architecture Handoff Questions — for Lance
+   - Governance routing — decide whether any remaining ambiguity belongs in `user-attention.md`, `spec-patch-queue.md`, or a bounded assumption
 
 5. **Consequence-check** — Before writing, privately verify:
    - [ ] Every Must Have is traceable to a user need from `product-brief.md`
@@ -43,11 +41,11 @@ Elicit and document the PRD for an initiative with an existing product brief.
    - [ ] Explicitly out-of-scope items are listed
    - [ ] Non-functional requirements have thresholds, not just categories
    - [ ] Documentation scope has a decision for each audience
-   - [ ] Every Handoff Question has target responder, status, recommendation, and consequence if deferred
+   - [ ] Any remaining ambiguity has a governed outcome: `user-attention.md`, `spec-patch-queue.md`, bounded assumption, or explicit defer/reject/supersede decision
 
 6. **Write** — Load `./resources/prd-completion-criteria.yaml` and privately check each section before writing. Write `[plan_folder]/<initiative-name>/prd.md` using `assets/prd-template.md`. Substitute `[user_name]` from `.bmild.toml`.
 
-7. **Gate check** — Walk the user through any remaining Open Product Questions in the product domain. For each: explain the issue, present options, give a recommendation. Do not probe on UX-layer or architecture questions — route those via Handoff Questions. Confirm every documented question has a target responder and status. User-owned Open Product Questions must be resolved or explicitly deferred by the user before handoff.
+7. **Gate check** — Walk the user through any remaining product-domain ambiguity that still needs synchronous resolution. For each: explain the issue, present options, give a recommendation. If user input is still needed after the session, create or update `user-attention.md`. If the gap belongs to UX or architecture ownership, create or update `spec-patch-queue.md` with the target artifact and owner. Do not leave durable question threads in `prd.md`.
 
 8. **Register in context memory** — Open `[plan_folder]/<initiative-name>/_context.md`. Add `prd.md` to `## Live`. Move any superseded predecessor to `## Archived`.
 
@@ -58,8 +56,8 @@ Elicit and document the PRD for an initiative with an existing product brief.
 ## Definition of Done
 
 - [ ] Functional requirements, user journeys, scope/prioritization, NFRs, documentation scope, and assumptions documented
-- [ ] Every Open Product Question resolved or explicitly deferred by user with consequences named
+- [ ] Remaining ambiguity routed through `user-attention.md`, `spec-patch-queue.md`, or bounded assumptions instead of embedded question sections
 - [ ] `prd-completion-criteria.yaml` privately checked before writing
 - [ ] `prd.md` written to `[plan_folder]/<initiative-name>/`
 - [ ] `_context.md` updated with `prd.md` in `## Live`
-- [ ] Close message: artifacts written, open/deferred items, UX/Architecture Handoff Questions outstanding, next owner
+- [ ] Close message: artifacts written, queued or deferred governance items, next owner

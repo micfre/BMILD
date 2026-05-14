@@ -33,6 +33,8 @@ Implement a localized fix driven by a confirmed root cause from an RCA, verifica
 
 6. **Document** — Required when externally visible behaviour, operational runbooks, setup instructions, or user help changed. Otherwise record `Documentation impact: none`.
 
+   If the fix leaves a remaining contract defect or requires an owner to promote a queued resolution, route it through `spec-patch-queue.md` or `user-attention.md` rather than a chat-only note.
+
 7. **Close** — Update artifacts in this order:
    - [ ] `rca-<slug>.md` → add fix details and regression-test reference; set `next_owner` to Rahat for verification if additional independent verification is needed, otherwise `none`
    - [ ] `verification-matrix.md` → relevant items `implemented` or `passed` only when Rahat has run the named proof

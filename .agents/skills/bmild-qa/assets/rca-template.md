@@ -49,3 +49,9 @@ Reference to the test added by Rahat, or the regression proof Alex must add or r
 - Closed by: [commit / file refs / Slice notes / handoff target]
 - Verification command: ...
 - Result: pass / fail / blocked
+
+## Governance Follow-Up
+
+- Source-artifact update required: yes | no
+- Queue path: none | `spec-patch-queue.md` | `user-attention.md`
+- Notes: what must still be promoted by the owning persona, if applicable

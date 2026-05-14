@@ -27,17 +27,17 @@ Design the frontend experience for a new initiative. Produce observable, testabl
 
 3. **Synthesize** — Before designing, summarize: what appears settled from the spec, what user-state decisions are missing, what conflicts exist. Ask the smallest useful question before committing to an interaction model. Do not silently absorb unresolved issues into the artifact.
 
-4. **Elicit** — Before the first question, preview the queue: name the categories you expect to cover and give an approximate question count so the user can tell whether this is a short alignment or a deeper session. Then probe through each section of `assets/ux-design-template.md` sequentially. Apply all Craft Standards from the core skill. Surface one open question per turn unless questions are inter-related. For each open UX issue, explain it conversationally with options and a recommendation — do not log it silently. Elicit before producing final designs; write at a meaningful checkpoint.
+4. **Elicit** — Before the first question, preview the queue: name the categories you expect to cover and give an approximate question count so the user can tell whether this is a short alignment or a deeper session. Then probe through each section of `assets/ux-design-template.md` sequentially. Apply all Craft Standards from the core skill. Surface one ambiguity per turn unless questions are inter-related. Elicit before producing final designs; write at a meaningful checkpoint.
 
    Probe backward on: empty states, error states, loading states, mobile layout, and accessibility — before closing.
 
-5. **Write** — Load `./resources/completion-criteria.yaml` and privately check each section against its `good_signal`, `weak_signal`, and `falsifiable` field. Is there an observable user behavior or testable screen state confirming each section is complete? Resolve user-owned UX gaps through elicitation. Route product or architecture gaps as Handoff Questions. Write `[plan_folder]/<initiative-name>/ux-design.md` using `assets/ux-design-template.md`.
+5. **Write** — Load `./resources/completion-criteria.yaml` and privately check each section against its `good_signal`, `weak_signal`, and `falsifiable` field. Is there an observable user behavior or testable screen state confirming each section is complete? Resolve user-owned UX gaps through elicitation or `user-attention.md`. Route product or architecture source issues through `spec-patch-queue.md`. Write `[plan_folder]/<initiative-name>/ux-design.md` using `assets/ux-design-template.md`.
 
 6. **Distillation gate** — Do this initiative's decisions establish interaction principles, visual language decisions, or UX patterns that all future initiatives must conform to? If yes, distill those specific elements into project-root `DESIGN.md` using `assets/design-md-template.md` for creation, or preserve its existing structure for updates. Initiative-local flows, screen-specific states, and scoped interaction decisions do not qualify.
 
 7. **Register in context memory** — Open or create `[plan_folder]/<initiative-name>/_context.md` from `assets/context-memory-template.md`. Add `ux-design.md` (and `DESIGN.md` if updated) to `## Live`. Move any superseded predecessor to `## Archived`.
 
-8. **Gate check** — Walk the user through any outstanding Open UX Questions. For each: explain the issue, present options, give a recommendation. Do not probe on architecture or product-scope questions — route those via Handoff Questions. Confirm every documented question has a target responder and status.
+8. **Gate check** — Walk the user through any remaining UX-domain ambiguity that still needs synchronous resolution. For each: explain the issue, present options, give a recommendation. If user input still remains, queue it in `user-attention.md`. If the issue belongs to architecture or product ownership, route it through `spec-patch-queue.md`. Do not preserve durable question sections in `ux-design.md`.
 
 9. **Close** — Apply the Exit and Handoff format from the core skill.
 
@@ -52,5 +52,5 @@ Design the frontend experience for a new initiative. Produce observable, testabl
 - [ ] `ux-design.md` written to `[plan_folder]/<initiative-name>/`
 - [ ] `DESIGN.md` updated if distillation gate triggered
 - [ ] `_context.md` updated with artifacts in `## Live`
-- [ ] All Open UX Questions resolved or explicitly deferred by user
-- [ ] Close message: key decisions, trade-offs accepted, deferred risks, next owner
+- [ ] Remaining ambiguity routed through `user-attention.md`, `spec-patch-queue.md`, or bounded assumptions instead of embedded question sections
+- [ ] Close message: key decisions, trade-offs accepted, queued or deferred governance items, next owner

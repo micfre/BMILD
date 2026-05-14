@@ -87,6 +87,9 @@ This can be structured alongside project source or kept separately — the perso
         ├── prd.md                  # Faisal output: requirements, journeys, prioritization, NFRs, doc scope.
         ├── ux-design.md            # Katrina output: initiative-specific flows, screen states, interaction rules.
         ├── system-design.md        # Lance output: schema, API contracts, service contracts, tech choices.
+        ├── spec-patch-queue.md     # Initiative-local coordination queue for proposed source-artifact repairs and cross-artifact conflicts. Non-authoritative until promoted into the target artifact.
+        ├── user-attention.md       # Initiative-local queue for discrete user input that still needs owner promotion into a governed artifact.
+        ├── decision-log.md         # Optional initiative-local record of durable promoted decisions that affect multiple artifacts. Not a question tracker.
         ├── verification-matrix.md  # Sonia/Rahat: proof map for requirements and Slices.
         ├── slices.md               # Sonia output: Slice registry.
         ├── slice-<N>.md            # One file per Slice.
@@ -135,12 +138,18 @@ updated: YYYY-MM-DD
 - Project-root `DESIGN.md`: created and maintained by Katrina; carries durable global UX patterns (palette, typography, global component rules) distilled from initiative-specific UX work.
 - `ux-design.md`: created by Katrina; consumed by Lance, Sonia, Alex, Rahat, and Zach; validated through observable user-state checks.
 - `system-design.md`: created by Lance; consumed by Sonia, Alex, Rahat, and Zach; validated through implementability, testability, and security review.
+- `spec-patch-queue.md`: initiative-local coordination queue for `source_defect` and `cross_artifact_conflict` items; consumed by the owning persona of the target artifact and any blocked downstream persona; remains non-authoritative until the owner promotes the accepted change into the target source artifact.
+- `user-attention.md`: initiative-local coordination queue for discrete user input; consumed by the target owner persona; remains non-authoritative until the owner's artifact reflects the answer.
+- `decision-log.md`: optional durable record for already-promoted multi-artifact decisions. Initiative-local by default; `_system/decision-log.md` is reserved for genuinely global decisions unrelated future initiatives must consume.
 - `slices.md` and `slice-<N>.md`: created by Sonia; consumed and updated by Alex; verified by Rahat and Zach; recut by Sonia when implementation reveals a planning problem.
 - `dev-note-<slug>.md`: created or updated by Alex for Prototype and Bug Fix work that changes durable behaviour, leaves reusable code, records fix rationale, or creates future-spec facts; consumed by Faisal, Katrina, Lance, Sonia, Rahat, and Zach when formalizing, verifying, or reviewing later work.
 - `verification-matrix.md`: created by Sonia during readiness when proof boundaries matter; repaired or expanded by Rahat; consumed by Alex; validated by Rahat during verification.
 - `rca-<slug>.md`: created or updated by Rahat for confirmed defects; consumed by Rahat or Alex for fixes depending on scope; closed by Rahat after evidence shows the regression is covered.
 - `security-review-<slug>.md`: created by Zach when exploitable findings exist; consumed by Alex for implementation fixes or Lance/Katrina for design changes; closed by Zach after remediation is verified.
 - Documentation files: requirements defined by Faisal, implemented by Alex, and verified by Rahat against the shipped behaviour.
+
+Governance rule:
+- Queue artifacts are coordination state, not truth. `accepted` and `answered` do not change project truth by themselves. Only owner promotion into the governed source artifact makes a resolution authoritative.
 
 RCA path rule: initiative-linked defects live in the initiative folder. `_system/rca-<slug>.md` is valid only for genuinely global defects with no initiative, Slice, or initiative `_context.md` owner.
 

@@ -28,7 +28,7 @@ Present the synthesis under this structure:
 
 1. **Elicit open items** — If there are open items, run targeted elicitation immediately — do not let the synthesis stall:
 
-   > *"There are [N] open questions. Let me ask them directly:*
+   > *"There are [N] unresolved items. Let me ask them directly:*
    >
    > 1. [Question 1 — tightest possible phrasing]
    > 2. [Question 2]"*
@@ -37,8 +37,8 @@ Present the synthesis under this structure:
 
 2. **Return artifact implications** — After synthesis is complete and open items are resolved or explicitly deferred, prepare a handoff note for the invoking persona:
    - [ ] Non-negotiables to apply to the appropriate spec/design document
-   - [ ] Resolved open items and where matching Open Questions or Handoff Questions should be removed or marked `resolved`
-   - [ ] Deferred open items to record as user-owned Open Questions, persona-owned Handoff Questions, or Assumptions — with target responder, status, and consequence
+   - [ ] Resolved open items and where matching queued or source-local ambiguity records should be removed, promoted, or closed
+   - [ ] Deferred open items to record as `user-attention.md`, `spec-patch-queue.md`, or Assumptions — with target owner, status, and consequence
    - [ ] Synthesis record to append to the most relevant spec document:
 
    ```markdown

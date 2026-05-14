@@ -48,6 +48,8 @@ Check test coverage and run quality gates on completed code. Lean workflow appli
    - [ ] Update `slice-<N>.md` Implementation Notes when the issue is local to the Slice
    - [ ] Write or update `rca-<slug>.md` when a root cause investigation is needed
 
+   If verification reveals a design-contract defect or still-unpromoted user answer, route it through `spec-patch-queue.md` or `user-attention.md`. Do not treat queue status alone as verification closure.
+
    Do not hand off a failure-path issue, missing integration coverage, or failed gate only in chat.
 
 6. **Update Slice status** — When the Slice passes verification: update `slice-<N>.md` `qa_status` to `verified`. When verification fails or is blocked: update `qa_status` to `failed` or `blocked` and record the next owner.

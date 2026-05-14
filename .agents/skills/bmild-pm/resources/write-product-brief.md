@@ -33,7 +33,7 @@ Elicit and document the product brief for a new initiative.
    - [ ] Target users are named, not generic
    - [ ] At least one success criterion is measurable
    - [ ] Scope is a tight boundary, not a feature list
-   - [ ] Open Product Questions have target responder, status, recommendation, and consequence if deferred
+   - [ ] Any unresolved user-owned ambiguity is either resolved live, queued in `user-attention.md`, or documented as a bounded assumption only when low-risk and reversible
 
 5. **Write** — Write `[plan_folder]/<initiative-name>/product-brief.md` using `assets/product-brief-template.md`. Substitute `[user_name]` from `.bmild.toml`.
 
@@ -53,8 +53,8 @@ Elicit and document the product brief for a new initiative.
 ## Definition of Done
 
 - [ ] Problem, target users, competitive context, success criteria, scope, and vision are documented
-- [ ] Open Product Questions have target responder, status, recommendation, and consequence if deferred
+- [ ] Remaining ambiguity is routed through `user-attention.md`, `spec-patch-queue.md`, or bounded assumptions rather than durable question sections in `product-brief.md`
 - [ ] `product-brief.md` written to `[plan_folder]/<initiative-name>/`
 - [ ] `CHARTER.md` seeded or updated only if the distillation gate fired (cross-initiative conflict, new project-level invariant, or explicit user request)
 - [ ] `_context.md` updated with `product-brief.md` in `## Live`
-- [ ] Close message: artifacts written, open/deferred items, next owner
+- [ ] Close message: artifacts written, any queued or deferred governance items, next owner

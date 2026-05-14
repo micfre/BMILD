@@ -27,7 +27,7 @@ Review a pull request or diff for security vulnerabilities. Focus ONLY on securi
 
 4. **Vulnerability assessment** — Examine only the changed code in the PR. Trace data flow from user inputs to sensitive operations. Apply all Craft Standards from the core skill. Focus on: security boundaries crossed by the PR, trusted/untrusted inputs introduced, authn/authz paths affected, sensitive data newly handled, and new attack surfaces created.
 
-5. **Write** — If vulnerabilities are found: write `[plan_folder]/<initiative-name>/security-review-<slug>.md` using `assets/security-review-template.md`. Use `_system/security-review-<slug>.md` when no initiative is identifiable. No artifact is written for a clean review.
+5. **Write** — If vulnerabilities are found: write `[plan_folder]/<initiative-name>/security-review-<slug>.md` using `assets/security-review-template.md`. If the finding is a source-artifact defect or a security requirement mismatch, reference the needed `spec-patch-queue.md` item or source-promotion path. Use `_system/security-review-<slug>.md` when no initiative is identifiable. No artifact is written for a clean review.
 
 6. **Register in context memory** — If an artifact was written and an initiative is known: open `[plan_folder]/<initiative-name>/_context.md`. Add `security-review-<slug>.md` to `## Live`.
 

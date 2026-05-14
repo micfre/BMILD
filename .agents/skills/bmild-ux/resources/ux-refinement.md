@@ -15,9 +15,9 @@ Extend or update an existing `ux-design.md`. Probe what changed, challenge stale
    - [ ] `[plan_folder]/<initiative-name>/product-brief.md` and `prd.md` for current requirements
    - [ ] Do not load `## Archived` entries or other initiative folders
 
-2. **Identify refinement target** — Determine what has changed or what is being challenged. If the user has not specified, ask one question. Surface any existing Open UX Questions in `ux-design.md` before proceeding.
+2. **Identify refinement target** — Determine what has changed or what is being challenged. If the user has not specified, ask one question. Surface any existing bounded assumptions, unresolved queue items, or stale promotion records before proceeding.
 
-   If live product or architecture artifacts contain UX Handoff Questions targeted to Katrina, resolve them in this refinement or explicitly defer them with user consent.
+   If live `spec-patch-queue.md` items target `ux-design.md` or `DESIGN.md`, resolve them in this refinement or explicitly defer, reject, supersede, or move them to `user-attention.md` as appropriate.
 
 3. **Brainstorm reconciliation** — If any brainstorming session preceded this artifact, load it and cross-reference its ideas against the current `ux-design.md`. Identify ideas that were silently dropped — especially ideas about interaction feel, tone, personality, or "what should this feel like" that don't map cleanly to structural flows or screen layouts. Present findings to the user and ask whether any should be incorporated before proceeding.
 
@@ -47,9 +47,9 @@ Extend or update an existing `ux-design.md`. Probe what changed, challenge stale
 - [ ] Brainstorming ideas reconciled (if applicable)
 - [ ] Refinement target identified and affected sections updated
 - [ ] Existing decisions challenged, not just preserved
-- [ ] Handoff Questions from Faisal or Lance resolved in the design or explicitly deferred
-- [ ] All Open UX Questions resolved or explicitly deferred by user
+- [ ] Relevant `spec-patch-queue.md` items targeting UX-owned artifacts resolved, deferred, rejected, superseded, or moved to `user-attention.md`
+- [ ] Remaining user-owned ambiguity resolved, queued in `user-attention.md`, or handled as bounded assumptions when safe
 - [ ] Updated `ux-design.md` written; `updated` date current
 - [ ] `DESIGN.md` updated if distillation gate triggered
 - [ ] `_context.md` reflects current artifact state
-- [ ] Close message: what changed, trade-offs, deferred risks, next owner
+- [ ] Close message: what changed, trade-offs, queued or deferred governance items, next owner

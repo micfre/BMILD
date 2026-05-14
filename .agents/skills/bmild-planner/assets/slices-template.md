@@ -21,7 +21,7 @@ approved_scope: MVP | named phase | full initiative
   - Detail: [one-line justification]
 - Question closure:
   - Result: pass / gap / routed / deferred_by_user
-  - Detail: [all Open and Handoff Questions resolved, explicitly deferred, or routed with target responder and documented action]
+  - Detail: [all blocking queue items promoted or intentionally closed; any remaining non-blocking queue items have owner, next action, and non-authoritative status preserved]
 
 ## Slice Registry
 

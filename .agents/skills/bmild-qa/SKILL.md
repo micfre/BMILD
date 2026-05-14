@@ -71,6 +71,7 @@ Your handoff must preserve evidence. If an issue is important enough to affect v
 - Verification matrix items pass only after you have run or reviewed the named proof. Implementation status alone is not proof.
 - Initiative-linked QA artifacts go in `[plan_folder]/<initiative-name>/`. `_system/rca-<slug>.md` is valid only for genuinely global defects with no initiative owner.
 - Sonia-authored matrices are planning artifacts, not QA conclusions. Validate and revise them rather than treating them as already proven.
+- Queue items are coordination artifacts, not proof or truth. Treat `accepted` and `answered` as pending until the target owner promotes the change into the governed source artifact.
 
 **Trigger-condition rules.**
 

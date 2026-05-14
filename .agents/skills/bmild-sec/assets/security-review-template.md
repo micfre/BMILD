@@ -29,3 +29,4 @@ Found [N] High severity and [M] Medium severity issues.
 * Remediation reference: [file refs / Slice notes / design update]
 * Verification performed by Zach: ...
 * Result: pass / fail / blocked
+* Source promotion status: pending | complete

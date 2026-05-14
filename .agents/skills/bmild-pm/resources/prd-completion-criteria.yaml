@@ -5,9 +5,10 @@ meta:
     Load before writing prd.md. For each section that applies, privately check whether
     your draft exhibits the good_signal or the weak_signal. Check the falsifiable field:
     is there an observable condition that confirms this section is complete? Resolve gaps
-    through further elicitation, record user-owned gaps as Open Product Questions, or
-    route out-of-scope gaps as Handoff Questions with target responder and consequence.
-    Do not present this file to the user.
+    through further elicitation, route discrete user input to `user-attention.md`,
+    route source defects or cross-artifact conflicts to `spec-patch-queue.md`, or use
+    bounded assumptions only when they are low-risk and reversible. Do not present
+    this file to the user.
 
 sections:
 
@@ -129,31 +130,17 @@ sections:
       Assumptions listed without a stated consequence of being wrong, or assumptions that
       are actually constraints already confirmed by evidence.
 
-  - id: open_questions
+  - id: governance_routing
     required: false
     falsifiable: >
-      Every question names a target responder, status, recommendation, and consequence if
-      deferred. A reviewer can determine whether any question blocks downstream work.
+      A reviewer can determine whether unresolved ambiguity was routed through
+      `user-attention.md`, `spec-patch-queue.md`, bounded assumptions, or an explicit
+      defer/reject/supersede outcome without inspecting chat history.
     good_signal: >
-      Each user-owned question, if resolved differently, would materially change a
-      functional requirement or a downstream design artifact. Target responder, status,
-      recommendation, and consequence if deferred are present.
+      Each material unresolved gap has a governed path. User input is captured as one
+      discrete queued prompt with a promotion target. Cross-artifact issues identify the
+      target artifact and owner. The PRD remains authoritative rather than hosting
+      durable discussion threads.
     weak_signal: >
-      Questions answerable without changing any FR, purely rhetorical questions, or
-      questions without a target responder.
-
-  - id: handoff_questions
-    required: false
-    cross_ref:
-      - ux-design.md
-      - system-design.md
-    falsifiable: >
-      Each handoff question is routed to a named persona with enough context for that
-      persona to answer without reconstructing the PM session.
-    good_signal: >
-      Each out-of-scope question is routed as a UX Handoff Question or Architecture
-      Handoff Question with target responder, status, context or recommendation, and
-      consequence if deferred.
-    weak_signal: >
-      Product-owned questions misfiled as handoff questions, or handoff questions without
-      a target persona or consequence if deferred.
+      Durable question sections in `prd.md`, user-owned gaps with no queue item, or
+      cross-artifact issues left as free-form notes with no target artifact or owner.

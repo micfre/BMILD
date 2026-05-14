@@ -32,15 +32,15 @@ Revisit and improve existing PM artifacts. Probe what changed, challenge stale c
 
    Use the highest-signal discovery method appropriate to the task: symbol navigation for known entities, semantic search for behavioural or architectural concepts, and AST-aware analysis for syntax-sensitive pattern matching, migrations, and refactors.
 
-   Probe what was assumed vs. what has been validated. Surface any unresolved Open Product Questions or assumptions that haven't been tested. Apply all Craft Standards from the core skill.
+   Probe what was assumed vs. what has been validated. Surface any unresolved queue items, unanswered user-attention items, or assumptions that have not been tested. Apply all Craft Standards from the core skill.
 
-   If live UX or architecture artifacts contain Product Handoff Questions targeted to Faisal, resolve them in the refined spec or explicitly defer them with user consent.
+   If live `spec-patch-queue.md` items target `product-brief.md` or `prd.md`, resolve them in this refinement or explicitly defer, reject, supersede, or move them to `user-attention.md` as appropriate.
 
 5. **Elicit refinements** — Before the first question, preview the queue: name the categories you expect to cover and give an approximate question count so the user can tell whether this is a short alignment or a deeper session. Then probe the specific sections requiring change. Apply the same depth and rigour as initial authoring. Do not skip elicitation because upstream work already exists.
 
 6. **Write** — Load `./resources/brief-completion-criteria.yaml` and `./resources/prd-completion-criteria.yaml` and privately check each. Update the relevant artifacts. Use `assets/product-brief-template.md` and `assets/prd-template.md` as structural references. Preserve sections not being changed. Update the `updated` frontmatter date.
 
-7. **Gate check** — Walk the user through any remaining Open Product Questions. Confirm all user-owned questions are resolved or explicitly deferred. Route UX or architecture gaps as Handoff Questions targeted to Katrina or Lance.
+7. **Gate check** — Walk the user through any remaining product ambiguity that still needs live resolution. Confirm any unresolved user-owned gap is queued in `user-attention.md` if it still matters after the session. Route UX or architecture gaps through `spec-patch-queue.md` rather than durable handoff sections in PM artifacts.
 
 8. **Distillation gate (emergent CHARTER):** Update `plans/CHARTER.md` only if the refined content **introduces a project-level invariant**, **conflicts with a sibling initiative's product-brief**, or the user explicitly asks for it. Do not update CHARTER for refinements that stay scoped to this initiative. If `plans/CHARTER.md` does not exist and none of the triggers fire, do not seed it.
 
@@ -55,9 +55,9 @@ Revisit and improve existing PM artifacts. Probe what changed, challenge stale c
 - [ ] Brainstorming ideas reconciled (if applicable)
 - [ ] Refinement target identified and all relevant sections updated
 - [ ] Existing content challenged, not just preserved
-- [ ] Handoff Questions from Katrina or Lance resolved in the spec or explicitly deferred
-- [ ] All Open Product Questions resolved or explicitly deferred by user
+- [ ] Relevant `spec-patch-queue.md` items targeting PM-owned artifacts resolved, deferred, rejected, superseded, or moved to `user-attention.md`
+- [ ] Remaining user-owned ambiguity resolved, queued in `user-attention.md`, or handled as bounded assumptions when safe
 - [ ] Updated artifacts written; `updated` date current
 - [ ] `CHARTER.md` updated only if the distillation gate fired (project-level invariant, cross-initiative conflict, or explicit user request)
 - [ ] `_context.md` reflects current artifact state
-- [ ] Close message: what changed, open/deferred items, next owner
+- [ ] Close message: what changed, queued or deferred governance items, next owner

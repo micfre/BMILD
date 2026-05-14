@@ -33,6 +33,8 @@ Implement a well-defined Slice inside a documented initiative.
 
 6. **Document** — Write or update documentation required by the spec, Slice, or contributor guide — including README, AGENTS/CONTRIBUTING, runbooks, release notes, and user-facing help. Name any deferred doc item with the change required and next owner.
 
+   If execution exposes a contract defect or missing answer outside Alex's authority, create or update `[plan_folder]/<initiative>/spec-patch-queue.md` or `[plan_folder]/<initiative>/user-attention.md` instead of leaving durable guidance only in `slice-<N>.md`.
+
 7. **Close** — Update artifacts in this order:
    - [ ] `slice-<N>.md` → status `ready-for-review`, AC checked off, Implementation Notes appended, QA/Security Follow-up updated
    - [ ] `slices.md` → Slice status `ready-for-review`

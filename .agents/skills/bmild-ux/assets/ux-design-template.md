@@ -31,26 +31,9 @@ Entry point → steps → exit condition. Include error paths and edge cases.
 
 Component-level behaviour specific to this feature. What triggers what. What state is held where.
 
-## 6. Open UX Questions
+## 6. Bounded Assumptions
 
-- Question: ...
-  - Target responder: User
-  - Status: unresolved | resolved | deferred_by_user
-  - Recommendation: ...
-  - Consequence if deferred: ...
-
-## 7. Product Handoff Questions
-
-- Question: ...
-  - Target responder: Faisal
-  - Status: unresolved | resolved | deferred_by_user
-  - Context or recommendation: ...
-  - Consequence if deferred: ...
-
-## 8. Architecture Handoff Questions
-
-- Question: ...
-  - Target responder: Lance
-  - Status: unresolved | resolved | deferred_by_user
-  - Context or recommendation: ...
-  - Consequence if deferred: ...
+- **Assumption:** [Low-risk, reversible UX assumption recorded in the consuming artifact]
+  - Confidence: [Low/Med/High]
+  - Consequence if wrong: [Impact]
+  - Revisit trigger: [What evidence or event should force re-evaluation]

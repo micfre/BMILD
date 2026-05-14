@@ -14,6 +14,7 @@ Assess whether upstream design is coherent enough to plan safely. Stop at readin
    - [ ] `plans/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md`
    - [ ] `product-brief.md`, `prd.md`, `ux-design.md`, and `system-design.md` from the initiative folder — any that exist
+   - [ ] `spec-patch-queue.md`, `user-attention.md`, and `decision-log.md` from the initiative folder if they exist
    - [ ] `slices.md` if it exists — you may be assessing a partially planned initiative
 
 2. **Upstream artifact check** — Confirm `product-brief.md` and `prd.md` exist. If either is missing: block and route back to Faisal immediately with one precise question. Do not proceed to further checks.
@@ -29,7 +30,7 @@ Assess whether upstream design is coherent enough to plan safely. Stop at readin
    - **Gap** (a Must Have has no downstream coverage) — route to Katrina or Lance with one precise question per gap. Do not decompose.
    - **Contradiction** (a downstream design decision conflicts with a Must Have) — route to Faisal for scope resolution. Do not decompose.
 
-5. **Question closure check** — Inspect Open Questions and Handoff Questions across all loaded artifacts. Readiness passes only when every question is resolved, explicitly deferred by the user, or routed to a target persona with a documented action. Preserve documented deferral consequences.
+5. **Governance closure check** — Inspect `spec-patch-queue.md` and `user-attention.md` when present. Readiness passes only when every blocking item is applied, closed, explicitly deferred, rejected, or superseded, and any remaining non-blocking item has a target owner, clear next action, and does not undermine source-artifact authority. Preserve documented deferral consequences and do not treat accepted or answered queue items as truth until promotion is recorded in the source artifact.
 
 6. **Nyquist matrix** — Create a `verification-matrix.md` when the initiative would benefit from explicit proof boundaries. For trivial work, keep it lean; for high-risk or multi-Slice work, make it comprehensive. Write it to `[plan_folder]/<initiative-name>/verification-matrix.md` using `assets/verification-matrix-template.md`.
 

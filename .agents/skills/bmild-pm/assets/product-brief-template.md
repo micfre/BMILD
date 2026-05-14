@@ -33,11 +33,3 @@ author: "[user_name] + Faisal (PM)"
 ## 2-3 Year Vision
 
 [Where this goes if the first initiative succeeds. What it becomes. Inspiring but grounded.]
-
-## Open Product Questions
-
-- Question: ...
-  - Target responder: User
-  - Status: unresolved | resolved | deferred_by_user
-  - Recommendation: ...
-  - Consequence if deferred: ...

@@ -72,6 +72,15 @@ Handoffs are obligations, not exits. Each persona passes a usable contract to th
 - Rahat passes persistent verification evidence, documentation verification, documented defects, and minimal confirmed repairs when QA can close the loop directly.
 - Zach passes only high-confidence security findings with owner and remediation path.
 
+When ambiguity appears, BMILD does not preserve it as durable chat threaded through source artifacts. It routes the issue into one of four governed outcomes:
+
+- `spec-patch-queue.md` for source-artifact defects or cross-artifact conflicts
+- `user-attention.md` for one discrete user decision that still needs owner promotion
+- bounded assumptions inside the consuming source artifact when the risk is low and reversible
+- explicit defer, reject, or supersede outcomes when that is the honest state
+
+Queue items are non-authoritative by design. A resolution becomes truth only after the owning persona promotes it into the target source artifact.
+
 Advanced modes are team tools. Debate resolves consequential ambiguity, Elicit strengthens a draft, and Brainstorm expands options before convergence. When invoked from inside a named persona workflow, they return patch-ready notes to that persona instead of taking over artifact ownership.
 
 Named personas also open with a compact operating stance that identifies who is speaking, the work type, the active scope, and the role boundary. This keeps weaker harnesses oriented without turning the personas into rigid scripts.
@@ -87,12 +96,20 @@ BMILD artifacts have owners and consumers:
 - Project-root `DESIGN.md`: created and maintained by Katrina; carries durable global UX patterns (palette, typography, global component rules) distilled from initiative-specific UX work.
 - `ux-design.md`: created by Katrina; consumed by Lance, Sonia, Alex, Rahat, and Zach; validated through observable user-state checks.
 - `system-design.md`: created by Lance; consumed by Sonia, Alex, Rahat, and Zach; validated through implementability, testability, and security review.
+- `spec-patch-queue.md`: initiative-local coordination queue for proposed source-artifact repairs and cross-artifact conflicts. Non-authoritative until the target owner updates the target artifact.
+- `user-attention.md`: initiative-local queue for discrete user input that still needs owner promotion into a governed artifact.
+- `decision-log.md`: optional durable record for multi-artifact decisions that have already been promoted into source artifacts. Not a question tracker.
 - `slices.md` and `slice-<N>.md`: created by Sonia; consumed and updated by Alex; verified by Rahat and Zach; recut by Sonia when implementation reveals a planning problem.
 - `dev-note-<slug>.md`: created or updated by Alex for Prototype and Bug Fix work that changes durable behaviour, leaves reusable code, records fix rationale, or creates future-spec facts; consumed by Faisal, Katrina, Lance, Sonia, Rahat, and Zach when formalizing, verifying, or reviewing later work.
 - `verification-matrix.md`: created by Sonia during readiness when proof boundaries matter; repaired or expanded by Rahat; consumed by Alex; validated by Rahat during verification.
 - `rca-<slug>.md`: created or updated by Rahat for confirmed defects; consumed by Rahat or Alex for fixes depending on scope; closed by Rahat after evidence shows the regression is covered.
 - `security-review-<slug>.md`: created by Zach when exploitable findings exist; consumed by Alex for implementation fixes or Lance/Katrina for design changes; closed by Zach after remediation is verified.
 - Documentation files: requirements defined by Faisal, implemented by Alex, and verified by Rahat against the shipped behaviour.
+
+Governance rule:
+- authoritative state lives in BMILD source artifacts, not in queue history
+- `accepted` and `answered` are intermediate workflow states, not truth states
+- `_system/decision-log.md` is reserved for genuinely cross-initiative decisions
 
 RCA path rule: initiative-linked defects live in the initiative folder. `_system/rca-<slug>.md` is valid only for genuinely global defects with no initiative, Slice, or initiative `_context.md` owner.
 

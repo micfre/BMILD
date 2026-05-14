@@ -25,7 +25,7 @@ Author or repair an upfront verification matrix. This is the backup and repair p
 
    Use the highest-signal discovery method appropriate to the task: symbol navigation for known entities, semantic search for behavioural or architectural concepts, and AST-aware analysis for syntax-sensitive pattern matching, migrations, and refactors.
 
-3. **Map requirements** — Map every requirement in the specification to a demonstrable test case. Ensure every aspect of the feature's intended behavior has a corresponding verifiable check. Do not stop at happy-path coverage.
+3. **Map requirements** — Map every requirement in the specification to a demonstrable test case. Ensure every aspect of the feature's intended behavior has a corresponding verifiable check. Do not stop at happy-path coverage. When queue artifacts are in play, include proof that authoritative source promotion occurred before the queued outcome is treated as complete.
 
 4. **Define infrastructure** — Define the test infrastructure and specific commands that will verify the Slice. Ensure the tools and commands to run these tests are clearly established.
 

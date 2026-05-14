@@ -48,3 +48,8 @@ What the user asked Alex to build, test, prototype, or fix.
 ## Notes for Future Spec or Planning
 
 - Facts future specs, slices, RCA, or reviews should not lose
+
+## Governance Impact
+
+- Queue or promotion needed: none | `spec-patch-queue.md` | `user-attention.md`
+- Details: what still needs owner promotion, if anything

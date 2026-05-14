@@ -33,6 +33,8 @@ Implement a localized fix driven by a confirmed root cause from Rahat. Do not re
 
 6. **Document** — Required when externally visible behaviour, operational runbooks, setup instructions, or user help changed. Otherwise record `Documentation impact: none`.
 
+   If the fix reveals a remaining contract defect or unanswered question outside Alex's authority, route it through `spec-patch-queue.md` or `user-attention.md` rather than a chat-only handoff.
+
 7. **Close** — Update artifacts in this order:
    - [ ] `rca-<slug>.md` → add fix details and regression-test reference; set `next_owner` to Rahat
    - [ ] `verification-matrix.md` → relevant items `implemented` or `blocked`, never `passed`

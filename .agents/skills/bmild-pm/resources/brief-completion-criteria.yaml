@@ -5,8 +5,9 @@ meta:
     Load before writing product-brief.md. For each section, privately check whether your
     draft exhibits the good_signal or the weak_signal. Check the falsifiable field: is
     there an observable condition that confirms this section is complete? Resolve gaps
-    through elicitation or record as Open Product Questions. Do not present this file
-    to the user.
+    through elicitation, route discrete user input to `user-attention.md`, or use a
+    bounded assumption only when it is low-risk and reversible. Do not present this
+    file to the user.
 
 sections:
 
@@ -119,15 +120,16 @@ sections:
       No project context stated, or domain described at a level too general to constrain
       any technical or UX decision.
 
-  - id: open_questions
+  - id: governance_routing
     required: false
     falsifiable: >
-      Every question names a target responder, a recommendation, and a consequence if
-      deferred. A reviewer can determine ownership and urgency for each.
+      A reviewer can tell whether unresolved ambiguity was routed to `user-attention.md`,
+      a bounded assumption, or an explicit defer/reject/supersede outcome without
+      relying on chat history.
     good_signal: >
-      Each question, if resolved differently, would change the vision, user model, or
-      competitive positioning. Target responder, recommendation, and consequence if
-      deferred are present.
+      Material unresolved ambiguity is routed through governed artifacts rather than
+      embedded question threads. If user input is still required, the queue item carries
+      one discrete prompt, enough context, and a clear promotion target.
     weak_signal: >
-      Questions about implementation details, questions with no consequence if deferred,
-      or questions without a target responder.
+      Durable question sections inside `product-brief.md`, ambiguous ownership, or
+      unresolved product ambiguity left only in chat.

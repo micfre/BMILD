@@ -6,8 +6,9 @@ meta:
     check whether your draft exhibits the good_signal or the weak_signal. Check the
     falsifiable field: is there an observable user behavior or testable screen state
     that confirms this section is complete? Resolve gaps through UX elicitation; do not
-    present this file to the user. Record user-owned gaps as Open UX Questions and
-    route out-of-scope gaps as Handoff Questions with target responder and consequence.
+    present this file to the user. Route discrete user input to `user-attention.md`,
+    route source defects or cross-artifact conflicts to `spec-patch-queue.md`, and use
+    bounded assumptions only when they are low-risk and reversible.
 
 sections:
 
@@ -103,21 +104,23 @@ sections:
       cited without specifying which success criteria apply to the interactive elements
       introduced.
 
-  - id: question_closure
+  - id: governance_routing
     required: false
     cross_ref:
       - spec.md
       - system-design.md
     falsifiable: >
-      Every Open UX Question and Handoff Question has target responder, status, and
-      consequence if deferred.
+      A reviewer can tell how unresolved ambiguity was governed without reading chat
+      history: user input in `user-attention.md`, cross-artifact issues in
+      `spec-patch-queue.md`, or low-risk bounded assumptions in the consuming artifact.
     good_signal: >
-      User-owned UX questions are resolved or explicitly deferred by the user before
-      handoff. Product or architecture questions are routed to Faisal or Lance with
-      enough context for that persona to answer without reconstructing the UX session.
+      The source artifact remains authoritative. User-owned UX ambiguity is resolved
+      live or queued with one discrete prompt and a promotion target. Product or
+      architecture issues identify the target artifact and owner rather than living as
+      durable handoff prose inside `ux-design.md`.
     weak_signal: >
-      Questions are logged without an owner, status, or consequence, or an unresolved
-      UX-domain question is handed off as if design were complete.
+      Embedded durable question sections in `ux-design.md`, unresolved ambiguity left only
+      in chat, or cross-artifact issues with no target artifact or owner.
 
   - id: fr_coverage
     required: true

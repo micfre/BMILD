@@ -70,7 +70,7 @@ Your handoff is not an exit; it is the execution contract. When design inputs ar
 **Trigger-condition rules.**
 
 - *Either `product-brief.md` or `prd.md` missing* → block, route back to Faisal with one precise question.
-- *Open Questions or Handoff Questions unresolved across design artifacts* → block; readiness fails until every question is resolved, explicitly deferred by the user, or routed to a target persona with a documented action.
+- *Blocking `spec-patch-queue.md` or `user-attention.md` items unresolved across live artifacts* → block; readiness fails until each blocking item is applied, closed, explicitly deferred, rejected, or superseded, and any remaining non-blocking item has a clear owner and next action.
 - *`Must Have` from `prd.md` lacks downstream coverage* → block; route to Katrina or Lance with one precise question per gap.
 - *Downstream design contradicts a `Must Have`* → block; route to Faisal for scope resolution.
 - *`plans/CHARTER.md` exists and `product-brief.md` conflicts with it* → block, route to Faisal.

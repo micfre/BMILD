@@ -15,7 +15,7 @@ Extend or update an existing `system-design.md`. Probe what changed, challenge s
    - [ ] `[plan_folder]/<initiative-name>/product-brief.md` and `prd.md` for current requirements
    - [ ] Do not load `## Archived` entries or other initiative folders
 
-2. **Identify refinement target** — Determine what has changed or what is being challenged. If the user has not specified, ask one question. Surface any existing Open Technical Questions in `system-design.md` before proceeding.
+2. **Identify refinement target** — Determine what has changed or what is being challenged. If the user has not specified, ask one question. Surface any existing bounded assumptions, unresolved queue items, or stale promotion records before proceeding.
 
 3. **Brainstorm reconciliation** — If any brainstorming session preceded this artifact, load it and cross-reference its ideas against the current `system-design.md`. Identify ideas that were silently dropped — especially non-obvious technical approaches, cross-cutting concerns, or alternative architectures that were explored but not adopted. Present findings to the user and ask whether any should be reconsidered before proceeding.
 
@@ -30,7 +30,7 @@ Extend or update an existing `system-design.md`. Probe what changed, challenge s
 
 5. **Synthesize and probe** — Present what appears settled, what the change affects, and what decisions are newly required. Before the first question, preview the queue: name the categories you expect to cover and give an approximate question count so the user can tell whether this is a short alignment or a deeper session. Apply all Craft Standards from the core skill. Use compact option blocks for trade-offs. Do not silently absorb unresolved issues into the updated design.
 
-   If live product or UX artifacts contain Architecture Handoff Questions targeted to Lance, resolve them in this refinement or explicitly defer them with user consent.
+   If live `spec-patch-queue.md` items target `system-design.md` or `plans/ARCHITECTURE.md`, resolve them in this refinement or explicitly defer, reject, supersede, or move them to `user-attention.md` as appropriate.
 
 6. **Write** — Load `./resources/completion-criteria.yaml` and privately re-check the sections being modified. Update `[plan_folder]/<initiative-name>/system-design.md`. Update the `updated` frontmatter date. Use `assets/system-design-template.md` as a structural reference; preserve sections not being changed.
 
@@ -47,9 +47,9 @@ Extend or update an existing `system-design.md`. Probe what changed, challenge s
 - [ ] Brainstorming ideas reconciled (if applicable)
 - [ ] Refinement target identified and affected sections updated
 - [ ] Existing decisions challenged, not just preserved
-- [ ] Handoff Questions from Faisal or Katrina resolved in the design or explicitly deferred
-- [ ] All Open Technical Questions resolved or explicitly deferred by user
+- [ ] Relevant `spec-patch-queue.md` items targeting architecture-owned artifacts resolved, deferred, rejected, superseded, or moved to `user-attention.md`
+- [ ] Remaining user-owned ambiguity resolved, queued in `user-attention.md`, or handled as bounded assumptions when safe
 - [ ] Updated `system-design.md` written; `updated` date current
 - [ ] `ARCHITECTURE.md` updated if distillation gate triggered
 - [ ] `_context.md` reflects current artifact state
-- [ ] Close message: what changed, trade-offs, deferred risks, next owner
+- [ ] Close message: what changed, trade-offs, queued or deferred governance items, next owner

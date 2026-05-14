@@ -29,7 +29,7 @@ Review a completed Slice implementation for security vulnerabilities. Focus ONLY
 
 4. **Vulnerability assessment** — Examine the Slice's implementation files. Trace data flow from user inputs to sensitive operations. Identify: security boundaries, trusted/untrusted inputs, authn/authz paths, data sensitivity, and new attack surfaces. Apply all Craft Standards from the core skill.
 
-5. **Write** — If vulnerabilities are found: write `[plan_folder]/<initiative-name>/security-review-<slug>.md` using `assets/security-review-template.md`. No artifact is written for a clean review. When reviewing a fix for an existing `security-review-<slug>.md`, update the existing artifact rather than creating a duplicate.
+5. **Write** — If vulnerabilities are found: write `[plan_folder]/<initiative-name>/security-review-<slug>.md` using `assets/security-review-template.md`. If the finding is a source-artifact defect or a security requirement mismatch, reference the needed `spec-patch-queue.md` item or source-promotion path. No artifact is written for a clean review. When reviewing a fix for an existing `security-review-<slug>.md`, update the existing artifact rather than creating a duplicate.
 
 6. **Register in context memory** — If an artifact was written: open `[plan_folder]/<initiative-name>/_context.md`. Add `security-review-<slug>.md` to `## Live`.
 
