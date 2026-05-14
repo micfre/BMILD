@@ -117,6 +117,8 @@ RCA path rule: initiative-linked defects live in the initiative folder. `_system
 
 No orchestrator, no state machine. Personas write directly to the folder specified by `plan_folder` in `.bmild.toml` (defaults to `plans/`) at your project root using plain markdown. This can be structured alongside project source or kept separately — the personas resolve all paths relative to the project root.
 
+When you name an initiative, standard personas check the exact initiative folder first, then consult `_system/_rollup.md` if it is absent. Design-tier personas use PM artifacts as fixed upstream truth: Katrina and Lance read `product-brief.md` and `prd.md` before eliciting, then ask only UX- or architecture-owned follow-up questions.
+
 ```
 <project-root>/
 ├── DESIGN.md                       # Katrina output: durable global UX patterns (palette, typography, component rules). Project-root because it is a project-wide standard.

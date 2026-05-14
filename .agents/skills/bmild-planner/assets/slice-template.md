@@ -66,6 +66,16 @@ One concrete outcome advanced by this Slice.
 - Closest prior implementation/prototype/test considered: yes / no / not applicable — [path or reason]
 - Verification/comparator/artifact-writer boundary considered: yes / no / not applicable — [path or reason]
 
+## Slice token estimate
+
+- Estimated consumption: <estimated_total> tokens / <slice_target> budget (<percent>% of context window), <WITHIN BUDGET | OVER BUDGET>
+- Raw script values:
+  - raw_file_tokens: <raw_file_tokens>
+  - weighted_reads: <weighted_reads>
+  - weighted_edits: <weighted_edits>
+  - tokenizer_base: <tokenizer_base>
+  - tokenizer_multiplier: <tokenizer_multiplier>
+
 ## Verifiable End Condition
 
 Specific enough to reuse during backward coverage checking.
@@ -79,7 +89,7 @@ Specific enough to reuse during backward coverage checking.
 - Budgeted reads: <none/list>.
 - Budgeted edits: <none/list>.
 - Budgeted new files: <0/N> from <path/to/src or none>.
-- Budget estimate: <estimated_total>/<target> tokens, WITHIN BUDGET | OVER BUDGET; skipped reads: <none/list>; skipped new: <none/list>; skipped edits: <none/list>.
+- Budget skips: skipped reads: <none/list>; skipped new: <none/list>; skipped edits: <none/list>.
 
 ## Implementation Notes
 

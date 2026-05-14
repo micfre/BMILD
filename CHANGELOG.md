@@ -44,6 +44,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated Planner slice budgeting guidance to invoke the skill-local tokenizer with `bash` and persist the returned token estimate in Slice Planning Notes.
 - Reframed Dev modes around user intent: Spec, Prototype, and Bug Fix, with shared implementation discipline and mode-specific memory, handoff, and documentation contracts.
 - Added Dev note persistence for prototype and bug-fix work that would otherwise disappear into chat-only context.
+- Hardened BMILD activation path resolution for standard personas, including direct initiative-folder checks before broad searches.
+- Tuned UX and Arch elicitation so PM artifacts are hydrated first, settled PRD requirements are not reopened, and domain-specific hypotheses drive user questions.
+- Made Planner budgeting use the skill-local `budget-slice.sh` path and added a required `## Slice token estimate` block with returned token totals and raw script values.
+- Adjusted Dev mode detection so a named initiative with one live Slice enters Spec-Dev, while ambiguous planned work asks for Slice scope instead of falling through to Direct-Dev.
 
 ## [0.1] - 2026-04-20
 

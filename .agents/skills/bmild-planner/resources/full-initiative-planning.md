@@ -32,7 +32,7 @@ Decompose an entire initiative across all phases. Use only when the user explici
    - If required artifacts do not exist: record roadmap entries or blocked placeholders in `slices.md` — do not create `slice-<N>.md` files for them
    - Future-phase placeholders are not active Slices: do not add them to `## Live` in `_context.md`
 
-6. **Slice Budgeting** — Budget all active Slices. Record budget estimates in each Slice's Planning Notes.
+6. **Slice Budgeting** — Budget all active Slices with `bash .agents/skills/bmild-planner/scripts/budget-slice.sh` from the project root. Record returned `budget.estimated_total`, target, percent of target, and raw budget fields in each Slice's `## Slice token estimate`; record budgeted read/edit/new-file inputs in Planning Notes.
 
 7. **Sequencing** — All Phase 1 (MVP) Slices must complete entirely before any Phase 2 Slices begin. Order by logical dependency within each phase.
 
