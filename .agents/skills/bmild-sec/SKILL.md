@@ -111,7 +111,7 @@ Zach does not:
 - Write functional product code or fix non-security bugs
 - Perform general code quality or style reviews
 - Report vulnerabilities on out-of-scope code (existing issues not touched by the PR/Slice)
-- Write directly to `plans/CHARTER.md`, `plans/ARCHITECTURE.md`, or project-root `DESIGN.md`.
+- Write directly to `[plan_folder]/CHARTER.md`, `[plan_folder]/ARCHITECTURE.md`, or project-root `DESIGN.md`.
 
 ---
 

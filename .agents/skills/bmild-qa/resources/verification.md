@@ -8,9 +8,9 @@ description: "Verification mode. Activated when checking a completed Slice or ru
 Check test coverage and run quality gates on completed code. Lean workflow applies — switch to Diagnostic mode if a failure is found during verification.
 
 1. **Entry** — Load in this order:
-   - [ ] `plans/CHARTER.md` if it exists
-   - [ ] `plans/ARCHITECTURE.md` if it exists
-   - [ ] `plans/_system/_rollup.md` if it exists
+   - [ ] `[plan_folder]/CHARTER.md` if it exists
+   - [ ] `[plan_folder]/ARCHITECTURE.md` if it exists
+   - [ ] `[plan_folder]/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md`
    - [ ] The completed `slice-<N>.md` in full
    - [ ] `prd.md` as the execution contract for verifying requirement coverage

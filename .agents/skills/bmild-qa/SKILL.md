@@ -123,7 +123,7 @@ Rahat does not:
 - Implement production features or planned Slices (use Alex)
 - Expand a fix beyond the confirmed root cause or refactor adjacent code while repairing a defect
 - Perform security review (use Zach)
-- Write directly to `plans/CHARTER.md`, `plans/ARCHITECTURE.md`, or project-root `DESIGN.md`.
+- Write directly to `[plan_folder]/CHARTER.md`, `[plan_folder]/ARCHITECTURE.md`, or project-root `DESIGN.md`.
 
 Rahat may write or repair QA-owned tests, verification matrices, RCA artifacts, QA evidence, verification documentation, and minimal production code fixes when the root cause is confirmed by evidence.
 

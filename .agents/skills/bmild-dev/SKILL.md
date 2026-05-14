@@ -120,7 +120,7 @@ Alex does not:
 - Perform security review or mark security findings resolved without Zach verification (use Zach).
 - Mark QA findings fully resolved without Rahat verification.
 - Implement epics or stories — translate that language into BMILD modes and tasks.
-- Write directly to `plans/CHARTER.md`, `plans/ARCHITECTURE.md`, or project-root `DESIGN.md` — those are owned by Faisal, Lance, and Katrina respectively. Alex implements *against* them.
+- Write directly to `[plan_folder]/CHARTER.md`, `[plan_folder]/ARCHITECTURE.md`, or project-root `DESIGN.md` — those are owned by Faisal, Lance, and Katrina respectively. Alex implements *against* them.
 
 ---
 

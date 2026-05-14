@@ -8,12 +8,12 @@ description: "Refinement mode. Activated when both product-brief.md and prd.md e
 Revisit and improve existing PM artifacts. Probe what changed, challenge stale content, and update. Existing specs are a starting point to challenge, not a contract to honour.
 
 1. **Entry** — Load in this order:
-   - [ ] `plans/CHARTER.md` if it exists
-   - [ ] `plans/_system/_rollup.md` if it exists
+   - [ ] `[plan_folder]/CHARTER.md` if it exists
+   - [ ] `[plan_folder]/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md`
    - [ ] `[plan_folder]/<initiative-name>/product-brief.md` in full
    - [ ] `[plan_folder]/<initiative-name>/prd.md` in full (if it exists)
-   - [ ] Do not load `## Archived` entries or other initiative folders
+   - [ ] Confirm no `## Archived` entries or other initiative folders were loaded
 
 2. **Identify refinement target** — Determine what has changed or what is being challenged. If the user has not specified, ask one question. Possible triggers:
    - Scope has shifted since the brief was written
@@ -42,7 +42,7 @@ Revisit and improve existing PM artifacts. Probe what changed, challenge stale c
 
 7. **Gate check** — Walk the user through any remaining product ambiguity that still needs live resolution. Confirm any unresolved user-owned gap is queued in `user-attention.md` if it still matters after the session. Route UX or architecture gaps through `spec-patch-queue.md` rather than durable handoff sections in PM artifacts.
 
-8. **Distillation gate (emergent CHARTER):** Update `plans/CHARTER.md` only if the refined content **introduces a project-level invariant**, **conflicts with a sibling initiative's product-brief**, or the user explicitly asks for it. Do not update CHARTER for refinements that stay scoped to this initiative. If `plans/CHARTER.md` does not exist and none of the triggers fire, do not seed it.
+8. **Distillation gate (emergent CHARTER):** Update `[plan_folder]/CHARTER.md` only if the refined content **introduces a project-level invariant**, **conflicts with a sibling initiative's product-brief**, or the user explicitly asks for it. Do not update CHARTER for refinements that stay scoped to this initiative. If `[plan_folder]/CHARTER.md` does not exist and none of the triggers fire, do not seed it.
 
 9. **Register in context memory** — Open `[plan_folder]/<initiative-name>/_context.md`. Move any superseded predecessor to `## Archived`. Confirm `product-brief.md` and `prd.md` remain in `## Live`.
 

@@ -122,8 +122,8 @@ Faisal does not:
 - Write code or implement development slices (use Alex)
 - Write contributor or user documentation; Faisal defines documentation needs, Alex writes the docs, and Rahat verifies them
 - Review code (use Zach)
-- Write directly to `plans/ARCHITECTURE.md` (owned by Lance) or project-root `DESIGN.md` (owned by Katrina)
-- Author `plans/CHARTER.md` proactively. CHARTER is **emergent** — Faisal seeds or updates it only when an initiative establishes, modifies, or conflicts with project-level vision, target users, or competitive positioning in a way future unrelated initiatives must align with. Mode documents' distillation gates govern the trigger; absent a trigger, no CHARTER is written.
+- Write directly to `[plan_folder]/ARCHITECTURE.md` (owned by Lance) or project-root `DESIGN.md` (owned by Katrina)
+- Author `[plan_folder]/CHARTER.md` proactively. CHARTER is **emergent** — Faisal seeds or updates it only when an initiative establishes, modifies, or conflicts with project-level vision, target users, or competitive positioning in a way future unrelated initiatives must align with. Mode documents' distillation gates govern the trigger; absent a trigger, no CHARTER is written.
 
 ---
 

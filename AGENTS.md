@@ -79,7 +79,7 @@ This can be structured alongside project source or kept separately — the perso
 ├── DESIGN.md                       # Katrina output: durable global UX patterns (palette, typography, component rules). Project-root because it is a project-wide standard.
 └── plans/ (or your custom plan_folder)
     ├── CHARTER.md                  # Faisal output: emergent — seeded only when a project-level invariant is established or a cross-initiative conflict is resolved.
-    ├── ARCHITECTURE.md             # Lance output: durable rationale (tech stack, invariants Alex must respect, alternatives rejected). Canonical, plans/-level.
+    ├── ARCHITECTURE.md             # Lance output: durable rationale (tech stack, invariants Alex must respect, alternatives rejected). Canonical, plan_folder-level.
     ├── _system/                    # Global memory artifacts shared across initiatives.
     │   ├── _context.md             # Index of globally-live documents.
     │   └── _rollup.md              # Central registry of all active features/initiatives.
@@ -102,8 +102,8 @@ This can be structured alongside project source or kept separately — the perso
 
 Path rationale:
 - `DESIGN.md` lives at the **project root** as a project-wide standard, treated like `README.md`.
-- `CHARTER.md` and `ARCHITECTURE.md` live at the **`plans/` level** as canonical, durable rationale documents owned by Faisal and Lance respectively.
-- `_context.md` and `_rollup.md` live under **`plans/_system/`** as global memory artifacts.
+- `CHARTER.md` and `ARCHITECTURE.md` live at the **configured `plan_folder` level** as canonical, durable rationale documents owned by Faisal and Lance respectively.
+- `_context.md` and `_rollup.md` live under **`[plan_folder]/_system/`** as global memory artifacts.
 - `ARCHITECTURE.md` carries rationale; `AGENTS.md` / `CLAUDE.md` / `README.md` carry operator mechanics. Lance cross-links rather than restating.
 
 `_context.md` is the entry point for every persona. It lists documents that are currently `live` (in-use) vs. `archived`. Personas load only what is live and only what is relevant to the current engagement mode.
@@ -135,8 +135,8 @@ updated: YYYY-MM-DD
 
 - `product-brief.md`: created by Faisal; consumed by Katrina, Lance, Sonia, Rahat, and Zach; defines problem, users, success criteria, scope, and vision. Entry contract for downstream design.
 - `prd.md`: created by Faisal once a brief exists; consumed by Katrina, Lance, Sonia, Rahat, and Zach; defines functional requirements, journeys, prioritization (MVP / Growth), NFRs, and required documentation updates (README, contributor guides, runbooks, release notes, onboarding, user-facing help). Validated through coverage checks and verification matrix entries.
-- `plans/CHARTER.md`: emergent project-level artifact. Seeded or updated by Faisal only when an initiative establishes a project-level invariant (vision, target users, competitive positioning), conflicts with a sibling initiative's `product-brief.md`, or the user explicitly requests it. Consumed by all design-tier personas as a constraint when present; absent on most projects until a coherence-forcing event occurs.
-- `plans/ARCHITECTURE.md`: created and maintained by Lance; carries rationale (tech stack, invariants Alex must respect, migration patterns, alternatives rejected). Cross-links to `AGENTS.md`/`CLAUDE.md`/`README.md` for operator mechanics rather than restating them.
+- `[plan_folder]/CHARTER.md`: emergent project-level artifact. Seeded or updated by Faisal only when an initiative establishes a project-level invariant (vision, target users, competitive positioning), conflicts with a sibling initiative's `product-brief.md`, or the user explicitly requests it. Consumed by all design-tier personas as a constraint when present; absent on most projects until a coherence-forcing event occurs.
+- `[plan_folder]/ARCHITECTURE.md`: created and maintained by Lance; carries rationale (tech stack, invariants Alex must respect, migration patterns, alternatives rejected). Cross-links to `AGENTS.md`/`CLAUDE.md`/`README.md` for operator mechanics rather than restating them.
 - Project-root `DESIGN.md`: created and maintained by Katrina; carries durable global UX patterns (palette, typography, global component rules) distilled from initiative-specific UX work.
 - `ux-design.md`: created by Katrina; consumed by Lance, Sonia, Alex, Rahat, and Zach; validated through observable user-state checks.
 - `system-design.md`: created by Lance; consumed by Sonia, Alex, Rahat, and Zach; validated through implementability, testability, and security review.

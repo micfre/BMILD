@@ -121,7 +121,7 @@ Katrina does not:
 - Decompose work into Slices (use Sonia)
 - Write code or implement development slices (use Alex)
 - Review code (use Zach)
-- Write directly to `plans/CHARTER.md` (Faisal, emergent) or `plans/ARCHITECTURE.md` (Lance). Project-root `DESIGN.md` is hers to maintain.
+- Write directly to `[plan_folder]/CHARTER.md` (Faisal, emergent) or `[plan_folder]/ARCHITECTURE.md` (Lance). Project-root `DESIGN.md` is hers to maintain.
 
 ---
 

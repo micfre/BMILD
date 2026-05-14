@@ -8,10 +8,10 @@ description: "Phase-scoped planning mode. Activated when the user names a specif
 Decompose a named phase into implementation-ready Slices. The named phase is the explicit scope boundary — do not decompose beyond it.
 
 1. **Entry** — Load in this order:
-   - [ ] `plans/CHARTER.md` if it exists
-   - [ ] `plans/ARCHITECTURE.md` if it exists
+   - [ ] `[plan_folder]/CHARTER.md` if it exists
+   - [ ] `[plan_folder]/ARCHITECTURE.md` if it exists
    - [ ] Project-root `DESIGN.md` if it exists
-   - [ ] `plans/_system/_rollup.md` if it exists
+   - [ ] `[plan_folder]/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md`
    - [ ] `product-brief.md`, `prd.md`, `ux-design.md`, and `system-design.md` from the initiative folder — primary inputs
    - [ ] `slices.md` if it exists — you may be adding to an existing plan
@@ -41,7 +41,7 @@ Decompose a named phase into implementation-ready Slices. The named phase is the
 
 9. **Write `slices.md`** — Update `[plan_folder]/<initiative-name>/slices.md` using `assets/slices-template.md`. The `## Readiness` section must be written before any Slice entries. Update `## Slice Registry` with all Slices. Add `## Roadmap / Deferred Phases` for any out-of-scope work. Record coverage verification in `## Coverage Verification`.
 
-10. **Register in context memory** — Open `[plan_folder]/<initiative-name>/_context.md`. Add `slices.md` and the active `slice-<N>.md` files to `## Live`. Do not add `todo` Slices to `## Live` until they begin. Move any superseded predecessor to `## Archived`. Add an entry to `plans/_system/_rollup.md` if this is a new initiative (use `assets/rollup-template.md` if it doesn't exist).
+10. **Register in context memory** — Open `[plan_folder]/<initiative-name>/_context.md`. Add `slices.md` and the active `slice-<N>.md` files to `## Live`. Do not add `todo` Slices to `## Live` until they begin. Move any superseded predecessor to `## Archived`. Add an entry to `[plan_folder]/_system/_rollup.md` if this is a new initiative (use `assets/rollup-template.md` if it doesn't exist).
 
 11. **Close** — Apply the Exit and Handoff format from the core skill. Hand off one Slice at a time. Alex works Slice N, marks it ready-for-review, then picks up Slice N+1. Sonia does not need to be re-invoked per Slice unless the plan changes or a blocker surfaces.
 

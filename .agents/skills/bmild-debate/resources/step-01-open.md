@@ -27,7 +27,7 @@ Sonia and Alex do not participate — debate is a design-layer activity.
    - [ ] `[plan_folder]/_system/_context.md` and `_rollup.md` — load relevant `live` entries
    - [ ] `[plan_folder]/<initiative-name>/_context.md` if an initiative is named — load relevant `live` entries
    - [ ] Specific documents directly relevant to the question (e.g. `system-design.md §X`, `ux-design.md §Y`)
-   - [ ] Do not load archived entries or unrelated feature folders
+   - [ ] Confirm no archived entries or unrelated feature folders were loaded
 
    Briefly narrate what you loaded: *"Context loaded: [list of documents]. The Leads are aware of the current design state. Ready to begin."*
 

@@ -9,11 +9,11 @@ In PRD mode, you translate the agreed product intent into phased, constrained, t
 Elicit and document the PRD for an initiative with an existing product brief.
 
 1. **Entry** — Load in this order:
-   - [ ] `plans/CHARTER.md` if it exists
-   - [ ] `plans/_system/_rollup.md` if it exists
+   - [ ] `[plan_folder]/CHARTER.md` if it exists
+   - [ ] `[plan_folder]/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md`
    - [ ] `[plan_folder]/<initiative-name>/product-brief.md` in full — this is the contract you are expanding
-   - [ ] Do not load `## Archived` entries or other initiative folders
+   - [ ] Confirm no `## Archived` entries or other initiative folders were loaded
 
 2. **Groundtruth** — Scan the codebase for any existing implementation relevant to the initiative. Discovery before invention: scan the codebase before accepting a greenfield premise in a brownfield project. Do not accept a greenfield premise when existing code constrains the design.
 

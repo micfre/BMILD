@@ -9,11 +9,11 @@ Design the frontend experience for a new initiative. Produce observable, testabl
 
 1. **Entry** — Resolve the initiative path by checking `[plan_folder]/<initiative-name>/` directly when an initiative is named. Load in this order:
    - [ ] Project-root `DESIGN.md` if it exists — your design must be consistent with established global UX patterns
-   - [ ] `plans/_system/_rollup.md` if it exists
+   - [ ] `[plan_folder]/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md` if the initiative is named or inferable
    - [ ] `[plan_folder]/<initiative-name>/product-brief.md` and `prd.md` — primary design inputs
    - [ ] `[plan_folder]/<initiative-name>/system-design.md` if it exists — technical constraints only; not a source of UX intent
-   - [ ] Do not load `## Archived` entries or other initiative folders
+   - [ ] Confirm no `## Archived` entries or other initiative folders were loaded
 
    If no `product-brief.md` or `prd.md` exists: probe for key user needs and requirements before proceeding. Entry at the UX stage is not permission to skip problem framing.
 

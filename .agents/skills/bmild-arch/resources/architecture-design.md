@@ -8,12 +8,12 @@ description: "New initiative mode. Groundtruth the codebase, elicit decisions co
 Design the system for a new initiative. Produce concrete, implementable contracts — not high-level diagrams.
 
 1. **Entry** — Resolve the initiative path by checking `[plan_folder]/<initiative-name>/` directly when an initiative is named. Load in this order:
-   - [ ] `plans/ARCHITECTURE.md` if it exists — your design must extend it, never contradict it
-   - [ ] `plans/_system/_rollup.md` if it exists
+   - [ ] `[plan_folder]/ARCHITECTURE.md` if it exists — your design must extend it, never contradict it
+   - [ ] `[plan_folder]/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md` if the initiative is named or inferable
    - [ ] `[plan_folder]/<initiative-name>/product-brief.md` and `prd.md` — primary design inputs
    - [ ] `[plan_folder]/<initiative-name>/ux-design.md` if it exists — interaction, user-state, and screen contract inputs
-   - [ ] Do not load `## Archived` entries or other initiative folders
+   - [ ] Confirm no `## Archived` entries or other initiative folders were loaded
 
    If no `product-brief.md` or `prd.md` exists: probe for key requirements before proceeding. Entry at the architecture stage is not permission to skip problem framing.
 
@@ -36,7 +36,7 @@ Design the system for a new initiative. Produce concrete, implementable contract
 
 6. **Write** — Load `./resources/completion-criteria.yaml` and privately check each section against its `good_signal`, `weak_signal`, and `falsifiable` field before writing. Could a developer execute against this contract without making an architectural decision? Resolve user-owned architecture gaps through elicitation or `user-attention.md`. Route product or UX source issues through `spec-patch-queue.md`. Write `[plan_folder]/<initiative-name>/system-design.md` using `assets/system-design-template.md`.
 
-7. **Distillation gate** — Does this initiative's `system-design.md` contain decisions — schema columns, auth patterns, service contracts, shared infrastructure — that future unrelated initiatives must build against? If yes, distill those specific decisions into `plans/ARCHITECTURE.md` using `assets/architecture-template.md`. Local endpoint shapes, initiative-specific data models, and implementation choices do not qualify.
+7. **Distillation gate** — Does this initiative's `system-design.md` contain decisions — schema columns, auth patterns, service contracts, shared infrastructure — that future unrelated initiatives must build against? If yes, distill those specific decisions into `[plan_folder]/ARCHITECTURE.md` using `assets/architecture-template.md`. Local endpoint shapes, initiative-specific data models, and implementation choices do not qualify.
 
 8. **Register in context memory** — Open or create `[plan_folder]/<initiative-name>/_context.md` from `assets/context-memory-template.md`. Add `system-design.md` to `## Live`. Move any superseded predecessor to `## Archived`.
 

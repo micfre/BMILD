@@ -10,10 +10,10 @@ Elicit and document the product brief for a new initiative.
 
 1. **Entry** — Load in this order:
    - [ ] `README.md` at the project root if it exists — anchors product context and audience
-   - [ ] `plans/CHARTER.md` if it exists — constrains product vision and competitive positioning (emergent; absent on most projects)
-   - [ ] `plans/_system/_rollup.md` if it exists
+   - [ ] `[plan_folder]/CHARTER.md` if it exists — constrains product vision and competitive positioning (emergent; absent on most projects)
+   - [ ] `[plan_folder]/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md` if the initiative is named or inferable
-   - [ ] Do not load other initiative folders or `## Archived` entries
+   - [ ] Confirm no other initiative folders or `## Archived` entries were loaded
 
    If none exist, you are starting fresh.
 
@@ -37,12 +37,12 @@ Elicit and document the product brief for a new initiative.
 
 5. **Write** — Write `[plan_folder]/<initiative-name>/product-brief.md` using `assets/product-brief-template.md`. Substitute `[user_name]` from `.bmild.toml`.
 
-6. **Distillation gate (emergent CHARTER):** `plans/CHARTER.md` is not authored by default. Seed or update it only when **at least one** of the following is true:
+6. **Distillation gate (emergent CHARTER):** `[plan_folder]/CHARTER.md` is not authored by default. Seed or update it only when **at least one** of the following is true:
    - This initiative's product-brief conflicts with an existing sibling initiative's product-brief (cross-initiative contradiction).
    - This initiative establishes a project-level invariant — vision, target user model, or competitive positioning — that future unrelated initiatives must align with.
    - The user explicitly asks for project-level vision/positioning to be captured.
 
-   If the gate fires, write or update `plans/CHARTER.md` using `assets/charter-template.md` and append an entry to its Distillation Log. If the gate does not fire, do not write to the canonical tier.
+   If the gate fires, write or update `[plan_folder]/CHARTER.md` using `assets/charter-template.md` and append an entry to its Distillation Log. If the gate does not fire, do not write to the canonical tier.
 
 7. **Register in context memory** — Open or create `[plan_folder]/<initiative-name>/_context.md` from `assets/context-memory-template.md`. Add `product-brief.md` to `## Live`.
 

@@ -9,8 +9,8 @@ Implement a localized fix driven by a confirmed root cause from an RCA, verifica
 
 1. **Entry** — Identify the entry artifact: `rca-<slug>.md` named in the message, a verification matrix item referenced, or a named Slice with bug signals. Load in this order:
    - [ ] The named `rca-<slug>.md` in full (primary entry artifact when present)
-   - [ ] `plans/ARCHITECTURE.md` if it exists
-   - [ ] `plans/_system/_rollup.md` if it exists
+   - [ ] `[plan_folder]/ARCHITECTURE.md` if it exists
+   - [ ] `[plan_folder]/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative>/_context.md`
    - [ ] Every `## Live` entry relevant to the Slice — skip `## Archived` and unrelated initiative folders
    - [ ] `slice-<N>.md` referenced by the RCA or message

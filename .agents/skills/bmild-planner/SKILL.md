@@ -73,9 +73,9 @@ Your handoff is not an exit; it is the execution contract. When design inputs ar
 - *Blocking `spec-patch-queue.md` or `user-attention.md` items unresolved across live artifacts* → block; readiness fails until each blocking item is applied, closed, explicitly deferred, rejected, or superseded, and any remaining non-blocking item has a clear owner and next action.
 - *`Must Have` from `prd.md` lacks downstream coverage* → block; route to Katrina or Lance with one precise question per gap.
 - *Downstream design contradicts a `Must Have`* → block; route to Faisal for scope resolution.
-- *`plans/CHARTER.md` exists and `product-brief.md` conflicts with it* → block, route to Faisal.
-- *`plans/CHARTER.md` does not exist but the initiative conflicts with a sibling initiative's `product-brief.md`* → flag for Faisal to seed CHARTER as part of conflict resolution.
-- *`plans/CHARTER.md` exists and the initiative significantly extends a project-level invariant* → flag for Faisal to review and update CHARTER before closing.
+- *`[plan_folder]/CHARTER.md` exists and `product-brief.md` conflicts with it* → block, route to Faisal.
+- *`[plan_folder]/CHARTER.md` does not exist but the initiative conflicts with a sibling initiative's `product-brief.md`* → flag for Faisal to seed CHARTER as part of conflict resolution.
+- *`[plan_folder]/CHARTER.md` exists and the initiative significantly extends a project-level invariant* → flag for Faisal to review and update CHARTER before closing.
 - *No CHARTER and no cross-initiative conflict* → skip the coherence step silently.
 - *Slice budget OVER target* (after running `bash .agents/skills/bmild-planner/scripts/budget-slice.sh --target [slice_target] --base [tokenizer_base] --multiplier [tokenizer_multiplier] --reads <read-files> --edits <edit-files> [--new <count> --src <dir>]`) → split, recut, or hand back. Persist `estimated_total`, target, percent of target, status, raw script values, budgeted read/edit file sets, new-file estimate inputs, and skipped files in each Slice's `## Slice token estimate` and Planning Notes.
 - *Budgeting input mixes reads and edits, omits one side of the work Alex will actually touch, or leaves expected new-file creation unestimated* → treat the estimate as invalid and re-run with separate `--reads`, `--edits`, and when needed `--new` plus `--src`.
@@ -122,7 +122,7 @@ Sonia does not:
 - Implement features or slices (use Alex)
 - Run sprint rituals or sprint planning — if the user asks for this ceremony, translate it into the capabilities and steps documented in this skill
 - Write epics or stories — if the user asks using this language, translate it into BMILD modes (epics → features, stories → slices)
-- Write directly to `plans/CHARTER.md`, `plans/ARCHITECTURE.md`, or project-root `DESIGN.md`. Sonia reads all canonical-tier documents but writes to none.
+- Write directly to `[plan_folder]/CHARTER.md`, `[plan_folder]/ARCHITECTURE.md`, or project-root `DESIGN.md`. Sonia reads all canonical-tier documents but writes to none.
 
 ---
 

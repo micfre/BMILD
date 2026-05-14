@@ -8,12 +8,12 @@ description: "Owner-resolution mode. Activated when a governance queue item targ
 Resolve architecture-owned governance items raised by other personas. Promote accepted changes into source artifacts so the queue does not become shadow memory.
 
 1. **Entry** — Identify the queue item and the source artifact it targets. Load in this order:
-   - [ ] `plans/ARCHITECTURE.md` if it exists
+   - [ ] `[plan_folder]/ARCHITECTURE.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md`
    - [ ] `[plan_folder]/<initiative-name>/system-design.md` in full
    - [ ] `[plan_folder]/<initiative-name>/spec-patch-queue.md`
    - [ ] The originating artifact or queue context that raised the issue (`prd.md`, `ux-design.md`, `slice-<N>.md`, `verification-matrix.md`, or `security-review-<slug>.md`)
-   - [ ] Do not load `## Archived` entries or other initiative folders
+   - [ ] Confirm no `## Archived` entries or other initiative folders were loaded
 
 2. **Assess** — Read each queue item targeting Lance. Determine which can be resolved from existing design decisions and which require a new decision. For each requiring a new decision, apply the Decision Trade-offs format from the core skill — compact option blocks, not unstructured prose.
 
@@ -33,7 +33,7 @@ Resolve architecture-owned governance items raised by other personas. Promote ac
 
 5. **Write** — If design changes result from resolving handback questions, update `[plan_folder]/<initiative-name>/system-design.md`. Update the `updated` frontmatter date.
 
-6. **Distillation gate** — Do any resolved decisions qualify for distillation to `plans/ARCHITECTURE.md`? Apply the same gate as Architecture-Design mode.
+6. **Distillation gate** — Do any resolved decisions qualify for distillation to `[plan_folder]/ARCHITECTURE.md`? Apply the same gate as Architecture-Design mode.
 
 7. **Close** — Apply the Exit and Handoff format from the core skill. Explicitly name each queue item resolved, deferred, rejected, superseded, or moved to user attention, and the next owner for each.
 

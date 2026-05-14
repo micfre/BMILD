@@ -8,8 +8,8 @@ description: "Architecture review mode. Reviews a system design or architectural
 Review an architectural spec or system design for security design flaws. Focus on trust boundaries, auth model, data sensitivity, and attack surfaces introduced by the design — before implementation begins.
 
 1. **Entry** — Load in this order:
-   - [ ] `plans/ARCHITECTURE.md` if it exists
-   - [ ] `plans/_system/_rollup.md` if it exists
+   - [ ] `[plan_folder]/ARCHITECTURE.md` if it exists
+   - [ ] `[plan_folder]/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md` if the initiative is named or inferable
    - [ ] `[plan_folder]/<initiative-name>/system-design.md` in full — the primary review target
    - [ ] `[plan_folder]/<initiative-name>/prd.md` and `product-brief.md` for context on user trust model and data sensitivity

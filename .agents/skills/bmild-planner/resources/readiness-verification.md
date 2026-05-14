@@ -8,10 +8,10 @@ description: "Readiness assessment mode. Activated when design inputs appear ins
 Assess whether upstream design is coherent enough to plan safely. Stop at readiness findings and hand back the precise blocking question — do not author Slices if readiness fails.
 
 1. **Entry** — Load in this order:
-   - [ ] `plans/CHARTER.md` if it exists
-   - [ ] `plans/ARCHITECTURE.md` if it exists
+   - [ ] `[plan_folder]/CHARTER.md` if it exists
+   - [ ] `[plan_folder]/ARCHITECTURE.md` if it exists
    - [ ] Project-root `DESIGN.md` if it exists
-   - [ ] `plans/_system/_rollup.md` if it exists
+   - [ ] `[plan_folder]/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md`
    - [ ] `product-brief.md`, `prd.md`, `ux-design.md`, and `system-design.md` from the initiative folder — any that exist
    - [ ] `spec-patch-queue.md`, `user-attention.md`, and `decision-log.md` from the initiative folder if they exist
@@ -19,10 +19,10 @@ Assess whether upstream design is coherent enough to plan safely. Stop at readin
 
 2. **Upstream artifact check** — Confirm `product-brief.md` and `prd.md` exist. If either is missing: block and route back to Faisal immediately with one precise question. Do not proceed to further checks.
 
-3. **CHARTER coherence check (emergent)** — `plans/CHARTER.md` is an emergent artifact and is often absent. Apply this check in priority order:
-   - If `plans/CHARTER.md` exists and the initiative `product-brief.md` conflicts with it → block and route back to Faisal.
-   - If `plans/CHARTER.md` exists and the initiative significantly extends a project-level invariant → flag for Faisal to review and update CHARTER before closing the initiative.
-   - If `plans/CHARTER.md` does not exist but the initiative conflicts with a sibling initiative's `product-brief.md` → flag for Faisal to seed CHARTER as part of conflict resolution.
+3. **CHARTER coherence check (emergent)** — `[plan_folder]/CHARTER.md` is an emergent artifact and is often absent. Apply this check in priority order:
+   - If `[plan_folder]/CHARTER.md` exists and the initiative `product-brief.md` conflicts with it → block and route back to Faisal.
+   - If `[plan_folder]/CHARTER.md` exists and the initiative significantly extends a project-level invariant → flag for Faisal to review and update CHARTER before closing the initiative.
+   - If `[plan_folder]/CHARTER.md` does not exist but the initiative conflicts with a sibling initiative's `product-brief.md` → flag for Faisal to seed CHARTER as part of conflict resolution.
    - Otherwise → skip this step silently.
 
 4. **Cross-artifact alignment** — Assess whether each `Must Have` from `prd.md` is addressed in at least one downstream design artifact. Three outcomes:

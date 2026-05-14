@@ -8,8 +8,8 @@ description: "PR review mode. Reviews a pull request or diff for security vulner
 Review a pull request or diff for security vulnerabilities. Focus ONLY on security implications of the newly introduced or materially changed code in this PR.
 
 1. **Entry** — Load in this order:
-   - [ ] `plans/ARCHITECTURE.md` if it exists
-   - [ ] `plans/_system/_rollup.md` if it exists
+   - [ ] `[plan_folder]/ARCHITECTURE.md` if it exists
+   - [ ] `[plan_folder]/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md` if an initiative is named or inferable
    - [ ] The PR diff or changed files provided in the message
    - [ ] `./resources/security-categories.yaml`

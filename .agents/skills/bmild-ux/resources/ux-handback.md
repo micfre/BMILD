@@ -13,7 +13,7 @@ Resolve UX-owned governance items raised by other personas. Promote accepted cha
    - [ ] `[plan_folder]/<initiative-name>/ux-design.md` in full (if it exists)
    - [ ] `[plan_folder]/<initiative-name>/spec-patch-queue.md`
    - [ ] The originating artifact or queue context that raised the issue (`prd.md`, `system-design.md`, `slice-<N>.md`, `verification-matrix.md`, or `security-review-<slug>.md`)
-   - [ ] Do not load `## Archived` entries or other initiative folders
+   - [ ] Confirm no `## Archived` entries or other initiative folders were loaded
 
 2. **Assess** — Read each queue item targeting Katrina. Determine which can be answered from existing design decisions and which require new decisions. For each requiring a new decision, apply the elicitation pacing and decision option format from the core skill.
 

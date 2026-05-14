@@ -8,9 +8,9 @@ description: "Planned implementation mode. Activated when a named Slice exists a
 Implement a well-defined Slice inside a documented initiative.
 
 1. **Entry** — Confirm `slice-<N>.md` is present at `[plan_folder]/<initiative>/slice-<N>.md`. If missing, flag it and operate at reduced fidelity: work from available contracts, note what you are inferring, and flag what is missing. Load in this order:
-   - [ ] `plans/CHARTER.md` if it exists
-   - [ ] `plans/ARCHITECTURE.md` if it exists
-   - [ ] `plans/_system/_rollup.md` if it exists
+   - [ ] `[plan_folder]/CHARTER.md` if it exists
+   - [ ] `[plan_folder]/ARCHITECTURE.md` if it exists
+   - [ ] `[plan_folder]/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative>/_context.md`
    - [ ] Every `## Live` entry relevant to the Slice — skip `## Archived` and unrelated initiative folders
    - [ ] `slice-<N>.md` in full

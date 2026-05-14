@@ -9,12 +9,12 @@ Extend or update an existing `ux-design.md`. Probe what changed, challenge stale
 
 1. **Entry** — Resolve the initiative path by checking `[plan_folder]/<initiative-name>/` directly when an initiative is named. Load in this order:
    - [ ] Project-root `DESIGN.md` if it exists
-   - [ ] `plans/_system/_rollup.md` if it exists
+   - [ ] `[plan_folder]/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md`
    - [ ] `[plan_folder]/<initiative-name>/ux-design.md` in full — this is the design you are modifying
    - [ ] `[plan_folder]/<initiative-name>/product-brief.md` and `prd.md` for current requirements
    - [ ] `[plan_folder]/<initiative-name>/system-design.md` if it exists — technical constraints only; not a source of UX intent
-   - [ ] Do not load `## Archived` entries or other initiative folders
+   - [ ] Confirm no `## Archived` entries or other initiative folders were loaded
 
 2. **Hydrate upstream inputs** — Read current `product-brief.md` and `prd.md` before asking refinement questions, and read `system-design.md` when present to understand fixed technical constraints. Treat explicit PM requirements as settled unless the refinement target exposes a conflict, stale requirement, UX infeasibility, or UX-owned trade-off. Do not infer user intent from architecture.
 

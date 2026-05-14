@@ -8,10 +8,10 @@ description: "Replanning mode. Activated when an existing plan has a blocker, de
 Revise an existing plan when a blocker surfaces, design changes, or a re-sequencing need arises during execution. Completed Slices are fixed history — only unstarted and active Slices are in scope for revision.
 
 1. **Entry** — Load in this order:
-   - [ ] `plans/CHARTER.md` if it exists
-   - [ ] `plans/ARCHITECTURE.md` if it exists
+   - [ ] `[plan_folder]/CHARTER.md` if it exists
+   - [ ] `[plan_folder]/ARCHITECTURE.md` if it exists
    - [ ] Project-root `DESIGN.md` if it exists
-   - [ ] `plans/_system/_rollup.md` if it exists
+   - [ ] `[plan_folder]/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md`
    - [ ] `slices.md` in full — read the current plan state before making any changes
    - [ ] All active `slice-<N>.md` files under `## Live`

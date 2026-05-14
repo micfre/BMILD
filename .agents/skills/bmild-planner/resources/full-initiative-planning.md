@@ -8,10 +8,10 @@ description: "Full-initiative planning mode. Activated only when the user explic
 Decompose an entire initiative across all phases. Use only when the user explicitly requests full-initiative planning — otherwise use Phase-Scoped Planning.
 
 1. **Entry** — Load in this order:
-   - [ ] `plans/CHARTER.md` if it exists
-   - [ ] `plans/ARCHITECTURE.md` if it exists
+   - [ ] `[plan_folder]/CHARTER.md` if it exists
+   - [ ] `[plan_folder]/ARCHITECTURE.md` if it exists
    - [ ] Project-root `DESIGN.md` if it exists
-   - [ ] `plans/_system/_rollup.md` if it exists
+   - [ ] `[plan_folder]/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md`
    - [ ] `product-brief.md`, `prd.md`, `ux-design.md`, and `system-design.md` from the initiative folder — all inputs
    - [ ] `slices.md` if it exists
@@ -42,7 +42,7 @@ Decompose an entire initiative across all phases. Use only when the user explici
 
 10. **Write `slices.md`** — Update `[plan_folder]/<initiative-name>/slices.md` using `assets/slices-template.md`. Include `## Readiness`, `## Slice Registry` (all phases), `## Roadmap / Deferred Phases` (blocked placeholders), and `## Coverage Verification`.
 
-11. **Register in context memory** — Open `[plan_folder]/<initiative-name>/_context.md`. Add `slices.md` and currently active `slice-<N>.md` files to `## Live`. Do not add `todo` Slices to `## Live` until they begin. Add an entry to `plans/_system/_rollup.md` (use `assets/rollup-template.md` if it doesn't exist).
+11. **Register in context memory** — Open `[plan_folder]/<initiative-name>/_context.md`. Add `slices.md` and currently active `slice-<N>.md` files to `## Live`. Do not add `todo` Slices to `## Live` until they begin. Add an entry to `[plan_folder]/_system/_rollup.md` (use `assets/rollup-template.md` if it doesn't exist).
 
 12. **Close** — Apply the Exit and Handoff format from the core skill.
 

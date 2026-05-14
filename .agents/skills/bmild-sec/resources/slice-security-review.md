@@ -8,8 +8,8 @@ description: "Slice review mode. Reviews a completed Slice implementation for se
 Review a completed Slice implementation for security vulnerabilities. Focus ONLY on security implications newly added by this Slice's code changes.
 
 1. **Entry** — Load in this order:
-   - [ ] `plans/ARCHITECTURE.md` if it exists — primary source for platform-level security constraints and auth model decisions
-   - [ ] `plans/_system/_rollup.md` if it exists
+   - [ ] `[plan_folder]/ARCHITECTURE.md` if it exists — primary source for platform-level security constraints and auth model decisions
+   - [ ] `[plan_folder]/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md`
    - [ ] `[plan_folder]/<initiative-name>/system-design.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/prd.md` and `product-brief.md` if they exist

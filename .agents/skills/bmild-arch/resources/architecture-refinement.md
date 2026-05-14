@@ -8,13 +8,13 @@ description: "Refinement mode. Activated when system-design.md already exists. E
 Extend or update an existing `system-design.md`. Probe what changed, challenge stale decisions, and update the artifact.
 
 1. **Entry** — Resolve the initiative path by checking `[plan_folder]/<initiative-name>/` directly when an initiative is named. Load in this order:
-   - [ ] `plans/ARCHITECTURE.md` if it exists
-   - [ ] `plans/_system/_rollup.md` if it exists
+   - [ ] `[plan_folder]/ARCHITECTURE.md` if it exists
+   - [ ] `[plan_folder]/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md`
    - [ ] `[plan_folder]/<initiative-name>/system-design.md` in full — this is the contract you are modifying
    - [ ] `[plan_folder]/<initiative-name>/product-brief.md` and `prd.md` for current requirements
    - [ ] `[plan_folder]/<initiative-name>/ux-design.md` if it exists — interaction, user-state, and screen contract inputs
-   - [ ] Do not load `## Archived` entries or other initiative folders
+   - [ ] Confirm no `## Archived` entries or other initiative folders were loaded
 
 2. **Hydrate upstream inputs** — Read current `product-brief.md`, `prd.md`, and `ux-design.md` when present before asking refinement questions. Treat explicit PM requirements and UX interaction/state contracts as settled unless the refinement target exposes a conflict, stale requirement, implementation impossibility, or architecture-owned trade-off.
 
@@ -33,11 +33,11 @@ Extend or update an existing `system-design.md`. Probe what changed, challenge s
 
 6. **Synthesize and probe** — Present what appears settled from PM and UX artifacts, what the change affects, what UX states imply for API/data/service boundaries, which architecture hypotheses follow, and what architecture decisions are newly required. Before the first question, preview the queue: name the categories you expect to cover and give an approximate question count so the user can tell whether this is a short alignment or a deeper session. Apply all Craft Standards from the core skill. Use compact option blocks only for genuine technical trade-offs. Do not silently absorb unresolved issues into the updated design.
 
-   If live `spec-patch-queue.md` items target `system-design.md` or `plans/ARCHITECTURE.md`, resolve them in this refinement or explicitly defer, reject, supersede, or move them to `user-attention.md` as appropriate.
+   If live `spec-patch-queue.md` items target `system-design.md` or `[plan_folder]/ARCHITECTURE.md`, resolve them in this refinement or explicitly defer, reject, supersede, or move them to `user-attention.md` as appropriate.
 
 7. **Write** — Load `./resources/completion-criteria.yaml` and privately re-check the sections being modified. Update `[plan_folder]/<initiative-name>/system-design.md`. Update the `updated` frontmatter date. Use `assets/system-design-template.md` as a structural reference; preserve sections not being changed.
 
-8. **Distillation gate** — Do any refined decisions qualify for distillation to `plans/ARCHITECTURE.md`? Apply the same gate as Architecture-Design mode: cross-initiative schema patterns, auth contracts, or shared infrastructure decisions only.
+8. **Distillation gate** — Do any refined decisions qualify for distillation to `[plan_folder]/ARCHITECTURE.md`? Apply the same gate as Architecture-Design mode: cross-initiative schema patterns, auth contracts, or shared infrastructure decisions only.
 
 9. **Register in context memory** — Confirm `system-design.md` remains in `## Live` in `_context.md`. Move any superseded predecessor to `## Archived` if a new version was created.
 

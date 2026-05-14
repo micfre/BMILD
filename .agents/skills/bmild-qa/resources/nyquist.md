@@ -8,9 +8,9 @@ description: "Upfront test authoring mode. Activated when Sonia's matrix is miss
 Author or repair an upfront verification matrix. This is the backup and repair path — Sonia owns the default readiness-time matrix. Use Nyquist mode when the matrix is missing, incomplete, stale, or explicitly requested as a QA-led pass.
 
 1. **Entry** — Load in this order:
-   - [ ] `plans/CHARTER.md` if it exists
-   - [ ] `plans/ARCHITECTURE.md` if it exists
-   - [ ] `plans/_system/_rollup.md` if it exists
+   - [ ] `[plan_folder]/CHARTER.md` if it exists
+   - [ ] `[plan_folder]/ARCHITECTURE.md` if it exists
+   - [ ] `[plan_folder]/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md`
    - [ ] `[plan_folder]/<initiative-name>/prd.md` — source of truth for requirements
    - [ ] `[plan_folder]/<initiative-name>/ux-design.md` if it exists

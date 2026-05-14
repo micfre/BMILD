@@ -8,9 +8,9 @@ description: "Diagnostic mode. Activated when broken behaviour is reported. Repr
 Track down the root cause of an unexpected failure or bug. Use the lightest path that preserves correctness: small local defects can be diagnosed, fixed, and verified in one pass; larger, recurring, cross-system, or unclear defects use the full RCA protocol.
 
 1. **Entry** — Load in this order:
-   - [ ] `plans/CHARTER.md` if it exists
-   - [ ] `plans/ARCHITECTURE.md` if it exists
-   - [ ] `plans/_system/_rollup.md` if it exists
+   - [ ] `[plan_folder]/CHARTER.md` if it exists
+   - [ ] `[plan_folder]/ARCHITECTURE.md` if it exists
+   - [ ] `[plan_folder]/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md` if the initiative is named or inferable
    - [ ] `slice-<N>.md` relevant to the reported bug (to understand expected behaviour), if applicable
    - [ ] Any linked `verification-matrix.md`, `rca-*.md`, or `security-review-*.md`
