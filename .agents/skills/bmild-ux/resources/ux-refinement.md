@@ -13,9 +13,10 @@ Extend or update an existing `ux-design.md`. Probe what changed, challenge stale
    - [ ] `[plan_folder]/<initiative-name>/_context.md`
    - [ ] `[plan_folder]/<initiative-name>/ux-design.md` in full — this is the design you are modifying
    - [ ] `[plan_folder]/<initiative-name>/product-brief.md` and `prd.md` for current requirements
+   - [ ] `[plan_folder]/<initiative-name>/system-design.md` if it exists — technical constraints only; not a source of UX intent
    - [ ] Do not load `## Archived` entries or other initiative folders
 
-2. **Hydrate PM inputs** — Read current `product-brief.md` and `prd.md` before asking refinement questions. Treat explicit PM requirements as settled unless the refinement target exposes a conflict, stale requirement, UX infeasibility, or UX-owned trade-off.
+2. **Hydrate upstream inputs** — Read current `product-brief.md` and `prd.md` before asking refinement questions, and read `system-design.md` when present to understand fixed technical constraints. Treat explicit PM requirements as settled unless the refinement target exposes a conflict, stale requirement, UX infeasibility, or UX-owned trade-off. Do not infer user intent from architecture.
 
 3. **Identify refinement target** — Determine what has changed or what is being challenged. If the user has not specified, ask one question. Surface any existing bounded assumptions, unresolved queue items, or stale promotion records before proceeding.
 
@@ -32,7 +33,7 @@ Extend or update an existing `ux-design.md`. Probe what changed, challenge stale
 
    Use the highest-signal discovery method appropriate to the task: symbol navigation for known entities, semantic search for behavioural or architectural concepts, and AST-aware analysis for syntax-sensitive pattern matching, migrations, and refactors.
 
-6. **Probe** — Present what appears settled from PM artifacts, what the change affects, which user-state hypotheses follow, and what UX decisions are newly required. Before the first question, preview the queue: name the categories you expect to cover and give an approximate question count so the user can tell whether this is a short alignment or a deeper session. Apply all Craft Standards from the core skill. Elicit before modifying; write at a meaningful checkpoint. Do not silently absorb unresolved issues.
+6. **Probe** — Present what appears settled from PM artifacts, what technical constraints from architecture apply, what the change affects, which user-state hypotheses follow, and what UX decisions are newly required. Before the first question, preview the queue: name the categories you expect to cover and give an approximate question count so the user can tell whether this is a short alignment or a deeper session. Apply all Craft Standards from the core skill. Elicit before modifying; write at a meaningful checkpoint. Do not silently absorb unresolved issues.
 
 7. **Write** — Load `./resources/completion-criteria.yaml` and privately re-check the sections being modified. Update `[plan_folder]/<initiative-name>/ux-design.md`. Update the `updated` frontmatter date. Preserve sections not being changed.
 

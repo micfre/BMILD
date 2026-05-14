@@ -46,6 +46,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added Dev note persistence for prototype and bug-fix work that would otherwise disappear into chat-only context.
 - Hardened BMILD activation path resolution for standard personas, including direct initiative-folder checks before broad searches.
 - Tuned UX and Arch elicitation so PM artifacts are hydrated first, settled PRD requirements are not reopened, and domain-specific hypotheses drive user questions.
+- Clarified design-tier cross-reading: Arch consumes `ux-design.md` as an upstream interaction contract, while UX reads `system-design.md` only for technical constraints and never as UX intent.
 - Made Planner budgeting use the skill-local `budget-slice.sh` path and added a required `## Slice token estimate` block with returned token totals and raw script values.
 - Adjusted Dev mode detection so a named initiative with one live Slice enters Spec-Dev, while ambiguous planned work asks for Slice scope instead of falling through to Direct-Dev.
 

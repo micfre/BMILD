@@ -12,11 +12,12 @@ Design the system for a new initiative. Produce concrete, implementable contract
    - [ ] `plans/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md` if the initiative is named or inferable
    - [ ] `[plan_folder]/<initiative-name>/product-brief.md` and `prd.md` — primary design inputs
+   - [ ] `[plan_folder]/<initiative-name>/ux-design.md` if it exists — interaction, user-state, and screen contract inputs
    - [ ] Do not load `## Archived` entries or other initiative folders
 
    If no `product-brief.md` or `prd.md` exists: probe for key requirements before proceeding. Entry at the architecture stage is not permission to skip problem framing.
 
-2. **Hydrate PM inputs** — Read `product-brief.md` and `prd.md` before asking architecture questions. Extract settled requirements, constraints, non-functional requirements, and documentation obligations. Do not reopen these as user choices unless the artifacts conflict, contradict the codebase, or require an architecture trade-off the PM artifacts did not decide.
+2. **Hydrate upstream inputs** — Read `product-brief.md`, `prd.md`, and `ux-design.md` when present before asking architecture questions. Extract settled requirements, constraints, non-functional requirements, documentation obligations, user-state contracts, information timing, permissions, and UX proof states. Do not reopen these as user choices unless the artifacts conflict, contradict the codebase, or require an architecture trade-off the upstream artifacts did not decide.
 
 3. **Groundtruth** — Before proposing architecture, verify the current state of the codebase. Scan the file tree and read relevant implementation files. Identify any existing code, schemas, or API contracts that constrain or contradict the proposed design. Do not invent greenfield solutions in a brownfield environment.
 
@@ -27,7 +28,7 @@ Design the system for a new initiative. Produce concrete, implementable contract
 
    Use the highest-signal discovery method appropriate to the task: symbol navigation for known entities, semantic search for behavioural or architectural concepts, and AST-aware analysis for syntax-sensitive pattern matching, migrations, and refactors.
 
-4. **Synthesize** — Before writing anything, summarize: what appears settled from PM artifacts, what architecture hypotheses follow, what conflicts, and what needs a decision. Present findings to the user. Name any apparent gaps or contract mismatches. Ask the smallest useful architecture question before committing to a design direction. Do not silently absorb an unresolved issue into `system-design.md`.
+4. **Synthesize** — Before writing anything, summarize: what appears settled from PM and UX artifacts, what UX states imply for API/data/service boundaries, what architecture hypotheses follow, what conflicts, and what needs a decision. Present findings to the user. Name any apparent gaps or contract mismatches. Ask the smallest useful architecture question before committing to a design direction. Do not silently absorb an unresolved issue into `system-design.md`.
 
 5. **Elicit** — Before the first question, preview the queue: name the architecture categories you expect to cover and give an approximate question count so the user can tell whether this is a short alignment or a deeper session. Then probe through each section of `assets/system-design-template.md` sequentially. Apply all Craft Standards from the core skill. Use compact option blocks only for genuine technical trade-offs. Surface one ambiguity per turn unless questions are inter-related.
 

@@ -12,11 +12,12 @@ Design the frontend experience for a new initiative. Produce observable, testabl
    - [ ] `plans/_system/_rollup.md` if it exists
    - [ ] `[plan_folder]/<initiative-name>/_context.md` if the initiative is named or inferable
    - [ ] `[plan_folder]/<initiative-name>/product-brief.md` and `prd.md` — primary design inputs
+   - [ ] `[plan_folder]/<initiative-name>/system-design.md` if it exists — technical constraints only; not a source of UX intent
    - [ ] Do not load `## Archived` entries or other initiative folders
 
    If no `product-brief.md` or `prd.md` exists: probe for key user needs and requirements before proceeding. Entry at the UX stage is not permission to skip problem framing.
 
-2. **Hydrate PM inputs** — Read `product-brief.md` and `prd.md` before asking UX questions. Extract settled requirements, user journeys, priority boundaries, non-functional requirements, and documentation obligations. Do not reopen these as user choices unless the artifacts conflict, contradict existing UX patterns, or require a UX trade-off the PM artifacts did not decide.
+2. **Hydrate upstream inputs** — Read `product-brief.md` and `prd.md` before asking UX questions, and read `system-design.md` when present to understand fixed technical constraints. Extract settled requirements, user journeys, priority boundaries, non-functional requirements, documentation obligations, fixed component/library constraints, auth boundaries, data availability, and latency/platform limits. Do not reopen PM requirements as user choices unless the artifacts conflict, contradict existing UX patterns, or require a UX trade-off the PM artifacts did not decide. Do not infer user intent from architecture.
 
 3. **Groundtruth** — Verify the current state of the codebase and any existing global design system. Identify patterns that constrain or shape the new design. Do not invent patterns that contradict established global UX.
 
@@ -27,7 +28,7 @@ Design the frontend experience for a new initiative. Produce observable, testabl
 
    Use the highest-signal discovery method appropriate to the task: symbol navigation for known entities, semantic search for behavioural or architectural concepts, and AST-aware analysis for syntax-sensitive pattern matching, migrations, and refactors.
 
-4. **Synthesize** — Before designing, summarize: what appears settled from PM artifacts, what user-state hypotheses follow, what user-state decisions are missing, and what conflicts exist. Ask the smallest useful UX question before committing to an interaction model. Do not silently absorb unresolved issues into the artifact.
+4. **Synthesize** — Before designing, summarize: what appears settled from PM artifacts, what technical constraints from architecture apply, what user-state hypotheses follow, what user-state decisions are missing, and what conflicts exist. Ask the smallest useful UX question before committing to an interaction model. Do not silently absorb unresolved issues into the artifact.
 
 5. **Elicit** — Before the first question, preview the queue: name the UX categories you expect to cover and give an approximate question count so the user can tell whether this is a short alignment or a deeper session. Then probe through each section of `assets/ux-design-template.md` sequentially. Apply all Craft Standards from the core skill. Surface one ambiguity per turn unless questions are inter-related. Elicit before producing final designs; write at a meaningful checkpoint.
 
