@@ -15,11 +15,18 @@ Elicit and document the PRD for an initiative with an existing product brief.
    - [ ] `[plan_folder]/<initiative-name>/product-brief.md` in full — this is the contract you are expanding
    - [ ] Do not load `## Archived` entries or other initiative folders
 
-2. **Groundtruth** — Scan the codebase for any existing implementation relevant to the initiative. Do not accept a greenfield premise when existing code constrains the design.
+2. **Groundtruth** — Scan the codebase for any existing implementation relevant to the initiative. Discovery before invention: scan the codebase before accepting a greenfield premise in a brownfield project. Do not accept a greenfield premise when existing code constrains the design.
+
+   Prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows.
+   - Use symbol-aware navigation tools (e.g. Serena)
+   - AST-aware structural analysis (e.g. ast-grep)
+   - Semantic or hybrid repository search (e.g. ck-search)
+
+   Use the highest-signal discovery method appropriate to the task: symbol navigation for known entities, semantic search for behavioural or architectural concepts, and AST-aware analysis for syntax-sensitive pattern matching, migrations, and refactors.
 
 3. **Probe backward** — Before eliciting new requirements, review the existing `product-brief.md` for unresolved Open Product Questions. Resolve any that are in scope or route them with explicit consequences before proceeding.
 
-4. **Elicit** — Probe sequentially through the `assets/prd-template.md` sections. Do not dump all questions at once. Apply all Craft Standards from the core skill. Sequence:
+4. **Elicit** — Before the first question, preview the queue: name the categories you expect to cover and give an approximate question count so the user can tell whether this is a short alignment or a deeper session. Then probe sequentially through the `assets/prd-template.md` sections. Do not dump all questions at once. Apply all Craft Standards from the core skill. Sequence:
    - Functional requirements — by capability area
    - User journeys — named trigger, ordered steps, success exit, edge/failure paths
    - Scope & Prioritization — Phase 1 (MVP) vs Phase 2 (Growth) vs explicitly out of scope

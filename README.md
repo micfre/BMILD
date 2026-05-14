@@ -36,11 +36,11 @@ Ten skill folders. Each contains a prompt that gives your AI agent a persona wit
 | :--- | :--- | :--- |
 | **Faisal**&nbsp;🟦 | Product Manager | Asks "WHY?" relentlessly. Won't let you ship vague requirements. Challenges your first answer, your second answer, and probably your third. |
 | **Katrina**&nbsp;🟩 | UX Designer | Owns the complete frontend experience. Advocates for users without losing sight of what's buildable. Decisive, not decorative. |
-| **Lance**&nbsp;🟥 | Architect | Names the cost of every choice. Produces implementable contracts -- schema columns, endpoint shapes, service signatures -- not high-level boxes and arrows. |
+| **Lance**&nbsp;⬛ | Architect | Names the cost of every choice. Produces implementable contracts -- schema columns, endpoint shapes, service signatures -- not high-level boxes and arrows. |
 | **Sonia**&nbsp;🟧 | Delivery Planner | Zero tolerance for ambiguity in implementation inputs. Sizes work to fit context windows, not story points. |
 | **Alex**&nbsp;🟪 | Developer | Implements planned Slices, prototypes bounded repo work, and fixes bugs. Matches existing patterns, avoids needless ceremony, and leaves lightweight memory when work could affect future specs. |
-| **Rahat**&nbsp;🟨 | QA & Reliability | Diagnoses before fixing. Breadth-first hypothesis generation RCA protocol. Never proposes a code change until root cause is confirmed by evidence. |
-| **Zach**&nbsp;⬜ | Security | Contextual SAST code review. Prioritizes high-confidence, actionable vulnerabilities over theoretical noise. Perspective is grounded in real-world exploitability. |
+| **Rahat**&nbsp;🟨 | QA & Reliability | Diagnoses before fixing. Can apply minimal confirmed fixes when evidence is clear, and persists RCA when future context needs it. |
+| **Zach**&nbsp;🟥 | Security | Contextual SAST code review. Prioritizes high-confidence, actionable vulnerabilities over theoretical noise. Perspective is grounded in real-world exploitability. |
 
 Plus three interactive modes that work across personas:
 
@@ -69,10 +69,10 @@ Handoffs are obligations, not exits. Each persona passes a usable contract to th
 - Lance passes implementable architecture contracts.
 - Sonia passes phase-scoped Slices, likely required reads, and verification boundaries.
 - Alex passes checked acceptance criteria for planned Slices, Dev notes for prototype and bug-fix work, required documentation updates, and user verification actions.
-- Rahat passes persistent verification evidence, documentation verification, and documented defects.
+- Rahat passes persistent verification evidence, documentation verification, documented defects, and minimal confirmed repairs when QA can close the loop directly.
 - Zach passes only high-confidence security findings with owner and remediation path.
 
-Advanced modes are team tools. Debate resolves consequential ambiguity, Elicit strengthens a draft, and Brainstorm expands options before convergence.
+Advanced modes are team tools. Debate resolves consequential ambiguity, Elicit strengthens a draft, and Brainstorm expands options before convergence. When invoked from inside a named persona workflow, they return patch-ready notes to that persona instead of taking over artifact ownership.
 
 Named personas also open with a compact operating stance that identifies who is speaking, the work type, the active scope, and the role boundary. This keeps weaker harnesses oriented without turning the personas into rigid scripts.
 
@@ -90,7 +90,7 @@ BMILD artifacts have owners and consumers:
 - `slices.md` and `slice-<N>.md`: created by Sonia; consumed and updated by Alex; verified by Rahat and Zach; recut by Sonia when implementation reveals a planning problem.
 - `dev-note-<slug>.md`: created or updated by Alex for Prototype and Bug Fix work that changes durable behaviour, leaves reusable code, records fix rationale, or creates future-spec facts; consumed by Faisal, Katrina, Lance, Sonia, Rahat, and Zach when formalizing, verifying, or reviewing later work.
 - `verification-matrix.md`: created by Sonia during readiness when proof boundaries matter; repaired or expanded by Rahat; consumed by Alex; validated by Rahat during verification.
-- `rca-<slug>.md`: created or updated by Rahat for confirmed defects; consumed by Alex for fixes; closed by Rahat after evidence shows the regression is covered.
+- `rca-<slug>.md`: created or updated by Rahat for confirmed defects; consumed by Rahat or Alex for fixes depending on scope; closed by Rahat after evidence shows the regression is covered.
 - `security-review-<slug>.md`: created by Zach when exploitable findings exist; consumed by Alex for implementation fixes or Lance/Katrina for design changes; closed by Zach after remediation is verified.
 - Documentation files: requirements defined by Faisal, implemented by Alex, and verified by Rahat against the shipped behaviour.
 
@@ -182,11 +182,11 @@ Or jump in wherever makes sense:
 | :--- | :--- | :--- |
 | I have an idea | **Faisal** 🟦 | `Faisal, help me frame a feature for [idea].` |
 | I know what to build, need the UX | **Katrina** 🟩 | `Katrina, design the user experience for [feature].` |
-| I need backend contracts | **Lance** 🟥 | `Lance, design the API and data model for [feature].` |
+| I need backend contracts | **Lance** ⬛ | `Lance, design the API and data model for [feature].` |
 | Design is done, need implementation plan | **Sonia** 🟧 | `Sonia, check readiness and decompose into slices.` |
 | I have a slice ready to build | **Alex** 🟪 | `Alex, implement slice 3.` |
 | Something is broken | **Rahat** 🟨 | `Rahat, diagnose this failure.` |
-| I want a security review | **Zach** ⬜ | `Zach, review this code for security vulnerabilities.` |
+| I want a security review | **Zach** 🟥 | `Zach, review this code for security vulnerabilities.` |
 
 You can also engage the interactive modes at any point:
 

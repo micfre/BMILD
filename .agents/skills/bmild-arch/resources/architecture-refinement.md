@@ -21,7 +21,14 @@ Extend or update an existing `system-design.md`. Probe what changed, challenge s
 
 4. **Groundtruth** — Verify any new codebase reality relevant to the change. Check that the existing design still reflects the active runtime path — not deprecated or bypassed code.
 
-5. **Synthesize and probe** — Present what appears settled, what the change affects, and what decisions are newly required. Apply all Craft Standards from the core skill. Use compact option blocks for trade-offs. Do not silently absorb unresolved issues into the updated design.
+   Prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows.
+   - Use symbol-aware navigation tools (e.g. Serena)
+   - AST-aware structural analysis (e.g. ast-grep)
+   - Semantic or hybrid repository search (e.g. ck-search)
+
+   Use the highest-signal discovery method appropriate to the task: symbol navigation for known entities, semantic search for behavioural or architectural concepts, and AST-aware analysis for syntax-sensitive pattern matching, migrations, and refactors.
+
+5. **Synthesize and probe** — Present what appears settled, what the change affects, and what decisions are newly required. Before the first question, preview the queue: name the categories you expect to cover and give an approximate question count so the user can tell whether this is a short alignment or a deeper session. Apply all Craft Standards from the core skill. Use compact option blocks for trade-offs. Do not silently absorb unresolved issues into the updated design.
 
    If live product or UX artifacts contain Architecture Handoff Questions targeted to Lance, resolve them in this refinement or explicitly defer them with user consent.
 

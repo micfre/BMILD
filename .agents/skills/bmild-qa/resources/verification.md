@@ -17,7 +17,14 @@ Check test coverage and run quality gates on completed code. Lean workflow appli
    - [ ] Relevant `verification-matrix.md`, `rca-*.md`, and `security-review-*.md` tied to the Slice
    - [ ] Repo contributor guide (`AGENTS.md`, `CONTRIBUTING.md`) for testing conventions and commands
 
-2. **Test coverage review** — Evaluate the completed Slice's acceptance criteria against existing tests:
+2. **Repository discovery** — Prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows.
+   - Use symbol-aware navigation tools (e.g. Serena)
+   - AST-aware structural analysis (e.g. ast-grep)
+   - Semantic or hybrid repository search (e.g. ck-search)
+
+   Use the highest-signal discovery method appropriate to the task: symbol navigation for known entities, semantic search for behavioural or architectural concepts, and AST-aware analysis for syntax-sensitive pattern matching, migrations, and refactors.
+
+3. **Test coverage review** — Evaluate the completed Slice's acceptance criteria against existing tests:
    - [ ] Identify untested happy paths, untested error paths, and untested edge cases
    - [ ] Write or recommend tests for identified gaps
    - [ ] Test observable behaviour, not internal implementation details
@@ -25,7 +32,7 @@ Check test coverage and run quality gates on completed code. Lean workflow appli
 
    Check whether Alex changed any relevant matrix, RCA, or security statuses; verify the evidence before closing them.
 
-3. **Quality gate verification** — Check the contributor guide for exact commands. Run and report on each:
+4. **Quality gate verification** — Check the contributor guide for exact commands. Run and report on each:
 
    ```sh
    <typecheck command>    # zero errors
@@ -36,18 +43,18 @@ Check test coverage and run quality gates on completed code. Lean workflow appli
 
    Report clearly: which passed, which failed, and the failure output. If a gate failure reveals a bug, switch to Diagnostic mode.
 
-4. **Document verification findings** — For any gap or failure that matters to the Slice's acceptance criteria or verification matrix:
+5. **Document verification findings** — For any gap or failure that matters to the Slice's acceptance criteria or verification matrix:
    - [ ] Update `verification-matrix.md` when expected proof is missing, blocked, failed, or newly satisfied
    - [ ] Update `slice-<N>.md` Implementation Notes when the issue is local to the Slice
    - [ ] Write or update `rca-<slug>.md` when a root cause investigation is needed
 
    Do not hand off a failure-path issue, missing integration coverage, or failed gate only in chat.
 
-5. **Update Slice status** — When the Slice passes verification: update `slice-<N>.md` `qa_status` to `verified`. When verification fails or is blocked: update `qa_status` to `failed` or `blocked` and record the next owner.
+6. **Update Slice status** — When the Slice passes verification: update `slice-<N>.md` `qa_status` to `verified`. When verification fails or is blocked: update `qa_status` to `failed` or `blocked` and record the next owner.
 
-6. **Register in context memory** — If any QA artifacts were written or updated, confirm they are in `## Live` in `_context.md`.
+7. **Register in context memory** — If any QA artifacts were written or updated, confirm they are in `## Live` in `_context.md`.
 
-7. **Close** — Apply the Exit and Handoff format from the core skill. If root cause requires a design change, hand off to Lance or Katrina with the confirmed root cause and a precise question.
+8. **Close** — Apply the Exit and Handoff format from the core skill. If root cause requires a design change, hand off to Lance or Katrina with the confirmed root cause and a precise question.
 
 ---
 

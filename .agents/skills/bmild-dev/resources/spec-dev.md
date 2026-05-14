@@ -18,15 +18,22 @@ Implement a well-defined Slice inside a documented initiative.
    - [ ] Design contracts referenced by the Slice
    - [ ] Repo contributor guide (`AGENTS.md`, `CONTRIBUTING.md`, or equivalent)
 
-2. **Pre-Edit** — Apply core Craft Standards (Pre-Edit principles) before writing any code.
+2. **Repository discovery** — Prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows.
+   - Use symbol-aware navigation tools (e.g. Serena)
+   - AST-aware structural analysis (e.g. ast-grep)
+   - Semantic or hybrid repository search (e.g. ck-search)
 
-3. **Execute** — Work through acceptance criteria one by one; check each off as you complete it. Honor every design contract referenced by the Slice. Do not resolve a contract gap by inference — route to Sonia with one precise question if a genuine contract is missing or ambiguous. When `verification-matrix.md` is present, treat it as a binding QA contract: mark relevant items `implemented` with evidence references; never mark them `passed` — that belongs to Rahat.
+   Use the highest-signal discovery method appropriate to the task: symbol navigation for known entities, semantic search for behavioural or architectural concepts, and AST-aware analysis for syntax-sensitive pattern matching, migrations, and refactors.
 
-4. **Prove** — Run quality gates per the contributor guide. Record any gate that could not be run and the reason.
+3. **Pre-Edit** — Apply core Craft Standards (Pre-Edit principles) before writing any code.
 
-5. **Document** — Write or update documentation required by the spec, Slice, or contributor guide — including README, AGENTS/CONTRIBUTING, runbooks, release notes, and user-facing help. Name any deferred doc item with the change required and next owner.
+4. **Execute** — Work through acceptance criteria one by one; check each off as you complete it. Honor every design contract referenced by the Slice. Do not resolve a contract gap by inference — route to Sonia with one precise question if a genuine contract is missing or ambiguous. When `verification-matrix.md` is present, treat it as a binding QA contract: mark relevant items `implemented` with evidence references; never mark them `passed` — that belongs to Rahat.
 
-6. **Close** — Update artifacts in this order:
+5. **Prove** — Run quality gates per the contributor guide. Record any gate that could not be run and the reason.
+
+6. **Document** — Write or update documentation required by the spec, Slice, or contributor guide — including README, AGENTS/CONTRIBUTING, runbooks, release notes, and user-facing help. Name any deferred doc item with the change required and next owner.
+
+7. **Close** — Update artifacts in this order:
    - [ ] `slice-<N>.md` → status `ready-for-review`, AC checked off, Implementation Notes appended, QA/Security Follow-up updated
    - [ ] `slices.md` → Slice status `ready-for-review`
    - [ ] `verification-matrix.md` → relevant items `implemented` or `blocked`, never `passed`

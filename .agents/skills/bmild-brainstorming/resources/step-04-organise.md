@@ -48,8 +48,8 @@ Synthesise the session output — cluster by theme, prioritise with the user, th
 
    After each: *"Want me to develop any of the other top ideas to this level?"*
 
-4. **Close** — Summarise and lead with it — do not wait to be asked:
+4. **Close** — Summarise and lead with it — do not wait to be asked. If invoked from inside a named persona workflow, return ideas as a handoff note for that persona rather than writing their artifact directly:
 
-   > *"Session complete. [N] ideas across [N] themes. Top picks: [idea 1], [idea 2], [idea 3]. Most concrete next step: [specific action]. The full idea set is above — your working list."*
+   > *"Facilitator 💡 closing. [N] ideas across [N] themes. Top picks: [idea 1], [idea 2], [idea 3]. Most concrete next step: [specific action]. [If invoked from within a persona session:] Next I will turn this back to [persona name] [icon] with these ideas as input."*
 
    Options: [Export] — markdown document / [Keep going] — back to `./resources/step-03-execute.md` for more exploration / [Done] — close the session.

@@ -6,7 +6,7 @@ The four Leads participating in every session:
 
 - 🟦 Faisal (Product Manager): user needs, business value, scope, and product trade-offs
 - 🟩 Katrina (UX Designer): interaction model, user comprehension, visual and flow implications
-- 🟥 Lance (Architect): technical feasibility, system integrity, performance, and maintainability
+- ⬛ Lance (Architect): technical feasibility, system integrity, performance, and maintainability
 - 🟨 Rahat (QA / Reliability): risk, failure modes, testability, edge cases, and operational concerns
 
 Sonia and Alex do not participate — debate is a design-layer activity.

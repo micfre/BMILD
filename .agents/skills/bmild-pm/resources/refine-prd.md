@@ -23,11 +23,20 @@ Revisit and improve existing PM artifacts. Probe what changed, challenge stale c
 
 3. **Brainstorm reconciliation** — If any brainstorming session preceded this artifact, load it and cross-reference its ideas against the current `product-brief.md` and `prd.md`. Identify ideas that were silently dropped — especially soft or qualitative ideas (interaction feel, tone, personality, coaching approach, "what should this feel like") that don't map cleanly to functional requirements. Present findings to the user and ask whether any should be incorporated before proceeding.
 
-4. **Challenge** — Treat all existing content as a starting point. Probe what was assumed vs. what has been validated. Surface any unresolved Open Product Questions or assumptions that haven't been tested. Apply all Craft Standards from the core skill.
+4. **Groundtruth and challenge** — Treat all existing content as a starting point. When the refinement depends on existing behaviour, verify current codebase reality before accepting the old artifact as true. Discovery before invention: scan the codebase before accepting a greenfield premise in a brownfield project.
+
+   Prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows.
+   - Use symbol-aware navigation tools (e.g. Serena)
+   - AST-aware structural analysis (e.g. ast-grep)
+   - Semantic or hybrid repository search (e.g. ck-search)
+
+   Use the highest-signal discovery method appropriate to the task: symbol navigation for known entities, semantic search for behavioural or architectural concepts, and AST-aware analysis for syntax-sensitive pattern matching, migrations, and refactors.
+
+   Probe what was assumed vs. what has been validated. Surface any unresolved Open Product Questions or assumptions that haven't been tested. Apply all Craft Standards from the core skill.
 
    If live UX or architecture artifacts contain Product Handoff Questions targeted to Faisal, resolve them in the refined spec or explicitly defer them with user consent.
 
-5. **Elicit refinements** — Probe the specific sections requiring change. Apply the same depth and rigour as initial authoring. Do not skip elicitation because upstream work already exists.
+5. **Elicit refinements** — Before the first question, preview the queue: name the categories you expect to cover and give an approximate question count so the user can tell whether this is a short alignment or a deeper session. Then probe the specific sections requiring change. Apply the same depth and rigour as initial authoring. Do not skip elicitation because upstream work already exists.
 
 6. **Write** — Load `./resources/brief-completion-criteria.yaml` and `./resources/prd-completion-criteria.yaml` and privately check each. Update the relevant artifacts. Use `assets/product-brief-template.md` and `assets/prd-template.md` as structural references. Preserve sections not being changed. Update the `updated` frontmatter date.
 

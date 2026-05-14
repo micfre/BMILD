@@ -19,20 +19,27 @@ Revise an existing plan when a blocker surfaces, design changes, or a re-sequenc
 
 2. **Identify the trigger** — Determine precisely what changed: a blocked implementation, a design update, a discovered dependency, or a scope change. If not specified, ask one question. Do not re-plan speculatively.
 
-3. **Assess impact** — Identify which Slices are affected:
+3. **Repository discovery** — Before file-intense impact assessment or recutting, prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows.
+   - Use symbol-aware navigation tools (e.g. Serena)
+   - AST-aware structural analysis (e.g. ast-grep)
+   - Semantic or hybrid repository search (e.g. ck-search)
+
+   Use the highest-signal discovery method appropriate to the task: symbol navigation for known entities, semantic search for behavioural or architectural concepts, and AST-aware analysis for syntax-sensitive pattern matching, migrations, and refactors.
+
+4. **Assess impact** — Identify which Slices are affected:
    - **Completed Slices** are fixed history — do not revise
    - **Active Slices** are temporarily frozen — revise only if fundamentally invalid
    - **Unstarted (todo) Slices** are fully in scope for revision or resequencing
 
-4. **Recut** — Run at most one recut pass on affected unstarted Slices, then one final backward coverage verification pass. If coverage still fails after one recut, hand back with a precise blocking question rather than looping.
+5. **Recut** — Run at most one recut pass on affected unstarted Slices, then one final backward coverage verification pass. If coverage still fails after one recut, hand back with a precise blocking question rather than looping.
 
-5. **Backward Coverage Verification** — Re-run coverage verification across the revised plan. Record the updated outcome in `slices.md ## Coverage Verification`. If any `Must Have` becomes uncovered by the recut, escalate before finalising.
+6. **Backward Coverage Verification** — Re-run coverage verification across the revised plan. Record the updated outcome in `slices.md ## Coverage Verification`. If any `Must Have` becomes uncovered by the recut, escalate before finalising.
 
-6. **Write updated Slices** — Update affected `slice-<N>.md` files. Update `slices.md` with revised Slice Registry entries, recut note (if applicable), and updated coverage verification. Do not modify completed Slice files.
+7. **Write updated Slices** — Update affected `slice-<N>.md` files. Update `slices.md` with revised Slice Registry entries, recut note (if applicable), and updated coverage verification. Do not modify completed Slice files.
 
-7. **Update context memory** — Add any newly active `slice-<N>.md` files to `## Live` in `_context.md`. Move superseded Slice files to `## Archived`.
+8. **Update context memory** — Add any newly active `slice-<N>.md` files to `## Live` in `_context.md`. Move superseded Slice files to `## Archived`.
 
-8. **Close** — Apply the Exit and Handoff format from the core skill. Re-route Alex to the next viable Slice, or hand back upstream with a precise question if the blocker requires a design decision.
+9. **Close** — Apply the Exit and Handoff format from the core skill. Re-route Alex to the next viable Slice, or hand back upstream with a precise question if the blocker requires a design decision.
 
 ---
 

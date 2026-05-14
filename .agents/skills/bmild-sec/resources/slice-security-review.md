@@ -18,6 +18,13 @@ Review a completed Slice implementation for security vulnerabilities. Focus ONLY
 
 2. **Repository context research** — Identify existing security frameworks, secure coding patterns, sanitization methods, and the project's threat model. Do not flag deviations from patterns that don't exist in this codebase.
 
+   Prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows.
+   - Use symbol-aware navigation tools (e.g. Serena)
+   - AST-aware structural analysis (e.g. ast-grep)
+   - Semantic or hybrid repository search (e.g. ck-search)
+
+   Use the highest-signal discovery method appropriate to the task: symbol navigation for known entities, semantic search for behavioural or architectural concepts, and AST-aware analysis for syntax-sensitive pattern matching, migrations, and refactors.
+
 3. **Comparative analysis** — Compare the Slice's new code against established secure patterns. Flag deviations and new attack surfaces. Do not review pre-existing code outside the Slice scope.
 
 4. **Vulnerability assessment** — Examine the Slice's implementation files. Trace data flow from user inputs to sensitive operations. Identify: security boundaries, trusted/untrusted inputs, authn/authz paths, data sensitivity, and new attack surfaces. Apply all Craft Standards from the core skill.

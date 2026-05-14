@@ -46,8 +46,15 @@ Apply the selected method to the current version of the content — not the orig
 4. **[x] Proceed** — Close the elicitation session:
    - [ ] Summarise what the session produced — methods applied, key improvements made, changes discarded if any
    - [ ] Present the final working version of the content
-   - [ ] Ask: *"Do you want to save this enhanced version to [document name]?"* If yes: write to the appropriate spec document and update `_context.md` if the document changed meaningfully. If no: leave the content in the conversation.
-   - [ ] Return to invoking context: *"Returning to [persona or workflow that called elicitation]."*
+   - [ ] Preserve ownership. If the elicitation was invoked from a named persona workflow, do not write directly to that persona's artifact. Instead, produce a handoff note with:
+     - Target owner: Faisal / Katrina / Lance / Sonia / Rahat / Zach / user
+     - Target artifact or section
+     - Patch-ready replacement text or bullet changes
+     - Open decisions that still require the owner or user
+     - Any domain boundary crossed by the refinement
+   - [ ] Ask to save only when this elicitation was directly invoked by the user with explicit artifact-write authority, or when the active caller is also the owner of the target artifact. If saving is authorized, write to the appropriate document and update `_context.md` if the document changed meaningfully. Otherwise leave the enhanced content and handoff note in the conversation.
+   - [ ] Return to invoking context with clear speaker identity:
+     > *"Facilitator ⚡ closing. Next I will turn this back to [persona name] [icon]."*
 
 5. **Direct text feedback** — Apply the feedback directly to the working content, confirm what changed, and re-present the menu.
 

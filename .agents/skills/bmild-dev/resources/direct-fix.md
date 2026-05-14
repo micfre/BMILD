@@ -15,22 +15,29 @@ Investigate and fix a localized defect reported outside a tracked artifact. Repr
 
    Do not load BMILD planning memory unless the message names an initiative, Slice, or RCA — in that case re-evaluate against the core mode detection lookup before proceeding.
 
-2. **Pre-Edit** — Apply core Craft Standards (Pre-Edit principles) before writing any code.
+2. **Repository discovery** — Prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows.
+   - Use symbol-aware navigation tools (e.g. Serena)
+   - AST-aware structural analysis (e.g. ast-grep)
+   - Semantic or hybrid repository search (e.g. ck-search)
 
-3. **Investigate** — Before editing any file:
+   Use the highest-signal discovery method appropriate to the task: symbol navigation for known entities, semantic search for behavioural or architectural concepts, and AST-aware analysis for syntax-sensitive pattern matching, migrations, and refactors.
+
+3. **Pre-Edit** — Apply core Craft Standards (Pre-Edit principles) before writing any code.
+
+4. **Investigate** — Before editing any file:
    - [ ] Reproduce the failure — via test, log, or code-path inspection
    - [ ] Identify root cause with evidence: failing assertion, stack trace line, logic error, incorrect assumption
    - [ ] Confirm the fix is localized — the change does not alter behaviour outside the reported failure
 
    If root cause is not clear after targeted investigation: stop. Route to Rahat with symptoms, hypotheses checked, evidence collected, and the next diagnostic question. Do not guess and do not edit.
 
-4. **Execute** — Implement the smallest fix that resolves the confirmed root cause. Do not refactor adjacent code. Do not expand scope.
+5. **Execute** — Implement the smallest fix that resolves the confirmed root cause. Do not refactor adjacent code. Do not expand scope.
 
-5. **Prove** — Run quality gates per the contributor guide. Add a regression test when practical. If not practical, record a manual reproduction and proof sequence that Rahat can re-run.
+6. **Prove** — Run quality gates per the contributor guide. Add a regression test when practical. If not practical, record a manual reproduction and proof sequence that Rahat can re-run.
 
-6. **Document** — Required when externally visible behaviour, operational runbooks, setup instructions, or user help changed. Otherwise record `Documentation impact: none`.
+7. **Document** — Required when externally visible behaviour, operational runbooks, setup instructions, or user help changed. Otherwise record `Documentation impact: none`.
 
-7. **Close** — Write a Dev note (`dev-note-<slug>.md`) when the fix changes externally visible behaviour, the root cause reveals something future specs or architecture should account for, or the fix creates follow-up work. A truly trivial local fix with no future relevance does not require a Dev note. When a Dev note is written: use `assets/dev-note-template.md`; place it under the relevant initiative folder, or `[plan_folder]/_system/` for genuinely global work; register it in the initiative's `_context.md` `## Live` section.
+8. **Close** — Write a Dev note (`dev-note-<slug>.md`) when the fix changes externally visible behaviour, the root cause reveals something future specs or architecture should account for, or the fix creates follow-up work. A truly trivial local fix with no future relevance does not require a Dev note. When a Dev note is written: use `assets/dev-note-template.md`; place it under the relevant initiative folder, or `[plan_folder]/_system/` for genuinely global work; register it in the initiative's `_context.md` `## Live` section.
 
    No formal handoff is required unless a tracked QA or security artifact was implicated — in that case re-evaluate against Spec-Fix mode before closing. Apply the Exit and Handoff format from the core skill.
 

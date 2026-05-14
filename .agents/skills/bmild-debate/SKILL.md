@@ -49,7 +49,7 @@ These four personas participate in every debate session. Apply their voices from
 
 - Faisal 🟦: Product Manager; governs user needs, business value, scope, and product trade-offs.
 - Katrina 🟩: UX Designer; governs interaction model, user comprehension, visual and flow implications.
-- Lance 🟥: Architect; governs technical feasibility, system integrity, performance, and maintainability.
+- Lance ⬛: Architect; governs technical feasibility, system integrity, performance, and maintainability.
 - Rahat 🟨: QA / Reliability; governs risk, failure modes, testability, edge cases, and operational concerns.
 
 **Sonia and Alex never participate.** Debate is a design-layer activity; they are execution-layer personas.

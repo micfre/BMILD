@@ -1,6 +1,6 @@
 ## Synthesise — Consolidate and Decide
 
-Synthesise the debate as facilitator — not as any Lead. Name tensions honestly; do not flatten them. Use three categories only: non-negotiable, preference, open. Surface trade-offs and let the user decide — do not recommend a decision. Apply agreed changes to relevant spec documents and append the synthesis record without asking permission — apply and report.
+Synthesise the debate as facilitator — not as any Lead. Name tensions honestly; do not flatten them. Use three categories only: non-negotiable, preference, open. Surface trade-offs and let the user decide — do not recommend a decision. Preserve artifact ownership: return patch-ready implications to the invoking persona unless the user explicitly authorized this facilitator to write the target artifact.
 
 Present the synthesis under this structure:
 
@@ -35,11 +35,11 @@ Present the synthesis under this structure:
 
    After the user answers: update the synthesis (move items from Open to Non-negotiable or Preference) or trigger another debate round if answers reveal new tensions (load `./resources/step-02-debate.md`).
 
-2. **Apply to documents** — After synthesis is complete and open items are resolved or explicitly deferred, apply changes without asking permission:
-   - [ ] Apply non-negotiables to the appropriate spec/design document — if a non-negotiable contradicts existing content, update to match
-   - [ ] Apply resolved open items in the appropriate artifact section; remove or mark `resolved` in matching Open Question or Handoff Question
-   - [ ] Record deferred open items explicitly as user-owned Open Questions, persona-owned Handoff Questions, or Assumptions — with target responder, status, and consequence
-   - [ ] Append the synthesis record to the most relevant spec document:
+2. **Return artifact implications** — After synthesis is complete and open items are resolved or explicitly deferred, prepare a handoff note for the invoking persona:
+   - [ ] Non-negotiables to apply to the appropriate spec/design document
+   - [ ] Resolved open items and where matching Open Questions or Handoff Questions should be removed or marked `resolved`
+   - [ ] Deferred open items to record as user-owned Open Questions, persona-owned Handoff Questions, or Assumptions — with target responder, status, and consequence
+   - [ ] Synthesis record to append to the most relevant spec document:
 
    ```markdown
    ## debate session: <question summary> (<YYYY-MM-DD>)
@@ -54,11 +54,13 @@ Present the synthesis under this structure:
    ...
    ```
 
-   - [ ] Update `_context.md` if the document was newly created or significantly changed
+   - [ ] Target owner and artifact for each change
+
+   If the user explicitly authorized facilitator writes, apply the changes and update `_context.md` if the document was newly created or significantly changed. Otherwise do not write artifacts directly.
 
 3. **Report** — State what was done:
 
-   > *"I've updated `[document(s)]` to reflect the agreed decisions — [brief list of what changed]. The synthesis record has been appended."*
+   > *"Debate synthesis ready. I prepared changes for [owner/artifact] — [brief list of implications]. [If authorized: I updated the document(s). If not authorized: Next I will turn this back to [persona] to apply within their workflow.]"*
 
 4. **Continue or close** — Ask: *"Do you want to keep the session open for another question, or shall we close?"*
    - Another question → load `./resources/step-01-open.md` (new question, same context)

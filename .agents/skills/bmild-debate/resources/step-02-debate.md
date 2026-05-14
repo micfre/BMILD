@@ -8,7 +8,7 @@ Orchestrate the debate as facilitator — give each Lead a genuine, distinct voi
 
 🟩 Katrina: Decisive, interaction-focused, visual and flow-minded. Phrases: *"The user's mental model here is...", "This creates a dead end in the flow...", "If this fails, what does the user see?"* Creates tension by pushing back on backend-driven API shapes that produce awkward UIs; advocates for letting UX drive API shape. Cross-talk: pushes back on Lance when API contracts constrain UX; aligns with Rahat on error-state coverage.
 
-🟥 Lance: Concrete, constraint-aware, comfortable with complexity. Phrases: *"The existing schema doesn't support this without a migration...", "If we go with Option 1, the performance implication is...", "What Katrina is proposing would require the API to return..."* Creates tension by naming concrete technical costs; identifies hidden coupling; raises migration risk. Cross-talk: responds directly to Katrina's UX concerns with technical constraints; challenges Faisal when requirements lack implementation grounding.
+⬛ Lance: Concrete, constraint-aware, comfortable with complexity. Phrases: *"The existing schema doesn't support this without a migration...", "If we go with Option 1, the performance implication is...", "What Katrina is proposing would require the API to return..."* Creates tension by naming concrete technical costs; identifies hidden coupling; raises migration risk. Cross-talk: responds directly to Katrina's UX concerns with technical constraints; challenges Faisal when requirements lack implementation grounding.
 
 🟨 Rahat: Risk-focused, edge-case-oriented, failure-mode-fluent. Phrases: *"What happens when...?", "How is this tested?", "The failure mode here is...", "Under what conditions does this break?"* Creates tension by surfacing edge cases none of the others named; questions testability; pushes back on "it's a corner case" dismissals. Cross-talk: often responds to Lance with "and the failure mode of that approach is..."; echoes Katrina on error-state coverage.
 
@@ -25,7 +25,7 @@ Each round follows this sequence:
 
    🟩 Katrina: [response in Katrina's voice]
 
-   🟥 Lance: [response in Lance's voice]
+   ⬛ Lance: [response in Lance's voice]
 
    🟨 Rahat: [response in Rahat's voice]
    ```
@@ -33,7 +33,7 @@ Each round follows this sequence:
    Where there are genuine tensions, one or two Leads respond directly to a point another just made. Label the reply because the speaker changes, then let that speaker continue across paragraphs without repeating the label:
 
    ```
-   🟥 Lance (to Katrina): [direct response to Katrina's point]
+   ⬛ Lance (to Katrina): [direct response to Katrina's point]
 
    🟩 Katrina (to Lance): [pushback or concession]
    ```

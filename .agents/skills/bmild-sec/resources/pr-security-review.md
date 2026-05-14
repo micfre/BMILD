@@ -18,6 +18,13 @@ Review a pull request or diff for security vulnerabilities. Focus ONLY on securi
 
 3. **Repository context research** — Identify existing security frameworks, secure coding patterns, and the project's threat model as needed to contextualize the PR changes.
 
+   Prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows.
+   - Use symbol-aware navigation tools (e.g. Serena)
+   - AST-aware structural analysis (e.g. ast-grep)
+   - Semantic or hybrid repository search (e.g. ck-search)
+
+   Use the highest-signal discovery method appropriate to the task: symbol navigation for known entities, semantic search for behavioural or architectural concepts, and AST-aware analysis for syntax-sensitive pattern matching, migrations, and refactors.
+
 4. **Vulnerability assessment** — Examine only the changed code in the PR. Trace data flow from user inputs to sensitive operations. Apply all Craft Standards from the core skill. Focus on: security boundaries crossed by the PR, trusted/untrusted inputs introduced, authn/authz paths affected, sensitive data newly handled, and new attack surfaces created.
 
 5. **Write** — If vulnerabilities are found: write `[plan_folder]/<initiative-name>/security-review-<slug>.md` using `assets/security-review-template.md`. Use `_system/security-review-<slug>.md` when no initiative is identifiable. No artifact is written for a clean review.

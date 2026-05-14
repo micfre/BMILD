@@ -14,15 +14,22 @@ Implement bounded repo work outside a formal Slice. No spec, UX design, architec
 
    Load repo context and the contributor guide. Load BMILD memory only when the request names an initiative, depends on documented behaviour, or might alter durable product or architecture understanding.
 
-2. **Pre-Edit** — Apply core Craft Standards (Pre-Edit principles) before writing any code.
+2. **Repository discovery** — Prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows.
+   - Use symbol-aware navigation tools (e.g. Serena)
+   - AST-aware structural analysis (e.g. ast-grep)
+   - Semantic or hybrid repository search (e.g. ck-search)
 
-3. **Execute** — Implement the smallest coherent change that satisfies the request. Match existing repo patterns. Do not over-engineer toward a spec that does not yet exist.
+   Use the highest-signal discovery method appropriate to the task: symbol navigation for known entities, semantic search for behavioural or architectural concepts, and AST-aware analysis for syntax-sensitive pattern matching, migrations, and refactors.
 
-4. **Prove** — Run quality gates per the contributor guide. Add or update tests only when they prove the prototype, protect durable behaviour, or the user explicitly asked for tests.
+3. **Pre-Edit** — Apply core Craft Standards (Pre-Edit principles) before writing any code.
 
-5. **Document** — Required only when durable behaviour changes or the user explicitly asks. Otherwise record `Documentation impact: none` in the Dev note when a note exists.
+4. **Execute** — Implement the smallest coherent change that satisfies the request. Match existing repo patterns. Do not over-engineer toward a spec that does not yet exist.
 
-6. **Close** — Write a Dev note (`dev-note-<slug>.md`) when the work changes durable repo behaviour, leaves reusable code, reveals a fact that future specs should account for, or creates follow-up work. If none apply and the work is throwaway with no future relevance, no Dev note is required. When a Dev note is written: use `assets/dev-note-template.md`; place it under the relevant initiative folder, or `[plan_folder]/_system/` for genuinely global work; register it in the initiative's `_context.md` `## Live` section.
+5. **Prove** — Run quality gates per the contributor guide. Add or update tests only when they prove the prototype, protect durable behaviour, or the user explicitly asked for tests.
+
+6. **Document** — Required only when durable behaviour changes or the user explicitly asks. Otherwise record `Documentation impact: none` in the Dev note when a note exists.
+
+7. **Close** — Write a Dev note (`dev-note-<slug>.md`) when the work changes durable repo behaviour, leaves reusable code, reveals a fact that future specs should account for, or creates follow-up work. If none apply and the work is throwaway with no future relevance, no Dev note is required. When a Dev note is written: use `assets/dev-note-template.md`; place it under the relevant initiative folder, or `[plan_folder]/_system/` for genuinely global work; register it in the initiative's `_context.md` `## Live` section.
 
    No formal handoff is required unless the work reveals a decision that belongs upstream — see the core Escalation Routing table. Apply the Exit and Handoff format from the core skill.
 

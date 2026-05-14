@@ -16,7 +16,14 @@ Resolve Architecture Handoff Questions received from Faisal, Katrina, or Alex. R
 
 2. **Assess** — Read each Architecture Handoff Question targeted at Lance. Determine which can be answered from existing design decisions and which require new decisions. For each requiring a new decision, apply the Decision Trade-offs format from the core skill — compact option blocks, not unstructured prose.
 
-3. **Resolve** — Provide clear answers or decisions for each question. Apply all Craft Standards from the core skill. For each answer that results in a design change:
+   If resolving a question requires repository inspection, prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows.
+   - Use symbol-aware navigation tools (e.g. Serena)
+   - AST-aware structural analysis (e.g. ast-grep)
+   - Semantic or hybrid repository search (e.g. ck-search)
+
+   Use the highest-signal discovery method appropriate to the task: symbol navigation for known entities, semantic search for behavioural or architectural concepts, and AST-aware analysis for syntax-sensitive pattern matching, migrations, and refactors.
+
+3. **Resolve** — Before the first question or decision prompt, preview the queue: name the categories you expect to cover and give an approximate question count so the user can tell whether this is a short alignment or a deeper session. Provide clear answers or decisions for each question. Apply all Craft Standards from the core skill. For each answer that results in a design change:
    - [ ] Update `system-design.md` with the decision
    - [ ] Note the consequence for the originating persona's artifact
 

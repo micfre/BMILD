@@ -18,9 +18,16 @@ Design the frontend experience for a new initiative. Produce observable, testabl
 
 2. **Groundtruth** — Verify the current state of the codebase and any existing global design system. Identify patterns that constrain or shape the new design. Do not invent patterns that contradict established global UX.
 
+   Prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows.
+   - Use symbol-aware navigation tools (e.g. Serena)
+   - AST-aware structural analysis (e.g. ast-grep)
+   - Semantic or hybrid repository search (e.g. ck-search)
+
+   Use the highest-signal discovery method appropriate to the task: symbol navigation for known entities, semantic search for behavioural or architectural concepts, and AST-aware analysis for syntax-sensitive pattern matching, migrations, and refactors.
+
 3. **Synthesize** — Before designing, summarize: what appears settled from the spec, what user-state decisions are missing, what conflicts exist. Ask the smallest useful question before committing to an interaction model. Do not silently absorb unresolved issues into the artifact.
 
-4. **Elicit** — Probe through each section of `assets/ux-design-template.md` sequentially. Apply all Craft Standards from the core skill. Surface one open question per turn unless questions are inter-related. For each open UX issue, explain it conversationally with options and a recommendation — do not log it silently. Elicit before producing final designs; write at a meaningful checkpoint.
+4. **Elicit** — Before the first question, preview the queue: name the categories you expect to cover and give an approximate question count so the user can tell whether this is a short alignment or a deeper session. Then probe through each section of `assets/ux-design-template.md` sequentially. Apply all Craft Standards from the core skill. Surface one open question per turn unless questions are inter-related. For each open UX issue, explain it conversationally with options and a recommendation — do not log it silently. Elicit before producing final designs; write at a meaningful checkpoint.
 
    Probe backward on: empty states, error states, loading states, mobile layout, and accessibility — before closing.
 

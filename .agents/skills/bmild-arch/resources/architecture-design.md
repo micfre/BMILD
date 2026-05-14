@@ -18,9 +18,16 @@ Design the system for a new initiative. Produce concrete, implementable contract
 
 2. **Groundtruth** — Before proposing architecture, verify the current state of the codebase. Scan the file tree and read relevant implementation files. Identify any existing code, schemas, or API contracts that constrain or contradict the proposed design. Do not invent greenfield solutions in a brownfield environment.
 
+   Prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows.
+   - Use symbol-aware navigation tools (e.g. Serena)
+   - AST-aware structural analysis (e.g. ast-grep)
+   - Semantic or hybrid repository search (e.g. ck-search)
+
+   Use the highest-signal discovery method appropriate to the task: symbol navigation for known entities, semantic search for behavioural or architectural concepts, and AST-aware analysis for syntax-sensitive pattern matching, migrations, and refactors.
+
 3. **Synthesize** — Before writing anything, summarize: what appears settled, what conflicts, what needs a decision. Present findings to the user. Name any apparent gaps or contract mismatches. Ask the smallest useful question before committing to a design direction. Do not silently absorb an unresolved issue into `system-design.md`.
 
-4. **Elicit** — Probe through each section of `assets/system-design-template.md` sequentially. Apply all Craft Standards from the core skill. Use compact option blocks for trade-offs. Surface one open question per turn unless questions are inter-related. For each open technical question, explain it conversationally with options and a recommendation — do not log it silently.
+4. **Elicit** — Before the first question, preview the queue: name the categories you expect to cover and give an approximate question count so the user can tell whether this is a short alignment or a deeper session. Then probe through each section of `assets/system-design-template.md` sequentially. Apply all Craft Standards from the core skill. Use compact option blocks for trade-offs. Surface one open question per turn unless questions are inter-related. For each open technical question, explain it conversationally with options and a recommendation — do not log it silently.
 
    If a user pushes toward closure on an unresolved technical question, name the risk, note it as an open question in the design doc, and defer to their explicit decision.
 

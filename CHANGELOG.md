@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Moved groundtruthing guidance out of PM core craft standards and into mode workflows that perform codebase discovery.
+- Added code intelligence guidance to mode workflows before file-heavy repository discovery, preferring symbol-aware, AST-aware, or semantic search tools when available.
+- Added elicitation queue previews so PM, UX, and Arch name expected question categories and approximate question count before beginning persona-native elicitation.
+- Tightened advanced mode handback: Debate, Elicit, and Brainstorming now preserve artifact ownership and return patch-ready notes to the invoking persona unless explicitly authorized to write.
+- Expanded QA authority so Rahat can apply minimal confirmed fixes, added QA Spec-Fix and Direct-Fix workflows, and added a lightweight Diagnostic path for small local defects.
+- Updated named-persona opening guidance across personas so the operating stance appears only after mode selection and never as placeholder mode-selection narration.
+- Changed Lance's icon to `⬛` and Zach's icon to `🟥` for better renderer compatibility.
 - Added `version` and `license` metadata to all BMILD skill frontmatter, keeping `bmild-dev` at `0.2.1` and setting the remaining skills to `0.2.0`.
 - Removed unintended whole-template markdown code fences from BMILD asset template files so generated artifacts render as markdown rather than fenced code blocks.
 - Added BMILD Working Team, Workflow, Definition of Done, and Gotchas guidance across all personas and interactive modes.

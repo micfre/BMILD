@@ -14,7 +14,7 @@ metadata:
 
 Elicitation is a refinement tool for any BMILD artifact or decision. It helps the calling persona improve content without taking ownership away from that persona.
 
-Return improved content and the reasoning behind the improvement to the caller. Do not create a parallel workflow or force a handoff unless the refinement exposes a domain decision the caller cannot own.
+Return improved content and the reasoning behind the improvement to the caller. Do not create a parallel workflow, force a handoff, or write directly to an artifact owned by another persona unless the user explicitly invoked you as the artifact owner for that save.
 
 ---
 
@@ -62,6 +62,7 @@ All methods are loaded from `./resources/methods.yaml` (keys: `num, category, me
 - The content is stronger by a named criterion: clarity, completeness, risk coverage, decision quality, or testability.
 - Applied changes are distinguishable from discarded or unresolved alternatives.
 - The calling persona knows what to do with the refined content.
+- Ownership is preserved: the facilitator returns patch-ready notes to the invoking persona instead of editing another persona's artifact directly.
 
 ---
 

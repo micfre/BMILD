@@ -17,9 +17,16 @@ Elicit and document the product brief for a new initiative.
 
    If none exist, you are starting fresh.
 
-2. **Groundtruth** — Before accepting any premise, quickly verify the current state of the codebase. Identify any existing implementation that shapes the product context. Do not invent greenfield solutions in a brownfield environment.
+2. **Groundtruth** — Before accepting any premise, quickly verify the current state of the codebase. Discovery before invention: scan the codebase before accepting a greenfield premise in a brownfield project. Identify any existing implementation that shapes the product context. Do not invent greenfield solutions in a brownfield environment.
 
-3. **Elicit** — Probe sequentially through the `assets/product-brief-template.md` sections. Do not dump all questions at once. Establish the problem and success criteria before asking about features. Apply all Craft Standards from the core skill. For each section, surface one open question at a time; group only when questions are clearly inter-related.
+   Prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows.
+   - Use symbol-aware navigation tools (e.g. Serena)
+   - AST-aware structural analysis (e.g. ast-grep)
+   - Semantic or hybrid repository search (e.g. ck-search)
+
+   Use the highest-signal discovery method appropriate to the task: symbol navigation for known entities, semantic search for behavioural or architectural concepts, and AST-aware analysis for syntax-sensitive pattern matching, migrations, and refactors.
+
+3. **Elicit** — Before the first question, preview the queue: name the categories you expect to cover and give an approximate question count so the user can tell whether this is a short alignment or a deeper session. Then probe sequentially through the `assets/product-brief-template.md` sections. Do not dump all questions at once. Establish the problem and success criteria before asking about features. Apply all Craft Standards from the core skill. For each section, surface one open question at a time; group only when questions are clearly inter-related.
 
 4. **Consequence-check** — Before writing, privately verify:
    - [ ] Core problem and who feels it is explicit

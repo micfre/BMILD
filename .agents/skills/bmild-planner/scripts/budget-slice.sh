@@ -26,8 +26,8 @@ read_toml_number() {
 
 _bmild_toml=$(find_bmild_toml "$(pwd)")
 TARGET=$(read_toml_number "$_bmild_toml" "slice_target" "170000")
-BASE=$(read_toml_number "$_bmild_toml" "tokenizer_base" "0")
-MULT=$(read_toml_number "$_bmild_toml" "tokenizer_multiplier" "1.0")
+BASE=$(read_toml_number "$_bmild_toml" "tokenizer_base" "15000")
+MULT=$(read_toml_number "$_bmild_toml" "tokenizer_multiplier" "1.25")
 
 EDIT_PENALTY=2.0
 TIER_1_THRESH=500
@@ -87,8 +87,8 @@ usage() {
   echo ""
   echo "Options:"
   echo "  --target <n>  Token budget (default: from .bmild.toml slice_target, fallback 170000)"
-  echo "  --base <n>    Tokenizer base adjustment (default: from .bmild.toml tokenizer_base, fallback 0)"
-  echo "  --multiplier <n>  Tokenizer multiplier (default: from .bmild.toml tokenizer_multiplier, fallback 1.0)"
+  echo "  --base <n>    Tokenizer base adjustment (default: from .bmild.toml tokenizer_base, fallback 15000)"
+  echo "  --multiplier <n>  Tokenizer multiplier (default: from .bmild.toml tokenizer_multiplier, fallback 1.25)"
   echo "  --reads       Subsequent positional args are read-only context files"
   echo "  --edits       Subsequent positional args are existing edit targets (${EDIT_PENALTY}x penalty)"
   echo "  --new <n>     Estimated count of new files Alex will create"
