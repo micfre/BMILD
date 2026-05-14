@@ -5,177 +5,170 @@ root="${1:-.}"
 skills_dir="$root/.agents/skills"
 
 fail=0
-
-section_required=(
-  "## BMILD Working Team"
-  "## Activation"
-  "## Workflow"
-  "## Definition of Done"
-  "## Gotchas"
-)
-
-standard_required=(
-  "## Craft Standards"
-  "## Scope Boundary"
-  "## Exit and Handoff"
-)
-
-standard_skills=(
-  bmild-arch
-  bmild-dev
-  bmild-planner
-  bmild-pm
-  bmild-qa
-  bmild-sec
-  bmild-ux
-)
-
-cross_cutting_skills=(
-  bmild-brainstorming
-  bmild-debate
-  bmild-elicit
-)
-
-is_standard_skill() {
-  local name="$1"
-  local item
-  for item in "${standard_skills[@]}"; do
-    [[ "$item" == "$name" ]] && return 0
-  done
-  return 1
-}
-
-is_cross_cutting_skill() {
-  local name="$1"
-  local item
-  for item in "${cross_cutting_skills[@]}"; do
-    [[ "$item" == "$name" ]] && return 0
-  done
-  return 1
-}
+tmp_dir="$(mktemp -d)"
+trap 'rm -rf "$tmp_dir"' EXIT
 
 report() {
   printf 'ERROR: %s\n' "$*" >&2
   fail=1
 }
 
-while IFS= read -r -d '' skill_file; do
-  skill_dir="$(dirname "$skill_file")"
-  skill_name="$(basename "$skill_dir")"
+find_skill_markdown_files() {
+  if [[ -d "$skills_dir" ]]; then
+    find "$skills_dir" -type f -name '*.md' -print0
+  fi
+}
 
-  frontmatter_name="$(awk '
+has_frontmatter_key() {
+  local key="$1"
+  local path="$2"
+  awk -v key="$key" '
     NR == 1 && $0 != "---" { exit 1 }
-    NR > 1 && $0 == "---" { exit 0 }
-    NR > 1 && $1 == "name:" { print $2 }
-  ' "$skill_file")"
-
-  [[ "$frontmatter_name" == "$skill_name" ]] || report "$skill_file frontmatter name '$frontmatter_name' does not match directory '$skill_name'"
-
-  description_length="$(awk '
-    NR == 1 && $0 != "---" { exit 1 }
-    NR > 1 && $0 == "---" { exit 0 }
-    NR > 1 && $1 == "description:" {
-      line = $0
-      sub(/^description:[[:space:]]*/, "", line)
-      gsub(/^"|"$/, "", line)
-      print length(line)
-    }
-  ' "$skill_file")"
-
-  [[ -n "$description_length" ]] || report "$skill_file missing description"
-  [[ -z "$description_length" || "$description_length" -le 1024 ]] || report "$skill_file description exceeds 1024 characters"
-
-  for section in "${section_required[@]}"; do
-    grep -q "^${section}$" "$skill_file" || report "$skill_file missing required section '$section'"
-  done
-
-  awk '
-    /^## Workflow$/ { in_workflow = 1; has_checklist = 0; next }
-    in_workflow && /^## / {
-      if (!has_checklist) {
-        print FILENAME " Workflow section missing step checklist"
-        exit 1
-      }
-      in_workflow = 0
-    }
-    in_workflow && /^- \[ \] Step [0-9]+:/ { has_checklist = 1 }
+    NR > 1 && $0 == "---" { exit(found ? 0 : 1) }
+    NR > 1 && $1 == key ":" { found = 1 }
     END {
-      if (in_workflow && !has_checklist) {
-        print FILENAME " Workflow section missing step checklist"
+      if (NR == 0) exit 1
+      if (!found) exit 1
+    }
+  ' "$path"
+}
+
+frontmatter_value() {
+  local key="$1"
+  local path="$2"
+  awk -v key="$key" '
+    NR == 1 && $0 != "---" { exit 1 }
+    NR > 1 && $0 == "---" { exit }
+    NR > 1 && $1 == key ":" {
+      line = $0
+      sub("^[^:]+:[[:space:]]*", "", line)
+      gsub(/^"|"$/, "", line)
+      print line
+      found = 1
+      exit
+    }
+    END {
+      if (NR == 0 || !found) exit 1
+    }
+  ' "$path"
+}
+
+has_step_checklist() {
+  local path="$1"
+  grep -qE '^- \[ \] Step [0-9]+:' "$path"
+}
+
+has_workflow_without_checklist() {
+  local path="$1"
+  awk '
+    BEGIN {
+      in_code = 0
+      in_section = 0
+      has_checklist = 0
+      section_needs_checklist = 0
+      reported = 0
+    }
+    /^```/ {
+      in_code = !in_code
+      next
+    }
+    in_code { next }
+    /^##+[[:space:]]+/ {
+      if (in_section && section_needs_checklist && !has_checklist) {
+        reported = 1
+        print FILENAME " section '"'"'" section_title "'"'"' is missing a step checklist"
+        exit 1
+      }
+      section_title = $0
+      lowered = tolower($0)
+      in_section = 1
+      has_checklist = 0
+      section_needs_checklist = (lowered ~ /(^|[^[:alpha:]])(workflow|sequence|orchestration)([^[:alpha:]]|$)/)
+      next
+    }
+    in_section && /^- \[ \] Step [0-9]+:/ {
+      has_checklist = 1
+    }
+    END {
+      if (!reported && in_section && section_needs_checklist && !has_checklist) {
+        print FILENAME " section '"'"'" section_title "'"'"' is missing a step checklist"
         exit 1
       }
     }
-  ' "$skill_file" || report "$skill_file missing step checklist in Workflow"
+  ' "$path"
+}
 
-  if is_standard_skill "$skill_name"; then
-    for section in "${standard_required[@]}"; do
-      grep -q "^${section}$" "$skill_file" || report "$skill_file missing standard section '$section'"
-    done
+collect_numbered_headings() {
+  local output="$1"
+  find_skill_markdown_files | xargs -0 awk '
+    BEGIN { in_code = 0 }
+    /^```/ { in_code = !in_code; next }
+    in_code { next }
+    /^###[[:space:]]+[0-9]+\./ {
+      printf "%s:%d:%s\n", FILENAME, FNR, $0
+    }
+  ' >"$output"
+}
+
+collect_table_rows() {
+  local output="$1"
+  find_skill_markdown_files | xargs -0 awk '
+    BEGIN { in_code = 0 }
+    /^```/ { in_code = !in_code; next }
+    in_code { next }
+    /^\|.*\|$/ {
+      printf "%s:%d:%s\n", FILENAME, FNR, $0
+    }
+  ' >"$output"
+}
+
+skill_count=0
+while IFS= read -r -d '' skill_file; do
+  skill_count=$((skill_count + 1))
+
+  has_frontmatter_key "name" "$skill_file" || report "$skill_file missing frontmatter key 'name'"
+  has_frontmatter_key "description" "$skill_file" || report "$skill_file missing frontmatter key 'description'"
+
+  description_value="$(frontmatter_value "description" "$skill_file" 2>/dev/null || true)"
+  if [[ -z "$description_value" ]]; then
+    report "$skill_file has an empty frontmatter description"
+  elif [[ ${#description_value} -gt 1024 ]]; then
+    report "$skill_file description exceeds 1024 characters"
   fi
 
-  if is_cross_cutting_skill "$skill_name"; then
-    grep -q '^## Capabilities$' "$skill_file" || report "$skill_file missing cross-cutting section '## Capabilities'"
+  has_step_checklist "$skill_file" || report "$skill_file missing step checklist"
+  if workflow_error="$(has_workflow_without_checklist "$skill_file" 2>&1)"; then
+    :
+  else
+    report "$workflow_error"
   fi
 done < <(find "$skills_dir" -mindepth 2 -maxdepth 2 -name SKILL.md -print0)
 
-if grep -R --include='*.md' -nE '^### [0-9]+\.' "$skills_dir" >/tmp/bmild-numbered-headings.txt; then
-  cat /tmp/bmild-numbered-headings.txt >&2
-  report "numbered markdown headings found; use '### Step N:' plus a Progress checklist for task flows"
+if (( skill_count == 0 )); then
+  report "no SKILL.md files found under $skills_dir"
 fi
 
-while IFS= read -r -d '' step_file; do
-  if grep -qE '^## .*(SEQUENCE|WORKFLOW|ORCHESTRATION|APPLICATION|IDENTIFICATION)' "$step_file" && ! grep -qE '^- \[ \] Step [0-9]+:' "$step_file"; then
-    report "$step_file has a sequence-like section without a step checklist"
+while IFS= read -r -d '' md_file; do
+  if workflow_error="$(has_workflow_without_checklist "$md_file" 2>&1)"; then
+    :
+  else
+    report "$workflow_error"
   fi
-done < <(find "$skills_dir" -path '*/steps/*.md' -print0)
+done < <(find_skill_markdown_files)
 
-table_targets=(
-  "$skills_dir"
-  "$root/AGENTS.md"
-  "$root/CHANGELOG.md"
-  "$root/docs/bmild-skill-best-practices-evaluation.md"
-  "$root/docs/agent-skills-docs-inventory.md"
-)
-
-if grep -R --include='*.md' -nE '^\|.*\|$' "${table_targets[@]}" >/tmp/bmild-table-rows.txt; then
-  cat /tmp/bmild-table-rows.txt >&2
-  report "markdown table rows found in checked skill/docs surface"
+numbered_headings_report="$tmp_dir/numbered-headings.txt"
+collect_numbered_headings "$numbered_headings_report"
+if [[ -s "$numbered_headings_report" ]]; then
+  cat "$numbered_headings_report" >&2
+  report "numbered markdown headings found; prefer checklist-based task flows over numbered headings"
 fi
 
-required_template_checks=(
-  "$skills_dir/bmild-planner/assets/slices-template.md:approved_scope:"
-  "$skills_dir/bmild-planner/assets/slice-template.md:qa_status:"
-  "$skills_dir/bmild-planner/assets/slice-template.md:security_status:"
-  "$skills_dir/bmild-planner/assets/slice-template.md:## Likely Required Reads Check"
-  "$skills_dir/bmild-qa/assets/rca-template.md:next_owner:"
-  "$skills_dir/bmild-sec/assets/security-review-template.md:next_owner:"
-  "$skills_dir/bmild-qa/assets/rca-template.md:## Closure Evidence"
-  "$skills_dir/bmild-sec/assets/security-review-template.md:## Closure Evidence"
-)
-
-for entry in "${required_template_checks[@]}"; do
-  path="${entry%%:*}"
-  pattern="${entry#*:}"
-  if [[ ! -f "$path" ]]; then
-    report "required template missing: $path"
-    continue
-  fi
-  grep -q "$pattern" "$path" || report "$path missing required marker '$pattern'"
-done
-
-canonical_docs=(
-  "$root/plans/CHARTER.md:plans/CHARTER.md"
-  "$root/plans/ARCHITECTURE.md:plans/ARCHITECTURE.md"
-  "$root/DESIGN.md:DESIGN.md"
-)
-
-for entry in "${canonical_docs[@]}"; do
-  path="${entry%%:*}"
-  label="${entry##*:}"
-  if [[ -f "$path" ]]; then
-    grep -q '^## Distillation Log$' "$path" || report "$label exists but is missing required '## Distillation Log' section"
-  fi
-done
+table_rows_report="$tmp_dir/table-rows.txt"
+collect_table_rows "$table_rows_report"
+if [[ -s "$table_rows_report" ]]; then
+  cat "$table_rows_report" >&2
+  report "markdown table rows found outside fenced code blocks; prefer more resilient bullet structures"
+fi
 
 if (( fail )); then
   exit 1

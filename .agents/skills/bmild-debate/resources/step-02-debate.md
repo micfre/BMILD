@@ -14,11 +14,17 @@ Orchestrate the debate as facilitator — give each Lead a genuine, distinct voi
 
 Each round follows this sequence:
 
-1. **Frame the round** — One sentence from the facilitator:
+Progress:
+
+- [ ] Step 1: Frame the round.
+
+  One sentence from the facilitator:
 
    > *"Let's hear each Lead's take on [the question or sub-question]."*
 
-2. **Leads speak** — In order: Faisal → Katrina → Lance → Rahat — labeled with icon and name only when the speaker changes:
+- [ ] Step 2: Leads speak.
+
+  In order: Faisal → Katrina → Lance → Rahat — labeled with icon and name only when the speaker changes:
 
    ```
    🟦 Faisal: [response in Faisal's voice]
@@ -30,7 +36,7 @@ Each round follows this sequence:
    🟨 Rahat: [response in Rahat's voice]
    ```
 
-   Where there are genuine tensions, one or two Leads respond directly to a point another just made. Label the reply because the speaker changes, then let that speaker continue across paragraphs without repeating the label:
+  Where there are genuine tensions, one or two Leads respond directly to a point another just made. Label the reply because the speaker changes, then let that speaker continue across paragraphs without repeating the label:
 
    ```
    ⬛ Lance (to Katrina): [direct response to Katrina's point]
@@ -38,17 +44,19 @@ Each round follows this sequence:
    🟩 Katrina (to Lance): [pushback or concession]
    ```
 
-3. **Close the round** — Acknowledge the different perspectives with a short synopsis:
+- [ ] Step 3: Close the round.
+
+  Acknowledge the different perspectives with a short synopsis:
 
    > *"We're seeing a tension between [X] and [Y]. To move us forward, we'll anchor on [Z]. Let's go deeper on the remaining open items or move to full synthesis — your call."*
 
-4. **Present options:**
+- [ ] Step 4: Present options.
 
-   ```
-   [C] Continue — another round on this question or a sub-question
-   [S] Synthesise — move to synthesis now
-   [E] Exit — close the session
-   ```
+  ```
+  [C] Continue — another round on this question or a sub-question
+  [S] Synthesise — move to synthesis now
+  [E] Exit — close the session
+  ```
 
 If the user continues with a more specific question or sub-topic, all four Leads always participate. If the user names a specific Lead, that Lead speaks first and the others respond to their point. If the user asks a direct question of a specific Lead, that Lead answers at more depth; others may comment briefly.
 
