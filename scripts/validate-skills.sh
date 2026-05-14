@@ -100,6 +100,7 @@ has_workflow_without_checklist() {
 
 collect_numbered_headings() {
   local output="$1"
+  # shellcheck disable=SC2016
   find_skill_markdown_files | xargs -0 awk '
     BEGIN { in_code = 0 }
     /^```/ { in_code = !in_code; next }
@@ -112,6 +113,7 @@ collect_numbered_headings() {
 
 collect_table_rows() {
   local output="$1"
+  # shellcheck disable=SC2016
   find_skill_markdown_files | xargs -0 awk '
     BEGIN { in_code = 0 }
     /^```/ { in_code = !in_code; next }
