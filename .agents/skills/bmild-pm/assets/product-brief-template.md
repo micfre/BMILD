@@ -28,8 +28,8 @@ author: "[user_name] + Faisal (PM)"
 
 ## Scope
 
-[What is in for the first initiative. What is explicitly out. Tight — this is a boundary document, not a feature list.]
+[Initiative boundary — what this initiative addresses, and what it explicitly does not. Tight enough that a downstream persona can rule design decisions in or out. This is the *boundary*, not an MVP feature cut; phase bucketing (MVP vs Growth) lives in `prd.md`.]
 
-## 2-3 Year Vision
+## Long-term Vision
 
 [Where this goes if the first initiative succeeds. What it becomes. Inspiring but grounded.]

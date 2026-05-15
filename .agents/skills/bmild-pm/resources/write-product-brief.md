@@ -26,7 +26,13 @@ Elicit and document the product brief for a new initiative.
 
    Use the highest-signal discovery method appropriate to the task: symbol navigation for known entities, semantic search for behavioural or architectural concepts, and AST-aware analysis for syntax-sensitive pattern matching, migrations, and refactors.
 
-3. **Elicit** — Before the first question, preview the queue: name the categories you expect to cover and give an approximate question count so the user can tell whether this is a short alignment or a deeper session. Then probe sequentially through the `assets/product-brief-template.md` sections. Do not dump all questions at once. Establish the problem and success criteria before asking about features. Apply all Craft Standards from the core skill. For each section, surface one open question at a time; group only when questions are clearly inter-related.
+3. **Elicit (diverge → synthesize → steer).**
+   - **Open with the brief contour.** Name the sections you expect to cover and signal that the session is short on consequential framing and dense on inferred-assumption steering — not a serial walk.
+   - **Diverge on consequential sections first.** Problem, target users, and at least one measurable success criterion warrant one open question per turn until framed. These shape every downstream artifact.
+   - **Synthesize the remainder.** Once consequential sections are framed, draft inferred answers for Solution, Competitive context, Initiative boundary, and 2-3 Year Vision in one compact synthesis block, each tagged with confidence. Present the block and ask the user to redirect, accept, or escalate any item.
+   - **Reopen only what the user steers.** If the user pushes back on a synthesized item, or hedges ("not sure / maybe / what would you do"), promote that item to a consequential probe with options. Otherwise lock the synthesis.
+   - **Section transitions remain soft.** Use Craft Standards trigger-conditions for "anything else?" gates and out-of-section captures.
+   - Apply all Craft Standards from the core skill.
 
 4. **Consequence-check** — Before writing, privately verify:
    - [ ] Core problem and who feels it is explicit

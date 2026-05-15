@@ -26,14 +26,20 @@ Elicit and document the PRD for an initiative with an existing product brief.
 
 3. **Probe backward** — Before eliciting new requirements, review the existing `product-brief.md` for unresolved assumptions, queue items, or scope edges that still need promotion. Resolve what is in scope. Route user-owned gaps through `user-attention.md` and cross-artifact/source issues through `spec-patch-queue.md` before proceeding.
 
-4. **Elicit** — Before the first question, preview the queue: name the categories you expect to cover and give an approximate question count so the user can tell whether this is a short alignment or a deeper session. Then probe sequentially through the `assets/prd-template.md` sections. Do not dump all questions at once. Apply all Craft Standards from the core skill. Sequence:
-   - Functional requirements — by capability area
-   - User journeys — named trigger, ordered steps, success exit, edge/failure paths
-   - Scope & Prioritization — Phase 1 (MVP) vs Phase 2 (Growth) vs explicitly out of scope
-   - Non-functional requirements — scale, performance, compliance, with thresholds
-   - Documentation scope — user, operator, contributor — decision for each
-   - Consequence-driven assumptions — for each: confidence level, consequence if wrong
-   - Governance routing — decide whether any remaining ambiguity belongs in `user-attention.md`, `spec-patch-queue.md`, or a bounded assumption
+4. **Elicit (diverge → synthesize → steer).**
+   - **Open with the PRD contour.** Name the sections and signal that consequential items (functional requirements, journeys, scope/prioritization) earn depth and the rest will be synthesized for steering.
+   - **Diverge on consequential sections.** Probe one open question at a time until framed:
+     - Functional requirements — by capability area
+     - User journeys — named trigger, ordered steps, success exit, edge/failure paths
+     - Scope & Prioritization — Phase 1 (MVP) vs Phase 2 (Growth) vs explicitly out of scope
+   - **Synthesize the remainder.** Once consequential sections are framed, draft inferred answers in one compact block:
+     - Non-functional requirements — scale, performance, compliance, with proposed thresholds (only categories that apply)
+     - Documentation scope — user, operator, contributor — proposed decision for each
+     - Consequence-driven assumptions — each with confidence and consequence if wrong
+     Present the block and ask the user to redirect, accept, or escalate any item.
+   - **Reopen only what the user steers.** Hedging or pushback promotes an item back to a probed decision with options. Regulated NFRs and compliance obligations are consequential by default — probe, do not synthesize.
+   - **Governance routing.** Decide whether any remaining ambiguity belongs in `user-attention.md`, `spec-patch-queue.md`, or a bounded assumption.
+   - Apply all Craft Standards from the core skill.
 
 5. **Consequence-check** — Before writing, privately verify:
    - [ ] Every Must Have is traceable to a user need from `product-brief.md`

@@ -2,10 +2,13 @@ meta:
   artifact: prd.md
   governed_by: bmild-pm
   loading_note: >
-    Load before writing prd.md. For each section that applies, privately check whether
-    your draft exhibits the good_signal or the weak_signal. Check the falsifiable field:
-    is there an observable condition that confirms this section is complete? Resolve gaps
-    through further elicitation, route discrete user input to `user-attention.md`,
+    Load before writing prd.md. Each section carries a `stakes` hint that sets default
+    elicitation depth per the Craft Standards stakes rubric (consequential / medium / low).
+    Probe consequential items one question at a time; synthesize-and-steer for medium and
+    low. For each section that applies, privately check whether your draft exhibits the
+    good_signal or the weak_signal, and check the falsifiable field: is there an observable
+    condition that confirms this section is complete? Resolve gaps through further
+    elicitation calibrated to stakes, route discrete user input to `user-attention.md`,
     route source defects or cross-artifact conflicts to `spec-patch-queue.md`, or use
     bounded assumptions only when they are low-risk and reversible. Do not present
     this file to the user.
@@ -14,6 +17,7 @@ sections:
 
   - id: functional_requirements
     required: true
+    stakes: consequential
     cross_ref:
       - ux-design.md
       - system-design.md
@@ -36,6 +40,7 @@ sections:
 
   - id: coverage_check
     required: true
+    stakes: consequential
     cross_ref:
       - product-brief.md
     falsifiable: >
@@ -53,6 +58,7 @@ sections:
 
   - id: user_journeys
     required: false
+    stakes: consequential
     applies_when: any requirement involves user-facing behavior or workflow change
     cross_ref:
       - ux-design.md
@@ -69,6 +75,7 @@ sections:
 
   - id: scope_and_prioritization
     required: true
+    stakes: consequential
     falsifiable: >
       A planner can read this section and sequence delivery without re-negotiating scope
       boundaries. Phase 1 is distinguishable from Phase 2 by a clear test.
@@ -84,6 +91,8 @@ sections:
 
   - id: nfr
     required: false
+    stakes: medium
+    stakes_note: consequential when regulated or when a hard threshold is named
     applies_when: any requirement touches performance, scale, data retention, security, compliance, or regulated data handling
     cross_ref:
       - system-design.md
@@ -102,6 +111,7 @@ sections:
 
   - id: documentation_scope
     required: true
+    stakes: medium
     cross_ref:
       - slice-*.md
       - verification-matrix.md
@@ -119,6 +129,7 @@ sections:
 
   - id: assumptions
     required: false
+    stakes: low
     falsifiable: >
       For each assumption, a reviewer can state what specifically would change in the
       PRD if the assumption is wrong.
@@ -132,6 +143,7 @@ sections:
 
   - id: governance_routing
     required: false
+    stakes: low
     falsifiable: >
       A reviewer can determine whether unresolved ambiguity was routed through
       `user-attention.md`, `spec-patch-queue.md`, bounded assumptions, or an explicit

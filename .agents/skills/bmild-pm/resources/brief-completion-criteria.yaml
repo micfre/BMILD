@@ -2,17 +2,21 @@ meta:
   artifact: product-brief.md
   governed_by: bmild-pm
   loading_note: >
-    Load before writing product-brief.md. For each section, privately check whether your
-    draft exhibits the good_signal or the weak_signal. Check the falsifiable field: is
-    there an observable condition that confirms this section is complete? Resolve gaps
-    through elicitation, route discrete user input to `user-attention.md`, or use a
-    bounded assumption only when it is low-risk and reversible. Do not present this
-    file to the user.
+    Load before writing product-brief.md. Each section carries a `stakes` hint that
+    sets default elicitation depth per the Craft Standards stakes rubric
+    (consequential / medium / low). Probe consequential items one question at a time;
+    synthesize-and-steer for medium and low. For each section, privately check whether
+    your draft exhibits the good_signal or the weak_signal, and check the falsifiable
+    field: is there an observable condition that confirms this section is complete?
+    Resolve gaps through elicitation calibrated to stakes, route discrete user input
+    to `user-attention.md`, or use a bounded assumption only when it is low-risk and
+    reversible. Do not present this file to the user.
 
 sections:
 
   - id: problem
     required: true
+    stakes: consequential
     falsifiable: >
       A reviewer can state the specific pain, name who feels it, and describe how to
       confirm it exists — without reading any other section.
@@ -25,6 +29,7 @@ sections:
 
   - id: solution
     required: true
+    stakes: medium
     falsifiable: >
       A reviewer unfamiliar with the domain can describe what users do and what outcome
       they get — without reading the problem statement.
@@ -37,6 +42,7 @@ sections:
 
   - id: target_users
     required: true
+    stakes: consequential
     cross_ref:
       - ux-design.md
     falsifiable: >
@@ -52,6 +58,7 @@ sections:
 
   - id: competitive_context
     required: true
+    stakes: medium
     falsifiable: >
       A reviewer can name at least one alternative approach and state the specific reason
       this product differs — without additional context.
@@ -65,6 +72,7 @@ sections:
 
   - id: success_criteria
     required: true
+    stakes: consequential
     falsifiable: >
       At least one criterion can be checked against a running product or business metric
       with a clear pass or fail threshold. Others are stated as observable outcomes.
@@ -78,6 +86,7 @@ sections:
 
   - id: scope
     required: true
+    stakes: medium
     falsifiable: >
       A downstream persona can read this section and determine whether any given feature
       idea is in scope, out of scope, or deferred — without asking a follow-up question.
@@ -91,11 +100,12 @@ sections:
 
   - id: vision
     required: true
+    stakes: medium
     falsifiable: >
       A reviewer can state what this product becomes in 2-3 years and distinguish it from
       the first initiative scope.
     good_signal: >
-      States a 2-3 year direction that is more ambitious than the first initiative but
+      States a long-term direction that is more ambitious than the first initiative but
       still grounded. A reader could identify what this product becomes, not just what it
       starts as.
     weak_signal: >
@@ -104,6 +114,7 @@ sections:
 
   - id: project_context
     required: false
+    stakes: medium
     applies_when: brownfield project or platform engagement
     cross_ref:
       - system-design.md
@@ -122,6 +133,7 @@ sections:
 
   - id: governance_routing
     required: false
+    stakes: low
     falsifiable: >
       A reviewer can tell whether unresolved ambiguity was routed to `user-attention.md`,
       a bounded assumption, or an explicit defer/reject/supersede outcome without
