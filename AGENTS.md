@@ -170,6 +170,7 @@ Do not make any modifications to any files in external_references\ folders
 ## Documentation
 
 Keep README, AGENTS and CHANGELOG up to date as project evolves. PM defines which documentation needs to change, Dev owns the edits, and QA verifies that the resulting documentation matches implemented behaviour.
+Planner slice-budgeting references should use the wrapper-first launcher path `bash .agents/skills/bmild-planner/scripts/run-budget-slice.sh`. Do not present the legacy direct shell entrypoint as the supported workflow.
 
 ## Versioning
 
