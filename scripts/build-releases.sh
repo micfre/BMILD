@@ -23,6 +23,7 @@ cleanup() {
 trap cleanup EXIT
 
 sync_skill_versions() {
+    local base_dir="$1"
     local skill_file
 
     while IFS= read -r skill_file; do
@@ -47,7 +48,7 @@ sync_skill_versions() {
             { print }
         ' "$skill_file" > "${skill_file}.tmp"
         mv "${skill_file}.tmp" "$skill_file"
-    done < <(find "$STAGING_DIR/.agents/skills" -mindepth 2 -maxdepth 2 -name SKILL.md | sort)
+    done < <(find "$base_dir/.agents/skills" -mindepth 2 -maxdepth 2 -name SKILL.md | sort)
 }
 
 # Create dist directory if it doesn't exist
@@ -86,10 +87,11 @@ fi
 
 echo "Packaging release v${VERSION}..."
 
-# Stage release contents so packaged skill versions can be normalized without
-# mutating tracked workspace files.
+# Patch workspace skill files to match VERSION
+sync_skill_versions "$PROJECT_ROOT"
+
+# Stage release contents
 cp -R "$PROJECT_ROOT/.agents" "$STAGING_DIR/.agents"
-sync_skill_versions
 
 # Create the tarball
 # Includes .agents/ folder
