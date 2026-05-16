@@ -35,7 +35,7 @@ Revise an existing plan when a blocker surfaces, design changes, or a re-sequenc
 
 6. **Backward Coverage Verification** — Re-run coverage verification across the revised plan. Record the updated outcome in `slices.md ## Coverage Verification`. If any `Must Have` becomes uncovered by the recut, escalate before finalising.
 
-7. **Write updated Slices** — Update affected `slice-<N>.md` files. When likely reads, planned edits, or new-file estimates change, re-run `bash .agents/skills/bmild-planner/scripts/budget-slice.sh` from the project root and refresh the Slice's `## Slice token estimate` plus Planning Notes. Update `slices.md` with revised Slice Registry entries, recut note (if applicable), and updated coverage verification. Do not modify completed Slice files.
+7. **Write updated Slices** — Update affected `slice-<N>.md` files. When likely reads, planned edits, or new-file estimates change, re-run `bash .agents/skills/bmild-planner/scripts/run-budget-slice.sh` from the project root and refresh the Slice's `## Slice token estimate` plus Planning Notes. Update `slices.md` with revised Slice Registry entries, recut note (if applicable), and updated coverage verification. Do not modify completed Slice files.
 
 8. **Update context memory** — Add any newly active `slice-<N>.md` files to `## Live` in `_context.md`. Move superseded Slice files to `## Archived`.
 

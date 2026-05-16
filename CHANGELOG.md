@@ -42,7 +42,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated UX activation and DESIGN.md handling so Katrina reads existing `DESIGN.md` for all scopes and preserves existing structure when updating it.
 - Added target responder, status, and deferral-consequence fields for design-tier Open Questions and Handoff Questions, with Planner readiness checks for question closure.
 - Added first-person voice guidance to all seven named personas.
-- Updated Planner slice budgeting guidance to invoke the skill-local tokenizer with `bash` and persist the returned token estimate in Slice Planning Notes.
+- Updated Planner slice budgeting guidance to invoke the wrapper-first skill-local tokenizer launcher with `bash` and persist the returned token estimate in Slice Planning Notes.
 - Reframed Dev modes around user intent: Spec, Prototype, and Bug Fix, with shared implementation discipline and mode-specific memory, handoff, and documentation contracts.
 - Added Dev note persistence for prototype and bug-fix work that would otherwise disappear into chat-only context.
 - Hardened BMILD activation path resolution for standard personas, including direct initiative-folder checks before broad searches.
