@@ -33,6 +33,8 @@ Revise an existing plan when a blocker surfaces, design changes, or a re-sequenc
 
 5. **Recut** — Run at most one recut pass on affected unstarted Slices, then one final backward coverage verification pass. If coverage still fails after one recut, hand back with a precise blocking question rather than looping.
 
+   **Recovery-scope split rule.** When adding recovery scope to an active or in-progress Slice, evaluate whether the addition materially shifts the Slice's acceptance criteria (new AC, new design contract, new files touched beyond the planned reads/edits). If yes, the recut produces a **new** Slice file (next `slice-<N>.md`) rather than expanding the existing Slice. The original active Slice's AC remains unchanged; recovery work is sequenced as a new Slice via `slices.md` Slice Registry dependency notes. Single-Slice Optimisation does not apply to mixed recovery + original scope.
+
 6. **Backward Coverage Verification** — Re-run coverage verification across the revised plan. Record the updated outcome in `slices.md ## Coverage Verification`. If any `Must Have` becomes uncovered by the recut, escalate before finalising.
 
 7. **Write updated Slices** — Update affected `slice-<N>.md` files. When likely reads, planned edits, or new-file estimates change, re-run `bash .agents/skills/bmild-planner/scripts/run-budget-slice.sh` from the project root and refresh the Slice's `## Slice token estimate` plus Planning Notes. Update `slices.md` with revised Slice Registry entries, recut note (if applicable), and updated coverage verification. Do not modify completed Slice files.

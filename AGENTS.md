@@ -11,7 +11,7 @@ BMILD skills must follow these API-like design principles:
 2. **Uniform skill structure**:
    Each skill body uses these sections in this order:
    - **`Persona`** (the unlabelled lead paragraph after the frontmatter): Name, role, scope boundary, and voice. Do not include pronoun labels. Do not use `Always prefix` — identity is expressed in the opening operating stance and final sign-off only.
-   - **`## BMILD Working Team`**: Positive frame for how the skill contributes to the team value chain, which teammates depend on its output, why interactivity matters, when advanced team tools such as `bmild-debate`, `bmild-elicit`, or `bmild-brainstorming` are useful, and the persona-name rule (refer to teammates by persona name, never skill name).
+   - **`## BMILD Working Team`**: Positive frame for how the skill contributes to the team value chain, which teammates depend on its output, why interactivity matters, when advanced team tools such as `bmild-roundtable`, `bmild-elicit`, or `bmild-brainstorming` are useful, and the persona-name rule (refer to teammates by persona name, never skill name).
    - **`## Activation`**: Unified entry sequence — resolve environment from `.bmild.toml`, determine scope, load context memory, load persona inputs, handle incomplete context, open with one compact operating stance line, then begin. Standard skills use the full sequence; cross-cutting skills use a simplified version.
    - **`## Workflow`**: Linear process, mode variants, retry loops, scope checkpoints, and the first actionable "begin" behaviour. Modes are workflow modifiers, not a separate instruction set. True ordered work uses a `Progress:` checklist with `- [ ] Step N: ...`; general guidelines use prose or ordinary bullets.
    - **`## Capabilities`**: The skill's toolkit, named modes, and reusable techniques.
@@ -91,7 +91,8 @@ This can be structured alongside project source or kept separately — the perso
         ├── system-design.md        # Lance output: schema, API contracts, service contracts, tech choices.
         ├── spec-patch-queue.md     # Initiative-local coordination queue for proposed source-artifact repairs and cross-artifact conflicts. Non-authoritative until promoted into the target artifact.
         ├── user-attention.md       # Initiative-local queue for discrete user input that still needs owner promotion into a governed artifact.
-        ├── decision-log.md         # Optional initiative-local record of durable promoted decisions that affect multiple artifacts. Not a question tracker.
+        ├── decision-log.md         # Optional initiative-local record of durable promoted decisions that affect multiple artifacts. Not a question tracker. Auto-appended by handbacks and scribe applications derived from a change-proposal.
+        ├── change-proposal-<slug>.md # Sonia output (Course-Correction mode): impact map, bounded questions, roundtable synthesis records, ordered handoff chain, SP item references for a cross-artifact change. Created when ≥2 source-artifact owners are affected.
         ├── verification-matrix.md  # Sonia/Rahat: proof map for requirements and Slices.
         ├── slices.md               # Sonia output: Slice registry.
         ├── slice-<N>.md            # One file per Slice.
@@ -124,10 +125,15 @@ updated: YYYY-MM-DD
 - ux-design.md
 
 ## Archived
+
+## Stale
+- prd.md (driven by SP-007 on system-design.md)
+- slices.md (driven by SP-007 on system-design.md)
 ```
 
 - `## Live` — filenames of artifacts currently in use. One per line, prefixed with `- `.
 - `## Archived` — filenames of superseded artifacts, same format.
+- `## Stale` — filenames of artifacts that have been superseded mid-flight by an upstream change and must not be consumed as current truth until repaired. Each line names the artifact and the SP item driving the staleness. An artifact listed here MUST have a corresponding `cross_artifact_conflict` SP item targeting its owner, OR be referenced by an active `change-proposal-<slug>.md`. The owning persona moves the line out of `## Stale` and back to `## Live` when their patch is applied.
 - Frontmatter `scope` identifies the initiative or if it is the global `_system` context.
 - Frontmatter `updated` is the date of the last change.
 
@@ -140,9 +146,10 @@ updated: YYYY-MM-DD
 - Project-root `DESIGN.md`: created and maintained by Katrina; carries durable global UX patterns (palette, typography, global component rules) distilled from initiative-specific UX work.
 - `ux-design.md`: created by Katrina; consumed by Lance, Sonia, Alex, Rahat, and Zach; validated through observable user-state checks.
 - `system-design.md`: created by Lance; consumed by Sonia, Alex, Rahat, and Zach; validated through implementability, testability, and security review.
-- `spec-patch-queue.md`: initiative-local coordination queue for `source_defect` and `cross_artifact_conflict` items; consumed by the owning persona of the target artifact and any blocked downstream persona; remains non-authoritative until the owner promotes the accepted change into the target source artifact.
+- `spec-patch-queue.md`: initiative-local coordination queue for `source_defect` and `cross_artifact_conflict` items; consumed by the owning persona of the target artifact and any blocked downstream persona; remains non-authoritative until the owner promotes the accepted change into the target source artifact. Every Handback's resolution step runs the **Promotion Cascade Check** (see `docs/cross-skill-amendment.md` §4): single-owner cascades auto-enqueue downstream items; ≥2-owner cascades route to Sonia in Course-Correction mode rather than fragmenting.
 - `user-attention.md`: initiative-local coordination queue for discrete user input; consumed by the target owner persona; remains non-authoritative until the owner's artifact reflects the answer.
-- `decision-log.md`: optional durable record for already-promoted multi-artifact decisions. Initiative-local by default; `_system/decision-log.md` is reserved for genuinely global decisions unrelated future initiatives must consume.
+- `decision-log.md`: optional durable record for already-promoted multi-artifact decisions. Initiative-local by default; `_system/decision-log.md` is reserved for genuinely global decisions unrelated future initiatives must consume. Auto-appended by handbacks and scribe applications derived from a `change-proposal-<slug>.md`.
+- `change-proposal-<slug>.md`: created by Sonia in Course-Correction mode when a change affects ≥2 source-artifact owners; carries the impact map, bounded questions, roundtable synthesis records, scribe applications, ordered handoff chain, and SP item references. Sonia coordinates and orders; design-tier decisions are deliberated via `bmild-roundtable` and authored by the owning persona in Handback (one narrow scribe exception applies — see `docs/cross-skill-amendment.md` §6).
 - `slices.md` and `slice-<N>.md`: created by Sonia; consumed and updated by Alex; verified by Rahat and Zach; recut by Sonia when implementation reveals a planning problem.
 - `dev-note-<slug>.md`: created or updated by Alex for Prototype and Bug Fix work that changes durable behaviour, leaves reusable code, records fix rationale, or creates future-spec facts; consumed by Faisal, Katrina, Lance, Sonia, Rahat, and Zach when formalizing, verifying, or reviewing later work.
 - `verification-matrix.md`: created by Sonia during readiness when proof boundaries matter; repaired or expanded by Rahat; consumed by Alex; validated by Rahat during verification.
@@ -160,6 +167,10 @@ RCA path rule: initiative-linked defects live in the initiative folder. `_system
 When faced with an ambiguous skill design choice use these points to align decisions:
 - Resist patterns that funnel obvious progress through theatrical gates. Ceremony does not equate to rigor.
 - Manage quality floor without limiting quality ceiling. Allow performant models to work to their fullest, don't let quality of output fall when using lower-parameter count models.
+
+## Cross-skill governance
+
+`docs/cross-skill-amendment.md` is the normative specification for cross-skill workflow rules: Activation queue scan, Handback Mode shape, Exit-and-Handoff verbatim invocation, Promotion Cascade Check, `## Stale` semantics, Course-Correction mode (`bmild-planner`), refactored `bmild-roundtable` with flexible attendance, and Sonia replanning guardrail. Each SKILL.md inlines the relevant sections locally; the amendment is the source of truth for audit and consistency. Future cross-cutting amendments follow the same pattern.
 
 ## External references
 

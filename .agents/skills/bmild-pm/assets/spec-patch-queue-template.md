@@ -19,10 +19,12 @@ updated: YYYY-MM-DD
 - Raised By: [persona or user]
 - Classification: source_defect | cross_artifact_conflict
 - Blocking: yes | no
+- Blocked-By: none | SP-### (prior SP items that must complete before this one can be resolved)
 - Why It Matters: [What breaks, drifts, or becomes ambiguous if this is not fixed]
 - Exact Proposed Change: [The specific source update being proposed]
 - Downstream Impact: [Who is blocked or what contract becomes unsafe]
-- Owner Disposition: [accept | reject | rewrite | defer | supersede | move_to_user_attention] — [rationale]
+- Owner Disposition: [accept | reject | rewrite | defer | supersede | move_to_user_attention | applied_by_scribe] — [rationale; for applied_by_scribe, include `<change-proposal-<slug>.md ref>`]
 - Promotion Record: [target artifact section updated, date, and brief summary] | pending
+- Downstream Cascade: none | <list of follow-up SP IDs> | routed to Course-Correction (`change-proposal-<slug>.md`)
 - Supersedes: none | SP-###
 - Superseded By: none | SP-###
