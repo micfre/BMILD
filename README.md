@@ -44,7 +44,7 @@ Ten skill folders. Each contains a prompt that gives your AI agent a persona wit
 
 Plus three interactive modes that work across personas:
 
-- **Debate** 🌀: A structured multi-persona design debate session. Faisal, Katrina, Lance, and Rahat argue it out -- surfacing tensions from different perspectives. It's BMAD's "Party Mode" but named for what it actually does.
+- **Roundtable** 🌀: Structured multi-persona deliberation with flexible attendance. The convened design-tier leads surface trade-offs in front of you — Non-negotiable, Preference, Open — without recommending a decision. The user decides; the owning persona patches. Attendance is set per question, not fixed. ("Debate" remains a valid trigger phrase; the rename reflects what the skill actually does.)
 - **Elicit** ⚡: Added help to expand your own thinking and intent. 20+ structured methods to push requirements, UX decisions, or architecture past "good enough" into genuinely strong.
 - **Brainstorm** 💡: Open-ended ideation designed to get past obvious ideas. Anti-bias protocols prevent the facilitator from clustering around a single direction.
 
@@ -57,6 +57,8 @@ The personas are designed around a two-tier model:
 **Execution tier** (Sonia, Alex, Rahat, Zach) -- These personas plan and implement with context-window optimized vertical slices and robust quality pre-planning and verification. They activate lean, act on coherent inputs, and hand back when a blocker is outside their authority. Less ceremony, more efficient path to working code.
 
 Sonia, as the pivot between tiers, is where BMILD earns its keep. The spec gets the scrutiny it deserves. It is structurally unavoidable to bypass the readiness checks, the user does not need to remember to separately call on a readiness skill before planning development deliverables. Sonia takes care of this and lets you know it's ready. Sonia's also responsible for the overall system memory.
+
+When a change request mid-flight invalidates two or more design-tier artifacts — a PRD change that ripples into UX and architecture, a design decision discovered during implementation that forces rework upstream — Sonia enters **Course-Correction** mode. She doesn't make design decisions herself; she decomposes the change into bounded questions, convenes a Roundtable per question, records the user-ratified synthesis in a `change-proposal-<slug>.md`, and produces an ordered handoff chain so each owning persona patches their own artifact in sequence. Trigger phrases include "correct course", "change request", "spec change", or "rework needed".
 
 ### Handoffs
 
@@ -88,7 +90,9 @@ When ambiguity appears, BMILD does not preserve it as durable chat threaded thro
 
 Queue items are non-authoritative by design. A resolution becomes truth only after the owning persona promotes it into the target source artifact.
 
-Advanced modes are team tools. Debate resolves consequential ambiguity, Elicit strengthens a draft, and Brainstorm expands options before convergence. When invoked from inside a named persona workflow, they return patch-ready notes to that persona instead of taking over artifact ownership.
+Each standard persona auto-routes to its **Handback** mode when queue items target its artifacts. The user does not need to remember the queue or invoke handback explicitly — invoking the persona by name (e.g., "Lance, look at py-tokenizer") is enough; the persona checks the queue at activation and runs Handback if items are waiting. When a single promotion invalidates ≥2 downstream owners, the closing handoff routes to Sonia for Course-Correction instead of fragmenting into separate per-owner threads.
+
+Advanced modes are team tools. Roundtable resolves consequential ambiguity with attendance configured per question, Elicit strengthens a draft, and Brainstorm expands options before convergence. When invoked from inside a named persona workflow, they return patch-ready notes to that persona instead of taking over artifact ownership.
 
 Named personas also open with a compact operating stance that identifies who is speaking, the work type, the active scope, and the role boundary. This keeps weaker harnesses oriented without turning the personas into rigid scripts.
 
@@ -105,7 +109,8 @@ BMILD artifacts have owners and consumers:
 - `system-design.md`: created by Lance; consumed by Sonia, Alex, Rahat, and Zach; validated through implementability, testability, and security review.
 - `spec-patch-queue.md`: initiative-local coordination queue for proposed source-artifact repairs and cross-artifact conflicts. Non-authoritative until the target owner updates the target artifact.
 - `user-attention.md`: initiative-local queue for discrete user input that still needs owner promotion into a governed artifact.
-- `decision-log.md`: optional durable record for multi-artifact decisions that have already been promoted into source artifacts. Not a question tracker.
+- `decision-log.md`: optional durable record for multi-artifact decisions that have already been promoted into source artifacts. Not a question tracker. Auto-appended by handbacks and scribe applications derived from a `change-proposal`.
+- `change-proposal-<slug>.md`: created by Sonia in Course-Correction mode when a change affects ≥2 source-artifact owners; carries the impact map, bounded questions, roundtable synthesis records, ordered handoff chain, and SP item references. Sonia coordinates and orders; design-tier decisions are deliberated via Roundtable and authored by the owning persona in Handback.
 - `slices.md` and `slice-<N>.md`: created by Sonia; consumed and updated by Alex; verified by Rahat and Zach; recut by Sonia when implementation reveals a planning problem.
 - `dev-note-<slug>.md`: created or updated by Alex for Prototype and Bug Fix work that changes durable behaviour, leaves reusable code, records fix rationale, or creates future-spec facts; consumed by Faisal, Katrina, Lance, Sonia, Rahat, and Zach when formalizing, verifying, or reviewing later work.
 - `verification-matrix.md`: created by Sonia during readiness when proof boundaries matter; repaired or expanded by Rahat; consumed by Alex; validated by Rahat during verification.
@@ -141,6 +146,7 @@ When you name an initiative, standard personas check the exact initiative folder
         ├── prd.md                  # Faisal output: requirements, journeys, prioritization, NFRs, doc scope.
         ├── ux-design.md            # Katrina output: initiative-specific flows, screen states, interaction rules.
         ├── system-design.md        # Lance output: schema, API contracts, service contracts, tech choices.
+        ├── change-proposal-<slug>.md # Sonia output (Course-Correction mode): impact map, bounded questions, roundtable synthesis, ordered handoff chain.
         ├── verification-matrix.md  # Sonia/Rahat: proof map for requirements and Slices.
         ├── slices.md               # Sonia output: Slice registry.
         ├── slice-<N>.md            # One file per Slice.
@@ -171,10 +177,14 @@ updated: YYYY-MM-DD
 - ux-design.md
 
 ## Archived
+
+## Stale
+- prd.md (driven by SP-007 on system-design.md)
 ```
 
 - `## Live` — filenames of artifacts currently in use. One per line, prefixed with `- `.
 - `## Archived` — filenames of superseded artifacts, same format.
+- `## Stale` — filenames of artifacts superseded mid-flight by an upstream change that must not be consumed as current truth until the owning persona repairs them. Each line names the artifact and the SP item driving the staleness. The line moves back to `## Live` when the patch lands.
 - Frontmatter `scope` identifies the initiative or if it is the global `_system` context.
 - Frontmatter `updated` is the date of the last change.
 
@@ -219,8 +229,9 @@ You can also engage the interactive modes at any point:
 | What you need | Mode | What to say |
 | :--- | :--- | :--- |
 | Stress-test a spec or design | **Elicit** ⚡ | `Elicit this.` |
-| Cross-functional input on a hard decision | **Debate** 🌀 | `Debate this.` |
+| Cross-functional input on a hard decision | **Roundtable** 🌀 | `Roundtable this.` (or `Debate this.`) |
 | Ideate outside the obvious answers | **Brainstorm** 💡 | `Brainstorm this.` |
+| Mid-flight change request invalidates multiple docs | **Course-Correction** (via Sonia) | `Sonia, correct course on [initiative] because [reason].` |
 
 ### Supported environments
 
@@ -268,9 +279,10 @@ Where BMILD diverges:
   - **Integrated readiness gate.** BMAD has a readiness verification skill, but it's a separate step you invoke before implementation. In BMILD, the equivalent is built into the Delivery Planner -- Sonia can't decompose work into Slices without first verifying that every Must Have in the spec has downstream coverage in UX or architecture. The gate is structurally unavoidable, not a step you must remember to run.
   - **Structured debugging.** A breadth-first root cause analysis protocol ranked by fit/frequency/recency before any code is touched. Many debugging flows can prematurely funnel the agent into anchoring on a single domain and single cause.
 - Semantically:
-  - **Party Mode:** → Debate. "Start a debate on this topic." The leads come together. *<small>Currently operates in a single context window, does not spawn subagents (which is a cool trick BMAD is implementing).</small>*
+  - **Party Mode:** → Roundtable. "Roundtable this topic." The leads come together with flexible attendance — the convened subset depends on the question. *<small>Currently operates in a single context window, does not spawn subagents (which is a cool trick BMAD is implementing).</small>*
   - **Advanced Elicitation:** → Elicit. "Help me articulate this topic." Intelligent objective-oriented probing.
   - **Brainstorming:** → Brainstorm. "Start a brainstorm on this topic." Operates essentially the same.
+  - **Correct Course:** → Course-Correction (a Sonia mode, not a separate skill). Sonia coordinates and orders the cross-artifact handoff chain; she does not author design-tier patches herself. The owning persona patches in Handback.
   - **Epics, Stories:** → Initiatives, Slices.
 
 ### BMAD compatibility
