@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Tightened Planner, Arch, and UX comms-governance guidance so readiness-discovered source defects route through `spec-patch-queue.md`, user-owned gaps route through `user-attention.md`, and planner artifacts record governance status rather than durable question threads.
 - Replaced legacy durable question-thread patterns with governed `spec-patch-queue.md` and `user-attention.md` workflows, plus conditional `decision-log.md` guidance across PM, UX, Arch, Planner, Dev, QA, Security, README, and AGENTS documentation.
 - Normalized canonical memory artifact references to `[plan_folder]` across skill entry checklists, handoff boundaries, README, and AGENTS documentation.
 - Moved groundtruthing guidance out of PM core craft standards and into mode workflows that perform codebase discovery.

@@ -27,14 +27,14 @@ Assess whether upstream design is coherent enough to plan safely. Stop at readin
 
 4. **Cross-artifact alignment** — Assess whether each `Must Have` from `prd.md` is addressed in at least one downstream design artifact. Three outcomes:
    - **All addressed** — record `pass` and proceed.
-   - **Gap** (a Must Have has no downstream coverage) — route to Katrina or Lance with one precise question per gap. Do not decompose.
+   - **Gap** (a Must Have has no downstream coverage) — create or update `spec-patch-queue.md` with one blocking `source_defect` item per gap, naming the target artifact and owner. Record only the queue item ID in readiness artifacts. Do not decompose.
    - **Contradiction** (a downstream design decision conflicts with a Must Have) — route to Faisal for scope resolution. Do not decompose.
 
 5. **Governance closure check** — Inspect `spec-patch-queue.md` and `user-attention.md` when present. Readiness passes only when every blocking item is applied, closed, explicitly deferred, rejected, or superseded, and any remaining non-blocking item has a target owner, clear next action, and does not undermine source-artifact authority. Preserve documented deferral consequences and do not treat accepted or answered queue items as truth until promotion is recorded in the source artifact.
 
-6. **Nyquist matrix** — Create a `verification-matrix.md` when the initiative would benefit from explicit proof boundaries. For trivial work, keep it lean; for high-risk or multi-Slice work, make it comprehensive. Write it to `[plan_folder]/<initiative-name>/verification-matrix.md` using `assets/verification-matrix-template.md`.
+6. **Nyquist matrix** — Create a `verification-matrix.md` when the initiative would benefit from explicit proof boundaries. For trivial work, keep it lean; for high-risk or multi-Slice work, make it comprehensive. Write it to `[plan_folder]/<initiative-name>/verification-matrix.md` using `assets/verification-matrix-template.md`. Do not preserve source-artifact repair requests in the matrix; route them through `spec-patch-queue.md` or `user-attention.md` and reference queue IDs only when needed for verification context.
 
-7. **Record findings** — Write the readiness verdict and findings to the `## Readiness` section of `slices.md` (create using `assets/slices-template.md` if it doesn't exist). Record the outcome of: upstream artifacts, cross-artifact alignment, coverage, and question closure. If the verdict is anything other than passes on all four: do not write Slice entries.
+7. **Record findings** — Write the readiness verdict and findings to the `## Readiness` section of `slices.md` (create using `assets/slices-template.md` if it doesn't exist). Record the outcome of: upstream artifacts, cross-artifact alignment, coverage, and governance closure. If the verdict is anything other than passes on all four: do not write Slice entries.
 
 8. **Register in context memory** — Open or create `[plan_folder]/<initiative-name>/_context.md` from `assets/context-memory-template.md`. Add `slices.md` and `verification-matrix.md` (if created) to `## Live`.
 
@@ -47,7 +47,7 @@ Assess whether upstream design is coherent enough to plan safely. Stop at readin
 - [ ] Upstream artifact check recorded
 - [ ] CHARTER coherence check recorded (or noted "n/a — no CHARTER, no cross-initiative conflict")
 - [ ] Cross-artifact alignment recorded with outcome
-- [ ] Question closure check recorded
+- [ ] Governance closure check recorded
 - [ ] `## Readiness` section written in `slices.md`
 - [ ] `verification-matrix.md` created if appropriate
 - [ ] `_context.md` updated

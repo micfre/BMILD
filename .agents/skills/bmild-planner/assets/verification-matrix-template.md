@@ -26,7 +26,10 @@ status: draft | active | partially_implemented | verified | blocked
   - Verification owner: Rahat
   - Evidence: [test file, command, manual check, or pending]
   - Next owner: Alex / Rahat / Lance / Katrina / none
+  - Queue reference: none | `spec-patch-queue.md#...` | `user-attention.md#...`
 
-## Open Verification Questions
+## Open Verification Dependencies
 
+- Use this section only for proof-owned dependencies, blocked evidence, or missing verification setup.
+- Do not place source-artifact repair requests here. Route product, UX, architecture, and other source-truth defects through `spec-patch-queue.md`, route missing user input through `user-attention.md`, and reference the queue item ID here only when verification depends on it.
 - ...

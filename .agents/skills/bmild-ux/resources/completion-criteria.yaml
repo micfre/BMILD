@@ -132,8 +132,9 @@ sections:
     good_signal: >
       Every functional requirement from prd.md is addressed by the UX design. If an FR
       has no corresponding screen, flow, or interaction, it is flagged as a gap or
-      routed as a Handoff Question. The mapping is derivable — a reviewer can confirm
-      coverage by tracing FRs through flows and screens.
+      routed through `user-attention.md` or `spec-patch-queue.md`. The mapping is
+      derivable — a reviewer can confirm coverage by tracing FRs through flows and
+      screens.
     weak_signal: >
       Functional requirements from the PRD have no visible UX treatment, or coverage is
       assumed without being traceable to specific design elements.

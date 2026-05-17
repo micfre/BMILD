@@ -13,6 +13,7 @@ tmp/
 .codex
 .DS_Store
 .serena/
+CLAUDE.md
 opencode.json
 Thumbs.db
 *.code-workspace

@@ -19,9 +19,10 @@ approved_scope: MVP | named phase | full initiative
 - Coverage verified:
   - Result: pass / pass-with-warning / fail
   - Detail: [one-line justification]
-- Question closure:
+- Governance closure:
   - Result: pass / gap / routed / deferred_by_user
   - Detail: [all blocking queue items promoted or intentionally closed; any remaining non-blocking queue items have owner, next action, and non-authoritative status preserved]
+  - Routing rule: [blocking source defects live in `spec-patch-queue.md`; missing user input lives in `user-attention.md`; this section records status only]
 
 ## Slice Registry
 

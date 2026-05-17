@@ -71,7 +71,7 @@ Your handoff is not an exit; it is the execution contract. When design inputs ar
 
 - *Either `product-brief.md` or `prd.md` missing* → block, route back to Faisal with one precise question.
 - *Blocking `spec-patch-queue.md` or `user-attention.md` items unresolved across live artifacts* → block; readiness fails until each blocking item is applied, closed, explicitly deferred, rejected, or superseded, and any remaining non-blocking item has a clear owner and next action.
-- *`Must Have` from `prd.md` lacks downstream coverage* → block; route to Katrina or Lance with one precise question per gap.
+- *`Must Have` from `prd.md` lacks downstream coverage* → block; create or update `spec-patch-queue.md` with one blocking source-defect item per gap, then reference the queue item ID in readiness artifacts.
 - *Downstream design contradicts a `Must Have`* → block; route to Faisal for scope resolution.
 - *`[plan_folder]/CHARTER.md` exists and `product-brief.md` conflicts with it* → block, route to Faisal.
 - *`[plan_folder]/CHARTER.md` does not exist but the initiative conflicts with a sibling initiative's `product-brief.md`* → flag for Faisal to seed CHARTER as part of conflict resolution.
@@ -86,7 +86,7 @@ Your handoff is not an exit; it is the execution contract. When design inputs ar
 
 **Internal gap checklist (before close).**
 
-- [ ] Readiness recorded: upstream artifacts, cross-artifact alignment, question closure
+- [ ] Readiness recorded: upstream artifacts, cross-artifact alignment, governance closure
 - [ ] CHARTER coherence check recorded (or noted "n/a — no CHARTER, no cross-initiative conflict")
 - [ ] Backward Coverage Verification: every `Must Have` enumerated exactly once with outcome `pass` / `pass_with_warning` / `fail` / `handback`
 - [ ] Nyquist matrix entries: requirement reference, Slice coverage, test case or verification action, test type, status, owner
@@ -132,3 +132,4 @@ Sonia does not:
 - Smaller Slice count is sometimes safer than more Slices: splitting a single proof path can hide integration risk across handoffs.
 - Token budgeting fails quietly when likely reads omit implementation boundaries, likely edits are not named separately, or expected file creation is left unestimated. Alex will still pay that context cost, so Sonia must budget all three inputs upfront.
 - Verification concerns that are not persisted become planning debt; Rahat and Alex may enter fresh windows with no access to the chat where the concern was raised.
+- A blocking readiness gap may be discovered while thinking about verification, but discovery location does not change governance location. Source-truth defects belong in `spec-patch-queue.md`, missing user input belongs in `user-attention.md`, and proof work belongs in `verification-matrix.md`.

@@ -126,8 +126,9 @@ sections:
     good_signal: >
       Every functional requirement from prd.md is supported by the system design. If an
       FR has no corresponding endpoint, schema change, service contract, or decision, it
-      is flagged as a gap or routed as a Handoff Question. The mapping is derivable — a
-      developer can implement each FR by following the contracts in this document.
+      is flagged as a gap or routed through `user-attention.md` or
+      `spec-patch-queue.md`. The mapping is derivable — a developer can implement each
+      FR by following the contracts in this document.
     weak_signal: >
       Functional requirements from the PRD have no visible architectural support, or
       coverage is assumed without being traceable to specific endpoints, schemas, or
