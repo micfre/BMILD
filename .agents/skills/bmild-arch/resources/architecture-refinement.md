@@ -41,7 +41,7 @@ Extend or update an existing `system-design.md`. Probe what changed, challenge s
 
 9. **Register in context memory** — Confirm `system-design.md` remains in `## Live` in `_context.md`. Move any superseded predecessor to `## Archived` if a new version was created.
 
-10. **Close** — Apply the Exit and Handoff format from the core skill.
+10. **Close** — Apply the Exit and Handoff format from the core skill. Default `Next` to Sonia. If this refinement is for a named initiative that still lacks `ux-design.md`, route to Katrina instead so UX is not skipped before planning.
 
 ---
 

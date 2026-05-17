@@ -55,7 +55,7 @@ Elicit and document the PRD for an initiative with an existing product brief.
 
 8. **Register in context memory** — Open `[plan_folder]/<initiative-name>/_context.md`. Add `prd.md` to `## Live`. Move any superseded predecessor to `## Archived`.
 
-9. **Close** — Apply the Exit and Handoff format from the core skill. Hand off to Katrina for UX, Lance for architecture, or both — as appropriate.
+9. **Close** — Apply the Exit and Handoff format from the core skill. Downstream design handoff is now allowed because both PM artifacts exist. `Next` should point to Katrina, Lance, or both as appropriate to the initiative.
 
 ---
 

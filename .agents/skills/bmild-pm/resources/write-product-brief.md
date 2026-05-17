@@ -52,7 +52,7 @@ Elicit and document the product brief for a new initiative.
 
 7. **Register in context memory** — Open or create `[plan_folder]/<initiative-name>/_context.md` from `assets/context-memory-template.md`. Add `product-brief.md` to `## Live`.
 
-8. **Close** — Apply the Exit and Handoff format from the core skill. Offer to continue into Write-PRD mode or hand off to Katrina or Lance.
+8. **Close** — Apply the Exit and Handoff format from the core skill. `Next` should remain with Faisal for Write-PRD mode. Do not hand off to Katrina or Lance yet; downstream design handoff starts only after both `product-brief.md` and `prd.md` are written to standard.
 
 ---
 

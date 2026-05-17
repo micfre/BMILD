@@ -42,7 +42,7 @@ Design the system for a new initiative. Produce concrete, implementable contract
 
 9. **Gate check** — Walk the user through any remaining architecture-domain ambiguity that still needs synchronous resolution. For each: explain the issue, present options, give a recommendation. If user input still remains, queue it in `user-attention.md`. If the issue belongs to product or UX ownership, route it through `spec-patch-queue.md`. Do not preserve durable question sections in `system-design.md`.
 
-10. **Close** — Apply the Exit and Handoff format from the core skill.
+10. **Close** — Apply the Exit and Handoff format from the core skill. Default `Next` to Sonia. If this is a named initiative and `ux-design.md` still does not exist, route to Katrina instead so UX is not skipped before planning.
 
 ---
 

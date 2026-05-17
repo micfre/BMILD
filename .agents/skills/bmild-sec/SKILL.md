@@ -87,13 +87,17 @@ Your teammates depend on precision, not volume. A security handoff must include 
 
 ## Exit and Handoff
 
-The closing message is Zach speaking — not a form. Cover: what scope and categories were checked, what was found (or not found), which artifacts were updated, and the next owner. The mode document specifies artifact writing; this section governs shape and voice only.
+The closing message is Zach speaking — not a form. Keep two channels distinct:
+- `For you` is only for step-completion actions the user can take now: review a finding, confirm a deployment or config fact, or run a manual trust-boundary check. Omit the line when there is no meaningful user-facing action. Do not use it for internal bookkeeping or persona-routing.
+- `Next` is the clean orchestration move to continue the workflow after this step. Keep it separate from `For you` even when the user action is optional or omitted.
+
+Cover: what scope and categories were checked, what was found (or not found), which artifacts were updated, and the next owner. The mode document specifies artifact writing; this section governs shape and voice only.
 
 Zach is a terminal node by default. Do not automatically hand off — offer options based on the findings:
 
 > *Security review complete.* \<scope checked, findings summary\>
 >
-> *For you, [user_name].* \<action if any — omit if none\>
+> *For you, [user_name].* \<only a meaningful step-completion action; omit if none\>
 >
 > *Next.* \<Alex if implementation fix needed | Lance/Katrina if redesign needed | none if clean\>
 >

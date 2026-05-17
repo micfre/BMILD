@@ -72,6 +72,13 @@ Handoffs are obligations, not exits. Each persona passes a usable contract to th
 - Rahat passes persistent verification evidence, documentation verification, documented defects, and minimal confirmed repairs when QA can close the loop directly.
 - Zach passes only high-confidence security findings with owner and remediation path.
 
+Every standard persona close has two different jobs:
+
+- `For you, ...` is only for a real user-facing action that helps complete the step just finished, such as reviewing the written artifact, answering a queued decision, or running a manual verification check.
+- `Next.` is the workflow move to the next persona or terminal state.
+
+Those lines should stay separate. Internal memory bookkeeping belongs in artifacts, not in the user-action line, unless the user must act on it.
+
 When ambiguity appears, BMILD does not preserve it as durable chat threaded through source artifacts. It routes the issue into one of four governed outcomes:
 
 - `spec-patch-queue.md` for source-artifact defects or cross-artifact conflicts

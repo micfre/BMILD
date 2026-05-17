@@ -44,9 +44,9 @@ Revisit and improve existing PM artifacts. Probe what changed, challenge stale c
 
 8. **Distillation gate (emergent CHARTER):** Update `[plan_folder]/CHARTER.md` only if the refined content **introduces a project-level invariant**, **conflicts with a sibling initiative's product-brief**, or the user explicitly asks for it. Do not update CHARTER for refinements that stay scoped to this initiative. If `[plan_folder]/CHARTER.md` does not exist and none of the triggers fire, do not seed it.
 
-9. **Register in context memory** — Open `[plan_folder]/<initiative-name>/_context.md`. Move any superseded predecessor to `## Archived`. Confirm `product-brief.md` and `prd.md` remain in `## Live`.
+9. **Register in context memory** — Open `[plan_folder]/<initiative-name>/_context.md`. Move any superseded predecessor to `## Archived`. Confirm `product-brief.md` remains in `## Live`. If `prd.md` exists or was written in this pass, confirm it is also in `## Live`.
 
-10. **Close** — Apply the Exit and Handoff format from the core skill.
+10. **Close** — Apply the Exit and Handoff format from the core skill. If `prd.md` is still missing after this refinement, `Next` stays with Faisal for PRD authoring. Otherwise downstream design handoff is allowed.
 
 ---
 
