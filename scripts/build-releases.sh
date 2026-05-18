@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Exit on error
-set -e
+set -euo pipefail
 
 # Resolve project root relative to this script's location
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -22,35 +22,6 @@ cleanup() {
 
 trap cleanup EXIT
 
-sync_skill_versions() {
-    local base_dir="$1"
-    local skill_file
-
-    while IFS= read -r skill_file; do
-        awk -v version="$VERSION" '
-            BEGIN {
-                in_frontmatter = 0
-                frontmatter_delimiters = 0
-            }
-            /^---$/ {
-                frontmatter_delimiters++
-                if (frontmatter_delimiters == 1) {
-                    in_frontmatter = 1
-                } else if (frontmatter_delimiters == 2) {
-                    in_frontmatter = 0
-                }
-                print
-                next
-            }
-            in_frontmatter && /^[[:space:]]+version:[[:space:]]*"/ {
-                sub(/version:[[:space:]]*"[^"]*"/, "version: \"" version "\"")
-            }
-            { print }
-        ' "$skill_file" > "${skill_file}.tmp"
-        mv "${skill_file}.tmp" "$skill_file"
-    done < <(find "$base_dir/.agents/skills" -mindepth 2 -maxdepth 2 -name SKILL.md | sort)
-}
-
 # Create dist directory if it doesn't exist
 mkdir -p "$DIST_DIR"
 
@@ -59,11 +30,11 @@ mkdir -p "$DIST_DIR"
 if [[ -z "${CI}" ]]; then
     echo "****************************************************************"
     echo "WARNING: This script will TAG the current commit as v${VERSION}"
-    echo "update skill metadata, and PUSH it to origin, thereby"
-    echo "triggering a GitHub Release."
+    echo "and PUSH it to origin, thereby triggering a GitHub Release."
     echo ""
     echo "CRITICAL: Ensure you have COMMITTED and PUSHED all your changes"
-    echo "to the current branch BEFORE continuing."
+    echo "to the current branch BEFORE continuing. Run scripts/version-sync.sh"
+    echo "separately if the skill metadata still needs to be synced."
     echo "****************************************************************"
     read -r -p "Press Enter to continue or Ctrl+C to abort..." _
 fi
@@ -86,9 +57,6 @@ else
 fi
 
 echo "Packaging release v${VERSION}..."
-
-# Patch workspace skill files to match VERSION
-sync_skill_versions "$PROJECT_ROOT"
 
 # Stage release contents
 cp -R "$PROJECT_ROOT/.agents" "$STAGING_DIR/.agents"
