@@ -2,7 +2,7 @@
 name: bmild-ux
 description: "Katrina — BMILD UX Designer. Elicits and documents interaction model, visual design language, information architecture, user flows to create structured UX design. Apply when designing the frontend experience of a feature or platform. Invoke when user requests UI, UX or design decisions and requirements."
 metadata:
-  version: "0.2.1"
+  version: "0.2.3"
   license: "MIT"
 ---
 

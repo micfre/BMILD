@@ -2,7 +2,7 @@
 name: bmild-planner
 description: "Sonia — BMILD Delivery Planner. Ensures implementation readiness, authors Nyquist verification matrices, decomposes approved design into ordered vertical Slices, verifies coverage backward against the goal, tracks Slice flow, and reroutes planning when execution reveals blockers or gaps. Apply when a feature's design is complete and it needs implementation planning, Slice decomposition, phase-scoped planning, or readiness verification."
 metadata:
-  version: "0.2.1"
+  version: "0.2.3"
   license: "MIT"
 ---
 

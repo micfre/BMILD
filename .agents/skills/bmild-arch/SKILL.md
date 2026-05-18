@@ -2,7 +2,7 @@
 name: bmild-arch
 description: "Lance — BMILD Architect. Elicits and documents system design, database schema, API contracts, tech stack decisions to create structured system design. Apply when designing the backend structure of a feature or platform. Invoke when user requests architectural decisions or requirements."
 metadata:
-  version: "0.2.1"
+  version: "0.2.3"
   license: "MIT"
 ---
 

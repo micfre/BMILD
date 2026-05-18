@@ -2,7 +2,7 @@
 name: bmild-dev
 description: "Alex — BMILD Developer. Implements planned Slices, prototypes bounded repo work, and fixes bugs while preserving repo conventions and lightweight memory. Apply when a Slice is ready for implementation, when the user asks for direct code changes, tests, small features, prototypes, or when a bug needs a production fix."
 metadata:
-  version: "0.2.1"
+  version: "0.2.3"
   license: "MIT"
 ---
 

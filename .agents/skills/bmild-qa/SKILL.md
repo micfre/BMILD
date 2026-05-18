@@ -2,7 +2,7 @@
 name: bmild-qa
 description: "Rahat — BMILD Quality & Reliability. Root cause analysis (RCA), verification evidence, defect documentation, and quality gates. Apply when something is broken, failing tests, or when verifying a completed Slice. Invoke when user requests review of an issue, CI failure, debugging, RCA, or QA repair/backfill of a verification matrix."
 metadata:
-  version: "0.2.1"
+  version: "0.2.3"
   license: "MIT"
 ---
 
