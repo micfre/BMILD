@@ -29,7 +29,7 @@ Subscections:
 Subsections:
 
 **Context reads:**
-- purpose: provides required context, repo preferences, sufficient to allow persona to work effectively in a fresh context window, and provides semantic cues for Mode selection
+- purpose: provides required context, repo preferences, sufficient to allow persona to work effectively in a fresh context window, and (combined with user prompt) provides semantic cues for Mode selection
 - contains: retrieve and parse repo preferences (.bmild.toml), context memory reads
 - forbidden: Mode-specific reads do not appear in this section, rather they are specified in the Mode-specific resources/ instruction file
 
@@ -40,30 +40,30 @@ Subsections:
 **Mode lookup:**
 - purpose: provide all semantic or explicit interpretation required to choose a single Mode in which to operate for the session
 - contains: Mode determination conditions, workflow selection (this where the exact mapping of Mode to Mode-specific instruction file in resources/ folder is specified)
+- authoring note: HALT at this stage if it is genuinely not clear as to the required mode, ask the user one direct question to allow the skill to ascertain mode. Undertaking an unintended Mode path is dangerous
 
 - template note: this section no longer includes the instruction for the persona to emit the first line ('one compact opening stance'), that is moved to Workflow section
-- template note: Mode Lookup is structured such that conditions are read row-wise top to bottom, and the Mode is chosen at first match of all conditions for that row, with the last Mode being a catch all
+- template note: Mode Lookup is structured such that conditions are read row-wise top to bottom, and the Mode is chosen as the first match of all conditions for that row, with the last Mode being a catch all
 
 - template note: by the end of this section, the LLM should have required initiative and global context loaded, and know which Mode it is to operate in
 
 ## Workflow
 
-- purpose: all the work that must be carried out in the session, end-to-end
-- contains: skill-scoped work is outlined here (as contrasted to Mode-scoped work which is contained in the Mode-specific instruction file)
-- out of scope: this section should not include any general behaviours or mode-specific instructions
+- purpose: defines scope of work that must be carried out in the session, end-to-end, at a summary level
+- contains: skill-scoped work is outlined here (as contrasted to Mode-scoped work which is contained in the Mode-specific instruction file), format is a checklist, generally specified at an H2 section level, this is where skill begins to converse as the persona in first-person
+- out of scope: this section should not include any general behaviours or Mode-specific instructions (Mode-specific instruction are spelled out in great detail in Mode-specific files in resources/ folder)
 
 - template note: this section now conatins the instruction for the persona to emit the first line ('one compact opening stance')
-- template note: Mode-specific instructions in resouces/ folder accomplishes two things: 1) forces progressive disclosure so only reads and tasks aligned with the Mode are loaded into context, which saves token consumption, 2) prevents bleed from tasks that belong in other Modes, mitigating distraction, for better LLM instruction following
+- template note: Mode-specific instructions in resouces/ folder accomplishes two things: 1) forces progressive disclosure so only reads and tasks aligned with the Mode are loaded into context, which saves token consumption as LLM only loads what is required, 2) prevents bleed from tasks that belong in other Modes, mitigating distraction, for better LLM instruction following
 
 - template note: by end of this section, the LLM should know the end-to-end instruction flow, including the Mode-specific workflow to follow
 
 ## Global Norms
 
 - purpose: contains behavioural norms for the persona and skill overall, which goven principles, rules and behaviour
-
-- contains:
+- contains: posture, behaviour, governance that prevail across the entire skill and tasks within it
 - forbidden: Global section does **not** contain any Mode-specific tasks or Mode-specific rules, Global does not include nested or branching logic dependant on current Mode, <if Mode then> inclusion is a sign that these instructions must be moved into Tasks of the Mode-specific resources/ markdown files
-- authoring rule: Global biases level of emphasis to broad denomination across Mode-specific instructions, this means that if the average Mode-specific instruction set requires a low baseline attention to a certain rule that gets written here while the Mode that requires a high level of attention to the rule receives added emphasis in their respective resources/ instruction file
+- authoring rule: the Global section biases level of emphasis to a lowest common denominator across all Modes, this means that if the average Mode-specific instruction set requires a low baseline attention to a certain rule that gets written here while the individual Mode that requires a high level of attention to the rule receives added emphasis in their respective resources/ instruction file (a rule may apply to all tasks across all Modes in a basic capacity, though the rule can be emphasized only in the Modes where it is more cricual)
 
 Subsections:
 
@@ -72,18 +72,23 @@ Subsections:
 
 ## Scope Boundary
 
-- purpose:
+- purpose: specify coverage and behaviour that the skill should not undertake
+- contains: out-of-scope items and appropriate re-routing target
 
-1. Exit and Handoff
+## Exit and Handoff
+
+- purpose: write output artifact and guide user to next clean move
+- contains: summary of work accomplished, user action required/suggested, next clean move
+- forbidden: any instruction that requires LLM to leave Exit and Handoff section to revisit tasks; Exit and Handoff is a terminus not a node
 
 ## Gotchas
 
 - purpose: narrow guidance for ambiguous or apparently-conflicting rules elsewhere, not to be used to restate existing rules
-- contains: conditions and reactions for uncommon or not obviously-resolvable rules
+- contains: conditions and resolutions for oblique entry conditions, uncommon or not obviously-resolvable rules
 - usage note: do not feel compelled to add content to this section by default, it usually just results in noise, rather add here as user encounters edge cases that deerve steering but do not warrant a new passage elsewhere
 
 ## Removed Sections
 
 - template note: this is not a template section, it is instruction for the content refactor
-- Definition of Done is no longer present in the core SKILL.md template, all DoD reside in Mode-specific resources/ markdown files. Re-distribute existing DoD content residing in a core SKILL.md into appropriate documents/sections
+- Definition of Done is no longer present in the core SKILL.md template, all DoD reside in Mode-specific resources/ markdown files. Re-distribute existing DoD content residing in core SKILL.md into appropriate documents/sections
 - Capabilities and Craft Standards have been subsumed by Global Norms
