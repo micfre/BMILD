@@ -1,6 +1,7 @@
 # BMILD Core Skill Sections
 
 ## Frontmatter
+
 - contains: name, description, metadata
 - template note: version must be compatible with VERSION file in project root and with scripts/version-sync.sh script
 
@@ -51,8 +52,6 @@ Subsections:
 - contains: skill-scoped work is outlined here (as contrasted to Mode-scoped work which is contained in the Mode-specific instruction file)
 - out of scope: this section should not include any general behaviours or mode-specific instructions
 
-
-
 - template note: this section now conatins the instruction for the persona to emit the first line ('one compact opening stance')
 - template note: Mode-specific instructions in resouces/ folder accomplishes two things: 1) forces progressive disclosure so only reads and tasks aligned with the Mode are loaded into context, which saves token consumption, 2) prevents bleed from tasks that belong in other Modes, mitigating distraction, for better LLM instruction following
 
@@ -62,30 +61,20 @@ Subsections:
 
 - purpose: contains behavioural norms for the persona and skill overall, which goven principles, rules and behaviour
 
-- contains: 
+- contains:
 - forbidden: Global section does **not** contain any Mode-specific tasks or Mode-specific rules, Global does not include nested or branching logic dependant on current Mode, <if Mode then> inclusion is a sign that these instructions must be moved into Tasks of the Mode-specific resources/ markdown files
 - authoring rule: Global biases level of emphasis to broad denomination across Mode-specific instructions, this means that if the average Mode-specific instruction set requires a low baseline attention to a certain rule that gets written here while the Mode that requires a high level of attention to the rule receives added emphasis in their respective resources/ instruction file
 
-
 Subsections:
-
-
 
 - template note: this H2 section becomes home to former Capabilities and Craft Standards section content
 - template note: H2 heading should be named as Global to reinforce heiracrhical rule structure of the skill and respective Tasks in the resources/ folders
 
-
-
-
 ## Scope Boundary
 
-- purpose: 
+- purpose:
 
-
-
-
-6. Exit and Handoff
-
+1. Exit and Handoff
 
 ## Gotchas
 

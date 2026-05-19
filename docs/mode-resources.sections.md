@@ -19,17 +19,14 @@
 ## Tasks
 
 - purpose: specify all of the individual steps required to complete the Mode-specific workflow
-- contains: **numbered, ordered steps** which the skill must carry out, including 
+- contains: **numbered, ordered steps** which the skill must carry out, including
 
 - template note: do not duplicate content from core SKILL.md file including duplication of Entry reads or reiteration of Global rules
-
-
-
 
 ## Definition of Done
 
 - purpose:
-- contains: **checklist** of conditions, thresholds, criteria, 
+- contains: **checklist** of conditions, thresholds, criteria,
 - forbidden: items already included in core SKILL.md Exit and Handoff section
 
 ## Removed Sections
