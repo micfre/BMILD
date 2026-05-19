@@ -2,9 +2,7 @@
 
 This document defines the go-forward structure for BMILD core `SKILL.md` files.
 
-The core skill is the stable shell: identity, team position, activation, mode routing, global governance, scope boundary, and handoff shape. It should stay compact enough to load on every invocation. Mode-specific reads, task details, gates, and artifact-writing instructions belong in `assets/*.md` files so each session loads only the instructions it needs.
-
-The design goal is progressive disclosure with preserved behaviour: refactor format, remove repetition, and improve maintainability without changing what the persona is allowed or expected to do.
+The core skill is the stable shell: identity, team position, activation, mode routing, global governance, scope boundary, and handoff shape. It should stay compact enough to load on every invocation. Mode-specific reads, task details, gates, and artifact-writing instructions belong in `resources/*.md` files so each session loads only the instructions it needs. The design goal is progressive disclosure: the core skill routes; the mode resource executes.
 
 ## Frontmatter
 
@@ -63,7 +61,7 @@ Design guidance:
 
 Defines the one-way entry sequence for a skill invocation: resolve environment, load the minimal shared context, handle prerequisite queues, choose exactly one mode, then begin.
 
-Once the persona leaves this section, it should not need to return to it. If an instruction must be checked later, place it in `Workflow`, `Global Norms`, or the relevant mode asset instead.
+Once the persona leaves this section, it should not need to return to it. If an instruction must be checked later, place it in `Workflow`, `Global Norms`, or the relevant mode resource instead.
 
 ### Context Reads
 
@@ -78,7 +76,7 @@ Required baseline for standard personas:
 - Read persona-specific global settings when present, such as Sonia's `slice_target`.
 - If the prompt names an initiative, check `[plan_folder]/<initiative-name>/` directly before broad searches.
 - If the initiative folder is absent, consult `[plan_folder]/_system/_rollup.md` before treating the initiative as new.
-- Load only live context needed for mode selection. Mode-specific artifact reads belong in the selected asset file.
+- Load only live context needed for mode selection. Mode-specific artifact reads belong in the selected resource file.
 
 Cross-cutting skills:
 
@@ -109,7 +107,7 @@ Design guidance:
 
 ### Mode Lookup
 
-Maps user intent and artifact state to one mode and one `assets/*.md` instruction file.
+Maps user intent and artifact state to one mode and one `resources/*.md` instruction file.
 
 Requirements:
 
@@ -117,25 +115,25 @@ Requirements:
 - Stop at the first matching row.
 - Make the final row a clear catch-all only when that is safe for the persona.
 - Ask one direct clarification when two modes match or none can be chosen safely.
-- Name the mode and asset file together.
+- Name the mode and resource file together.
 
 Recommended shape:
 
-- `Condition 1: <trigger and artifact state> -> <Mode Name> (assets/<mode>.md) - <short purpose>.`
+- `Condition 1: <trigger and artifact state> -> <Mode Name> (resources/<mode>.md) - <short purpose>.`
 - `Condition 2: ...`
 - `Condition N (default): ...`
 
 Design guidance:
 
 - Mode names describe user intent, entry condition, or artifact state. Avoid names that only describe internal mechanics or effort level.
-- Mode lookup is the only place the core skill chooses the asset file.
+- Mode lookup is the only place the core skill chooses the resource file.
 - Mode-specific reads do not appear here except as artifact-existence checks required to choose the mode.
 
 ## Workflow
 
 Defines the persona-level execution flow for every invocation after mode selection.
 
-This section is intentionally high-level. The selected `assets/*.md` file supplies mode-specific tasks, artifact writes, and DoD.
+This section is intentionally high-level. The selected `resources/*.md` file supplies mode-specific tasks, artifact writes, and DoD.
 
 ### Execution Order
 
@@ -144,10 +142,10 @@ Use a `Progress:` checklist for true ordered work.
 Required baseline:
 
 - [ ] Step 1: Emit the compact operating stance line.
-- [ ] Step 2: Load the selected mode asset.
-- [ ] Step 3: Follow the mode asset as the session script.
+- [ ] Step 2: Load the selected mode resource.
+- [ ] Step 3: Follow the mode resource as the session script.
 - [ ] Step 4: Apply `Global Norms` throughout the work.
-- [ ] Step 5: Complete the mode asset's `Definition of Done`.
+- [ ] Step 5: Complete the mode resource's `Definition of Done`.
 - [ ] Step 6: Run the `Pre-exit checkpoint` when the active workflow calls for one.
 - [ ] Step 7: Close through `Exit and Handoff`.
 
@@ -212,7 +210,6 @@ Use for:
 
 Design guidance:
 
-- This is the renamed form of the former `Pre-artifact checkpoint`.
 - Use at most once per session.
 - Do not use it for internal bookkeeping, persona routing, or generic "anything else?" filler.
 - If the active mode has no artifact-locking or decision-locking moment, omit the checkpoint.
@@ -221,7 +218,7 @@ Design guidance:
 
 Contains the persona's durable craft rules, capabilities, and governance norms across all modes.
 
-This section replaces the former `Capabilities` and `Craft Standards` sections. It should not contain mode-specific tasks or branching instructions of the form "if Mode X, do Y"; those belong in the relevant mode asset.
+Section should not contain mode-specific tasks or branching instructions of the form "if Mode X, do Y"; those belong in the relevant mode resource.
 
 Use for:
 
@@ -283,7 +280,7 @@ Rules:
 
 Design guidance:
 
-- Mode assets specify artifact content and gates; this section specifies close shape and voice.
+- Mode resources specify artifact content and gates; this section specifies close shape and voice.
 - Keep sign-off identity here instead of repeating persona labels throughout the skill.
 
 ## Gotchas

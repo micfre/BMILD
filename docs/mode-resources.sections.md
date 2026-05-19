@@ -1,18 +1,16 @@
-# BMILD Mode Assets Sections
+# BMILD Mode Resources Sections
 
-This document defines the go-forward structure for BMILD mode instruction files in each skill's `assets` folder.
+This document defines the go-forward structure for BMILD mode instruction files in each skill's `resources` folder.
 
-Mode assets are loaded only after the core `SKILL.md` has selected a mode. They contain the mode-specific context, norms, ordered tasks, and completion bar. They should not repeat the persona identity, team model, activation sequence, mode lookup, global scope boundary, or exit format from the core skill.
-
-The design goal is progressive disclosure: the core skill routes; the mode asset executes.
+The design goal is progressive disclosure: the core skill routes; the mode resource executes. Mode resources are loaded only after the core `SKILL.md` has selected a mode. They contain the mode-specific context, norms, ordered tasks, and completion bar. They should not repeat the persona identity, team model, activation sequence, mode lookup, global scope boundary, or exit format from the core skill.
 
 ## File Contract
 
-Asset files are ordinary Markdown instruction files.
+Resource files are ordinary Markdown instruction files.
 
 Requirements:
 
-- Do not use YAML frontmatter in `assets/*.md`.
+- Do not use YAML frontmatter in `resources/*.md`.
 - Start with a single H1 naming the mode.
 - Use these H2 sections in order: `Additional Context`, `Additional Norms`, `Tasks`, `Definition of Done`.
 - Use `Progress:` plus `- [ ] Step N: ...` for ordered mode work.
@@ -20,8 +18,8 @@ Requirements:
 
 Design guidance:
 
-- An asset file should be complete enough that, once loaded, the persona can finish that mode without hunting through unrelated mode files.
-- An asset file should be narrow enough that it does not teach tasks belonging to sibling modes.
+- A resource file should be complete enough that, once loaded, the persona can finish that mode without hunting through unrelated mode files.
+- A resource file should be narrow enough that it does not teach tasks belonging to sibling modes.
 - Prefer precise paths, artifact names, and defaults over broad reminders.
 
 ## Additional Context
@@ -32,13 +30,13 @@ Contains:
 
 - Mode-specific artifact reads.
 - Mode-specific repo or source-grounding reads.
-- Existing script, asset, or template paths needed by this mode.
+- Existing script, resource, or template paths needed by this mode.
 - Reduced-fidelity behaviour when an expected artifact is missing.
 
 Forbidden:
 
 - Reads already required by core `Entry and Activation`.
-- General BMILD memory policy.
+- General BMILD memory policy which has already been loaded in core skill.
 - Context needed only by another mode.
 
 Design guidance:
@@ -64,7 +62,7 @@ Provides mode-specific steering that narrows or intensifies the core `Global Nor
 
 Contains:
 
-- Tools, scripts, or assets used in this mode.
+- Tools, scripts, resources used in this mode.
 - Evidence standards unique to this mode.
 - Authority rules that matter especially in this mode.
 - Validation loops or repo-discovery defaults.
