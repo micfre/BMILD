@@ -181,7 +181,7 @@ Do not make any modifications to any files in external_references\ folders
 ## Documentation
 
 Keep README, AGENTS and CHANGELOG up to date as project evolves. PM defines which documentation needs to change, Dev owns the edits, and QA verifies that the resulting documentation matches implemented behaviour.
-Planner slice-budgeting references should use the wrapper-first launcher path `bash .agents/skills/bmild-planner/scripts/run-budget-slice.sh`. Do not present the legacy direct shell entrypoint as the supported workflow.
+Planner slice-budgeting references should use the wrapper-first skill-local launcher by resolving the active `bmild-planner` skill directory for the current harness, then running `bash <planner-skill-dir>/scripts/run-budget-slice.sh`. For example, the planner skill may live under `.agents/skills/bmild-planner/` in this repo or `.claude/skills/bmild-planner/` in Claude Code. Do not present a repo-specific skill-root path or the legacy direct shell entrypoint as the supported workflow.
 
 ## Versioning
 
