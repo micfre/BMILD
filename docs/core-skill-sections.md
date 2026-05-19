@@ -1,112 +1,303 @@
 # BMILD Core Skill Sections
 
+This document defines the go-forward structure for BMILD core `SKILL.md` files.
+
+The core skill is the stable shell: identity, team position, activation, mode routing, global governance, scope boundary, and handoff shape. It should stay compact enough to load on every invocation. Mode-specific reads, task details, gates, and artifact-writing instructions belong in `assets/*.md` files so each session loads only the instructions it needs.
+
+The design goal is progressive disclosure with preserved behaviour: refactor format, remove repetition, and improve maintainability without changing what the persona is allowed or expected to do.
+
 ## Frontmatter
 
-- contains: name, description, metadata
-- template note: version must be compatible with VERSION file in project root and with scripts/version-sync.sh script
+Contains the Agent Skills metadata required for activation.
+
+Required fields:
+
+- `name`: skill directory name.
+- `description`: what the persona does and when to invoke it. Use intent- and trigger-rich wording; keep within the Agent Skills 1024-character limit.
+- `metadata.version`: compatible with `VERSION` and `scripts/version-sync.sh`.
+- `metadata.license`: project license value.
+
+Design guidance:
+
+- The description carries activation weight before the full skill loads. Prefer "Use when..." phrasing, common user intents, near-miss boundaries, and persona names.
+- Keep frontmatter operational, not instructional. Behaviour belongs in the body.
 
 ## Role
 
-- purpose: sets role and voice for the persona, establishes names and functions of the other personas more richly than the skill frontmatter alone
-- template note: this H2 section becomes home to former floating Role section and the former BMILD Working Team H2 section
+Defines who the persona is, how it contributes to BMILD, and how it collaborates with the rest of the suite.
 
-Subscections:
+This section replaces the former floating `Role` paragraph and the separate `## BMILD Working Team` section. By the end of this section, the model should know who it is emulating, what value it contributes, who depends on it, and how to refer to teammates.
 
-**Your Role:**
-- contains: persona name, icon, role, perspective, voice
+### Your Role
 
-**Your working team:**
-- contains: place in value chain, stakes, names and descriptions of other personas and advanced elicitation tools
+Contains:
 
-- template note: by end of this section, the LLM should know who they are emulating and their role within the BMILD suite
+- Persona name, icon, role, and scope boundary.
+- Domain perspective and decision authority.
+- Voice and communication posture.
+- A clear statement of what the persona protects from downstream drift.
+
+Authoring guidance:
+
+- Use a compact, vivid operating identity rather than a generic job description.
+- Do not use repeated "Always prefix" instructions. Identity is expressed through the opening operating stance and final sign-off.
+- Name the persona's authority positively before stating what it does not own.
+
+### Your Working Team
+
+Contains:
+
+- The persona's place in the BMILD value chain.
+- Which teammates depend on this persona's output, and why.
+- Why interactivity matters for this persona's work.
+- When to suggest advanced team tools: `bmild-roundtable`, `bmild-elicit`, or `bmild-brainstorming`.
+- The persona-name rule: refer to teammates by persona name in chat, never by skill name.
+
+Design guidance:
+
+- This subsection should teach collaboration flow, not repeat the artifact map in full.
+- Mention only teammate dependencies that affect this persona's work or handoff quality.
+- Advanced tools are suggestions unless the active mode explicitly makes them part of the workflow.
 
 ## Entry and Activation
 
-- purpose: instructions to follow upon skill entry, enumerates all context reads, determines working Mode
-- forbidden: there should be no steps that require the LLM to return at a later point to revisit an instruction or condition, once the LLM has progressed beyond Activation block, there shall be no reason to return to it
-- template note: this section is renamed as 'Entry and Activation' to have symmetry with the closing section 'Exit and Handoff'
+Defines the one-way entry sequence for a skill invocation: resolve environment, load the minimal shared context, handle prerequisite queues, choose exactly one mode, then begin.
 
-Subsections:
+Once the persona leaves this section, it should not need to return to it. If an instruction must be checked later, place it in `Workflow`, `Global Norms`, or the relevant mode asset instead.
 
-**Context reads:**
-- purpose: provides required context, repo preferences, sufficient to allow persona to work effectively in a fresh context window, and (combined with user prompt) provides semantic cues for Mode selection
-- contains: retrieve and parse repo preferences (.bmild.toml), context memory reads
-- forbidden: Mode-specific reads do not appear in this section, rather they are specified in the Mode-specific resources/ instruction file
+### Context Reads
 
-**Queue resolution:**
-- purpose: check for required pre-requisite work, conditions that prevent proper completion of the workflow or work that must be resolved elsewhere before proceeding
-- contains: early branching instructions, escapes if required, handoff/handback instructions if required
+Contains shared context required before mode selection.
 
-**Mode lookup:**
-- purpose: provide all semantic or explicit interpretation required to choose a single Mode in which to operate for the session
-- contains: Mode determination conditions, workflow selection (this where the exact mapping of Mode to Mode-specific instruction file in resources/ folder is specified)
-- authoring note: HALT at this stage if it is genuinely not clear as to the required mode, ask the user one direct question to allow the skill to ascertain mode. Undertaking an unintended Mode path is dangerous
+Required baseline for standard personas:
 
-- template note: this section no longer includes the instruction for the persona to emit the first line ('one compact opening stance'), that is moved to Workflow section
-- template note: Mode Lookup is structured such that conditions are read row-wise top to bottom, and the Mode is chosen as the first match of all conditions for that row, with the last Mode being a catch all
+- Read `.bmild.toml` at the project root.
+- Resolve `plan_folder` relative to the project root; default to `plans/`.
+- Normalize trailing slashes and verify the folder exists before broad searches.
+- Read `user_name` when present for conversational and artifact placeholders.
+- Read persona-specific global settings when present, such as Sonia's `slice_target`.
+- If the prompt names an initiative, check `[plan_folder]/<initiative-name>/` directly before broad searches.
+- If the initiative folder is absent, consult `[plan_folder]/_system/_rollup.md` before treating the initiative as new.
+- Load only live context needed for mode selection. Mode-specific artifact reads belong in the selected asset file.
 
-- template note: by the end of this section, the LLM should have required initiative and global context loaded, and know which Mode it is to operate in
+Cross-cutting skills:
+
+- Prefer current conversation context.
+- Read BMILD memory only when the question cannot be grounded from chat.
+- Load only live artifacts directly relevant to the question.
+
+Design guidance:
+
+- Fresh-window resilience belongs here; task execution detail does not.
+- Do not front-load every possible artifact. The core skill should route accurately, then delegate detail to the selected mode file.
+
+### Queue Resolution
+
+Contains activation-time branches that must win before ordinary mode lookup.
+
+Use for:
+
+- Handback items targeting this persona's owned artifacts.
+- Blocking user-attention or source-defect states that make normal execution unsafe.
+- Course-Correction precedence and exceptions where a broader cascade should override ordinary handback.
+
+Design guidance:
+
+- Queue resolution should be deterministic and early.
+- Keep routing narrow: state the queue path, target owner, statuses, and the mode that wins.
+- Do not resolve queue content here. The selected handback or correction resource owns that workflow.
+
+### Mode Lookup
+
+Maps user intent and artifact state to one mode and one `assets/*.md` instruction file.
+
+Requirements:
+
+- Read conditions top to bottom.
+- Stop at the first matching row.
+- Make the final row a clear catch-all only when that is safe for the persona.
+- Ask one direct clarification when two modes match or none can be chosen safely.
+- Name the mode and asset file together.
+
+Recommended shape:
+
+- `Condition 1: <trigger and artifact state> -> <Mode Name> (assets/<mode>.md) - <short purpose>.`
+- `Condition 2: ...`
+- `Condition N (default): ...`
+
+Design guidance:
+
+- Mode names describe user intent, entry condition, or artifact state. Avoid names that only describe internal mechanics or effort level.
+- Mode lookup is the only place the core skill chooses the asset file.
+- Mode-specific reads do not appear here except as artifact-existence checks required to choose the mode.
 
 ## Workflow
 
-- purpose: defines scope of work that must be carried out in the session, end-to-end, at a summary level
-- contains: skill-scoped work is outlined here (as contrasted to Mode-scoped work which is contained in the Mode-specific instruction file), format is a checklist, generally specified at an H2 section level, this is where skill begins to converse as the persona in first-person
-- out of scope: this section should not include any general behaviours or Mode-specific instructions (Mode-specific instruction are spelled out in great detail in Mode-specific files in resources/ folder)
+Defines the persona-level execution flow for every invocation after mode selection.
 
-Subsections:
+This section is intentionally high-level. The selected `assets/*.md` file supplies mode-specific tasks, artifact writes, and DoD.
 
-**Execution order:**
-- contains: ordered flow of the session, presented as a checklist, begins with the instruction for the persona to emit the first line ('one compact opening stance'), ends with Exit and Handoff
+### Execution Order
 
-**Principles:**
-- contains: guidelines and steering to follow at all times
+Use a `Progress:` checklist for true ordered work.
 
-**Trigger-condition rules:**
-- contains: rules to stay aware of and reactive to current flow and direction of the session, conditions under which it is acceptable or expected to interrupt the documented flow of Tasks in the Mode-specific instruction set
+Required baseline:
 
-**Pre-exit checkpoint:**
-- purpose: allow user to determine if session objectives have been met
-- contains: simple per-close line emission, one offer per session, declinable in one word
-- template note: this section has been renamed, it is currently referred to as 'Pre-artifact checkpoint'
+- [ ] Step 1: Emit the compact operating stance line.
+- [ ] Step 2: Load the selected mode asset.
+- [ ] Step 3: Follow the mode asset as the session script.
+- [ ] Step 4: Apply `Global Norms` throughout the work.
+- [ ] Step 5: Complete the mode asset's `Definition of Done`.
+- [ ] Step 6: Run the `Pre-exit checkpoint` when the active workflow calls for one.
+- [ ] Step 7: Close through `Exit and Handoff`.
 
-- template note: this section now conatins the instruction for the persona to emit the first line ('one compact opening stance')
-- template note: Mode-specific instructions in resouces/ folder accomplishes two things: 1) forces progressive disclosure so only reads and tasks aligned with the Mode are loaded into context, which saves token consumption as LLM only loads what is required, 2) prevents bleed from tasks that belong in other Modes, mitigating distraction, for better LLM instruction following
+Opening stance for standard personas:
 
-- template note: by end of this section, the LLM should know the end-to-end instruction flow, including the Mode-specific workflow to follow
+`[Name] [icon] - <Mode Name>. Scope: <scope>. <boundary statement>.`
+
+Examples:
+
+- `Faisal 🟦 - Write-PRD. Scope: checkout-redesign. I'll work on product requirements, not UX or architecture.`
+- `Alex 🟪 - Spec-Dev. Scope: slice-3. I'll work on implementation against the Slice contract.`
+
+Design guidance:
+
+- The opening stance belongs here, not in activation, because it starts persona-visible work after mode selection.
+- Keep the checklist stable across personas. Persona-specific variants should be minimal and justified.
+
+### Principles
+
+Contains global execution principles that apply across all modes for this persona.
+
+Use for:
+
+- Coaching posture and interaction style.
+- Authority boundaries that must remain active during work.
+- Source-of-truth rules.
+- Quality floor rules lower-tier models must not miss.
+- Freedom rules that keep high-tier models from being over-constrained.
+
+Design guidance:
+
+- Explain why the principle exists when misunderstanding would cause predictable failure.
+- Prefer defaults over menus. Give escape hatches only where they matter.
+- Do not include mode-specific task steps here.
+
+### Trigger-Condition Rules
+
+Contains reactive routing and interruption rules that can arise during any mode.
+
+Use for:
+
+- Conditions that require handoff to another persona.
+- Conditions that require `spec-patch-queue.md`, `user-attention.md`, or a bounded assumption.
+- Conditions that should trigger a suggestion for Roundtable, Elicit, or Brainstorming.
+- Conditions that make a workflow unsafe to continue.
+
+Design guidance:
+
+- Phrase as heuristics with clear routing, not theatrical gates.
+- Route only when scope or uncertainty genuinely exceeds the persona's authority.
+- Avoid duplicating the selected mode's detailed tasks.
+
+### Pre-exit Checkpoint
+
+Contains the persona's one final opportunity, when appropriate, to let the user steer before artifact finalization or handoff.
+
+Use for:
+
+- Step-completion review before writing a major artifact.
+- A one-off offer to debate, brainstorm, or stress-test before locking a decision.
+- A short confirmation that can be declined in one word.
+
+Design guidance:
+
+- This is the renamed form of the former `Pre-artifact checkpoint`.
+- Use at most once per session.
+- Do not use it for internal bookkeeping, persona routing, or generic "anything else?" filler.
+- If the active mode has no artifact-locking or decision-locking moment, omit the checkpoint.
 
 ## Global Norms
 
-- purpose: contains behavioural norms for the persona and skill overall, which goven principles, rules and behaviour
-- contains: posture, behaviour, governance that prevail across the entire skill and tasks within it
-- forbidden: Global section does **not** contain any Mode-specific tasks or Mode-specific rules, Global does not include nested or branching logic dependant on current Mode, <if Mode then> inclusion is a sign that these instructions must be moved into Tasks of the Mode-specific resources/ markdown files
-- authoring rule: the Global section biases level of emphasis to a lowest common denominator across all Modes, this means that if the average Mode-specific instruction set requires a low baseline attention to a certain rule that gets written here while the individual Mode that requires a high level of attention to the rule receives added emphasis in their respective resources/ instruction file (a rule may apply to all tasks across all Modes in a basic capacity, though the rule can be emphasized only in the Modes where it is more cricual)
+Contains the persona's durable craft rules, capabilities, and governance norms across all modes.
 
-Subsections:
+This section replaces the former `Capabilities` and `Craft Standards` sections. It should not contain mode-specific tasks or branching instructions of the form "if Mode X, do Y"; those belong in the relevant mode asset.
 
-- template note: this H2 section becomes home to former Capabilities and Craft Standards section content
-- template note: H2 heading should be named as Global to reinforce heiracrhical rule structure of the skill and respective Tasks in the resources/ folders
+Use for:
+
+- Shared tools and reusable techniques.
+- Craft standards that govern all mode work.
+- Evidence and artifact-authority discipline.
+- Validation patterns that are universal to the persona.
+- Collaboration norms that prevent downstream drift.
+
+Design guidance:
+
+- Bias global emphasis to the common baseline across modes.
+- If one mode needs stronger emphasis, put the extra detail in that mode's `Additional Norms`.
+- Keep high-tier LLMs free to exercise judgment by stating purposes and boundaries, not over-prescribing obvious mechanics.
+- Protect lower-tier LLMs with concrete defaults, named paths, and explicit routing when mistakes are costly.
 
 ## Scope Boundary
 
-- purpose: specify coverage and behaviour that the skill should not undertake
-- contains: out-of-scope items and appropriate re-routing target
-- forbidden: do not restate instructions in the negeative in this section, it leads to sprawl
+States what the persona explicitly does not do and where that work routes instead.
+
+Contains:
+
+- Out-of-scope decisions, artifacts, or workflows.
+- Correct persona or workflow for each boundary.
+- Any absolute prohibition that prevents ownership drift.
+
+Design guidance:
+
+- Do not restate every positive instruction in negative form.
+- Keep boundaries specific to this persona.
+- Include canonical artifact ownership boundaries where mistaken writes would corrupt BMILD memory.
 
 ## Exit and Handoff
 
-- purpose: write output artifact and guide user to next clean move
-- contains: summary of work accomplished, user action required/suggested, next clean move
-- forbidden: any instruction that requires LLM to leave Exit and Handoff section to revisit tasks; Exit and Handoff is a terminus not a node, if there is any reasonable doubt about an LLM executing instructions before session objectives have been met, document them in 'Pre-exit checkpoint' not here
+Defines closing shape, handoff obligations, and the distinction between user action and workflow orchestration.
+
+The closing message is the persona speaking, not a form. It must make the completed work and next clean move clear without turning internal bookkeeping into user work.
+
+Required shape for standard personas:
+
+```markdown
+> *<completion statement>.* <what was completed, evidence, artifacts updated>
+>
+> *For you, [user_name].* <only a meaningful user action with expected result and pass criteria; omit if none>
+>
+> *Next.* <clean workflow move, next persona, or terminal state>
+>
+> - [Name] [icon]
+```
+
+Rules:
+
+- `For you` is only for a real step-completion action the user can take now.
+- `Next` is the orchestration move after this step.
+- Keep `For you` and `Next` separate even when the user action is optional.
+- Do not use `For you` for internal bookkeeping, context-memory status, or persona routing.
+- If a turn creates or modifies `spec-patch-queue.md`, include copy-paste-ready invocation wording for the target persona when the relevant mode requires it.
+- Exit is a terminus. If there is doubt that objectives are complete, resolve it before entering this section.
+
+Design guidance:
+
+- Mode assets specify artifact content and gates; this section specifies close shape and voice.
+- Keep sign-off identity here instead of repeating persona labels throughout the skill.
 
 ## Gotchas
 
-- purpose: narrow guidance for ambiguous or apparently-conflicting rules elsewhere, not to be used to restate existing rules
-- contains: conditions and resolutions for oblique entry conditions, uncommon or not obviously-resolvable rules
-- usage note: do not feel compelled to add content to this section by default, it usually just results in noise, rather add here as user encounters edge cases that deerve steering but do not warrant a new passage elsewhere
+Contains narrow corrections for ambiguous, surprising, or historically error-prone cases.
 
-## Removed Sections
+Use for:
 
-- template note: this is not a template section, it is instruction for the content refactor
-- Definition of Done is no longer present in the core SKILL.md template, all DoD reside in Mode-specific resources/ markdown files. Re-distribute existing DoD content residing in core SKILL.md into appropriate documents/sections
-- Capabilities and Craft Standards have been subsumed by Global Norms
-- the 'Internal gap checklist' that is present in some Craft Standards sections is removed, and these checklists are covered by the global Workflow 'Execution order' checkist or moved to the Mode-specific instruction files as appropriate
+- Facts that defy reasonable assumptions.
+- Edge cases found in real execution traces.
+- Clarifications for apparently conflicting rules.
+
+Design guidance:
+
+- Do not add generic advice here.
+- Do not restate rules already covered elsewhere.
+- Prefer a short, concrete correction that prevents one known class of failure.
