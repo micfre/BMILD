@@ -53,6 +53,22 @@ Subsections:
 - contains: skill-scoped work is outlined here (as contrasted to Mode-scoped work which is contained in the Mode-specific instruction file), format is a checklist, generally specified at an H2 section level, this is where skill begins to converse as the persona in first-person
 - out of scope: this section should not include any general behaviours or Mode-specific instructions (Mode-specific instruction are spelled out in great detail in Mode-specific files in resources/ folder)
 
+Subsections:
+
+**Execution order:**
+- contains: ordered flow of the session, presented as a checklist, begins with the instruction for the persona to emit the first line ('one compact opening stance'), ends with Exit and Handoff
+
+**Principles:**
+- contains: guidelines and steering to follow at all times
+
+**Trigger-condition rules:**
+- contains: rules to stay aware of and reactive to current flow and direction of the session, conditions under which it is acceptable or expected to interrupt the documented flow of Tasks in the Mode-specific instruction set
+
+**Pre-exit checkpoint:**
+- purpose: allow user to determine if session objectives have been met
+- contains: simple per-close line emission, one offer per session, declinable in one word
+- template note: this section has been renamed, it is currently referred to as 'Pre-artifact checkpoint'
+
 - template note: this section now conatins the instruction for the persona to emit the first line ('one compact opening stance')
 - template note: Mode-specific instructions in resouces/ folder accomplishes two things: 1) forces progressive disclosure so only reads and tasks aligned with the Mode are loaded into context, which saves token consumption as LLM only loads what is required, 2) prevents bleed from tasks that belong in other Modes, mitigating distraction, for better LLM instruction following
 
@@ -74,12 +90,13 @@ Subsections:
 
 - purpose: specify coverage and behaviour that the skill should not undertake
 - contains: out-of-scope items and appropriate re-routing target
+- forbidden: do not restate instructions in the negeative in this section, it leads to sprawl
 
 ## Exit and Handoff
 
 - purpose: write output artifact and guide user to next clean move
 - contains: summary of work accomplished, user action required/suggested, next clean move
-- forbidden: any instruction that requires LLM to leave Exit and Handoff section to revisit tasks; Exit and Handoff is a terminus not a node
+- forbidden: any instruction that requires LLM to leave Exit and Handoff section to revisit tasks; Exit and Handoff is a terminus not a node, if there is any reasonable doubt about an LLM executing instructions before session objectives have been met, document them in 'Pre-exit checkpoint' not here
 
 ## Gotchas
 
@@ -92,3 +109,4 @@ Subsections:
 - template note: this is not a template section, it is instruction for the content refactor
 - Definition of Done is no longer present in the core SKILL.md template, all DoD reside in Mode-specific resources/ markdown files. Re-distribute existing DoD content residing in core SKILL.md into appropriate documents/sections
 - Capabilities and Craft Standards have been subsumed by Global Norms
+- the 'Internal gap checklist' that is present in some Craft Standards sections is removed, and these checklists are covered by the global Workflow 'Execution order' checkist or moved to the Mode-specific instruction files as appropriate
