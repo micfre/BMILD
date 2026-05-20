@@ -72,7 +72,7 @@ The facilitator proposes attendees based on the question's surface; the invoker 
 
 #### Invocation Contexts
 
-The workflow shape is identical across contexts. Only Step 4 (close/return) branches on output destination.
+The workflow shape is identical across contexts. Only the late-session synthesis and close path branches on output destination.
 
 - **Context A — Forward-direction:** invoked during normal design-tier work to resolve consequential ambiguity. Output: synthesis returned to the invoking persona for handback into their source artifact. Synthesis record appended to the invoking persona's source artifact under a `## roundtable session` block.
 - **Context B — Course-correction consultation:** invoked by Sonia in Course-Correction mode (see `bmild-planner/resources/course-correction.md`). Output: synthesis record appended to `[plan_folder]/<initiative-name>/change-proposal-<slug>.md` under the `## Roundtable Synthesis Records` section. Synthesis is surfaced in chat for user ratification before Sonia proceeds.

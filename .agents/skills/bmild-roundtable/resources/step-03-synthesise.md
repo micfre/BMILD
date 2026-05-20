@@ -92,9 +92,9 @@ Progress:
 
 - [ ] Step 4: **Report** — State what was done, in context-appropriate phrasing:
 
-  *Forward-direction:* > *"Roundtable synthesis ready. I prepared changes for [owner/artifact] — [brief list of implications]. [If authorized: I updated the document(s). If not authorized: Next I will turn this back to [persona] to apply within their workflow.]"*
+  *Forward-direction:* > *"Roundtable synthesis ready. I prepared changes for [owner/artifact] — [brief list of implications]. [If authorized: I updated the document(s). If not authorized: The handoff note is ready for [persona] to apply within their workflow.]"*
 
-  *Course-correction:* > *"Roundtable synthesis appended to `change-proposal-<slug>.md`. Synthesis is in chat for your ratification. Sonia will pick up routing once you've decided."*
+  *Course-correction:* > *"Roundtable synthesis appended to `change-proposal-<slug>.md`. Synthesis is in chat for your ratification."*
 
 - [ ] Step 5: **Continue or close** — Ask: *"Do you want to keep the session open for another question, or shall we close?"*
 
