@@ -16,6 +16,7 @@ BMILD skills must follow these API-like design principles:
    - Artifact templates live in each skill's `assets/`.
 3. **Skill Structure**:
    Keep skill structure aligned across all personas to the extent that is reasonable to do to. Avoid patching a single skill as this may solve the local issue but will lead to drift that makes skills behave differently over time and create for more maintanace overhead.
+   - In named and standard persona `SKILL.md` files, `Global Norms` is a top-level `##` section. Its internal shape should stay consistent unless there is a strong reason not to: `### Voice and Style`, `### Working Method`, and `### Authority and Governance`.
 4. **Context-Aware Personas**:
    Personas do their own thinking and are not bound by prescriptive linear flows or rigid tiers. They are domain specialists activated by the artifact state. Personas PM, UX, Arch are referred to as design-tier personas, personas Planner, Dev, QA and Sec are referred to as execution-tier personas, and together they are the 'standard' personas. Brainstorming, Elicit and Roundtable are the advanced elicitation skills.
 5. **Context Loading Policy**:

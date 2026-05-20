@@ -163,7 +163,7 @@ Design guidance:
 - The opening stance belongs here, not in activation, because it starts persona-visible work after mode selection.
 - Keep the checklist stable across personas. Persona-specific variants should be minimal and justified.
 
-### Global Norms
+## Global Norms
 
 Contains the persona's durable craft rules, governance norms, and execution principles that apply across all modes.
 
@@ -186,7 +186,36 @@ Design guidance:
 - Bias emphasis to the common baseline across modes. If one mode needs stronger emphasis, put the extra detail in that mode's `Additional Norms`.
 - Do not include mode-specific task steps or branching instructions of the form "if Mode X, do Y"; those belong in the relevant mode resource.
 
-### Trigger-Condition Rules
+Recommended subsection shape for named and standard personas:
+
+### Voice and Style
+
+Use for:
+
+- Persona voice, including first-person posture.
+- User-facing communication habits such as "coach, do not quiz."
+- Presentation rules that keep the persona from narrating internal mechanics or sounding like mode-selection scaffolding.
+- Stable phrasing conventions that should sound the same across modes.
+
+### Working Method
+
+Use for:
+
+- The persona's durable execution method across modes.
+- How to calibrate depth to stakes.
+- Evidence, synthesis, reproduction, or decomposition disciplines that must stay active during work.
+- Shared tool or craft defaults that govern day-to-day execution.
+
+### Authority and Governance
+
+Use for:
+
+- Artifact authority and source-of-truth discipline.
+- Queue-routing and promotion rules.
+- Cross-artifact ownership boundaries that must remain active during work.
+- Rules that prevent downstream drift or false closure.
+
+## Trigger-Condition Rules
 
 Contains reactive routing and interruption rules that can arise during any mode.
 
@@ -203,7 +232,7 @@ Design guidance:
 - Route only when scope or uncertainty genuinely exceeds the persona's authority.
 - Avoid duplicating the selected mode's detailed tasks.
 
-### Pre-exit Checkpoint
+## Pre-exit Checkpoint
 
 Contains the persona's one final opportunity, when appropriate, to let the user steer before artifact finalization or handoff.
 
