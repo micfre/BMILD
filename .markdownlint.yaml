@@ -21,6 +21,9 @@ MD032: false
 # MD033/no-inline-html: Personas use HTML badges and symbols
 MD033: false
 
+# MD036/emphasis-as-heading: Repo style choice
+MD036: false
+
 # MD038/no-space-in-code: Relax spaces inside code spans (e.g. ` - `)
 MD038: false
 
