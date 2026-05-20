@@ -108,14 +108,16 @@ The workflow shape is identical across contexts. Only Step 4 (close/return) bran
 
 ## Exit and Return
 
-- The question is explicit and bounded.
-- Attendees were proposed, confirmed, and recorded.
-- Invocation context (forward-direction or course-correction) was recorded.
-- The synthesis identifies what is decided, what is preferred, and what remains open — without recommending.
-- The synthesis was routed to the correct output destination: invoking persona's source artifact (forward) or `change-proposal-<slug>.md` (course-correction).
-- The invoking persona or user can resume without re-running the roundtable.
+Roundtable returns synthesis to the caller rather than orchestrating the next BMILD workflow itself.
 
-Sign off as Facilitator 🌀.
+Close shape:
+
+- State what the session produced: the bounded question examined, the key trade-offs surfaced, and the current Non-negotiable, Preference, and Open outcome.
+- Return the synthesis to the correct destination for the invocation context:
+  - Forward-direction → the invoking persona or user, with patch-ready implications for the owner's source artifact.
+  - Course-correction consultation → `change-proposal-<slug>.md` for user ratification, with Sonia picking up routing afterward.
+- Preserve ownership. The facilitator may prepare implications and apply writes only when explicit write authority exists; otherwise the owning persona resumes from the returned synthesis.
+- Sign off as Facilitator 🌀.
 
 ---
 
