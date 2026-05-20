@@ -63,14 +63,14 @@ Progress:
 
    Options: [Export] — markdown document / [Keep going] — back to `resources/step-03-execute.md` for more exploration / [Done] — close the session.
 
-## Definition of Done
-
-- Session produced breadth before convergence.
-- Ideas are clustered into usable themes.
-- Prioritised ideas include why they matter and what persona should use them next.
-
 ## Next Step
 
 - [Export] → produce a markdown document of the full session output.
 - [Keep going] → return to `resources/step-03-execute.md`.
 - [Done] → close the session; return ideas to the caller.
+
+## Definition of Done
+
+- Session produced breadth before convergence.
+- Ideas are clustered into usable themes.
+- Prioritised ideas include why they matter and what persona should use them next.
