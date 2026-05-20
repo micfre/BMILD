@@ -1,6 +1,19 @@
-## Execute — Method Application and Iteration
+# Step 2: Execute — Method Application and Iteration
 
-Apply the selected method to the current version of the content — not the original if it has already been enhanced. Show the work — present what the method revealed, not just the changed output. Apply clear improvements consistent with the user's stated direction and report what was applied. Halt and ask only when the method produces competing alternatives or genuinely ambiguous direction. Always re-present the 1–3, [r], [a], [x] menu after each method — iteration is the point. Do not exit until the user selects [x].
+## Purpose
+
+Apply the selected method to the current working content, assess whether to apply or surface for user choice, re-present the iteration menu, and loop until the user exits. This step is the active session loop — do not exit until the user selects `[x]`.
+
+## Inputs
+
+- Selected primary method (carried from `step-01-select.md`).
+- 2–3 follow-up methods (carried from `step-01-select.md`).
+- Current working version of the content (use this version, not the original if already enhanced).
+- `./methods.yaml` — required for `[a] List all`.
+
+## Procedure
+
+Apply the selected method to the current version of the content — not the original if it has already been enhanced. Show the work — present what the method revealed, not just the changed output. Apply clear improvements consistent with the user's stated direction and report what was applied. Halt and ask only when the method produces competing alternatives or genuinely ambiguous direction. Always re-present the 1–3, `[r]`, `[a]`, `[x]` menu after each method — iteration is the point. Do not exit until the user selects `[x]`.
 
 1. **Number selection (1–3)** — When the user picks a numbered method:
    - [ ] Name the method at the top of your response: *"Applying: [Method Name]"*
@@ -41,21 +54,23 @@ Apply the selected method to the current version of the content — not the orig
    ...
    ```
 
-   After displaying: *"Select any method by number, or return to [r] your current 5 / [x] proceed."*
+   After displaying: *"Select any method by number, or return to [r] your current 3 / [x] proceed."*
 
-4. **[x] Proceed** — Close the elicitation session:
-   - [ ] Summarise what the session produced — methods applied, key improvements made, changes discarded if any
-   - [ ] Present the final working version of the content
-   - [ ] Preserve ownership. If the elicitation was invoked from a named persona workflow, do not write directly to that persona's artifact. Instead, produce a handoff note with:
-     - Target owner: Faisal / Katrina / Lance / Sonia / Rahat / Zach / user
-     - Target artifact or section
-     - Patch-ready replacement text or bullet changes
-     - Open decisions that still require the owner or user
-     - Any domain boundary crossed by the refinement
-   - [ ] Ask to save only when this elicitation was directly invoked by the user with explicit artifact-write authority, or when the active caller is also the owner of the target artifact. If saving is authorized, write to the appropriate document and update `_context.md` if the document changed meaningfully. Otherwise leave the enhanced content and handoff note in the conversation.
-   - [ ] Return to invoking context with clear speaker identity:
-     > *"Facilitator ⚡ closing. Next I will turn this back to [persona name] [icon]."*
+4. **[x] Proceed** — Close the elicitation session. See the `Exit and Return` section in `SKILL.md` for the full close shape.
 
 5. **Direct text feedback** — Apply the feedback directly to the working content, confirm what changed, and re-present the menu.
 
 6. **Multiple numbers (e.g. "1, 3")** — Treat as a request to choose, not permission to run a batch. Ask which one to run first. Re-present the menu after the user chooses.
+
+## Next Step
+
+- **Number selection or direct feedback** → complete the method, re-present the menu, remain in this resource.
+- **`[r]`** → load `resources/step-01-select.md` carrying current working content forward.
+- **`[x]`** → close the session following the `Exit and Return` shape in `SKILL.md`.
+
+## Definition of Done
+
+- The user has selected `[x]`.
+- The final working version of the content is presented.
+- A handoff note is produced if artifact ownership requires it.
+- The session closes with `Facilitator ⚡` sign-off and return to invoking context.
