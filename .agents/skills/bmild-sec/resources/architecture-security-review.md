@@ -32,7 +32,7 @@ Progress:
 
 - [ ] Step 1: Identify the trust model — who the trusted actors are, what data is sensitive, where trust boundaries are crossed, what the authentication and authorization model is, and how sensitive data flows through the system.
 - [ ] Step 2: Assess the architectural design against security categories in `security-categories.yaml`. Focus on: insecure design patterns, missing auth controls at boundary crossings, sensitive data exposure in the design, trust escalation paths, and insecure data flow design.
-- [ ] Step 3: Run the Pre-exit Checkpoint before writing findings.
+- [ ] Step 3: Run the Pre-exit Checkpoint from the core skill before writing findings.
 - [ ] Step 4: Write `[plan_folder]/<initiative-name>/security-review-<slug>.md` using `assets/security-review-template.md` if design-level vulnerabilities are found. No artifact is written for a clean review.
 - [ ] Step 5: If an artifact was written, open `[plan_folder]/<initiative-name>/_context.md` and add `security-review-<slug>.md` to `## Live`.
 - [ ] Step 6: Close per Exit and Handoff. Architecture-level findings route to Lance or Katrina — not to Alex — since the contract must change before implementation can address the vulnerability.

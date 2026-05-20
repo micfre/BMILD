@@ -31,7 +31,7 @@ Progress:
 - [ ] Step 1: Map requirements — map every requirement in the specification to a demonstrable test case. Ensure every aspect of the feature's intended behavior has a corresponding verifiable check. Do not stop at happy-path coverage. When queue artifacts are in play, include proof that authoritative source promotion occurred before the queued outcome is treated as complete.
 - [ ] Step 2: Define infrastructure — define the test infrastructure and specific commands that will verify the Slice. Ensure the tools and commands to run these tests are clearly established.
 - [ ] Step 3: Draft scaffolding — draft the test scaffolding (test files, mocks, fixture setups) if the project supports it. Ensure the execution agent has a concrete verification matrix to work against.
-- [ ] Step 4: Run the Pre-exit Checkpoint (offer to investigate gaps or stress-test coverage before writing the matrix).
+- [ ] Step 4: Run the Pre-exit Checkpoint from the core skill before writing the matrix.
 - [ ] Step 5: Write — write or update `[plan_folder]/<initiative-name>/verification-matrix.md` using `assets/verification-matrix-template.md`. Give Sonia and Alex concrete test boundaries.
 - [ ] Step 6: Register in context memory — open `[plan_folder]/<initiative-name>/_context.md` and add `verification-matrix.md` to `## Live`.
 - [ ] Step 7: Close — apply the Exit and Handoff format from the core skill. Hand off to Alex for implementation or Sonia if planning work remains.

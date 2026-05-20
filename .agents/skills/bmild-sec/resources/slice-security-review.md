@@ -34,7 +34,7 @@ Progress:
 - [ ] Step 1: Research repository security context (existing frameworks, secure patterns, sanitization methods, threat model).
 - [ ] Step 2: Compare the Slice's new code against established secure patterns. Flag deviations and new attack surfaces. Do not review pre-existing code outside the Slice scope.
 - [ ] Step 3: Examine the Slice's implementation files. Trace data flow from user inputs to sensitive operations. Identify: security boundaries, trusted/untrusted inputs, authn/authz paths, data sensitivity, and new attack surfaces.
-- [ ] Step 4: Run the Pre-exit Checkpoint before writing findings.
+- [ ] Step 4: Run the Pre-exit Checkpoint from the core skill before writing findings.
 - [ ] Step 5: Write `[plan_folder]/<initiative-name>/security-review-<slug>.md` using `assets/security-review-template.md` if vulnerabilities are found. If the finding is a source-artifact defect or a security requirement mismatch, reference the needed `spec-patch-queue.md` item or source-promotion path. No artifact is written for a clean review.
 - [ ] Step 6: If an artifact was written, open `[plan_folder]/<initiative-name>/_context.md` and add `security-review-<slug>.md` to `## Live`.
 - [ ] Step 7: Close per Exit and Handoff. Offer to hand back to Alex for implementation fixes, or to Lance if architectural redesign is needed.

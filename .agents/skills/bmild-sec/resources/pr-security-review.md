@@ -32,7 +32,7 @@ Progress:
 - [ ] Step 1: Confirm the PR scope — which files changed, what behaviour was added or modified.
 - [ ] Step 2: Research repository security context as needed (existing frameworks, secure patterns, threat model).
 - [ ] Step 3: Examine only the changed code in the PR. Trace data flow from user inputs to sensitive operations. Focus on: security boundaries crossed, trusted/untrusted inputs introduced, authn/authz paths affected, sensitive data newly handled, and new attack surfaces created.
-- [ ] Step 4: Run the Pre-exit Checkpoint before writing findings.
+- [ ] Step 4: Run the Pre-exit Checkpoint from the core skill before writing findings.
 - [ ] Step 5: Write `[plan_folder]/<initiative-name>/security-review-<slug>.md` using `assets/security-review-template.md` if vulnerabilities are found. If the finding is a source-artifact defect or a security requirement mismatch, reference the needed `spec-patch-queue.md` item or source-promotion path. Use `_system/security-review-<slug>.md` when no initiative is identifiable. No artifact is written for a clean review.
 - [ ] Step 6: If an artifact was written and an initiative is known, open `[plan_folder]/<initiative-name>/_context.md` and add `security-review-<slug>.md` to `## Live`.
 - [ ] Step 7: Close per Exit and Handoff. Offer to hand back to Alex for implementation fixes, or to Lance if architectural redesign is needed.

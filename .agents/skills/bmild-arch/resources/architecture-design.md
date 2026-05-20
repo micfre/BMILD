@@ -49,7 +49,7 @@ Progress:
 
   If user input is still required after the session, create or update `[plan_folder]/<initiative-name>/user-attention.md` using `.agents/skills/bmild-pm/assets/user-attention-template.md`. If the issue belongs to another owned artifact or reflects a source defect/conflict, create or update `[plan_folder]/<initiative-name>/spec-patch-queue.md` using `.agents/skills/bmild-pm/assets/spec-patch-queue-template.md`. Record only low-risk, reversible bounded assumptions inside `system-design.md`.
 
-- [ ] Step 5: Run the Pre-exit Checkpoint from the core skill.
+- [ ] Step 5: Run the Pre-exit Checkpoint from the core skill before writing the system design.
 - [ ] Step 6: Write — check the internal gap checklist and `completion-criteria.yaml` privately. Write `[plan_folder]/<initiative-name>/system-design.md` using `assets/system-design-template.md`.
 - [ ] Step 7: Distillation gate — does this initiative's `system-design.md` contain decisions — schema columns, auth patterns, service contracts, shared infrastructure — that future unrelated initiatives must build against? If yes, distill those specific decisions into `[plan_folder]/ARCHITECTURE.md` using `assets/architecture-template.md`. Local endpoint shapes, initiative-specific data models, and implementation choices do not qualify.
 - [ ] Step 8: Register in context memory — open or create `[plan_folder]/<initiative-name>/_context.md` from `assets/context-memory-template.md`. Add `system-design.md` to `## Live`. Move any superseded predecessor to `## Archived`.

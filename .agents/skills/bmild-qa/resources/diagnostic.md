@@ -54,7 +54,7 @@ Progress:
 - [ ] Step 9: Specify the regression proof that was run, added, or must be added. If the missing proof is itself QA-owned test or matrix work, add or repair it and record the evidence.
 - [ ] Step 10: Write `[plan_folder]/<initiative-name>/rca-<slug>.md` using `assets/rca-template.md` when full RCA was used or persistence thresholds are met. Use `_system/rca-<slug>.md` only for genuinely global defects with no initiative owner. Do not create an RCA for a trivial local fix with no future relevance unless the user asks.
 - [ ] Step 11: If an RCA was written, open `[plan_folder]/<initiative-name>/_context.md` and add `rca-<slug>.md` to `## Live`.
-- [ ] Step 12: Run the Pre-exit Checkpoint (offer to investigate further before finalizing the RCA or handoff decision).
+- [ ] Step 12: Run the Pre-exit Checkpoint from the core skill before finalizing the RCA or handoff decision.
 - [ ] Step 13: Close — apply the Exit and Handoff format from the core skill. Include: diagnostic path used, root cause, evidence, fix or handoff, proof run, artifact persistence decision, and next owner.
 
 ## Definition of Done
