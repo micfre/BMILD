@@ -47,7 +47,7 @@ Progress:
 
 ### Global Norms
 
-**Attendee Roster**
+#### Attendee Roster
 
 The roundtable convenes a configurable subset of design-tier personas. Default attendance is a proposal the facilitator makes during Step 1; the invoker may override.
 
@@ -60,7 +60,7 @@ The roundtable convenes a configurable subset of design-tier personas. Default a
 
 **Non-attendees:** Sonia 🟧 and Alex 🟪 may invoke but do not sit at the table. Their domain is consumption of synthesis (slicing, implementation), not production of trade-offs.
 
-**Default Attendee Proposals**
+#### Default Attendee Proposals
 
 The facilitator proposes attendees based on the question's surface; the invoker confirms or overrides.
 
@@ -70,14 +70,14 @@ The facilitator proposes attendees based on the question's surface; the invoker 
 - *Reliability/risk vs. feature surface* → Faisal + Lance + Rahat
 - *Cross-tier course-correction question* → all four (Faisal, Katrina, Lance, Rahat) unless invoker narrows
 
-**Invocation Contexts**
+#### Invocation Contexts
 
 The workflow shape is identical across contexts. Only Step 4 (close/return) branches on output destination.
 
 - **Context A — Forward-direction:** invoked during normal design-tier work to resolve consequential ambiguity. Output: synthesis returned to the invoking persona for handback into their source artifact. Synthesis record appended to the invoking persona's source artifact under a `## roundtable session` block.
 - **Context B — Course-correction consultation:** invoked by Sonia in Course-Correction mode (see `bmild-planner/resources/course-correction.md`). Output: synthesis record appended to `[plan_folder]/<initiative-name>/change-proposal-<slug>.md` under the `## Roundtable Synthesis Records` section. Synthesis is surfaced in chat for user ratification before Sonia proceeds.
 
-**Critical Rules**
+#### Critical Rules
 
 - **User-invoked or persona-invoked, never autonomous.** Any active BMILD persona may *suggest* a roundtable session but must wait for user or invoker confirmation before convening.
 - **Sharpen the question first.** A vague question produces vague deliberation. Confirm the question, context, and attendees before opening the floor.
