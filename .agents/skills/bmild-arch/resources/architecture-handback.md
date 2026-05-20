@@ -1,44 +1,47 @@
----
-name: bmild-arch / architecture-handback
-description: "Owner-resolution mode. Activated when a governance queue item targets Lance's artifacts. Review the item, promote accepted changes into source artifacts, and close the loop."
----
-
-## Architecture-Handback Mode
+# Architecture-Handback
 
 Resolve architecture-owned governance items raised by other personas. Promote accepted changes into source artifacts so the queue does not become shadow memory.
 
-1. **Entry** — Identify the queue item and the source artifact it targets. Load in this order:
-   - [ ] `[plan_folder]/ARCHITECTURE.md` if it exists
-   - [ ] `[plan_folder]/<initiative-name>/_context.md`
-   - [ ] `[plan_folder]/<initiative-name>/system-design.md` in full
-   - [ ] `[plan_folder]/<initiative-name>/spec-patch-queue.md`
-   - [ ] The originating artifact or queue context that raised the issue (`prd.md`, `ux-design.md`, `slice-<N>.md`, `verification-matrix.md`, or `security-review-<slug>.md`)
-   - [ ] Confirm no `## Archived` entries or other initiative folders were loaded
+## Additional Context
 
-2. **Assess** — Read each queue item targeting Lance. Determine which can be resolved from existing design decisions and which require a new decision. For each requiring a new decision, apply the Decision Trade-offs format from the core skill — compact option blocks, not unstructured prose.
+Identify the queue item and the source artifact it targets. Load in this order:
 
-   If resolving a question requires repository inspection, prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows.
-   - Use symbol-aware navigation tools (e.g. Serena)
-   - AST-aware structural analysis (e.g. ast-grep)
-   - Semantic or hybrid repository search (e.g. ck-search)
+- `[plan_folder]/ARCHITECTURE.md` if it exists
+- `[plan_folder]/<initiative-name>/_context.md`
+- `[plan_folder]/<initiative-name>/system-design.md` in full
+- `[plan_folder]/<initiative-name>/spec-patch-queue.md`
+- The originating artifact or queue context that raised the issue (`prd.md`, `ux-design.md`, `slice-<N>.md`, `verification-matrix.md`, or `security-review-<slug>.md`)
+- Confirm no `## Archived` entries or other initiative folders were loaded
 
-   Use the highest-signal discovery method appropriate to the task: symbol navigation for known entities, semantic search for behavioural or architectural concepts, and AST-aware analysis for syntax-sensitive pattern matching, migrations, and refactors.
+## Additional Norms
 
-3. **Resolve** — Before the first question or decision prompt, preview the queue: name the categories you expect to cover and give an approximate question count so the user can tell whether this is a short alignment or a deeper session. Provide clear answers or decisions for each item. Apply all Craft Standards from the core skill. For each accepted item that results in a design change:
-   - [ ] Update `system-design.md` with the decision
-   - [ ] Update the queue item's `Owner Disposition` and `Promotion Record`
-   - [ ] Run the **Promotion Cascade Check**: identify downstream consumers per `CLAUDE.md` cross-artifact flow; classify each as `unaffected | minor-update | stale`. Count distinct `Target Owner` values for `stale` artifacts. (a) **0 stale owners** → no cascade action. (b) **1 stale owner** → auto-enqueue one follow-up SP item per stale artifact (`Classification: cross_artifact_conflict`, `Target Owner: <owner>`, `Raised By: Lance`, `Blocking: yes`, `Why It Matters: <named upstream change>`, `Exact Proposed Change: <pointer to source artifact section>`). The close message follows the verbatim-invocation rule for the single owner. (c) **≥2 stale owners** → do NOT enqueue individually; mark each artifact in `_context.md ## Stale` with the upstream SP reference, and route the user to Sonia in Course-Correction mode in this turn's close. Append `Downstream Cascade: <summary>` to the SP item being closed. Cycle prevention: do not enqueue an item whose `Supersedes` chain already includes this SP.
-   - [ ] Note the consequence for the originating persona's artifact
+**Code intelligence.** When resolving a question that requires repository inspection, prefer available code intelligence capabilities over raw filesystem traversal, before falling back to grep/glob/read workflows:
+- Symbol-aware navigation tools (e.g. Serena)
+- AST-aware structural analysis (e.g. ast-grep)
+- Semantic or hybrid repository search (e.g. ck-search)
 
-4. **Defer** — If an item cannot be resolved without additional product or UX input: name the specific constraint missing, route it through `user-attention.md` or back to the relevant source owner with one precise queue item, and mark the spec patch as deferred, rejected, superseded, or moved to user attention.
+Use the highest-signal discovery method appropriate to the task: symbol navigation for known entities, semantic search for behavioural or architectural concepts, and AST-aware analysis for syntax-sensitive pattern matching, migrations, and refactors.
 
-5. **Write** — If design changes result from resolving handback questions, update `[plan_folder]/<initiative-name>/system-design.md`. Update the `updated` frontmatter date.
+**Promotion Cascade Check.** After each accepted item that results in a design change:
 
-6. **Distillation gate** — Do any resolved decisions qualify for distillation to `[plan_folder]/ARCHITECTURE.md`? Apply the same gate as Architecture-Design mode.
+1. Identify downstream consumers per `CLAUDE.md` cross-artifact flow; classify each as `unaffected | minor-update | stale`.
+2. Count distinct `Target Owner` values for `stale` artifacts.
+   - **0 stale owners** → no cascade action.
+   - **1 stale owner** → auto-enqueue one follow-up SP item per stale artifact (`Classification: cross_artifact_conflict`, `Target Owner: <owner>`, `Raised By: Lance`, `Blocking: yes`, `Why It Matters: <named upstream change>`, `Exact Proposed Change: <pointer to source artifact section>`). The close message follows the verbatim-invocation rule for the single owner.
+   - **≥2 stale owners** → do NOT enqueue individually; mark each artifact in `_context.md ## Stale` with the upstream SP reference, and route the user to Sonia in Course-Correction mode in this turn's close. Append `Downstream Cascade: <summary>` to the SP item being closed.
+3. Cycle prevention: do not enqueue an item whose `Supersedes` chain already includes this SP.
 
-7. **Close** — Apply the Exit and Handoff format from the core skill. Explicitly name each queue item resolved, deferred, rejected, superseded, or moved to user attention, and the next owner for each.
+## Tasks
 
----
+Progress:
+
+- [ ] Step 1: Assess — read each queue item targeting Lance. Determine which can be resolved from existing design decisions and which require a new decision. For each requiring a new decision, use compact option blocks (option / pros / cons / complexity / conditional recommendation) — not unstructured prose.
+- [ ] Step 2: Preview the queue — before the first question or decision prompt, name the categories you expect to cover and give an approximate question count so the user can tell whether this is a short alignment or a deeper session.
+- [ ] Step 3: Resolve — provide clear answers or decisions for each item. For each accepted item that results in a design change: update `system-design.md`, update the queue item's `Owner Disposition` and `Promotion Record`, run the Promotion Cascade Check (see Additional Norms), and note the consequence for the originating persona's artifact.
+- [ ] Step 4: Defer — if an item cannot be resolved without additional product or UX input: name the specific constraint missing, route through `user-attention.md` or back to the relevant source owner with one precise queue item, and mark the spec patch as deferred, rejected, superseded, or moved to user attention.
+- [ ] Step 5: Write — if design changes result from resolving handback questions, update `[plan_folder]/<initiative-name>/system-design.md`. Update the `updated` frontmatter date.
+- [ ] Step 6: Distillation gate — do any resolved decisions qualify for distillation to `[plan_folder]/ARCHITECTURE.md`? Apply the same gate as Architecture-Design mode.
+- [ ] Step 7: Close — apply the Exit and Handoff format from the core skill. Explicitly name each queue item resolved, deferred, rejected, superseded, or moved to user attention, and the next owner for each.
 
 ## Definition of Done
 
