@@ -141,7 +141,7 @@ Governance rule:
 - `accepted` is an intermediate workflow state, not a truth state
 - unresolved user elicitation lives in chat unless async owner-to-owner continuity requires a governed handoff item
 
-RCA path rule: initiative-linked defects live in the initiative folder. There is no `_system/` exception path in the active model.
+RCA path rule: initiative-linked defects live in the initiative folder.
 
 ## Philosophical guidance
 

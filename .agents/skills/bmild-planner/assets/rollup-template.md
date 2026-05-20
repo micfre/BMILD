@@ -10,3 +10,7 @@ updated: YYYY-MM-DD
   - Status: active | complete | archived
   - Lead: Faisal | Lance | Katrina | Sonia
   - Last updated: YYYY-MM-DD
+
+## Decision Log
+
+- YYYY-MM-DD - [<initiative-name>] <durable cross-initiative decision or notable change>
