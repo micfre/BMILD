@@ -16,7 +16,6 @@ BMILD skills must follow these API-like design principles:
    - Artifact templates live in each skill's `assets/`.
 3. **Skill Structure**:
    Keep skill structure aligned across all personas to the extent that is reasonable to do to. Avoid patching a single skill as this may solve the local issue but will lead to drift that makes skills behave differently over time and create for more maintanace overhead.
-   - In named and standard persona `SKILL.md` files, `Global Norms` is a top-level `##` section. Its internal shape should stay consistent unless there is a strong reason not to: `### Voice and Style`, `### Working Method`, and `### Authority and Governance`.
 4. **Context-Aware Personas**:
    Personas do their own thinking and are not bound by prescriptive linear flows or rigid tiers. They are domain specialists activated by the artifact state. Personas PM, UX, Arch are referred to as design-tier personas, personas Planner, Dev, QA and Sec are referred to as execution-tier personas, and together they are the 'standard' personas. Brainstorming, Elicit and Roundtable are the advanced elicitation skills.
 5. **Context Loading Policy**:
@@ -121,46 +120,17 @@ updated: YYYY-MM-DD
 - Frontmatter `scope` identifies the initiative or if it is the global `_system` context.
 - Frontmatter `updated` is the date of the last change.
 
-### Cross-artifact flow
-
-- `product-brief.md`: created by Faisal; consumed by Katrina, Lance, Sonia, Rahat, and Zach; defines problem, users, success criteria, scope, and vision. Entry contract for downstream design.
-- `prd.md`: created by Faisal once a brief exists; consumed by Katrina, Lance, Sonia, Rahat, and Zach; defines functional requirements, journeys, prioritization (MVP / Growth), NFRs, and required documentation updates (README, contributor guides, runbooks, release notes, onboarding, user-facing help). Validated through coverage checks and verification matrix entries.
-- `[plan_folder]/CHARTER.md`: emergent project-level artifact. Seeded or updated by Faisal only when an initiative establishes a project-level invariant (vision, target users, competitive positioning), conflicts with a sibling initiative's `product-brief.md`, or the user explicitly requests it. Consumed by all design-tier personas as a constraint when present; absent on most projects until a coherence-forcing event occurs.
-- `[plan_folder]/ARCHITECTURE.md`: created and maintained by Lance; carries rationale (tech stack, invariants Alex must respect, migration patterns, alternatives rejected). Cross-links to `AGENTS.md`/`CLAUDE.md`/`README.md` for operator mechanics rather than restating them.
-- Project-root `DESIGN.md`: created and maintained by Katrina; carries durable global UX patterns (palette, typography, global component rules) distilled from initiative-specific UX work.
-- `ux-design.md`: created by Katrina; consumed by Lance, Sonia, Alex, Rahat, and Zach; validated through observable user-state checks.
-- `system-design.md`: created by Lance; consumed by Sonia, Alex, Rahat, and Zach; validated through implementability, testability, and security review.
-- `spec-patch-queue.md`: initiative-local coordination queue for `source_defect` and `cross_artifact_conflict` items; consumed by the owning persona of the target artifact and any blocked downstream persona; remains non-authoritative until the owner promotes the accepted change into the target source artifact. Every Handback's resolution step runs the **Promotion Cascade Check** (see `docs/cross-skill-amendment.md` §4): single-owner cascades auto-enqueue downstream items; ≥2-owner cascades route to Sonia in Course-Correction mode rather than fragmenting.
-- `user-attention.md`: initiative-local coordination queue for discrete user input; consumed by the target owner persona; remains non-authoritative until the owner's artifact reflects the answer.
-- `decision-log.md`: optional durable record for already-promoted multi-artifact decisions. Initiative-local by default; `_system/decision-log.md` is reserved for genuinely global decisions unrelated future initiatives must consume. Auto-appended by handbacks and scribe applications derived from a `change-proposal-<slug>.md`.
-- `change-proposal-<slug>.md`: created by Sonia in Course-Correction mode when a change affects ≥2 source-artifact owners; carries the impact map, bounded questions, roundtable synthesis records, scribe applications, ordered handoff chain, and SP item references. Sonia coordinates and orders; design-tier decisions are deliberated via `bmild-roundtable` and authored by the owning persona in Handback (one narrow scribe exception applies — see `docs/cross-skill-amendment.md` §6).
-- `slices.md` and `slice-<N>.md`: created by Sonia; consumed and updated by Alex; verified by Rahat and Zach; recut by Sonia when implementation reveals a planning problem.
-- `dev-note-<slug>.md`: created or updated by Alex for Prototype and Bug Fix work that changes durable behaviour, leaves reusable code, records fix rationale, or creates future-spec facts; consumed by Faisal, Katrina, Lance, Sonia, Rahat, and Zach when formalizing, verifying, or reviewing later work.
-- `verification-matrix.md`: created by Sonia during readiness when proof boundaries matter; repaired or expanded by Rahat; consumed by Alex; validated by Rahat during verification.
-- `rca-<slug>.md`: created or updated by Rahat for confirmed defects; consumed by Rahat or Alex for fixes depending on scope; closed by Rahat after evidence shows the regression is covered.
-- `security-review-<slug>.md`: created by Zach when exploitable findings exist; consumed by Alex for implementation fixes or Lance/Katrina for design changes; closed by Zach after remediation is verified.
-- Documentation files: requirements defined by Faisal, implemented by Alex, and verified by Rahat against the shipped behaviour.
-
-Governance rule:
-- Queue artifacts are coordination state, not truth. `accepted` and `answered` do not change project truth by themselves. Only owner promotion into the governed source artifact makes a resolution authoritative.
-
-RCA path rule: initiative-linked defects live in the initiative folder. `_system/rca-<slug>.md` is valid only for genuinely global defects with no initiative, Slice, or initiative `_context.md` owner.
-
 ## Philosophical guidance
 
 When faced with an ambiguous skill design choice use these points to align decisions:
 - Resist patterns that funnel obvious progress through theatrical gates. Ceremony does not equate to rigor.
 - Manage quality floor without limiting quality ceiling. Allow performant models to work to their fullest, don't let quality of output fall when using lower-parameter count models.
 
-## Cross-skill governance
-
-`docs/cross-skill-amendment.md` is the normative specification for cross-skill workflow rules: Activation queue scan, Handback Mode shape, Exit-and-Handoff verbatim invocation, Promotion Cascade Check, `## Stale` semantics, Course-Correction mode (`bmild-planner`), refactored `bmild-roundtable` with flexible attendance, and Sonia replanning guardrail. Each SKILL.md inlines the relevant sections locally; the amendment is the source of truth for audit and consistency. Future cross-cutting amendments follow the same pattern.
-
 ## External references
 
-There are 3rd-party references in external_references\ which cover alternative and adjacent spec-driven agentic coding workflow implementations
+There are 3rd-party references in `external_references/` which cover alternative and adjacent spec-driven agentic coding workflow implementations
 Ask for permission to access it when you need to, as it is ignored by default
-Do not make any modifications to any files in external_references\ folders
+Do not make any modifications to any files in `external_references/` folders
 
 ## Documentation
 
