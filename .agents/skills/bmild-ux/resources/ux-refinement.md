@@ -6,8 +6,9 @@ Extend or update an existing `ux-design.md`. Probe what changed, challenge stale
 
 Load in this order:
 - Project-root `DESIGN.md` if it exists
-- `[plan_folder]/_system/_rollup.md` if it exists
-- `[plan_folder]/<initiative-name>/_context.md`
+- `[plan_folder]/rollup.md` if it exists
+- `[plan_folder]/<initiative-name>/registry.md`
+- `[plan_folder]/<initiative-name>/context.md` if it exists
 - `[plan_folder]/<initiative-name>/ux-design.md` in full — this is the design you are modifying
 - `[plan_folder]/<initiative-name>/product-brief.md` and `prd.md` for current requirements
 - `[plan_folder]/<initiative-name>/system-design.md` if it exists — technical constraints only; not a source of UX intent
@@ -16,7 +17,7 @@ Load in this order:
 ## Additional Norms
 
 - Read current `product-brief.md` and `prd.md` before asking refinement questions. Read `system-design.md` when present to understand fixed technical constraints. Treat explicit PM requirements as settled unless the refinement target exposes a conflict, stale requirement, UX infeasibility, or UX-owned trade-off. Do not infer user intent from architecture.
-- If live `spec-patch-queue.md` items target `ux-design.md` or `DESIGN.md`, resolve them in this refinement or explicitly defer, reject, supersede, or move them to `user-attention.md` as appropriate.
+- If live `handoff.md` items target `ux-design.md` or `DESIGN.md`, resolve them in this refinement or explicitly defer, reject, supersede, or route them onward as appropriate.
 - Durable global patterns (palette, typography, global component rules) → project-root `DESIGN.md`. Initiative-specific flows → `[plan_folder]/<initiative-name>/ux-design.md`.
 - Before writing, re-check the sections being modified against `./resources/completion-criteria.yaml` privately.
 
@@ -46,7 +47,7 @@ Progress:
 - [ ] Step 5: Probe — present what appears settled from PM artifacts, what technical constraints apply, what the change affects, which user-state hypotheses follow, and what UX decisions are newly required. Before the first question, preview the queue: name the categories you expect to cover and give an approximate question count. Apply all Global Norms from the core skill. Elicit before modifying; write at a meaningful checkpoint. Do not silently absorb unresolved issues.
 - [ ] Step 6: Write — re-check the modified sections against `completion-criteria.yaml` and the internal gap checklist (see Additional Norms) privately. Update `[plan_folder]/<initiative-name>/ux-design.md`. Update the `updated` frontmatter date. Preserve sections not being changed.
 - [ ] Step 7: Distillation gate — do any refined decisions qualify for distillation to project-root `DESIGN.md`? Global interaction principles and visual language decisions only.
-- [ ] Step 8: Register in context memory — confirm `ux-design.md` remains in `## Live` in `_context.md`. Move any superseded predecessor to `## Archived` if applicable.
+- [ ] Step 8: Register in context memory — confirm `ux-design.md` remains in `## Live` in `registry.md`. Move any superseded predecessor to `## Archived` if applicable.
 - [ ] Step 9: Close — apply the Exit and Handoff format from the core skill.
 
 ## Definition of Done
@@ -54,9 +55,9 @@ Progress:
 - [ ] Brainstorming ideas reconciled (if applicable)
 - [ ] Refinement target identified and affected sections updated
 - [ ] Existing decisions challenged, not just preserved
-- [ ] Relevant `spec-patch-queue.md` items targeting UX-owned artifacts resolved, deferred, rejected, superseded, or moved to `user-attention.md`
-- [ ] Remaining user-owned ambiguity resolved, queued in `user-attention.md`, or handled as bounded assumptions when safe
+- [ ] Relevant `handoff.md` items targeting UX-owned artifacts resolved, deferred, rejected, superseded, or routed onward appropriately
+- [ ] Remaining user-owned ambiguity resolved in chat, escalated through `handoff.md` only when another owner must act, or handled as bounded assumptions when safe
 - [ ] Updated `ux-design.md` written; `updated` date current
 - [ ] `DESIGN.md` updated if distillation gate triggered
-- [ ] `_context.md` reflects current artifact state
+- [ ] `registry.md` reflects current artifact state
 - [ ] Close message: what changed, trade-offs, queued or deferred governance items, next owner

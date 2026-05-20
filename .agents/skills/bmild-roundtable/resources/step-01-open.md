@@ -9,8 +9,8 @@ Frame the roundtable, sharpen the question, identify the invocation context, pro
 - `.bmild.toml` resolved by core Context Reads (plan_folder, user_name).
 - Current conversation context — prefer this over reading files.
 - When the question cannot be grounded from chat:
-  - `[plan_folder]/_system/_context.md` and `_rollup.md` — load relevant `live` entries.
-  - `[plan_folder]/<initiative-name>/_context.md` if an initiative is named — load relevant `live` entries.
+  - `[plan_folder]/rollup.md` and `context-map.md` if they are relevant to the question.
+  - `[plan_folder]/<initiative-name>/registry.md` if an initiative is named — load relevant `## Live` entries.
   - Specific documents directly relevant to the question (e.g. `system-design.md §X`, `ux-design.md §Y`).
   - If course-correction context: also load the active `change-proposal-<slug>.md`.
 

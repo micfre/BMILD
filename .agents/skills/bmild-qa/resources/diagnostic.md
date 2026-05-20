@@ -5,10 +5,11 @@ Track down the root cause of an unexpected failure or bug. Use the lightest path
 ## Additional Context
 
 Load in this order:
-- `[plan_folder]/CHARTER.md` if it exists
-- `[plan_folder]/ARCHITECTURE.md` if it exists
-- `[plan_folder]/_system/_rollup.md` if it exists
-- `[plan_folder]/<initiative-name>/_context.md` if the initiative is named or inferable
+- `[plan_folder]/rollup.md` if it exists
+- `[plan_folder]/context-map.md` if it is relevant
+- `[plan_folder]/adr/` entries relevant to the failure surface
+- `[plan_folder]/<initiative-name>/registry.md` if the initiative is named or inferable
+- `[plan_folder]/<initiative-name>/context.md` if it exists
 - `slice-<N>.md` relevant to the reported bug (to understand expected behaviour), if applicable
 - Any linked `verification-matrix.md`, `rca-*.md`, or `security-review-*.md`
 - Repo contributor guide for testing conventions and commands
@@ -52,8 +53,8 @@ Progress:
 - [ ] Step 7: State the confirmed root cause and evidence. If the user disputes the diagnosis, return to hypothesis validation.
 - [ ] Step 8: Repair, handoff, or QA-owned work. Apply the minimal confirmed fix when localized and within QA authority. Otherwise hand off to Alex for broader implementation, or to Lance/Katrina when the confirmed root cause is design-caused. Rahat may proceed when the next action is QA-owned: adding or repairing tests, updating `verification-matrix.md`, documenting RCA evidence, or recording verification findings.
 - [ ] Step 9: Specify the regression proof that was run, added, or must be added. If the missing proof is itself QA-owned test or matrix work, add or repair it and record the evidence.
-- [ ] Step 10: Write `[plan_folder]/<initiative-name>/rca-<slug>.md` using `assets/rca-template.md` when full RCA was used or persistence thresholds are met. Use `_system/rca-<slug>.md` only for genuinely global defects with no initiative owner. Do not create an RCA for a trivial local fix with no future relevance unless the user asks.
-- [ ] Step 11: If an RCA was written, open `[plan_folder]/<initiative-name>/_context.md` and add `rca-<slug>.md` to `## Live`.
+- [ ] Step 10: Write `[plan_folder]/<initiative-name>/rca-<slug>.md` using `assets/rca-template.md` when full RCA was used or persistence thresholds are met. Use an initiative folder whenever an initiative owner exists. Do not create an RCA for a trivial local fix with no future relevance unless the user asks.
+- [ ] Step 11: If an RCA was written, open `[plan_folder]/<initiative-name>/registry.md` and add `rca-<slug>.md` to `## Live`.
 - [ ] Step 12: Run the Pre-exit Checkpoint from the core skill before finalizing the RCA or handoff decision.
 - [ ] Step 13: Close — apply the Exit and Handoff format from the core skill. Include: diagnostic path used, root cause, evidence, fix or handoff, proof run, artifact persistence decision, and next owner.
 
@@ -65,6 +66,6 @@ Progress:
 - [ ] Full RCA path: 5–7 hypotheses generated, 1–2 ranked candidates validated, and rejected hypotheses retained as evidence
 - [ ] Root cause confirmed with evidence before fix, QA-owned repair, or handoff
 - [ ] Minimal fix applied only when localized and within QA authority
-- [ ] RCA written and `_context.md` updated only when persistence thresholds are met
+- [ ] RCA written and `registry.md` updated only when persistence thresholds are met
 - [ ] Regression proof specified, added, or run
 - [ ] Close message: diagnostic path, root cause summary, evidence, fix/handoff, proof, artifact decision, next owner

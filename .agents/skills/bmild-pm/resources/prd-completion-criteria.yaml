@@ -8,10 +8,10 @@ meta:
     low. For each section that applies, privately check whether your draft exhibits the
     good_signal or the weak_signal, and check the falsifiable field: is there an observable
     condition that confirms this section is complete? Resolve gaps through further
-    elicitation calibrated to stakes, route discrete user input to `user-attention.md`,
-    route source defects or cross-artifact conflicts to `spec-patch-queue.md`, or use
-    bounded assumptions only when they are low-risk and reversible. Do not present
-    this file to the user.
+    elicitation calibrated to stakes, keep user-owned clarification in chat unless
+    another owner must act, route source defects or cross-artifact conflicts to
+    `handoff.md`, or use bounded assumptions only when they are low-risk and
+    reversible. Do not present this file to the user.
 
 sections:
 
@@ -145,8 +145,8 @@ sections:
     required: false
     stakes: low
     falsifiable: >
-      A reviewer can determine whether unresolved ambiguity was routed through
-      `user-attention.md`, `spec-patch-queue.md`, bounded assumptions, or an explicit
+      A reviewer can determine whether unresolved ambiguity was resolved in chat,
+      routed through `handoff.md`, bounded assumptions, or an explicit
       defer/reject/supersede outcome without inspecting chat history.
     good_signal: >
       Each material unresolved gap has a governed path. User input is captured as one

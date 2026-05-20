@@ -53,5 +53,5 @@ Reference to the test added by Rahat, or the regression proof Alex must add or r
 ## Governance Follow-Up
 
 - Source-artifact update required: yes | no
-- Queue path: none | `spec-patch-queue.md` | `user-attention.md`
+- Handoff path: none | `handoff.md`
 - Notes: what must still be promoted by the owning persona, if applicable

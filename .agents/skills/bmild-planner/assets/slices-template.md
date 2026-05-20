@@ -21,8 +21,8 @@ approved_scope: MVP | named phase | full initiative
   - Detail: [one-line justification]
 - Governance closure:
   - Result: pass / gap / routed / deferred_by_user
-  - Detail: [all blocking queue items promoted or intentionally closed; any remaining non-blocking queue items have owner, next action, and non-authoritative status preserved]
-  - Routing rule: [blocking source defects live in `spec-patch-queue.md`; missing user input lives in `user-attention.md`; this section records status only]
+  - Detail: [all blocking handoff items promoted or intentionally closed; any remaining non-blocking handoff items have owner, next action, and non-authoritative status preserved]
+  - Routing rule: [blocking source defects live in `handoff.md`; user-owned clarification stays in chat unless another owner must act; this section records status only]
 
 ## Slice Registry
 

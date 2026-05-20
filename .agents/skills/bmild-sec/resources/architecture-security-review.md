@@ -6,9 +6,11 @@ Review an architectural spec or system design for security design flaws. Focus o
 
 Load in this order:
 
-- `[plan_folder]/ARCHITECTURE.md` if it exists
-- `[plan_folder]/_system/_rollup.md` if it exists
-- `[plan_folder]/<initiative-name>/_context.md` if the initiative is named or inferable
+- `[plan_folder]/rollup.md` if it exists
+- `[plan_folder]/context-map.md` if it is relevant
+- `[plan_folder]/adr/` entries relevant to the review target
+- `[plan_folder]/<initiative-name>/registry.md` if the initiative is named or inferable
+- `[plan_folder]/<initiative-name>/context.md` if it exists
 - `[plan_folder]/<initiative-name>/system-design.md` in full — the primary review target
 - `[plan_folder]/<initiative-name>/prd.md` and `product-brief.md` for context on user trust model and data sensitivity
 - `./resources/security-categories.yaml`
@@ -34,7 +36,7 @@ Progress:
 - [ ] Step 2: Assess the architectural design against security categories in `security-categories.yaml`. Focus on: insecure design patterns, missing auth controls at boundary crossings, sensitive data exposure in the design, trust escalation paths, and insecure data flow design.
 - [ ] Step 3: Run the Pre-exit Checkpoint from the core skill before writing findings.
 - [ ] Step 4: Write `[plan_folder]/<initiative-name>/security-review-<slug>.md` using `assets/security-review-template.md` if design-level vulnerabilities are found. No artifact is written for a clean review.
-- [ ] Step 5: If an artifact was written, open `[plan_folder]/<initiative-name>/_context.md` and add `security-review-<slug>.md` to `## Live`.
+- [ ] Step 5: If an artifact was written, open `[plan_folder]/<initiative-name>/registry.md` and add `security-review-<slug>.md` to `## Live`.
 - [ ] Step 6: Close per Exit and Handoff. Architecture-level findings route to Lance or Katrina — not to Alex — since the contract must change before implementation can address the vulnerability.
 
 ## Definition of Done
@@ -44,5 +46,5 @@ Progress:
 - [ ] Only High or Medium severity design-level issues reported
 - [ ] Findings correctly tagged as Lance or Katrina owned (architectural/UX design gaps, not implementation bugs)
 - [ ] `security-review-<slug>.md` written if vulnerabilities found; no artifact for clean review
-- [ ] `_context.md` updated if artifact written
+- [ ] `registry.md` updated if artifact written
 - [ ] Close message: trust model assessed, design findings summary, next owner (Lance or Katrina for redesign)

@@ -14,7 +14,7 @@ updated: YYYY-MM-DD
 ### UA-001
 
 - Status: open | answered | applied | closed | rejected | deferred | superseded
-- Promotion Target Artifact: `product-brief.md | prd.md | ux-design.md | system-design.md | slices.md | slice-<N>.md | verification-matrix.md | dev-note-<slug>.md | rca-<slug>.md | security-review-<slug>.md`
+- Promotion Target Artifact: `product-brief.md | prd.md | ux-design.md | system-design.md | slices.md | slice-<N>.md | verification-matrix.md | rca-<slug>.md | security-review-<slug>.md`
 - Target Owner: Faisal | Katrina | Lance | Sonia | Alex | Rahat | Zach
 - Raised By: [persona or user]
 - Blocking: yes | no

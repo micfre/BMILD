@@ -6,9 +6,9 @@ meta:
     check whether your draft exhibits the good_signal or the weak_signal. Check the
     falsifiable field: could a developer execute against this contract without making
     an architectural decision? Resolve gaps through architecture elicitation; do not
-    present this file to the user. Route discrete user input to `user-attention.md`,
-    route source defects or cross-artifact conflicts to `spec-patch-queue.md`, and use
-    bounded assumptions only when they are low-risk and reversible.
+    present this file to the user. Resolve user-owned gaps in chat, route source
+    defects or cross-artifact conflicts to `handoff.md`, and use bounded assumptions
+    only when they are low-risk and reversible.
 
 sections:
 
@@ -126,8 +126,8 @@ sections:
     good_signal: >
       Every functional requirement from prd.md is supported by the system design. If an
       FR has no corresponding endpoint, schema change, service contract, or decision, it
-      is flagged as a gap or routed through `user-attention.md` or
-      `spec-patch-queue.md`. The mapping is derivable — a developer can implement each
+      is flagged as a gap or routed through chat resolution or `handoff.md`. The
+      mapping is derivable — a developer can implement each
       FR by following the contracts in this document.
     weak_signal: >
       Functional requirements from the PRD have no visible architectural support, or
@@ -141,8 +141,8 @@ sections:
       - ux-design.md
     falsifiable: >
       A reviewer can tell how unresolved ambiguity was governed without reading chat
-      history: user input in `user-attention.md`, cross-artifact issues in
-      `spec-patch-queue.md`, or low-risk bounded assumptions in the consuming artifact.
+      history: user-owned gaps resolved in chat, cross-artifact issues in
+      `handoff.md`, or low-risk bounded assumptions in the consuming artifact.
     good_signal: >
       The source artifact remains authoritative. User-owned architecture ambiguity is
       resolved live or queued with one discrete prompt and a promotion target. Product

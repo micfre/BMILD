@@ -14,7 +14,7 @@ updated: YYYY-MM-DD
 ### SP-001
 
 - Status: proposed | accepted | applied | closed | rejected | deferred | superseded
-- Target Artifact: `product-brief.md | prd.md | ux-design.md | system-design.md | slices.md | slice-<N>.md | verification-matrix.md | dev-note-<slug>.md | rca-<slug>.md | security-review-<slug>.md`
+- Target Artifact: `product-brief.md | prd.md | ux-design.md | system-design.md | slices.md | slice-<N>.md | verification-matrix.md | rca-<slug>.md | security-review-<slug>.md`
 - Target Owner: Faisal | Katrina | Lance | Sonia | Alex | Rahat | Zach
 - Raised By: [persona or user]
 - Classification: source_defect | cross_artifact_conflict

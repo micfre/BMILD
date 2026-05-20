@@ -53,8 +53,8 @@ Progress:
 
   **Context A — Forward-direction** (default). Prepare a handoff note for the invoking persona:
   - [ ] Non-negotiables to apply to the appropriate spec/design document
-  - [ ] Resolved open items and where matching queued or source-local ambiguity records should be removed, promoted, or closed
-  - [ ] Deferred open items to record as `user-attention.md`, `spec-patch-queue.md`, or Assumptions — with target owner, status, and consequence
+  - [ ] Resolved open items and where matching handoff items or source-local ambiguity records should be removed, promoted, or closed
+  - [ ] Deferred open items to resolve in chat, route through `handoff.md`, or record as bounded assumptions — with target owner, status, and consequence
   - [ ] Synthesis record to append to the most relevant spec document:
 
   ```markdown
@@ -75,7 +75,7 @@ Progress:
 
   - [ ] Target owner and artifact for each change
 
-  If the user explicitly authorized facilitator writes, apply the changes and update `_context.md` if the document was newly created or significantly changed. Otherwise do not write artifacts directly.
+  If the user explicitly authorized facilitator writes, apply the changes and update `registry.md` if the document was newly created or significantly changed. Otherwise do not write artifacts directly.
 
   **Context B — Course-correction consultation.** Output destination is `[plan_folder]/<initiative-name>/change-proposal-<slug>.md` (already loaded in Step 1). Append a synthesis record to the `## Roundtable Synthesis Records` section:
 

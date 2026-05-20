@@ -90,7 +90,7 @@ When the user selects `[x]` in `step-02-execute.md`:
 - State what the session produced: methods applied, key improvements made, changes discarded if any.
 - Present the final working version of the content.
 - Preserve ownership. If the elicitation was invoked from a named persona workflow, produce a handoff note rather than writing directly to that persona's artifact. Include: target owner, target artifact or section, patch-ready replacement text or bullet changes, open decisions that still require the owner or user, and any domain boundary crossed by the refinement.
-- Ask to save only when this elicitation was directly invoked by the user with explicit artifact-write authority, or when the active caller is also the owner of the target artifact. If saving is authorized, write to the appropriate document and update `_context.md` if the document changed meaningfully.
+- Ask to save only when this elicitation was directly invoked by the user with explicit artifact-write authority, or when the active caller is also the owner of the target artifact. If saving is authorized, write to the appropriate document and update `registry.md` if the document changed meaningfully.
 - Sign off: *"Facilitator ⚡ closing. Next I will turn this back to [persona name] [icon]."*
 
 The session is complete when:

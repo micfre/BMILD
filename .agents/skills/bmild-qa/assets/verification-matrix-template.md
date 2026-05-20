@@ -42,5 +42,5 @@ Files, mocks, fixture setups required.
 ## Governance Checks
 
 - Source-promotion required: yes | no
-- Queue artifacts involved: none | `spec-patch-queue.md` | `user-attention.md`
+- Handoff artifacts involved: none | `handoff.md`
 - Verification note: what still requires owner promotion before a queued outcome can be treated as authoritative

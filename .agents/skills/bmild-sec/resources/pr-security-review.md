@@ -6,9 +6,11 @@ Review a pull request or diff for security vulnerabilities. Focus ONLY on securi
 
 Load in this order:
 
-- `[plan_folder]/ARCHITECTURE.md` if it exists
-- `[plan_folder]/_system/_rollup.md` if it exists
-- `[plan_folder]/<initiative-name>/_context.md` if an initiative is named or inferable
+- `[plan_folder]/rollup.md` if it exists
+- `[plan_folder]/context-map.md` if it is relevant
+- `[plan_folder]/adr/` entries relevant to the review target
+- `[plan_folder]/<initiative-name>/registry.md` if an initiative is named or inferable
+- `[plan_folder]/<initiative-name>/context.md` if it exists
 - The PR diff or changed files provided in the message
 - `./resources/security-categories.yaml`
 
@@ -33,8 +35,8 @@ Progress:
 - [ ] Step 2: Research repository security context as needed (existing frameworks, secure patterns, threat model).
 - [ ] Step 3: Examine only the changed code in the PR. Trace data flow from user inputs to sensitive operations. Focus on: security boundaries crossed, trusted/untrusted inputs introduced, authn/authz paths affected, sensitive data newly handled, and new attack surfaces created.
 - [ ] Step 4: Run the Pre-exit Checkpoint from the core skill before writing findings.
-- [ ] Step 5: Write `[plan_folder]/<initiative-name>/security-review-<slug>.md` using `assets/security-review-template.md` if vulnerabilities are found. If the finding is a source-artifact defect or a security requirement mismatch, reference the needed `spec-patch-queue.md` item or source-promotion path. Use `_system/security-review-<slug>.md` when no initiative is identifiable. No artifact is written for a clean review.
-- [ ] Step 6: If an artifact was written and an initiative is known, open `[plan_folder]/<initiative-name>/_context.md` and add `security-review-<slug>.md` to `## Live`.
+- [ ] Step 5: Write `[plan_folder]/<initiative-name>/security-review-<slug>.md` using `assets/security-review-template.md` if vulnerabilities are found. If the finding is a source-artifact defect or a security requirement mismatch, reference the needed `handoff.md` item or source-promotion path. No artifact is written for a clean review.
+- [ ] Step 6: If an artifact was written and an initiative is known, open `[plan_folder]/<initiative-name>/registry.md` and add `security-review-<slug>.md` to `## Live`.
 - [ ] Step 7: Close per Exit and Handoff. Offer to hand back to Alex for implementation fixes, or to Lance if architectural redesign is needed.
 
 ## Definition of Done
@@ -43,5 +45,5 @@ Progress:
 - [ ] `security-categories.yaml` applied for scope and false-positive filtering
 - [ ] Only High or Medium severity issues with credible exploitability reported
 - [ ] `security-review-<slug>.md` written if vulnerabilities found; no artifact for clean review
-- [ ] `_context.md` updated if artifact written and initiative is known
+- [ ] `registry.md` updated if artifact written and initiative is known
 - [ ] Close message: scope and categories checked, findings summary, next owner

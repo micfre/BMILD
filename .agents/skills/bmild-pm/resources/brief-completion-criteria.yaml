@@ -8,9 +8,9 @@ meta:
     synthesize-and-steer for medium and low. For each section, privately check whether
     your draft exhibits the good_signal or the weak_signal, and check the falsifiable
     field: is there an observable condition that confirms this section is complete?
-    Resolve gaps through elicitation calibrated to stakes, route discrete user input
-    to `user-attention.md`, or use a bounded assumption only when it is low-risk and
-    reversible. Do not present this file to the user.
+    Resolve gaps through elicitation calibrated to stakes, keep user-owned clarification
+    in chat unless another owner must act, and use a bounded assumption only when it is
+    low-risk and reversible. Do not present this file to the user.
 
 sections:
 
@@ -135,8 +135,8 @@ sections:
     required: false
     stakes: low
     falsifiable: >
-      A reviewer can tell whether unresolved ambiguity was routed to `user-attention.md`,
-      a bounded assumption, or an explicit defer/reject/supersede outcome without
+      A reviewer can tell whether unresolved ambiguity was resolved in chat, captured as
+      a bounded assumption, or left as an explicit defer/reject/supersede outcome without
       relying on chat history.
     good_signal: >
       Material unresolved ambiguity is routed through governed artifacts rather than

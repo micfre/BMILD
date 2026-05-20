@@ -6,9 +6,9 @@ meta:
     check whether your draft exhibits the good_signal or the weak_signal. Check the
     falsifiable field: is there an observable user behavior or testable screen state
     that confirms this section is complete? Resolve gaps through UX elicitation; do not
-    present this file to the user. Route discrete user input to `user-attention.md`,
-    route source defects or cross-artifact conflicts to `spec-patch-queue.md`, and use
-    bounded assumptions only when they are low-risk and reversible.
+    present this file to the user. Resolve user-owned gaps in chat, route source defects
+    or cross-artifact conflicts to `handoff.md`, and use bounded assumptions only when
+    they are low-risk and reversible.
 
 sections:
 
@@ -111,8 +111,8 @@ sections:
       - system-design.md
     falsifiable: >
       A reviewer can tell how unresolved ambiguity was governed without reading chat
-      history: user input in `user-attention.md`, cross-artifact issues in
-      `spec-patch-queue.md`, or low-risk bounded assumptions in the consuming artifact.
+      history: user-owned gaps resolved in chat, cross-artifact issues in `handoff.md`,
+      or low-risk bounded assumptions in the consuming artifact.
     good_signal: >
       The source artifact remains authoritative. User-owned UX ambiguity is resolved
       live or queued with one discrete prompt and a promotion target. Product or
@@ -132,7 +132,7 @@ sections:
     good_signal: >
       Every functional requirement from prd.md is addressed by the UX design. If an FR
       has no corresponding screen, flow, or interaction, it is flagged as a gap or
-      routed through `user-attention.md` or `spec-patch-queue.md`. The mapping is
+      routed through chat resolution or `handoff.md`. The mapping is
       derivable — a reviewer can confirm coverage by tracing FRs through flows and
       screens.
     weak_signal: >

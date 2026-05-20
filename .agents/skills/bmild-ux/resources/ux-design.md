@@ -6,8 +6,9 @@ Design the frontend experience for a new initiative. Produce observable, testabl
 
 Load in this order:
 - Project-root `DESIGN.md` if it exists — your design must be consistent with established global UX patterns
-- `[plan_folder]/_system/_rollup.md` if it exists
-- `[plan_folder]/<initiative-name>/_context.md` if the initiative is named or inferable
+- `[plan_folder]/rollup.md` if it exists
+- `[plan_folder]/<initiative-name>/registry.md` if the initiative is named or inferable
+- `[plan_folder]/<initiative-name>/context.md` if it exists
 - `[plan_folder]/<initiative-name>/product-brief.md` and `prd.md` — primary design inputs
 - `[plan_folder]/<initiative-name>/system-design.md` if it exists — technical constraints only; not a source of UX intent
 - Confirm no `## Archived` entries or other initiative folders were loaded
@@ -46,10 +47,10 @@ Progress:
 - [ ] Step 3: Synthesize — summarize: what appears settled from PM artifacts, what technical constraints from architecture apply, what user-state hypotheses follow, what user-state decisions are missing, and what conflicts exist. Ask the smallest useful UX question before committing to an interaction model. Do not silently absorb unresolved issues into the artifact.
 - [ ] Step 4: Elicit — before the first question, preview the queue: name the UX categories you expect to cover and give an approximate question count so the user can tell whether this is a short alignment or a deeper session. Then probe through each section of `assets/ux-design-template.md` sequentially. Apply all Global Norms from the core skill. Surface one ambiguity per turn unless questions are inter-related. Elicit before producing final designs; write at a meaningful checkpoint. Probe backward on: empty states, error states, loading states, mobile layout, and accessibility before closing.
 - [ ] Step 5: Run the Pre-exit Checkpoint from the core skill before writing the UX design.
-- [ ] Step 6: Write — check the internal gap checklist and `completion-criteria.yaml` privately. Resolve user-owned UX gaps through elicitation or `user-attention.md`. Route product or architecture source issues through `spec-patch-queue.md`. Write `[plan_folder]/<initiative-name>/ux-design.md` using `assets/ux-design-template.md`.
+- [ ] Step 6: Write — check the internal gap checklist and `completion-criteria.yaml` privately. Resolve user-owned UX gaps through elicitation in chat or bounded assumptions when safe. Route product or architecture source issues through `handoff.md`. Write `[plan_folder]/<initiative-name>/ux-design.md` using `assets/ux-design-template.md`.
 - [ ] Step 7: Distillation gate — do this initiative's decisions establish interaction principles, visual language decisions, or UX patterns that all future initiatives must conform to? If yes, distill those specific elements into project-root `DESIGN.md` using `assets/design-md-template.md` for creation, or preserve its existing structure for updates. Initiative-local flows, screen-specific states, and scoped interaction decisions do not qualify.
-- [ ] Step 8: Register in context memory — open or create `[plan_folder]/<initiative-name>/_context.md` from `assets/context-memory-template.md`. Add `ux-design.md` (and `DESIGN.md` if updated) to `## Live`. Move any superseded predecessor to `## Archived`.
-- [ ] Step 9: Gate check — walk the user through any remaining UX-domain ambiguity that still needs synchronous resolution. For each: explain the issue, present options, give a recommendation. If user input still remains, queue it in `user-attention.md`. If the issue belongs to architecture or product ownership, route it through `spec-patch-queue.md`. Do not preserve durable question sections in `ux-design.md`.
+- [ ] Step 8: Register in context memory — open or create `[plan_folder]/<initiative-name>/registry.md` from `assets/context-memory-template.md`. Add `ux-design.md` (and `DESIGN.md` if updated) to `## Live`. Move any superseded predecessor to `## Archived`.
+- [ ] Step 9: Gate check — walk the user through any remaining UX-domain ambiguity that still needs synchronous resolution. For each: explain the issue, present options, give a recommendation. If it still needs another owner's judgment after chat clarification, route it through `handoff.md`. Do not preserve durable question sections in `ux-design.md`.
 - [ ] Step 10: Close — apply the Exit and Handoff format from the core skill.
 
 ## Definition of Done
@@ -60,6 +61,6 @@ Progress:
 - [ ] `completion-criteria.yaml` privately checked before writing
 - [ ] `ux-design.md` written to `[plan_folder]/<initiative-name>/`
 - [ ] `DESIGN.md` updated if distillation gate triggered
-- [ ] `_context.md` updated with artifacts in `## Live`
-- [ ] Remaining ambiguity routed through `user-attention.md`, `spec-patch-queue.md`, or bounded assumptions instead of embedded question sections
+- [ ] `registry.md` updated with artifacts in `## Live`
+- [ ] Remaining ambiguity resolved in chat, routed through `handoff.md`, or handled as bounded assumptions instead of embedded question sections
 - [ ] Close message: key decisions, trade-offs accepted, queued or deferred governance items, next owner

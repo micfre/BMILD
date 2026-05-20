@@ -6,11 +6,12 @@ Decompose a named phase into implementation-ready Slices. The named phase is the
 
 Load in this order before proceeding:
 
-- `[plan_folder]/CHARTER.md` if it exists
-- `[plan_folder]/ARCHITECTURE.md` if it exists
+- `[plan_folder]/context-map.md` if it exists
+- `[plan_folder]/adr/` entries relevant to the planning target
 - Project-root `DESIGN.md` if it exists
-- `[plan_folder]/_system/_rollup.md` if it exists
-- `[plan_folder]/<initiative-name>/_context.md`
+- `[plan_folder]/rollup.md` if it exists
+- `[plan_folder]/<initiative-name>/registry.md`
+- `[plan_folder]/<initiative-name>/context.md` if it exists
 - `product-brief.md`, `prd.md`, `ux-design.md`, and `system-design.md` from the initiative folder — primary inputs
 - `slices.md` if it exists — you may be adding to an existing plan
 
@@ -40,18 +41,18 @@ Progress:
 
 - [ ] Step 7: **Write `slices.md`.** Update `[plan_folder]/<initiative-name>/slices.md` using `assets/slices-template.md`. The `## Readiness` section must be written before any Slice entries. Update `## Slice Registry` with all Slices. Add `## Roadmap / Deferred Phases` for any out-of-scope work. Record coverage verification in `## Coverage Verification`.
 
-- [ ] Step 8: **Context memory update.** Open `[plan_folder]/<initiative-name>/_context.md`. Add `slices.md` and the active `slice-<N>.md` files to `## Live`. Do not add `todo` Slices to `## Live` until they begin. Move any superseded predecessor to `## Archived`. Add an entry to `[plan_folder]/_system/_rollup.md` if this is a new initiative (use `assets/rollup-template.md` if it doesn't exist).
+- [ ] Step 8: **Context memory update.** Open `[plan_folder]/<initiative-name>/registry.md`. Add `slices.md` and the active `slice-<N>.md` files to `## Live`. Do not add `todo` Slices to `## Live` until they begin. Move any superseded predecessor to `## Archived`. Add or update an entry in `[plan_folder]/rollup.md` if this is a new initiative (use `assets/rollup-template.md` if it doesn't exist).
 
 - [ ] Step 9: **Close.** Apply the Exit and Handoff format from the core skill. Hand off one Slice at a time. Alex works Slice N, marks it ready-for-review, then picks up Slice N+1. Sonia does not need to be re-invoked per Slice unless the plan changes or a blocker surfaces.
 
 ## Definition of Done
 
 - [ ] Readiness gate confirmed before any Slice is authored
-- [ ] CHARTER coherence check confirmed (via readiness gate inline or prior Readiness-Verification mode; note "n/a — no CHARTER, no cross-initiative conflict" if applicable)
+- [ ] Cross-initiative semantic context checked via `context-map.md` when relevant
 - [ ] Forward decomposition covers only the named phase
 - [ ] Slice count is the minimum viable count consistent with dependency safety, proof boundaries, and context budget
 - [ ] Backward coverage verification recorded with outcome
 - [ ] Each active `slice-<N>.md` written with all required sections including likely planned edits, new-file estimate when applicable, and slice token estimate
 - [ ] `slices.md` written with Readiness, Slice Registry, Roadmap, and Coverage Verification sections
-- [ ] `_context.md` and `_rollup.md` updated
+- [ ] `registry.md` and `rollup.md` updated
 - [ ] Close message: scope planned, Slice count, verification matrix status, next owner

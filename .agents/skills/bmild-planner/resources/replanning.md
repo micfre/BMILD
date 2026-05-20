@@ -6,11 +6,12 @@ Revise an existing plan when a blocker surfaces, design changes, or a re-sequenc
 
 Load in this order before proceeding:
 
-- `[plan_folder]/CHARTER.md` if it exists
-- `[plan_folder]/ARCHITECTURE.md` if it exists
+- `[plan_folder]/context-map.md` if it exists
+- `[plan_folder]/adr/` entries relevant to the planning target
 - Project-root `DESIGN.md` if it exists
-- `[plan_folder]/_system/_rollup.md` if it exists
-- `[plan_folder]/<initiative-name>/_context.md`
+- `[plan_folder]/rollup.md` if it exists
+- `[plan_folder]/<initiative-name>/registry.md`
+- `[plan_folder]/<initiative-name>/context.md` if it exists
 - `slices.md` in full — read the current plan state before making any changes
 - All active `slice-<N>.md` files under `## Live`
 - Updated design artifacts that triggered the replan if named
@@ -38,7 +39,7 @@ Progress:
 
 - [ ] Step 5: **Write updated Slices.** Update affected `slice-<N>.md` files. When likely reads, planned edits, or new-file estimates change, re-run `bash <planner-skill-dir>/scripts/run-budget-slice.sh` from the project root (where `<planner-skill-dir>` is the active `bmild-planner` skill directory for the current harness) and refresh the Slice's `## Slice token estimate` plus Planning Notes. Update `slices.md` with revised Slice Registry entries, recut note (if applicable), and updated coverage verification. Do not modify completed Slice files.
 
-- [ ] Step 6: **Context memory update.** Add any newly active `slice-<N>.md` files to `## Live` in `_context.md`. Move superseded Slice files to `## Archived`.
+- [ ] Step 6: **Context memory update.** Add any newly active `slice-<N>.md` files to `## Live` in `registry.md`. Move superseded Slice files to `## Archived`.
 
 - [ ] Step 7: **Close.** Apply the Exit and Handoff format from the core skill. Re-route Alex to the next viable Slice, or hand back upstream with a precise question if the blocker requires a design decision.
 
@@ -49,5 +50,5 @@ Progress:
 - [ ] At most one recut pass applied to unstarted Slices
 - [ ] Backward coverage verification re-run and recorded
 - [ ] Updated `slices.md` and affected `slice-<N>.md` files written
-- [ ] `_context.md` updated to reflect revised plan state
+- [ ] `registry.md` updated to reflect revised plan state
 - [ ] Close message: what changed, revised plan state, next Slice for Alex or blocking question

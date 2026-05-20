@@ -69,6 +69,6 @@ For ratified changes that did NOT take the scribe path. Each entry: target perso
 
 ## Decision Log Echo
 
-Mirrors entries written to `decision-log.md` as each handback (or scribe application) completes. Maintained for traceability.
+Mirrors entries summarized into `[plan_folder]/rollup.md` `## Decision Log` as each handback (or scribe application) completes. Maintained for traceability.
 
 - YYYY-MM-DD — <persona|scribe> — <one-line decision summary> — SP-### — change-proposal-<slug>

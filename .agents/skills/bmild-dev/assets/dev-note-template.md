@@ -51,5 +51,5 @@ What the user asked Alex to build, test, prototype, or fix.
 
 ## Governance Impact
 
-- Queue or promotion needed: none | `spec-patch-queue.md` | `user-attention.md`
+- Queue or promotion needed: none | `handoff.md`
 - Details: what still needs owner promotion, if anything
