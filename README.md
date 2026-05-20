@@ -38,7 +38,7 @@ Ten skill folders. Each contains a prompt that gives your AI agent a persona wit
 | **Katrina**&nbsp;🟩 | UX Designer | Owns the complete frontend experience. Advocates for users without losing sight of what's buildable. Decisive, not decorative. |
 | **Lance**&nbsp;⬛ | Architect | Names the cost of every choice. Produces implementable contracts -- schema columns, endpoint shapes, service signatures -- not high-level boxes and arrows. |
 | **Sonia**&nbsp;🟧 | Delivery Planner | Zero tolerance for ambiguity in implementation inputs. Sizes work to fit context windows, not story points. |
-| **Alex**&nbsp;🟪 | Developer | Implements planned Slices, prototypes bounded repo work, and fixes bugs. Matches existing patterns, avoids needless ceremony, and leaves lightweight memory when work could affect future specs. |
+| **Alex**&nbsp;🟪 | Developer | Implements planned Slices, prototypes bounded repo work, and fixes bugs. Matches existing patterns, avoids needless ceremony, and promotes durable implementation truth into the governing artifacts instead of sidecars. |
 | **Rahat**&nbsp;🟨 | QA & Reliability | Diagnoses before fixing. Can apply minimal confirmed fixes when evidence is clear, and persists RCA when future context needs it. |
 | **Zach**&nbsp;🟥 | Security | Contextual SAST code review. Prioritizes high-confidence, actionable vulnerabilities over theoretical noise. Perspective is grounded in real-world exploitability. |
 
@@ -70,7 +70,7 @@ Handoffs are obligations, not exits. Each persona passes a usable contract to th
 - Katrina passes observable UX flows, states, and interaction decisions.
 - Lance passes implementable architecture contracts.
 - Sonia passes phase-scoped Slices, likely required reads, and verification boundaries.
-- Alex passes checked acceptance criteria for planned Slices, Dev notes for prototype and bug-fix work, required documentation updates, and user verification actions.
+- Alex passes checked acceptance criteria for planned Slices, promoted technical truth in `system-design.md` when warranted, required documentation updates, and user verification actions.
 - Rahat passes persistent verification evidence, documentation verification, documented defects, and minimal confirmed repairs when QA can close the loop directly.
 - Zach passes only high-confidence security findings with owner and remediation path.
 
@@ -83,14 +83,14 @@ Those lines should stay separate. Internal memory bookkeeping belongs in artifac
 
 When ambiguity appears, BMILD does not preserve it as durable chat threaded through source artifacts. It routes the issue into one of four governed outcomes:
 
-- `spec-patch-queue.md` for source-artifact defects or cross-artifact conflicts
-- `user-attention.md` for one discrete user decision that still needs owner promotion
+- `handoff.md` for source-artifact defects, cross-artifact conflicts, or promotion requests that require another owner's action
 - bounded assumptions inside the consuming source artifact when the risk is low and reversible
+- direct promotion into the governing source artifact when the truth is now known and no further owner judgment is required
 - explicit defer, reject, or supersede outcomes when that is the honest state
 
-Queue items are non-authoritative by design. A resolution becomes truth only after the owning persona promotes it into the target source artifact.
+Handoff items are non-authoritative by design. A resolution becomes truth only after the owning persona promotes it into the target source artifact.
 
-Each standard persona auto-routes to its **Handback** mode when queue items target its artifacts. The user does not need to remember the queue or invoke handback explicitly — invoking the persona by name (e.g., "Lance, look at py-tokenizer") is enough; the persona checks the queue at activation and runs Handback if items are waiting. When a single promotion invalidates ≥2 downstream owners, the closing handoff routes to Sonia for Course-Correction instead of fragmenting into separate per-owner threads.
+Each standard persona auto-routes to its **Handback** mode when handoff items target its artifacts. The user does not need to remember the handoff file or invoke handback explicitly — invoking the persona by name (e.g., "Lance, look at py-tokenizer") is enough; the persona checks `handoff.md` at activation and runs Handback if items are waiting. When a single promotion invalidates ≥2 downstream owners, the closing handoff routes to Sonia for Course-Correction instead of fragmenting into separate per-owner threads.
 
 Advanced modes are team tools. Roundtable resolves consequential ambiguity with attendance configured per question, Elicit strengthens a draft, and Brainstorm expands options before convergence. When invoked from inside a named persona workflow, they return patch-ready notes to that persona instead of taking over artifact ownership.
 
@@ -102,72 +102,71 @@ BMILD artifacts have owners and consumers:
 
 - `product-brief.md`: created by Faisal; consumed by Katrina, Lance, Sonia, Rahat, and Zach; defines problem, users, success criteria, scope, and vision. Entry contract for downstream design.
 - `prd.md`: created by Faisal once a brief exists; consumed by Katrina, Lance, Sonia, Rahat, and Zach; defines functional requirements, journeys, prioritization (MVP / Growth), NFRs, and required documentation updates (README, contributor guides, runbooks, release notes, onboarding, user-facing help). Validated through coverage checks and verification matrix entries.
-- `[plan_folder]/CHARTER.md`: emergent project-level artifact. Seeded or updated by Faisal only when an initiative establishes a project-level invariant (vision, target users, competitive positioning), conflicts with a sibling initiative's `product-brief.md`, or the user explicitly requests it. Consumed by all design-tier personas as a constraint when present; absent on most projects until a coherence-forcing event occurs.
-- `[plan_folder]/ARCHITECTURE.md`: created and maintained by Lance; carries rationale (tech stack, invariants Alex must respect, migration patterns, alternatives rejected). Cross-links to `AGENTS.md`/`CLAUDE.md`/`README.md` for operator mechanics rather than restating them.
+- `[plan_folder]/context-map.md`: created and maintained primarily by Faisal; consumed when work spans multiple initiatives or shared semantic boundaries; defines project-level contexts, shared concepts, and cross-context relationships.
+- `[plan_folder]/rollup.md`: created and maintained primarily by Sonia; consumed by all standard personas when resolving initiative names, aliases, or current status; includes `## Decision Log` for durable, concise cross-initiative history.
+- `[plan_folder]/adr/<NNNN-slug>.md`: created and maintained by Lance when a cross-initiative architectural decision is hard to reverse, surprising without context, and the result of a real trade-off; consumed by Sonia, Alex, Rahat, and Zach when their work touches that durable decision.
+- `context.md`: created and maintained by Faisal, Katrina, and Lance; consumed by all standard personas; defines initiative-local terms, boundaries, relationships, and resolved ambiguities. It is for meaning, not implementation detail.
 - Project-root `DESIGN.md`: created and maintained by Katrina; carries durable global UX patterns (palette, typography, global component rules) distilled from initiative-specific UX work.
 - `ux-design.md`: created by Katrina; consumed by Lance, Sonia, Alex, Rahat, and Zach; validated through observable user-state checks.
-- `system-design.md`: created by Lance; consumed by Sonia, Alex, Rahat, and Zach; validated through implementability, testability, and security review.
-- `spec-patch-queue.md`: initiative-local coordination queue for proposed source-artifact repairs and cross-artifact conflicts. Non-authoritative until the target owner updates the target artifact.
-- `user-attention.md`: initiative-local queue for discrete user input that still needs owner promotion into a governed artifact.
-- `decision-log.md`: optional durable record for multi-artifact decisions that have already been promoted into source artifacts. Not a question tracker. Auto-appended by handbacks and scribe applications derived from a `change-proposal`.
-- `change-proposal-<slug>.md`: created by Sonia in Course-Correction mode when a change affects ≥2 source-artifact owners; carries the impact map, bounded questions, roundtable synthesis records, ordered handoff chain, and SP item references. Sonia coordinates and orders; design-tier decisions are deliberated via Roundtable and authored by the owning persona in Handback.
+- `system-design.md`: created by Lance; consumed by Sonia, Alex, Rahat, and Zach; validated through implementability, testability, and security review. Alex also writes durable implementation-confirmed technical truth here when no other owner's judgment is required.
+- `handoff.md`: initiative-local coordination artifact for source-artifact defects, cross-artifact conflicts, and promotion requests that require another owner's action. It is non-authoritative until the target owner updates the target artifact.
+- `change-proposal-<slug>.md`: created by Sonia in Course-Correction mode when a change affects ≥2 source-artifact owners; carries the impact map, bounded questions, roundtable synthesis records, ordered handoff chain, and handoff references. Sonia coordinates and orders; design-tier decisions are deliberated via Roundtable and authored by the owning persona in Handback.
 - `slices.md` and `slice-<N>.md`: created by Sonia; consumed and updated by Alex; verified by Rahat and Zach; recut by Sonia when implementation reveals a planning problem.
-- `dev-note-<slug>.md`: created or updated by Alex for Prototype and Bug Fix work that changes durable behaviour, leaves reusable code, records fix rationale, or creates future-spec facts; consumed by Faisal, Katrina, Lance, Sonia, Rahat, and Zach when formalizing, verifying, or reviewing later work.
 - `verification-matrix.md`: created by Sonia during readiness when proof boundaries matter; repaired or expanded by Rahat; consumed by Alex; validated by Rahat during verification.
 - `rca-<slug>.md`: created or updated by Rahat for confirmed defects; consumed by Rahat or Alex for fixes depending on scope; closed by Rahat after evidence shows the regression is covered.
 - `security-review-<slug>.md`: created by Zach when exploitable findings exist; consumed by Alex for implementation fixes or Lance/Katrina for design changes; closed by Zach after remediation is verified.
 - Documentation files: requirements defined by Faisal, implemented by Alex, and verified by Rahat against the shipped behaviour.
 
 Governance rule:
-- authoritative state lives in BMILD source artifacts, not in queue history
-- `accepted` and `answered` are intermediate workflow states, not truth states
-- `_system/decision-log.md` is reserved for genuinely cross-initiative decisions
+- authoritative state lives in BMILD source artifacts, not in `handoff.md` history
+- `accepted` is an intermediate workflow state, not a truth state
+- unresolved user elicitation lives in chat unless async owner-to-owner continuity requires a governed handoff item
 
-RCA path rule: initiative-linked defects live in the initiative folder. `_system/rca-<slug>.md` is valid only for genuinely global defects with no initiative, Slice, or initiative `_context.md` owner.
+RCA path rule: initiative-linked defects live in the initiative folder.
 
 ### Memory
 
 No orchestrator, no state machine. Personas write directly to the folder specified by `plan_folder` in `.bmild.toml` (defaults to `plans/`) at your project root using plain markdown. This can be structured alongside project source or kept separately — the personas resolve all paths relative to the project root.
 
-When you name an initiative, standard personas check the exact initiative folder first, then consult `_system/_rollup.md` if it is absent. Design-tier personas use PM artifacts as fixed upstream truth: Katrina and Lance read `product-brief.md` and `prd.md` before eliciting, then ask only UX- or architecture-owned follow-up questions. Lance also treats `ux-design.md` as an upstream interaction contract. Katrina reads `system-design.md` when present for technical constraints only, not as a source of UX intent.
+When you name an initiative, standard personas check the exact initiative folder first, then consult `rollup.md` if it is absent. Initiative-scoped work starts from `registry.md`, then loads `context.md` and the relevant live artifacts. Design-tier personas use PM artifacts as fixed upstream truth: Katrina and Lance read `product-brief.md` and `prd.md` before eliciting, then ask only UX- or architecture-owned follow-up questions. Lance also treats `ux-design.md` as an upstream interaction contract. Katrina reads `system-design.md` when present for technical constraints only, not as a source of UX intent.
 
 ```
 <project-root>/
 ├── DESIGN.md                       # Katrina output: durable global UX patterns (palette, typography, component rules). Project-root because it is a project-wide standard.
 └── plans/ (or your custom plan_folder)
-    ├── CHARTER.md                  # Faisal output: emergent — seeded only when a project-level invariant is established or a cross-initiative conflict is resolved.
-    ├── ARCHITECTURE.md             # Lance output: durable rationale (tech stack, invariants Alex must respect, alternatives rejected). Canonical, plan_folder-level.
-    ├── _system/                    # Global memory artifacts shared across initiatives.
-    │   ├── _context.md             # Index of globally-live documents.
-    │   └── _rollup.md              # Central registry of all active features/initiatives.
+    ├── context-map.md             # Project-level semantic map across initiatives, shared concepts, and boundaries.
+    ├── rollup.md                  # Initiative index, aliases, status summary, and Decision Log.
+    ├── adr/                       # Cross-initiative architecture decision records. Created lazily.
     └── <initiative-name>/          # The atomic unit of work (Feature / Initiative).
-        ├── _context.md             # Index of live documents for this initiative.
+        ├── registry.md             # Initiative-local live/archive/stale artifact registry.
+        ├── context.md              # Initiative-local semantic context: terms, boundaries, relationships, ambiguities.
         ├── product-brief.md        # Faisal output: problem, users, success criteria, scope, vision.
         ├── prd.md                  # Faisal output: requirements, journeys, prioritization, NFRs, doc scope.
         ├── ux-design.md            # Katrina output: initiative-specific flows, screen states, interaction rules.
-        ├── system-design.md        # Lance output: schema, API contracts, service contracts, tech choices.
+        ├── system-design.md        # Lance output: schema, API contracts, service contracts, tech choices, and durable implementation-confirmed technical truth.
+        ├── handoff.md              # Initiative-local owner-to-owner coordination for source defects, cross-artifact conflicts, and promotion requests.
         ├── change-proposal-<slug>.md # Sonia output (Course-Correction mode): impact map, bounded questions, roundtable synthesis, ordered handoff chain.
         ├── verification-matrix.md  # Sonia/Rahat: proof map for requirements and Slices.
         ├── slices.md               # Sonia output: Slice registry.
         ├── slice-<N>.md            # One file per Slice.
-        ├── dev-note-<slug>.md      # Alex output: prototype and bug-fix memory.
         ├── rca-<slug>.md           # Rahat output: root cause analysis.
         └── security-review-<slug>.md # Zach output: security findings.
 ```
 
 Path rationale:
 - `DESIGN.md` lives at the **project root** as a project-wide standard, treated like `README.md`.
-- `CHARTER.md` and `ARCHITECTURE.md` live at the **configured `plan_folder` level** as canonical, durable rationale documents owned by Faisal and Lance respectively.
-- `_context.md` and `_rollup.md` live under **`[plan_folder]/_system/`** as global memory artifacts.
-- `ARCHITECTURE.md` carries rationale; `AGENTS.md` / `CLAUDE.md` / `README.md` carry operator mechanics. Lance cross-links rather than restating.
+- `context-map.md` lives at the **configured `plan_folder` level** because it describes durable cross-initiative semantics and boundaries.
+- `rollup.md` lives at the **configured `plan_folder` level** because it is the operational index of initiatives, aliases, status, and notable decisions.
+- `adr/` lives at the **configured `plan_folder` level** because ADRs capture cross-initiative architecture rationale; initiative-local design truth stays in `system-design.md`.
+- `registry.md` exists **only per initiative** because liveness and staleness are initiative state, not global semantic context.
 
-`_context.md` is the entry point for every persona. It lists documents that are currently `live` (in-use) vs. `archived`. Personas load only what is live and only what is relevant to the current engagement mode.
+`registry.md` is the initiative-local entry point for artifact state. It lists documents that are currently `live`, `archived`, or `stale`. Personas load only what is live and only what is relevant to the current engagement mode.
 
-Every `_context.md` follows this structure:
+Every `registry.md` follows this structure:
 
 ```markdown
 ---
-scope: <initiative-name> | _system
+scope: <initiative-name>
 updated: YYYY-MM-DD
 ---
 
@@ -179,13 +178,13 @@ updated: YYYY-MM-DD
 ## Archived
 
 ## Stale
-- prd.md (driven by SP-007 on system-design.md)
+- prd.md (driven by H-007 in handoff.md)
 ```
 
 - `## Live` — filenames of artifacts currently in use. One per line, prefixed with `- `.
 - `## Archived` — filenames of superseded artifacts, same format.
-- `## Stale` — filenames of artifacts superseded mid-flight by an upstream change that must not be consumed as current truth until the owning persona repairs them. Each line names the artifact and the SP item driving the staleness. The line moves back to `## Live` when the patch lands.
-- Frontmatter `scope` identifies the initiative or if it is the global `_system` context.
+- `## Stale` — filenames of artifacts superseded mid-flight by an upstream change that must not be consumed as current truth until the owning persona repairs them. Each line names the artifact and the `handoff.md` item or `change-proposal-<slug>.md` driving the staleness. The line moves back to `## Live` when the patch lands.
+- Frontmatter `scope` identifies the initiative.
 - Frontmatter `updated` is the date of the last change.
 
 ### Project configuration
@@ -306,6 +305,7 @@ BMILD doesn't look at BMAD planning artifacts, but this could change in the futu
 BMILD is built upon and inspired by:
 
 - **[BMAD-METHOD](https://github.com/the-bmad-group/bmad)**: The persona archetypes and interactive patterns are adapted from BMAD.
+- **[Grill-with-Docs](https://github.com/mattpocock/skills/blob/main/skills/engineering/grill-with-docs/SKILL.md)**: Context and ADR logs format adapted from mattpocock's Grill-with-Docs.
 - **[GSD](https://github.com/gsd-build/get-shit-done)**: Nyquist Validation rule adapted to specific skill behaviours.
 - **[Kilo Code](https://github.com/kilo-code)**: The QA debugging methodology is adapted from Kilo Code's Debug prompt.
 - **[Tokencast](https://github.com/krulewis/tokencast)**: The tokenizer algorithm used by the Planner persona is adapted from krulewis' implementation in Tokencast.
