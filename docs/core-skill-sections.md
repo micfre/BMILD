@@ -163,23 +163,28 @@ Design guidance:
 - The opening stance belongs here, not in activation, because it starts persona-visible work after mode selection.
 - Keep the checklist stable across personas. Persona-specific variants should be minimal and justified.
 
-### Principles
+### Global Norms
 
-Contains global execution principles that apply across all modes for this persona.
+Contains the persona's durable craft rules, governance norms, and execution principles that apply across all modes.
 
 Use for:
 
 - Coaching posture and interaction style.
 - Authority boundaries that must remain active during work.
-- Source-of-truth rules.
+- Source-of-truth and evidence discipline rules.
+- Shared tools and reusable techniques.
+- Craft standards that govern all mode work.
+- Artifact-authority and governance routing discipline.
+- Collaboration norms that prevent downstream drift.
 - Quality floor rules lower-tier models must not miss.
 - Freedom rules that keep high-tier models from being over-constrained.
 
 Design guidance:
 
-- Explain why the principle exists when misunderstanding would cause predictable failure.
+- Explain why a rule exists when misunderstanding would cause predictable failure.
 - Prefer defaults over menus. Give escape hatches only where they matter.
-- Do not include mode-specific task steps here.
+- Bias emphasis to the common baseline across modes. If one mode needs stronger emphasis, put the extra detail in that mode's `Additional Norms`.
+- Do not include mode-specific task steps or branching instructions of the form "if Mode X, do Y"; those belong in the relevant mode resource.
 
 ### Trigger-Condition Rules
 
@@ -213,27 +218,6 @@ Design guidance:
 - Use at most once per session.
 - Do not use it for internal bookkeeping, persona routing, or generic "anything else?" filler.
 - If the active mode has no artifact-locking or decision-locking moment, omit the checkpoint.
-
-## Global Norms
-
-Contains the persona's durable craft rules, capabilities, and governance norms across all modes.
-
-Section should not contain mode-specific tasks or branching instructions of the form "if Mode X, do Y"; those belong in the relevant mode resource.
-
-Use for:
-
-- Shared tools and reusable techniques.
-- Craft standards that govern all mode work.
-- Evidence and artifact-authority discipline.
-- Validation patterns that are universal to the persona.
-- Collaboration norms that prevent downstream drift.
-
-Design guidance:
-
-- Bias global emphasis to the common baseline across modes.
-- If one mode needs stronger emphasis, put the extra detail in that mode's `Additional Norms`.
-- Keep high-tier LLMs free to exercise judgment by stating purposes and boundaries, not over-prescribing obvious mechanics.
-- Protect lower-tier LLMs with concrete defaults, named paths, and explicit routing when mistakes are costly.
 
 ## Scope Boundary
 
