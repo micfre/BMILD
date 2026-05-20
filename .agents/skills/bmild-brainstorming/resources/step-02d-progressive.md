@@ -23,10 +23,10 @@ Progress:
    > **Phase 4: Action Planning** — turn the best ideas into concrete next steps"*
 
 - [ ] Step 2: **Select techniques** — Match YAML techniques to phases by `category`:
-   - Phase 1 (Expansive Exploration): creative, wild, theatrical_exploration
-   - Phase 2 (Pattern Recognition): deep_analysis, structured_thinking
-   - Phase 3 (Idea Development): structured_thinking, collaborative
-   - Phase 4 (Action Planning): deep_analysis, structured_thinking
+  - Phase 1 (Expansive Exploration): creative, wild, theatrical_exploration
+  - Phase 2 (Pattern Recognition): deep_analysis, structured_thinking
+  - Phase 3 (Idea Development): structured_thinking, collaborative
+  - Phase 4 (Action Planning): deep_analysis, structured_thinking
 
    Select one technique per phase. For each, show:
 

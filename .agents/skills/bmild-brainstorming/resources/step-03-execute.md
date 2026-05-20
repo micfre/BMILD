@@ -20,9 +20,9 @@ Progress:
    State the technique's primary goal and energy level from the YAML `facilitation_prompts` and `energy_level` fields.
 
 - [ ] Step 2: **Facilitate** — Use `facilitation_prompts` from the YAML to drive exploration. Present one prompt, wait for the user's response, then:
-   - If the response is brief: dig deeper — *"Tell me more about [specific aspect]. What would that look like in practice?"*
-   - If the response is rich: build on it — *"Let's take that further. What if [extension of their idea]?"*
-   - If the user seems stuck: offer an angle — *"Here's a starting point: [gentle prompt from the YAML]. Which direction does that pull you?"*
+  - If the response is brief: dig deeper — *"Tell me more about [specific aspect]. What would that look like in practice?"*
+  - If the response is rich: build on it — *"Let's take that further. What if [extension of their idea]?"*
+  - If the user seems stuck: offer an angle — *"Here's a starting point: [gentle prompt from the YAML]. Which direction does that pull you?"*
 
    Before each idea, internally ask: what domain haven't we explored yet? What would make this idea surprising or uncomfortable? Every 10 ideas, consciously shift to an orthogonal domain (UX → business → technical constraints → social impact → edge cases).
 

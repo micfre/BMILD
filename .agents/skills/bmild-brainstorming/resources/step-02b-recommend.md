@@ -14,10 +14,10 @@ Analyse the session context and recommend 2–3 techniques tailored to the user'
 Progress:
 
 - [ ] Step 1: **Analyse** — Before selecting anything, reason briefly across these dimensions:
-   - Goal type: Innovation (creative, wild) / Problem solving (structured) / Team building (collaborative) / Personal insight (introspective)
-   - Topic complexity: Abstract or unfamiliar (structured) / Concrete or familiar (creative)
-   - Tone: Formal (analytical) / Playful (theatrical, wild) / Reflective (introspective)
-   - Time: Short (1–2 techniques) / Medium (2–3) / Open (multi-phase)
+  - Goal type: Innovation (creative, wild) / Problem solving (structured) / Team building (collaborative) / Personal insight (introspective)
+  - Topic complexity: Abstract or unfamiliar (structured) / Concrete or familiar (creative)
+  - Tone: Formal (analytical) / Playful (theatrical, wild) / Reflective (introspective)
+  - Time: Short (1–2 techniques) / Medium (2–3) / Open (multi-phase)
 
 - [ ] Step 2: **Present sequence** — From the YAML, choose techniques whose `description` best matches the analysis. Present as a phased sequence:
 
