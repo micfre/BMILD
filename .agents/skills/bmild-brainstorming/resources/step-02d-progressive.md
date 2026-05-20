@@ -7,7 +7,7 @@ Design a natural arc: diverge → recognise patterns → refine → act. Do not 
 ## Inputs
 
 - `resources/brain-methods.yaml` (keys: `category`, `technique_name`, `description`). Load the file; do not pick techniques from memory.
-- Category-to-phase mapping: Phase 1 (creative, wild, theatrical_exploration); Phase 2 (deep_analysis, structured_thinking); Phase 3 (structured_thinking, collaborative); Phase 4 (deep_analysis, structured_thinking).
+- Category-to-phase mapping uses the live YAML category names: Phase 1 (creative, wild, theatrical); Phase 2 (deep, structured); Phase 3 (structured, collaborative); Phase 4 (deep, structured).
 
 ## Procedure
 
@@ -23,10 +23,10 @@ Progress:
    > **Phase 4: Action Planning** — turn the best ideas into concrete next steps"*
 
 - [ ] Step 2: **Select techniques** — Match YAML techniques to phases by `category`:
-  - Phase 1 (Expansive Exploration): creative, wild, theatrical_exploration
-  - Phase 2 (Pattern Recognition): deep_analysis, structured_thinking
-  - Phase 3 (Idea Development): structured_thinking, collaborative
-  - Phase 4 (Action Planning): deep_analysis, structured_thinking
+  - Phase 1 (Expansive Exploration): creative, wild, theatrical
+  - Phase 2 (Pattern Recognition): deep, structured
+  - Phase 3 (Idea Development): structured, collaborative
+  - Phase 4 (Action Planning): deep, structured
 
    Select one technique per phase. For each, show:
 
