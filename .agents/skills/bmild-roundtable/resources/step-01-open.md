@@ -1,8 +1,20 @@
-## Open — Session Framing, Context, Attendees
+# Open — Session Framing, Context, Attendees
+
+## Purpose
 
 Frame the roundtable, sharpen the question, identify the invocation context, propose and confirm attendees, and load context before any attendee speaks. You are the facilitator — not a passive narrator. Do not let any attendee begin speaking until the question is confirmed, the context is recorded, and the attendee list is set.
 
-The available roster (design-tier personas):
+## Inputs
+
+- `.bmild.toml` resolved by core Context Reads (plan_folder, user_name).
+- Current conversation context — prefer this over reading files.
+- When the question cannot be grounded from chat:
+  - `[plan_folder]/_system/_context.md` and `_rollup.md` — load relevant `live` entries.
+  - `[plan_folder]/<initiative-name>/_context.md` if an initiative is named — load relevant `live` entries.
+  - Specific documents directly relevant to the question (e.g. `system-design.md §X`, `ux-design.md §Y`).
+  - If course-correction context: also load the active `change-proposal-<slug>.md`.
+
+Available roster (design-tier personas):
 
 - 🟦 Faisal (Product Manager): user needs, business value, scope, and product trade-offs
 - 🟩 Katrina (UX Designer): interaction model, user comprehension, visual and flow implications
@@ -11,57 +23,58 @@ The available roster (design-tier personas):
 
 Sonia 🟧 and Alex 🟪 do not attend (they consume synthesis, not produce it). Zach 🟥 is deferred from the roster pending rebalance of his design-tier authority. The invoker may convene any subset of the available roster.
 
-1. **Acknowledge** — Start brief, no fanfare:
+## Procedure
 
-   > **roundtable session opening.**
-   >
-   > Let me sharpen the question, confirm attendees, and load context before we begin.
+Progress:
 
-2. **Sharpen the question** — Restate the topic as a single, deliberable question. If the user's framing is clear, restate it. If it is vague, sharpen it first:
+- [ ] Step 1: **Acknowledge** — Start brief, no fanfare:
 
-   > *"To focus this session: [restated question]. Does that capture what you want to examine?"*
+  > **roundtable session opening.**
+  >
+  > Let me sharpen the question, confirm attendees, and load context before we begin.
 
-   Wait for confirmation. If not confirmed after two clarifications, proceed with your best interpretation and note the assumption.
+- [ ] Step 2: **Sharpen the question** — Restate the topic as a single, deliberable question. If the user's framing is clear, restate it. If it is vague, sharpen it first:
 
-3. **Identify invocation context** — Record which context this session serves. The two contexts differ only in output destination:
+  > *"To focus this session: [restated question]. Does that capture what you want to examine?"*
 
-   - **Forward-direction:** invoked during normal design-tier work by Faisal, Katrina, Lance, Alex (Bug Fix), or the user. Output returns to the invoking persona's source artifact for handback.
-   - **Course-correction consultation:** invoked by Sonia in Course-Correction mode. Output appends to `[plan_folder]/<initiative-name>/change-proposal-<slug>.md`.
+  Wait for confirmation. If not confirmed after two clarifications, proceed with your best interpretation and note the assumption.
 
-   Determine the context from the invoker or by asking once: *"Is this a forward-direction session or a course-correction consultation? (Default: forward-direction.)"*
+- [ ] Step 3: **Identify invocation context** — Record which context this session serves. The two contexts differ only in output destination:
 
-4. **Propose and confirm attendees** — Propose attendees based on the question's surface:
+  - **Forward-direction:** invoked during normal design-tier work by Faisal, Katrina, Lance, Alex (Bug Fix), or the user. Output returns to the invoking persona's source artifact for handback.
+  - **Course-correction consultation:** invoked by Sonia in Course-Correction mode. Output appends to `[plan_folder]/<initiative-name>/change-proposal-<slug>.md`.
 
-   - *Product/scope/MVP boundary tension* → Faisal + Katrina + Lance
-   - *General requirement ↔ technical-feasibility trade-off* (product-level requirement; UX impact matters) → Faisal + Lance + Katrina
-   - *UX-specific technical trade-off* (UX surface only) → Katrina + Lance
-   - *Reliability/risk vs. feature surface* → Faisal + Lance + Rahat
-   - *Cross-tier course-correction* → all four unless invoker narrows
+  Determine the context from the invoker or by asking once: *"Is this a forward-direction session or a course-correction consultation? (Default: forward-direction.)"*
 
-   If the invoker named attendees explicitly, honour their list. Otherwise propose and ask:
+- [ ] Step 4: **Propose and confirm attendees** — Propose attendees based on the question's surface:
 
-   > *"For this question I'd convene [proposed attendees]. Confirm, or adjust the list."*
+  - *Product/scope/MVP boundary tension* → Faisal + Katrina + Lance
+  - *General requirement ↔ technical-feasibility trade-off* (product-level requirement; UX impact matters) → Faisal + Lance + Katrina
+  - *UX-specific technical trade-off* (UX surface only) → Katrina + Lance
+  - *Reliability/risk vs. feature surface* → Faisal + Lance + Rahat
+  - *Cross-tier course-correction* → all four unless invoker narrows
 
-   Wait for confirmation. Record the final attendee list.
+  If the invoker named attendees explicitly, honour their list. Otherwise propose and ask:
 
-5. **Load context** — Prefer existing conversation context over reading files. Only read when needed to ground the question:
-   - [ ] `[plan_folder]/_system/_context.md` and `_rollup.md` — load relevant `live` entries
-   - [ ] `[plan_folder]/<initiative-name>/_context.md` if an initiative is named — load relevant `live` entries
-   - [ ] Specific documents directly relevant to the question (e.g. `system-design.md §X`, `ux-design.md §Y`)
-   - [ ] If course-correction context: also load the active `change-proposal-<slug>.md`
-   - [ ] Confirm no archived entries or unrelated feature folders were loaded
+  > *"For this question I'd convene [proposed attendees]. Confirm, or adjust the list."*
 
-   Briefly narrate what you loaded: *"Context loaded: [list of documents]. [Attendees] are aware of the current state. Ready to begin."*
+  Wait for confirmation. Record the final attendee list.
 
-6. **Confirm open** — If no conversational framing preceded this invocation, display the session header:
+- [ ] Step 5: **Load context** — Prefer existing conversation context over reading files. Only read when needed to ground the question (see Inputs above). Confirm no archived entries or unrelated feature folders were loaded. Briefly narrate what you loaded: *"Context loaded: [list of documents]. [Attendees] are aware of the current state. Ready to begin."*
 
-   ---
-   **roundtable session — [date]**
-   **Question:** [confirmed question]
-   **Context:** [forward-direction | course-correction consultation]
-   **Attendees:** [comma-separated list with icons]
-   **Loaded:** [one-line summary of documents]
+- [ ] Step 6: **Confirm open** — If no conversational framing preceded this invocation, display the session header:
 
-   ---
+  ---
+  **roundtable session — [date]**
+  **Question:** [confirmed question]
+  **Context:** [forward-direction | course-correction consultation]
+  **Attendees:** [comma-separated list with icons]
+  **Loaded:** [one-line summary of documents]
 
-   Do not display this block if the framing has already been stated conversationally above it. Then load `./resources/step-02-debate.md`.
+  ---
+
+  Do not display this block if the framing has already been stated conversationally above it.
+
+## Next Step
+
+On confirmation of question, context, and attendees, load `resources/step-02-debate.md`. Carry forward: confirmed question, invocation context, and final attendee list.

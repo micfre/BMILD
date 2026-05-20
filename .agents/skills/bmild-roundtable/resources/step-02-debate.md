@@ -1,6 +1,18 @@
-## Deliberate — Multi-Persona Discussion and Orchestration
+# Deliberate — Multi-Persona Discussion and Orchestration
 
-Orchestrate the deliberation as facilitator — give each convened attendee a genuine, distinct voice, and do not let them echo each other. Diverge first, then actively converge. Surface real tensions, not diplomatic consensus; enable direct cross-talk between attendees. After each round, present [C] continue, [S] synthesise, or [E] exit. Do not produce synthetic agreement — if attendees genuinely disagree, show it and clarify the path forward.
+## Purpose
+
+Orchestrate the deliberation as facilitator — give each convened attendee a genuine, distinct voice, and do not let them echo each other. Diverge first, then actively converge. Surface real tensions, not diplomatic consensus; enable direct cross-talk between attendees. Do not produce synthetic agreement — if attendees genuinely disagree, show it and clarify the path forward.
+
+## Inputs
+
+Carried from `step-01-open.md`:
+
+- Confirmed question.
+- Invocation context (forward-direction or course-correction).
+- Final confirmed attendee list.
+
+## Procedure
 
 **Persona voices** — apply these consistently throughout every round. Use only the voices of attendees confirmed in Step 1.
 
@@ -20,35 +32,35 @@ Progress:
 
   One sentence from the facilitator:
 
-   > *"Let's hear each attendee's take on [the question or sub-question]."*
+  > *"Let's hear each attendee's take on [the question or sub-question]."*
 
 - [ ] Step 2: Attendees speak.
 
   In roster order (Faisal → Katrina → Lance → Rahat), restricted to confirmed attendees — labeled with icon and name only when the speaker changes:
 
-   ```
-   🟦 Faisal: [response in Faisal's voice]
+  ```
+  🟦 Faisal: [response in Faisal's voice]
 
-   🟩 Katrina: [response in Katrina's voice]
+  🟩 Katrina: [response in Katrina's voice]
 
-   ⬛ Lance: [response in Lance's voice]
+  ⬛ Lance: [response in Lance's voice]
 
-   🟨 Rahat: [response in Rahat's voice]
-   ```
+  🟨 Rahat: [response in Rahat's voice]
+  ```
 
   Where there are genuine tensions, one or two attendees respond directly to a point another just made. Label the reply because the speaker changes, then let that speaker continue across paragraphs without repeating the label:
 
-   ```
-   ⬛ Lance (to Katrina): [direct response to Katrina's point]
+  ```
+  ⬛ Lance (to Katrina): [direct response to Katrina's point]
 
-   🟩 Katrina (to Lance): [pushback or concession]
-   ```
+  🟩 Katrina (to Lance): [pushback or concession]
+  ```
 
 - [ ] Step 3: Close the round.
 
   Acknowledge the different perspectives with a short synopsis:
 
-   > *"We're seeing a tension between [X] and [Y]. To move us forward, we'll anchor on [Z]. Let's go deeper on the remaining open items or move to full synthesis — your call."*
+  > *"We're seeing a tension between [X] and [Y]. To move us forward, we'll anchor on [Z]. Let's go deeper on the remaining open items or move to full synthesis — your call."*
 
 - [ ] Step 4: Present options.
 
@@ -70,4 +82,8 @@ The facilitator may not unilaterally add attendees. The user decides.
 
 **Moderation:** If two attendees are repeating the same point from different angles without new insight, interrupt as facilitator: *"We're circling. Let me reframe: [sharper sub-question]."* If one attendee is dominating, explicitly ask the quieter attendees for their take. If the deliberation is producing consensus too quickly, inject Rahat (if present) to stress-test it: *"Rahat, what's the failure mode of this consensus?"* If Rahat is not at the table, raise the failure-mode question yourself.
 
-When user selects [S] or signals readiness for synthesis, load `./resources/step-03-synthesise.md`. When user selects [E] or uses an exit phrase (`done`, `exit`, `close session`), load `./resources/step-04-close.md`.
+## Next Step
+
+- `[S]` or user signals readiness for synthesis → load `resources/step-03-synthesise.md`.
+- `[E]` or exit phrase (`done`, `exit`, `close session`) → load `resources/step-04-close.md`.
+- `[C]` or continuation input → loop within this resource for another round.
