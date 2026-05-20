@@ -295,6 +295,17 @@ if [[ -s "$table_rows_report" ]]; then
   report "markdown table rows found outside fenced code blocks; prefer more resilient bullet structures"
 fi
 
+legacy_artifact_pattern='CHARTER\.md|ARCHITECTURE\.md|_system/|_context\.md|_rollup\.md|spec-patch-queue\.md|user-attention\.md|decision-log\.md|dev-note-<slug>\.md|docs/cross-skill-amendment\.md'
+legacy_artifact_report="$tmp_dir/legacy-artifacts.txt"
+if rg -n "$legacy_artifact_pattern" \
+  "$skills_dir" \
+  "$root/AGENTS.md" \
+  "$root/README.md" \
+  >"$legacy_artifact_report" 2>/dev/null; then
+  cat "$legacy_artifact_report" >&2
+  report "retired BMILD artifact names found in active guidance; update guidance to the registry/context/handoff/adr model"
+fi
+
 if (( fail )); then
   exit 1
 fi

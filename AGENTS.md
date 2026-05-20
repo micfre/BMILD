@@ -91,7 +91,7 @@ Path rationale:
 
 ### `registry.md` format
 
-Every `registry.md` follows this structure (template in each skill's `assets/context-memory-template.md` until asset names are updated):
+Every `registry.md` follows this structure (see the active `registry-template.md` asset):
 
 ```markdown
 ---

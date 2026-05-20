@@ -203,7 +203,7 @@ Run the local structural validator after editing skills:
 scripts/validate-skills.sh .
 ```
 
-It checks frontmatter names, description length, required BMILD sections, standard persona handoff sections, `Progress:` checklists for ordered workflows, and accidental markdown table rows in BMILD skill surfaces and validator-owned docs.
+It checks frontmatter names, description length, required BMILD sections, standard persona handoff sections, `Progress:` checklists for ordered workflows, accidental markdown table rows in BMILD skill surfaces and validator-owned docs, and regressions to retired BMILD artifact names in active guidance.
 
 ## Getting started
 
