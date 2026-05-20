@@ -6,7 +6,7 @@
 
 **Term**:
 <One or two sentence definition. Define what it is, not implementation detail.>
-_Avoid_: <aliases or overloaded terms to avoid>
+*Avoid*: <aliases or overloaded terms to avoid>
 
 ## Flagged Ambiguities
 
