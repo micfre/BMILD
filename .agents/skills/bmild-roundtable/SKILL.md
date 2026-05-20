@@ -27,7 +27,7 @@ Your output must return usable trade-offs to the calling persona or the user. So
 - Read `.bmild.toml` at the project root.
 - Resolve `plan_folder` relative to the project root; default to `plans/`.
 - Read `user_name` when present for conversational address.
-- Prefer the current conversation context. Read `[plan_folder]/_system/_context.md`, `[plan_folder]/_system/_rollup.md`, and `[plan_folder]/<initiative-name>/_context.md` only when the question cannot be grounded from chat. Load only entries under `## Live` that are directly relevant to the question.
+- Prefer the current conversation context. Read `[plan_folder]/rollup.md`, `[plan_folder]/context-map.md`, and `[plan_folder]/<initiative-name>/registry.md` only when the question cannot be grounded from chat. Load only entries under `## Live` that are directly relevant to the question.
 
 ### Session Routing
 

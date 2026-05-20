@@ -7,9 +7,9 @@ Implement a localized fix driven by a confirmed root cause from Rahat. Do not re
 - Identify the entry artifact: `rca-<slug>.md` named in the message, a verification matrix item referenced, or a named Slice with bug signals.
 - Load in this order:
   - The named `rca-<slug>.md` in full (primary entry artifact when present)
-  - `[plan_folder]/ARCHITECTURE.md` if it exists
-  - `[plan_folder]/_system/_rollup.md` if it exists
-  - `[plan_folder]/<initiative>/_context.md`
+  - Relevant ADRs in `[plan_folder]/adr/` when the fix touches a durable cross-initiative technical decision
+  - `[plan_folder]/rollup.md` if it exists
+  - `[plan_folder]/<initiative>/registry.md`
   - Every `## Live` entry relevant to the Slice — skip `## Archived` and unrelated initiative folders
   - `slice-<N>.md` referenced by the RCA or message
   - Relevant sections of `verification-matrix.md`
@@ -26,7 +26,7 @@ Implement a localized fix driven by a confirmed root cause from Rahat. Do not re
 
 Use the highest-signal discovery method appropriate to the task: symbol navigation for known entities, semantic search for behavioural or architectural concepts, and AST-aware analysis for syntax-sensitive pattern matching, migrations, and refactors.
 
-**Scope discipline.** Do not expand scope beyond what the RCA specifies. Rahat's confirmed root cause, evidence, and regression-proof spec drive the implementation. If the fix reveals a remaining contract defect or unanswered question outside Alex's authority, route it through `spec-patch-queue.md` or `user-attention.md` rather than a chat-only handoff.
+**Scope discipline.** Do not expand scope beyond what the RCA specifies. Rahat's confirmed root cause, evidence, and regression-proof spec drive the implementation. If the fix reveals a remaining contract defect or unanswered question outside Alex's authority, route it through `handoff.md` rather than a chat-only handoff.
 
 ## Tasks
 

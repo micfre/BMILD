@@ -6,18 +6,18 @@ Assess whether upstream design is coherent enough to plan safely. Stop at readin
 
 Load in this order before proceeding:
 
-- `[plan_folder]/CHARTER.md` if it exists
-- `[plan_folder]/ARCHITECTURE.md` if it exists
+- `[plan_folder]/context-map.md` if it exists
+- Relevant ADRs in `[plan_folder]/adr/` if they constrain the initiative
 - Project-root `DESIGN.md` if it exists
-- `[plan_folder]/_system/_rollup.md` if it exists
-- `[plan_folder]/<initiative-name>/_context.md`
+- `[plan_folder]/rollup.md` if it exists
+- `[plan_folder]/<initiative-name>/registry.md`
 - `product-brief.md`, `prd.md`, `ux-design.md`, and `system-design.md` from the initiative folder — any that exist
-- `spec-patch-queue.md`, `user-attention.md`, and `decision-log.md` from the initiative folder if they exist
+- `handoff.md` from the initiative folder if it exists
 - `slices.md` if it exists — you may be assessing a partially planned initiative
 
 ## Additional Norms
 
-Accepted and answered queue items are not authoritative until promotion is recorded in the source artifact. When assessing governance closure, do not treat queue item status as truth — verify that the owning persona's artifact reflects the resolution.
+Accepted handoff items are not authoritative until promotion is recorded in the source artifact. When assessing governance closure, do not treat handoff item status as truth — verify that the owning persona's artifact reflects the resolution.
 
 ## Tasks
 
@@ -25,34 +25,33 @@ Progress:
 
 - [ ] Step 1: **Upstream artifact check.** Confirm `product-brief.md` and `prd.md` exist. If either is missing: block and route back to Faisal immediately with one precise question. Do not proceed to further checks.
 
-- [ ] Step 2: **CHARTER coherence check** (emergent — CHARTER is often absent). Apply in priority order:
-  - If `[plan_folder]/CHARTER.md` exists and the initiative `product-brief.md` conflicts with it → block and route back to Faisal.
-  - If `[plan_folder]/CHARTER.md` exists and the initiative significantly extends a project-level invariant → flag for Faisal to review and update CHARTER before closing the initiative.
-  - If `[plan_folder]/CHARTER.md` does not exist but the initiative conflicts with a sibling initiative's `product-brief.md` → flag for Faisal to seed CHARTER as part of conflict resolution.
+- [ ] Step 2: **Context-map coherence check.** Apply in priority order:
+  - If `context-map.md` exists and the initiative's product/domain semantics conflict with it → block and route back to Faisal.
+  - If the initiative establishes or changes a cross-initiative semantic boundary → flag for Faisal to review and update `context-map.md` before closing the initiative.
   - Otherwise → skip this step silently.
 
 - [ ] Step 3: **Cross-artifact alignment.** Assess whether each `Must Have` from `prd.md` is addressed in at least one downstream design artifact. Three outcomes:
   - **All addressed** — record `pass` and proceed.
-  - **Gap** (a Must Have has no downstream coverage) — create or update `spec-patch-queue.md` with one blocking `source_defect` item per gap, naming the target artifact and owner. Record only the queue item ID in readiness artifacts. Do not decompose.
+  - **Gap** (a Must Have has no downstream coverage) — create or update `handoff.md` with one blocking `source_defect` item per gap, naming the target artifact and owner. Record only the handoff item ID in readiness artifacts. Do not decompose.
   - **Contradiction** (a downstream design decision conflicts with a Must Have) — route to Faisal for scope resolution. Do not decompose.
 
-- [ ] Step 4: **Governance closure check.** Inspect `spec-patch-queue.md` and `user-attention.md` when present. Readiness passes only when every blocking item is applied, closed, explicitly deferred, rejected, or superseded, and any remaining non-blocking item has a target owner, clear next action, and does not undermine source-artifact authority. Preserve documented deferral consequences and do not treat accepted or answered queue items as truth until promotion is recorded in the source artifact.
+- [ ] Step 4: **Governance closure check.** Inspect `handoff.md` when present. Readiness passes only when every blocking item is applied, closed, explicitly deferred, rejected, or superseded, and any remaining non-blocking item has a target owner, clear next action, and does not undermine source-artifact authority. Preserve documented deferral consequences and do not treat accepted handoff items as truth until promotion is recorded in the source artifact.
 
-- [ ] Step 5: **Nyquist matrix.** Create a `verification-matrix.md` when the initiative would benefit from explicit proof boundaries. For trivial work, keep it lean; for high-risk or multi-Slice work, make it comprehensive. Write it to `[plan_folder]/<initiative-name>/verification-matrix.md` using `assets/verification-matrix-template.md`. Do not preserve source-artifact repair requests in the matrix; route them through `spec-patch-queue.md` or `user-attention.md` and reference queue IDs only when needed for verification context.
+- [ ] Step 5: **Nyquist matrix.** Create a `verification-matrix.md` when the initiative would benefit from explicit proof boundaries. For trivial work, keep it lean; for high-risk or multi-Slice work, make it comprehensive. Write it to `[plan_folder]/<initiative-name>/verification-matrix.md` using `assets/verification-matrix-template.md`. Do not preserve source-artifact repair requests in the matrix; route them through `handoff.md` and reference handoff IDs only when needed for verification context.
 
 - [ ] Step 6: **Record findings.** Write the readiness verdict and findings to the `## Readiness` section of `slices.md` (create using `assets/slices-template.md` if it doesn't exist). Record the outcome of: upstream artifacts, cross-artifact alignment, coverage, and governance closure. If the verdict is anything other than passes on all four: do not write Slice entries.
 
-- [ ] Step 7: **Context memory update.** Open or create `[plan_folder]/<initiative-name>/_context.md` from `assets/context-memory-template.md`. Add `slices.md` and `verification-matrix.md` (if created) to `## Live`.
+- [ ] Step 7: **Context memory update.** Open or create `[plan_folder]/<initiative-name>/registry.md` from `assets/registry-template.md`. Add `slices.md` and `verification-matrix.md` (if created) to `## Live`.
 
 - [ ] Step 8: **Close.** Apply the Exit and Handoff format from the core skill. If readiness passes, offer to continue into Phase-Scoped Planning or Full-Initiative Planning. If readiness fails, hand back the precise blocking question.
 
 ## Definition of Done
 
 - [ ] Upstream artifact check recorded
-- [ ] CHARTER coherence check recorded (or noted "n/a — no CHARTER, no cross-initiative conflict")
+- [ ] Context-map coherence check recorded (or noted "n/a — no cross-initiative semantic conflict")
 - [ ] Cross-artifact alignment recorded with outcome
 - [ ] Governance closure check recorded
 - [ ] `## Readiness` section written in `slices.md`
 - [ ] `verification-matrix.md` created if appropriate
-- [ ] `_context.md` updated
+- [ ] `registry.md` updated
 - [ ] Close message: readiness verdict, blocking questions or next mode

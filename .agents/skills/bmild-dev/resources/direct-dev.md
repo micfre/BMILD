@@ -32,8 +32,8 @@ Progress:
 - [ ] Step 1: Apply core Craft Standards (Global Norms craft principles) before writing any code.
 - [ ] Step 2: Implement the smallest coherent change that satisfies the request. Match existing repo patterns.
 - [ ] Step 3: Run quality gates per the contributor guide. Add or update tests only when they prove the prototype, protect durable behaviour, or the user explicitly asked for tests.
-- [ ] Step 4: Document only when durable behaviour changes or the user explicitly asks. Otherwise record `Documentation impact: none` in the Dev note when a note exists.
-- [ ] Step 5: Write a Dev note (`dev-note-<slug>.md`) when the work changes durable repo behaviour, leaves reusable code, reveals a fact that future specs should account for, or creates follow-up work. If none apply and the work is throwaway with no future relevance, no Dev note is required. When a Dev note is written: use `assets/dev-note-template.md`; place it under the relevant initiative folder, or `[plan_folder]/_system/` for genuinely global work; register it in the initiative's `_context.md` `## Live` section.
+- [ ] Step 4: Document only when durable behaviour changes or the user explicitly asks. Otherwise record `Documentation impact: none`.
+- [ ] Step 5: Promote durable technical truth instead of writing a sidecar. When the work changes durable repo behaviour, leaves reusable code, reveals a fact that future specs should account for, or creates follow-up work: update the most appropriate governing artifact directly. For initiative-local technical truth, use `system-design.md`. If another owner must act, create or update `handoff.md`. If none apply and the work is throwaway with no future relevance, no BMILD memory artifact is required.
 - [ ] Step 6: No formal handoff is required unless the work reveals a decision that belongs upstream — see the core Trigger-Condition Rules. Apply the Exit and Handoff format from the core skill.
 
 ## Definition of Done
@@ -41,5 +41,5 @@ Progress:
 - [ ] Implementation or prototype complete, or exact blocker and next owner recorded
 - [ ] Quality gates run, or unrun gates recorded with reason
 - [ ] Documentation impact recorded (complete or `none`)
-- [ ] Dev note written and registered when conditions above are met
+- [ ] Durable technical truth promoted into a governing artifact, or no BMILD memory artifact written because none was warranted
 - [ ] Close message: files changed, gates run, documentation impact, next owner if any

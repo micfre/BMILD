@@ -6,11 +6,11 @@ Decompose an entire initiative across all phases. Use only when the user explici
 
 Load in this order before proceeding:
 
-- `[plan_folder]/CHARTER.md` if it exists
-- `[plan_folder]/ARCHITECTURE.md` if it exists
+- `[plan_folder]/context-map.md` if it exists
+- Relevant ADRs in `[plan_folder]/adr/` if they constrain the initiative
 - Project-root `DESIGN.md` if it exists
-- `[plan_folder]/_system/_rollup.md` if it exists
-- `[plan_folder]/<initiative-name>/_context.md`
+- `[plan_folder]/rollup.md` if it exists
+- `[plan_folder]/<initiative-name>/registry.md`
 - `product-brief.md`, `prd.md`, `ux-design.md`, and `system-design.md` from the initiative folder — all inputs
 - `slices.md` if it exists
 
@@ -29,7 +29,7 @@ Progress:
 - [ ] Step 3: **Forward Decomposition — Future Phases.** For phases beyond MVP:
   - Author implementation-ready Slice files for future phases only when the required UX and architecture artifacts for that phase exist.
   - If required artifacts do not exist: record roadmap entries or blocked placeholders in `slices.md` — do not create `slice-<N>.md` files for them.
-  - Future-phase placeholders are not active Slices: do not add them to `## Live` in `_context.md`.
+  - Future-phase placeholders are not active Slices: do not add them to `## Live` in `registry.md`.
 
 - [ ] Step 4: **Slice Budgeting.** Budget all active Slices with `bash <planner-skill-dir>/scripts/run-budget-slice.sh` from the project root, where `<planner-skill-dir>` is the active `bmild-planner` skill directory for the current harness. Record returned `budget.estimated_total`, target, percent of target, and raw budget fields in each Slice's `## Slice token estimate`; record budgeted read/edit/new-file inputs in Planning Notes.
 
@@ -41,19 +41,19 @@ Progress:
 
 - [ ] Step 8: **Write `slices.md`.** Update `[plan_folder]/<initiative-name>/slices.md` using `assets/slices-template.md`. Include `## Readiness`, `## Slice Registry` (all phases), `## Roadmap / Deferred Phases` (blocked placeholders), and `## Coverage Verification`.
 
-- [ ] Step 9: **Context memory update.** Open `[plan_folder]/<initiative-name>/_context.md`. Add `slices.md` and currently active `slice-<N>.md` files to `## Live`. Do not add `todo` Slices to `## Live` until they begin. Add an entry to `[plan_folder]/_system/_rollup.md` (use `assets/rollup-template.md` if it doesn't exist).
+- [ ] Step 9: **Context memory update.** Open `[plan_folder]/<initiative-name>/registry.md`. Add `slices.md` and currently active `slice-<N>.md` files to `## Live`. Do not add `todo` Slices to `## Live` until they begin. Add an entry to `[plan_folder]/rollup.md` (use `assets/rollup-template.md` if it doesn't exist).
 
 - [ ] Step 10: **Close.** Apply the Exit and Handoff format from the core skill.
 
 ## Definition of Done
 
 - [ ] Readiness gate confirmed before any Slice is authored
-- [ ] CHARTER coherence check confirmed (via readiness gate inline or prior Readiness-Verification mode; note "n/a — no CHARTER, no cross-initiative conflict" if applicable)
+- [ ] Context-map coherence check confirmed (via readiness gate inline or prior Readiness-Verification mode; note "n/a — no cross-initiative semantic conflict" if applicable)
 - [ ] Phase 1 fully decomposed into active Slices
 - [ ] Future phases represented as active Slices (if artifacts exist) or roadmap entries (if not)
 - [ ] Slice count is the minimum viable count consistent with dependency safety
 - [ ] Each active `slice-<N>.md` written with all required sections including likely planned edits, new-file estimate when applicable, and slice token estimate
 - [ ] Backward coverage verification recorded across all phases
 - [ ] `slices.md` and all active `slice-<N>.md` files written
-- [ ] `_context.md` and `_rollup.md` updated
+- [ ] `registry.md` and `rollup.md` updated
 - [ ] Close message: scope planned, Slice count by phase, verification matrix status, next owner

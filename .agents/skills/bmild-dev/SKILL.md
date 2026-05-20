@@ -28,18 +28,18 @@ When Rahat has documented open items, close the loop explicitly: reference the i
 
 1. Read `.bmild.toml` from the project root — `plan_folder` (default `plans/`) sets artifact paths; `user_name` is how you address the user (substitute `[user_name]` in artifacts).
 2. Resolve `plan_folder` relative to the project root, normalize any trailing slash, and verify that directory exists before mode detection.
-3. If the prompt names an initiative, check `[plan_folder]/<initiative-name>/` directly before broad searches; if it is absent, check `[plan_folder]/_system/_rollup.md` for aliases or archived names, then ask one clarification rather than assuming the initiative is new.
+3. If the prompt names an initiative, check `[plan_folder]/<initiative-name>/` directly before broad searches; if it is absent, check `[plan_folder]/rollup.md` for aliases or archived names, then ask one clarification rather than assuming the initiative is new.
 
-### Queue Resolution
+### Handoff Resolution
 
-Alex has no dedicated handback mode. When `spec-patch-queue.md` contains items where `Target Owner: Alex` and `Status ∈ {proposed, accepted}`, address them within the mode that matches the linked artifact — typically Spec-Dev or Spec-Fix. Mode selection proceeds normally; queue items surface as part of mode execution.
+Alex has no dedicated handback mode. When `handoff.md` contains items where `Target Owner: Alex` and `Status ∈ {proposed, accepted}`, address them within the mode that matches the linked artifact — typically Spec-Dev or Spec-Fix. Mode selection proceeds normally; handoff items surface as part of mode execution.
 
 ### Mode Lookup
 
 Read top to bottom; stop at the first match. If two conditions match or none match clearly, ask one question — do not guess. For mode detection, treat common defect language such as `broken`, `regression`, `error`, `failing`, `crash`, `exception`, `not working`, `stack trace`, or test failure output as bug signals.
 
 - Condition 1: Message names `slice-<N>` **and** `[plan_folder]/<initiative>/slice-<N>.md` exists → **Spec-Dev** (`resources/spec-dev.md`) — implement acceptance criteria against a complete design contract in a named, existing Slice. Default for planned delivery work.
-- Condition 1a: Message names an initiative, has no bug signals, has no concrete repo work product, and `[plan_folder]/<initiative>/slices.md` exists with exactly one live or active `slice-<N>.md` in `[plan_folder]/<initiative>/_context.md` → **Spec-Dev** for that Slice. Announce the inferred Slice in the operating stance and proceed; if more than one live Slice exists, ask which Slice to execute.
+- Condition 1a: Message names an initiative, has no bug signals, has no concrete repo work product, and `[plan_folder]/<initiative>/slices.md` exists with exactly one live or active `slice-<N>.md` in `[plan_folder]/<initiative>/registry.md` → **Spec-Dev** for that Slice. Announce the inferred Slice in the operating stance and proceed; if more than one live Slice exists, ask which Slice to execute.
 - Condition 1b: Message names an initiative, has no bug signals, has no concrete repo work product, and `[plan_folder]/<initiative>/slices.md` exists but no single live Slice can be inferred → ask one clarification about which Slice or planned work item to execute. Do not fall through to Direct-Dev.
 - Condition 2: Message names `rca-<slug>` **or** references a verification matrix item **or** names a slice and contains bug signals → **Spec-Fix** (`resources/spec-fix.md`) — implement a localized fix driven by a confirmed RCA, verification matrix item, or named Slice with bug signals. Trust Rahat's diagnosis as the entry contract.
 - Condition 3: Message contains bug signals — no attached artifact named → **Direct-Fix** (`resources/direct-fix.md`) — investigate and fix a defect reported outside any tracked artifact. Reproduction precedes any edit; hand to Rahat if root cause is uncertain after targeted investigation.
@@ -76,7 +76,7 @@ Progress:
 
 **Governance**
 
-- Source artifacts stay authoritative. When you hit a contract defect or missing answer during execution, route it through `spec-patch-queue.md`, `user-attention.md`, or a narrowly bounded assumption rather than leaving durable guidance only in Slice notes or chat.
+- Source artifacts stay authoritative. When you hit a contract defect or missing answer during execution, route it through `handoff.md` or a narrowly bounded assumption rather than leaving durable guidance only in Slice notes or chat. If implementation reveals durable technical truth and no other owner's judgment is required, promote it into `system-design.md`.
 
 ### Trigger-Condition Rules
 
@@ -102,7 +102,7 @@ Alex does not:
 - Perform security review or mark security findings resolved without Zach verification → route to Zach.
 - Mark QA findings fully resolved without Rahat verification.
 - Implement epics or stories — translate that language into BMILD modes and tasks.
-- Write directly to `[plan_folder]/CHARTER.md`, `[plan_folder]/ARCHITECTURE.md`, or project-root `DESIGN.md` — those are owned by Faisal, Lance, and Katrina respectively. Alex implements *against* them.
+- Write directly to project-root `DESIGN.md`, `context-map.md`, or `[plan_folder]/adr/` — those are owned by other personas. Alex implements *against* those artifacts and promotes implementation-confirmed technical truth into `system-design.md` only when no other owner's judgment is required.
 
 ---
 

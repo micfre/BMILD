@@ -32,7 +32,7 @@ Progress:
 - [ ] Step 3: Implement the smallest fix that resolves the confirmed root cause. Do not refactor adjacent code. Do not expand scope.
 - [ ] Step 4: Run quality gates per the contributor guide. Add a regression test when practical. If not practical, record a manual reproduction and proof sequence that Rahat can re-run.
 - [ ] Step 5: Document when externally visible behaviour, operational runbooks, setup instructions, or user help changed. Otherwise record `Documentation impact: none`.
-- [ ] Step 6: Write a Dev note (`dev-note-<slug>.md`) when the fix changes externally visible behaviour, the root cause reveals something future specs or architecture should account for, or the fix creates follow-up work. A truly trivial local fix with no future relevance does not require a Dev note. When a Dev note is written: use `assets/dev-note-template.md`; place it under the relevant initiative folder, or `[plan_folder]/_system/` for genuinely global work; register it in the initiative's `_context.md` `## Live` section.
+- [ ] Step 6: Promote durable technical truth instead of writing a sidecar. When the fix changes externally visible behaviour, the root cause reveals something future specs or architecture should account for, or the fix creates follow-up work: update the most appropriate governing artifact directly. For initiative-local technical truth, use `system-design.md`. If another owner must act, create or update `handoff.md`. A truly trivial local fix with no future relevance does not require a BMILD memory artifact.
 - [ ] Step 7: No formal handoff is required unless a tracked QA or security artifact was implicated — in that case re-evaluate against Spec-Fix mode before closing. Apply the Exit and Handoff format from the core skill.
 
 ## Definition of Done
@@ -42,5 +42,5 @@ Progress:
 - [ ] Regression test passing, or manual proof sequence recorded
 - [ ] Quality gates run, or unrun gates recorded with reason
 - [ ] Documentation impact recorded (complete or `none`)
-- [ ] Dev note written and registered when conditions above are met
+- [ ] Durable technical truth promoted into a governing artifact, or no BMILD memory artifact written because none was warranted
 - [ ] Close message: files changed, root cause summary, gates run, documentation impact, next owner if any
