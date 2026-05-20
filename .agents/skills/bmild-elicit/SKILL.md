@@ -2,7 +2,7 @@
 name: bmild-elicit
 description: "Advanced elicitation. Push any BMILD output to be reconsidered, refined, and improved. Apply when you want to stress-test, deepen, or challenge what was just produced. Works on any spec content: requirements, UX design, architecture decisions, Slice definitions. Used when the user has the expertise though needs assistance to draw out and document → user-centric contribution bias. Trigger on 'elicit', 'elicitation', 'advanced elicitation', 'help me articulate'."
 metadata:
-  version: "0.2.3"
+  version: "0.2.4"
   license: "MIT"
 ---
 

@@ -2,7 +2,7 @@
 name: bmild-brainstorming
 description: "Brainstorming. Facilitate interactive brainstorming sessions using diverse creative techniques and ideation methods. Apply when the user wants to expand thinking, explore options, think creatively, step back, get out of the box, or find angles not yet considered. Used when the user needs help to expand range of options beyond the obvious → divergent, expansive contribution bias. Trigger on 'brainstorm', 'brainstorming', 'brainstorm session', 'help me brainstorm'."
 metadata:
-  version: "0.2.3"
+  version: "0.2.4"
   license: "MIT"
 ---
 
