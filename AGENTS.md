@@ -7,29 +7,17 @@ The output of this project are the agent skills located in the `.agents/skills/`
 BMILD skills must follow these API-like design principles:
 
 1. **Follow the Spec**:
-   The official specification in `docs/` is authoritative — mirror and enforce its rules across skills (triggers, frontmatter, structure, and behavior).
-2. **Uniform skill structure**:
-   Each skill body uses these sections in this order:
-   - **`Persona`** (the unlabelled lead paragraph after the frontmatter): Name, role, scope boundary, and voice. Do not include pronoun labels. Do not use `Always prefix` — identity is expressed in the opening operating stance and final sign-off only.
-   - **`## BMILD Working Team`**: Positive frame for how the skill contributes to the team value chain, which teammates depend on its output, why interactivity matters, when advanced team tools such as `bmild-roundtable`, `bmild-elicit`, or `bmild-brainstorming` are useful, and the persona-name rule (refer to teammates by persona name, never skill name).
-   - **`## Activation`**: Unified entry sequence — resolve environment from `.bmild.toml`, determine scope, load context memory, load persona inputs, handle incomplete context, open with one compact operating stance line, then begin. Standard skills use the full sequence; cross-cutting skills use a simplified version.
-   - **`## Workflow`**: Linear process, mode variants, retry loops, scope checkpoints, and the first actionable "begin" behaviour. Modes are workflow modifiers, not a separate instruction set. True ordered work uses a `Progress:` checklist with `- [ ] Step N: ...`; general guidelines use prose or ordinary bullets.
-   - **`## Capabilities`**: The skill's toolkit, named modes, and reusable techniques.
-   - **`## Definition of Done`**: Quality bar, success criteria, verification checks, and evidence required before handoff.
-   - **`## Standards`** (named per skill, e.g., `## Elicitation Standards`, `## Design Standards`, `## Planning Standards`, `## Verification Standards`, `## Security Review Standards`, `## Pre-Edit Discipline`): Craft rules that apply across all modes — coaching posture, gap checklists, decision-handling, debate/elicit/brainstorm trigger heuristics, pre-artifact checkpoints. Mode documents govern sequence; this section governs craft.
-   - **`## Exit and Handoff`** (Standard skills only): Unified exit sequence — write artifact using templates in `assets/`, register in context memory, check gates, close with handoff statement, and sign off as `[Name] [icon]`. Distinguish clearly between the **user action** line (`For you, ...`) for step-completion actions the user can take now, and the **next clean move** line (`Next.`) for workflow orchestration to the next persona or terminal state. Do not use the user-action line for internal bookkeeping or persona routing. Cross-cutting skills omit this section. The persona-name rule lives in BMILD Working Team, not here.
-   - **`## Scope Boundary`**: What the skill explicitly does not do.
-   - **`## Gotchas`**: High-value corrections from real execution traces. Use for facts that defy reasonable assumptions or steer unpredicted events; do not restate rules already established elsewhere.
-
-   Artifact templates live in each skill's `assets/`. Context memory templates live in each skill's `assets/context-memory-template.md`.
+   The industry skills specification is stored in `docs/best-practices/`.
+   - `agent-skills-specification.md` includes the specification (from live site: <https://agentskills.io/specification>).
+   - `agent-skills-best-practices.md` offers implementation guidelines (from live site: <https://agentskills.io/skill-creation/best-practices>).
+2. **Follow the Skill Structure**:
+   The skill-development templates in `docs/` are official BMILD documentation for skill format, content and shape.
+   - Mode-specific instructions live in each skill's `resources/`.
+   - Artifact templates live in each skill's `assets/`.
 3. **Skill Structure**:
    Keep skill structure aligned across all personas to the extent that is reasonable to do to. Avoid patching a single skill as this may solve the local issue but will lead to drift that makes skills behave differently over time and create for more maintanace overhead.
-   Named standard personas open with one compact operating stance line: `[Name] [icon] — <mode/work type>. Scope: <scope>. <boundary statement>.` This anchors identity and mode for weaker harnesses without repeating persona labels across every paragraph. Cross-cutting skills do not use this pattern unless specifically designed for it.
-   Modes describe why the skill is being invoked: user intent, entry condition, or artifact state. Avoid mode names that only describe internal mechanics, effort level, or implementation texture. Author capabilities as shared behaviours plus mode-specific behaviours so common discipline stays consistent while each mode has a clear persistence, handoff, and documentation contract.
-   Standard personas resolve `plan_folder` from the project root, normalize the configured path, and check the named initiative folder directly before broad searches. If the folder is not present, consult `_system/_rollup.md` before treating the initiative as new.
 4. **Context-Aware Personas**:
-   Personas do their own thinking and are not bound by prescriptive linear flows or rigid tiers. They are domain specialists activated by the artifact state. Personas focusing on specification (PM, UX, Arch) slow down, probe, and elicit — their job is to surface what would otherwise go unstated. Personas focusing on execution (Planner, Dev, QA, Sec) activate lean, act on coherent inputs, and hand back precisely when a blocker is outside their domain authority.
-   UX and Arch hydrate PM artifacts first and treat explicit `product-brief.md` and `prd.md` requirements as settled inputs. Arch also reads `ux-design.md` as an upstream interaction and user-state contract. UX reads `system-design.md` when present only for technical constraints, never as a source of UX intent.
+   Personas do their own thinking and are not bound by prescriptive linear flows or rigid tiers. They are domain specialists activated by the artifact state. Personas PM, UX, Arch are referred to as design-tier personas, personas Planner, Dev, QA and Sec are referred to as execution-tier personas, and together they are the 'standard' personas. Brainstorming, Elicit and Roundtable are the advanced elicitation skills.
 5. **Context Loading Policy**:
    - PM and Dev usually reload memory artifacts because they often run in fresh windows. Dev may skip BMILD memory reads in Prototype or Bug Fix Mode when the work is local and does not depend on documented behaviour, but should still persist a lightweight Dev note when the change can affect future understanding.
    - UX and Arch may skip disk reads only when the required artifact contents are visibly present in the current conversation and are not likely stale; otherwise reload.
@@ -41,11 +29,6 @@ BMILD skills must follow these API-like design principles:
    Treat feedback as refinements. Make small, deliberate edits rather than broad rewrites; each change should be reversible and minimal.
 8. **Avoid fragile markdown tables in skill outputs**:
    Some harnesses render or parse tables poorly. Prefer compact bullet structures for conversational output and artifact templates unless a table is clearly more reliable in the target environment.
-
-### Skills Documentation
-
-- specification: <https://agentskills.io/specification>
-- best practices: <https://agentskills.io/skill-creation/best-practices>
 
 ## Target platforms
 
@@ -181,7 +164,7 @@ Do not make any modifications to any files in external_references\ folders
 ## Documentation
 
 Keep README, AGENTS and CHANGELOG up to date as project evolves. PM defines which documentation needs to change, Dev owns the edits, and QA verifies that the resulting documentation matches implemented behaviour.
-Planner slice-budgeting references should use the wrapper-first skill-local launcher by resolving the active `bmild-planner` skill directory for the current harness, then running `bash <planner-skill-dir>/scripts/run-budget-slice.sh`. For example, the planner skill may live under `.agents/skills/bmild-planner/` in this repo or `.claude/skills/bmild-planner/` in Claude Code. Do not present a repo-specific skill-root path or the legacy direct shell entrypoint as the supported workflow.
+Planner slice-budgeting references should use the wrapper-first skill-local launcher by resolving the active `bmild-planner` skill directory for the current harness, then running `bash <planner-skill-dir>/scripts/run-budget-slice.sh`. For example, the planner skill may live under `.agents/skills/bmild-planner/` in many CLI/IDE environments or `.claude/skills/bmild-planner/` in Claude Code. Do not present a hard-coded specific skill-root path or the legacy direct shell entrypoint as the supported workflow.
 
 ## Versioning
 
