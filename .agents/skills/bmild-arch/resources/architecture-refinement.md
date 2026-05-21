@@ -14,7 +14,7 @@ Load in this order before beginning:
 - `[plan_folder]/<initiative-name>/ux-design.md` if it exists — interaction, user-state, and screen contract inputs
 - Confirm no `## Archived` entries or other initiative folders were loaded
 
-## Additional Norms
+## Additional Directives
 
 **Code intelligence.** When verifying codebase reality, prefer available code intelligence capabilities over raw filesystem traversal, before falling back to grep/glob/read workflows:
 - Symbol-aware navigation tools (e.g. Serena)

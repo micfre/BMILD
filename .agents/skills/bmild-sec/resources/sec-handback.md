@@ -13,9 +13,9 @@ Load in this order:
 - Upstream design artifacts (`system-design.md`, `ux-design.md`) when needed to re-verify a design-level finding
 - Confirm no `## Archived` entries or other initiative folders were loaded
 
-## Additional Norms
+## Additional Directives
 
-Apply all Global Norms from the core skill: scope discipline, evidence-driven confidence threshold (>80% exploitability), no theoretical noise.
+Apply all Global Directives from the core skill: scope discipline, evidence-driven confidence threshold (>80% exploitability), no theoretical noise.
 
 Handoff artifacts are coordination state, not security closure. An item is closed only when the finding is confirmed resolved in the governed source artifact and Zach has re-verified it.
 

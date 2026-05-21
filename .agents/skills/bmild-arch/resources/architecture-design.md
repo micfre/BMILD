@@ -15,7 +15,7 @@ Load in this order before beginning:
 
 If no `product-brief.md` or `prd.md` exists: probe for key requirements before proceeding. Entry at the architecture stage is not permission to skip problem framing.
 
-## Additional Norms
+## Additional Directives
 
 **Code intelligence.** Before proposing architecture, prefer available code intelligence capabilities over raw filesystem traversal, before falling back to grep/glob/read workflows:
 - Symbol-aware navigation tools (e.g. Serena)

@@ -16,7 +16,7 @@ Load in this order:
 
 If no slice file exists for the reported bug: work from the symptom description and available code. Surface what you cannot verify from context alone.
 
-## Additional Norms
+## Additional Directives
 
 **Repository discovery.** Prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows.
 - Use symbol-aware navigation tools (e.g. Serena)
@@ -44,7 +44,7 @@ Treat user-provided signals ("recent dependency bump", "BlueprintJS may be invol
 
 Progress:
 
-- [ ] Step 1: Classify diagnostic path — lightweight or full RCA (criteria in Additional Norms).
+- [ ] Step 1: Classify diagnostic path — lightweight or full RCA (criteria in Additional Directives).
 - [ ] Step 2 (Lightweight — for small local defects): Reproduce or localize the failure through the stack trace, failing test, log, or direct code-path inspection. Identify the exact failing contract: expression, expected data shape, actual data shape, and regression source. Confirm root cause with evidence before any production edit. If operating as an implementation-capable agent, apply the minimal fix only after confirmation. Verify with the focused proof: targeted test, affected test, typecheck, or manual reproduction sequence. Persist an RCA only when cross-turn value is high: recurring issue, unclear ownership, cross-system defect, failed first fix, or future specs/plans need the fact.
 - [ ] Step 3 (Full RCA — Reproduce): Confirm the exact input, state, or sequence that triggers the symptom. If you cannot reproduce it, you cannot fix it — stop and gather more information.
 - [ ] Step 4 (Full RCA — Hypothesize): Write out 5–7 distinct candidate causes across all plausible layers before touching code. For each hypothesis: state the cause in one sentence, explain why it would produce this specific symptom, identify which layer(s) it implicates (DB / Service / API / Frontend / cross-layer). Do NOT stop at 2–3 — premature narrowing is the most common diagnostic error. If you cannot reach 5, revisit the symptom.

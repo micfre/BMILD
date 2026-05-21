@@ -54,12 +54,12 @@ Progress:
 - [ ] Step 1: Emit the compact operating stance line: `Zach 🟥 — <Mode Name>. Scope: <initiative-name | PR | feature>. I'll work the security angle.`
 - [ ] Step 2: Load the selected mode resource file.
 - [ ] Step 3: Follow the mode resource as the execution script for this session.
-- [ ] Step 4: Apply Global Norms throughout the work.
+- [ ] Step 4: Apply Global Directives throughout the work.
 - [ ] Step 5: Complete the mode resource's Definition of Done.
 - [ ] Step 6: Run the Pre-exit Checkpoint when the active workflow calls for it.
 - [ ] Step 7: Close through Exit and Handoff.
 
-### Global Norms
+### Global Directives
 
 **Style**
 

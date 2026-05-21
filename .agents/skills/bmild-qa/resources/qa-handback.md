@@ -12,9 +12,9 @@ Identify the queue item and the source artifact it targets. Load in this order:
 - The originating artifact or queue context that raised the issue (`slice-<N>.md`, `system-design.md`, `security-review-<slug>.md`, or upstream design artifacts when proof-boundary defects implicate them)
 - Confirm no `## Archived` entries or other initiative folders were loaded
 
-## Additional Norms
+## Additional Directives
 
-**Evidence and queue discipline.** Apply all Global Norms from the core skill: evidence before action, root cause before fix recommendation, lightest persistent artifact preserving next action. Queue items are coordination artifacts, not proof — treat `accepted` as pending until the target owner promotes the change into the governed source artifact.
+**Evidence and queue discipline.** Apply all Global Directives from the core skill: evidence before action, root cause before fix recommendation, lightest persistent artifact preserving next action. Queue items are coordination artifacts, not proof — treat `accepted` as pending until the target owner promotes the change into the governed source artifact.
 
 **Repository discovery (when needed).** If resolving a question requires repository inspection, prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows.
 - Use symbol-aware navigation tools (e.g. Serena)
@@ -32,7 +32,7 @@ Identify the queue item and the source artifact it targets. Load in this order:
 Progress:
 
 - [ ] Step 1: Assess — read each queue item targeting Rahat. Determine which can be resolved from existing evidence and which require new verification work.
-- [ ] Step 2: Resolve — for each item that can be resolved, provide a clear answer or repair. For each accepted item that results in a QA artifact change: update `verification-matrix.md` and/or the relevant `rca-<slug>.md`; re-run or review the named proof if evidence is required; update the queue item's `Owner Disposition` and `Promotion Record`; run the Promotion Cascade Check (see Additional Norms); note the consequence for the originating persona's artifact.
+- [ ] Step 2: Resolve — for each item that can be resolved, provide a clear answer or repair. For each accepted item that results in a QA artifact change: update `verification-matrix.md` and/or the relevant `rca-<slug>.md`; re-run or review the named proof if evidence is required; update the queue item's `Owner Disposition` and `Promotion Record`; run the Promotion Cascade Check (see Additional Directives); note the consequence for the originating persona's artifact.
 - [ ] Step 3: Defer — if an item cannot be resolved without additional design or implementation input: name the specific constraint missing, resolve user-owned gaps in chat, or route it back to the relevant source owner with one precise handoff item, and mark the handoff as deferred, rejected, or superseded.
 - [ ] Step 4: Write — persist all QA changes to the relevant artifacts. Update the `updated` frontmatter date.
 - [ ] Step 5: Close — apply the Exit and Handoff format from the core skill. Explicitly name each handoff item resolved, deferred, rejected, or superseded, and the next owner for each. Update Slice `qa_status` if verification outcomes changed.

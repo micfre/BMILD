@@ -16,7 +16,7 @@ Implement a localized fix driven by a confirmed root cause from Rahat. Do not re
   - `security-review-*.md` if a tracked security finding is implicated
   - Repo contributor guide
 
-## Additional Norms
+## Additional Directives
 
 **Repository discovery.** Prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows.
 
@@ -32,7 +32,7 @@ Use the highest-signal discovery method appropriate to the task: symbol navigati
 
 Progress:
 
-- [ ] Step 1: Apply core Craft Standards (Global Norms craft principles) before writing any code.
+- [ ] Step 1: Apply core Global Directives before writing any code.
 - [ ] Step 2: Implement the fix described in the RCA. If the RCA specifies a regression test, implement it exactly as described. If it does not and a regression test is practical, add one and reference it in artifact updates.
 - [ ] Step 3: Run quality gates per the contributor guide. Run the regression test. Record any gate that could not be run and the reason.
 - [ ] Step 4: Document when externally visible behaviour, operational runbooks, setup instructions, or user help changed. Otherwise record `Documentation impact: none`.

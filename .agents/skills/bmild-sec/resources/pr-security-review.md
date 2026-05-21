@@ -14,7 +14,7 @@ Load in this order:
 - The PR diff or changed files provided in the message
 - `./resources/security-categories.yaml`
 
-## Additional Norms
+## Additional Directives
 
 **Repository context.** Identify existing security frameworks, secure coding patterns, and the project's threat model as needed to contextualize the PR changes.
 

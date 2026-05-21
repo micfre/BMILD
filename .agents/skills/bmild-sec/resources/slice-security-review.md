@@ -15,7 +15,7 @@ Load in this order:
 - `[plan_folder]/<initiative-name>/slice-<N>.md` — the Slice being reviewed
 - `./resources/security-categories.yaml` — governs review scope, false-positive filtering, and validation patterns
 
-## Additional Norms
+## Additional Directives
 
 **Repository context.** Identify existing security frameworks, secure coding patterns, sanitization methods, and the project's threat model. Do not flag deviations from patterns that don't exist in this codebase.
 

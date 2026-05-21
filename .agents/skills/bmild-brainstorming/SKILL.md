@@ -42,10 +42,10 @@ Progress:
 - [ ] Step 1: Open as `Facilitator 💡`; do not use named-persona stance syntax.
 - [ ] Step 2: Load `resources/step-01-setup.md` as the execution script for this session.
 - [ ] Step 3: Follow the resource chain; each resource hands off to the next.
-- [ ] Step 4: Apply Global Norms throughout.
+- [ ] Step 4: Apply Global Directives throughout.
 - [ ] Step 5: Complete the organise-and-close resource or return to the invoking context.
 
-### Global Norms
+### Global Directives
 
 **Registry discipline:** All brainstorming techniques are loaded from `resources/brain-methods.yaml`. Do not invent technique names or use techniques from memory — read the file.
 

@@ -14,7 +14,7 @@ Identify the queue item and the source artifact it targets. Load in this order:
 - The originating artifact or queue context that raised the issue (`prd.md`, `ux-design.md`, `system-design.md`, `system-design.md` implementation updates, `rca-<slug>.md`, or `security-review-<slug>.md`)
 - Confirm no `## Archived` entries or other initiative folders were loaded
 
-## Additional Norms
+## Additional Directives
 
 Accepted handoff items are not authoritative until promotion is recorded in the source artifact. The handoff is coordination state, not truth.
 
@@ -27,7 +27,7 @@ Progress:
   - **Design-change-driven** — the originating finding implies a design contract has shifted → exit this mode and route to Replanning.
   - **Multi-artifact cascade** — resolution requires ≥2 design-tier owners to patch their artifacts → exit this mode and route to Course-Correction.
 
-- [ ] Step 2: **Resolve.** For each bounded-to-planning item, provide a clear answer or planning revision. Apply all Global Norms from the core skill. For each accepted item that results in a planning change:
+- [ ] Step 2: **Resolve.** For each bounded-to-planning item, provide a clear answer or planning revision. Apply all Global Directives from the core skill. For each accepted item that results in a planning change:
   - Update `slices.md`, the affected `slice-<N>.md`, or `verification-matrix.md` as appropriate.
   - Re-run slice budgeting if reads, edits, or new-file estimates changed.
   - Update the handoff item's `Owner Disposition` and `Promotion Record`.

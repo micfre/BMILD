@@ -12,7 +12,7 @@ Load in this order:
 - The originating artifact or queue context that raised the issue (`prd.md`, `system-design.md`, `slice-<N>.md`, `verification-matrix.md`, or `security-review-<slug>.md`)
 - Confirm no `## Archived` entries or other initiative folders were loaded
 
-## Additional Norms
+## Additional Directives
 
 When resolving a queue item requires repository inspection, prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows:
 - Use symbol-aware navigation tools (e.g. Serena)
@@ -35,10 +35,10 @@ Progress:
 - [ ] Step 1: Identify the queue item and the source artifact it targets (from context reads above).
 - [ ] Step 2: Assess each queue item targeting Katrina. Determine which can be answered from existing design decisions and which require new decisions. For those requiring new decisions, apply the elicitation pacing and decision option format from the core skill.
 - [ ] Step 3: Before the first question or decision prompt, preview the queue: name the categories you expect to cover and give an approximate question count so the user can tell whether this is a short alignment or a deeper session.
-- [ ] Step 4: Resolve — provide clear answers or decisions for each item. Apply all Global Norms from the core skill. For each accepted item that results in a design change:
+- [ ] Step 4: Resolve — provide clear answers or decisions for each item. Apply all Global Directives from the core skill. For each accepted item that results in a design change:
   - Update `ux-design.md` (or create it if it does not exist yet)
   - Update the queue item's `Owner Disposition` and `Promotion Record`
-  - Run the **Promotion Cascade Check** (see Additional Norms)
+  - Run the **Promotion Cascade Check** (see Additional Directives)
   - Note the consequence for the originating persona's artifact
 - [ ] Step 5: Defer — if an item cannot be resolved without additional product or architecture input: name the specific constraint missing, resolve user-owned gaps in chat, or route it back to the relevant source owner with one precise handoff item, and mark the handoff as deferred, rejected, or superseded.
 - [ ] Step 6: Write — if design changes result from resolving handback questions, update `[plan_folder]/<initiative-name>/ux-design.md`. Update the `updated` frontmatter date.

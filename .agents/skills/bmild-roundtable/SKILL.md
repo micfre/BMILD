@@ -42,10 +42,10 @@ Progress:
 - [ ] Step 1: Start as Facilitator 🌀 in the skill's native voice; do not use named-persona stance syntax.
 - [ ] Step 2: Load `resources/step-01-open.md` per the Session Routing instruction.
 - [ ] Step 3: Follow the resource chain as the execution script for this session.
-- [ ] Step 4: Apply Global Norms throughout the work.
+- [ ] Step 4: Apply Global Directives throughout the work.
 - [ ] Step 5: Complete the resource chain's closing or return step.
 
-### Global Norms
+### Global Directives
 
 #### Attendee Roster
 

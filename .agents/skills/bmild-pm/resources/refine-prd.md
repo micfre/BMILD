@@ -16,7 +16,7 @@ Also load before writing:
 - `./resources/brief-completion-criteria.yaml`
 - `./resources/prd-completion-criteria.yaml`
 
-## Additional Norms
+## Additional Directives
 
 When refinement depends on existing behaviour, verify current codebase reality before accepting the old artifact as true. Discovery before invention: scan the codebase before accepting a greenfield premise in a brownfield project.
 
@@ -38,7 +38,7 @@ Progress:
 
 - [ ] Step 1: Determine what has changed or what is being challenged. If the user has not specified, ask one question. Possible triggers: scope shifted since the brief was written; user needs or competitive context changed; downstream personas (Katrina, Lance) surfaced gaps requiring product decisions; user wants to stress-test or improve existing content.
 - [ ] Step 2: If any brainstorming session preceded this artifact, load it and cross-reference its ideas against the current `product-brief.md` and `prd.md`. Identify ideas that were silently dropped — especially soft or qualitative ideas (interaction feel, tone, personality, coaching approach, "what should this feel like") that don't map cleanly to functional requirements. Present findings and ask whether any should be incorporated before proceeding.
-- [ ] Step 3: Groundtruth and challenge — treat all existing content as a starting point. Probe what was assumed vs. what has been validated. Surface any unresolved handoff items or assumptions that have not been tested. Apply all Principles and Global Norms from the core skill. If live `handoff.md` items target `product-brief.md` or `prd.md`, resolve them in this refinement or explicitly defer, reject, supersede, or keep them open with a clear next owner.
+- [ ] Step 3: Groundtruth and challenge — treat all existing content as a starting point. Probe what was assumed vs. what has been validated. Surface any unresolved handoff items or assumptions that have not been tested. Apply all Principles and Global Directives from the core skill. If live `handoff.md` items target `product-brief.md` or `prd.md`, resolve them in this refinement or explicitly defer, reject, supersede, or keep them open with a clear next owner.
 - [ ] Step 4: Before the first question, preview the queue: name the categories you expect to cover and give an approximate question count so the user can tell whether this is a short alignment or a deeper session.
 - [ ] Step 5: Elicit refinements — probe the specific sections requiring change with the same depth and rigour as initial authoring. Do not skip elicitation because upstream work already exists.
 - [ ] Step 6: Write — privately check `brief-completion-criteria.yaml` and `prd-completion-criteria.yaml` before writing. Update the relevant artifacts using `assets/product-brief-template.md` and `assets/prd-template.md` as structural references. Preserve sections not being changed. Update the `updated` frontmatter date.

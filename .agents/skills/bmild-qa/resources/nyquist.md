@@ -16,7 +16,7 @@ Load in this order:
 - Any existing `verification-matrix.md` for this initiative
 - Repo contributor guide for testing conventions and commands
 
-## Additional Norms
+## Additional Directives
 
 **Repository discovery.** Prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows.
 - Use symbol-aware navigation tools (e.g. Serena)

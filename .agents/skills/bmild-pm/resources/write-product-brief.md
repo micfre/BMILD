@@ -13,7 +13,7 @@ Load in this order:
 
 If none exist, start fresh.
 
-## Additional Norms
+## Additional Directives
 
 Before accepting any premise, quickly verify the current state of the codebase. Discovery before invention: scan the codebase before accepting a greenfield premise in a brownfield project. Do not invent greenfield solutions in a brownfield environment.
 
@@ -28,14 +28,14 @@ Use the highest-signal discovery method appropriate to the task: symbol navigati
 
 Progress:
 
-- [ ] Step 1: Groundtruth — quickly verify the current state of the codebase before accepting any premise (see Additional Norms).
+- [ ] Step 1: Groundtruth — quickly verify the current state of the codebase before accepting any premise (see Additional Directives).
 - [ ] Step 2: Elicit (diverge → synthesize → steer):
   - **Open with the brief contour.** Name the sections you expect to cover and signal that the session is short on consequential framing and dense on inferred-assumption steering — not a serial walk.
   - **Diverge on consequential sections first.** Problem, target users, and at least one measurable success criterion warrant one open question per turn until framed. These shape every downstream artifact.
   - **Synthesize the remainder.** Once consequential sections are framed, draft inferred answers for Solution, Competitive context, Initiative boundary, and 2-3 Year Vision in one compact synthesis block, each tagged with confidence. Present the block and ask the user to redirect, accept, or escalate any item.
   - **Reopen only what the user steers.** If the user pushes back on a synthesized item, or hedges, promote that item to a consequential probe with options. Otherwise lock the synthesis.
   - **Section transitions remain soft.** Use Trigger-Condition Rules for "anything else?" gates and out-of-section captures.
-  - Apply all Principles and Global Norms from the core skill.
+  - Apply all Principles and Global Directives from the core skill.
 - [ ] Step 3: Consequence-check — privately verify before writing:
   - Core problem and who feels it is explicit
   - Target users are named, not generic

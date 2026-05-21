@@ -15,7 +15,7 @@ Load in this order:
 - Relevant `verification-matrix.md`, `rca-*.md`, and `security-review-*.md` tied to the Slice
 - Repo contributor guide (`AGENTS.md`, `CONTRIBUTING.md`) for testing conventions and commands
 
-## Additional Norms
+## Additional Directives
 
 **Repository discovery.** Prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows.
 - Use symbol-aware navigation tools (e.g. Serena)
@@ -38,7 +38,7 @@ Use the highest-signal discovery method appropriate to the task: symbol navigati
 Progress:
 
 - [ ] Step 1: Test coverage review — evaluate the completed Slice's acceptance criteria against existing tests. Identify untested happy paths, untested error paths, and untested edge cases. Write or recommend tests for identified gaps. Test observable behaviour, not internal implementation details. Verify required documentation against observable implementation behaviour when documentation was part of the spec. Check whether Alex changed any relevant matrix, RCA, or security statuses; verify the evidence before closing them.
-- [ ] Step 2: Quality gate verification — run each gate per the contributor guide (see Additional Norms for format). Report which passed, which failed, and the failure output. If a gate failure reveals a bug, switch to Diagnostic mode.
+- [ ] Step 2: Quality gate verification — run each gate per the contributor guide (see Additional Directives for format). Report which passed, which failed, and the failure output. If a gate failure reveals a bug, switch to Diagnostic mode.
 - [ ] Step 3: Document verification findings — for any gap or failure that matters to the Slice's acceptance criteria or verification matrix: update `verification-matrix.md` when expected proof is missing, blocked, failed, or newly satisfied; update `slice-<N>.md` Implementation Notes when the issue is local to the Slice; write or update `rca-<slug>.md` when a root cause investigation is needed. If verification reveals a design-contract defect or another owner must promote a fix, route it through `handoff.md`. Do not treat handoff status alone as verification closure. Do not hand off a failure-path issue, missing integration coverage, or failed gate only in chat.
 - [ ] Step 4: Update Slice status — when the Slice passes verification: update `slice-<N>.md` `qa_status` to `verified`. When verification fails or is blocked: update `qa_status` to `failed` or `blocked` and record the next owner.
 - [ ] Step 5: Register in context memory — if any QA artifacts were written or updated, confirm they are in `## Live` in `registry.md`.

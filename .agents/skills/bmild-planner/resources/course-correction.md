@@ -15,7 +15,7 @@ Load in this order before proceeding:
 - Any existing `[plan_folder]/<initiative-name>/change-proposal-<slug>.md` for this initiative
 - `slices.md` and all active `slice-<N>.md` files
 
-## Additional Norms
+## Additional Directives
 
 **Scribe-Eligibility criteria** (all must hold for Sonia to apply a ratified change directly):
 
@@ -49,7 +49,7 @@ Progress:
   - Append the roundtable's synthesis record to the change-proposal artifact (`## Roundtable Synthesis Records` section).
   - If the user ratifies an option that collapses or changes a downstream question, update the question list and continue.
 
-  **Scribe-Eligibility check.** After each ratification, evaluate the outcome against the Scribe-Eligibility criteria (see Additional Norms). If all criteria hold, offer the user the scribe path:
+  **Scribe-Eligibility check.** After each ratification, evaluate the outcome against the Scribe-Eligibility criteria (see Additional Directives). If all criteria hold, offer the user the scribe path:
 
   > *"This decision is scribe-eligible — I can apply it directly. Confirm, or say 'route through [persona]' to use standard handback."*
 

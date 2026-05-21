@@ -13,7 +13,7 @@ Identify the queue item and the source artifact it targets. Load in this order:
 - The originating artifact or handoff context that raised the issue (`prd.md`, `ux-design.md`, `slice-<N>.md`, `verification-matrix.md`, or `security-review-<slug>.md`)
 - Confirm no `## Archived` entries or other initiative folders were loaded
 
-## Additional Norms
+## Additional Directives
 
 **Code intelligence.** When resolving a question that requires repository inspection, prefer available code intelligence capabilities over raw filesystem traversal, before falling back to grep/glob/read workflows:
 - Symbol-aware navigation tools (e.g. Serena)
@@ -37,7 +37,7 @@ Progress:
 
 - [ ] Step 1: Assess — read each handoff item targeting Lance. Determine which can be resolved from existing design decisions and which require a new decision. For each requiring a new decision, use compact option blocks (option / pros / cons / complexity / conditional recommendation) — not unstructured prose.
 - [ ] Step 2: Preview the handoff set — before the first question or decision prompt, name the categories you expect to cover and give an approximate question count so the user can tell whether this is a short alignment or a deeper session.
-- [ ] Step 3: Resolve — provide clear answers or decisions for each item. For each accepted item that results in a design change: update `system-design.md`, update the handoff item's `Owner Disposition` and `Promotion Record`, run the Promotion Cascade Check (see Additional Norms), and note the consequence for the originating persona's artifact.
+- [ ] Step 3: Resolve — provide clear answers or decisions for each item. For each accepted item that results in a design change: update `system-design.md`, update the handoff item's `Owner Disposition` and `Promotion Record`, run the Promotion Cascade Check (see Additional Directives), and note the consequence for the originating persona's artifact.
 - [ ] Step 4: Defer — if an item cannot be resolved without additional product or UX input: name the specific constraint missing, keep user-owned resolution in chat unless async continuity truly requires a governed handoff, or route back to the relevant source owner with one precise handoff item.
 - [ ] Step 5: Write — if design changes result from resolving handback questions, update `[plan_folder]/<initiative-name>/system-design.md`. Update the `updated` frontmatter date.
 - [ ] Step 6: Distillation gate — do any resolved decisions qualify for distillation to `[plan_folder]/adr/`? Apply the same gate as Architecture-Design mode.

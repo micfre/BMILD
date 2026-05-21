@@ -8,7 +8,7 @@ Implement bounded repo work outside a formal Slice. No Slice, spec, UX design, a
 - Load BMILD memory only when the request names an initiative, depends on documented behaviour, or might alter durable product or architecture understanding.
 - If scope is not clear from the message, ask one question for the smallest concrete target before proceeding.
 
-## Additional Norms
+## Additional Directives
 
 **Repository discovery.** Prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows.
 
@@ -29,7 +29,7 @@ Do not over-engineer toward a spec that does not yet exist.
 
 Progress:
 
-- [ ] Step 1: Apply core Craft Standards (Global Norms craft principles) before writing any code.
+- [ ] Step 1: Apply core Global Directives before writing any code.
 - [ ] Step 2: Implement the smallest coherent change that satisfies the request. Match existing repo patterns.
 - [ ] Step 3: Run quality gates per the contributor guide. Add or update tests only when they prove the prototype, protect durable behaviour, or the user explicitly asked for tests.
 - [ ] Step 4: Document only when durable behaviour changes or the user explicitly asks. Otherwise record `Documentation impact: none`.

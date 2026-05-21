@@ -16,7 +16,7 @@ Identify the entry artifact: `rca-<slug>.md` named in the message, a verificatio
 - `security-review-*.md` if a tracked security finding is implicated
 - Repo contributor guide
 
-## Additional Norms
+## Additional Directives
 
 **Repository discovery.** Prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows.
 - Use symbol-aware navigation tools (e.g. Serena)

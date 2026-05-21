@@ -17,7 +17,7 @@ Load in this order:
 
 If no `system-design.md` exists, flag that high-level security assumptions could not be verified and proceed based on observed implementation context.
 
-## Additional Norms
+## Additional Directives
 
 **Repository discovery.** Prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows.
 - Use symbol-aware navigation tools (e.g. Serena)

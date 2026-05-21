@@ -14,7 +14,7 @@ Load in this order:
 - `[plan_folder]/<initiative-name>/system-design.md` if it exists — technical constraints only; not a source of UX intent
 - Confirm no `## Archived` entries or other initiative folders were loaded
 
-## Additional Norms
+## Additional Directives
 
 - Read current `product-brief.md` and `prd.md` before asking refinement questions. Read `system-design.md` when present to understand fixed technical constraints. Treat explicit PM requirements as settled unless the refinement target exposes a conflict, stale requirement, UX infeasibility, or UX-owned trade-off. Do not infer user intent from architecture.
 - If live `handoff.md` items target `ux-design.md` or `DESIGN.md`, resolve them in this refinement or explicitly defer, reject, supersede, or route them onward as appropriate.
@@ -40,12 +40,12 @@ Internal gap checklist — re-check privately for affected sections before the a
 
 Progress:
 
-- [ ] Step 1: Hydrate upstream inputs — read current PM artifacts and architecture constraints (see Additional Norms). Extract settled requirements, UX constraints, and what the change affects.
+- [ ] Step 1: Hydrate upstream inputs — read current PM artifacts and architecture constraints (see Additional Directives). Extract settled requirements, UX constraints, and what the change affects.
 - [ ] Step 2: Identify refinement target — determine what has changed or is being challenged. If the user has not specified, ask one question. Surface any existing bounded assumptions, unresolved queue items, or stale promotion records before proceeding.
 - [ ] Step 3: Brainstorm reconciliation — if a brainstorming session preceded this artifact, load it and cross-reference its ideas against the current `ux-design.md`. Identify ideas that were silently dropped — especially ideas about interaction feel, tone, personality, or "what should this feel like" that do not map cleanly to structural flows or screen layouts. Present findings to the user and ask whether any should be incorporated before proceeding.
-- [ ] Step 4: Groundtruth — verify any new codebase reality relevant to the change. Check that existing patterns in `DESIGN.md` still constrain the refined design. Use code intelligence tools (see Additional Norms).
-- [ ] Step 5: Probe — present what appears settled from PM artifacts, what technical constraints apply, what the change affects, which user-state hypotheses follow, and what UX decisions are newly required. Before the first question, preview the queue: name the categories you expect to cover and give an approximate question count. Apply all Global Norms from the core skill. Elicit before modifying; write at a meaningful checkpoint. Do not silently absorb unresolved issues.
-- [ ] Step 6: Write — re-check the modified sections against `completion-criteria.yaml` and the internal gap checklist (see Additional Norms) privately. Update `[plan_folder]/<initiative-name>/ux-design.md`. Update the `updated` frontmatter date. Preserve sections not being changed.
+- [ ] Step 4: Groundtruth — verify any new codebase reality relevant to the change. Check that existing patterns in `DESIGN.md` still constrain the refined design. Use code intelligence tools (see Additional Directives).
+- [ ] Step 5: Probe — present what appears settled from PM artifacts, what technical constraints apply, what the change affects, which user-state hypotheses follow, and what UX decisions are newly required. Before the first question, preview the queue: name the categories you expect to cover and give an approximate question count. Apply all Global Directives from the core skill. Elicit before modifying; write at a meaningful checkpoint. Do not silently absorb unresolved issues.
+- [ ] Step 6: Write — re-check the modified sections against `completion-criteria.yaml` and the internal gap checklist (see Additional Directives) privately. Update `[plan_folder]/<initiative-name>/ux-design.md`. Update the `updated` frontmatter date. Preserve sections not being changed.
 - [ ] Step 7: Distillation gate — do any refined decisions qualify for distillation to project-root `DESIGN.md`? Global interaction principles and visual language decisions only.
 - [ ] Step 8: Register in context memory — confirm `ux-design.md` remains in `## Live` in `registry.md`. Move any superseded predecessor to `## Archived` if applicable.
 - [ ] Step 9: Close — apply the Exit and Handoff format from the core skill.

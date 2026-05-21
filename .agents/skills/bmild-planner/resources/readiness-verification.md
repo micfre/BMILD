@@ -15,7 +15,7 @@ Load in this order before proceeding:
 - `handoff.md` from the initiative folder if it exists
 - `slices.md` if it exists — you may be assessing a partially planned initiative
 
-## Additional Norms
+## Additional Directives
 
 Accepted handoff items are not authoritative until promotion is recorded in the source artifact. When assessing governance closure, do not treat handoff item status as truth — verify that the owning persona's artifact reflects the resolution.
 

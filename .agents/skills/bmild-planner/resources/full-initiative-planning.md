@@ -14,7 +14,7 @@ Load in this order before proceeding:
 - `product-brief.md`, `prd.md`, `ux-design.md`, and `system-design.md` from the initiative folder — all inputs
 - `slices.md` if it exists
 
-## Additional Norms
+## Additional Directives
 
 Prefer available code intelligence capabilities over raw filesystem traversal when possible before file-intense decomposition or Slice budgeting. Use symbol-aware navigation (e.g. Serena), AST-aware structural analysis (e.g. ast-grep), or semantic search (e.g. ck-search) before falling back to grep/glob/read workflows.
 
@@ -24,7 +24,7 @@ Progress:
 
 - [ ] Step 1: **Readiness gate.** Confirm readiness has passed (check the `## Readiness` section of `slices.md` if it exists, or run readiness checks inline per `resources/readiness-verification.md`). If readiness has not passed: switch to Readiness-Verification mode before proceeding.
 
-- [ ] Step 2: **Forward Decomposition — Phase 1 (MVP).** Identify and decompose all Phase 1 (MVP) work. Apply all Global Norms from the core skill. Prefer the fewest Slices consistent with dependency safety.
+- [ ] Step 2: **Forward Decomposition — Phase 1 (MVP).** Identify and decompose all Phase 1 (MVP) work. Apply all Global Directives from the core skill. Prefer the fewest Slices consistent with dependency safety.
 
 - [ ] Step 3: **Forward Decomposition — Future Phases.** For phases beyond MVP:
   - Author implementation-ready Slice files for future phases only when the required UX and architecture artifacts for that phase exist.

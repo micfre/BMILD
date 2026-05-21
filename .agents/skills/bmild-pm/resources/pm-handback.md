@@ -13,7 +13,7 @@ Load in this order:
 - The originating artifact or handoff context that raised the issue (`ux-design.md`, `system-design.md`, `slices.md`, `slice-<N>.md`, `verification-matrix.md`, `rca-<slug>.md`, or `security-review-<slug>.md`)
 - Confirm no `## Archived` entries or other initiative folders were loaded
 
-## Additional Norms
+## Additional Directives
 
 When resolving a queue item requires repository inspection, prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows:
 - Use symbol-aware navigation tools (e.g. Serena)
@@ -29,7 +29,7 @@ Progress:
 - [ ] Step 1: Identify the handoff item and the source artifact it targets (from context reads above).
 - [ ] Step 2: Assess each handoff item targeting Faisal. Determine which can be answered from existing product decisions and which require new decisions. For those requiring new decisions, apply the elicitation pacing and decision option format from the core skill.
 - [ ] Step 3: Before the first question or decision prompt, preview the handoff set: name the categories you expect to cover and give an approximate question count so the user can tell whether this is a short alignment or a deeper session.
-- [ ] Step 4: Resolve — provide clear answers or decisions for each item. Apply all Principles and Global Norms from the core skill. For each accepted item that results in a product change:
+- [ ] Step 4: Resolve — provide clear answers or decisions for each item. Apply all Principles and Global Directives from the core skill. For each accepted item that results in a product change:
   - Update `product-brief.md` or `prd.md` as appropriate
   - Update the handoff item's `Owner Disposition` and `Promotion Record`
   - Run the **Promotion Cascade Check**: identify downstream consumers per `AGENTS.md` cross-artifact flow; classify each as `unaffected | minor-update | stale`. Count distinct `Target Owner` values for `stale` artifacts. (a) **0 stale owners** → no cascade action. (b) **1 stale owner** → auto-enqueue one follow-up `H-###` item per stale artifact (`Type: cross_artifact_conflict`, `Target Owner: <owner>`, `Raised By: Faisal`, `Blocking: yes`, `Why It Matters: <named upstream change>`, `Requested Change: <pointer to source artifact section>`). The close message follows the verbatim-invocation rule for the single owner. (c) **≥2 stale owners** → do NOT enqueue individually; mark each artifact in `registry.md ## Stale` with the upstream handoff reference, and route the user to Sonia in Course-Correction mode in this turn's close. Append `Cascade: <summary>` to the handoff item being closed. Cycle prevention: do not enqueue an item whose `Supersedes` chain already includes this handoff.

@@ -14,7 +14,7 @@ Load in this order:
 Also load before writing:
 - `./resources/prd-completion-criteria.yaml`
 
-## Additional Norms
+## Additional Directives
 
 Scan the codebase for any existing implementation relevant to the initiative before accepting any premise. Discovery before invention: do not accept a greenfield premise when existing code constrains the design.
 
@@ -36,7 +36,7 @@ Regulated NFRs and compliance obligations are consequential by default — probe
 
 Progress:
 
-- [ ] Step 1: Groundtruth — scan the codebase for any existing implementation relevant to the initiative (see Additional Norms).
+- [ ] Step 1: Groundtruth — scan the codebase for any existing implementation relevant to the initiative (see Additional Directives).
 - [ ] Step 2: Probe backward — review the existing `product-brief.md` for unresolved assumptions, handoff items, or scope edges that still need promotion. Route cross-artifact/source issues through `handoff.md` before proceeding; keep live user elicitation in chat unless async owner-to-owner continuity truly requires a governed handoff.
 - [ ] Step 3: Elicit (diverge → synthesize → steer):
   - **Open with the PRD contour.** Name the sections and signal that consequential items earn depth and the rest will be synthesized for steering.
@@ -44,7 +44,7 @@ Progress:
   - **Synthesize the remainder.** Once consequential sections are framed, draft inferred answers in one compact block: NFRs (scale, performance, compliance, with proposed thresholds for applicable categories only), documentation scope (user/operator/contributor), consequence-driven assumptions (each with confidence and consequence if wrong). Present the block and ask the user to redirect, accept, or escalate any item.
   - **Reopen only what the user steers.** Hedging or pushback promotes an item back to a probed decision with options.
   - **Governance routing.** Decide whether any remaining ambiguity belongs in `handoff.md` or a bounded assumption, with live user elicitation staying in chat unless async continuity is required.
-  - Apply all Principles and Global Norms from the core skill.
+  - Apply all Principles and Global Directives from the core skill.
 - [ ] Step 4: Consequence-check — privately verify before writing:
   - Every Must Have is traceable to a user need from `product-brief.md`
   - Phase 1 is the absolute minimum to validate the idea

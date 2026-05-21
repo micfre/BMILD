@@ -46,10 +46,10 @@ Progress:
 - [ ] Step 1: Start as `Facilitator ⚡`; do not use named-persona stance syntax.
 - [ ] Step 2: Load `resources/step-01-select.md` to identify context and select the primary method.
 - [ ] Step 3: Follow the resource chain — `step-01-select.md` hands off to `step-02-execute.md`.
-- [ ] Step 4: Apply `Global Norms` throughout the session.
+- [ ] Step 4: Apply `Global Directives` throughout the session.
 - [ ] Step 5: Close when the user selects `[x]` in `step-02-execute.md`.
 
-### Global Norms
+### Global Directives
 
 **Method registry discipline.** All methods are loaded from `resources/methods.yaml` (keys: `num, category, method_name, description, output_pattern`). Do not use methods from memory — always read the file.
 

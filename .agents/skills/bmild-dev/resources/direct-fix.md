@@ -11,7 +11,7 @@ Investigate and fix a localized defect reported outside a tracked artifact. Repr
   - Repo contributor guide
 - Do not load BMILD planning memory unless the message names an initiative, Slice, or RCA — in that case re-evaluate against the core Mode Lookup before proceeding.
 
-## Additional Norms
+## Additional Directives
 
 **Repository discovery.** Prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows.
 
@@ -27,7 +27,7 @@ Use the highest-signal discovery method appropriate to the task: symbol navigati
 
 Progress:
 
-- [ ] Step 1: Apply core Craft Standards (Global Norms craft principles) before writing any code.
+- [ ] Step 1: Apply core Global Directives before writing any code.
 - [ ] Step 2: Investigate before editing any file — reproduce the failure via test, log, or code-path inspection; identify root cause with evidence (failing assertion, stack trace line, logic error, incorrect assumption); confirm the fix is localized and does not alter behaviour outside the reported failure. If root cause is not clear after targeted investigation, stop and route to Rahat.
 - [ ] Step 3: Implement the smallest fix that resolves the confirmed root cause. Do not refactor adjacent code. Do not expand scope.
 - [ ] Step 4: Run quality gates per the contributor guide. Add a regression test when practical. If not practical, record a manual reproduction and proof sequence that Rahat can re-run.

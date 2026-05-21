@@ -16,7 +16,7 @@ Implement a well-defined Slice inside a documented initiative against a complete
   - Design contracts referenced by the Slice
   - Repo contributor guide (`AGENTS.md`, `CONTRIBUTING.md`, or equivalent)
 
-## Additional Norms
+## Additional Directives
 
 **Repository discovery.** Prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows.
 
@@ -32,7 +32,7 @@ Use the highest-signal discovery method appropriate to the task: symbol navigati
 
 Progress:
 
-- [ ] Step 1: Apply core Craft Standards (Global Norms craft principles) before writing any code.
+- [ ] Step 1: Apply core Global Directives before writing any code.
 - [ ] Step 2: Work through acceptance criteria one by one, checking each off as you complete it. Honor every design contract referenced by the Slice. If execution exposes a contract defect or missing answer outside Alex's authority, create or update `[plan_folder]/<initiative>/handoff.md` instead of leaving durable guidance only in `slice-<N>.md`. If implementation reveals durable technical truth and no other owner's judgment is required, promote it into `system-design.md`.
 - [ ] Step 3: Run quality gates per the contributor guide. Record any gate that could not be run and the reason.
 - [ ] Step 4: Write or update documentation required by the spec, Slice, or contributor guide — including README, AGENTS/CONTRIBUTING, runbooks, release notes, and user-facing help. Name any deferred doc item with the change required and next owner.

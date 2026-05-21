@@ -16,7 +16,7 @@ Load in this order before proceeding:
 - All active `slice-<N>.md` files under `## Live`
 - Updated design artifacts that triggered the replan if named
 
-## Additional Norms
+## Additional Directives
 
 Prefer available code intelligence capabilities over raw filesystem traversal when possible before file-intense impact assessment or recutting. Use symbol-aware navigation (e.g. Serena), AST-aware structural analysis (e.g. ast-grep), or semantic search (e.g. ck-search) before falling back to grep/glob/read workflows.
 
@@ -33,7 +33,7 @@ Progress:
   - **Active Slices** are temporarily frozen — revise only if fundamentally invalid.
   - **Unstarted (todo) Slices** are fully in scope for revision or resequencing.
 
-- [ ] Step 3: **Recut.** Run at most one recut pass on affected unstarted Slices, then one final backward coverage verification pass. If coverage still fails after one recut, hand back with a precise blocking question rather than looping. Apply the recovery-scope split rule (see Additional Norms) when recovery work touches an active Slice.
+- [ ] Step 3: **Recut.** Run at most one recut pass on affected unstarted Slices, then one final backward coverage verification pass. If coverage still fails after one recut, hand back with a precise blocking question rather than looping. Apply the recovery-scope split rule (see Additional Directives) when recovery work touches an active Slice.
 
 - [ ] Step 4: **Backward Coverage Verification.** Re-run coverage verification across the revised plan. Record the updated outcome in `slices.md ## Coverage Verification`. If any `Must Have` becomes uncovered by the recut, escalate before finalising.
 
