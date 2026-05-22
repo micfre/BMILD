@@ -31,7 +31,7 @@ update_skill_version() {
     local skill_file="$1"
     local tmp_file
 
-    tmp_file="$(mktemp "$PROJECT_ROOT/.SKILL.md.tmp.XXXXXX")"
+    tmp_file="$(mktemp "${TMPDIR:-/tmp}/bmild-skill-version.XXXXXX")"
 
     if ! awk -v version="$VERSION" '
         BEGIN {
@@ -76,7 +76,7 @@ update_skill_version() {
 update_readme_version() {
     local tmp_file
 
-    tmp_file="$(mktemp "$PROJECT_ROOT/.README.md.tmp.XXXXXX")"
+    tmp_file="$(mktemp "${TMPDIR:-/tmp}/bmild-readme-version.XXXXXX")"
 
     if ! awk -v version="$VERSION" '
         BEGIN {
