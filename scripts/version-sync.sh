@@ -6,6 +6,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 VERSION_FILE="$PROJECT_ROOT/VERSION"
 SKILLS_DIR="$PROJECT_ROOT/.agents/skills"
+README_FILE="$PROJECT_ROOT/README.md"
 
 if [[ ! -f "$VERSION_FILE" ]]; then
     echo "Error: VERSION file not found at $VERSION_FILE" >&2
@@ -17,17 +18,20 @@ if [[ ! -d "$SKILLS_DIR" ]]; then
     exit 1
 fi
 
+if [[ ! -f "$README_FILE" ]]; then
+    echo "Error: README file not found at $README_FILE" >&2
+    exit 1
+fi
+
 VERSION="${1:-$(cat "$VERSION_FILE")}"
 
 updated_count=0
 
 update_skill_version() {
     local skill_file="$1"
-    local skill_dir
     local tmp_file
 
-    skill_dir="$(dirname "$skill_file")"
-    tmp_file="$(mktemp "$skill_dir/.SKILL.md.tmp.XXXXXX")"
+    tmp_file="$(mktemp "$PROJECT_ROOT/.SKILL.md.tmp.XXXXXX")"
 
     if ! awk -v version="$VERSION" '
         BEGIN {
@@ -69,6 +73,56 @@ update_skill_version() {
     echo "Updated $skill_file"
 }
 
+update_readme_version() {
+    local tmp_file
+
+    tmp_file="$(mktemp "$PROJECT_ROOT/.README.md.tmp.XXXXXX")"
+
+    if ! awk -v version="$VERSION" '
+        BEGIN {
+            updated = 0
+            expect_badge = 0
+        }
+        /^<!-- bmild-version-badge -->$/ {
+            print
+            expect_badge = 1
+            next
+        }
+        expect_badge == 1 {
+            if ($0 !~ /^!\[Version\]/) {
+                exit 3
+            }
+
+            line = $0
+            if (line !~ /[0-9]+\.[0-9]+\.[0-9]+([.-][0-9A-Za-z.-]+)?(\+[0-9A-Za-z.-]+)?/) {
+                exit 4
+            }
+
+            sub(/[0-9]+\.[0-9]+\.[0-9]+([.-][0-9A-Za-z.-]+)?(\+[0-9A-Za-z.-]+)?/, version, line)
+            print line
+            updated = 1
+            expect_badge = 0
+            next
+        }
+        { print }
+        END {
+            if (!updated) {
+                exit 2
+            }
+            if (expect_badge == 1) {
+                exit 5
+            }
+        }
+    ' "$README_FILE" > "$tmp_file"; then
+        rm -f "$tmp_file"
+        echo "Error: failed to update version line in $README_FILE" >&2
+        exit 1
+    fi
+
+    mv "$tmp_file" "$README_FILE"
+    echo "Updated $README_FILE"
+}
+
 while IFS= read -r skill_file; do
     update_skill_version "$skill_file"
 done < <(find "$SKILLS_DIR" -mindepth 2 -maxdepth 2 -name SKILL.md | sort)
@@ -78,4 +132,6 @@ if [[ "$updated_count" -eq 0 ]]; then
     exit 1
 fi
 
-echo "Synced $updated_count skill files to version $VERSION"
+update_readme_version
+
+echo "Synced $updated_count skill files and README to version $VERSION"
