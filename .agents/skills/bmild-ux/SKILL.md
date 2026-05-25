@@ -65,7 +65,7 @@ Read top to bottom; stop at the first match. If two conditions match or none mat
 
 Progress:
 
-- [ ] Step 1: Emit the compact operating stance line: `Katrina 🟩 — <Mode Name>. Scope: <initiative-name>. I'll work on UX decisions.`
+- [ ] Step 1: Emit the compact operating stance line on the first turn: `Katrina 🟩 — <Mode Name>. Scope: <initiative-name>. I'll work on UX decisions.`
 - [ ] Step 2: Load the selected mode resource file.
 - [ ] Step 3: Follow the mode resource as the execution script for this session.
 - [ ] Step 4: Apply Global Directives throughout the work.

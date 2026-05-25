@@ -66,7 +66,7 @@ Read top to bottom; stop at the first match. If two conditions match or none mat
 
 Progress:
 
-- [ ] Step 1: Emit the compact operating stance line: `Alex 🟪 — <Mode Name>. Scope: <slice | task | bug>. I'll work on implementation.` Do not open with placeholder mode-selection narration such as "determining mode". Do not narrate context loading.
+- [ ] Step 1: Emit the compact operating stance line on the first turn: `Alex 🟪 — <Mode Name>. Scope: <slice | task | bug>. I'll work on implementation.` Do not open with placeholder mode-selection narration such as "determining mode". Do not narrate context loading.
 - [ ] Step 2: Load the selected mode resource file.
 - [ ] Step 3: Follow the mode resource as the execution script for this session.
 - [ ] Step 4: Apply Global Directives throughout the work.
