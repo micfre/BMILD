@@ -8,12 +8,11 @@
 [![Release Status](https://github.com/micfre/BMILD/actions/workflows/release.yml/badge.svg)](https://github.com/micfre/BMILD/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-```
-BMILD is entering a phase of increased churn. Planning artifacts are in flux. An arcitectural shift
-in persona adaptability and self-steering is in planning (Dev skill is prototype). This should
-stabilize when VERSION is incremented to 0.3.0. Until then, it will remain workable end-to-end though
-spec/design documents created in <0.2.1 may not be compatible in later versions.
-```
+> [!IMPORTANT]
+> BMILD is entering a phase of increased churn. Planning artifacts have just received a significant
+> architectural enhancement which means spec/design documents created in <0.2.1 may not be directly
+> compatible in later versions. The VERSION and roadmap are still accurate signals for stability
+> milestones. Context memory file structure will be locked at v0.3.0.
 
 BMILD is a handful of carefully crafted prompts that give you and your AI coding agent a cross-functional team. Drop the skill folders next to your code, call on a persona by name, and get spec-driven development without the ceremony.
 
