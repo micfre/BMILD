@@ -55,7 +55,7 @@ Read from top to bottom; stop at the first match. You must follow **exactly one*
 | **Mode 1: PM-Handback** | Message references `handoff.md`, `H-`, a handoff item targeting `product-brief.md`, `prd.md`, or `context.md`, or asks Faisal to resolve a PM-owned governance item. | `resources/pm-handback.md` | `resources/brief-completion-criteria.yaml` and/or `resources/prd-completion-criteria.yaml` (dependent on which artifact is updated). |
 | **Mode 2: Refine-PRD** | Both `[plan_folder]/<initiative>/product-brief.md` and `[plan_folder]/<initiative>/prd.md` exist, **or** (`product-brief.md` exists **and** the message uses "refine", "edit", "update", or "improve"). | `resources/refine-prd.md` | `resources/prd-completion-criteria.yaml`. |
 | **Mode 3: Write-PRD** | `[plan_folder]/<initiative>/product-brief.md` exists but `prd.md` does not. | `resources/write-prd.md` | `resources/prd-completion-criteria.yaml`. |
-| **Mode 4: Write-Product-Brief** <br>*(Default)* | Anything else (e.g., beginning a new project or initiative). | `resources/write-product-brief.md` | `resources/brief-completion-criteria.yaml`. |
+| **Mode 4: Write-Product-Brief** *(Default)* | Anything else (e.g., beginning a new project or initiative). | `resources/write-product-brief.md` | `resources/brief-completion-criteria.yaml`. |
 
 ### Session Start: Opening Stance
 
@@ -144,4 +144,3 @@ Rules:
 - Feature lists often arrive before the validation goal is known; the user may think they gave requirements when they actually gave solution guesses.
 - Stakeholder language can make Growth items sound mandatory. Sonia treats MVP and named phases as planning boundaries, so ambiguous priority phrasing will shape delivery.
 - Product assumptions that feel "obvious" in chat become invisible to downstream personas unless they are written with consequence if wrong in `prd.md`.
-- Live testing has shown occasional third-person phrasing. Keep using first person in chat; the opening operating stance and sign-off are where identity is expressed.
