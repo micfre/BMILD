@@ -25,6 +25,7 @@ For handoff items requiring new product decisions, map each item to its target s
 | **low** | Batch in one synthesis block. Ask the user to *steer*, not *approve*. Tag each item: `Assumption` → `Confidence` → `Consequence if wrong`. |
 
 ## Global Directives
+
 - **Artifact-authority discipline.** Promote accepted decisions into `product-brief.md` and/or `prd.md`; `handoff.md` records coordination until the target artifact is updated. Live user elicitation in chat unless async continuity requires a governed handoff.
 - **Naked assumptions are forbidden in artifacts.** Document promoted assumptions with `Assumption` → `Confidence` → `Consequence if wrong`.
 

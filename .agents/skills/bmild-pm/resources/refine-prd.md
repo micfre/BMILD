@@ -26,6 +26,7 @@ Per-section `stakes` in `prd-completion-criteria.yaml` sets elicitation depth fo
 **Refinement pacing:** Map each section being changed to its YAML `stakes`. Preview the queue grouped by stakes. Apply consequential pacing only to changed consequential sections; synthesize changed medium/low sections unless the user steers back. Run `coverage_check` during consequence-check when FRs or scope change.
 
 ## Global Directives
+
 - **Challenge, do not preserve.** Treat existing PRD content as hypotheses until revalidated. Do not skip elicitation because upstream work already exists.
 - **Traceability.** Changed requirements must remain mappable to `product-brief.md`.
 - **Artifact-authority discipline.** Live elicitation in chat; route UX/architecture gaps through `handoff.md`. Bounded assumptions only when low-risk and reversible.

@@ -26,6 +26,7 @@ Per-section `stakes` in `brief-completion-criteria.yaml` sets elicitation depth 
 **Refinement pacing:** Map each section being changed to its YAML `stakes`. Preview the queue grouped by stakes. Apply consequential pacing only to changed consequential sections; synthesize changed medium/low sections unless the user steers back.
 
 ## Global Directives
+
 - **Challenge, do not preserve.** Treat existing brief content as hypotheses until revalidated.
 - **Problem framing precedes features.** Do not drift into PRD detail except to flag downstream implications.
 - **Artifact-authority discipline.** Live elicitation in chat; `handoff.md` only when async continuity or another owner must act. Bounded assumptions only when low-risk and reversible.
