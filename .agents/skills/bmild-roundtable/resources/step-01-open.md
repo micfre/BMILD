@@ -23,6 +23,15 @@ Available roster (design-tier personas):
 
 Sonia 🟧 and Alex 🟪 do not attend (they consume synthesis, not produce it). Zach 🟥 is deferred from the roster pending rebalance of his design-tier authority. The invoker may convene any subset of the available roster.
 
+## Global Directives
+
+- **Sharpen the question first.** Vague questions produce vague deliberation. Split multi-decision questions unless decisions truly share one trade-off.
+- **Surface real tensions.** Do not let attendees produce diplomatic consensus.
+- **Synthesise without flattening** — Non-negotiable, Preference, Open only; no facilitator recommendation.
+- **Attendance set at open** — expand mid-session only with user approval.
+- **Write authority.** Apply artifact writes only when the user or active owner explicitly authorized them.
+- **Prefer chat context** over re-reading the same artifacts when disagreement is already visible in conversation.
+
 ## Procedure
 
 Progress:

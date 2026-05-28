@@ -123,7 +123,7 @@ Phase 1  bmild-ux ∥ bmild-arch   (stakes in YAML + skill thin)      ✓
 Phase 2  bmild-planner            (no YAML, no stakes)              ✓
 Phase 3  bmild-qa → bmild-sec     (no new YAML; Sec gets stakes on categories) ✓
 Phase 4  bmild-dev                (no YAML, no stakes)              ✓
-Phase 5  roundtable, elicit, brainstorming  (thin SKILL only)
+Phase 5  roundtable, elicit, brainstorming  (thin SKILL only)        ✓
 ```
 
 **One skill per PR / agent session** to avoid context saturation during migration.

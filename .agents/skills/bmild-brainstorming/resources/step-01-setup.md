@@ -9,6 +9,12 @@ Gather the brainstorming topic and goals, confirm understanding, then route to t
 - `.bmild.toml`: resolved `plan_folder` and optional `user_name`.
 - Any topic or context already present in conversation.
 
+## Global Directives
+
+- **Registry discipline.** All techniques from `resources/brain-methods.yaml` — do not invent names from memory. Local registry labels may differ from familiar brainstorming labels.
+- **Ownership boundary.** Return ideas to the invoking persona; do not write their artifact directly unless write authority is explicit.
+- **Users often arrive with one preferred answer** — still generate enough divergent volume to reveal alternatives.
+
 ## Procedure
 
 Progress:

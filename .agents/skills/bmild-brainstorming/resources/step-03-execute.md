@@ -9,6 +9,13 @@ Facilitate the selected technique(s) as a creative coach — genuine back-and-fo
 - Selected technique names (and phase order if progressive flow) carried forward from the technique-selection step.
 - `resources/brain-methods.yaml` for `facilitation_prompts` and `energy_level` fields per technique.
 
+## Global Directives
+
+- **Quantity goal:** Aim for 100+ ideas before organisation. First ~20 are usually obvious; insight emerges around ideas 50–100.
+- **Anti-bias protocol:** Consciously shift creative domain every 10 ideas — UX → business → technical constraints → social impact → edge cases.
+- **Organisation gate:** Offer organisation only when user explicitly requests, or 100+ ideas and 45+ minutes elapsed with depleted energy.
+- **Elicitation suggestion:** Strong idea needing stress-test → suggest `bmild-elicit`; do not invoke autonomously.
+
 ## Procedure
 
 Progress:

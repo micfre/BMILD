@@ -11,6 +11,15 @@ Understand the content being elicited, identify the content type and most likely
 
 > **Interchangeable with BMAD source:** `_bmad/core/workflows/advanced-elicitation/methods.csv` uses the same format. Drop in a new file to update the method set — no changes to skill logic required.
 
+## Global Directives
+
+- **Method registry discipline.** All methods from `./methods.yaml` — keys: `num, category, method_name, description, output_pattern`. Do not use methods from memory.
+- **Context-sensitive selection.** Read and understand content before selecting methods.
+- **Start proactively, then choose interactively.** Run one best-fit method immediately; then offer 2–3 follow-ups — do not run multiple additional methods without user selection.
+- **Build on the current version.** Each method applies to the working version, not the original.
+- **Domain boundaries.** If refinement crosses into another persona's authority, name the boundary and suggest that persona — do not decide for them.
+- **Debate persona integration.** For collaboration methods during an active debate/roundtable context, use Faisal, Katrina, Lance, and Rahat as personas.
+
 ## Procedure
 
 Progress:

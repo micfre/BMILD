@@ -11,6 +11,14 @@ Apply the selected method to the current working content, assess whether to appl
 - Current working version of the content (use this version, not the original if already enhanced).
 - `./methods.yaml` — required for `[a] List all`.
 
+## Global Directives
+
+- **Apply with judgment.** After each method, assess whether output is a clear improvement consistent with the user's direction. Apply and report when yes. When competing alternatives or ambiguous direction: `[y] apply / [n] discard / [other] instructions`. User can say "undo" to revert.
+- **Loop until `[x]`.** Re-present the 2–3 method menu after each method. Do not exit until user selects `[x]`.
+- **Provocative alternatives** require user choice before application — do not auto-apply.
+- **Artifact writes.** Pause for user confirmation before writing any artifact not owned by the active caller.
+- **Roundtable suggestion.** Structured multi-persona deliberation needed → suggest `bmild-roundtable`; do not convene autonomously.
+
 ## Procedure
 
 Apply the selected method to the current version of the content — not the original if it has already been enhanced. Show the work — present what the method revealed, not just the changed output. Apply clear improvements consistent with the user's stated direction and report what was applied. Halt and ask only when the method produces competing alternatives or genuinely ambiguous direction. Always re-present the 1–3, `[r]`, `[a]`, `[x]` menu after each method — iteration is the point. Do not exit until the user selects `[x]`.
@@ -56,7 +64,13 @@ Apply the selected method to the current version of the content — not the orig
 
    After displaying: *"Select any method by number, or return to [r] your current 3 / [x] proceed."*
 
-4. **[x] Proceed** — Close the elicitation session. See the `Exit and Return` section in `SKILL.md` for the full close shape.
+4. **[x] Proceed** — Close the elicitation session:
+
+   - State methods applied, key improvements, changes discarded if any.
+   - Present final working version of the content.
+   - If invoked from a named persona workflow, produce a handoff note (target owner, artifact/section, patch-ready changes, open decisions) rather than writing their artifact.
+   - Save only when user invoked with explicit write authority or caller owns the target; update `registry.md` if document changed meaningfully.
+   - Sign off: *"Facilitator ⚡ closing. Next I will turn this back to [persona name] [icon]."*
 
 5. **Direct text feedback** — Apply the feedback directly to the working content, confirm what changed, and re-present the menu.
 
@@ -66,7 +80,7 @@ Apply the selected method to the current version of the content — not the orig
 
 - **Number selection or direct feedback** → complete the method, re-present the menu, remain in this resource.
 - **`[r]`** → load `resources/step-01-select.md` carrying current working content forward.
-- **`[x]`** → close the session following the `Exit and Return` shape in `SKILL.md`.
+- **`[x]`** → close per item 4 above (Exit and Return rules).
 
 ## Definition of Done
 
