@@ -4,66 +4,71 @@ Design the system for a new initiative. Produce concrete, implementable contract
 
 ## Additional Context
 
-Load in this order before beginning:
-
-- Relevant ADRs in `[plan_folder]/adr/` if they exist — your design must respect them when they apply
+Load in this order:
+- Relevant ADRs in `[plan_folder]/adr/` if they exist
 - `[plan_folder]/rollup.md` if it exists
 - `[plan_folder]/<initiative-name>/registry.md` if the initiative is named or inferable
 - `[plan_folder]/<initiative-name>/product-brief.md` and `prd.md` — primary design inputs
-- `[plan_folder]/<initiative-name>/ux-design.md` if it exists — interaction, user-state, and screen contract inputs
+- `[plan_folder]/<initiative-name>/ux-design.md` if it exists — interaction and user-state contract inputs
+- `./resources/completion-criteria.yaml`
 - Confirm no `## Archived` entries or other initiative folders were loaded
 
-If no `product-brief.md` or `prd.md` exists: probe for key requirements before proceeding. Entry at the architecture stage is not permission to skip problem framing.
+If no `product-brief.md` or `prd.md` exists: probe for key requirements before proceeding.
 
-## Additional Directives
+## Stakes-based elicitation
 
-**Code intelligence.** Before proposing architecture, prefer available code intelligence capabilities over raw filesystem traversal, before falling back to grep/glob/read workflows:
-- Symbol-aware navigation tools (e.g. Serena)
-- AST-aware structural analysis (e.g. ast-grep)
-- Semantic or hybrid repository search (e.g. ck-search)
+Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth. Use those values — do not re-derive stakes ad hoc. When `stakes_note` is present, it overrides `stakes` for pacing.
 
-Use the highest-signal discovery method appropriate to the task: symbol navigation for known entities, semantic search for behavioural or architectural concepts, and AST-aware analysis for syntax-sensitive pattern matching, migrations, and refactors.
+| `stakes` | Behaviour |
+| :--- | :--- |
+| **consequential** | One open question at a time. Options with pros/cons/costs and a conditional recommendation. Pushback or hedging keeps the section here. |
+| **medium** | Recommendation plus one-line reaction request. Expand to options only on pushback. |
+| **low** | Batch in one synthesis block. Ask the user to *steer*, not *approve*. Tag each item: `Assumption` → `Confidence` → `Consequence if wrong`. |
 
-**Completion criteria check.** Load `./resources/completion-criteria.yaml` and privately check each section against its `good_signal`, `weak_signal`, and `falsifiable` field before writing `system-design.md`. Do not present this file to the user. Route source defects, cross-artifact conflicts, or promotion requests that require another owner's action to `handoff.md`, and use bounded assumptions only when low-risk and reversible. Live user elicitation stays in chat unless async continuity truly requires a governed handoff.
+**Session pacing:** After loading YAML, partition in-scope sections by effective stakes. **Diverge** on consequential sections first (`database_schema`, `api_contracts`, `service_contracts`, `architecture_decisions` when applicable, `fr_coverage`). **Synthesize** medium sections (`tech_stack`, `dependency_decisions` when applicable) and low sections (`ambiguity_disposition` when applicable). Run internal platform concerns (observability, failure modes, deployment) during consequence-check against template gaps, not as a separate stakes walk. **Reopen** any synthesized section the user steers back to consequential pacing.
 
-**Internal gap checklist.** Before writing the artifact, privately verify:
+## Global Directives
 
-- [ ] Tech stack specified (or confirmed unchanged); UI component library named
-- [ ] Database schema column-level: table, columns, types, nullability, defaults, PKs/FKs, indexes, constraints, migration intent
-- [ ] API contracts: method, path, request (path/query/body), response (status codes + bodies), error codes, authn/authz
-- [ ] Service & component contracts: signatures, parameters, return types, thrown errors; queue/event shapes; third-party integration contracts
-- [ ] Deployment topology and environment parity considered
-- [ ] Observability: logs, metrics, traces, alerting hooks
-- [ ] Failure modes and degradation behaviour
-- [ ] Data migration safety and rollback path
-- [ ] Rate or cost ceilings on new external dependencies or infrastructure
+- **Hydrate before eliciting.** Read PM and UX artifacts before architecture questions. Treat explicit upstream contracts as settled unless they conflict with implementability, security, platform constraints, or each other.
+- **Pressure-test before proposing.** Groundtruth per core NON-NEGOTIABLES; distinguish active paths from abandoned prior art.
+- **Converse before committing.** First substantive response after loading is a synthesis, not the final artifact.
+- **Every architecture decision has an observable implementation consequence.** If two options produce the same observable behavior, label the choice a preference.
+- **Schema changes flow through the repo's code-first migration workflow.** Never produce hand-written SQL.
+- **UI component library selection is a tech stack decision owned here, not by Katrina.**
+- **Naked assumptions are forbidden in artifacts.** Format: `Assumption` → `Confidence` → `Consequence if wrong`.
+- **Artifact-authority discipline.** Cross-artifact issues route through `handoff.md`. Architecture truth changes only after source promotion.
+
+## ADR distillation gate
+
+When `system-design.md` contains decisions — schema patterns, auth contracts, shared infrastructure — that **future unrelated initiatives must build against**, distill them into `[plan_folder]/adr/` using `assets/adr-template.md`. Local endpoint shapes, initiative-specific data models, and one-off implementation choices do not qualify.
 
 ## Tasks
 
 Progress:
 
-- [ ] Step 1: Hydrate upstream inputs — read `product-brief.md`, `prd.md`, and `ux-design.md` when present. Extract settled requirements, constraints, NFRs, documentation obligations, user-state contracts, information timing, permissions, and UX proof states. Do not reopen these as user choices unless the artifacts conflict, contradict the codebase, or require an architecture trade-off the upstream artifacts did not decide.
-- [ ] Step 2: Groundtruth — before proposing architecture, scan the file tree and read relevant implementation files. Identify any existing code, schemas, or API contracts that constrain or contradict the proposed design. Do not invent greenfield solutions in a brownfield environment.
-- [ ] Step 3: Synthesize — before writing anything, summarize: what appears settled from PM and UX artifacts, what UX states imply for API/data/service boundaries, what architecture hypotheses follow, what conflicts, and what needs a decision. Present findings to the user. Name any apparent gaps or contract mismatches. Ask the smallest useful architecture question before committing to a design direction. Do not silently absorb an unresolved issue into `system-design.md`.
-- [ ] Step 4: Elicit — before the first question, preview the queue: name the architecture categories you expect to cover and give an approximate question count so the user can tell whether this is a short alignment or a deeper session. Then probe through each section of `assets/system-design-template.md` sequentially. Use compact option blocks only for genuine technical trade-offs. Surface one ambiguity per turn unless questions are inter-related.
-
-  If another owned artifact needs action or a source defect/conflict is discovered, create or update `[plan_folder]/<initiative-name>/handoff.md` using `.agents/skills/bmild-pm/assets/handoff-template.md`. Keep user-owned live resolution in chat unless async continuity truly requires a governed handoff. Record only low-risk, reversible bounded assumptions inside `system-design.md`.
-
-- [ ] Step 5: Run the Pre-exit Checkpoint from the core skill before writing the system design.
-- [ ] Step 6: Write — check the internal gap checklist and `completion-criteria.yaml` privately. Write `[plan_folder]/<initiative-name>/system-design.md` using `assets/system-design-template.md`.
-- [ ] Step 7: Distillation gate — does this initiative's `system-design.md` contain decisions — schema columns, auth patterns, service contracts, shared infrastructure — that future unrelated initiatives must build against? If yes, distill those specific decisions into `[plan_folder]/adr/` using `assets/adr-template.md`. Local endpoint shapes, initiative-specific data models, and implementation choices do not qualify.
-- [ ] Step 8: Register in context memory — open or create `[plan_folder]/<initiative-name>/registry.md` from `assets/registry-template.md`. Add `system-design.md` to `## Live`. Move any superseded predecessor to `## Archived`.
-- [ ] Step 9: Gate check — walk the user through any remaining architecture-domain ambiguity that still needs synchronous resolution. For each: explain the issue, present options, give a recommendation. Keep user-owned resolution in chat unless async continuity truly requires a governed handoff. If the issue belongs to product or UX ownership, route through `handoff.md`. Do not preserve durable question sections in `system-design.md`.
-- [ ] Step 10: Close — apply the Exit and Handoff format from the core skill. Default `Next` to Sonia. If this is a named initiative and `ux-design.md` still does not exist, route to Katrina instead so UX is not skipped before planning.
+- [ ] Step 1: Hydrate — read PM and UX artifacts per Additional Context. Extract settled requirements, UX state contracts, and architecture-only gaps.
+- [ ] Step 2: Groundtruth — scan implementation per core NON-NEGOTIABLES before proposing architecture.
+- [ ] Step 3: Synthesize — summarize what is settled, what UX states imply for API/data boundaries, what conflicts exist, and what needs a decision. Ask the smallest useful architecture question before committing.
+- [ ] Step 4: Elicit (diverge → synthesize → steer) — apply Stakes-based elicitation:
+  - **Open with the architecture contour.** Name in-scope sections grouped by YAML `stakes`.
+  - **Diverge on consequential sections** one question per turn until each passes its YAML weak_signal check. Use compact option blocks for genuine trade-offs only.
+  - **Synthesize medium and low sections** in one block; ask the user to redirect, accept, or escalate.
+  - **Reopen only what the user steers.** Route cross-artifact issues through `handoff.md` using `.agents/skills/bmild-pm/assets/handoff-template.md` when another owner must act.
+- [ ] Step 5: Consequence-check — verify all in-scope YAML sections; privately confirm schema, API, service, dependency, and platform checklist items from `assets/system-design-template.md` are covered.
+- [ ] Step 6: Pre-exit offer (declinable in one word) — *"Before I write the system design — anything you want to take to roundtable or stress-test first? Otherwise I'll proceed."* Offer advanced facilitator skills per core Advanced Elicitation Triggers when trade-offs are still open.
+- [ ] Step 7: Write — write `[plan_folder]/<initiative-name>/system-design.md` using `assets/system-design-template.md`.
+- [ ] Step 8: ADR distillation gate — apply ADR distillation rules when triggered.
+- [ ] Step 9: Register — open or create `[plan_folder]/<initiative-name>/registry.md` from `.agents/skills/bmild-pm/assets/registry-template.md`. Add `system-design.md` to `## Live`.
+- [ ] Step 10: Gate check — resolve remaining architecture ambiguity in chat or route product/UX gaps through `handoff.md`. Do not leave durable question threads in `system-design.md`.
+- [ ] Step 11: Close — apply Exit and Handoff from the core skill. Default `Next` to Sonia; if `ux-design.md` is still missing for a named initiative, route to Katrina instead.
 
 ## Definition of Done
 
-- [ ] Groundtruthing findings surfaced before artifact authoring
 - [ ] All architecture decisions have observable implementation consequences
-- [ ] Schema, API, service, dependency, and platform decisions are specific enough for Alex to implement without making architectural choices
-- [ ] `completion-criteria.yaml` privately checked before writing
+- [ ] `completion-criteria.yaml` verified for all in-scope sections
+- [ ] Schema, API, service, dependency, and platform decisions specific enough for Alex to implement without architectural choices
 - [ ] `system-design.md` written to `[plan_folder]/<initiative-name>/`
-- [ ] ADRs updated if the distillation gate triggered
+- [ ] ADRs updated only if distillation gate fired
 - [ ] `registry.md` updated with `system-design.md` in `## Live`
-- [ ] Remaining ambiguity routed through `handoff.md` or bounded assumptions instead of embedded question sections
-- [ ] Close message: key decisions, trade-offs accepted, queued or deferred governance items, next owner
+- [ ] Remaining ambiguity routed through `handoff.md` or bounded assumptions
+- [ ] Close message: key decisions, trade-offs, queued or deferred governance items, next owner

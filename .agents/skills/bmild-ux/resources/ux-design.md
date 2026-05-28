@@ -5,62 +5,68 @@ Design the frontend experience for a new initiative. Produce observable, testabl
 ## Additional Context
 
 Load in this order:
-- Project-root `DESIGN.md` if it exists — your design must be consistent with established global UX patterns
+- Project-root `DESIGN.md` if it exists — design must be consistent with established global UX patterns
 - `[plan_folder]/rollup.md` if it exists
 - `[plan_folder]/<initiative-name>/registry.md` if the initiative is named or inferable
 - `[plan_folder]/<initiative-name>/context.md` if it exists
 - `[plan_folder]/<initiative-name>/product-brief.md` and `prd.md` — primary design inputs
 - `[plan_folder]/<initiative-name>/system-design.md` if it exists — technical constraints only; not a source of UX intent
+- `./resources/completion-criteria.yaml`
 - Confirm no `## Archived` entries or other initiative folders were loaded
 
 If no `product-brief.md` or `prd.md` exists: probe for key user needs and requirements before proceeding. Entry at the UX stage is not permission to skip problem framing.
 
-## Additional Directives
+## Stakes-based elicitation
 
-- Read `product-brief.md` and `prd.md` before asking UX questions. Read `system-design.md` when present to understand fixed technical constraints. Extract settled requirements, user journeys, priority boundaries, NFRs, documentation obligations, fixed component/library constraints, auth boundaries, data availability, and latency/platform limits. Do not reopen PM requirements as user choices unless the artifacts conflict, contradict existing UX patterns, or require a UX trade-off the PM artifacts did not decide. Do not infer user goals, flow priority, content hierarchy, or screen intent from backend shape.
-- After reading PM artifacts, formulate a concise UX synthesis: what is settled, what user-state hypotheses follow, and which UX-only decisions remain. Ask only those remaining questions; do not invent alternatives merely to satisfy an option-presenting pattern.
-- Durable global patterns (palette, typography, global component rules) → project-root `DESIGN.md`. Initiative-specific flows and screens → `[plan_folder]/<initiative-name>/ux-design.md`.
-- If Lance has fixed a UI component library, design within its constraints. If unfixed, a recommendation here carries weight — Lance owns the final tech stack decision.
-- Before writing, load `./resources/completion-criteria.yaml` and privately check each section against its `good_signal`, `weak_signal`, and `falsifiable` field.
+Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth. Use those values — do not re-derive stakes ad hoc. When `stakes_note` is present, it overrides `stakes` for pacing.
 
-Prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows:
-- Use symbol-aware navigation tools (e.g. Serena)
-- AST-aware structural analysis (e.g. ast-grep)
-- Semantic or hybrid repository search (e.g. ck-search)
+| `stakes` | Behaviour |
+| :--- | :--- |
+| **consequential** | One open question at a time. Options with pros/cons/consequences and a conditional recommendation. Pushback or hedging keeps the section here. |
+| **medium** | Recommendation plus one-line reaction request. Expand to options only on pushback. |
+| **low** | Batch in one synthesis block. Ask the user to *steer*, not *approve*. Tag each item: `Assumption` → `Confidence` → `Consequence if wrong`. |
 
-Use the highest-signal discovery method: symbol navigation for known entities, semantic search for behavioural or architectural concepts, AST-aware analysis for syntax-sensitive pattern matching.
+**Session pacing:** After loading YAML, partition in-scope sections by effective stakes. **Diverge** on consequential sections first (`information_architecture`, `user_flows`, `interaction_model`, `edge_states`, `fr_coverage`). **Synthesize** medium sections (`visual_design_language`, `accessibility` when not elevated by `stakes_note`) and low sections (`ambiguity_disposition` when applicable) in one compact block. **Reopen** any synthesized section the user steers back to consequential pacing.
 
-Internal gap checklist — check privately before the artifact:
-- [ ] Information architecture: navigation model, page/view hierarchy, layout regions, data-where defined
-- [ ] User flows: entry points, happy paths, error paths, exit conditions; edge cases (empty / loading / validation) called out
-- [ ] Interaction model: UI elements, what they do, state they carry; modal/drawer/dialog lifecycles defined
-- [ ] Visual language: palette, typography, spacing, motion (only when meaningful), component visual states (default / hover / active / disabled / focused / error)
-- [ ] Empty states, error states, mobile layout, and accessibility considered
-- [ ] Component library decision aligned with Lance's tech stack (or recommendation surfaced)
+## Global Directives
+
+- **Observable decisions only.** A UX decision exists only if an observable user behavior or testable screen state distinguishes it from alternatives; otherwise label it preference.
+- **Hydrate before eliciting.** Read PM artifacts and architecture constraints before asking UX questions. Do not reopen settled PM requirements unless artifacts conflict, contradict existing UX patterns, or require a UX trade-off PM did not decide. Do not infer user goals from backend shape.
+- **Elicit before writing.** Write at the end or at a meaningful checkpoint.
+- **Naked assumptions are forbidden in artifacts.** Every assumption, deferral, and open question carries `Assumption` → `Confidence` → `Consequence if wrong`.
+- **Artifact-authority discipline.** `handoff.md` is for source defects, cross-artifact conflicts, and promotion requests requiring another owner. Live elicitation in chat unless async continuity requires a governed handoff. Bounded assumptions only when low-risk and reversible.
+
+## Global pattern distillation
+
+When this initiative's decisions establish interaction principles, visual language, or UX patterns that **all future initiatives must conform to**, distill those elements into project-root `DESIGN.md` using `assets/design-md-template.md`. Initiative-local flows, screen-specific states, and scoped interaction decisions do not qualify.
 
 ## Tasks
 
 Progress:
 
-- [ ] Step 1: Hydrate upstream inputs — read PM artifacts and architecture constraints (see Additional Directives). Extract settled requirements, UX constraints, documentation obligations, and open UX decisions.
-- [ ] Step 2: Groundtruth — verify the current state of the codebase and any existing global design system. Identify patterns that constrain or shape the new design. Use code intelligence tools (see Additional Directives) before falling back to grep/glob/read. Do not invent patterns that contradict established global UX.
-- [ ] Step 3: Synthesize — summarize: what appears settled from PM artifacts, what technical constraints from architecture apply, what user-state hypotheses follow, what user-state decisions are missing, and what conflicts exist. Ask the smallest useful UX question before committing to an interaction model. Do not silently absorb unresolved issues into the artifact.
-- [ ] Step 4: Elicit — before the first question, preview the queue: name the UX categories you expect to cover and give an approximate question count so the user can tell whether this is a short alignment or a deeper session. Then probe through each section of `assets/ux-design-template.md` sequentially. Apply all Global Directives from the core skill. Surface one ambiguity per turn unless questions are inter-related. Elicit before producing final designs; write at a meaningful checkpoint. Probe backward on: empty states, error states, loading states, mobile layout, and accessibility before closing.
-- [ ] Step 5: Run the Pre-exit Checkpoint from the core skill before writing the UX design.
-- [ ] Step 6: Write — check the internal gap checklist and `completion-criteria.yaml` privately. Resolve user-owned UX gaps through elicitation in chat or bounded assumptions when safe. Route product or architecture source issues through `handoff.md`. Write `[plan_folder]/<initiative-name>/ux-design.md` using `assets/ux-design-template.md`.
-- [ ] Step 7: Distillation gate — do this initiative's decisions establish interaction principles, visual language decisions, or UX patterns that all future initiatives must conform to? If yes, distill those specific elements into project-root `DESIGN.md` using `assets/design-md-template.md` for creation, or preserve its existing structure for updates. Initiative-local flows, screen-specific states, and scoped interaction decisions do not qualify.
-- [ ] Step 8: Register in context memory — open or create `[plan_folder]/<initiative-name>/registry.md` from `assets/context-memory-template.md`. Add `ux-design.md` (and `DESIGN.md` if updated) to `## Live`. Move any superseded predecessor to `## Archived`.
-- [ ] Step 9: Gate check — walk the user through any remaining UX-domain ambiguity that still needs synchronous resolution. For each: explain the issue, present options, give a recommendation. If it still needs another owner's judgment after chat clarification, route it through `handoff.md`. Do not preserve durable question sections in `ux-design.md`.
-- [ ] Step 10: Close — apply the Exit and Handoff format from the core skill.
+- [ ] Step 1: Hydrate — read PM artifacts and architecture constraints per Additional Context. Extract settled requirements, UX constraints, and open UX-only decisions.
+- [ ] Step 2: Groundtruth — verify codebase and global design system per core NON-NEGOTIABLES.
+- [ ] Step 3: Synthesize — summarize what is settled, what user-state hypotheses follow, what is missing, and what conflicts exist. Ask the smallest useful UX question before committing to an interaction model.
+- [ ] Step 4: Elicit (diverge → synthesize → steer) — apply Stakes-based elicitation:
+  - **Open with the UX contour.** Name in-scope sections grouped by YAML `stakes`.
+  - **Diverge on consequential sections** one question per turn until each passes its YAML weak_signal check.
+  - **Synthesize medium and low sections** in one block; ask the user to redirect, accept, or escalate.
+  - **Reopen only what the user steers.** Capture tangents in chat for the next probe or synthesis block.
+- [ ] Step 5: Consequence-check — privately verify all in-scope YAML sections; confirm empty, loading, error, mobile, and accessibility coverage for consequential flows.
+- [ ] Step 6: Pre-exit offer (declinable in one word) — *"Before I write the UX design — anything you want to take to roundtable or stress-test first? Otherwise I'll proceed."* Offer advanced facilitator skills per core Advanced Elicitation Triggers when trade-offs are still open.
+- [ ] Step 7: Write — write `[plan_folder]/<initiative-name>/ux-design.md` using `assets/ux-design-template.md`.
+- [ ] Step 8: Distillation gate — apply Global pattern distillation rules when triggered.
+- [ ] Step 9: Register — open or create `[plan_folder]/<initiative-name>/registry.md` from `.agents/skills/bmild-pm/assets/registry-template.md`. Add `ux-design.md` (and `DESIGN.md` if updated) to `## Live`.
+- [ ] Step 10: Gate check — resolve remaining UX ambiguity in chat or route product/architecture gaps through `handoff.md`. Do not leave durable question threads in `ux-design.md`.
+- [ ] Step 11: Close — apply Exit and Handoff from the core skill.
 
 ## Definition of Done
 
-- [ ] Groundtruthing findings surfaced before artifact authoring
-- [ ] All UX decisions are observable or testable — preferences are labelled as such
+- [ ] All UX decisions are observable or testable — preferences labelled as such
+- [ ] `completion-criteria.yaml` verified for all in-scope sections
 - [ ] Empty, error, loading, mobile, and accessibility states considered
-- [ ] `completion-criteria.yaml` privately checked before writing
 - [ ] `ux-design.md` written to `[plan_folder]/<initiative-name>/`
-- [ ] `DESIGN.md` updated if distillation gate triggered
+- [ ] `DESIGN.md` updated only if distillation gate fired
 - [ ] `registry.md` updated with artifacts in `## Live`
-- [ ] Remaining ambiguity resolved in chat, routed through `handoff.md`, or handled as bounded assumptions instead of embedded question sections
-- [ ] Close message: key decisions, trade-offs accepted, queued or deferred governance items, next owner
+- [ ] Remaining ambiguity resolved in chat, routed through `handoff.md`, or handled as bounded assumptions
+- [ ] Close message: key decisions, trade-offs, queued or deferred governance items, next owner

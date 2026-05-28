@@ -9,55 +9,60 @@ Load in this order:
 - `[plan_folder]/rollup.md` if it exists
 - `[plan_folder]/<initiative-name>/registry.md`
 - `[plan_folder]/<initiative-name>/context.md` if it exists
-- `[plan_folder]/<initiative-name>/ux-design.md` in full — this is the design you are modifying
-- `[plan_folder]/<initiative-name>/product-brief.md` and `prd.md` for current requirements
-- `[plan_folder]/<initiative-name>/system-design.md` if it exists — technical constraints only; not a source of UX intent
+- `[plan_folder]/<initiative-name>/ux-design.md` in full
+- `[plan_folder]/<initiative-name>/product-brief.md` and `prd.md`
+- `[plan_folder]/<initiative-name>/system-design.md` if it exists — technical constraints only
+- `./resources/completion-criteria.yaml`
 - Confirm no `## Archived` entries or other initiative folders were loaded
 
-## Additional Directives
+## Stakes-based elicitation
 
-- Read current `product-brief.md` and `prd.md` before asking refinement questions. Read `system-design.md` when present to understand fixed technical constraints. Treat explicit PM requirements as settled unless the refinement target exposes a conflict, stale requirement, UX infeasibility, or UX-owned trade-off. Do not infer user intent from architecture.
-- If live `handoff.md` items target `ux-design.md` or `DESIGN.md`, resolve them in this refinement or explicitly defer, reject, supersede, or route them onward as appropriate.
-- Durable global patterns (palette, typography, global component rules) → project-root `DESIGN.md`. Initiative-specific flows → `[plan_folder]/<initiative-name>/ux-design.md`.
-- Before writing, re-check the sections being modified against `./resources/completion-criteria.yaml` privately.
+Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth for **changed** sections. Use those values — do not re-derive stakes ad hoc. When `stakes_note` is present, it overrides `stakes` for pacing.
 
-Prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows:
-- Use symbol-aware navigation tools (e.g. Serena)
-- AST-aware structural analysis (e.g. ast-grep)
-- Semantic or hybrid repository search (e.g. ck-search)
+| `stakes` | Behaviour |
+| :--- | :--- |
+| **consequential** | One open question at a time. Options with pros/cons/consequences and a conditional recommendation. |
+| **medium** | Recommendation plus one-line reaction request. Expand to options only on pushback. |
+| **low** | Batch in one synthesis block. Ask the user to *steer*, not *approve*. Tag each item: `Assumption` → `Confidence` → `Consequence if wrong`. |
 
-Use the highest-signal discovery method: symbol navigation for known entities, semantic search for behavioural or architectural concepts, AST-aware analysis for syntax-sensitive pattern matching.
+**Refinement pacing:** Map each section being changed to its YAML `stakes`. Preview the queue grouped by stakes. Apply consequential pacing only to changed consequential sections; synthesize changed medium/low sections unless the user steers back.
 
-Internal gap checklist — re-check privately for affected sections before the artifact:
-- [ ] Information architecture: navigation model, page/view hierarchy, layout regions, data-where defined
-- [ ] User flows: entry points, happy paths, error paths, exit conditions; edge cases (empty / loading / validation) called out
-- [ ] Interaction model: UI elements, what they do, state they carry; modal/drawer/dialog lifecycles defined
-- [ ] Visual language: palette, typography, spacing, motion (only when meaningful), component visual states (default / hover / active / disabled / focused / error)
-- [ ] Empty states, error states, mobile layout, and accessibility considered
-- [ ] Component library decision aligned with Lance's tech stack (or recommendation surfaced)
+## Global Directives
+
+- **Challenge, do not preserve.** Treat existing UX content as hypotheses until revalidated.
+- **Hydrate before eliciting.** Read current PM artifacts; do not reopen settled requirements unless the refinement target exposes conflict or stale content.
+- **Observable decisions only.** Label preferences as preferences.
+- **Artifact-authority discipline.** Live elicitation in chat; `handoff.md` when another owner must act. Bounded assumptions only when low-risk and reversible.
+
+## Global pattern distillation
+
+When refined decisions qualify for project-root `DESIGN.md` (global interaction principles and visual language only), apply the same distillation gate as UX-Design mode.
 
 ## Tasks
 
 Progress:
 
-- [ ] Step 1: Hydrate upstream inputs — read current PM artifacts and architecture constraints (see Additional Directives). Extract settled requirements, UX constraints, and what the change affects.
-- [ ] Step 2: Identify refinement target — determine what has changed or is being challenged. If the user has not specified, ask one question. Surface any existing bounded assumptions, unresolved queue items, or stale promotion records before proceeding.
-- [ ] Step 3: Brainstorm reconciliation — if a brainstorming session preceded this artifact, load it and cross-reference its ideas against the current `ux-design.md`. Identify ideas that were silently dropped — especially ideas about interaction feel, tone, personality, or "what should this feel like" that do not map cleanly to structural flows or screen layouts. Present findings to the user and ask whether any should be incorporated before proceeding.
-- [ ] Step 4: Groundtruth — verify any new codebase reality relevant to the change. Check that existing patterns in `DESIGN.md` still constrain the refined design. Use code intelligence tools (see Additional Directives).
-- [ ] Step 5: Probe — present what appears settled from PM artifacts, what technical constraints apply, what the change affects, which user-state hypotheses follow, and what UX decisions are newly required. Before the first question, preview the queue: name the categories you expect to cover and give an approximate question count. Apply all Global Directives from the core skill. Elicit before modifying; write at a meaningful checkpoint. Do not silently absorb unresolved issues.
-- [ ] Step 6: Write — re-check the modified sections against `completion-criteria.yaml` and the internal gap checklist (see Additional Directives) privately. Update `[plan_folder]/<initiative-name>/ux-design.md`. Update the `updated` frontmatter date. Preserve sections not being changed.
-- [ ] Step 7: Distillation gate — do any refined decisions qualify for distillation to project-root `DESIGN.md`? Global interaction principles and visual language decisions only.
-- [ ] Step 8: Register in context memory — confirm `ux-design.md` remains in `## Live` in `registry.md`. Move any superseded predecessor to `## Archived` if applicable.
-- [ ] Step 9: Close — apply the Exit and Handoff format from the core skill.
+- [ ] Step 1: Hydrate — read current PM artifacts and architecture constraints; identify what the change affects.
+- [ ] Step 2: Identify refinement target — if unspecified, ask one question. Surface bounded assumptions and unresolved handoff items.
+- [ ] Step 3: Brainstorm reconciliation — if a brainstorming session preceded this artifact, cross-reference against `ux-design.md`; surface silently dropped ideas; ask whether any should be incorporated.
+- [ ] Step 4: Groundtruth — verify codebase/design-system reality per core NON-NEGOTIABLES when relevant to the change.
+- [ ] Step 5: Preview the queue — name changed sections grouped by YAML `stakes` and approximate question count.
+- [ ] Step 6: Elicit refinements — apply Stakes-based elicitation to changed sections only.
+- [ ] Step 7: Consequence-check — verify changed sections and cross-section impacts; run `completion-criteria.yaml` for all in-scope sections.
+- [ ] Step 8: Pre-exit offer (conditional, declinable in one word) — when any **consequential** section is being materially changed, offer once: *"Before I update the UX design — anything you want to stress-test or take to roundtable? Otherwise I'll proceed."* Skip when only medium/low sections change or the session is a single-field alignment.
+- [ ] Step 9: Write — update `[plan_folder]/<initiative-name>/ux-design.md` using `assets/ux-design-template.md`. Preserve unchanged sections. Update `updated` frontmatter.
+- [ ] Step 10: Distillation gate — apply Global pattern distillation rules when triggered.
+- [ ] Step 11: Register — confirm `ux-design.md` in `## Live`; archive superseded predecessors if applicable.
+- [ ] Step 12: Close — apply Exit and Handoff from the core skill.
 
 ## Definition of Done
 
-- [ ] Brainstorming ideas reconciled (if applicable)
+- [ ] Brainstorming ideas reconciled when applicable
 - [ ] Refinement target identified and affected sections updated
-- [ ] Existing decisions challenged, not just preserved
-- [ ] Relevant `handoff.md` items targeting UX-owned artifacts resolved, deferred, rejected, superseded, or routed onward appropriately
-- [ ] Remaining user-owned ambiguity resolved in chat, escalated through `handoff.md` only when another owner must act, or handled as bounded assumptions when safe
-- [ ] Updated `ux-design.md` written; `updated` date current
-- [ ] `DESIGN.md` updated if distillation gate triggered
+- [ ] Existing decisions challenged, not merely preserved
+- [ ] `completion-criteria.yaml` verified for all in-scope sections
+- [ ] Relevant `handoff.md` items resolved, deferred, rejected, superseded, or routed with clear next owner
+- [ ] `ux-design.md` written with current `updated` date
+- [ ] `DESIGN.md` updated only if distillation gate fired
 - [ ] `registry.md` reflects current artifact state
 - [ ] Close message: what changed, trade-offs, queued or deferred governance items, next owner

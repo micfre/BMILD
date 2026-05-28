@@ -2,20 +2,18 @@ meta:
   artifact: ux-design.md
   governed_by: bmild-ux
   loading_note: >
-    Load before writing the output artifact. For each section that applies, privately
-    check whether your draft exhibits the good_signal or the weak_signal. Check the
-    falsifiable field: is there an observable user behavior or testable screen state
-    that confirms this section is complete? Resolve gaps through UX elicitation; do not
-    present this file to the user. Resolve user-owned gaps in chat, route source defects
-    or cross-artifact conflicts to `handoff.md`, and use bounded assumptions only when
-    they are low-risk and reversible.
+    Load before writing ux-design.md. Each section carries a `stakes` field that
+    categorizes elicitation depth — apply the behavioural rules from the active mode
+    resource's Stakes-based elicitation section. For each in-scope section, privately
+    verify falsifiable, good_signal, and weak_signal. Do not present this file to the user.
 
 sections:
 
   - id: information_architecture
     required: true
+    stakes: consequential
     cross_ref:
-      - spec.md
+      - prd.md
     falsifiable: >
       A reviewer can enumerate all screens and their navigation relationships by
       reading this section alone, without inferring structure from other sections.
@@ -29,8 +27,9 @@ sections:
 
   - id: user_flows
     required: true
+    stakes: consequential
     cross_ref:
-      - spec.md
+      - prd.md
     falsifiable: >
       A tester can write a test script for the happy path and at least one error path
       for each flow from this section alone.
@@ -44,8 +43,9 @@ sections:
 
   - id: interaction_model
     required: true
+    stakes: consequential
     cross_ref:
-      - spec.md
+      - prd.md
     falsifiable: >
       For each interactive element, a developer can state what triggers it, what it
       produces, and what state it holds, without asking a follow-up UX question.
@@ -60,8 +60,10 @@ sections:
 
   - id: visual_design_language
     required: false
+    stakes: medium
     applies_when: platform engagement or introducing new design tokens
-    cross_ref: []
+    cross_ref:
+      - DESIGN.md
     falsifiable: >
       A frontend developer can implement a new screen that is visually consistent
       with existing screens using only this section as reference, without asking
@@ -76,8 +78,9 @@ sections:
 
   - id: edge_states
     required: true
+    stakes: consequential
     cross_ref:
-      - spec.md
+      - prd.md
     falsifiable: >
       A QA engineer can write test cases for each edge state on each screen without
       inferring the intended behavior.
@@ -90,6 +93,8 @@ sections:
 
   - id: accessibility
     required: false
+    stakes: medium
+    stakes_note: consequential when regulated accessibility obligations apply or when a hard WCAG level is named
     applies_when: any new interactive element or screen is introduced
     cross_ref: []
     falsifiable: >
@@ -104,10 +109,11 @@ sections:
       cited without specifying which success criteria apply to the interactive elements
       introduced.
 
-  - id: governance_routing
+  - id: ambiguity_disposition
     required: false
+    stakes: low
     cross_ref:
-      - spec.md
+      - prd.md
       - system-design.md
     falsifiable: >
       A reviewer can tell how unresolved ambiguity was governed without reading chat
@@ -124,6 +130,7 @@ sections:
 
   - id: fr_coverage
     required: true
+    stakes: consequential
     cross_ref:
       - prd.md
     falsifiable: >
@@ -132,9 +139,8 @@ sections:
     good_signal: >
       Every functional requirement from prd.md is addressed by the UX design. If an FR
       has no corresponding screen, flow, or interaction, it is flagged as a gap or
-      routed through chat resolution or `handoff.md`. The mapping is
-      derivable — a reviewer can confirm coverage by tracing FRs through flows and
-      screens.
+      routed through chat resolution or `handoff.md`. The mapping is derivable — a
+      reviewer can confirm coverage by tracing FRs through flows and screens.
     weak_signal: >
       Functional requirements from the PRD have no visible UX treatment, or coverage is
       assumed without being traceable to specific design elements.

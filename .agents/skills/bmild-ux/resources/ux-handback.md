@@ -9,47 +9,52 @@ Load in this order:
 - `[plan_folder]/<initiative-name>/registry.md`
 - `[plan_folder]/<initiative-name>/ux-design.md` in full (if it exists)
 - `[plan_folder]/<initiative-name>/handoff.md`
-- The originating artifact or queue context that raised the issue (`prd.md`, `system-design.md`, `slice-<N>.md`, `verification-matrix.md`, or `security-review-<slug>.md`)
+- The originating artifact or handoff context (`prd.md`, `system-design.md`, `slice-<N>.md`, `verification-matrix.md`, or `security-review-<slug>.md`)
+- `./resources/completion-criteria.yaml` when updating `ux-design.md`
 - Confirm no `## Archived` entries or other initiative folders were loaded
 
-## Additional Directives
+## Stakes-based elicitation
 
-When resolving a queue item requires repository inspection, prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows:
-- Use symbol-aware navigation tools (e.g. Serena)
-- AST-aware structural analysis (e.g. ast-grep)
-- Semantic or hybrid repository search (e.g. ck-search)
+For handoff items requiring new UX decisions, map each item to its target section in `completion-criteria.yaml` and use that section's `stakes` value. When `stakes_note` is present, it overrides `stakes`. Items that do not map to a YAML section default to **consequential**.
 
-Use the highest-signal discovery method: symbol navigation for known entities, semantic search for behavioural or architectural concepts, AST-aware analysis for syntax-sensitive pattern matching.
+| `stakes` | Behaviour |
+| :--- | :--- |
+| **consequential** | One open question at a time. Options with pros/cons/consequences and a conditional recommendation. |
+| **medium** | Recommendation plus one-line reaction request. Expand to options only on pushback. |
+| **low** | Batch in one synthesis block. Ask the user to *steer*, not *approve*. Tag each item: `Assumption` → `Confidence` → `Consequence if wrong`. |
 
-Promotion Cascade Check — run for each accepted change that results in a design update:
-Identify downstream consumers per `CLAUDE.md` cross-artifact flow; classify each as `unaffected | minor-update | stale`. Count distinct `Target Owner` values for `stale` artifacts.
-- **0 stale owners** → no cascade action.
-- **1 stale owner** → auto-enqueue one follow-up handoff item per stale artifact (`Type: cross_artifact_conflict`, `Target Owner: <owner>`, `Raised By: Katrina`, `Blocking: yes`, `Why It Matters: <named upstream change>`, `Requested Change: <pointer to source artifact section>`). The close message follows the verbatim-invocation rule for the single owner.
-- **≥2 stale owners** → do NOT enqueue individually; mark each artifact in `registry.md ## Stale` with the upstream handoff reference, and route the user to Sonia in Course-Correction mode in this turn's close. Append `Downstream Cascade: <summary>` to the handoff item being closed.
-- Cycle prevention: do not enqueue an item whose `Supersedes` chain already includes this SP.
+## Global Directives
+
+- **Artifact-authority discipline.** Promote accepted decisions into `ux-design.md`; `handoff.md` records coordination until the target artifact is updated.
+- **Observable decisions only.** Label preferences as preferences.
+- **Naked assumptions are forbidden in artifacts.** Document promoted assumptions with `Assumption` → `Confidence` → `Consequence if wrong`.
+
+## Global pattern distillation
+
+When resolved decisions qualify for project-root `DESIGN.md`, apply the same distillation gate as UX-Design mode.
 
 ## Tasks
 
 Progress:
 
-- [ ] Step 1: Identify the queue item and the source artifact it targets (from context reads above).
-- [ ] Step 2: Assess each queue item targeting Katrina. Determine which can be answered from existing design decisions and which require new decisions. For those requiring new decisions, apply the elicitation pacing and decision option format from the core skill.
-- [ ] Step 3: Before the first question or decision prompt, preview the queue: name the categories you expect to cover and give an approximate question count so the user can tell whether this is a short alignment or a deeper session.
-- [ ] Step 4: Resolve — provide clear answers or decisions for each item. Apply all Global Directives from the core skill. For each accepted item that results in a design change:
-  - Update `ux-design.md` (or create it if it does not exist yet)
-  - Update the queue item's `Owner Disposition` and `Promotion Record`
-  - Run the **Promotion Cascade Check** (see Additional Directives)
+- [ ] Step 1: Identify each handoff item and its target artifact.
+- [ ] Step 2: Assess items targeting Katrina — which can be answered from existing design decisions vs which need new decisions (apply Stakes-based elicitation for the latter).
+- [ ] Step 3: Preview the handoff set — name items grouped by effective stakes and approximate question count.
+- [ ] Step 4: Resolve — for each accepted item that changes design truth:
+  - Update `ux-design.md` (or create if needed)
+  - Update the handoff item's `Owner Disposition` and `Promotion Record`
+  - Run the **Promotion Cascade Check**: identify downstream consumers per `AGENTS.md` cross-artifact flow; classify each as `unaffected | minor-update | stale`. Count distinct `Target Owner` values for `stale` artifacts. (a) **0 stale owners** → no cascade action. (b) **1 stale owner** → auto-enqueue one follow-up `H-###` per stale artifact (`Type: cross_artifact_conflict`, `Target Owner: <owner>`, `Raised By: Katrina`, `Blocking: yes`, `Why It Matters: <named upstream change>`, `Requested Change: <pointer to source artifact section>`). Close follows the verbatim-invocation rule. (c) **≥2 stale owners** → mark each artifact in `registry.md ## Stale` with the upstream handoff reference; route the user to Sonia in Course-Correction mode. Append `Downstream Cascade: <summary>` to the handoff item being closed. Cycle prevention: do not enqueue an item whose `Supersedes` chain already includes this handoff.
   - Note the consequence for the originating persona's artifact
-- [ ] Step 5: Defer — if an item cannot be resolved without additional product or architecture input: name the specific constraint missing, resolve user-owned gaps in chat, or route it back to the relevant source owner with one precise handoff item, and mark the handoff as deferred, rejected, or superseded.
-- [ ] Step 6: Write — if design changes result from resolving handback questions, update `[plan_folder]/<initiative-name>/ux-design.md`. Update the `updated` frontmatter date.
-- [ ] Step 7: Distillation gate — do any resolved decisions qualify for distillation to project-root `DESIGN.md`? Global interaction principles and visual language decisions only; apply the same gate as UX-Design mode.
-- [ ] Step 8: Close — apply the Exit and Handoff format from the core skill. Explicitly name each handoff item resolved, deferred, rejected, or superseded, and the next owner for each.
+- [ ] Step 5: Defer items needing product or architecture input — name the missing constraint; route back with one precise handoff item when another owner must act.
+- [ ] Step 6: Consequence-check — verify updated sections against `completion-criteria.yaml` for all in-scope sections.
+- [ ] Step 7: Write — update `ux-design.md` and `updated` frontmatter when design changes result.
+- [ ] Step 8: Distillation gate — apply Global pattern distillation rules when triggered.
+- [ ] Step 9: Close — apply Exit and Handoff from the core skill. Name each item resolved, deferred, rejected, superseded, or kept open, and the next owner.
 
 ## Definition of Done
 
-- [ ] Every UX-owned handoff item assessed and either promoted, deferred, rejected, or superseded with reason
+- [ ] Every UX-owned handoff item assessed and either promoted, deferred, rejected, superseded, or kept open with reason
 - [ ] Promotion Cascade Check completed for all accepted changes
-- [ ] Design changes from resolutions written to `ux-design.md`
-- [ ] `DESIGN.md` updated if distillation gate triggered
-- [ ] Originating persona informed of decisions and any remaining open items
-- [ ] Close message: queue items resolved, deferred items, next owner
+- [ ] Design changes written to `ux-design.md` with completion criteria verified for updated sections
+- [ ] `DESIGN.md` updated only if distillation gate fired
+- [ ] Close message: handoff items resolved, deferred items, next owner

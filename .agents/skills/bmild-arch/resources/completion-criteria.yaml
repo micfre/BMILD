@@ -2,18 +2,18 @@ meta:
   artifact: system-design.md
   governed_by: bmild-arch
   loading_note: >
-    Load before writing the output artifact. For each section that applies, privately
-    check whether your draft exhibits the good_signal or the weak_signal. Check the
-    falsifiable field: could a developer execute against this contract without making
-    an architectural decision? Resolve gaps through architecture elicitation; do not
-    present this file to the user. Resolve user-owned gaps in chat, route source
-    defects or cross-artifact conflicts to `handoff.md`, and use bounded assumptions
-    only when they are low-risk and reversible.
+    Load before writing system-design.md. Each section carries a `stakes` field that
+    categorizes elicitation depth — apply the behavioural rules from the active mode
+    resource's Stakes-based elicitation section. When `stakes_note` is present, it
+    overrides the default stakes value for elicitation pacing. For each in-scope section,
+    privately verify falsifiable, good_signal, and weak_signal. Do not present this file
+    to the user.
 
 sections:
 
   - id: tech_stack
     required: false
+    stakes: medium
     applies_when: platform engagement or any new runtime, framework, or library dependency
     cross_ref: []
     falsifiable: >
@@ -23,16 +23,18 @@ sections:
     good_signal: >
       Every new technology choice names the specific version or version constraint,
       its role, and why it was chosen over at least one alternative. Existing choices
-      are confirmed unchanged or explicitly superseded.
+      are confirmed unchanged or explicitly superseded. UI component library selection
+      is named when applicable.
     weak_signal: >
       Choices named without version or rationale, or a stack described at category
       level ("use a relational database") without specifying the product.
 
   - id: database_schema
     required: false
+    stakes: consequential
     applies_when: any change to persisted data structures
     cross_ref:
-      - spec.md
+      - prd.md
     falsifiable: >
       A developer can run the code-first migration tool against this schema spec and
       produce the correct migration without resolving any ambiguity.
@@ -47,9 +49,10 @@ sections:
 
   - id: api_contracts
     required: false
+    stakes: consequential
     applies_when: any client-server or service-to-service boundary is introduced or changed
     cross_ref:
-      - spec.md
+      - prd.md
       - ux-design.md
     falsifiable: >
       A frontend developer and a backend developer can implement both sides of each
@@ -66,9 +69,10 @@ sections:
 
   - id: service_contracts
     required: false
+    stakes: consequential
     applies_when: any internal service layer method is introduced or changed
     cross_ref:
-      - spec.md
+      - prd.md
     falsifiable: >
       A developer can write a unit test for a service method's inputs, outputs, and
       error cases from this contract alone, without reading the implementation.
@@ -83,6 +87,7 @@ sections:
 
   - id: dependency_decisions
     required: false
+    stakes: medium
     applies_when: any new external library, service, or infrastructure component is introduced
     cross_ref: []
     falsifiable: >
@@ -98,6 +103,7 @@ sections:
 
   - id: architecture_decisions
     required: false
+    stakes: consequential
     applies_when: any significant technical choice with more than one viable approach
     cross_ref:
       - prd.md
@@ -117,6 +123,7 @@ sections:
 
   - id: fr_coverage
     required: true
+    stakes: consequential
     cross_ref:
       - prd.md
     falsifiable: >
@@ -127,22 +134,23 @@ sections:
       Every functional requirement from prd.md is supported by the system design. If an
       FR has no corresponding endpoint, schema change, service contract, or decision, it
       is flagged as a gap or routed through chat resolution or `handoff.md`. The
-      mapping is derivable — a developer can implement each
-      FR by following the contracts in this document.
+      mapping is derivable — a developer can implement each FR by following the
+      contracts in this document.
     weak_signal: >
       Functional requirements from the PRD have no visible architectural support, or
       coverage is assumed without being traceable to specific endpoints, schemas, or
       service methods.
 
-  - id: governance_routing
+  - id: ambiguity_disposition
     required: false
+    stakes: low
     cross_ref:
-      - spec.md
+      - prd.md
       - ux-design.md
     falsifiable: >
       A reviewer can tell how unresolved ambiguity was governed without reading chat
-      history: user-owned gaps resolved in chat, cross-artifact issues in
-      `handoff.md`, or low-risk bounded assumptions in the consuming artifact.
+      history: user-owned gaps resolved in chat, cross-artifact issues in `handoff.md`,
+      or low-risk bounded assumptions in the consuming artifact.
     good_signal: >
       The source artifact remains authoritative. User-owned architecture ambiguity is
       resolved live or queued with one discrete prompt and a promotion target. Product

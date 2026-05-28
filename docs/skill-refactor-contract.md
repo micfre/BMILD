@@ -118,8 +118,8 @@ Suggested consequential sections (review during migration):
 ## Migration phases
 
 ```
-Phase 0  This contract + update docs/std-core-skill-sections.md     ← you are here
-Phase 1  bmild-ux ∥ bmild-arch   (stakes in YAML + skill thin)      parallel PRs
+Phase 0  This contract + update docs/std-core-skill-sections.md     ✓
+Phase 1  bmild-ux ∥ bmild-arch   (stakes in YAML + skill thin)      ✓
 Phase 2  bmild-planner            (no YAML, no stakes)
 Phase 3  bmild-qa → bmild-sec     (no new YAML; Sec gets stakes on categories)
 Phase 4  bmild-dev                (no YAML, no stakes)
