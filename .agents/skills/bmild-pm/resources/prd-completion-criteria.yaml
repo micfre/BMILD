@@ -2,16 +2,11 @@ meta:
   artifact: prd.md
   governed_by: bmild-pm
   loading_note: >
-    Load before writing prd.md. Each section carries a `stakes` hint that sets default
-    elicitation depth per the Craft Standards stakes rubric (consequential / medium / low).
-    Probe consequential items one question at a time; synthesize-and-steer for medium and
-    low. For each section that applies, privately check whether your draft exhibits the
-    good_signal or the weak_signal, and check the falsifiable field: is there an observable
-    condition that confirms this section is complete? Resolve gaps through further
-    elicitation calibrated to stakes, keep user-owned clarification in chat unless
-    another owner must act, route source defects or cross-artifact conflicts to
-    `handoff.md`, or use bounded assumptions only when they are low-risk and
-    reversible. Do not present this file to the user.
+    Load before writing prd.md. Each section carries a `stakes` field that categorizes
+    elicitation depth — apply the behavioural rules from the active mode resource's
+    Stakes-based elicitation section. When `stakes_note` is present, it overrides the
+    default stakes value for elicitation pacing. For each in-scope section, privately
+    verify falsifiable, good_signal, and weak_signal. Do not present this file to the user.
 
 sections:
 
