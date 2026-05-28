@@ -122,7 +122,7 @@ Phase 0  This contract + update docs/std-core-skill-sections.md     ✓
 Phase 1  bmild-ux ∥ bmild-arch   (stakes in YAML + skill thin)      ✓
 Phase 2  bmild-planner            (no YAML, no stakes)              ✓
 Phase 3  bmild-qa → bmild-sec     (no new YAML; Sec gets stakes on categories) ✓
-Phase 4  bmild-dev                (no YAML, no stakes)
+Phase 4  bmild-dev                (no YAML, no stakes)              ✓
 Phase 5  roundtable, elicit, brainstorming  (thin SKILL only)
 ```
 
