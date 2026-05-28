@@ -10,34 +10,37 @@ Load in this order:
 - Local implementation files along the suspected code path
 - Repo contributor guide
 
-Do not load BMILD planning memory unless the message names an initiative, Slice, or RCA — in that case re-evaluate against the core mode detection lookup before proceeding.
+Do not load BMILD planning memory unless the message names an initiative, Slice, or RCA — in that case re-evaluate against core Mode Lookup before proceeding.
 
-## Additional Directives
+## Global Directives
 
-**Repository discovery.** Prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows.
-- Use symbol-aware navigation tools (e.g. Serena)
-- AST-aware structural analysis (e.g. ast-grep)
-- Semantic or hybrid repository search (e.g. ck-search)
+- **Evidence before action.** Confirm root cause with evidence before any edit.
+- **Scope discipline.** Smallest fix resolving the confirmed root cause. No refactor of adjacent code. No scope expansion.
+- **Initiative path rule.** When an initiative exists, place `rca-<slug>.md` under `[plan_folder]/<initiative-name>/` and register in `registry.md`.
 
-Use the highest-signal discovery method appropriate to the task: symbol navigation for known entities, semantic search for behavioural or architectural concepts, and AST-aware analysis for syntax-sensitive pattern matching, migrations, and refactors.
+## Routing heuristics
+
+- *Root cause unclear after targeted investigation* → stop; switch to Diagnostic mode; record symptoms and next question.
+- *Fix reveals product, UX, architecture, or security decision* → stop; route to owning persona with evidence.
+- *Recurring, cross-system, initiative-tied, or non-trivial defect* → write `rca-<slug>.md` using `assets/rca-template.md` and register.
 
 ## Tasks
 
 Progress:
 
-- [ ] Step 1: Investigate before edit — reproduce or localize the failure through a test, stack trace, log, or code-path inspection. Identify root cause with evidence: failing assertion, stack trace line, logic error, contract drift, or incorrect assumption. Confirm the fix is localized and does not alter behaviour outside the reported failure. Treat user-provided signals as hypotheses, not evidence. If root cause is not clear after targeted investigation: stop. Record symptoms, hypotheses checked, evidence collected, and the next diagnostic question.
-- [ ] Step 2: Execute — implement the smallest fix that resolves the confirmed root cause. Do not refactor adjacent code. Do not expand scope. If the fix reveals a product, UX, architecture, or security decision, stop and route to the owning persona with evidence.
-- [ ] Step 3: Prove — run quality gates per the contributor guide. Add a regression test when practical. If not practical, record a manual reproduction and proof sequence that another agent can re-run.
-- [ ] Step 4: Document — required when externally visible behaviour, operational runbooks, setup instructions, or user help changed. Otherwise record `Documentation impact: none`.
-- [ ] Step 5: Persist when useful — write or update `rca-<slug>.md` when the defect is recurring, cross-system, tied to an initiative, required for future verification, or non-trivial enough that chat memory would lose important context. A truly trivial local fix with no future relevance does not require a new RCA. If an RCA is written: use `assets/rca-template.md`; place it under the relevant initiative folder and register it in the relevant `registry.md` `## Live` section.
-- [ ] Step 6: Close — apply the Exit and Handoff format from the core skill. Close with root cause, files changed, proof run, artifact updates, documentation impact, and next owner if any.
+- [ ] Step 1: Investigate before edit — reproduce or localize via test, stack trace, log, or code-path inspection. Confirm localized fix scope. Treat user signals as hypotheses.
+- [ ] Step 2: Execute — minimal fix per Global Directives and Routing heuristics.
+- [ ] Step 3: Prove — run quality gates per contributor guide. Add regression test when practical; otherwise record manual reproduction sequence.
+- [ ] Step 4: Document — when externally visible behaviour, runbooks, setup, or user help changed; otherwise `Documentation impact: none`.
+- [ ] Step 5: Persist when useful — RCA per Routing heuristics.
+- [ ] Step 6: Close — apply Exit and Handoff from the core skill.
 
 ## Definition of Done
 
-- [ ] Root cause confirmed with evidence before any edit, or escalation recorded with full context
-- [ ] Fix complete and scoped to confirmed root cause
-- [ ] Regression test passing, or manual proof sequence recorded
+- [ ] Root cause confirmed with evidence before edit, or escalation recorded
+- [ ] Fix scoped to confirmed root cause
+- [ ] Regression test passing or manual proof recorded
 - [ ] Quality gates run, or unrun gates recorded with reason
-- [ ] Documentation impact recorded (complete or `none`)
+- [ ] Documentation impact recorded
 - [ ] RCA written and registered when cross-turn value exists
-- [ ] Close message: files changed, root cause summary, gates run, documentation impact, next owner if any
+- [ ] Close message: files changed, root cause, gates, documentation impact, next owner

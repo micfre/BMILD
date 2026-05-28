@@ -1,6 +1,6 @@
 # PR-Security-Review
 
-Review a pull request or diff for security vulnerabilities. Focus ONLY on security implications of the newly introduced or materially changed code in this PR.
+Review a pull request or diff for security vulnerabilities. Focus ONLY on security implications of newly introduced or materially changed code in this PR.
 
 ## Additional Context
 
@@ -14,36 +14,36 @@ Load in this order:
 - The PR diff or changed files provided in the message
 - `./resources/security-categories.yaml`
 
-## Additional Directives
+## Stakes-based elicitation
 
-**Repository context.** Identify existing security frameworks, secure coding patterns, and the project's threat model as needed to contextualize the PR changes.
+Same table and pacing as `slice-security-review.md` — per-category `stakes` in YAML; `stakes_note` overrides when present.
 
-Prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows.
-- Use symbol-aware navigation tools (e.g. Serena)
-- AST-aware structural analysis (e.g. ast-grep)
-- Semantic or hybrid repository search (e.g. ck-search)
+## Global Directives
 
-Use the highest-signal discovery method: symbol navigation for known entities, semantic search for behavioural or architectural concepts, AST-aware analysis for syntax-sensitive patterns.
+- **Identify context before flagging.** Research security frameworks and threat model as needed to contextualize PR changes.
+- **Scope discipline.** Examine only changed code in the PR — pre-existing code outside the diff is out of scope.
+- **Confidence threshold.** >80% exploitability per YAML filtering before reporting.
 
-Do not review pre-existing code outside the PR diff.
+## Routing heuristics
+
+Same as `slice-security-review.md` Routing heuristics.
 
 ## Tasks
 
 Progress:
 
-- [ ] Step 1: Confirm the PR scope — which files changed, what behaviour was added or modified.
-- [ ] Step 2: Research repository security context as needed (existing frameworks, secure patterns, threat model).
-- [ ] Step 3: Examine only the changed code in the PR. Trace data flow from user inputs to sensitive operations. Focus on: security boundaries crossed, trusted/untrusted inputs introduced, authn/authz paths affected, sensitive data newly handled, and new attack surfaces created.
-- [ ] Step 4: Run the Pre-exit Checkpoint from the core skill before writing findings.
-- [ ] Step 5: Write `[plan_folder]/<initiative-name>/security-review-<slug>.md` using `assets/security-review-template.md` if vulnerabilities are found. If the finding is a source-artifact defect or a security requirement mismatch, reference the needed `handoff.md` item or source-promotion path. No artifact is written for a clean review.
-- [ ] Step 6: If an artifact was written and an initiative is known, open `[plan_folder]/<initiative-name>/registry.md` and add `security-review-<slug>.md` to `## Live`.
-- [ ] Step 7: Close per Exit and Handoff. Offer to hand back to Alex for implementation fixes, or to Lance if architectural redesign is needed.
+- [ ] Step 1: Confirm PR scope — files changed, behaviour added or modified.
+- [ ] Step 2: Research repository security context per Global Directives and core NON-NEGOTIABLES.
+- [ ] Step 3: Examine changed code only — trace data flow per Stakes-based elicitation.
+- [ ] Step 4: Pre-exit offer (declinable in one word) — *"Before I finalise these findings — anything you want to stress-test first? Otherwise I'll write up the review."* Omit when no findings to write.
+- [ ] Step 5: Write `security-review-<slug>.md` if vulnerabilities found; no artifact for clean review.
+- [ ] Step 6: Register — add to `## Live` in `registry.md` when written and initiative is known.
+- [ ] Step 7: Close — apply Exit and Handoff from the core skill.
 
 ## Definition of Done
 
-- [ ] Scope confirmed to PR diff only — pre-existing code not reviewed
-- [ ] `security-categories.yaml` applied for scope and false-positive filtering
+- [ ] Scope confirmed to PR diff only
+- [ ] `security-categories.yaml` applied for stakes pacing and filtering
 - [ ] Only High or Medium severity issues with credible exploitability reported
-- [ ] `security-review-<slug>.md` written if vulnerabilities found; no artifact for clean review
-- [ ] `registry.md` updated if artifact written and initiative is known
+- [ ] Artifact written only when findings exist; `registry.md` updated when applicable
 - [ ] Close message: scope and categories checked, findings summary, next owner

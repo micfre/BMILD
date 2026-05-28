@@ -1,42 +1,45 @@
 # Sec-Handback
 
-Resolve security-owned governance items raised by other personas. Promote accepted changes into source artifacts so the handoff does not become shadow memory. Use this mode when the handoff item targets an existing `security-review-<slug>.md`. For new security reviews use one of the standard review modes (Architecture-Security-Review, PR-Security-Review, Slice-Security-Review).
+Resolve security-owned governance items raised by other personas. Promote accepted changes into source artifacts so the handoff does not become shadow memory.
+
+For new security reviews use Architecture-Security-Review, PR-Security-Review, or Slice-Security-Review.
 
 ## Additional Context
 
 Load in this order:
 
 - `[plan_folder]/<initiative-name>/registry.md`
-- The referenced `[plan_folder]/<initiative-name>/security-review-<slug>.md` in full
+- The referenced `security-review-<slug>.md` in full
 - `[plan_folder]/<initiative-name>/handoff.md`
-- The originating artifact or queue context that raised the issue (typically a fix applied by Alex against an open finding, or a design change by Lance/Katrina that resolves a design-level finding)
-- Upstream design artifacts (`system-design.md`, `ux-design.md`) when needed to re-verify a design-level finding
+- Originating artifact or queue context (typically Alex fix against open finding, or Lance/Katrina design change resolving design-level finding)
+- Upstream design artifacts (`system-design.md`, `ux-design.md`) when re-verifying design-level findings
 - Confirm no `## Archived` entries or other initiative folders were loaded
 
-## Additional Directives
+## Global Directives
 
-Apply all Global Directives from the core skill: scope discipline, evidence-driven confidence threshold (>80% exploitability), no theoretical noise.
+- **Scope and confidence discipline.** Re-verify only affected boundaries; >80% confidence before closing a finding.
+- **Handoff-artifact discipline.** Coordination state is not security closure — close only when finding is confirmed resolved and re-verified.
 
-Handoff artifacts are coordination state, not security closure. An item is closed only when the finding is confirmed resolved in the governed source artifact and Zach has re-verified it.
+**Promotion Cascade Check.** After each accepted closure affecting security posture, classify downstream consumers as `unaffected | minor-update | stale`:
+- **0 stale owners** → no cascade action.
+- **1 stale owner** → auto-enqueue one `H-###` per stale artifact; close follows verbatim-invocation rule.
+- **≥2 stale owners** → mark artifacts in `registry.md ## Stale`; route to Sonia Course-Correction; append `Downstream Cascade: <summary>`. Cycle prevention: do not enqueue if `Supersedes` chain includes this handoff item.
 
 ## Tasks
 
 Progress:
 
-- [ ] Step 1: Identify the handoff item and the source artifact it targets (from context reads above).
-- [ ] Step 2: Read each handoff item targeting Zach. Most items will be re-verification requests for previously open findings.
-- [ ] Step 3: For each finding targeted by a handoff item, re-run the security assessment on the affected boundary.
-- [ ] Step 4: For each finding now resolved by the upstream change: update the `security-review-<slug>.md` finding entry with closure evidence (what was checked, what changed, why the finding is now closed); update the handoff item's `Owner Disposition` and `Promotion Record`.
-- [ ] Step 5: Run the **Promotion Cascade Check**: identify downstream consumers per `CLAUDE.md` cross-artifact flow; classify each as `unaffected | minor-update | stale`. Count distinct `Target Owner` values for `stale` artifacts. (a) **0 stale owners** → no cascade action. (b) **1 stale owner** → auto-enqueue one follow-up handoff item per stale artifact (`Type: cross_artifact_conflict`, `Target Owner: <owner>`, `Raised By: Zach`, `Blocking: yes`, `Why It Matters: <named upstream change>`, `Requested Change: <pointer to source artifact section>`). The close message follows the verbatim-invocation rule for the single owner. (c) **≥2 stale owners** → do NOT enqueue individually; mark each artifact in `registry.md ## Stale` with the upstream handoff reference, and route the user to Sonia in Course-Correction mode in this turn's close. Append `Downstream Cascade: <summary>` to the handoff item being closed. Cycle prevention: do not enqueue an item whose `Supersedes` chain already includes this handoff item.
-- [ ] Step 6: Note any residual or newly-introduced findings.
-- [ ] Step 7: If a finding remains open after re-verification, keep it open in `security-review-<slug>.md` with updated next owner (Alex for implementation fixes, Lance/Katrina for design changes), and route a new handoff item targeting that owner. Mark the original handoff as deferred, rejected, or superseded as appropriate.
-- [ ] Step 8: Persist all security review changes. Update the `updated` frontmatter date.
-- [ ] Step 9: Close per Exit and Handoff. Explicitly name each finding closed, each finding still open, and the next owner for each. Zach remains a terminal node by default — do not auto-handoff unless an open finding clearly routes to a named owner.
+- [ ] Step 1: Read each handoff item targeting Zach — most are re-verification requests for open findings.
+- [ ] Step 2: Re-run security assessment on each affected boundary.
+- [ ] Step 3: For resolved findings — update `security-review-<slug>.md` with closure evidence; update `Owner Disposition` and `Promotion Record`; run Promotion Cascade Check.
+- [ ] Step 4: Note residual or newly-introduced findings.
+- [ ] Step 5: For findings still open — keep open with updated next owner (Alex implementation, Lance/Katrina design); route handoff item; mark original deferred, rejected, or superseded as appropriate.
+- [ ] Step 6: Persist changes; update `updated` frontmatter.
+- [ ] Step 7: Close — apply Exit and Handoff from the core skill. Zach remains terminal by default.
 
 ## Definition of Done
 
-- [ ] Every security-owned handoff item assessed and either re-verified-closed, deferred, rejected, or superseded with reason
-- [ ] Closure evidence recorded in `security-review-<slug>.md` for resolved findings
-- [ ] Residual or newly-introduced findings recorded with next owner
-- [ ] Originating persona informed of decisions and any remaining open items
+- [ ] Every security-owned handoff item assessed and re-verified-closed, deferred, rejected, or superseded
+- [ ] Closure evidence recorded for resolved findings
+- [ ] Residual or new findings recorded with next owner
 - [ ] Close message: findings closed, findings still open, next owner

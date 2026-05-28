@@ -13,37 +13,51 @@ Load in this order:
 - `[plan_folder]/<initiative-name>/system-design.md` if it exists
 - `[plan_folder]/<initiative-name>/prd.md` and `product-brief.md` if they exist
 - `[plan_folder]/<initiative-name>/slice-<N>.md` — the Slice being reviewed
-- `./resources/security-categories.yaml` — governs review scope, false-positive filtering, and validation patterns
+- `./resources/security-categories.yaml`
 
-## Additional Directives
+## Stakes-based elicitation
 
-**Repository context.** Identify existing security frameworks, secure coding patterns, sanitization methods, and the project's threat model. Do not flag deviations from patterns that don't exist in this codebase.
+Per-category `stakes` in `security-categories.yaml` sets review depth. When `stakes_note` is present, it overrides pacing for that category.
 
-Prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows.
-- Use symbol-aware navigation tools (e.g. Serena)
-- AST-aware structural analysis (e.g. ast-grep)
-- Semantic or hybrid repository search (e.g. ck-search)
+| `stakes` | Behaviour |
+| :--- | :--- |
+| **consequential** | Full data-flow trace from untrusted input to sensitive sink. Document exploit scenario, impact, and remediation before flagging. Offer roundtable when multiple defensible remediations exist. |
+| **medium** | Pattern match against codebase secure conventions; trace only when deviation introduces credible exploit path. Apply `stakes_note` elevation when triggered. |
+| **low** | N/A at category level — apply filtering threshold and hard exclusions only. |
 
-Use the highest-signal discovery method: symbol navigation for known entities, semantic search for behavioural or architectural concepts, AST-aware analysis for syntax-sensitive patterns.
+**Review pacing:** Assess consequential categories first (`input_validation`, `authentication_authorization`, `crypto_secrets`, `injection_code_execution`). Then medium categories (`data_exposure`, respecting `stakes_note`). Apply `filtering` rules throughout — confidence ≥ 0.8 required to report.
 
-When reviewing a fix for an existing `security-review-<slug>.md`, update the existing artifact rather than creating a duplicate.
+## Global Directives
+
+- **Identify context before flagging.** Map existing security frameworks, sanitization patterns, and threat model before flagging deviations.
+- **Scope discipline.** Review only newly introduced or materially changed attack surfaces. Pre-existing untouched code is out of scope.
+- **Confidence threshold.** Flag only issues with >80% confidence of actual exploitability per YAML filtering.
+- When reviewing a fix for an existing `security-review-<slug>.md`, update the existing artifact — do not create a duplicate.
+
+## Routing heuristics
+
+- *Vulnerability candidate* → record file/contract, exploit scenario, impact, confidence, remediation direction.
+- *Design-level gap* (missing auth contract, untrusted boundary, threat model violation) → Lance (or Katrina for UX trust-boundary issues).
+- *Implementation error* (contract violated in code) → Alex.
+- *Clean review* → state explicitly scope and categories checked. Silence is not "no findings."
+- *Hard exclusions* → do NOT report (see YAML `filtering.hard_exclusions`).
 
 ## Tasks
 
 Progress:
 
-- [ ] Step 1: Research repository security context (existing frameworks, secure patterns, sanitization methods, threat model).
-- [ ] Step 2: Compare the Slice's new code against established secure patterns. Flag deviations and new attack surfaces. Do not review pre-existing code outside the Slice scope.
-- [ ] Step 3: Examine the Slice's implementation files. Trace data flow from user inputs to sensitive operations. Identify: security boundaries, trusted/untrusted inputs, authn/authz paths, data sensitivity, and new attack surfaces.
-- [ ] Step 4: Run the Pre-exit Checkpoint from the core skill before writing findings.
-- [ ] Step 5: Write `[plan_folder]/<initiative-name>/security-review-<slug>.md` using `assets/security-review-template.md` if vulnerabilities are found. If the finding is a source-artifact defect or a security requirement mismatch, reference the needed `handoff.md` item or source-promotion path. No artifact is written for a clean review.
-- [ ] Step 6: If an artifact was written, open `[plan_folder]/<initiative-name>/registry.md` and add `security-review-<slug>.md` to `## Live`.
-- [ ] Step 7: Close per Exit and Handoff. Offer to hand back to Alex for implementation fixes, or to Lance if architectural redesign is needed.
+- [ ] Step 1: Research repository security context per Global Directives and core NON-NEGOTIABLES.
+- [ ] Step 2: Compare Slice new code against established secure patterns; flag deviations and new attack surfaces only within Slice scope.
+- [ ] Step 3: Examine implementation files — trace data flow per Stakes-based elicitation and YAML categories.
+- [ ] Step 4: Pre-exit offer (declinable in one word) — *"Before I finalise these findings — anything you want to stress-test first? Otherwise I'll write up the review."* Omit when no findings to write.
+- [ ] Step 5: Write `security-review-<slug>.md` using `assets/security-review-template.md` if vulnerabilities found. Reference `handoff.md` path for source-artifact defects. No artifact for clean review.
+- [ ] Step 6: Register — add `security-review-<slug>.md` to `## Live` in `registry.md` when written.
+- [ ] Step 7: Close — apply Exit and Handoff from the core skill.
 
 ## Definition of Done
 
-- [ ] Repository security context researched before flagging deviations
-- [ ] `security-categories.yaml` applied for scope and false-positive filtering
+- [ ] Repository security context researched before flagging
+- [ ] `security-categories.yaml` applied for scope, stakes pacing, and false-positive filtering
 - [ ] Only High or Medium severity issues with credible exploitability reported
 - [ ] `security-review-<slug>.md` written if vulnerabilities found; no artifact for clean review
 - [ ] `registry.md` updated if artifact written

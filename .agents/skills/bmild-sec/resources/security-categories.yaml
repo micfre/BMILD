@@ -3,14 +3,14 @@ meta:
   artifact: security-review.md
   governed_by: bmild-sec
   loading_note: >
-    Load before reviewing code. Use the categories and exclusions defined here to assess
-    vulnerabilities. STRICTLY adhere to the false positive filtering rules. Do not report
-    any issues that fall under the hard exclusions or do not meet the minimum confidence
-    threshold (0.8).
+    Load before code or architecture security review. Categories define review scope;
+    filtering defines exclusions and confidence threshold (0.8). Review depth and pacing:
+    mode resource Stakes-based elicitation. Do not report hard exclusions or sub-threshold findings.
 
 categories:
   - id: input_validation
     name: Input Validation Vulnerabilities
+    stakes: consequential
     issues:
       - SQL injection via unsanitized user input
       - Command injection in system calls or subprocesses
@@ -21,6 +21,7 @@ categories:
 
   - id: authentication_authorization
     name: Authentication & Authorization Issues
+    stakes: consequential
     issues:
       - Authentication bypass logic
       - Privilege escalation paths
@@ -30,6 +31,7 @@ categories:
 
   - id: crypto_secrets
     name: Crypto & Secrets Management
+    stakes: consequential
     issues:
       - Hardcoded API keys, passwords, or tokens
       - Weak cryptographic algorithms or implementations
@@ -39,6 +41,7 @@ categories:
 
   - id: injection_code_execution
     name: Injection & Code Execution
+    stakes: consequential
     issues:
       - Remote code execution via deseralization
       - Pickle injection in Python
@@ -48,6 +51,10 @@ categories:
 
   - id: data_exposure
     name: Data Exposure
+    stakes: medium
+    stakes_note: >
+      Elevate to consequential pacing when finding involves PII, credentials, or API endpoint
+      leakage of sensitive records — not debug-only metadata.
     issues:
       - Sensitive data logging or storage
       - PII handling violations

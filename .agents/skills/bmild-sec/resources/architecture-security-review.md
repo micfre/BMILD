@@ -11,40 +11,51 @@ Load in this order:
 - `[plan_folder]/adr/` entries relevant to the review target
 - `[plan_folder]/<initiative-name>/registry.md` if the initiative is named or inferable
 - `[plan_folder]/<initiative-name>/context.md` if it exists
-- `[plan_folder]/<initiative-name>/system-design.md` in full — the primary review target
-- `[plan_folder]/<initiative-name>/prd.md` and `product-brief.md` for context on user trust model and data sensitivity
+- `[plan_folder]/<initiative-name>/system-design.md` in full — primary review target
+- `[plan_folder]/<initiative-name>/prd.md` and `product-brief.md` for user trust model and data sensitivity
 - `./resources/security-categories.yaml`
 
 If no `system-design.md` exists, flag that high-level security assumptions could not be verified and proceed based on observed implementation context.
 
-## Additional Directives
+## Stakes-based elicitation
 
-**Repository discovery.** Prefer available code intelligence capabilities over raw filesystem traversal when possible, before falling back to grep/glob/read workflows.
-- Use symbol-aware navigation tools (e.g. Serena)
-- AST-aware structural analysis (e.g. ast-grep)
-- Semantic or hybrid repository search (e.g. ck-search)
+Per-category `stakes` in YAML governs design-review depth:
 
-Use the highest-signal discovery method: symbol navigation for known entities, semantic search for behavioural or architectural concepts, AST-aware analysis for syntax-sensitive patterns.
+| `stakes` | Behaviour |
+| :--- | :--- |
+| **consequential** | Map trust boundaries, authn/authz paths, and sensitive data flows for the design element. Document attack scenario and required contract change before flagging. Offer roundtable when remediation paths diverge (e.g., centralize vs distribute auth). |
+| **medium** | Assess design against category checklist; full boundary trace only when the design introduces new sensitive data handling or exposure surface. Apply `data_exposure` `stakes_note` when PII or credentials are in scope. |
+| **low** | Apply filtering threshold only. |
 
-Architecture-level findings are design gaps, not implementation bugs. Tag each finding with the appropriate owner: Lance if the architecture contract must change, Katrina if a UX flow enables the vulnerability.
+**Review pacing:** Trust model first, then consequential categories, then medium. Architecture findings are design gaps — tag Lance (contract change) or Katrina (UX trust-boundary issue), not Alex.
+
+## Global Directives
+
+- **Design gaps, not implementation bugs.** Tag each finding with appropriate owner before handoff.
+- **Confidence threshold.** >80% exploitability or clear insecure-by-design pattern before reporting.
+
+## Routing heuristics
+
+- *Design-level vulnerability* → `security-review-<slug>.md`; next owner Lance or Katrina.
+- *Clean review* → state trust model assessed and categories checked explicitly.
+- *Hard exclusions* → do NOT report per YAML filtering.
 
 ## Tasks
 
 Progress:
 
-- [ ] Step 1: Identify the trust model — who the trusted actors are, what data is sensitive, where trust boundaries are crossed, what the authentication and authorization model is, and how sensitive data flows through the system.
-- [ ] Step 2: Assess the architectural design against security categories in `security-categories.yaml`. Focus on: insecure design patterns, missing auth controls at boundary crossings, sensitive data exposure in the design, trust escalation paths, and insecure data flow design.
-- [ ] Step 3: Run the Pre-exit Checkpoint from the core skill before writing findings.
-- [ ] Step 4: Write `[plan_folder]/<initiative-name>/security-review-<slug>.md` using `assets/security-review-template.md` if design-level vulnerabilities are found. No artifact is written for a clean review.
-- [ ] Step 5: If an artifact was written, open `[plan_folder]/<initiative-name>/registry.md` and add `security-review-<slug>.md` to `## Live`.
-- [ ] Step 6: Close per Exit and Handoff. Architecture-level findings route to Lance or Katrina — not to Alex — since the contract must change before implementation can address the vulnerability.
+- [ ] Step 1: Identify trust model — trusted actors, sensitive data, boundary crossings, authn/authz model, sensitive data flows.
+- [ ] Step 2: Assess design against YAML categories per Stakes-based elicitation — insecure design patterns, missing auth at boundaries, trust escalation, insecure data flow.
+- [ ] Step 3: Pre-exit offer (declinable in one word) — *"Before I finalise these findings — anything you want to stress-test first? Otherwise I'll write up the review."* Omit when no findings to write.
+- [ ] Step 4: Write `security-review-<slug>.md` if design-level vulnerabilities found; no artifact for clean review.
+- [ ] Step 5: Register — add to `## Live` in `registry.md` when written.
+- [ ] Step 6: Close — apply Exit and Handoff from the core skill. Architecture findings route to Lance or Katrina.
 
 ## Definition of Done
 
-- [ ] Trust model and data flow analyzed from the design spec
-- [ ] `security-categories.yaml` applied for scope and false-positive filtering
-- [ ] Only High or Medium severity design-level issues reported
-- [ ] Findings correctly tagged as Lance or Katrina owned (architectural/UX design gaps, not implementation bugs)
-- [ ] `security-review-<slug>.md` written if vulnerabilities found; no artifact for clean review
-- [ ] `registry.md` updated if artifact written
-- [ ] Close message: trust model assessed, design findings summary, next owner (Lance or Katrina for redesign)
+- [ ] Trust model and data flow analyzed from design spec
+- [ ] `security-categories.yaml` applied for stakes pacing and filtering
+- [ ] Only High or Medium design-level issues reported
+- [ ] Findings tagged Lance or Katrina owned where applicable
+- [ ] Artifact written only when findings exist; `registry.md` updated when applicable
+- [ ] Close message: trust model assessed, design findings summary, next owner
