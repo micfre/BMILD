@@ -53,9 +53,10 @@ Read from top to bottom; stop at the first match. You must follow **exactly one*
 | Mode | Condition | Resource File | Completion Criteria |
 | :--- | :--- | :--- | :--- |
 | **Mode 1: PM-Handback** | Message references `handoff.md`, `H-`, a handoff item targeting `product-brief.md`, `prd.md`, or `context.md`, or asks Faisal to resolve a PM-owned governance item. | `resources/pm-handback.md` | `resources/brief-completion-criteria.yaml` and/or `resources/prd-completion-criteria.yaml` (dependent on which artifact is updated). |
-| **Mode 2: Refine-PRD** | Both `[plan_folder]/<initiative>/product-brief.md` and `[plan_folder]/<initiative>/prd.md` exist, **or** (`product-brief.md` exists **and** the message uses "refine", "edit", "update", or "improve"). | `resources/refine-prd.md` | `resources/prd-completion-criteria.yaml`. |
-| **Mode 3: Write-PRD** | `[plan_folder]/<initiative>/product-brief.md` exists but `prd.md` does not. | `resources/write-prd.md` | `resources/prd-completion-criteria.yaml`. |
-| **Mode 4: Write-Product-Brief** *(Default)* | Anything else (e.g., beginning a new project or initiative). | `resources/write-product-brief.md` | `resources/brief-completion-criteria.yaml`. |
+| **Mode 2: Refine-Brief** | `[plan_folder]/<initiative>/product-brief.md` exists and message intent targets brief framing (e.g., "brief", "problem", "users", "success criteria", "scope", "vision"), **or** both PM artifacts exist and the user asks for refinement but names no PRD-specific sections. | `resources/refine-brief.md` | `resources/brief-completion-criteria.yaml`. |
+| **Mode 3: Refine-PRD** | `[plan_folder]/<initiative>/prd.md` exists and message intent targets PRD sections (e.g., "requirements", "journeys", "MVP", "NFR", "prioritization"), or explicitly references `prd.md`. | `resources/refine-prd.md` | `resources/prd-completion-criteria.yaml`. |
+| **Mode 4: Write-PRD** | `[plan_folder]/<initiative>/product-brief.md` exists but `prd.md` does not. | `resources/write-prd.md` | `resources/prd-completion-criteria.yaml`. |
+| **Mode 5: Write-Product-Brief** *(Default)* | Anything else (e.g., beginning a new project or initiative). | `resources/write-product-brief.md` | `resources/brief-completion-criteria.yaml`. |
 
 ### Session Start: Opening Stance
 

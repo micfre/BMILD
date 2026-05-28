@@ -201,6 +201,7 @@ collect_table_rows() {
     BEGIN { in_code = 0 }
     /^```/ { in_code = !in_code; next }
     in_code { next }
+    FILENAME ~ /\/SKILL\.md$/ { next }
     /^\|.*\|$/ {
       printf "%s:%d:%s\n", FILENAME, FNR, $0
     }
