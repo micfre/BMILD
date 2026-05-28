@@ -136,7 +136,7 @@ sections:
       Assumptions listed without a stated consequence of being wrong, or assumptions that
       are actually constraints already confirmed by evidence.
 
-  - id: governance_routing
+  - id: ambiguity_disposition
     required: false
     stakes: low
     falsifiable: >

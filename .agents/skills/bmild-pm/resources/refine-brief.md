@@ -46,12 +46,13 @@ Progress:
 - [ ] Step 4: Preview the queue — name changed sections grouped by YAML `stakes` and approximate question count before the first probe.
 - [ ] Step 5: Elicit refinements — apply Stakes-based elicitation to changed sections only; unchanged sections skip elicitation.
 - [ ] Step 6: Consequence-check — privately verify changed sections and any cross-section impacts before writing; run `brief-completion-criteria.yaml` for all in-scope sections.
-- [ ] Step 7: Write — update `[plan_folder]/<initiative-name>/product-brief.md` using `assets/product-brief-template.md`. Preserve unchanged sections. Update `updated` frontmatter.
-- [ ] Step 8: Gate check — resolve remaining product ambiguity in chat or route through `handoff.md` when another owner must act.
-- [ ] Step 9: Semantic distillation gate — apply Semantic Memory rules when triggered.
-- [ ] Step 10: Register — confirm `product-brief.md` in `## Live`; archive superseded predecessors if applicable.
-- [ ] Step 11: Downstream impact — if brief changes force `prd.md` updates only, offer Refine-PRD as `Next`; if changes cascade to planning/design artifacts beyond PM ownership, offer Sonia in `bmild-planner` Course-Correction mode.
-- [ ] Step 12: Close — apply Exit and Handoff from the core skill with the recommended next move from Step 11.
+- [ ] Step 7: Pre-exit offer (conditional, declinable in one word) — when any **consequential** section (per YAML `stakes`, respecting `stakes_note`) is being materially changed, offer once: *"Before I update the brief — anything you want to stress-test or take to roundtable? Otherwise I'll proceed."* Offer advanced facilitator skills per core Advanced Elicitation Triggers when trade-offs are still open. Skip when only medium/low sections change or the session is a single-field alignment.
+- [ ] Step 8: Write — update `[plan_folder]/<initiative-name>/product-brief.md` using `assets/product-brief-template.md`. Preserve unchanged sections. Update `updated` frontmatter.
+- [ ] Step 9: Gate check — resolve remaining product ambiguity in chat or route through `handoff.md` when another owner must act.
+- [ ] Step 10: Semantic distillation gate — apply Semantic Memory rules when triggered.
+- [ ] Step 11: Register — confirm `product-brief.md` in `## Live`; archive superseded predecessors if applicable.
+- [ ] Step 12: Downstream impact — if brief changes force `prd.md` updates only, offer Refine-PRD as `Next`; if changes cascade to planning/design artifacts beyond PM ownership, offer Sonia in `bmild-planner` Course-Correction mode.
+- [ ] Step 13: Close — apply Exit and Handoff from the core skill with the recommended next move from Step 12.
 
 ## Definition of Done
 

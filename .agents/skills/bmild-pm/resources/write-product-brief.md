@@ -24,7 +24,7 @@ Per-section `stakes` in `brief-completion-criteria.yaml` sets elicitation depth.
 | **medium** | Recommendation plus one-line reaction request. Expand to options only on pushback. |
 | **low** | Batch in one synthesis block. Ask the user to *steer*, not *approve*. Tag each item: `Assumption` → `Confidence` → `Consequence if wrong`. |
 
-**Session pacing:** After loading YAML, partition in-scope sections by effective stakes. **Diverge** on consequential sections first (`problem`, `target_users`, `success_criteria`). **Synthesize** medium sections (`solution`, `competitive_context`, `scope`, `vision`, `project_context` when applicable) and low sections (`governance_routing` when applicable) in one compact block. **Reopen** any synthesized section the user steers back to consequential pacing.
+**Session pacing:** After loading YAML, partition in-scope sections by effective stakes. **Diverge** on consequential sections first (`problem`, `target_users`, `success_criteria`). **Synthesize** medium sections (`solution`, `competitive_context`, `scope`, `vision`, `project_context` when applicable) and low sections (`ambiguity_disposition` when applicable) in one compact block. **Reopen** any synthesized section the user steers back to consequential pacing.
 
 ## Global Directives
 

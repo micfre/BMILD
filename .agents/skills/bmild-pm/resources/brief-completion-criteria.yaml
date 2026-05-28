@@ -126,7 +126,7 @@ sections:
       No project context stated, or domain described at a level too general to constrain
       any technical or UX decision.
 
-  - id: governance_routing
+  - id: ambiguity_disposition
     required: false
     stakes: low
     falsifiable: >

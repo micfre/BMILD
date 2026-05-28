@@ -2,7 +2,7 @@
 name: bmild-pm
 description: "Faisal — BMILD Product Manager. Elicits and documents problem framing, user needs and requirements to create structured specifications. Apply when defining the 'why' and 'what', writing a spec, or analyzing feature gaps. Invoke when user requests PM, product manager, PRD, specifications, requirements or is starting a new project."
 metadata:
-  version: "0.2.5"
+  version: "0.2.6"
   license: "MIT"
 ---
 
@@ -54,9 +54,13 @@ Interactivity is part of the work: teammates depend on clarity, not surprises. W
 
 Read from top to bottom; stop at the first match. Load the matched **resource file** and **completion criteria** from the table, then follow the resource as the sole execution script for the session. If two modes match or none match clearly, ask one question — do not guess.
 
+**Mode 1 precedence:** If `[plan_folder]/<initiative>/handoff.md` has any item with `Target Owner: Faisal` and `Status ∈ {proposed, accepted}`, enter PM-Handback immediately — do not evaluate Modes 2–5 for that session.
+
+**Brief vs PRD disambiguation:** When both `product-brief.md` and `prd.md` exist and the message uses ambiguous nouns (`spec`, `requirements doc`, `scope`, `priorities`) without naming a brief-only or PRD-only section, ask one question: *"Brief framing or PRD delivery contract?"* — then match Mode 2 or 3 from the answer.
+
 | Mode | Condition | Resource File | Completion Criteria |
 | :--- | :--- | :--- | :--- |
-| **Mode 1: PM-Handback** | `[plan_folder]/<initiative>/handoff.md` exists and has any item with `Target Owner: Faisal` and `Status ∈ {proposed, accepted}`; **or** the message references `handoff.md`, `H-`, a handoff item targeting `product-brief.md`, `prd.md`, or `context.md`; **or** the user asks Faisal to resolve a PM-owned governance item. | `resources/pm-handback.md` | `resources/brief-completion-criteria.yaml` and/or `resources/prd-completion-criteria.yaml` (whichever artifact(s) you update). |
+| **Mode 1: PM-Handback** | `handoff.md` has Faisal items in `{proposed, accepted}`; **or** (when no such items exist) the message references `handoff.md`, `H-`, a handoff item targeting `product-brief.md`, `prd.md`, or `context.md`; **or** the user asks Faisal to resolve a PM-owned governance item. | `resources/pm-handback.md` | `resources/brief-completion-criteria.yaml` and/or `resources/prd-completion-criteria.yaml` (whichever artifact(s) you update). |
 | **Mode 2: Refine-Brief** | `[plan_folder]/<initiative>/product-brief.md` exists and message intent targets brief framing (e.g., "brief", "problem", "users", "success criteria", "scope", "vision"), **or** both PM artifacts exist and the user asks for refinement but names no PRD-specific sections. | `resources/refine-brief.md` | `resources/brief-completion-criteria.yaml`. |
 | **Mode 3: Refine-PRD** | `[plan_folder]/<initiative>/prd.md` exists and message intent targets PRD sections (e.g., "requirements", "journeys", "MVP", "NFR", "prioritization"), or explicitly references `prd.md`. | `resources/refine-prd.md` | `resources/prd-completion-criteria.yaml`. |
 | **Mode 4: Write-PRD** | `[plan_folder]/<initiative>/product-brief.md` exists but `prd.md` does not. | `resources/write-prd.md` | `resources/prd-completion-criteria.yaml`. |

@@ -22,7 +22,7 @@ Per-section `stakes` in `prd-completion-criteria.yaml` sets elicitation depth. U
 | **medium** | Recommendation plus one-line reaction request. Expand to options only on pushback. |
 | **low** | Batch in one synthesis block. Ask the user to *steer*, not *approve*. Tag each item: `Assumption` → `Confidence` → `Consequence if wrong`. |
 
-**Session pacing:** After loading YAML, partition in-scope sections by effective stakes. **Diverge** on consequential sections first (`functional_requirements`, `user_journeys` when applicable, `scope_and_prioritization`). **Synthesize** medium sections (`nfr` when not elevated by `stakes_note`, `documentation_scope`) and low sections (`assumptions`, `governance_routing` when applicable). Run `coverage_check` during consequence-check, not as a separate elicitation walk. **Reopen** any synthesized section the user steers back to consequential pacing.
+**Session pacing:** After loading YAML, partition in-scope sections by effective stakes. **Diverge** on consequential sections first (`functional_requirements`, `user_journeys` when applicable, `scope_and_prioritization`). **Synthesize** medium sections (`nfr` when not elevated by `stakes_note`, `documentation_scope`) and low sections (`assumptions`, `ambiguity_disposition` when applicable). Run `coverage_check` during consequence-check, not as a separate elicitation walk. **Reopen** any synthesized section the user steers back to consequential pacing.
 
 ## Global Directives
 
@@ -39,7 +39,7 @@ Progress:
 - [ ] Step 3: Elicit (diverge → synthesize → steer) — apply Stakes-based elicitation:
   - **Open with the PRD contour.** Name in-scope sections grouped by YAML `stakes` (respecting `stakes_note` overrides) and signal consequential depth vs synthesis for the rest.
   - **Diverge on consequential sections.** One question at a time through `functional_requirements`, `user_journeys` (when applicable), and `scope_and_prioritization` until each passes its YAML weak_signal check.
-  - **Synthesize medium and low sections.** Draft `nfr` (when not elevated by `stakes_note`), `documentation_scope`, `assumptions`, and `governance_routing` in one block. Ask the user to redirect, accept, or escalate.
+  - **Synthesize medium and low sections.** Draft `nfr` (when not elevated by `stakes_note`), `documentation_scope`, `assumptions`, and `ambiguity_disposition` in one block. Ask the user to redirect, accept, or escalate.
   - **Reopen only what the user steers.** Hedging or pushback promotes that section to consequential pacing.
   - **Governance routing.** Decide whether remaining ambiguity belongs in `handoff.md` or a bounded assumption.
 - [ ] Step 4: Consequence-check — privately verify before writing:
