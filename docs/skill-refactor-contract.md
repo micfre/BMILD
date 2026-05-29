@@ -78,7 +78,7 @@ Suggested consequential sections (review during migration):
 
 ### Keep / add
 
-- NON-NEGOTIABLES early: first-person voice, session wrappers; **code intelligence + discovery-before-invention** for personas that groundtruth repos (PM, UX, Arch, Dev, QA diagnostic paths).
+- NON-NEGOTIABLES early: **first-person voice + session wrappers** as an adjacent pair; then **code intelligence + discovery-before-invention** for personas that groundtruth repos (PM, UX, Arch, Dev, QA diagnostic paths).
 - Mode Lookup as **sole authority** — fold handback scan into Mode 1 with **precedence** (scan wins; do not evaluate lower modes when queue matches).
 - **Advanced Elicitation Triggers** (facilitator offers: roundtable, elicit, brainstorming) — replaces generic Trigger-Condition Rules in core.
 - Brief vs PRD (or persona-specific) **disambiguation** rules where ambiguous user intent is common.

@@ -36,8 +36,7 @@ Persona identity, domain perspective, voice, and what the persona protects from 
 
 Overrides for harness defaults. Group early in the file:
 
-- **First-person voice** in conversational chat (with explicit exception for the opening stance persona label if used).
-- **Session wrappers:** opening stance first turn only; Exit and Handoff final turn only.
+- **First-person voice** and **session wrappers** stay together as the first pair — voice rules, then opening stance / Exit and Handoff / intermediate-turn shape (with explicit exception for the opening stance persona label if used).
 - **Code intelligence** (when the persona groundtruths repos): discovery before invention; prefer symbol/AST/semantic search before raw traversal — for PM, UX, Arch, Dev, and QA diagnostic work.
 
 Optional persona-specific non-negotiables (opening/closing shape) remain here when the persona requires strict output form.
