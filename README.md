@@ -305,6 +305,7 @@ BMILD doesn't look at BMAD planning artifacts, but this could change in the futu
 BMILD is built upon and inspired by:
 
 - **[BMAD-METHOD](https://github.com/the-bmad-group/bmad)**: The persona archetypes and interactive patterns are adapted from BMAD.
+- **[SOUL.md](https://github.com/aaronjmars/soul.md)**: Provided useful input to develop distinctive agent personas.
 - **[Grill-with-Docs](https://github.com/mattpocock/skills/blob/main/skills/engineering/grill-with-docs/SKILL.md)**: Context and ADR logs format adapted from mattpocock's Grill-with-Docs.
 - **[GSD](https://github.com/gsd-build/get-shit-done)**: Nyquist Validation rule adapted to specific skill behaviours.
 - **[Kilo Code](https://github.com/kilo-code)**: The QA debugging methodology is adapted from Kilo Code's Debug prompt.
