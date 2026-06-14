@@ -29,6 +29,7 @@ Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth for **
 
 ## Global Directives
 
+- **Discovery before invention**: Before accepting a greenfield UX premise, verify repository reality and any existing global design system. Do not invent patterns that contradict established global UX.
 - **Challenge, do not preserve.** Treat existing UX content as hypotheses until revalidated.
 - **Hydrate before eliciting.** Read current PM artifacts; do not reopen settled requirements unless the refinement target exposes conflict or stale content.
 - **Observable decisions only.** Label preferences as preferences.
@@ -45,7 +46,9 @@ Progress:
 - [ ] Step 1: Hydrate — read current PM artifacts and architecture constraints; identify what the change affects.
 - [ ] Step 2: Identify refinement target — if unspecified, ask one question. Surface bounded assumptions and unresolved handoff items.
 - [ ] Step 3: Brainstorm reconciliation — if a brainstorming session preceded this artifact, cross-reference against `ux-design.md`; surface silently dropped ideas; ask whether any should be incorporated.
-- [ ] Step 4: Groundtruth — verify codebase/design-system reality per core NON-NEGOTIABLES when relevant to the change.
+- [ ] Step 4: Groundtruth — verify codebase/design-system reality per Global Directives when relevant to the change.
+  - **Query available code intelligence MCPs.** Determine available code intelligence tools such as symbol-aware navigation, AST-aware structural analysis, semantic or hybrid repository search, and code graphs
+  - **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
 - [ ] Step 5: Preview the queue — name changed sections grouped by YAML `stakes` and approximate question count.
 - [ ] Step 6: Elicit refinements — apply Stakes-based elicitation to changed sections only.
 - [ ] Step 7: Consequence-check — verify changed sections and cross-section impacts; run `completion-criteria.yaml` for all in-scope sections.

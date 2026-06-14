@@ -34,6 +34,8 @@ Progress:
 
 - [ ] Step 1: Readiness gate — confirm readiness passed; if not, switch to Readiness-Verification.
 - [ ] Step 2: Forward decomposition — Phase 1 (MVP) in full per Global Directives.
+  - **Query available code intelligence MCPs.** Determine available code intelligence tools such as symbol-aware navigation, AST-aware structural analysis, semantic or hybrid repository search, and code graphs
+  - **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
 - [ ] Step 3: Future phases — active Slice files only when design artifacts exist; otherwise roadmap placeholders (not `## Live`).
 - [ ] Step 4: Slice budgeting — budget all active Slices per Routing heuristics.
 - [ ] Step 5: Sequencing — Phase 1 completes before Phase 2; dependency order within each phase.

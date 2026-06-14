@@ -36,6 +36,8 @@ Progress:
 
 - [ ] Step 1: Identify the trigger — if unspecified, ask one question. Do not re-plan speculatively.
 - [ ] Step 2: Assess impact — completed fixed; active frozen unless fundamentally invalid; todo fully in scope.
+  - **Query available code intelligence MCPs.** Determine available code intelligence tools such as symbol-aware navigation, AST-aware structural analysis, semantic or hybrid repository search, and code graphs
+  - **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
 - [ ] Step 3: Recut — one pass on affected unstarted Slices; apply Recovery-scope split rule when needed.
 - [ ] Step 4: Backward coverage verification — re-run; record in `slices.md ## Coverage Verification`.
 - [ ] Step 5: Write — update affected `slice-<N>.md` and `slices.md`; re-budget when inputs changed. Do not modify completed Slices.

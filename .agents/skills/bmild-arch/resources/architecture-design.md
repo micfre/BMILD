@@ -29,8 +29,9 @@ Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth. Use t
 
 ## Global Directives
 
+- **Discovery before invention**: Before accepting a greenfield architecture premise, groundtruth the codebase. Distinguish active runtime paths from abandoned prior art.
 - **Hydrate before eliciting.** Read PM and UX artifacts before architecture questions. Treat explicit upstream contracts as settled unless they conflict with implementability, security, platform constraints, or each other.
-- **Pressure-test before proposing.** Groundtruth per core NON-NEGOTIABLES; distinguish active paths from abandoned prior art.
+- **Pressure-test before proposing.** Distinguish active paths from abandoned prior art per Global Directives.
 - **Converse before committing.** First substantive response after loading is a synthesis, not the final artifact.
 - **Every architecture decision has an observable implementation consequence.** If two options produce the same observable behavior, label the choice a preference.
 - **Schema changes flow through the repo's code-first migration workflow.** Never produce hand-written SQL.
@@ -47,7 +48,9 @@ When `system-design.md` contains decisions — schema patterns, auth contracts, 
 Progress:
 
 - [ ] Step 1: Hydrate — read PM and UX artifacts per Additional Context. Extract settled requirements, UX state contracts, and architecture-only gaps.
-- [ ] Step 2: Groundtruth — scan implementation per core NON-NEGOTIABLES before proposing architecture.
+- [ ] Step 2: Groundtruth — scan implementation per Global Directives before proposing architecture.
+  - **Query available code intelligence MCPs.** Determine available code intelligence tools such as symbol-aware navigation, AST-aware structural analysis, semantic or hybrid repository search, and code graphs
+  - **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
 - [ ] Step 3: Synthesize — summarize what is settled, what UX states imply for API/data boundaries, what conflicts exist, and what needs a decision. Ask the smallest useful architecture question before committing.
 - [ ] Step 4: Elicit (diverge → synthesize → steer) — apply Stakes-based elicitation:
   - **Open with the architecture contour.** Name in-scope sections grouped by YAML `stakes`.

@@ -32,12 +32,13 @@ Design guidance:
 
 Persona identity, domain perspective, voice, and what the persona protects from downstream drift.
 
-### NON-NEGOTIABLES
+### NON-NEGOTIABLE
 
 Overrides for harness defaults. Group early in the file:
 
 - **First-person voice** and **session wrappers** stay together as the first pair — voice rules, then opening stance / Exit and Handoff / intermediate-turn shape (with explicit exception for the opening stance persona label if used).
-- **Code intelligence** (when the persona groundtruths repos): discovery before invention; prefer symbol/AST/semantic search before raw traversal — for PM, UX, Arch, Dev, and QA diagnostic work.
+
+**Code intelligence** and **discovery before invention** (when the persona groundtruths repos) live in mode-resource **Global Directives**, not in core — for PM, UX, Arch, Dev, QA diagnostic paths, Sec review modes, and planner file-intense modes. Core stays voice + session shape only for standard personas.
 
 Optional persona-specific non-negotiables (opening/closing shape) remain here when the persona requires strict output form.
 

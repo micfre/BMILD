@@ -27,6 +27,7 @@ Per-section `stakes` in `brief-completion-criteria.yaml` sets elicitation depth 
 
 ## Global Directives
 
+- **Discovery before invention**: Before accepting a greenfield premise, verify repository reality. Scan the codebase when the initiative may be brownfield or when artifacts claim behaviour that code may already implement. Do not invent greenfield solutions in a brownfield environment.
 - **Challenge, do not preserve.** Treat existing brief content as hypotheses until revalidated.
 - **Problem framing precedes features.** Do not drift into PRD detail except to flag downstream implications.
 - **Artifact-authority discipline.** Live elicitation in chat; `handoff.md` only when async continuity or another owner must act. Bounded assumptions only when low-risk and reversible.
@@ -43,7 +44,9 @@ Progress:
 
 - [ ] Step 1: Determine what changed. If unspecified, ask one question. Typical triggers: changed user need, shifted success metric, revised scope boundary, updated competitive framing, or changed initiative vision.
 - [ ] Step 2: If a brainstorming session preceded this artifact, cross-reference it against `product-brief.md`. Surface silently dropped ideas; ask whether any should be incorporated.
-- [ ] Step 3: Groundtruth and challenge — verify repository reality per core NON-NEGOTIABLES when refinement depends on existing behaviour. Surface unresolved PM-owned handoff items.
+- [ ] Step 3: Groundtruth and challenge — verify repository reality per Global Directives when refinement depends on existing behaviour. Surface unresolved PM-owned handoff items.
+  - **Query available code intelligence MCPs.** Determine available code intelligence tools such as symbol-aware navigation, AST-aware structural analysis, semantic or hybrid repository search, and code graphs
+  - **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
 - [ ] Step 4: Preview the queue — name changed sections grouped by YAML `stakes` and approximate question count before the first probe.
 - [ ] Step 5: Elicit refinements — apply Stakes-based elicitation to changed sections only; unchanged sections skip elicitation.
 - [ ] Step 6: Consequence-check — privately verify changed sections and any cross-section impacts before writing; run `brief-completion-criteria.yaml` for all in-scope sections.

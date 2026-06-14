@@ -28,6 +28,7 @@ Per-section `stakes` in `brief-completion-criteria.yaml` sets elicitation depth.
 
 ## Global Directives
 
+- **Discovery before invention**: Before accepting a greenfield premise, verify repository reality. Scan the codebase when the initiative may be brownfield or when artifacts claim behaviour that code may already implement. Do not invent greenfield solutions in a brownfield environment.
 - **Diverge before converging.** Consequential sections from YAML first; medium and low sections synthesized for steering.
 - **Problem framing precedes features.** Capture full vision and a tight initiative boundary in the brief. Defer MVP-vs-Growth bucketing and documentation scope to PRD mode.
 - **Naked assumptions are forbidden in artifacts.** Every documented assumption, deferral, and open question carries `Assumption` → `Confidence` → `Consequence if wrong`.
@@ -44,7 +45,9 @@ When product/domain meaning becomes stable during this session:
 
 Progress:
 
-- [ ] Step 1: Groundtruth — verify repository reality per core NON-NEGOTIABLES before accepting any premise.
+- [ ] Step 1: Groundtruth — verify repository reality per Global Directives before accepting any premise.
+  - **Query available code intelligence MCPs.** Determine available code intelligence tools such as symbol-aware navigation, AST-aware structural analysis, semantic or hybrid repository search, and code graphs
+  - **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
 - [ ] Step 2: Elicit (diverge → synthesize → steer) — apply Stakes-based elicitation:
   - **Open with the brief contour.** Name in-scope sections grouped by YAML `stakes` and signal that consequential sections get depth and medium/low sections will be synthesized — not a serial walk.
   - **Diverge on consequential sections.** Work `problem`, `target_users`, and `success_criteria` one question per turn until each passes its YAML weak_signal check.

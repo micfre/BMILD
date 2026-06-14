@@ -33,7 +33,9 @@ Same as `slice-security-review.md` Routing heuristics.
 Progress:
 
 - [ ] Step 1: Confirm PR scope — files changed, behaviour added or modified.
-- [ ] Step 2: Research repository security context per Global Directives and core NON-NEGOTIABLES.
+- [ ] Step 2: Research repository security context per Global Directives.
+  - **Query available code intelligence MCPs.** Determine available code intelligence tools such as symbol-aware navigation, AST-aware structural analysis, semantic or hybrid repository search, and code graphs
+  - **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
 - [ ] Step 3: Examine changed code only — trace data flow per Stakes-based elicitation.
 - [ ] Step 4: Pre-exit offer (declinable in one word) — *"Before I finalise these findings — anything you want to stress-test first? Otherwise I'll write up the review."* Omit when no findings to write.
 - [ ] Step 5: Write `security-review-<slug>.md` if vulnerabilities found; no artifact for clean review.

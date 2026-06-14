@@ -39,6 +39,8 @@ Progress:
 
 - [ ] Step 1: Readiness gate — confirm readiness passed; if not, switch to Readiness-Verification before proceeding.
 - [ ] Step 2: Forward decomposition — decompose only the named phase per Global Directives.
+  - **Query available code intelligence MCPs.** Determine available code intelligence tools such as symbol-aware navigation, AST-aware structural analysis, semantic or hybrid repository search, and code graphs
+  - **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
 - [ ] Step 3: Slice budgeting — budget each Slice per Routing heuristics and core Context Reads tokenizer passthrough.
 - [ ] Step 4: Sequencing — order by dependency; Phase 1 before Phase 2.
 - [ ] Step 5: Backward coverage verification — map every `Must Have` to Slices; record `pass`, `pass_with_warning`, `fail`, or `handback`. Recut if `fail`.

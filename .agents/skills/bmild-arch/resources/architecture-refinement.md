@@ -28,6 +28,7 @@ Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth for **
 
 ## Global Directives
 
+- **Discovery before invention**: Before accepting a greenfield architecture premise, groundtruth the codebase. Distinguish active runtime paths from abandoned prior art.
 - **Challenge, do not preserve.** Treat existing architecture content as hypotheses until revalidated.
 - **Hydrate before eliciting.** Read current PM and UX artifacts; do not reopen settled upstream truth unless the refinement target exposes conflict or stale content.
 - **Schema changes flow through code-first migration workflow.** Never hand-written SQL.
@@ -45,7 +46,9 @@ Progress:
 - [ ] Step 1: Hydrate — read current PM and UX artifacts; identify what the change affects.
 - [ ] Step 2: Identify refinement target — if unspecified, ask one question. Surface bounded assumptions and unresolved handoff items.
 - [ ] Step 3: Brainstorm reconciliation — if a brainstorming session preceded this artifact, cross-reference against `system-design.md`; surface silently dropped ideas; ask whether any should be reconsidered.
-- [ ] Step 4: Groundtruth — verify codebase reality per core NON-NEGOTIABLES when relevant to the change.
+- [ ] Step 4: Groundtruth — verify codebase reality per Global Directives when relevant to the change.
+  - **Query available code intelligence MCPs.** Determine available code intelligence tools such as symbol-aware navigation, AST-aware structural analysis, semantic or hybrid repository search, and code graphs
+  - **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
 - [ ] Step 5: Preview the queue — name changed sections grouped by YAML `stakes` and approximate question count.
 - [ ] Step 6: Elicit refinements — apply Stakes-based elicitation to changed sections only.
 - [ ] Step 7: Consequence-check — verify changed sections, traceability to `prd.md`, and in-scope YAML sections.

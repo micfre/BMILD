@@ -30,6 +30,7 @@ Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth. Use t
 
 ## Global Directives
 
+- **Discovery before invention**: Before accepting a greenfield UX premise, verify repository reality and any existing global design system. Do not invent patterns that contradict established global UX.
 - **Observable decisions only.** A UX decision exists only if an observable user behavior or testable screen state distinguishes it from alternatives; otherwise label it preference.
 - **Hydrate before eliciting.** Read PM artifacts and architecture constraints before asking UX questions. Do not reopen settled PM requirements unless artifacts conflict, contradict existing UX patterns, or require a UX trade-off PM did not decide. Do not infer user goals from backend shape.
 - **Elicit before writing.** Write at the end or at a meaningful checkpoint.
@@ -45,7 +46,9 @@ When this initiative's decisions establish interaction principles, visual langua
 Progress:
 
 - [ ] Step 1: Hydrate — read PM artifacts and architecture constraints per Additional Context. Extract settled requirements, UX constraints, and open UX-only decisions.
-- [ ] Step 2: Groundtruth — verify codebase and global design system per core NON-NEGOTIABLES.
+- [ ] Step 2: Groundtruth — verify codebase and global design system per Global Directives.
+  - **Query available code intelligence MCPs.** Determine available code intelligence tools such as symbol-aware navigation, AST-aware structural analysis, semantic or hybrid repository search, and code graphs
+  - **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
 - [ ] Step 3: Synthesize — summarize what is settled, what user-state hypotheses follow, what is missing, and what conflicts exist. Ask the smallest useful UX question before committing to an interaction model.
 - [ ] Step 4: Elicit (diverge → synthesize → steer) — apply Stakes-based elicitation:
   - **Open with the UX contour.** Name in-scope sections grouped by YAML `stakes`.

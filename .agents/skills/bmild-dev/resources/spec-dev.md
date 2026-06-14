@@ -19,6 +19,7 @@ Implement a well-defined Slice inside a documented initiative against a complete
 
 ## Global Directives
 
+- **Discovery before invention**: Read the contributor guide and search the codebase for existing implementations before writing code. Match project patterns — only where the project actually has them.
 - **Match repo patterns.** Extend existing abstractions before introducing new ones. Do not bypass established layers or commit secrets.
 - **Slice scope only.** A missing import is not a design gap; a missing API contract is. A better architectural approach noticed mid-Slice goes in Implementation Notes for Lance — do not detour.
 - **Contract discipline.** Do not resolve contract gaps by inference. Route genuine gaps via `handoff.md` per core Routing heuristics. Promote durable technical truth into `system-design.md` when no other owner's judgment is required.
@@ -31,7 +32,9 @@ Implement a well-defined Slice inside a documented initiative against a complete
 
 Progress:
 
-- [ ] Step 1: Groundtruth codebase per core NON-NEGOTIABLES before writing code.
+- [ ] Step 1: Groundtruth codebase per Global Directives before writing code.
+  - **Query available code intelligence MCPs.** Determine available code intelligence tools such as symbol-aware navigation, AST-aware structural analysis, semantic or hybrid repository search, and code graphs
+  - **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
 - [ ] Step 2: Work acceptance criteria one by one; honor every design contract referenced by the Slice. Route contract defects per Global Directives.
 - [ ] Step 3: Run quality gates per contributor guide. Record any gate not run and why.
 - [ ] Step 4: Write or update documentation required by spec, Slice, or contributor guide. Name deferred doc items with change required and next owner.

@@ -10,6 +10,7 @@ Implement bounded repo work outside a formal Slice. No Slice, spec, UX design, a
 
 ## Global Directives
 
+- **Discovery before invention**: Read the contributor guide and search the codebase for existing implementations before writing code. Match project patterns — only where the project actually has them.
 - **Match repo patterns.** Read contributor guide and existing implementations before writing. Extend abstractions; do not bypass established layers.
 - **Work classification** before implementing:
   - *Throwaway* — exploratory, disposable, not intended to persist
@@ -23,7 +24,9 @@ Implement bounded repo work outside a formal Slice. No Slice, spec, UX design, a
 
 Progress:
 
-- [ ] Step 1: Classify work and groundtruth codebase per Global Directives and core NON-NEGOTIABLES.
+- [ ] Step 1: Classify work and groundtruth codebase per Global Directives.
+  - **Query available code intelligence MCPs.** Determine available code intelligence tools such as symbol-aware navigation, AST-aware structural analysis, semantic or hybrid repository search, and code graphs
+  - **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
 - [ ] Step 2: Implement smallest coherent change satisfying the request.
 - [ ] Step 3: Run quality gates. Add or update tests when they prove the prototype, protect durable behaviour, or the user asked for tests.
 - [ ] Step 4: Document when durable behaviour changes or user explicitly asks; otherwise `Documentation impact: none`.

@@ -46,6 +46,8 @@ Progress:
 - [ ] Step 2: **Conflict-of-interest check** — apply Global Directives; recommend roundtable when Sonia is not neutral.
 - [ ] Step 3: **Pre-exit offer (declinable in one word)** — *"Before I populate the change proposal — anything you want to take to roundtable or examine from another angle first? Otherwise I'll proceed."*
 - [ ] Step 4: **Impact mapping.** Create or open `change-proposal-<slug>.md` from `assets/change-proposal-template.md` if needed. For each source artifact (`product-brief.md`, `prd.md`, `ux-design.md`, `system-design.md`, `slices.md`, `slice-<N>.md`, `verification-matrix.md`, `security-review-<slug>.md`), classify as `unaffected | minor-update | requires-handback | requires-redesign | requires-rollback`. Use `AGENTS.md`'s cross-artifact flow as the dependency map.
+  - **Query available code intelligence MCPs.** Determine available code intelligence tools such as symbol-aware navigation, AST-aware structural analysis, semantic or hybrid repository search, and code graphs
+  - **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
 - [ ] Step 5: **Question decomposition.** Decompose into 1–N discrete, bounded questions. Each covers one trade-off, scoped to artifacts that share it, answerable in one roundtable session. Order by leverage.
 - [ ] Step 6: **Roundtable invocation** (per question, in order). For each bounded question:
 

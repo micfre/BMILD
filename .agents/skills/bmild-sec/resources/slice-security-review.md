@@ -46,7 +46,9 @@ Per-category `stakes` in `security-categories.yaml` sets review depth. When `sta
 
 Progress:
 
-- [ ] Step 1: Research repository security context per Global Directives and core NON-NEGOTIABLES.
+- [ ] Step 1: Research repository security context per Global Directives.
+  - **Query available code intelligence MCPs.** Determine available code intelligence tools such as symbol-aware navigation, AST-aware structural analysis, semantic or hybrid repository search, and code graphs
+  - **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
 - [ ] Step 2: Compare Slice new code against established secure patterns; flag deviations and new attack surfaces only within Slice scope.
 - [ ] Step 3: Examine implementation files — trace data flow per Stakes-based elicitation and YAML categories.
 - [ ] Step 4: Pre-exit offer (declinable in one word) — *"Before I finalise these findings — anything you want to stress-test first? Otherwise I'll write up the review."* Omit when no findings to write.

@@ -24,8 +24,8 @@ Add to each migrated `SKILL.md` under Mode Lookup:
 
 | Layer | Owns | Must not own |
 | :--- | :--- | :--- |
-| **`SKILL.md`** | Role, NON-NEGOTIABLES, Context Reads, Mode Lookup (incl. handback precedence), Advanced Elicitation Triggers, Scope Boundary, Exit and Handoff | Workflow checklists, stakes behaviour, task steps, consequence-check detail, Gotchas that restate rules |
-| **`resources/<mode>.md`** | Additional context load order, Global Directives (method), **Stakes-based elicitation** (when YAML stakes exist), Tasks, DoD, mode-local routing/pre-exit | Duplicate code-intelligence blocks (belongs in core NON-NEGOTIABLES where applicable) |
+| **`SKILL.md`** | Role, NON-NEGOTIABLE, Context Reads, Mode Lookup (incl. handback precedence), Advanced Elicitation Triggers, Scope Boundary, Exit and Handoff | Workflow checklists, stakes behaviour, task steps, consequence-check detail, Gotchas that restate rules, code-intelligence / discovery-before-invention (belongs in mode Global Directives) |
+| **`resources/<mode>.md`** | Additional context load order, Global Directives (method + groundtruth/code-intelligence when the mode needs it), **Stakes-based elicitation** (when YAML stakes exist), Tasks, DoD, mode-local routing/pre-exit | Duplicate voice/session-wrapper blocks |
 | **Criteria YAML** | Per-section `stakes` (where policy applies), `falsifiable`, `good_signal`, `weak_signal`, `applies_when`, `cross_ref` | Elicitation instructions, workflow steps, assumption format prose |
 
 ---
@@ -78,7 +78,7 @@ Suggested consequential sections (review during migration):
 
 ### Keep / add
 
-- NON-NEGOTIABLES early: **first-person voice + session wrappers** as an adjacent pair; then **code intelligence + discovery-before-invention** for personas that groundtruth repos (PM, UX, Arch, Dev, QA diagnostic paths).
+- NON-NEGOTIABLE early: **first-person voice + session wrappers** only in core. **Code intelligence + discovery-before-invention** (or planner file-intense equivalent) in mode-resource Global Directives for modes that groundtruth repos or budget Slices (PM, UX, Arch, Dev, QA diagnostic, Sec review, planner decomposition/replan/CC).
 - Mode Lookup as **sole authority** — fold handback scan into Mode 1 with **precedence** (scan wins; do not evaluate lower modes when queue matches).
 - **Advanced Elicitation Triggers** (facilitator offers: roundtable, elicit, brainstorming) — replaces generic Trigger-Condition Rules in core.
 - Brief vs PRD (or persona-specific) **disambiguation** rules where ambiguous user intent is common.
@@ -102,7 +102,7 @@ Suggested consequential sections (review during migration):
 - Unified **Tasks** + **Definition of Done**.
 - **Consequence-check** step referencing YAML falsifiability (not duplicating good/weak prose).
 - **Pre-exit:** unconditional before initial artifact write; **conditional** before refine write when consequential sections change materially.
-- Remove duplicate code-intelligence blocks (point to core NON-NEGOTIABLES).
+- Add groundtruth/code-intelligence directives to Global Directives when the mode has a Groundtruth or repository-research step; task steps reference **Global Directives**, not core NON-NEGOTIABLE.
 
 ---
 

@@ -44,6 +44,8 @@ Treat user-provided signals as hypothesis input, not evidence.
 Progress:
 
 - [ ] Step 1: Classify path — lightweight or full RCA per Global Directives.
+  - **Query available code intelligence MCPs.** Determine available code intelligence tools such as symbol-aware navigation, AST-aware structural analysis, semantic or hybrid repository search, and code graphs
+  - **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
 - [ ] Step 2 (Lightweight): Reproduce or localize; identify exact failing contract; confirm root cause with evidence before edit. Apply minimal fix only after confirmation. Verify with focused proof. Persist RCA only when thresholds met.
 - [ ] Step 3 (Full RCA — Reproduce): Confirm exact input, state, or sequence. If you cannot reproduce, stop and gather more information.
 - [ ] Step 4 (Full RCA — Hypothesize): Write 5–7 distinct candidate causes across plausible layers before touching code. For each: one-sentence cause, why it produces this symptom, layer(s) implicated.

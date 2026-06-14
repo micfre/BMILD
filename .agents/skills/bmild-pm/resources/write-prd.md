@@ -26,6 +26,7 @@ Per-section `stakes` in `prd-completion-criteria.yaml` sets elicitation depth. U
 
 ## Global Directives
 
+- **Discovery before invention**: Before accepting a greenfield premise, verify repository reality. Scan the codebase when the initiative may be brownfield or when artifacts claim behaviour that code may already implement. Do not invent greenfield solutions in a brownfield environment.
 - **Diverge before converging.** Consequential sections from YAML first; medium and low sections synthesized for steering.
 - **Naked assumptions are forbidden in artifacts.** Every documented assumption, deferral, and open question carries `Assumption` → `Confidence` → `Consequence if wrong`.
 - **Artifact-authority discipline.** `handoff.md` is for defects, cross-artifact conflicts, and promotion requests requiring another owner. Live elicitation stays in chat unless async continuity requires a governed handoff. Bounded assumptions only when low-risk and reversible.
@@ -34,7 +35,9 @@ Per-section `stakes` in `prd-completion-criteria.yaml` sets elicitation depth. U
 
 Progress:
 
-- [ ] Step 1: Groundtruth — verify repository reality per core NON-NEGOTIABLES for any implementation relevant to the initiative.
+- [ ] Step 1: Groundtruth — verify repository reality for any implementation relevant to the initiative.
+  - **Query available code intelligence MCPs.** Determine available code intelligence tools such as symbol-aware navigation, AST-aware structural analysis, semantic or hybrid repository search, and code graphs
+  - **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
 - [ ] Step 2: Probe backward — review `product-brief.md` for unresolved assumptions, handoff items, or scope edges needing promotion. Route cross-artifact/source issues through `handoff.md` before proceeding.
 - [ ] Step 3: Elicit (diverge → synthesize → steer) — apply Stakes-based elicitation:
   - **Open with the PRD contour.** Name in-scope sections grouped by YAML `stakes` (respecting `stakes_note` overrides) and signal consequential depth vs synthesis for the rest.
