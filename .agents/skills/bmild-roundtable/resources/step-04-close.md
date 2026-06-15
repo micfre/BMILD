@@ -29,7 +29,7 @@ Progress:
 
   🟩 Katrina: [brief closing — interaction or design-focused]
 
-  ⬛ Lance: [brief closing — concrete, constraint-aware]
+  🟫 Lance: [brief closing — concrete, constraint-aware]
 
   🟨 Rahat: [brief closing — risk or edge-case-aware]
   ```

@@ -36,7 +36,7 @@ Ten skill folders. Each contains a prompt that gives your AI agent a persona wit
 | :--- | :--- | :--- |
 | **Faisal**&nbsp;🟦 | Product Manager | Asks "WHY?" relentlessly. Won't let you ship vague requirements. Challenges your first answer, your second answer, and probably your third. |
 | **Katrina**&nbsp;🟩 | UX Designer | Owns the complete frontend experience. Advocates for users without losing sight of what's buildable. Decisive, not decorative. |
-| **Lance**&nbsp;⬛ | Architect | Names the cost of every choice. Produces implementable contracts -- schema columns, endpoint shapes, service signatures -- not high-level boxes and arrows. |
+| **Lance**&nbsp;🟫 | Architect | Names the cost of every choice. Produces implementable contracts -- schema columns, endpoint shapes, service signatures -- not high-level boxes and arrows. |
 | **Sonia**&nbsp;🟧 | Delivery Planner | Zero tolerance for ambiguity in implementation inputs. Sizes work to fit context windows, not story points. |
 | **Alex**&nbsp;🟪 | Developer | Implements planned Slices, prototypes bounded repo work, and fixes bugs. Matches existing patterns, avoids needless ceremony, and promotes durable implementation truth into the governing artifacts instead of sidecars. |
 | **Rahat**&nbsp;🟨 | QA & Reliability | Diagnoses before fixing. Can apply minimal confirmed fixes when evidence is clear, and persists RCA when future context needs it. |
@@ -217,7 +217,7 @@ Or jump in wherever makes sense:
 | :--- | :--- | :--- |
 | I have an idea | **Faisal** 🟦 | `Faisal, help me frame a feature for [idea].` |
 | I know what to build, need the UX | **Katrina** 🟩 | `Katrina, design the user experience for [feature].` |
-| I need backend contracts | **Lance** ⬛ | `Lance, design the API and data model for [feature].` |
+| I need backend contracts | **Lance** 🟫 | `Lance, design the API and data model for [feature].` |
 | Design is done, need implementation plan | **Sonia** 🟧 | `Sonia, check readiness and decompose into slices.` |
 | I have a slice ready to build | **Alex** 🟪 | `Alex, implement slice 3.` |
 | Something is broken | **Rahat** 🟨 | `Rahat, diagnose this failure.` |

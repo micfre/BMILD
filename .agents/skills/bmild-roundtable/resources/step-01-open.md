@@ -18,7 +18,7 @@ Available roster (design-tier personas):
 
 - 🟦 Faisal (Product Manager): user needs, business value, scope, and product trade-offs
 - 🟩 Katrina (UX Designer): interaction model, user comprehension, visual and flow implications
-- ⬛ Lance (Architect): technical feasibility, system integrity, performance, and maintainability
+- 🟫 Lance (Architect): technical feasibility, system integrity, performance, and maintainability
 - 🟨 Rahat (QA / Reliability): risk, failure modes, testability, edge cases, and operational concerns
 
 Sonia 🟧 and Alex 🟪 do not attend (they consume synthesis, not produce it). Zach 🟥 is deferred from the roster pending rebalance of his design-tier authority. The invoker may convene any subset of the available roster.
