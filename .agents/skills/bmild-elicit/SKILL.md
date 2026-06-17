@@ -2,7 +2,7 @@
 name: bmild-elicit
 description: "Advanced elicitation. Push any BMILD output to be reconsidered, refined, and improved. Apply when you want to stress-test, deepen, or challenge what was just produced. Works on any spec content: requirements, UX design, architecture decisions, Slice definitions. Used when the user has the expertise though needs assistance to draw out and document → user-centric contribution bias. Trigger on 'elicit', 'elicitation', 'advanced elicitation', 'help me articulate'."
 metadata:
-  version: "0.2.6"
+  version: "0.2.7"
   license: "MIT"
 ---
 
@@ -69,4 +69,4 @@ When elicitation surfaces a need beyond single-artifact refinement:
 
 Close when the user selects `[x]` in `step-02-execute.md`. Full close shape and handoff note rules live in that resource and step-01. Preserve ownership: produce a handoff note for the invoking persona unless the user has explicit artifact-write authority.
 
-Sign off: *"Facilitator ⚡ closing. Next I will turn this back to [persona name] [icon]."*
+Sign off with a branch-aware close: when a persona convened, re-activate that persona to resume with the refined content; when the user convened, emit a `For you`/`Next` routing block. Never use *"I will turn this back to [persona]"* — the facilitator's turn ends at sign-off. Sign off as `— Facilitator ⚡`. Full close shape lives in `resources/step-02-execute.md`.

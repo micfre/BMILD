@@ -2,7 +2,7 @@
 name: bmild-brainstorming
 description: "Brainstorming. Facilitate interactive brainstorming sessions using diverse creative techniques and ideation methods. Apply when the user wants to expand thinking, explore options, think creatively, step back, get out of the box, or find angles not yet considered. Used when the user needs help to expand range of options beyond the obvious → divergent, expansive contribution bias. Trigger on 'brainstorm', 'brainstorming', 'brainstorm session', 'help me brainstorm'."
 metadata:
-  version: "0.2.6"
+  version: "0.2.7"
   license: "MIT"
 ---
 
@@ -62,4 +62,4 @@ Load **only** `resources/step-01-setup.md` first. Follow the self-steering resou
 
 ## Exit and Return
 
-Close via `resources/step-04-organise.md` or when the user selects Done. Return ideas and themes to the caller; if invoked from a named persona, hand off with ideas as input. Sign off as `Facilitator 💡`. Full close shape lives in step-04.
+Close via `resources/step-04-organise.md` or when the user selects Done. Return ideas and themes to the caller with a branch-aware close: when a persona convened, re-activate that persona to resume with the ideas as input; when the user convened, emit a `For you`/`Next` routing block. Never use *"I will turn this back to [persona]"* — the facilitator's turn ends at sign-off. Sign off as `Facilitator 💡`. Full close shape lives in step-04.

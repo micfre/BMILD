@@ -9,6 +9,7 @@ Close the session briefly — the synthesis already did the heavy work. Each con
 Carried from prior steps:
 
 - Invocation context (forward-direction or course-correction).
+- Convener identity (a named persona, or `user`), carried from step-01.
 - Final attendee list and which attendees were most engaged.
 - Key outcome established in synthesis.
 
@@ -38,17 +39,26 @@ Progress:
 
   Example beats: Faisal — *"Good session. Let's make sure the open item on [X] gets resolved before Sonia starts slicing — it'll block her otherwise."* Katrina — *"The interaction model is clearer now. I'd want to revisit the error-state flow once Lance's API shape is confirmed."* Lance — *"The schema trade-off is laid out. Watch the index on [column] at volume."* Rahat — *"Make sure [edge case] gets a test. It'll come back if it doesn't."* Zach — *"The trust boundary on [surface] is the one to watch. If Lance's contract crosses it, flag me before it ships."*
 
-- [ ] Step 3: **Return handoff — branch on invocation context.** Facilitator tells the user where to continue with clear speaker identity:
+- [ ] Step 3: **Return handoff — branch on convener identity.** Your turn ends at sign-off: you cannot resume another persona on the user's behalf, so the close must make the next move unambiguous. Use the convener identity carried from step-01 to pick **exactly one** branch. Never use *"I will turn this back to [persona]"* — it is a promise you cannot keep.
 
-  *Forward-direction:*
-  > *"Facilitator 🌀 closing. [If invoked from within a persona session:] Next I will turn this back to [persona name] [icon] on [feature/topic]. [If invoked directly:] Ready for your next BMILD persona whenever you are."*
+  **A — Persona convened (default; the convener resumes).** Yield the floor and re-activate the convener so the next turn is that persona continuing with the synthesis as input:
 
-  *Course-correction consultation:*
-  > *"Facilitator 🌀 closing. Synthesis appended to `change-proposal-<slug>.md`. Next: Sonia 🟧 picks up routing once you've ratified the open items."*
+  > *"Facilitator 🌀 closing. Synthesis is ready — resume as [convener name] [icon] and apply it to [their active artifact]. [Only if a real user action remains:] For you, [user_name]: [ratify/answer the unresolved Open item]."*
+
+  **B — User convened (no invoking persona to return to).** Emit the core-style routing block so the user has a clear next step:
+
+  > *"Facilitator 🌀 closing. For you, [user_name]: [only a real step-completion action — omit this line if there is none]. Next: invoke the persona who owns the next artifact when ready, or tell me what's next."*
+
+  **C — Course-correction consultation.** Synthesis was appended to `change-proposal-<slug>.md` in the synthesis step; route to ratification, then Sonia:
+
+  > *"Facilitator 🌀 closing. For you, [user_name]: ratify the open items in `change-proposal-<slug>.md`. Next: Sonia 🟧 picks up routing once you've ratified."*
+
+  `For you` is only for a genuine user-facing step-completion action; omit the entire line when there is none, in any branch. Keep `For you` and `Next` separate. Sign off as `— Facilitator 🌀`.
 
 ## Definition of Done
 
 - Session outcome stated in one sentence.
 - Most-engaged attendees made in-character closing remarks.
-- Facilitator signed off as Facilitator 🌀 with the correct return or routing statement for the invocation context.
+- Facilitator signed off as `— Facilitator 🌀` with a branch-aware close selected by convener identity (persona re-activation, user `For you`/`Next` routing, or course-correction routing).
+- No *"I will turn this back to [persona]"* phrasing remains; the convener either resumes with the synthesis as input or the user has a clear `For you`/`Next` step.
 - The invoking persona or user has what they need to resume without re-running the roundtable.

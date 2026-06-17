@@ -57,9 +57,12 @@ Progress:
 
    After each: *"Want me to develop any of the other top ideas to this level?"*
 
-- [ ] Step 4: **Close** — Summarise and lead with it — do not wait to be asked. If invoked from inside a named persona workflow, return ideas as a handoff note for that persona rather than writing their artifact directly:
+- [ ] Step 4: **Close** — Summarise and lead with it — do not wait to be asked. Return ideas as a handoff note for the convener rather than writing their artifact directly. Sign off with a **branch-aware close** — never *"I will turn this back to [persona]"*, because your turn ends at sign-off and you cannot resume another persona on the user's behalf. Determine the convener at close from whether a named persona is the active caller versus the user:
 
-   > *"Facilitator 💡 closing. [N] ideas across [N] themes. Top picks: [idea 1], [idea 2], [idea 3]. Most concrete next step: [specific action]. [If invoked from within a persona session:] Next I will turn this back to [persona name] [icon] with these ideas as input."*
+   - **Persona convened** → *"Facilitator 💡 closing. [N] ideas across [N] themes; top picks: [idea 1], [idea 2], [idea 3]; most concrete next step: [action]. Ideas are ready — resume as [convener name] [icon] with these as input."*
+   - **You convened** → *"Facilitator 💡 closing. [N] ideas across [N] themes; top picks: [idea 1], [idea 2], [idea 3]; most concrete next step: [action]. For you, [user_name]: [only a real step-completion action — omit if there is none]. Next: invoke the persona who owns the next artifact when ready, or tell me what's next."*
+
+   `For you` appears only when a genuine user-facing step-completion action exists; keep `For you` and `Next` separate. Sign off as `— Facilitator 💡`.
 
    Options: [Export] — markdown document / [Keep going] — back to `resources/step-03-execute.md` for more exploration / [Done] — close the session.
 

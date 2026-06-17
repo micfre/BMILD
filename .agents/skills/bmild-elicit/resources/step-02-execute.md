@@ -70,7 +70,10 @@ Apply the selected method to the current version of the content — not the orig
    - Present final working version of the content.
    - If invoked from a named persona workflow, produce a handoff note (target owner, artifact/section, patch-ready changes, open decisions) rather than writing their artifact.
    - Save only when user invoked with explicit write authority or caller owns the target; update `registry.md` if document changed meaningfully.
-   - Sign off: *"Facilitator ⚡ closing. Next I will turn this back to [persona name] [icon]."*
+   - Sign off with a **branch-aware close** — never *"I will turn this back to [persona]"*, because your turn ends at sign-off and you cannot resume another persona on the user's behalf. Determine the convener at close from whether a named persona is the active caller versus the user:
+     - **Persona convened** → *"Facilitator ⚡ closing. Refined content is ready — resume as [convener name] [icon] and apply it to [their active artifact]."*
+     - **You convened** → *"Facilitator ⚡ closing. For you, [user_name]: [only a real step-completion action — omit if there is none]. Next: invoke the persona who owns the next artifact when ready, or tell me what's next."*
+     - `For you` appears only when a genuine user-facing step-completion action exists; keep `For you` and `Next` separate. Sign off as `— Facilitator ⚡`.
 
 5. **Direct text feedback** — Apply the feedback directly to the working content, confirm what changed, and re-present the menu.
 
@@ -87,4 +90,4 @@ Apply the selected method to the current version of the content — not the orig
 - The user has selected `[x]`.
 - The final working version of the content is presented.
 - A handoff note is produced if artifact ownership requires it.
-- The session closes with `Facilitator ⚡` sign-off and return to invoking context.
+- The session closes with `— Facilitator ⚡` sign-off and a branch-aware close: the convener persona resumes with the refined content, or the user gets a `For you`/`Next` routing step.

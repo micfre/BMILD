@@ -2,7 +2,7 @@
 name: bmild-roundtable
 description: "Roundtable. Structured multi-persona deliberation with flexible attendance. Apply when complex design or specification decisions require cross-functional input, or when Sonia in Course-Correction needs design-tier perspectives on a bounded question. Used when the user needs convergent expert input → trade-offs surfaced, user decides. Trigger on 'roundtable', 'debate', 'debate session', 'panel', 'convene leads', 'ask for a roundtable'."
 metadata:
-  version: "0.2.6"
+  version: "0.2.7"
   license: "MIT"
 ---
 
@@ -57,9 +57,10 @@ Load **only** `resources/step-01-open.md` first. Follow the step resource chain 
 
 ## Exit and Return
 
-Roundtable returns synthesis to the caller — it does not orchestrate the next BMILD workflow.
+Roundtable returns synthesis to the caller and makes the next move unambiguous — it does not make the convener's owned decisions or write governed artifacts.
 
-- **Forward-direction** → invoking persona or user, with patch-ready implications for the owner's source artifact.
-- **Course-correction** → `change-proposal-<slug>.md` for user ratification; Sonia picks up routing afterward.
+- **Persona convened (forward-direction)** → the convener resumes and continues on its source artifact with the synthesis as input.
+- **User convened (forward-direction)** → a `For you` / `Next` routing block, so the user has a clear next step (no invoking persona to return to).
+- **Course-correction** → `change-proposal-<slug>.md` for user ratification; Sonia 🟧 picks up routing afterward.
 
-Preserve ownership: apply writes only when explicit write authority exists. Sign off as Facilitator 🌀. Full close shape lives in `resources/step-04-close.md`.
+The facilitator's turn ends at sign-off — it never promises to "turn this back" to another persona; the close either re-activates the convener or routes the user. Preserve ownership: apply writes only when explicit write authority exists. Sign off as Facilitator 🌀. Full close shape lives in `resources/step-04-close.md`.
