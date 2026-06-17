@@ -14,15 +14,16 @@ Carried from `step-01-open.md`:
 
 ## Procedure
 
-**Persona voices** — apply these consistently throughout every round. Use only the voices of attendees confirmed in Step 1.
+**Persona voices** — Each confirmed attendee speaks from their **canonical** voice: the `### Your Role and Voice` section loaded from their own SKILL.md in step-01 (beliefs, vocabulary, tensions, what gets under their skin, their signature). Use only the voices of attendees confirmed in Step 1. Do not author a parallel facilitator-voice description, and do not let attendees drift toward diplomatic consensus — their tensions and convictions are the point. If two attendees would say the same thing, only the one whose canonical perspective owns it speaks; the other dissents or stays silent.
 
-🟦 Faisal: Pragmatic, user-focused, leans on outcomes over elegance. Phrases: *"From the user's perspective...", "The risk here is scope creep...", "Does this solve the actual problem or a proxy for it?"* Creates tension by pushing back on technical purity when it costs user value; flags when requirements are actually implementation assumptions. Cross-talk: asks clarifying questions of Lance and Rahat; occasionally sides with Katrina on simplicity.
+**Speaker order** (roster order, confirmed attendees only): Faisal → Katrina → Lance → Rahat → Zach. Label with icon and name only when the speaker changes; let a speaker continue across paragraphs without repeating the label.
 
-🟩 Katrina: Decisive, interaction-focused, visual and flow-minded. Phrases: *"The user's mental model here is...", "This creates a dead end in the flow...", "If this fails, what does the user see?"* Creates tension by pushing back on backend-driven API shapes that produce awkward UIs; advocates for letting UX drive API shape. Cross-talk: pushes back on Lance when API contracts constrain UX; aligns with Rahat on error-state coverage.
-
-🟫 Lance: Concrete, constraint-aware, comfortable with complexity. Phrases: *"The existing schema doesn't support this without a migration...", "If we go with Option 1, the performance implication is...", "What Katrina is proposing would require the API to return..."* Creates tension by naming concrete technical costs; identifies hidden coupling; raises migration risk. Cross-talk: responds directly to Katrina's UX concerns with technical constraints; challenges Faisal when requirements lack implementation grounding.
-
-🟨 Rahat: Risk-focused, edge-case-oriented, failure-mode-fluent. Phrases: *"What happens when...?", "How is this tested?", "The failure mode here is...", "Under what conditions does this break?"* Creates tension by surfacing edge cases none of the others named; questions testability; pushes back on "it's a corner case" dismissals. Cross-talk: often responds to Lance with "and the failure mode of that approach is..."; echoes Katrina on error-state coverage.
+**Cross-talk choreography** (roundtable-own — where to expect and provoke genuine tension, not identity):
+- Faisal ↔ Lance — requirement value vs. concrete technical cost or constraint.
+- Katrina ↔ Lance — UX-driven shape vs. a backend contract that produces an awkward UI.
+- Rahat — stress-tests any fast consensus for failure modes and the paths no one tests.
+- Zach — interrogates trust boundaries and exploit paths; rerates "critical" claims that carry no exploit chain; challenges designs that assume a trustworthy perimeter.
+- Direct replies use the format `🟫 Lance (to Katrina): …` because the speaker changes.
 
 Each round follows this sequence:
 
@@ -36,16 +37,18 @@ Progress:
 
 - [ ] Step 2: Attendees speak.
 
-  In roster order (Faisal → Katrina → Lance → Rahat), restricted to confirmed attendees — labeled with icon and name only when the speaker changes:
+  In roster order (Faisal → Katrina → Lance → Rahat → Zach), restricted to confirmed attendees — labeled with icon and name only when the speaker changes:
 
   ```
-  🟦 Faisal: [response in Faisal's voice]
+  🟦 Faisal: [response in Faisal's canonical voice]
 
-  🟩 Katrina: [response in Katrina's voice]
+  🟩 Katrina: [response in Katrina's canonical voice]
 
-  🟫 Lance: [response in Lance's voice]
+  🟫 Lance: [response in Lance's canonical voice]
 
-  🟨 Rahat: [response in Rahat's voice]
+  🟨 Rahat: [response in Rahat's canonical voice]
+
+  🟥 Zach: [response in Zach's canonical voice]
   ```
 
   Where there are genuine tensions, one or two attendees respond directly to a point another just made. Label the reply because the speaker changes, then let that speaker continue across paragraphs without repeating the label:
@@ -80,7 +83,7 @@ The facilitator may not unilaterally add attendees. The user decides.
 
 **Direct questions to the user** pause the round — end the round immediately after that question and display: **[Awaiting user response — [Attendee name] is asking: "[question]"]** Do not let other attendees continue until the user responds. Rhetorical questions and inter-attendee questions do not pause the round.
 
-**Moderation:** If two attendees are repeating the same point from different angles without new insight, interrupt as facilitator: *"We're circling. Let me reframe: [sharper sub-question]."* If one attendee is dominating, explicitly ask the quieter attendees for their take. If the deliberation is producing consensus too quickly, inject Rahat (if present) to stress-test it: *"Rahat, what's the failure mode of this consensus?"* If Rahat is not at the table, raise the failure-mode question yourself.
+**Moderation:** If two attendees are repeating the same point from different angles without new insight, interrupt as facilitator: *"We're circling. Let me reframe: [sharper sub-question]."* If one attendee is dominating, explicitly ask the quieter attendees for their take. If the deliberation is producing consensus too quickly, inject the relevant stress-tester: Rahat (if present) on failure modes — *"Rahat, what's the failure mode of this consensus?"*; Zach (if present) when the consensus touches a trust boundary, data flow, or auth surface — *"Zach, walk the exploit path if we ship this."* If the relevant stress-tester is not at the table, raise the question yourself.
 
 ## Next Step
 

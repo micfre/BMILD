@@ -14,14 +14,17 @@ Frame the roundtable, sharpen the question, identify the invocation context, pro
   - Specific documents directly relevant to the question (e.g. `system-design.md §X`, `ux-design.md §Y`).
   - If course-correction context: also load the active `change-proposal-<slug>.md`.
 
-Available roster (design-tier personas):
+Available roster:
 
 - 🟦 Faisal (Product Manager): user needs, business value, scope, and product trade-offs
 - 🟩 Katrina (UX Designer): interaction model, user comprehension, visual and flow implications
 - 🟫 Lance (Architect): technical feasibility, system integrity, performance, and maintainability
 - 🟨 Rahat (QA / Reliability): risk, failure modes, testability, edge cases, and operational concerns
+- 🟥 Zach (Security): trust boundaries, exploit paths, and security trade-offs (high-confidence, exploitable findings over theoretical noise)
 
-Sonia 🟧 and Alex 🟪 do not attend (they consume synthesis, not produce it). Zach 🟥 is deferred from the roster pending rebalance of his design-tier authority. The invoker may convene any subset of the available roster.
+Sonia 🟧 and Alex 🟪 do not attend — they consume synthesis, not produce trade-offs. The invoker may convene any subset of the available roster.
+
+These one-liners are for **attendance selection only**. They are deliberately minimal and must not be used as an attendee's speaking voice — that flattens perspective and drifts from the canonical source. Each attendee's full identity — beliefs, vocabulary, tensions, and signature — lives in the `### Your Role and Voice` section of their own SKILL.md. Load it in Step 5 so attendees speak with their genuine, distinct voice rather than a facilitator-authored approximation.
 
 ## Global Directives
 
@@ -61,7 +64,8 @@ Progress:
   - *General requirement ↔ technical-feasibility trade-off* (product-level requirement; UX impact matters) → Faisal + Lance + Katrina
   - *UX-specific technical trade-off* (UX surface only) → Katrina + Lance
   - *Reliability/risk vs. feature surface* → Faisal + Lance + Rahat
-  - *Cross-tier course-correction* → all four unless invoker narrows
+  - *Security/trust-boundary vs. feature surface* → Lance + Zach + (Katrina if the trust surface is UX-facing; Faisal if the constraint reshapes scope)
+  - *Cross-tier course-correction* → the full roster unless the invoker narrows
 
   If the invoker named attendees explicitly, honour their list. Otherwise propose and ask:
 
@@ -69,7 +73,11 @@ Progress:
 
   Wait for confirmation. Record the final attendee list.
 
-- [ ] Step 5: **Load context** — Prefer existing conversation context over reading files. Only read when needed to ground the question (see Inputs above). Confirm no archived entries or unrelated feature folders were loaded. Briefly narrate what you loaded: *"Context loaded: [list of documents]. [Attendees] are aware of the current state. Ready to begin."*
+- [ ] Step 5: **Load context** — Two loads:
+  - **Question grounding:** Prefer existing conversation context over reading files. Only read when needed to ground the question (see Inputs above). Confirm no archived entries or unrelated feature folders were loaded.
+  - **Canonical attendee voice:** For each confirmed attendee whose `### Your Role and Voice` section is not already in context, read that section from their own SKILL.md (the active `bmild-<persona>` skill directory for the current harness, sibling to this roundtable skill — e.g. `.agents/skills/bmild-pm/SKILL.md`; resolve from the roundtable skill's own directory). Read from `### Your Role and Voice` up to `### NON-NEGOTIABLE`, for confirmed attendees only — not the whole roster. This section is the single source for how each attendee speaks; do not author a parallel voice description.
+
+  Briefly narrate what you loaded: *"Context loaded: [documents]. Attendee voices loaded from canonical sources. Ready to begin."*
 
 - [ ] Step 6: **Confirm open** — If no conversational framing preceded this invocation, display the session header:
 
@@ -86,4 +94,4 @@ Progress:
 
 ## Next Step
 
-On confirmation of question, context, and attendees, load `resources/step-02-debate.md`. Carry forward: confirmed question, invocation context, and final attendee list.
+On confirmation of question, context, and attendees, load `resources/step-02-debate.md`. Carry forward: confirmed question, invocation context, final attendee list, and the canonical `### Your Role and Voice` section for each confirmed attendee.

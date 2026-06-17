@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Promoted Zach 🟥 (Security) to a co-equal Roundtable participant: added to the available roster, speaker order, cross-talk choreography, moderation stress-test hooks, and close beats.
+- Reworked Roundtable persona voice so attendees speak from the canonical `### Your Role and Voice` section of their own SKILL.md (loaded per confirmed attendee in step-01) instead of a facilitator-authored approximation; removed the duplicated voice/phrase blocks from step-02 to eliminate drift and let each persona's rich perspective carry into the debate without re-loading the full persona skills.
+
 - Changed Lance's icon from `⬛` to `🟫` brown so it belongs to the same colored-square emoji family (U+1F7E5–1F7EB) as the rest of the roster; `⬛` (U+2B1B) is a monochrome text symbol that rendered at inconsistent size and inherited the foreground color across IDE/CLI environments.
 - Clarified standard persona Exit/Handoff semantics so `For you, ...` is reserved for real user-facing step-completion actions, while `Next.` remains the separate workflow-orchestration move; removed room for internal bookkeeping notes to leak into user-action lines.
 - Tightened PM handoff rules so Faisal keeps `Next` on PRD authoring after `product-brief.md` and only hands off downstream once both canonical PM artifacts are complete.

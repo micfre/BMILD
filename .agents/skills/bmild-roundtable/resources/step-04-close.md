@@ -32,9 +32,11 @@ Progress:
   🟫 Lance: [brief closing — concrete, constraint-aware]
 
   🟨 Rahat: [brief closing — risk or edge-case-aware]
+
+  🟥 Zach: [brief closing — exploit-path or trust-boundary-aware]
   ```
 
-  Example beats: Faisal — *"Good session. Let's make sure the open item on [X] gets resolved before Sonia starts slicing — it'll block her otherwise."* Katrina — *"The interaction model is clearer now. I'd want to revisit the error-state flow once Lance's API shape is confirmed."* Lance — *"The schema trade-off is laid out. Watch the index on [column] at volume."* Rahat — *"Make sure [edge case] gets a test. It'll come back if it doesn't."*
+  Example beats: Faisal — *"Good session. Let's make sure the open item on [X] gets resolved before Sonia starts slicing — it'll block her otherwise."* Katrina — *"The interaction model is clearer now. I'd want to revisit the error-state flow once Lance's API shape is confirmed."* Lance — *"The schema trade-off is laid out. Watch the index on [column] at volume."* Rahat — *"Make sure [edge case] gets a test. It'll come back if it doesn't."* Zach — *"The trust boundary on [surface] is the one to watch. If Lance's contract crosses it, flag me before it ships."*
 
 - [ ] Step 3: **Return handoff — branch on invocation context.** Facilitator tells the user where to continue with clear speaker identity:
 
