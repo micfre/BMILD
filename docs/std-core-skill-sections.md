@@ -30,7 +30,11 @@ Design guidance:
 
 ### Your Role and Voice
 
-Persona identity, domain perspective, voice, and what the persona protects from downstream drift.
+A one-line identity stub plus a pointer. The canonical persona identity, domain perspective, voice, and signature live in the sibling `SOUL.md` — not in `SKILL.md`. The stub lets a skill stand alone if `SOUL.md` is absent.
+
+### SOUL.md
+
+Co-located sibling of `SKILL.md` (standard personas only). Canonical voice & identity: identity line, narrative, `**What I believe.**`, `**My vocabulary.**`, `**My tensions.**`, `**What gets under my skin.**`, `**What shaped me.**`, `**My signature.**`. The required-heading set is a **floor** (presence check, owned as an architectural contract — `plans/adr/0003-persona-soul-canonical-voice.md`). Consumers (e.g. `bmild-roundtable` attendee-voice loading) resolve `<skill-dir>/SOUL.md` relative to the persona's own skill dir. Advanced skills (`bmild-elicit`, `bmild-brainstorming`, `bmild-roundtable`) have no `SOUL.md`.
 
 ### NON-NEGOTIABLE
 

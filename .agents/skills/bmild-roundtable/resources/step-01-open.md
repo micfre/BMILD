@@ -24,7 +24,7 @@ Available roster:
 
 Sonia 🟧 and Alex 🟪 do not attend — they consume synthesis, not produce trade-offs. The invoker may convene any subset of the available roster.
 
-These one-liners are for **attendance selection only**. They are deliberately minimal and must not be used as an attendee's speaking voice — that flattens perspective and drifts from the canonical source. Each attendee's full identity — beliefs, vocabulary, tensions, and signature — lives in the `### Your Role and Voice` section of their own SKILL.md. Load it in Step 5 so attendees speak with their genuine, distinct voice rather than a facilitator-authored approximation.
+These one-liners are for **attendance selection only**. They are deliberately minimal and must not be used as an attendee's speaking voice — that flattens perspective and drifts from the canonical source. Each attendee's full identity — beliefs, vocabulary, tensions, and signature — lives in their own `SOUL.md` (sibling of their `SKILL.md`). Load it in Step 5 so attendees speak with their genuine, distinct voice rather than a facilitator-authored approximation.
 
 ## Global Directives
 
@@ -77,7 +77,7 @@ Progress:
 
 - [ ] Step 5: **Load context** — Two loads:
   - **Question grounding:** Prefer existing conversation context over reading files. Only read when needed to ground the question (see Inputs above). Confirm no archived entries or unrelated feature folders were loaded.
-  - **Canonical attendee voice:** For each confirmed attendee whose `### Your Role and Voice` section is not already in context, read that section from their own SKILL.md (the active `bmild-<persona>` skill directory for the current harness, sibling to this roundtable skill — e.g. `.agents/skills/bmild-pm/SKILL.md`; resolve from the roundtable skill's own directory). Read from `### Your Role and Voice` up to `### NON-NEGOTIABLE`, for confirmed attendees only — not the whole roster. This section is the single source for how each attendee speaks; do not author a parallel voice description.
+  - **Canonical attendee voice:** For each confirmed attendee whose voice is not already in context, read their `SOUL.md` — the active `bmild-<persona>` skill directory for the current harness (sibling of their `SKILL.md`, e.g. `.agents/skills/bmild-pm/SOUL.md`; resolve relative to the persona's own skill dir, never a hardcoded root). `SOUL.md` is the single source for how each attendee speaks; do not author a parallel voice description.
 
   Briefly narrate what you loaded: *"Context loaded: [documents]. Attendee voices loaded from canonical sources. Ready to begin."*
 
