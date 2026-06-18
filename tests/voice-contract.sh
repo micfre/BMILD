@@ -16,12 +16,13 @@ set -euo pipefail
 
 STANDARD_PERSONAS=(pm ux arch dev qa sec planner)
 REQUIRED_HEADINGS=(
-  "**What I believe.**"
-  "**My vocabulary.**"
-  "**My tensions.**"
-  "**What gets under my skin.**"
-  "**What shaped me.**"
-  "**My signature.**"
+  "## Identity"
+  "## What I believe"
+  "## My vocabulary"
+  "## My tensions"
+  "## What gets under my skin"
+  "## What shaped me"
+  "## My perspective in one line"
 )
 
 # Resolve repo root from this script's location (<root>/tests/voice-contract.sh).
@@ -53,7 +54,7 @@ for root in "${SKILL_ROOTS[@]}"; do
       continue
     fi
     if ! rg -q -F "I'm " "${soul}"; then
-      fail "${soul}: missing narrative paragraph ('I'm ...')"
+      fail "${soul}: missing narrative ('I'm ...' in Identity Bio)"
     fi
     for h in "${REQUIRED_HEADINGS[@]}"; do
       if ! rg -q -F "${h}" "${soul}"; then
@@ -68,7 +69,7 @@ for root in "${SKILL_ROOTS[@]}"; do
       if ! rg -q -F "SOUL.md" "${skillmd}"; then
         fail "${skillmd}: identity stub does not point at SOUL.md"
       fi
-      if rg -q -F "**My signature.**" "${skillmd}"; then
+      if rg -q -F "## What I believe" "${skillmd}"; then
         fail "${skillmd}: voice body present in SKILL.md (should be only the stub)"
       fi
     fi
