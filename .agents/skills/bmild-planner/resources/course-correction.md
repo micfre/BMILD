@@ -21,18 +21,12 @@ Load in this order before proceeding:
 - **Conflict-of-interest:** If the trigger is the plan itself rather than upstream design (e.g., "the slice plan is wrong"), Sonia is not the neutral party. Before producing the orchestration plan, recommend `bmild-roundtable` with Faisal, Lance, and the user as deciders, framed as "is the current slice plan still the right shape given X?" Do not self-justify the existing plan.
 - **Sonia never writes canonical-tier artifacts** (`context-map.md`, `[plan_folder]/adr/`, project-root `DESIGN.md`) under any path.
 
-**Scribe-Eligibility criteria** (all must hold for Sonia to apply a ratified change directly):
+**Scribe-Eligibility (shared gate).** Sonia's Course-Correction scribe uses the shared **Scribe-Eligibility gate** and procedure in `docs/scribe-path.md` — that doc is the single source of truth; do not re-derive the criteria here. A roundtable-ratified change satisfies the gate's *settled source* condition via the *prior ratified debate/roundtable* arm **only when** the synthesis carries solely **Non-negotiable** items and the user ratified a single option without modification (no "yes but also do X" that introduces new authorial judgment). If a real **Preference** option remains live, it is not settled → standard handback. The shared fences (`docs/scribe-path.md` §5) and "no deferred audit" rule (§4) apply in full; canonical-tier artifacts always route.
 
-- The roundtable synthesis has only **Non-negotiable** items derived from the question. No remaining **Preference** options on the ratified path.
-- The user's ratification was on a single option without modification (no "yes but also do X" that introduces new authorial judgment).
-- The change is reversible — patchable in a future Handback if the decision proves wrong, without rework of work-in-flight.
-- No data model, API contract, security, or compliance surface change.
-- No distillation to a canonical-tier artifact required. Canonical-tier writes remain the owning persona's authority regardless of roundtable outcome.
-
-**Scribe application mechanics.** When applying as scribe, Sonia:
+**Scribe application mechanics.** When applying as scribe, Sonia follows the shared procedure (`docs/scribe-path.md` §3) and additionally:
 
 - Writes the exact ratified patch to the target source artifact and updates the `updated` frontmatter date.
-- Writes the SP item with `Owner Disposition: applied_by_scribe — <roundtable session ref>` and `Promotion Record: <Sonia as scribe, date, change-proposal-<slug>.md>`. Authorship attribution is the roundtable session, not Sonia.
+- Writes the SP item with `Owner Disposition: applied_by_scribe — voiced-for: [owner]; scribe: Sonia; settled-from: prior-debate (<roundtable session ref>); [date]` and `Promotion Record: <Sonia as scribe, date, change-proposal-<slug>.md>`. Authorship attribution is the roundtable session, not Sonia.
 - Runs the **Promotion Cascade Check** from `planning-handback.md` identically to a normal Handback.
 - Does NOT run the owning persona's distillation gate or gap checklist — scribe-eligibility excludes cases where they would apply.
 - Appends the application to the change-proposal's `## Scribe Applications` section.
@@ -56,7 +50,7 @@ Progress:
   - Append synthesis to `## Roundtable Synthesis Records`.
   - If ratification collapses or changes a downstream question, update the question list and continue.
 
-  **Scribe-Eligibility check.** After each ratification, evaluate against Global Directives. If all criteria hold, offer:
+  **Scribe-Eligibility check.** After each ratification, evaluate against the shared Scribe-Eligibility gate (`docs/scribe-path.md` §2; Sonia's qualifier stated in Global Directives above). If all criteria hold, offer:
 
   > *"This decision is scribe-eligible — I can apply it directly. Confirm, or say 'route through [persona]' to use standard handback."*
 

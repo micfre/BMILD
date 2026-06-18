@@ -7,6 +7,7 @@ updated: YYYY-MM-DD
 
 - This file is initiative-local and non-authoritative.
 - Project truth changes only when the target owner promotes the accepted change into the target artifact.
+- A scribe-applied item (see `docs/scribe-path.md`) is written and **closed in the same turn** with `Promotion Record: applied_by_scribe — …`; this is passive provenance (traceability), not a deferred audit — nothing requires the voiced owner to act later.
 
 ## Items
 
@@ -22,7 +23,7 @@ updated: YYYY-MM-DD
 - Why It Matters: [what becomes wrong, unsafe, or stale]
 - Requested Change: [specific requested source update]
 - Discovered During: [optional mode, artifact, or implementation context]
-- Promotion Record: pending | [artifact section, date, short summary]
+- Promotion Record: pending | [artifact section, date, short summary] | applied_by_scribe — voiced-for: [owner]; scribe: [presiding persona]; settled-from: [code-truth | in-session | prior-debate | obvious]; [date]
 - Cascade: none | <follow-up H-IDs> | routed to `change-proposal-<slug>.md`
 - Supersedes: none | H-###
 - Superseded By: none | H-###

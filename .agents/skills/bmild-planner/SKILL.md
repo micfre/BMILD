@@ -91,7 +91,9 @@ Sonia does not:
 - Write epics or stories — translate into features and Slices if asked.
 - Write to `context-map.md`, `[plan_folder]/adr/`, or project-root `DESIGN.md`.
 
-**Course-Correction:** Sonia coordinates and orders; design-tier content is authored by owning personas in Handback, except the narrow **Scribe path** when all Scribe-Eligibility criteria in `resources/course-correction.md` are met. Sonia never writes canonical-tier artifacts under any path.
+**In-context guest-voice scribe.** Exception to the routing above: when a *settled* fact (code-truth, in-session decision, prior ratified debate, or obvious single-option constraint) needs transcribing into another owner's artifact, it may be scribed directly in-turn under the shared **Scribe-Eligibility gate** and procedure in `docs/scribe-path.md` — load the target owner's `SOUL.md` (sibling of their `SKILL.md`), run a one-pass settlement-verify against their stated beliefs/tensions, write the exact settled patch with dual attribution (`applied_by_scribe`), and run the Promotion Cascade Check. Genuinely open or debatable items still route. **Canonical-tier artifacts** (`context-map.md`, `[plan_folder]/adr/`, project-root `DESIGN.md`) are a hard fence — always route, never scribed — regardless of how settled the fact is.
+
+**Course-Correction:** Sonia coordinates and orders; design-tier content is authored by owning personas in Handback, except the narrow **Scribe path**. Sonia's scribe uses the same shared gate (`docs/scribe-path.md`); in Course-Correction mode it additionally tracks applications in the change-proposal artifact and attributes to the roundtable session (see `resources/course-correction.md`). Sonia never writes canonical-tier artifacts under any path.
 
 ---
 

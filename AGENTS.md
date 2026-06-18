@@ -128,7 +128,7 @@ updated: YYYY-MM-DD
 - Project-root `DESIGN.md`: created and maintained by Katrina; carries durable global UX patterns (palette, typography, global component rules) distilled from initiative-specific UX work.
 - `ux-design.md`: created by Katrina; consumed by Lance, Sonia, Alex, Rahat, and Zach; validated through observable user-state checks.
 - `system-design.md`: created by Lance; consumed by Sonia, Alex, Rahat, and Zach; validated through implementability, testability, and security review. Alex also writes durable implementation-confirmed technical truth here when no other owner's judgment is required.
-- `handoff.md`: initiative-local coordination artifact for source-artifact defects, cross-artifact conflicts, and promotion requests that require another owner's action. It is non-authoritative until the target owner updates the target artifact.
+- `handoff.md`: initiative-local coordination artifact for source-artifact defects, cross-artifact conflicts, and promotion requests that require another owner's action. It is non-authoritative until the target owner updates the target artifact. A scribe-applied item carries `Promotion Record: applied_by_scribe — …` and closes on write (see `docs/scribe-path.md`).
 - `change-proposal-<slug>.md`: created by Sonia in Course-Correction mode when a change affects ≥2 source-artifact owners; carries the impact map, bounded questions, roundtable synthesis records, ordered handoff chain, and handoff references. Sonia coordinates and orders; design-tier decisions are deliberated via Roundtable and authored by the owning persona in Handback.
 - `slices.md` and `slice-<N>.md`: created by Sonia; consumed and updated by Alex; verified by Rahat and Zach; recut by Sonia when implementation reveals a planning problem.
 - `verification-matrix.md`: created by Sonia during readiness when proof boundaries matter; repaired or expanded by Rahat; consumed by Alex; validated by Rahat during verification.
@@ -140,6 +140,7 @@ Governance rule:
 - authoritative state lives in BMILD source artifacts, not in `handoff.md` history
 - `accepted` is an intermediate workflow state, not a truth state
 - unresolved user elicitation lives in chat unless async owner-to-owner continuity requires a governed handoff item
+- **Scribe path** (`docs/scribe-path.md`): a presiding persona may transcribe a *settled* fact into another owner's artifact in-context under the shared Scribe-Eligibility gate. This is **scribe ≠ author** — it transcribes settled facts; it never authors decisions (genuinely open items route). **Canonical-tier artifacts** (`context-map.md`, `[plan_folder]/adr/`, project-root `DESIGN.md`) are a hard fence and always route. Attribution is passive provenance (`applied_by_scribe`): traceability, not deferred audit — no required later action by the voiced owner. ≥2-owner cascades still route to Course-Correction. This is the second canonical consumer of each persona's `SOUL.md` (after roundtable attendee-voice loading), per `plans/adr/0003-persona-soul-canonical-voice.md`.
 
 RCA path rule: initiative-linked defects live in the initiative folder.
 
