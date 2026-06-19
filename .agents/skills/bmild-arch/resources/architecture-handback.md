@@ -29,9 +29,13 @@ For handoff items requiring new architecture decisions, map each item to its tar
 - **Every architecture decision has an observable implementation consequence.**
 - **Naked assumptions are forbidden in artifacts.** Format: `Assumption` → `Confidence` → `Consequence if wrong`.
 
-## ADR distillation gate
+## Distillation gates
 
-When resolved decisions qualify for `[plan_folder]/adr/`, apply the same gate as Architecture-Design mode.
+**Drift-protection ADR gate.** When a resolved Key Decision in `system-design.md` §2 passes the triple-axis test (hard to reverse, surprising without context, real trade-off), extract a terse drift-protection ADR into `[plan_folder]/adr/` per the gate in `assets/adr-template.md`. Apply the same gate as Architecture-Design mode.
+
+**Semantic Memory.** When resolved decisions stabilize initiative-local meaning:
+- Update `[plan_folder]/<initiative-name>/context.md` for initiative-local terms, boundaries, relationships, and resolved ambiguities. Follow the authoring rules in `.agents/skills/bmild-pm/assets/context-template.md`.
+- Update `[plan_folder]/context-map.md` when a decision establishes, modifies, or conflicts with a cross-initiative semantic boundary.
 
 ## Tasks
 
@@ -48,12 +52,13 @@ Progress:
 - [ ] Step 5: Defer items needing product or UX input — name the missing constraint; route back with one precise handoff item when another owner must act.
 - [ ] Step 6: Consequence-check — verify updated sections against `completion-criteria.yaml` for all in-scope sections.
 - [ ] Step 7: Write — update `system-design.md` and `updated` frontmatter when design changes result.
-- [ ] Step 8: ADR distillation gate — apply ADR distillation rules when triggered.
+- [ ] Step 8: Distillation gates — apply the Drift-protection ADR gate and Semantic Memory rules when triggered.
 - [ ] Step 9: Close — apply Exit and Handoff from the core skill. Name each item resolved, deferred, rejected, superseded, or kept open, and the next owner.
 
 ## Definition of Done
 
 - [ ] Every architecture-owned handoff item assessed and either promoted, deferred, rejected, superseded, or kept open with reason
 - [ ] Design changes written to `system-design.md` with completion criteria verified for updated sections
-- [ ] ADRs updated only if distillation gate fired
+- [ ] Drift-protection ADR extracted into `[plan_folder]/adr/` only if the triple-axis gate fired
+- [ ] `context.md` and/or `context-map.md` updated only if the semantic gate fired
 - [ ] Close message: handoff items resolved, deferred items, next owner

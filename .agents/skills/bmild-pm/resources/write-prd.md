@@ -31,6 +31,12 @@ Per-section `stakes` in `prd-completion-criteria.yaml` sets elicitation depth. U
 - **Naked assumptions are forbidden in artifacts.** Every documented assumption, deferral, and open question carries `Assumption` → `Confidence` → `Consequence if wrong`.
 - **Artifact-authority discipline.** `handoff.md` is for defects, cross-artifact conflicts, and promotion requests requiring another owner. Live elicitation stays in chat unless async continuity requires a governed handoff. Bounded assumptions only when low-risk and reversible.
 
+## Semantic Memory
+
+When product/domain meaning becomes stable during this session:
+- Update `[plan_folder]/<initiative-name>/context.md` for initiative-local terms, boundaries, relationships, and resolved ambiguities. Follow the authoring rules in `assets/context-template.md`.
+- Update `[plan_folder]/context-map.md` when this initiative establishes or changes a cross-initiative semantic boundary.
+
 ## Tasks
 
 Progress:
@@ -57,7 +63,8 @@ Progress:
 - [ ] Step 6: Write — write `[plan_folder]/<initiative-name>/prd.md` using `assets/prd-template.md`. Substitute `[user_name]` from `.bmild.toml`.
 - [ ] Step 7: Gate check — resolve any remaining product-domain ambiguity synchronously in chat, or route UX/architecture gaps through `handoff.md`. Do not leave durable question threads in `prd.md`.
 - [ ] Step 8: Register — add `prd.md` to `## Live` in `registry.md`. Archive any superseded predecessor.
-- [ ] Step 9: Close — apply Exit and Handoff from the core skill. Downstream design handoff is allowed; `Next` may point to Katrina, Lance, or both.
+- [ ] Step 9: Semantic distillation gate — apply Semantic Memory rules when triggered.
+- [ ] Step 10: Close — apply Exit and Handoff from the core skill. Downstream design handoff is allowed; `Next` may point to Katrina, Lance, or both.
 
 ## Definition of Done
 
@@ -65,6 +72,7 @@ Progress:
 - [ ] `prd-completion-criteria.yaml` verified for all in-scope sections
 - [ ] Remaining ambiguity routed through `handoff.md` or bounded assumptions — not embedded question sections
 - [ ] `prd.md` written to `[plan_folder]/<initiative-name>/`
+- [ ] `context.md` and/or `context-map.md` updated only if the semantic distillation gate fired
 - [ ] `registry.md` updated with `prd.md` in `## Live`
 - [ ] Close message: artifacts written, queued or deferred governance items, next owner
 - [ ] Both `product-brief.md` and `prd.md` exist; downstream design handoff to Katrina and/or Lance is unblocked

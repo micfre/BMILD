@@ -33,6 +33,12 @@ For handoff items requiring new UX decisions, map each item to its target sectio
 
 When resolved decisions qualify for project-root `DESIGN.md`, apply the same distillation gate as UX-Design mode.
 
+## Semantic Memory
+
+When resolved decisions stabilize initiative-local meaning:
+- Update `[plan_folder]/<initiative-name>/context.md` for initiative-local terms, boundaries, relationships, and resolved ambiguities. Follow the authoring rules in `.agents/skills/bmild-pm/assets/context-template.md`.
+- Update `[plan_folder]/context-map.md` when a decision establishes, modifies, or conflicts with a cross-initiative semantic boundary.
+
 ## Tasks
 
 Progress:
@@ -48,7 +54,7 @@ Progress:
 - [ ] Step 5: Defer items needing product or architecture input — name the missing constraint; route back with one precise handoff item when another owner must act.
 - [ ] Step 6: Consequence-check — verify updated sections against `completion-criteria.yaml` for all in-scope sections.
 - [ ] Step 7: Write — update `ux-design.md` and `updated` frontmatter when design changes result.
-- [ ] Step 8: Distillation gate — apply Global pattern distillation rules when triggered.
+- [ ] Step 8: Distillation gates — apply Global pattern distillation (DESIGN.md) and Semantic Memory (`context.md` / `context-map.md`) rules when triggered.
 - [ ] Step 9: Close — apply Exit and Handoff from the core skill. Name each item resolved, deferred, rejected, superseded, or kept open, and the next owner.
 
 ## Definition of Done
@@ -56,5 +62,6 @@ Progress:
 - [ ] Every UX-owned handoff item assessed and either promoted, deferred, rejected, superseded, or kept open with reason
 - [ ] Promotion Cascade Check completed for all accepted changes
 - [ ] Design changes written to `ux-design.md` with completion criteria verified for updated sections
-- [ ] `DESIGN.md` updated only if distillation gate fired
+- [ ] `DESIGN.md` updated only if global pattern distillation gate fired
+- [ ] `context.md` and/or `context-map.md` updated only if the semantic gate fired
 - [ ] Close message: handoff items resolved, deferred items, next owner

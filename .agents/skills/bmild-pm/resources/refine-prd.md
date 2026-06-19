@@ -32,6 +32,12 @@ Per-section `stakes` in `prd-completion-criteria.yaml` sets elicitation depth fo
 - **Traceability.** Changed requirements must remain mappable to `product-brief.md`.
 - **Artifact-authority discipline.** Live elicitation in chat; route UX/architecture gaps through `handoff.md`. Bounded assumptions only when low-risk and reversible.
 
+## Semantic Memory
+
+When refined product/domain meaning becomes stable:
+- Update `[plan_folder]/<initiative-name>/context.md` for initiative-local terms, boundaries, relationships, and resolved ambiguities. Follow the authoring rules in `assets/context-template.md`.
+- Update `[plan_folder]/context-map.md` when the refinement introduces or changes a cross-initiative semantic boundary.
+
 ## Tasks
 
 Progress:
@@ -48,7 +54,8 @@ Progress:
 - [ ] Step 8: Write — update `[plan_folder]/<initiative-name>/prd.md` using `assets/prd-template.md`. Preserve unchanged sections. Update `updated` frontmatter.
 - [ ] Step 9: Gate check — resolve remaining product ambiguity in chat or route through `handoff.md` for UX/architecture ownership.
 - [ ] Step 10: Register — confirm `prd.md` in `## Live`; archive superseded predecessors if applicable.
-- [ ] Step 11: Close — apply Exit and Handoff from the core skill. Downstream design handoff is allowed when both PM artifacts are coherent.
+- [ ] Step 11: Semantic distillation gate — apply Semantic Memory rules when triggered.
+- [ ] Step 12: Close — apply Exit and Handoff from the core skill. Downstream design handoff is allowed when both PM artifacts are coherent.
 
 ## Definition of Done
 
@@ -58,6 +65,7 @@ Progress:
 - [ ] `prd-completion-criteria.yaml` verified for all in-scope sections
 - [ ] Relevant `handoff.md` items targeting `prd.md` resolved, deferred, rejected, superseded, or kept open with a clear next owner
 - [ ] `prd.md` written with current `updated` date
+- [ ] `context.md` and/or `context-map.md` updated only if the semantic distillation gate fired
 - [ ] `registry.md` reflects current PRD state
 - [ ] Close message: what changed, queued or deferred governance items, next owner
 - [ ] Downstream design handoff explicit in `Next` when PM artifacts are coherent

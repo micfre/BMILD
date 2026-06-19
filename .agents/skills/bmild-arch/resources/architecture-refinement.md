@@ -35,9 +35,13 @@ Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth for **
 - **Naked assumptions are forbidden in artifacts.** Format: `Assumption` → `Confidence` → `Consequence if wrong`.
 - **Artifact-authority discipline.** Live elicitation in chat; route product/UX gaps through `handoff.md`.
 
-## ADR distillation gate
+## Distillation gates
 
-When refined decisions qualify for `[plan_folder]/adr/` (cross-initiative schema patterns, auth contracts, shared infrastructure), apply the same gate as Architecture-Design mode.
+**Drift-protection ADR gate.** When a refined Key Decision in `system-design.md` §2 passes the triple-axis test (hard to reverse, surprising without context, real trade-off), extract a terse drift-protection ADR into `[plan_folder]/adr/` per the gate in `assets/adr-template.md`. Apply the same gate as Architecture-Design mode.
+
+**Semantic Memory.** When refined initiative-local meaning becomes stable:
+- Update `[plan_folder]/<initiative-name>/context.md` for initiative-local terms, boundaries, relationships, and resolved ambiguities. Follow the authoring rules in `.agents/skills/bmild-pm/assets/context-template.md`.
+- Update `[plan_folder]/context-map.md` when the refinement introduces or changes a cross-initiative semantic boundary.
 
 ## Tasks
 
@@ -54,7 +58,7 @@ Progress:
 - [ ] Step 7: Consequence-check — verify changed sections, traceability to `prd.md`, and in-scope YAML sections.
 - [ ] Step 8: Pre-exit offer (conditional, declinable in one word) — when any **consequential** section is being materially changed, offer once: *"Before I update the system design — anything you want to stress-test or take to roundtable? Otherwise I'll proceed."* Skip when only medium/low sections change or the session is a single-field alignment.
 - [ ] Step 9: Write — update `[plan_folder]/<initiative-name>/system-design.md` using `assets/system-design-template.md`. Preserve unchanged sections. Update `updated` frontmatter.
-- [ ] Step 10: ADR distillation gate — apply ADR distillation rules when triggered.
+- [ ] Step 10: Distillation gates — apply the Drift-protection ADR gate and Semantic Memory rules when triggered.
 - [ ] Step 11: Register — confirm `system-design.md` in `## Live`; archive superseded predecessors if applicable.
 - [ ] Step 12: Close — apply Exit and Handoff from the core skill. Default `Next` to Sonia; route to Katrina if `ux-design.md` is still missing.
 
@@ -66,6 +70,7 @@ Progress:
 - [ ] `completion-criteria.yaml` verified for all in-scope sections
 - [ ] Relevant `handoff.md` items resolved, deferred, rejected, superseded, or kept open with clear next owner
 - [ ] `system-design.md` written with current `updated` date
-- [ ] ADRs updated only if distillation gate fired
+- [ ] Drift-protection ADR extracted into `[plan_folder]/adr/` only if the triple-axis gate fired
+- [ ] `context.md` and/or `context-map.md` updated only if the semantic gate fired
 - [ ] `registry.md` reflects current artifact state
 - [ ] Close message: what changed, trade-offs, queued or deferred governance items, next owner

@@ -28,6 +28,12 @@ Same table and pacing as `slice-security-review.md` — per-category `stakes` in
 
 Same as `slice-security-review.md` Routing heuristics.
 
+## Semantic Memory
+
+When trust-model or security terminology becomes stable during this review (and an initiative is named/inferable):
+- Update `[plan_folder]/<initiative-name>/context.md` for initiative-local terms (e.g. principal, trust boundary, sensitive-data class). Follow the authoring rules in `.agents/skills/bmild-pm/assets/context-template.md`.
+- Update `[plan_folder]/context-map.md` when a security boundary establishes or changes a cross-initiative semantic boundary.
+
 ## Tasks
 
 Progress:
@@ -40,7 +46,8 @@ Progress:
 - [ ] Step 4: Pre-exit offer (declinable in one word) — *"Before I finalise these findings — anything you want to stress-test first? Otherwise I'll write up the review."* Omit when no findings to write.
 - [ ] Step 5: Write `security-review-<slug>.md` if vulnerabilities found; no artifact for clean review.
 - [ ] Step 6: Register — add to `## Live` in `registry.md` when written and initiative is known.
-- [ ] Step 7: Close — apply Exit and Handoff from the core skill.
+- [ ] Step 7: Semantic distillation gate — apply Semantic Memory rules when triggered (skip when no initiative is named).
+- [ ] Step 8: Close — apply Exit and Handoff from the core skill.
 
 ## Definition of Done
 
@@ -48,4 +55,5 @@ Progress:
 - [ ] `security-categories.yaml` applied for stakes pacing and filtering
 - [ ] Only High or Medium severity issues with credible exploitability reported
 - [ ] Artifact written only when findings exist; `registry.md` updated when applicable
+- [ ] `context.md` and/or `context-map.md` updated only if the semantic distillation gate fired and an initiative is in scope
 - [ ] Close message: scope and categories checked, findings summary, next owner

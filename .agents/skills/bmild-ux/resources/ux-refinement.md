@@ -39,6 +39,12 @@ Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth for **
 
 When refined decisions qualify for project-root `DESIGN.md` (global interaction principles and visual language only), apply the same distillation gate as UX-Design mode.
 
+## Semantic Memory
+
+When refined initiative-local meaning becomes stable:
+- Update `[plan_folder]/<initiative-name>/context.md` for initiative-local terms, boundaries, relationships, and resolved ambiguities. Follow the authoring rules in `.agents/skills/bmild-pm/assets/context-template.md`.
+- Update `[plan_folder]/context-map.md` when the refinement introduces or changes a cross-initiative semantic boundary.
+
 ## Tasks
 
 Progress:
@@ -54,7 +60,7 @@ Progress:
 - [ ] Step 7: Consequence-check — verify changed sections and cross-section impacts; run `completion-criteria.yaml` for all in-scope sections.
 - [ ] Step 8: Pre-exit offer (conditional, declinable in one word) — when any **consequential** section is being materially changed, offer once: *"Before I update the UX design — anything you want to stress-test or take to roundtable? Otherwise I'll proceed."* Skip when only medium/low sections change or the session is a single-field alignment.
 - [ ] Step 9: Write — update `[plan_folder]/<initiative-name>/ux-design.md` using `assets/ux-design-template.md`. Preserve unchanged sections. Update `updated` frontmatter.
-- [ ] Step 10: Distillation gate — apply Global pattern distillation rules when triggered.
+- [ ] Step 10: Distillation gates — apply Global pattern distillation (DESIGN.md) and Semantic Memory (`context.md` / `context-map.md`) rules when triggered.
 - [ ] Step 11: Register — confirm `ux-design.md` in `## Live`; archive superseded predecessors if applicable.
 - [ ] Step 12: Close — apply Exit and Handoff from the core skill.
 
@@ -66,6 +72,7 @@ Progress:
 - [ ] `completion-criteria.yaml` verified for all in-scope sections
 - [ ] Relevant `handoff.md` items resolved, deferred, rejected, superseded, or routed with clear next owner
 - [ ] `ux-design.md` written with current `updated` date
-- [ ] `DESIGN.md` updated only if distillation gate fired
+- [ ] `DESIGN.md` updated only if global pattern distillation gate fired
+- [ ] `context.md` and/or `context-map.md` updated only if the semantic gate fired
 - [ ] `registry.md` reflects current artifact state
 - [ ] Close message: what changed, trade-offs, queued or deferred governance items, next owner

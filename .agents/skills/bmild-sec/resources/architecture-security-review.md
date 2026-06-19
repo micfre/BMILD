@@ -40,6 +40,12 @@ Per-category `stakes` in YAML governs design-review depth:
 - *Clean review* → state trust model assessed and categories checked explicitly.
 - *Hard exclusions* → do NOT report per YAML filtering.
 
+## Semantic Memory
+
+When trust-model or security terminology becomes stable during this review (and an initiative is named/inferable):
+- Update `[plan_folder]/<initiative-name>/context.md` for initiative-local terms (e.g. principal, trust boundary, sensitive-data class). Follow the authoring rules in `.agents/skills/bmild-pm/assets/context-template.md`.
+- Update `[plan_folder]/context-map.md` when a security boundary establishes or changes a cross-initiative semantic boundary.
+
 ## Tasks
 
 Progress:
@@ -49,7 +55,8 @@ Progress:
 - [ ] Step 3: Pre-exit offer (declinable in one word) — *"Before I finalise these findings — anything you want to stress-test first? Otherwise I'll write up the review."* Omit when no findings to write.
 - [ ] Step 4: Write `security-review-<slug>.md` if design-level vulnerabilities found; no artifact for clean review.
 - [ ] Step 5: Register — add to `## Live` in `registry.md` when written.
-- [ ] Step 6: Close — apply Exit and Handoff from the core skill. Architecture findings route to Lance or Katrina.
+- [ ] Step 6: Semantic distillation gate — apply Semantic Memory rules when triggered (skip when no initiative is named).
+- [ ] Step 7: Close — apply Exit and Handoff from the core skill. Architecture findings route to Lance or Katrina.
 
 ## Definition of Done
 
@@ -58,4 +65,5 @@ Progress:
 - [ ] Only High or Medium design-level issues reported
 - [ ] Findings tagged Lance or Katrina owned where applicable
 - [ ] Artifact written only when findings exist; `registry.md` updated when applicable
+- [ ] `context.md` and/or `context-map.md` updated only if the semantic distillation gate fired and an initiative is in scope
 - [ ] Close message: trust model assessed, design findings summary, next owner

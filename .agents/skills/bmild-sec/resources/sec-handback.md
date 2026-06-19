@@ -25,6 +25,12 @@ Load in this order:
 - **1 stale owner** → auto-enqueue one `H-###` per stale artifact; close follows verbatim-invocation rule.
 - **≥2 stale owners** → mark artifacts in `registry.md ## Stale`; route to Sonia Course-Correction; append `Downstream Cascade: <summary>`. Cycle prevention: do not enqueue if `Supersedes` chain includes this handoff item.
 
+## Semantic Memory
+
+When resolved findings stabilize trust-model or security terminology:
+- Update `[plan_folder]/<initiative-name>/context.md` for initiative-local terms. Follow the authoring rules in `.agents/skills/bmild-pm/assets/context-template.md`.
+- Update `[plan_folder]/context-map.md` when a security boundary establishes, modifies, or conflicts with a cross-initiative semantic boundary.
+
 ## Tasks
 
 Progress:
@@ -35,11 +41,13 @@ Progress:
 - [ ] Step 4: Note residual or newly-introduced findings.
 - [ ] Step 5: For findings still open — keep open with updated next owner (Alex implementation, Lance/Katrina design); route handoff item; mark original deferred, rejected, or superseded as appropriate.
 - [ ] Step 6: Persist changes; update `updated` frontmatter.
-- [ ] Step 7: Close — apply Exit and Handoff from the core skill. Zach remains terminal by default.
+- [ ] Step 7: Semantic distillation gate — apply Semantic Memory rules when triggered.
+- [ ] Step 8: Close — apply Exit and Handoff from the core skill. Zach remains terminal by default.
 
 ## Definition of Done
 
 - [ ] Every security-owned handoff item assessed and re-verified-closed, deferred, rejected, or superseded
 - [ ] Closure evidence recorded for resolved findings
 - [ ] Residual or new findings recorded with next owner
+- [ ] `context.md` and/or `context-map.md` updated only if the semantic distillation gate fired
 - [ ] Close message: findings closed, findings still open, next owner

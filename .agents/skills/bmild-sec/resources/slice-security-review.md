@@ -42,6 +42,12 @@ Per-category `stakes` in `security-categories.yaml` sets review depth. When `sta
 - *Clean review* → state explicitly scope and categories checked. Silence is not "no findings."
 - *Hard exclusions* → do NOT report (see YAML `filtering.hard_exclusions`).
 
+## Semantic Memory
+
+When trust-model or security terminology becomes stable during this review:
+- Update `[plan_folder]/<initiative-name>/context.md` for initiative-local terms (e.g. principal, trust boundary, sensitive-data class). Follow the authoring rules in `.agents/skills/bmild-pm/assets/context-template.md`.
+- Update `[plan_folder]/context-map.md` when a security boundary establishes or changes a cross-initiative semantic boundary.
+
 ## Tasks
 
 Progress:
@@ -54,7 +60,8 @@ Progress:
 - [ ] Step 4: Pre-exit offer (declinable in one word) — *"Before I finalise these findings — anything you want to stress-test first? Otherwise I'll write up the review."* Omit when no findings to write.
 - [ ] Step 5: Write `security-review-<slug>.md` using `assets/security-review-template.md` if vulnerabilities found. Reference `handoff.md` path for source-artifact defects. No artifact for clean review.
 - [ ] Step 6: Register — add `security-review-<slug>.md` to `## Live` in `registry.md` when written.
-- [ ] Step 7: Close — apply Exit and Handoff from the core skill.
+- [ ] Step 7: Semantic distillation gate — apply Semantic Memory rules when triggered.
+- [ ] Step 8: Close — apply Exit and Handoff from the core skill.
 
 ## Definition of Done
 
@@ -63,4 +70,5 @@ Progress:
 - [ ] Only High or Medium severity issues with credible exploitability reported
 - [ ] `security-review-<slug>.md` written if vulnerabilities found; no artifact for clean review
 - [ ] `registry.md` updated if artifact written
+- [ ] `context.md` and/or `context-map.md` updated only if the semantic distillation gate fired
 - [ ] Close message: scope and categories checked, findings summary, next owner

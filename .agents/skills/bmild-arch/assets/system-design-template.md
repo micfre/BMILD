@@ -8,7 +8,7 @@ author: "[user_name] + Lance (Arch)"
 
 How this initiative fits into the broader system architecture and current codebase reality.
 
-## 2. Architectural Decisions (ADRs)
+## 2. Key Design Decisions
 
 ### Decision: <title>
 

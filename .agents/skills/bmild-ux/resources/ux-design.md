@@ -41,6 +41,12 @@ Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth. Use t
 
 When this initiative's decisions establish interaction principles, visual language, or UX patterns that **all future initiatives must conform to**, distill those elements into project-root `DESIGN.md` using `assets/design-md-template.md`. Initiative-local flows, screen-specific states, and scoped interaction decisions do not qualify.
 
+## Semantic Memory
+
+When initiative-local meaning becomes stable during this session:
+- Update `[plan_folder]/<initiative-name>/context.md` for initiative-local terms, boundaries, relationships, and resolved ambiguities. Follow the authoring rules in `.agents/skills/bmild-pm/assets/context-template.md`.
+- Update `[plan_folder]/context-map.md` when this initiative establishes or changes a cross-initiative semantic boundary.
+
 ## Tasks
 
 Progress:
@@ -58,7 +64,7 @@ Progress:
 - [ ] Step 5: Consequence-check — privately verify all in-scope YAML sections; confirm empty, loading, error, mobile, and accessibility coverage for consequential flows.
 - [ ] Step 6: Pre-exit offer (declinable in one word) — *"Before I write the UX design — anything you want to take to roundtable or stress-test first? Otherwise I'll proceed."* Offer advanced facilitator skills per core Advanced Elicitation Triggers when trade-offs are still open.
 - [ ] Step 7: Write — write `[plan_folder]/<initiative-name>/ux-design.md` using `assets/ux-design-template.md`.
-- [ ] Step 8: Distillation gate — apply Global pattern distillation rules when triggered.
+- [ ] Step 8: Distillation gates — apply Global pattern distillation (DESIGN.md) and Semantic Memory (`context.md` / `context-map.md`) rules when triggered.
 - [ ] Step 9: Register — open or create `[plan_folder]/<initiative-name>/registry.md` from `.agents/skills/bmild-pm/assets/registry-template.md`. Add `ux-design.md` (and `DESIGN.md` if updated) to `## Live`.
 - [ ] Step 10: Gate check — resolve remaining UX ambiguity in chat or route product/architecture gaps through `handoff.md`. Do not leave durable question threads in `ux-design.md`.
 - [ ] Step 11: Close — apply Exit and Handoff from the core skill.
@@ -69,7 +75,8 @@ Progress:
 - [ ] `completion-criteria.yaml` verified for all in-scope sections
 - [ ] Empty, error, loading, mobile, and accessibility states considered
 - [ ] `ux-design.md` written to `[plan_folder]/<initiative-name>/`
-- [ ] `DESIGN.md` updated only if distillation gate fired
+- [ ] `DESIGN.md` updated only if global pattern distillation gate fired
+- [ ] `context.md` and/or `context-map.md` updated only if the semantic gate fired
 - [ ] `registry.md` updated with artifacts in `## Live`
 - [ ] Remaining ambiguity resolved in chat, routed through `handoff.md`, or handled as bounded assumptions
 - [ ] Close message: key decisions, trade-offs, queued or deferred governance items, next owner

@@ -39,9 +39,13 @@ Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth. Use t
 - **Naked assumptions are forbidden in artifacts.** Format: `Assumption` → `Confidence` → `Consequence if wrong`.
 - **Artifact-authority discipline.** Cross-artifact issues route through `handoff.md`. Architecture truth changes only after source promotion.
 
-## ADR distillation gate
+## Distillation gates
 
-When `system-design.md` contains decisions — schema patterns, auth contracts, shared infrastructure — that **future unrelated initiatives must build against**, distill them into `[plan_folder]/adr/` using `assets/adr-template.md`. Local endpoint shapes, initiative-specific data models, and one-off implementation choices do not qualify.
+**Drift-protection ADR gate.** When a Key Decision in `system-design.md` §2 passes the triple-axis test — hard to reverse, surprising without context, and the result of a real trade-off — extract a terse drift-protection ADR into `[plan_folder]/adr/` using `assets/adr-template.md` (set `scope:` to the initiative or `_cross`). Local endpoint shapes, initiative-specific data models, and one-off implementation choices do not qualify. Cross-initiative commitments commonly qualify; an initiative-local decision that is surprising and hard to reverse also qualifies. See the template for the full gate and what commonly qualifies.
+
+**Semantic Memory.** When initiative-local meaning becomes stable during this session:
+- Update `[plan_folder]/<initiative-name>/context.md` for initiative-local terms, boundaries, relationships, and resolved ambiguities. Follow the authoring rules in `.agents/skills/bmild-pm/assets/context-template.md`.
+- Update `[plan_folder]/context-map.md` when this initiative establishes or changes a cross-initiative semantic boundary.
 
 ## Tasks
 
@@ -60,7 +64,7 @@ Progress:
 - [ ] Step 5: Consequence-check — verify all in-scope YAML sections; privately confirm schema, API, service, dependency, and platform checklist items from `assets/system-design-template.md` are covered.
 - [ ] Step 6: Pre-exit offer (declinable in one word) — *"Before I write the system design — anything you want to take to roundtable or stress-test first? Otherwise I'll proceed."* Offer advanced facilitator skills per core Advanced Elicitation Triggers when trade-offs are still open.
 - [ ] Step 7: Write — write `[plan_folder]/<initiative-name>/system-design.md` using `assets/system-design-template.md`.
-- [ ] Step 8: ADR distillation gate — apply ADR distillation rules when triggered.
+- [ ] Step 8: Distillation gates — apply the Drift-protection ADR gate and Semantic Memory rules when triggered.
 - [ ] Step 9: Register — open or create `[plan_folder]/<initiative-name>/registry.md` from `.agents/skills/bmild-pm/assets/registry-template.md`. Add `system-design.md` to `## Live`.
 - [ ] Step 10: Gate check — resolve remaining architecture ambiguity in chat or route product/UX gaps through `handoff.md`. Do not leave durable question threads in `system-design.md`.
 - [ ] Step 11: Close — apply Exit and Handoff from the core skill. Default `Next` to Sonia; if `ux-design.md` is still missing for a named initiative, route to Katrina instead.
@@ -71,7 +75,8 @@ Progress:
 - [ ] `completion-criteria.yaml` verified for all in-scope sections
 - [ ] Schema, API, service, dependency, and platform decisions specific enough for Alex to implement without architectural choices
 - [ ] `system-design.md` written to `[plan_folder]/<initiative-name>/`
-- [ ] ADRs updated only if distillation gate fired
+- [ ] Drift-protection ADR extracted into `[plan_folder]/adr/` only if the triple-axis gate fired
+- [ ] `context.md` and/or `context-map.md` updated only if the semantic gate fired
 - [ ] `registry.md` updated with `system-design.md` in `## Live`
 - [ ] Remaining ambiguity routed through `handoff.md` or bounded assumptions
 - [ ] Close message: key decisions, trade-offs, queued or deferred governance items, next owner
