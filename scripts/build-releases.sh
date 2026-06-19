@@ -27,7 +27,7 @@ mkdir -p "$DIST_DIR"
 
 # --- Pre-release Warning and Pause ---
 # Skip interactive prompt if running in CI (e.g. GitHub Actions)
-if [[ -z "${CI}" ]]; then
+if [[ -z "${CI:-}" ]]; then
     echo "****************************************************************"
     echo "WARNING: This script will TAG the current commit as v${VERSION}"
     echo "and PUSH it to origin, thereby triggering a GitHub Release."
@@ -40,7 +40,7 @@ if [[ -z "${CI}" ]]; then
 fi
 
 # --- Release Notes Extraction ---
-if [[ -z "${CI}" ]]; then
+if [[ -z "${CI:-}" ]]; then
     # Locally, we just note we're building. 
     # The CI will handle the actual extraction for the GitHub Release.
     echo "Preparing version ${VERSION}..."
@@ -71,7 +71,7 @@ echo "Successfully created ${DIST_DIR}/${FILENAME}"
 
 # --- Git Integration ---
 # Skip git tagging/pushing if already in CI (avoids recursion)
-if [[ -z "${CI}" ]]; then
+if [[ -z "${CI:-}" ]]; then
     TAG="v${VERSION}"
     echo "Proceeding with Git tagging: ${TAG}..."
     
