@@ -94,11 +94,11 @@ update_readme_version() {
             }
 
             line = $0
-            if (line !~ /[0-9]+\.[0-9]+\.[0-9]+([.-][0-9A-Za-z.-]+)?(\+[0-9A-Za-z.-]+)?/) {
+            if (line !~ /[0-9]+\.[0-9]+\.[0-9]+/) {
                 exit 4
             }
 
-            sub(/[0-9]+\.[0-9]+\.[0-9]+([.-][0-9A-Za-z.-]+)?(\+[0-9A-Za-z.-]+)?/, version, line)
+            sub(/[0-9]+\.[0-9]+\.[0-9]+/, version, line)
             print line
             updated = 1
             expect_badge = 0
