@@ -2,7 +2,7 @@
 
 # BMILD
 
-*Bare-bones Method for In-context Lean Development*
+*Big Methods, Ideally Less Drama*
 
 <!-- bmild-version-badge -->
 ![Version](https://img.shields.io/badge/Version-0.2.9-orange)
