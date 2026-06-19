@@ -4,6 +4,10 @@
     "markdownlint": {
       "command": ["npx", "--yes", "markdownlint-cli2", "--fix", "$FILE"],
       "extensions": [".md"]
-    }
+    },
+    "uv": { "disabled": true },
+    "rustfmt": { "disabled": true },
+    "gofmt": { "disabled": true },
+    "cargofmt": { "disabled": true }
   }
 }
