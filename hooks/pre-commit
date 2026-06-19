@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Pre-commit hook (shared via core.hooksPath; see scripts/install-hooks.sh).
+# Gate-only: fails the commit if any markdown/shell lint check fails.
+# Run 'scripts/lint.sh --fix' to auto-fix markdown formatting.
+
+exec "$(git rev-parse --show-toplevel)/scripts/lint.sh"

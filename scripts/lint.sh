@@ -3,8 +3,14 @@
 # Lint shell scripts.
 # Runs as a pre-commit hook or standalone.
 #
+# Markdown formatting is intentionally NOT done here. It is handled at edit
+# time by the Opencode formatter (markdownlint-cli2 --fix, see opencode.json)
+# and verified at CI (.github/workflows/ci.yml). A commit-time markdown gate
+# was found to cause friction on prose edits, so markdown moved out of the
+# commit path; this hook stays a fast, shell-only check.
+#
 # Usage:
-#   scripts/lint.sh          # check only (exit 1 on issues)
+#   scripts/lint.sh          # check shell scripts (exit 1 on issues)
 
 set -euo pipefail
 
