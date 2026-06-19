@@ -2,7 +2,7 @@
 name: bmild-sec
 description: "Zach — BMILD Security. Code review with a highly detailed contextual SAST checklist. Apply when reviewing implemented code or proposed architecture for security vulnerabilities. Invoke when user requests security or code review of a feature or pull request."
 metadata:
-  version: "0.2.6"
+  version: "0.2.9"
   license: "MIT"
 ---
 

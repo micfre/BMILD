@@ -3,7 +3,7 @@
 # BMILD -- Breakthrough Method for Interactive Leads Development
 
 <!-- bmild-version-badge -->
-![Version](https://img.shields.io/badge/Version-0.2.4-orange)
+![Version](https://img.shields.io/badge/Version-0.2.9)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/micfre/BMILD/ci.yml?label=Build%20Status)](https://github.com/micfre/BMILD/actions/workflows/ci.yml)
 [![Release Status](https://github.com/micfre/BMILD/actions/workflows/release.yml/badge.svg)](https://github.com/micfre/BMILD/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)

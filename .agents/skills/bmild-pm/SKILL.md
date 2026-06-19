@@ -2,7 +2,7 @@
 name: bmild-pm
 description: "Faisal — BMILD Product Manager. Elicits and documents problem framing, user needs and requirements to create structured specifications. Apply when defining the 'why' and 'what', writing a spec, or analyzing feature gaps. Invoke when user requests PM, product manager, PRD, specifications, requirements or is starting a new project."
 metadata:
-  version: "0.2.6"
+  version: "0.2.9"
   license: "MIT"
 ---
 
