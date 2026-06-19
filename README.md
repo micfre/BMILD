@@ -18,27 +18,24 @@ Just files. No installer, no dependencies, no orchestrator. Skill-native prompts
 
 ## Why BMILD exists
 
-1. **Solid specs lead to verifiable code.** The upfront work of specifying what you are building pays back when the agent writes code. Under-specified work tends toward long iteration loops that are expensive to escape.
+1. **Solid specs lead to verifiable code.** The upfront work of specifying what you are building pays back when the agent writes code. Under-specified work leads to fast code creation but can leave critical decisions in the hands of the LLM, which can take more time to fix. This is really just why Spec-Driven Development exists. Good spec up front, less drama on the back. BMILD provides an agentic loop for SDD.
 
-2. **AI needs context management, not Agile ceremony.** Epics, stories, sprints, and points exist to coordinate people and estimate human effort. AI has different constraints. It benefits from development units sized to context windows and from clear, verifiable design contracts to build against.
+2. **BMAD-METHOD is excellent, and was my preferred framework.** I built good stuff with BMAD and after learning its ways, it became enjoyable. I found however that I had to fit its model, and endure its stepwise process more than I wanted. No criticism intended, BMAD is great and deserves a place at the top of agentic SDD but I wanted something more flexible, less theatrical, and as performant. BMILD was born out of BMAD, leveraging many of its concepts.
+
+3. **AI needs context management, not Agile ceremony.** Epics, stories, sprints, and points exist to coordinate people and estimate human effort. AI has different constraints. It benefits from development units sized to context windows and from clear, verifiable design contracts to build against.
 
 BMAD runs the full Agile-with-AI ceremony and does it well. BMILD grew out of BMAD and takes a narrower path.
 
-## How a feature moves through BMILD
+## 
 
-A feature flows through a small set of roles. Each one hands a usable contract to the next.
 
-1. **Frame.** Faisal (PM) turns an idea into a product brief and PRD: problem, users, success criteria, MVP and Growth priority.
-2. **Design.** Katrina (UX) and Lance (Arch) produce observable user flows and implementable contracts (schema, endpoint shapes, service signatures), reading the PM artifacts as fixed upstream truth.
-3. **Plan.** Sonia (Planner) verifies readiness, that every Must Have in the spec has downstream coverage in UX or architecture, then decomposes the work into vertical Slices sized to a context window and sequenced by phase. The readiness check is built into planning, not a step you have to remember to run.
-4. **Implement.** Alex (Dev) builds each Slice against the contracts, promotes durable technical truth into `system-design.md`, and flags required documentation.
-5. **Verify.** Rahat (QA) runs root-cause analysis and verification, and Zach (Security) reviews for exploitable findings. Both close the loop or route repairs.
+## How the work flows
 
-The roles sit in two tiers. The **design tier** (Faisal, Katrina, Lance) is deliberate: they probe and elicit to surface what would otherwise go unstated, and they set the pace against the agent's pull toward starting fast. The **execution tier** (Sonia, Alex, Rahat, Zach) plans and implements with context-bounded units and verification pre-planned in.
+Personas are not pipeline stages. They activate by the state of your artifacts, so you can enter anywhere. Have a half-formed idea? Faisal frames it. Already know the UX? Start with Katrina. A slice is drafted and waiting? Hand it to Alex. Each persona reads the memory folder, tells you what looks current and complete, and routes to whoever should engage next.
 
-Sonia is the pivot. Readiness is enforced at her step, and the system's running memory is kept there.
+The common path runs frame, design, plan, implement, verify, and the personas come in two tiers. The **design tier** (Faisal, Katrina, Lance) is deliberate: they probe and elicit to surface what would go unstated, and they hold the pace against the agent's pull toward starting fast. The **execution tier** (Sonia, Alex, Rahat, Zach) plans and implements with context-bounded units and verification pre-planned in. Sonia is the pivot: readiness is enforced at her step, and the running memory lives there.
 
-When a change mid-flight invalidates two or more design artifacts, a PRD edit that ripples into UX and architecture, or an implementation discovery that forces upstream rework, Sonia switches to **Course-Correction**. She decomposes the change into bounded questions, convenes a Roundtable per question, records what you ratify in a `change-proposal-<slug>.md`, and produces an ordered handoff chain so each owner patches their own artifact.
+The path is a map of who owns what, not a gate you must walk in order. You enter wherever the work is.
 
 ## The team
 
@@ -60,24 +57,27 @@ Plus three interactive modes that work across personas:
 - **Elicit** ⚡: helps you expand your own thinking. 20+ structured methods to push requirements, UX, or architecture past "good enough."
 - **Brainstorm** 💡: open-ended ideation to get past the obvious answers. Anti-bias protocols keep the facilitator from clustering around a single direction.
 
-## Handoffs and memory
+## Every document has an author, a consumer, and a reviewer
 
-Personas read project context from the memory folder before they speak, tell you what stage appears current, and route to whoever should engage next. You do not have to remember the workflow; they do.
+Each artifact names who writes it, who reads it, and who verifies it. Faisal authors the PRD; Katrina, Lance, Sonia, Rahat, and Zach read it as upstream truth; Rahat verifies the shipped behaviour against it. These lines are what let a persona enter mid-stream and know immediately what is fixed and what it owns. AGENTS.md carries the full author, consumer, and reviewer map.
 
-A handoff is an obligation, not an exit. Each persona passes a usable contract downstream: problem framing, UX flows, architecture contracts, phased Slices, acceptance checks, verification evidence, security findings. Every standard close keeps two lines separate: `For you, ...` for a real user action that finishes the current step (review the artifact, answer a queued decision, run a manual check), and `Next.` for the workflow move to the next persona or a terminal state.
+## Slices, not stories
 
-When ambiguity appears, BMILD routes it instead of preserving it as durable chat:
+Development units are sized to a context window, not to Agile story points. A Slice is a vertical unit budgeted with a real tokenizer to fit one implementation session, because important detail gets lost in the middle of large context windows (see Needle-in-a-Haystack benchmarks). Slices are sequenced by the MVP, Growth, and Vision cuts in the product spec. The budget math runs in the planner skill folder, `scripts/run-budget-slice.sh`, against the `slice_target`, `tokenizer_base`, and `tokenizer_multiplier` you set in `.bmild.toml`.
 
-- into `handoff.md` when another owner's action is needed for a source-artifact defect, a cross-artifact conflict, or a promotion request
-- into a bounded assumption inside the consuming artifact when the risk is low and reversible
-- directly into the source artifact when the truth is now known and no further owner judgment is required
-- to an explicit defer, reject, or supersede when that is the honest state
+## Keeping specs honest
 
-Handoff items are non-authoritative until the owning persona promotes a resolution into the target artifact. Each persona auto-runs Handback when items target its artifacts, so invoking the persona by name is enough.
+Specs drift. The code changes, decisions get made in chat, an upstream artifact shifts and the downstream ones go stale. BMILD treats drift as the central problem and holds it with three coordinated mechanisms:
 
-One settlement path deserves naming. When a presiding persona finds a *settled* fact (code truth, an in-session decision, a prior ratified roundtable, or an obvious single-option constraint) that belongs in another owner's artifact, it can scribe the patch in its own turn: it loads the target owner's voice from their `SOUL.md`, writes the patch with dual attribution, and skips the handoff. Scribe is not authorship; it transcribes settled facts and never decides open ones. Genuinely open items and high-stakes surfaces (data model, API contract, security, compliance) still route. The full gate and procedure live in `docs/scribe-path.md`.
+- **Shared meaning.** `context.md` carries initiative-local terms and boundaries; `context-map.md` carries the cross-initiative map. When a word means two things, the glossary catches it before it reaches code.
+- **Durable decisions.** A choice that is hard to reverse, surprising without context, and the result of a real trade-off promotes to an ADR in `adr/`. Everything else stays in `system-design.md`, so active rationale is not buried in an archive.
+- **Coordinated correction.** When a change needs another owner, it routes through `handoff.md` instead of being absorbed silently. The owning persona promotes the resolution into the target artifact, so authoritative truth always lives in source artifacts, not in handoff history.
 
-**AGENTS.md is the authoritative reference** for the artifact list, owners and consumers, the memory folder layout, the `registry.md` format, and the governance rules. The rest of this README is conceptual.
+## A voice that travels
+
+Each persona carries a distinct, fully-formed voice, and it shows up intact in two places beyond its own workflow. In a **Roundtable**, the convened leads argue a bounded question in their own register, with attendance set per question, and surface trade-offs as Non-negotiable, Preference, or Open without recommending a decision. In a **guest appearance**, one persona scribes a settled fact into another owner's artifact and speaks in that owner's voice while doing it. The voice lives next to the skill, in `SOUL.md`, so it loads on demand without dragging the whole persona along. The scribe eligibility gate lives in `docs/scribe-path.md`.
+
+**AGENTS.md is the authoritative reference** for the artifact list, the memory folder layout, the `registry.md` format, and the full governance rules. The rest of this README is conceptual.
 
 ## Memory layout
 
@@ -117,18 +117,6 @@ Project-level settings live in `.bmild.toml` at the repository root. Personas re
 - `tokenizer_base`: (default `15000`) base token cost used by the slice-budgeting tokenizer.
 - `tokenizer_multiplier`: (default `1.25`) multiplier applied by the slice-budgeting tokenizer.
 
-Sonia passes `slice_target`, `tokenizer_base`, and `tokenizer_multiplier` straight through to the wrapper script in the planner skill folder (`scripts/run-budget-slice.sh`). She does not reinterpret them.
-
-### Skill validation
-
-Run the local structural validator after editing skills:
-
-```sh
-scripts/validate-skills.sh .
-```
-
-It checks frontmatter names, description length, required BMILD sections, standard persona handoff sections, `Progress:` checklists for ordered workflows, accidental markdown table rows in skill surfaces and validator-owned docs, and regressions to retired artifact names in active guidance.
-
 ## Getting started
 
 1. Put the `.agents/skills/` directory where your IDE or CLI looks for skills (see below).
@@ -154,7 +142,6 @@ You can also engage the interactive modes at any point:
 | Stress-test a spec or design | **Elicit** ⚡ | `Elicit this.` |
 | Cross-functional input on a hard decision | **Roundtable** 🌀 | `Roundtable this.` (or `Debate this.`) |
 | Ideate outside the obvious answers | **Brainstorm** 💡 | `Brainstorm this.` |
-| Mid-flight change invalidates multiple docs | **Course-Correction** (via Sonia) | `Sonia, correct course on [initiative] because [reason].` |
 
 ### Supported environments
 
@@ -188,11 +175,8 @@ BMILD grew out of [BMAD-METHOD](https://github.com/the-bmad-group/bmad). The per
 On its own terms, BMILD is:
 
 - **Skill-native and portable.** File copy, no installer. Distribute to a team through git, reuse across local repos with symlinks, and stay equally usable in any environment that supports agent Skills.
-- **Context-bounded vertical Slices.** Development units are sized with a tokenizer to an implementation-session context window, not to Agile story semantics, because important detail gets lost in the middle of large context windows (see Needle-in-a-Haystack benchmarks). Slice sequencing follows the MVP, Growth, and Vision cuts in the product spec.
 - **Integrated readiness gate.** Readiness verification is built into the Delivery Planner. Sonia cannot decompose work into Slices without first confirming that every Must Have has downstream coverage. The gate is structurally unavoidable.
-- **Course-Correction.** When a mid-flight change hits two or more design artifacts, Sonia coordinates a bounded, roundtable-driven path back to coherent specs instead of fragmenting the rework.
 - **Structured debugging.** A breadth-first root-cause protocol ranked by fit, frequency, and recency runs before any code is touched, to avoid premature anchoring on a single cause.
-- **Scribe path and `SOUL.md`.** Persona voice lives in a sibling `SOUL.md` so it is independently addressable for roundtable attendee-voice loading and for in-context scribing of settled facts into another owner's artifact (see `docs/scribe-path.md`).
 - **Initiatives and Slices** replace epics and stories.
 
 ### Installing alongside BMAD
@@ -208,6 +192,16 @@ BMILD and BMAD share trigger phrases. Running them side by side can flip an agen
 - v0.4 -- Persona interactivity stable
 - v0.5 -- First public version
 ```
+
+## Personal Note
+
+### Who am I?
+
+I am a career Product Manager, with many years in services and system development from mobile to Internet, with scope from UX to marketing on the consumer-facing side to rating and subscription in the backend and provisioning systems in the core. I have worked in waterfall and Agile environments, with teams that spanned time zones and continents. I have worked with some of the best system-minded people in the business. The names of the personas are picked from among these outstanding people.
+
+### What do I get out of releasing it?
+
+Simply, I built BMILD because it helps me with the work I am doing. It's fast, adaptive, effective and -- what is especially rewarding -- it's engaging and enjoyable to use. Yes, there are tens of thousands of projects like this, but there are definitely some novel ideas in here worth stealing if nothing else. Yours for the taking.
 
 ## Thanks
 
