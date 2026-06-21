@@ -1,5 +1,5 @@
 ---
-scope: <initiative-name> | _system
+scope: "<initiative-name> | _system"
 slug: <slug>
 slice: <N>
 severity: low | medium | high | critical

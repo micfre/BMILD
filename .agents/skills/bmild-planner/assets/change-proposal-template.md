@@ -1,5 +1,5 @@
 ---
-scope: <initiative-name>
+scope: "<initiative-name>"
 slug: <kebab-case-slug>
 updated: YYYY-MM-DD
 status: open | in-progress | applied | abandoned

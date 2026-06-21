@@ -1,5 +1,5 @@
 ---
-scope: <initiative-name>
+scope: "<initiative-name>"
 updated: YYYY-MM-DD
 ---
 

@@ -61,6 +61,7 @@ Progress:
   - Every in-scope section in `prd-completion-criteria.yaml` passes falsifiable / good_signal / weak_signal
 - [ ] Step 5: Pre-exit offer (declinable in one word) — *"Before I write the PRD — anything you want to take to roundtable or stress-test first? Otherwise I'll proceed."* Offer advanced facilitator skills per core Advanced Elicitation Triggers when trade-offs are still open.
 - [ ] Step 6: Write — write `[plan_folder]/<initiative-name>/prd.md` using `assets/prd-template.md`. Substitute `[user_name]` from `.bmild.toml`.
+  - **Initiative naming.** Initiative names are lowercase-kebab-case identifiers (e.g. `py-tokenizer`) — safe across filesystems, shells, and links. If the user supplies a kebab-case-compliant slug, use it directly. Otherwise confirm a kebab-case slug with the user before writing; never silently transform a proposed name.
 - [ ] Step 7: Gate check — resolve any remaining product-domain ambiguity synchronously in chat, or route UX/architecture gaps through `handoff.md`. Do not leave durable question threads in `prd.md`.
 - [ ] Step 8: Register — add `prd.md` to `## Live` in `registry.md`. Archive any superseded predecessor.
 - [ ] Step 9: Semantic distillation gate — apply Semantic Memory rules when triggered.

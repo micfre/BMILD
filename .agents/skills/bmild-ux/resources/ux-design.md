@@ -64,6 +64,7 @@ Progress:
 - [ ] Step 5: Consequence-check — privately verify all in-scope YAML sections; confirm empty, loading, error, mobile, and accessibility coverage for consequential flows.
 - [ ] Step 6: Pre-exit offer (declinable in one word) — *"Before I write the UX design — anything you want to take to roundtable or stress-test first? Otherwise I'll proceed."* Offer advanced facilitator skills per core Advanced Elicitation Triggers when trade-offs are still open.
 - [ ] Step 7: Write — write `[plan_folder]/<initiative-name>/ux-design.md` using `assets/ux-design-template.md`.
+  - **Initiative naming.** Initiative names are lowercase-kebab-case identifiers (e.g. `py-tokenizer`) — safe across filesystems, shells, and links. If the user supplies a kebab-case-compliant slug, use it directly. Otherwise confirm a kebab-case slug with the user before writing; never silently transform a proposed name.
 - [ ] Step 8: Distillation gates — apply Global pattern distillation (DESIGN.md) and Semantic Memory (`context.md` / `context-map.md`) rules when triggered.
 - [ ] Step 9: Register — open or create `[plan_folder]/<initiative-name>/registry.md` from `.agents/skills/bmild-pm/assets/registry-template.md`. Add `ux-design.md` (and `DESIGN.md` if updated) to `## Live`.
 - [ ] Step 10: Gate check — resolve remaining UX ambiguity in chat or route product/architecture gaps through `handoff.md`. Do not leave durable question threads in `ux-design.md`.

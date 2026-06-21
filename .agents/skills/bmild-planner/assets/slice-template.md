@@ -1,5 +1,5 @@
 ---
-scope: <initiative-name> | _system
+scope: "<initiative-name> | _system"
 slice: <N>
 status: todo | active | ready-for-review | done | blocked
 updated: YYYY-MM-DD

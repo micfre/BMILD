@@ -63,6 +63,7 @@ Progress:
   - Every in-scope section in `brief-completion-criteria.yaml` passes falsifiable / good_signal / weak_signal
 - [ ] Step 4: Pre-exit offer (declinable in one word) — *"Before I write the brief — anything you want to take to roundtable or stress-test first? Otherwise I'll proceed."* Offer advanced facilitator skills per core Advanced Elicitation Triggers when trade-offs are still open.
 - [ ] Step 5: Write — write `[plan_folder]/<initiative-name>/product-brief.md` using `assets/product-brief-template.md`. Substitute `[user_name]` from `.bmild.toml`.
+  - **Initiative naming.** Initiative names are lowercase-kebab-case identifiers (e.g. `py-tokenizer`) — safe across filesystems, shells, and links. If the user supplies a kebab-case-compliant slug, use it directly. Otherwise confirm a kebab-case slug with the user before writing; never silently transform a proposed name.
 - [ ] Step 6: Semantic distillation gate — apply Semantic Memory rules when triggered.
 - [ ] Step 7: Register — open or create `[plan_folder]/<initiative-name>/registry.md` from `assets/registry-template.md`. Add `product-brief.md` to `## Live`.
 - [ ] Step 8: Close — apply Exit and Handoff from the core skill. `Next` stays with Faisal for Write-PRD; do not hand off to Katrina or Lance until both `product-brief.md` and `prd.md` meet completion criteria.

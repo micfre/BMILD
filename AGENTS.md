@@ -117,6 +117,12 @@ updated: YYYY-MM-DD
 - Frontmatter `scope` identifies the initiative.
 - Frontmatter `updated` is the date of the last change.
 
+### Initiative naming
+
+- Initiative names are **lowercase-kebab-case identifiers** (e.g. `py-tokenizer`, `portable-soul`) — written to disk as folder names, so they must stay safe across filesystems, shells, and links. Lowercase avoids case-sensitivity collisions between case-insensitive (macOS/Windows) and case-sensitive (Linux) filesystems; hyphens are universally filesystem-, shell-, and URL-safe.
+- **Confirm at minting, never auto-transform.** Whoever creates an initiative folder — the user, or any design-tier persona as entry point — confirms a kebab-case slug with the user *before* writing the folder. Silently rewriting a proposed name is forbidden.
+- **Skill-authoring discipline.** This rule ships inside each entry-persona skill's initiative-creation step (PM, UX, Arch, sometimes Sec). It is duplicated by necessity (shared skill components are not portable enough to rely on), so the copies must be kept identical. Canonical rationale: `plans/adr/0004-kebab-case-initiative-names.md`; a co-owned identity test should guard against drift.
+
 ### Cross-artifact flow
 
 - `context-map.md`: created and maintained primarily by Faisal; consumed when work spans multiple initiatives or shared semantic boundaries; defines project-level contexts, shared concepts, and cross-context relationships.
