@@ -1,7 +1,10 @@
 ---
+type: ADR
+title: "<short display name>"
+description: "<one-line summary>"
+timestamp: YYYY-MM-DD
 scope: "<initiative-name> | _cross"
 status: "proposed | accepted | deprecated | superseded by ADR-NNNN"
-updated: YYYY-MM-DD
 ---
 
 # <Short title of the decision>

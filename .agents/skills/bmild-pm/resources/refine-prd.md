@@ -51,7 +51,7 @@ Progress:
 - [ ] Step 5: Elicit refinements — apply Stakes-based elicitation to changed sections only; unchanged sections skip elicitation.
 - [ ] Step 6: Consequence-check — privately verify changed sections and traceability to `product-brief.md`; run `prd-completion-criteria.yaml` for all in-scope sections (including `documentation_scope` when doc obligations may have changed).
 - [ ] Step 7: Pre-exit offer (conditional, declinable in one word) — when any **consequential** section (per YAML `stakes`, respecting `stakes_note`) is being materially changed, offer once: *"Before I update the PRD — anything you want to stress-test or take to roundtable? Otherwise I'll proceed."* Offer advanced facilitator skills per core Advanced Elicitation Triggers when trade-offs are still open. Skip when only medium/low sections change or the session is a single-field alignment.
-- [ ] Step 8: Write — update `[plan_folder]/<initiative-name>/prd.md` using `assets/prd-template.md`. Preserve unchanged sections. Update `updated` frontmatter.
+- [ ] Step 8: Write — update `[plan_folder]/<initiative-name>/prd.md` using `assets/prd-template.md`. Preserve unchanged sections. Update `timestamp` frontmatter.
 - [ ] Step 9: Gate check — resolve remaining product ambiguity in chat or route through `handoff.md` for UX/architecture ownership.
 - [ ] Step 10: Register — confirm `prd.md` in `## Live`; archive superseded predecessors if applicable.
 - [ ] Step 11: Semantic distillation gate — apply Semantic Memory rules when triggered.
@@ -64,7 +64,7 @@ Progress:
 - [ ] Existing PRD content challenged, not merely preserved
 - [ ] `prd-completion-criteria.yaml` verified for all in-scope sections
 - [ ] Relevant `handoff.md` items targeting `prd.md` resolved, deferred, rejected, superseded, or kept open with a clear next owner
-- [ ] `prd.md` written with current `updated` date
+- [ ] `prd.md` written with current `timestamp` date
 - [ ] `context.md` and/or `context-map.md` updated only if the semantic distillation gate fired
 - [ ] `registry.md` reflects current PRD state
 - [ ] Close message: what changed, queued or deferred governance items, next owner

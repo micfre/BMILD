@@ -57,7 +57,7 @@ Progress:
 - [ ] Step 6: Elicit refinements — apply Stakes-based elicitation to changed sections only.
 - [ ] Step 7: Consequence-check — verify changed sections, traceability to `prd.md`, and in-scope YAML sections.
 - [ ] Step 8: Pre-exit offer (conditional, declinable in one word) — when any **consequential** section is being materially changed, offer once: *"Before I update the system design — anything you want to stress-test or take to roundtable? Otherwise I'll proceed."* Skip when only medium/low sections change or the session is a single-field alignment.
-- [ ] Step 9: Write — update `[plan_folder]/<initiative-name>/system-design.md` using `assets/system-design-template.md`. Preserve unchanged sections. Update `updated` frontmatter.
+- [ ] Step 9: Write — update `[plan_folder]/<initiative-name>/system-design.md` using `assets/system-design-template.md`. Preserve unchanged sections. Update `timestamp` frontmatter.
 - [ ] Step 10: Distillation gates — apply the Drift-protection ADR gate and Semantic Memory rules when triggered.
 - [ ] Step 11: Register — confirm `system-design.md` in `## Live`; archive superseded predecessors if applicable.
 - [ ] Step 12: Close — apply Exit and Handoff from the core skill. Default `Next` to Sonia; route to Katrina if `ux-design.md` is still missing.
@@ -69,7 +69,7 @@ Progress:
 - [ ] Existing decisions challenged, not merely preserved
 - [ ] `completion-criteria.yaml` verified for all in-scope sections
 - [ ] Relevant `handoff.md` items resolved, deferred, rejected, superseded, or kept open with clear next owner
-- [ ] `system-design.md` written with current `updated` date
+- [ ] `system-design.md` written with current `timestamp` date
 - [ ] Drift-protection ADR extracted into `[plan_folder]/adr/` only if the triple-axis gate fired
 - [ ] `context.md` and/or `context-map.md` updated only if the semantic gate fired
 - [ ] `registry.md` reflects current artifact state

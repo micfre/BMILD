@@ -40,7 +40,7 @@ Progress:
 - [ ] Step 3: For resolved findings — update `security-review-<slug>.md` with closure evidence; update `Owner Disposition` and `Promotion Record`; run Promotion Cascade Check.
 - [ ] Step 4: Note residual or newly-introduced findings.
 - [ ] Step 5: For findings still open — keep open with updated next owner (Alex implementation, Lance/Katrina design); route handoff item; mark original deferred, rejected, or superseded as appropriate.
-- [ ] Step 6: Persist changes; update `updated` frontmatter.
+- [ ] Step 6: Persist changes; update `timestamp` frontmatter.
 - [ ] Step 7: Semantic distillation gate — apply Semantic Memory rules when triggered.
 - [ ] Step 8: Close — apply Exit and Handoff from the core skill. Zach remains terminal by default.
 

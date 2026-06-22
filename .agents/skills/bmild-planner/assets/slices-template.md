@@ -1,7 +1,10 @@
 ---
+type: Slice Registry
+title: "<short display name>"
+description: "<one-line summary>"
+timestamp: YYYY-MM-DD
 scope: "<initiative-name> | _system"
 status: "active | complete | archived"
-updated: YYYY-MM-DD
 author: "[user_name] + Sonia (Planner)"
 planning_method: plan-forward-verify-backward
 verification_status: pass | pass_with_warning | fail | handback
@@ -52,8 +55,8 @@ approved_scope: MVP | named phase | full initiative
 - Goal being checked: ...
 - Coverage result: ...
 - Requirement traceability:
-  - `prd.md` Must Have 1 -> Slice 1, Slice 2
-  - `prd.md` Must Have 2 -> Slice 3
-  - `prd.md` Must Have 3 -> uncovered
+  - [PRD](./prd.md) Must Have 1 -> Slice 1, Slice 2
+  - [PRD](./prd.md) Must Have 2 -> Slice 3
+  - [PRD](./prd.md) Must Have 3 -> uncovered
 - Recut note: ...
 - Warning note: ...

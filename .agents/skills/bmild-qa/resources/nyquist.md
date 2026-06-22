@@ -30,7 +30,7 @@ Progress:
 - [ ] Step 2: Define infrastructure — test commands and tooling Alex will use.
 - [ ] Step 3: Draft scaffolding — test files, mocks, fixtures when the project supports it.
 - [ ] Step 4: Pre-exit offer (declinable in one word) — *"Before I write the verification matrix — anything you want to steer or debate first? Otherwise I'll proceed."*
-- [ ] Step 5: Write — create or update `verification-matrix.md` using `assets/verification-matrix-template.md`.
+- [ ] Step 5: Write — create or update `verification-matrix.md` using `.agents/skills/bmild-planner/assets/verification-matrix-template.md` (canonical; Planner owns it, QA repairs in place). Set `mode: nyquist` and `author` to reflect QA when creating or leading the pass.
 - [ ] Step 6: Register — add `verification-matrix.md` to `## Live` in `registry.md`.
 - [ ] Step 7: Close — apply Exit and Handoff from the core skill.
 

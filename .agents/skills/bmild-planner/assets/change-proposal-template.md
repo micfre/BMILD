@@ -1,7 +1,10 @@
 ---
+type: Change Proposal
+title: "<short display name>"
+description: "<one-line summary>"
+timestamp: YYYY-MM-DD
 scope: "<initiative-name>"
 slug: <kebab-case-slug>
-updated: YYYY-MM-DD
 status: open | in-progress | applied | abandoned
 ---
 

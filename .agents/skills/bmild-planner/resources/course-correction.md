@@ -25,7 +25,7 @@ Load in this order before proceeding:
 
 **Scribe application mechanics.** When applying as scribe, Sonia follows the shared procedure (`docs/scribe-path.md` §3) and additionally:
 
-- Writes the exact ratified patch to the target source artifact and updates the `updated` frontmatter date.
+- Writes the exact ratified patch to the target source artifact and updates the `timestamp` frontmatter date.
 - Writes the SP item with `Owner Disposition: applied_by_scribe — voiced-for: [owner]; scribe: Sonia; settled-from: prior-debate (<roundtable session ref>); [date]` and `Promotion Record: <Sonia as scribe, date, change-proposal-<slug>.md>`. Authorship attribution is the roundtable session, not Sonia.
 - Runs the **Promotion Cascade Check** from `planning-handback.md` identically to a normal Handback.
 - Does NOT run the owning persona's distillation gate or gap checklist — scribe-eligibility excludes cases where they would apply.

@@ -1,8 +1,11 @@
 ---
+type: Slice
+title: "<short display name>"
+description: "<one-line summary>"
+timestamp: YYYY-MM-DD
 scope: "<initiative-name> | _system"
 slice: <N>
 status: todo | active | ready-for-review | done | blocked
-updated: YYYY-MM-DD
 qa_status: not_started | blocked | ready_for_verification | verified | failed
 security_status: not_reviewed | not_applicable | review_requested | findings_open | cleared
 ---
@@ -27,8 +30,8 @@ One concrete outcome advanced by this Slice.
 
 ## Design Contracts (must honour)
 
-- `system-design.md §<section>` — <one-line summary of the contract>
-- `ux-design.md §<section>` — <one-line summary>
+- [System Design §<section>](./system-design.md) (`./system-design.md`) — <one-line summary of the contract>
+- [UX Design §<section>](./ux-design.md) (`./ux-design.md`) — <one-line summary>
 
 ## Likely Required Reads
 

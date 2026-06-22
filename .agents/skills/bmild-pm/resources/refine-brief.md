@@ -51,7 +51,7 @@ Progress:
 - [ ] Step 5: Elicit refinements — apply Stakes-based elicitation to changed sections only; unchanged sections skip elicitation.
 - [ ] Step 6: Consequence-check — privately verify changed sections and any cross-section impacts before writing; run `brief-completion-criteria.yaml` for all in-scope sections.
 - [ ] Step 7: Pre-exit offer (conditional, declinable in one word) — when any **consequential** section (per YAML `stakes`, respecting `stakes_note`) is being materially changed, offer once: *"Before I update the brief — anything you want to stress-test or take to roundtable? Otherwise I'll proceed."* Offer advanced facilitator skills per core Advanced Elicitation Triggers when trade-offs are still open. Skip when only medium/low sections change or the session is a single-field alignment.
-- [ ] Step 8: Write — update `[plan_folder]/<initiative-name>/product-brief.md` using `assets/product-brief-template.md`. Preserve unchanged sections. Update `updated` frontmatter.
+- [ ] Step 8: Write — update `[plan_folder]/<initiative-name>/product-brief.md` using `assets/product-brief-template.md`. Preserve unchanged sections. Update `timestamp` frontmatter.
 - [ ] Step 9: Gate check — resolve remaining product ambiguity in chat or route through `handoff.md` when another owner must act.
 - [ ] Step 10: Semantic distillation gate — apply Semantic Memory rules when triggered.
 - [ ] Step 11: Register — confirm `product-brief.md` in `## Live`; archive superseded predecessors if applicable.
@@ -64,7 +64,7 @@ Progress:
 - [ ] Existing brief content challenged, not merely preserved
 - [ ] `brief-completion-criteria.yaml` verified for all in-scope sections
 - [ ] Relevant PM-owned `handoff.md` items resolved, deferred, rejected, superseded, or kept open with a clear next owner
-- [ ] `product-brief.md` written with current `updated` date
+- [ ] `product-brief.md` written with current `timestamp` date
 - [ ] `context.md` or `context-map.md` updated only if the semantic distillation gate fired
 - [ ] `registry.md` reflects current brief state
 - [ ] Close message includes downstream next move when impact extends beyond the brief

@@ -32,7 +32,7 @@ Progress:
 - [ ] Step 1: Assess each handoff item targeting Rahat — resolve from evidence vs new verification work.
 - [ ] Step 2: Resolve accepted items — update `verification-matrix.md` and/or `rca-<slug>.md`; re-run named proof when required; update `Owner Disposition` and `Promotion Record`; run Promotion Cascade Check.
 - [ ] Step 3: Defer items needing design or implementation input — name missing constraint; route with one precise handoff item when another owner must act.
-- [ ] Step 4: Write — persist QA changes; update `updated` frontmatter.
+- [ ] Step 4: Write — persist QA changes; update `timestamp` frontmatter.
 - [ ] Step 5: Close — apply Exit and Handoff from the core skill. Update Slice `qa_status` if verification outcomes changed.
 
 ## Definition of Done

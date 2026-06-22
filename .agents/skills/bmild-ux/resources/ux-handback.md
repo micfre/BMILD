@@ -53,7 +53,7 @@ Progress:
   - Note the consequence for the originating persona's artifact
 - [ ] Step 5: Defer items needing product or architecture input — name the missing constraint; route back with one precise handoff item when another owner must act.
 - [ ] Step 6: Consequence-check — verify updated sections against `completion-criteria.yaml` for all in-scope sections.
-- [ ] Step 7: Write — update `ux-design.md` and `updated` frontmatter when design changes result.
+- [ ] Step 7: Write — update `ux-design.md` and `timestamp` frontmatter when design changes result.
 - [ ] Step 8: Distillation gates — apply Global pattern distillation (DESIGN.md) and Semantic Memory (`context.md` / `context-map.md`) rules when triggered.
 - [ ] Step 9: Close — apply Exit and Handoff from the core skill. Name each item resolved, deferred, rejected, superseded, or kept open, and the next owner.
 

@@ -1,6 +1,9 @@
 ---
-initiative: "<initiative-name>"
-updated: YYYY-MM-DD
+type: PRD
+title: "<short display name>"
+description: "<one-line summary>"
+timestamp: YYYY-MM-DD
+scope: "<initiative-name>"
 author: "[user_name] + Faisal (PM)"
 ---
 

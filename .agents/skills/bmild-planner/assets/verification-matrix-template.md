@@ -1,9 +1,12 @@
 ---
+type: Verification Matrix
+title: "<short display name>"
+description: "<one-line summary>"
+timestamp: YYYY-MM-DD
 scope: "<initiative-name> | _system"
 created: YYYY-MM-DD
-updated: YYYY-MM-DD
-author: "[user_name] + Sonia (Planner)"
-mode: nyquist-readiness
+author: "[user_name] + Sonia (Planner) | Rahat (QA)"
+mode: nyquist-readiness | nyquist
 status: draft | active | partially_implemented | verified | blocked
 ---
 
@@ -16,7 +19,7 @@ status: draft | active | partially_implemented | verified | blocked
 ## Requirement Coverage Matrix
 
 - Requirement: ...
-  - Source: `prd.md §...` / `ux-design.md §...` / `system-design.md §...`
+  - Source: [PRD](./prd.md) §... / [UX Design](./ux-design.md) §... / [System Design](./system-design.md) §...
   - Covered by Slice: Slice <N>
   - Test case / verification action: ...
   - Type: unit / integration / e2e / manual
@@ -33,3 +36,9 @@ status: draft | active | partially_implemented | verified | blocked
 - Use this section only for proof-owned dependencies, blocked evidence, or missing verification setup.
 - Do not place source-artifact repair requests here. Route product, UX, architecture, and other source-truth defects through `handoff.md`, keep missing user input in chat unless another owner must act, and reference the handoff item ID here only when verification depends on it.
 - ...
+
+## Governance Checks
+
+- Source-promotion required: yes | no
+- Handoff artifacts involved: none | `handoff.md`
+- Verification note: what still requires owner promotion before a queued outcome can be treated as authoritative

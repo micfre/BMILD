@@ -1,6 +1,9 @@
 ---
+type: Rollup
+title: "<short display name>"
+description: "<one-line summary>"
+timestamp: YYYY-MM-DD
 owner: Sonia (Planner)
-updated: YYYY-MM-DD
 ---
 
 ## Initiative Registry

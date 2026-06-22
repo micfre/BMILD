@@ -26,9 +26,6 @@ Just files. No installer, no dependencies, no orchestrator. Skill-native prompts
 
 BMAD runs the full Agile-with-AI ceremony and does it well. BMILD grew out of BMAD and takes a narrower path.
 
-## 
-
-
 ## How the work flows
 
 Personas are not pipeline stages. They activate by the state of your artifacts, so you can enter anywhere. Have a half-formed idea? Faisal frames it. Already know the UX? Start with Katrina. A slice is drafted and waiting? Hand it to Alex. Each persona reads the memory folder, tells you what looks current and complete, and routes to whoever should engage next.
@@ -106,6 +103,8 @@ Personas write plain markdown to the folder set by `plan_folder` in `.bmild.toml
 ```
 
 When you name an initiative, personas check the initiative folder first, then `rollup.md`. Initiative work starts from `registry.md`, loads `context.md` and the live artifacts, and skips anything marked stale.
+
+The `plans/` folder is an **[OKF v0.1](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md)** (Open Knowledge Format) bundle: every memory artifact carries OKF frontmatter (`type`, `title`, `description`, `timestamp`) so the corpus is ingestible by OKF consumers. `AGENTS.md` carries the full conformance notes.
 
 ## Project configuration
 

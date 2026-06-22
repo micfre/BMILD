@@ -35,7 +35,7 @@ Progress:
   - Update `Owner Disposition` and `Promotion Record`
   - Run **Promotion Cascade Check**: classify downstream consumers as `unaffected | minor-update | stale`. (a) **0 stale** → no action. (b) **1 stale owner** → auto-enqueue one `H-###` per stale artifact; close follows verbatim-invocation rule. (c) **≥2 stale owners** → mark artifacts in `registry.md ## Stale`; route to Course-Correction; append `Downstream Cascade: <summary>`. Cycle prevention: do not enqueue if `Supersedes` chain includes this handoff.
 - [ ] Step 4: Defer items needing design input — name missing constraint; route with one precise handoff item when another owner must act.
-- [ ] Step 5: Write — persist planning changes; update `updated` frontmatter.
+- [ ] Step 5: Write — persist planning changes; update `timestamp` frontmatter.
 - [ ] Step 6: Register — update `registry.md` (`## Live` / `## Archived`).
 - [ ] Step 7: Close — apply Exit and Handoff from the core skill. Name each item resolved, deferred, rejected, or superseded.
 

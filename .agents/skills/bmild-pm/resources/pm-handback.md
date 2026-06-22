@@ -49,7 +49,7 @@ Progress:
   - Note the consequence for the originating persona's artifact
 - [ ] Step 5: Defer items that need UX or architecture input — name the missing constraint; route back with one precise handoff item when another owner must act.
 - [ ] Step 6: Consequence-check — verify updated PM artifact(s) against the loaded completion criteria YAML for all in-scope sections.
-- [ ] Step 7: Write — update PM artifact(s) and `updated` frontmatter when product changes result.
+- [ ] Step 7: Write — update PM artifact(s) and `timestamp` frontmatter when product changes result.
 - [ ] Step 8: Semantic distillation gate — apply Semantic Memory rules when triggered.
 - [ ] Step 9: Close — apply Exit and Handoff from the core skill. Name each item resolved, deferred, rejected, superseded, or kept open, and the next owner.
 

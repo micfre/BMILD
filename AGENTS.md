@@ -96,7 +96,7 @@ Every `registry.md` follows this structure (see the active `registry-template.md
 ```markdown
 ---
 scope: <initiative-name>
-updated: YYYY-MM-DD
+timestamp: YYYY-MM-DD
 ---
 
 ## Live
@@ -115,7 +115,7 @@ updated: YYYY-MM-DD
 - `## Archived` — filenames of superseded artifacts, same format.
 - `## Stale` — filenames of artifacts that have been superseded mid-flight by an upstream change and must not be consumed as current truth until repaired. Each line names the artifact and the handoff item or `change-proposal-<slug>.md` driving the staleness. The owning persona moves the line out of `## Stale` and back to `## Live` when their patch is applied.
 - Frontmatter `scope` identifies the initiative.
-- Frontmatter `updated` is the date of the last change.
+- Frontmatter `timestamp` is the date of the last change.
 
 ### Initiative naming
 
@@ -149,6 +149,25 @@ Governance rule:
 - **Scribe path** (`docs/scribe-path.md`): a presiding persona may transcribe a *settled* fact into another owner's artifact in-context under the shared Scribe-Eligibility gate. This is **scribe ≠ author** — it transcribes settled facts; it never authors decisions (genuinely open items route). **Canonical-tier artifacts** (`context-map.md`, `[plan_folder]/adr/`, project-root `DESIGN.md`) are a hard fence and always route. Attribution is passive provenance (`applied_by_scribe`): traceability, not deferred audit — no required later action by the voiced owner. ≥2-owner cascades still route to Course-Correction. This is the second canonical consumer of each persona's `SOUL.md` (after roundtable attendee-voice loading), per `plans/adr/0003-persona-soul-canonical-voice.md`.
 
 RCA path rule: initiative-linked defects live in the initiative folder.
+
+## Open Knowledge Format (OKF) conformance
+
+The configured `plan_folder` (default `plans/`) is an **[OKF v0.1](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md) bundle**. Each BMILD memory artifact is an OKF *concept* (one markdown document with YAML frontmatter); initiative folders are subdirectories. Project-root `DESIGN.md`, `README.md`, `AGENTS.md`, and `docs/` are **outside** the bundle.
+
+Frontmatter on every in-bundle artifact carries the OKF fields first, then BMILD workflow extensions:
+
+- `type` — **required** by OKF. BMILD owns its own (unregistered) type vocabulary:
+  - `Product Brief`, `PRD`, `UX Design`, `System Design`, `Slice`, `Slice Registry`, `ADR`, `RCA`, `Security Review`, `Handoff`, `Registry`, `Rollup`, `Context Map`, `Context`, `Verification Matrix`, `Change Proposal`.
+  - OKF consumers MUST tolerate unknown types and treat unmatched values as generic concepts.
+- `title`, `description` — recommended display fields used by index generators and previews.
+- `timestamp` — last-modified date (ISO 8601). Replaces the legacy `updated` field.
+- BMILD extensions (`scope`, `slice`, `status`, `author`, `created`, `slug`, `severity`, `owner`, `next_owner`, etc.) are preserved by OKF consumers on round-trip.
+
+Cross-linking: navigable references between artifacts use markdown links so OKF graph consumers can traverse (bundle-relative or relative). Instructional prose and enum option lists may keep backtick-quoted paths where a link would add noise.
+
+Reserved filenames: BMILD keeps its own index/coordination artifacts (`registry.md`, `rollup.md`, `context-map.md`) rather than adopting OKF's `index.md` / `log.md`. OKF consumers treat them as generic concepts; their BMILD-specific body structure is preserved.
+
+Grandfathering: artifacts already in `plan_folder` before OKF conformance are grandfathered and may lack OKF frontmatter. Conformance applies to artifacts generated from the current templates; the bundle becomes fully conformant as legacy artifacts turn over.
 
 ## Philosophical guidance
 

@@ -1,6 +1,9 @@
 ---
+type: System Design
+title: "<short display name>"
+description: "<one-line summary>"
+timestamp: YYYY-MM-DD
 scope: "<initiative-name> | _system"
-updated: YYYY-MM-DD
 author: "[user_name] + Lance (Arch)"
 ---
 

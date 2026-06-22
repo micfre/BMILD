@@ -165,7 +165,7 @@ fi
 
 CTX_CONTENT="---
 scope: bmad-history
-updated: $TODAY
+timestamp: $TODAY
 ---
 
 ## Live
@@ -198,7 +198,7 @@ if [[ -f "$SYS_CTX" ]]; then
 else
     SYS_CTX_CONTENT="---
 scope: _system
-updated: $TODAY
+timestamp: $TODAY
 ---
 
 ## Live

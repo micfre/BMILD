@@ -1,10 +1,13 @@
 ---
+type: RCA
+title: "<short display name>"
+description: "<one-line summary>"
+timestamp: YYYY-MM-DD
 scope: "<initiative-name> | _system"
 slug: <slug>
 slice: <N>
 severity: low | medium | high | critical
 created: YYYY-MM-DD
-updated: YYYY-MM-DD
 status: open | resolved
 owner: Rahat
 next_owner: Alex | Lance | Katrina | none

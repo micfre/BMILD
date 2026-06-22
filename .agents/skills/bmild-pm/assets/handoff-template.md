@@ -1,6 +1,9 @@
 ---
+type: Handoff
+title: "<short display name>"
+description: "<one-line summary>"
+timestamp: YYYY-MM-DD
 scope: "<initiative-name>"
-updated: YYYY-MM-DD
 ---
 
 ## Policy

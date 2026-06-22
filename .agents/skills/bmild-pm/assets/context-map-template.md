@@ -1,3 +1,10 @@
+---
+type: Context Map
+title: "<short display name>"
+description: "<one-line summary>"
+timestamp: YYYY-MM-DD
+---
+
 # Context Map
 
 ## Contexts
