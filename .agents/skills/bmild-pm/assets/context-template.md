@@ -5,8 +5,6 @@ description: "<one-line summary>"
 timestamp: YYYY-MM-DD
 ---
 
-# <Context Name>
-
 <One or two sentences describing what this initiative context is and why it exists.>
 
 ## Language

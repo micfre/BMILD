@@ -5,8 +5,6 @@ description: "<one-line summary>"
 timestamp: YYYY-MM-DD
 ---
 
-# Context Map
-
 ## Contexts
 
 - [<Initiative or context name>](./<initiative-name>/context.md) - <short description>

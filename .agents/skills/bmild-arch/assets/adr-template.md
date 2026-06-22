@@ -7,8 +7,6 @@ scope: "<initiative-name> | _cross"
 status: "proposed | accepted | deprecated | superseded by ADR-NNNN"
 ---
 
-# <Short title of the decision>
-
 <One to three sentences stating the context, the decision, and the reason. That is the whole ADR — the value is recording *that* a decision was made and *why*, not filling out sections.>
 
 ## Optional sections
