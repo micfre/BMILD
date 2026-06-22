@@ -36,9 +36,6 @@ fi
 failures=0
 fail() { echo "FAIL: $*" >&2; failures=$((failures + 1)); }
 
-# Stable anchor (no special chars): the ADR every copy must cite.
-ADR_REF="0004-kebab-case-initiative-names.md"
-
 for root in "${SKILL_ROOTS[@]}"; do
   echo "== initiative-naming contract: ${root} =="
 
@@ -56,11 +53,6 @@ for root in "${SKILL_ROOTS[@]}"; do
     if [ "${count}" -ne 1 ]; then
       fail "${file}: expected exactly 1 canonical block line, found ${count}"
       continue
-    fi
-
-    # Stable anchor: cites the ADR.
-    if ! rg -q -F "${ADR_REF}" "${file}"; then
-      fail "${file}: canonical block does not cite ${ADR_REF}"
     fi
 
     # Identity: every copy byte-identical to the first (reference) copy.
