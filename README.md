@@ -82,34 +82,33 @@ Personas write plain markdown to the folder set by `plan_folder` in `.bmild.toml
 
 ```
 <project-root>/
-├── DESIGN.md                       # Katrina: durable global UX patterns (palette, typography, component rules)
-└── plans/                          # or your plan_folder
-    ├── context-map.md              # cross-initiative semantic map
-    ├── rollup.md                   # initiative index, aliases, status, decision log
-    ├── adr/                        # drift-protection ADRs (triple-axis gated)
+├── DESIGN.md                         # Katrina: durable global UX patterns (palette, typography, component rules)
+└── plans/                            # or your plan_folder
+    ├── context-map.md                # cross-initiative semantic map
+    ├── rollup.md                     # initiative index, aliases, status, decision log
+    ├── adr/                          # drift-protection ADRs (triple-axis gated)
     └── <initiative>/
-        ├── registry.md             # live / archived / stale artifact state
-        ├── context.md              # initiative-local terms, boundaries, relationships
-        ├── product-brief.md        # Faisal
-        ├── prd.md                   # Faisal
-        ├── ux-design.md            # Katrina
-        ├── system-design.md        # Lance (and Alex's promoted technical truth)
-        ├── handoff.md              # owner-to-owner coordination
+        ├── registry.md               # live / archived / stale artifact state
+        ├── context.md                # initiative-local terms, boundaries, relationships
+        ├── product-brief.md          # Faisal
+        ├── prd.md                    # Faisal
+        ├── ux-design.md              # Katrina
+        ├── system-design.md          # Lance (and Alex's promoted technical truth)
+        ├── handoff.md                # owner-to-owner coordination
         ├── change-proposal-<slug>.md # Sonia, Course-Correction
-        ├── verification-matrix.md  # Sonia / Rahat
-        ├── slices.md, slice-<N>.md # Sonia
-        ├── rca-<slug>.md           # Rahat
+        ├── verification-matrix.md    # Sonia / Rahat
+        ├── slices.md, slice-<N>.md   # Sonia
+        ├── rca-<slug>.md             # Rahat
         └── security-review-<slug>.md # Zach
 ```
 
 When you name an initiative, personas check the initiative folder first, then `rollup.md`. Initiative work starts from `registry.md`, loads `context.md` and the live artifacts, and skips anything marked stale.
 
-## "Standards" aware file structire
+## "Standards" aware file structure
 
-Katrina&nbsp;🟩 writes to `DESIGN.md` as well as `ux-design.md` ensuring compliance with repos that leverage Google's DESIGN.md spec
-The memory layout is compatible with Google's OKF format
+Katrina&nbsp;🟩 writes to `DESIGN.md` for global patterns, as well as to `ux-design.md` for initiative-scoped specs, ensuring compliance with repos that leverage Google's **[DESIGN.md](https://github.com/google-labs-code/design.md)** spec
 
-BMILD is compatible with Google's OKF spec. The `plans_folder` is an **[OKF v0.1](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md)** (Open Knowledge Format) bundle: every memory artifact carries OKF frontmatter (`type`, `title`, `description`, `timestamp`) so the corpus is ingestible by OKF consumers. `AGENTS.md` carries the full conformance notes.
+BMILD is compatible with Google's **[OKF](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md)** (Open Knowledge Format) spec. The `plans_folder` acts as an OKF bundle: every memory artifact carries OKF frontmatter (`type`, `title`, `description`, `timestamp`) and graph-traversal links so the corpus is ingestible by OKF consumers.
 
 ## Project configuration
 
