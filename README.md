@@ -104,7 +104,12 @@ Personas write plain markdown to the folder set by `plan_folder` in `.bmild.toml
 
 When you name an initiative, personas check the initiative folder first, then `rollup.md`. Initiative work starts from `registry.md`, loads `context.md` and the live artifacts, and skips anything marked stale.
 
-The `plans/` folder is an **[OKF v0.1](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md)** (Open Knowledge Format) bundle: every memory artifact carries OKF frontmatter (`type`, `title`, `description`, `timestamp`) so the corpus is ingestible by OKF consumers. `AGENTS.md` carries the full conformance notes.
+## "Standards" aware file structire
+
+Katrina&nbsp;🟩 writes to `DESIGN.md` as well as `ux-design.md` ensuring compliance with repos that leverage Google's DESIGN.md spec
+The memory layout is compatible with Google's OKF format
+
+BMILD is compatible with Google's OKF spec. The `plans_folder` is an **[OKF v0.1](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md)** (Open Knowledge Format) bundle: every memory artifact carries OKF frontmatter (`type`, `title`, `description`, `timestamp`) so the corpus is ingestible by OKF consumers. `AGENTS.md` carries the full conformance notes.
 
 ## Project configuration
 
