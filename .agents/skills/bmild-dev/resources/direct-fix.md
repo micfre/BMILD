@@ -9,6 +9,7 @@ Load in this order:
 - Repo context relevant to the reported failure path
 - Local implementation files along the suspected code path
 - Repo contributor guide
+- Project-root `DESIGN.md` if it exists — honor global UX patterns when the fix alters a user-visible surface (project-root repo context, not BMILD planning memory)
 
 Do not load BMILD planning memory unless the message names an initiative, Slice, or RCA — re-evaluate against core Mode Lookup before proceeding.
 

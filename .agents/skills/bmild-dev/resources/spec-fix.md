@@ -14,6 +14,7 @@ Identify entry artifact: `rca-<slug>.md`, verification matrix item, or named Sli
 - Relevant sections of `verification-matrix.md`
 - `security-review-*.md` if tracked security finding implicated
 - Repo contributor guide
+- Project-root `DESIGN.md` if it exists — honor global UX patterns when the fix alters a user-visible surface
 - `handoff.md` when Alex-owned items exist
 
 ## Global Directives

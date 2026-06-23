@@ -4,7 +4,7 @@ Implement bounded repo work outside a formal Slice. No Slice, spec, UX design, a
 
 ## Additional Context
 
-- Load repo context and the contributor guide.
+- Load repo context and the contributor guide; project-root `DESIGN.md` if it exists — global UX patterns (palette, typography, component rules) to honor when work has a user-visible surface (project-root repo context, not BMILD planning memory, so the conditional below does not gate it).
 - Load BMILD memory only when the request names an initiative, depends on documented behaviour, or might alter durable product or architecture understanding.
 - If scope is unclear, ask one question for the smallest concrete target before proceeding.
 

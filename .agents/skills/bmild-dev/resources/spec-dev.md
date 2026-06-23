@@ -14,6 +14,7 @@ Implement a well-defined Slice inside a documented initiative against a complete
   - `slice-<N>.md` in full
   - Relevant sections of `verification-matrix.md` when present
   - Design contracts referenced by the Slice
+  - Project-root `DESIGN.md` if it exists — honor global UX patterns (palette, typography, component rules) when the work has a user-visible surface
   - Repo contributor guide (`AGENTS.md`, `CONTRIBUTING.md`, or equivalent)
   - `handoff.md` when Alex-owned items exist — resolve during execution
 
