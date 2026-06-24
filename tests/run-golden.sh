@@ -8,8 +8,8 @@ set -euo pipefail
 
 TESTS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 FIXTURES="$TESTS_DIR/fixtures"
-ESTIMATOR="$TESTS_DIR/../scripts/run-budget-slice.sh"
-TEMPLATE="$TESTS_DIR/../assets/slice-template.md"
+ESTIMATOR="$TESTS_DIR/../.agents/skills/bmild-planner/scripts/run-budget-slice.sh"
+TEMPLATE="$TESTS_DIR/../.agents/skills/bmild-planner/assets/slice-template.md"
 
 PASS=0
 FAIL=0

@@ -44,15 +44,15 @@ jobs:
       - uses: actions/checkout@v4
       - name: POSIX sh golden (bash)
         if: runner.os != 'Windows'
-        run: bash .agents/skills/bmild-planner/tests/run-golden.sh
+        run: bash tests/run-golden.sh
       - name: PowerShell golden
         if: runner.os == 'Windows'
         shell: pwsh
-        run: .agents/skills/bmild-planner/tests/run-golden.ps1
+        run: tests/run-golden.ps1
       - name: Windows-native PowerShell 5.1 golden (canonical PS gate)
         if: runner.os == 'Windows'
         shell: powershell
-        run: .agents/skills/bmild-planner/tests/run-golden.ps1
+        run: tests/run-golden.ps1
 
   # bash-tokenizer FR13: cross-platform equivalence on one Linux runner with
   # pwsh (design §7 layer 3). Diffs bash and PowerShell output across the full
@@ -68,4 +68,4 @@ jobs:
         run: |
           command -v pwsh || command -v powershell
       - name: Cross-platform equivalence
-        run: sh .agents/skills/bmild-planner/tests/equivalence.sh
+        run: sh tests/equivalence.sh

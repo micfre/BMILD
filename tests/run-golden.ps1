@@ -12,9 +12,9 @@ Set-StrictMode -Version 3.0
 
 $TESTS_DIR = Split-Path -Parent $MyInvocation.MyCommand.Path
 $FIXTURES = Join-Path $TESTS_DIR 'fixtures'
-$ESTIMATOR = Join-Path $TESTS_DIR '..\scripts\run-budget-slice.ps1'
+$ESTIMATOR = Join-Path $TESTS_DIR '..\.agents\skills\bmild-planner\scripts\run-budget-slice.ps1'
 $ESTIMATOR = (Resolve-Path $ESTIMATOR).Path
-$TEMPLATE = Join-Path $TESTS_DIR '..\assets\slice-template.md'
+$TEMPLATE = Join-Path $TESTS_DIR '..\.agents\skills\bmild-planner\assets\slice-template.md'
 $TEMPLATE = (Resolve-Path $TEMPLATE).Path
 
 $script:PS_EXE = (Get-Process -Id $PID).Path

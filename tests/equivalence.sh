@@ -12,8 +12,8 @@ set -u
 
 TESTS_DIR="$(cd "$(dirname "$0")" && pwd)"
 FIXTURES="$TESTS_DIR/fixtures"
-SH_EST="$TESTS_DIR/../scripts/run-budget-slice.sh"
-PS_EST="$TESTS_DIR/../scripts/run-budget-slice.ps1"
+SH_EST="$TESTS_DIR/../.agents/skills/bmild-planner/scripts/run-budget-slice.sh"
+PS_EST="$TESTS_DIR/../.agents/skills/bmild-planner/scripts/run-budget-slice.ps1"
 
 # Locate a PowerShell executable. pwsh (PS 7) is what Linux/macOS expose.
 PS_EXE="${PWSH:-}"

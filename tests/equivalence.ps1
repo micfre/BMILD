@@ -19,8 +19,8 @@ Set-StrictMode -Version 3.0
 
 $TESTS_DIR = Split-Path -Parent $MyInvocation.MyCommand.Path
 $FIXTURES  = Join-Path $TESTS_DIR 'fixtures'
-$SH_EST    = (Resolve-Path (Join-Path $TESTS_DIR '..\scripts\run-budget-slice.sh')).Path
-$PS_EST    = (Resolve-Path (Join-Path $TESTS_DIR '..\scripts\run-budget-slice.ps1')).Path
+$SH_EST    = (Resolve-Path (Join-Path $TESTS_DIR '..\.agents\skills\bmild-planner\scripts\run-budget-slice.sh')).Path
+$PS_EST    = (Resolve-Path (Join-Path $TESTS_DIR '..\.agents\skills\bmild-planner\scripts\run-budget-slice.ps1')).Path
 $script:PS_EXE = (Get-Process -Id $PID).Path
 
 # Locate a bash/sh. Git for Windows provides bash; WSL provides sh/bash too.
