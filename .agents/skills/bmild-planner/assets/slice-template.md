@@ -72,12 +72,17 @@ One concrete outcome advanced by this Slice.
 ## Slice token estimate
 
 - Estimated consumption: <estimated_total> tokens / <slice_target> budget (<percent>% of context window), <WITHIN BUDGET | OVER BUDGET>
+- Estimate nature: informed guess — planning-time signals only
 - Raw script values:
   - raw_file_tokens: <raw_file_tokens>
   - weighted_reads: <weighted_reads>
   - weighted_edits: <weighted_edits>
+  - carry_factor: <carry_factor>
+  - K: <K>
   - tokenizer_base: <tokenizer_base>
   - tokenizer_multiplier: <tokenizer_multiplier>
+  - tokenizer_ratio: <tokenizer_ratio>
+  - estimate_confidence: informed_guess
 
 ## Verifiable End Condition
 
@@ -101,3 +106,12 @@ Specific enough to reuse during backward coverage checking.
 - Open QA items: ...
 - Open security items: ...
 - Resolution notes: ...
+
+## Actuals
+
+Completed by Alex at Slice completion. Sonia/Rahat consume for planning quality and model-deviation tracking.
+
+- turns_taken: <integer>
+- unplanned_reads: <none | list of paths opened that were not in Likely Required Reads>
+- peak_context: <optional, best-effort>
+- felt_budget: <optional, qualitative over / about-right / under>

@@ -20,7 +20,7 @@ Just files. No installer, no dependencies, no orchestrator. Skill-native prompts
 
 1. **Solid specs lead to verifiable code.** The upfront work of specifying what you are building pays back when the agent writes code. Under-specified work leads to fast code creation but can leave critical decisions in the hands of the LLM, which can take more time to fix. This is really just why Spec-Driven Development exists. Good spec up front, less drama on the back. BMILD provides an agentic loop for SDD.
 
-2. **BMAD-METHOD is excellent, and was my preferred framework.** I built good stuff with BMAD and after learning its ways, it became enjoyable. I found however that I had to fit its model, and endure its stepwise process more than I wanted. No criticism intended, BMAD is great and deserves a place at the top of agentic SDD but I wanted something more flexible, less theatrical, and as performant. BMILD was born out of BMAD, leveraging many of its concepts.
+2. **BMAD-METHOD is excellent, and was my preferred framework.** I built both greenfield and features with BMAD and after learning its ways, it became enjoyable. I found however that I had to fit its model and endure its stepwise process more than I wanted. No criticism intended, BMAD is great and deserves a place at the top of agentic SDD but I wanted something more flexible, less theatrical, and as performant. BMILD was born out of BMAD, leveraging many of its concepts.
 
 3. **AI needs context management, not Agile ceremony.** Epics, stories, sprints, and points exist to coordinate people and estimate human effort. AI has different constraints. It benefits from development units sized to context windows and from clear, verifiable design contracts to build against.
 
@@ -82,33 +82,34 @@ Personas write plain markdown to the folder set by `plan_folder` in `.bmild.toml
 
 ```
 <project-root>/
-├── DESIGN.md                         # Katrina: durable global UX patterns (palette, typography, component rules)
-└── plans/                            # or your plan_folder
+├── .bmild.toml                       # BMILD preferences (optional)
+├── DESIGN.md                         # durable global UX patterns                        Katrina 🟩
+└── plans/                            # or your own specified plan_folder
     ├── context-map.md                # cross-initiative semantic map
     ├── rollup.md                     # initiative index, aliases, status, decision log
-    ├── adr/                          # drift-protection ADRs (triple-axis gated)
-    └── <initiative>/
+    ├── adr/                          # drift-protection architecture design records
+    └── <initiative>/                 # per named initiative, always lowercase kebab-case
         ├── registry.md               # live / archived / stale artifact state
-        ├── context.md                # initiative-local terms, boundaries, relationships
-        ├── product-brief.md          # Faisal
-        ├── prd.md                    # Faisal
-        ├── ux-design.md              # Katrina
-        ├── system-design.md          # Lance (and Alex's promoted technical truth)
-        ├── handoff.md                # owner-to-owner coordination
-        ├── change-proposal-<slug>.md # Sonia, Course-Correction
-        ├── verification-matrix.md    # Sonia / Rahat
-        ├── slices.md, slice-<N>.md   # Sonia
-        ├── rca-<slug>.md             # Rahat
-        └── security-review-<slug>.md # Zach
+        ├── context.md                # drift protection terms, boundaries, relationships
+        ├── product-brief.md          # problem space, success criteria, scope            Faisal 🟦
+        ├── prd.md                    # functional requirements, journeys, prioritization Faisal 🟦
+        ├── ux-design.md              # user experience decisions and specs               Katrina 🟩
+        ├── system-design.md          # architectural decisions and specs                 Lance 🟫
+        ├── handoff.md                # owner-to-owner coordination (PR-like in function)
+        ├── change-proposal-<slug>.md # course-correction
+        ├── verification-matrix.md    # Nyquist verification matrix                       Sonia 🟧
+        ├── slices.md, slice-<N>.md   # task decomposition, implementation plans          Sonia 🟧
+        ├── rca-<slug>.md             # debug discovery and root cause analysis           Rahat 🟨
+        └── security-review-<slug>.md # SAST review notes                                 Zach 🟥
 ```
 
 When you name an initiative, personas check the initiative folder first, then `rollup.md`. Initiative work starts from `registry.md`, loads `context.md` and the live artifacts, and skips anything marked stale.
 
 ## "Standards" aware file structure
 
-Katrina&nbsp;🟩 writes to `DESIGN.md` for global patterns, as well as to `ux-design.md` for initiative-scoped specs, ensuring compliance with repos that leverage Google's **[DESIGN.md](https://github.com/google-labs-code/design.md)** spec
+Katrina 🟩 writes to `DESIGN.md` for global patterns, as well as to `ux-design.md` for initiative-scoped specs, ensuring compliance with repos that leverage Google's **[DESIGN.md](https://github.com/google-labs-code/design.md)** spec
 
-BMILD is compatible with Google's **[OKF](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md)** (Open Knowledge Format) spec. The `plans_folder` acts as an OKF bundle: every memory artifact carries OKF frontmatter (`type`, `title`, `description`, `timestamp`) and graph-traversal links so the corpus is ingestible by OKF consumers.
+BMILD is compatible with Google's **[OKF](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md)** (Open Knowledge Format) spec. The `plans_folder` acts as an OKF bundle: every memory artifact carries OKF frontmatter and graph-traversal links so the corpus is ingestible by OKF consumers.
 
 ## Project configuration
 
@@ -118,13 +119,14 @@ Project-level settings live in `.bmild.toml` at the repository root. Personas re
 - `user_name`: (optional) your preferred name. Used by named personas to address you in their responses.
 - `slice_target`: (default `170000`) target context tokens for sizing vertical slices. Used by Sonia when budgeting slices.
 - `tokenizer_base`: (default `15000`) base token cost used by the slice-budgeting tokenizer.
-- `tokenizer_multiplier`: (default `1.25`) multiplier applied by the slice-budgeting tokenizer.
+- `tokenizer_multiplier`: (default `1.00`) multiplier applied by the slice-budgeting tokenizer.
 
 ## Getting started
 
 1. Put the `.agents/skills/` directory where your IDE or CLI looks for skills (see below).
-2. Say: `Faisal, help me frame a feature for [your idea].`
-3. Follow the handoffs. Faisal will tell you who is next.
+2. (optional) Update `.bmild.toml` with your (or your team's) name, and your preferred location on disk for the plan folder.
+3. Say: `Faisal, help me frame a feature for [your idea].`
+4. Follow the handoffs. Faisal will tell you who is next.
 
 Or jump in wherever makes sense:
 
@@ -151,7 +153,7 @@ You can also engage the interactive modes at any point:
 BMILD has two requirements:
 
 - works anywhere that supports the agent Skills pattern
-- the workspace must have BASH available (WSL, Linux, and macOS all do)
+- the workspace must have BASH available (WSL, Linux, and macOS all do) for the tokenizer script
 
 #### First-class environments
 

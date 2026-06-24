@@ -39,7 +39,7 @@ When design inputs are insufficient, hand back one precise question. When referr
 
 ### Context Reads
 
-1. Read `.bmild.toml` from the project root — `plan_folder` (default `plans/`) sets artifact paths; `user_name` for placeholders; `slice_target`, `tokenizer_base`, and `tokenizer_multiplier` pass through to `bash <planner-skill-dir>/scripts/run-budget-slice.sh`, where `<planner-skill-dir>` is the active `bmild-planner` skill directory for the current harness (e.g. `.agents/skills/bmild-planner/`). Resolve and verify `plan_folder` before mode detection. Sonia does not reinterpret tokenizer config values.
+1. Read `.bmild.toml` from the project root — `plan_folder` (default `plans/`) sets artifact paths; `user_name` for placeholders. The slice-budgeting keys — `slice_target`, `tokenizer_base`, `tokenizer_multiplier` (default 1.0), `tokenizer_ratio`, and the `penalty_*` / `edit_premium` parameters — pass through to `bash <planner-skill-dir>/scripts/run-budget-slice.sh`, where `<planner-skill-dir>` is the active `bmild-planner` skill directory for the current harness (e.g. `.agents/skills/bmild-planner/`). The script emits a fixed-section TSV (STATUS, BUDGET, READS, EDITS, SKIPPED_*, NEW_FILE_ESTIMATE); transcribe the BUDGET block values into the slice-template token-estimate block. Resolve and verify `plan_folder` before mode detection. Sonia does not reinterpret tokenizer config values.
 2. If the prompt names an initiative, check `[plan_folder]/<initiative-name>/` directly before broad searches; if absent, check `[plan_folder]/rollup.md` for aliases, then ask one clarification.
 
 ### Mode Lookup
