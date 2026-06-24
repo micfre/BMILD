@@ -29,3 +29,43 @@ jobs:
             *.md
             .agents/**/*.md
             docs/**/*.md
+
+  # bash-tokenizer FR1/FR2/FR13: native golden tests on each first-class OS.
+  # macOS catches BSD find/wc/od quirks and bash 3.2 regressions; Windows
+  # catches real PowerShell 5.1 behavior (the canonical PS gate per design §7).
+  estimator-native:
+    name: Estimator Golden (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - name: POSIX sh golden (bash)
+        if: runner.os != 'Windows'
+        run: bash .agents/skills/bmild-planner/tests/run-golden.sh
+      - name: PowerShell golden
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: .agents/skills/bmild-planner/tests/run-golden.ps1
+      - name: Windows-native PowerShell 5.1 golden (canonical PS gate)
+        if: runner.os == 'Windows'
+        shell: powershell
+        run: .agents/skills/bmild-planner/tests/run-golden.ps1
+
+  # bash-tokenizer FR13: cross-platform equivalence on one Linux runner with
+  # pwsh (design §7 layer 3). Diffs bash and PowerShell output across the full
+  # fixture suite after line-ending normalization. ubuntu-latest ships pwsh
+  # preinstalled; the assert step fails the job if it is ever absent so the
+  # gate can never silently SKIP to a false green.
+  estimator-equivalence:
+    name: Estimator Equivalence (bash ↔ PowerShell)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Assert PowerShell present
+        run: |
+          command -v pwsh || command -v powershell
+      - name: Cross-platform equivalence
+        run: sh .agents/skills/bmild-planner/tests/equivalence.sh

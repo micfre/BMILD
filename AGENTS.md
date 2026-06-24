@@ -184,7 +184,7 @@ Do not make any modifications to any files in `external_references/` folders
 ## Documentation
 
 Keep README, AGENTS and CHANGELOG up to date as project evolves. PM defines which documentation needs to change, Dev owns the edits, and QA verifies that the resulting documentation matches implemented behaviour.
-Planner slice-budgeting references should use the wrapper-first skill-local launcher by resolving the active `bmild-planner` skill directory for the current harness, then running `bash <planner-skill-dir>/scripts/run-budget-slice.sh`. For example, the planner skill may live under `.agents/skills/bmild-planner/` in many CLI/IDE environments or `.claude/skills/bmild-planner/` in Claude Code. Do not present a hard-coded specific skill-root path or the legacy direct shell entrypoint as the supported workflow.
+Planner slice-budgeting references invoke the platform-native estimator directly: resolve the active `bmild-planner` skill directory for the current harness, then run `bash <planner-skill-dir>/scripts/run-budget-slice.sh` on macOS/Linux/WSL or `powershell -File <planner-skill-dir>/scripts/run-budget-slice.ps1` on Windows-native. For example, the planner skill may live under `.agents/skills/bmild-planner/` in many CLI/IDE environments or `.claude/skills/bmild-planner/` in Claude Code. The agent invoking the script already knows the host OS (its own shell tells it), so no launcher wrapper or interpreter probing is used; both scripts emit the same byte-identical TSV contract (see `plans/bash-tokenizer/system-design.md` §4 and ADR 0005).
 
 ## Versioning
 

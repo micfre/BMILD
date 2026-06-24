@@ -1,0 +1,8 @@
+# Hidden config fixture for the equivalence + golden suites.
+# Dot-prefixed so `find` includes it by default and PowerShell requires -Force;
+# exercises the hidden-file fixture from bash-tokenizer system-design §7.
+enabled: true
+threshold: 42
+labels:
+  - baseline
+  - noise-check

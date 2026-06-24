@@ -24,5 +24,11 @@ Committed fixtures:
   `--src` argument to exercise leading-dash normalization (the `./`-prefix
   guard in `normalize_path`). Without the guard `find "$src"` treats the name
   as a predicate and silently returns nothing.
+- `.hidden-config.yaml` — dot-prefixed file exercising the hidden-file
+  fixture from system-design §7 (`find` includes it by default; PowerShell
+  requires `-Force` in `measure_source_dir_profile`). Measured, not skipped.
 
 These exercise the bash-tokenizer acceptance criteria FR1, FR4–FR12, FR15.
+The cross-platform equivalence runners (`tests/equivalence.sh`,
+`tests/equivalence.ps1`) generate the runtime fixtures above into a temp dir
+and run both estimators over this committed set plus the generated ones.
