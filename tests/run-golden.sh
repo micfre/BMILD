@@ -114,7 +114,7 @@ if [ "$RUN_RC" -ne 0 ]; then ok "Vuln1 tab in --src rejected"; else bad "Vuln1 t
 
 # Leading-dash --src must be normalized to ./-src-dir so find treats it as a
 # path, not a predicate. Without the guard, avg_bytes_per_file silently = 0.
-sample_bytes=$(wc -c < "$FIXTURES/-src-dir/sample.py")
+sample_bytes=$(( $(wc -c < "$FIXTURES/-src-dir/sample.py") ))
 # Baseline: absolute directory path has no leading dash, so it measures cleanly.
 run_est --new 1 --src "$FIXTURES/-src-dir"
 expect_eq "Vuln1 baseline avg_bytes (absolute dir)" "$(budget_val "$RUN_OUT" avg_bytes_per_file)" "$sample_bytes"
