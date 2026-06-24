@@ -175,26 +175,34 @@ function Test-Binary([string]$p) {
 }
 
 function Get-NoiseFlag([string]$p) {
-    if ($p -like '*/vendor/*') { return 1 }
-    if ($p -like '*/node_modules/*') { return 1 }
-    if ($p -like '*/dist/*') { return 1 }
-    if ($p -like '*/build/*') { return 1 }
-    if ($p -like '*/target/*') { return 1 }
-    if ($p -like '*.min.*') { return 1 }
-    if ($p -like '*.generated.*') { return 1 }
-    if ($p -like '*_generated.*') { return 1 }
-    if ($p -like '*.pb.go') { return 1 }
-    if ($p -like '*.proto.go') { return 1 }
+    # Normalize backslashes so the path-segment patterns match on both
+    # separators (bash uses '/'; Windows native paths use '\').
+    $n = $p -replace '\\', '/'
+    if ($n -like '*/vendor/*') { return 1 }
+    if ($n -like '*/node_modules/*') { return 1 }
+    if ($n -like '*/dist/*') { return 1 }
+    if ($n -like '*/build/*') { return 1 }
+    if ($n -like '*/target/*') { return 1 }
+    if ($n -like '*.min.*') { return 1 }
+    if ($n -like '*.generated.*') { return 1 }
+    if ($n -like '*_generated.*') { return 1 }
+    if ($n -like '*.pb.go') { return 1 }
+    if ($n -like '*.proto.go') { return 1 }
     return 0
 }
 
 function Measure-File([string]$path, [string]$role) {
     $p = Normalize-Path $path
+    # -Force is load-bearing on Get-Item: PowerShell sets the Hidden attribute
+    # on dotfiles, so Get-Item throws "Could not find item" without it (Test-Path
+    # needs no -Force -- it reports existence regardless of the Hidden attribute).
+    # Contract (system-design §5, line 432): hidden files are included on both
+    # platforms (find includes them by default; PowerShell requires -Force).
     if (-not (Test-Path -LiteralPath $p -PathType Leaf)) {
         $null = $script:skipped.Add([pscustomobject]@{ Role = $role; Path = $p })
         return
     }
-    $bytes = (Get-Item -LiteralPath $p).Length
+    $bytes = (Get-Item -LiteralPath $p -Force).Length
     if (Test-Binary $p) {
         $null = $script:skipped.Add([pscustomobject]@{ Role = $role; Path = $p })
         return
