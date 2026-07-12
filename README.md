@@ -120,6 +120,13 @@ Project-level settings live in `.bmild.toml` at the repository root. Personas re
 - `slice_target`: (default `170000`) target context tokens for sizing vertical slices. Used by Sonia when budgeting slices.
 - `tokenizer_base`: (default `15000`) base token cost used by the slice-budgeting tokenizer.
 - `tokenizer_multiplier`: (default `1.00`) multiplier applied by the slice-budgeting tokenizer.
+- `commit`: (default `0`; `commit = 0`) Alex's completion posture: `commit = 1` emits a rich message and creates one eligible local Git commit, while `commit = 2` emits the message without committing.
+- `format`: (optional) commit-message format. MVP recognizes `"conventional-commits"`; when omitted Alex examines at most 10 local non-merge messages, requires at least 3 usable messages and 60% agreement, then falls back to Conventional Commits.
+- `branch`: (default `"current"`) use the attached current branch or the confirmed initiative slug. Initiative switching/creation requires a completely clean repository; BMILD never stashes.
+
+Commit posture applies to Alex's Spec-Dev, Spec-Fix, Direct-Dev, and Direct-Fix modes after each mode's own successful completion gate. Repository and harness guidance can only reduce configured authority: prohibitions, ambiguous authority, unsupported Git state, detached `HEAD`, baseline overlap, or unsafe attribution degrade posture `1` to message-only or block before work. A successful posture-`1` operation uses normal hooks and exactly one targeted local commit containing only paths Alex changed in that invocation; unrelated staged and unstaged work is preserved. Failed, blocked, incomplete, and no-change sessions do not produce a normal proposed message.
+
+The feature is local-only. It never fetches, pulls, pushes, opens a pull request, bypasses hooks, stashes, amends, rebases, resets, or rewrites history. Additional named formats and repository-defined profiles are Growth scope; native commits for non-Git version control are Vision scope.
 
 ## Getting started
 

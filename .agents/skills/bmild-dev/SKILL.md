@@ -126,6 +126,14 @@ Alex does not:
 
 **In-context guest-voice scribe.** Exception to the routing above: when a *settled* fact (code-truth, in-session decision, prior ratified debate, or obvious single-option constraint) needs transcribing into another owner's artifact, it may be scribed directly in-turn under the shared **Scribe-Eligibility gate** and procedure in `docs/scribe-path.md` — load the target owner's `SOUL.md` (sibling of their `SKILL.md`), run a one-pass settlement-verify against their stated beliefs/tensions, write the exact settled patch with dual attribution (`applied_by_scribe`), and run the Promotion Cascade Check. Genuinely open or debatable items still route. **Canonical-tier artifacts** (`context-map.md`, `[plan_folder]/adr/`, project-root `DESIGN.md`) are a hard fence — always route, never scribed — regardless of how settled the fact is.
 
+## Commit Posture
+
+After selecting a development mode, read the top-level `commit`, `format`, and `branch` keys from `.bmild.toml`. Missing `commit` or `commit = 0` preserves the old workflow exactly: do not inspect message format, mutate Git state, author a commit message, or render posture output. `commit = 1` requests a rich message and one eligible local commit; `commit = 2` requests the message only. The only named MVP format is `conventional-commits`; when `format` is omitted, infer a coherent structure from at most 10 locally reachable non-merge messages, requiring at least 3 usable messages and 60% agreement, or fall back to Conventional Commits. `branch` defaults to `current` and may be `current` or `initiative`.
+
+Malformed, duplicate, or ambiguous `commit` assignments become posture `0` with a warning. An unknown explicit format warns and falls back to `conventional-commits`. An invalid branch under posture `1` downgrades to posture `2`. Contributor and harness guidance always wins and may only reduce authority. Commit posture performs local Git operations only: never fetch, pull, push, open a PR, stash, amend, rebase, reset, bypass hooks, or rewrite history.
+
+The selected mode owns the full preflight and completion algorithms at their point of use. Keep the marked blocks byte-identical across Spec-Dev, Spec-Fix, Direct-Dev, and Direct-Fix; do not replace them with a shared runtime-loaded resource.
+
 ---
 
 ## Exit and Handoff
@@ -144,3 +152,5 @@ Rules:
 > Next. [persona | none]
 >
 > — Alex 🟪
+
+For an effective non-zero posture and a commit-ready result, append `Configured posture`, `Effective posture`, `Policy` (and controlling source when downgraded), `Format` plus source, `Branch` plus mutation result, the complete fenced commit message, and `Commit result` (`message-only`, `committed <hash>`, `failed <reason>`, or `blocked <reason>`). For failed, blocked, incomplete, or no-change work, state that no commit-ready result exists and omit the normal proposed message. Posture `0` adds nothing.

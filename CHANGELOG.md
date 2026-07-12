@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added opt-in Alex commit posture across Spec-Dev, Spec-Fix, Direct-Dev, and Direct-Fix: `commit = 1` can create one policy-compliant targeted local Git commit, while `commit = 2` emits the full repository-consistent message only. Missing configuration and `commit = 0` retain the prior zero-side-effect close. Contributor guidance is deny-wins; unsafe attribution or branch state degrades safely; all operations remain local-only with normal hooks and no remote or destructive history actions.
+
 ### Changed
 
 - Completed Slice 3 of `enhance-interactivity`: Elicit now resolves each active named BMILD persona's sibling `SOUL.md` as its sole voice source, Roundtable mines loaded SOULs for attendee sign-offs, and the ADR 0003 consumer note is routed to Lance. All seven standard personas may use `user_name` naturally when helpful; Alex now has declinable pre-exit stress-test offers. PM, UX, Architecture, and Security stakes flows may compress only for demonstrably crisp, complete answers, while Brainstorming and Elicit avoid quota- and menu-driven filler.

@@ -19,6 +19,7 @@ DEFAULT_NOISE_BPL=500
 DEFAULT_NOISE_FACTOR=2.0
 DEFAULT_PENALTY_CAP=10.0
 DEFAULT_EDIT_PREMIUM=2.0
+DEFAULT_CARRY_CAP=2.5
 
 CFG_TARGET=$DEFAULT_TARGET
 CFG_BASE=$DEFAULT_BASE
@@ -30,6 +31,7 @@ CFG_NOISE_BPL=$DEFAULT_NOISE_BPL
 CFG_NOISE_FACTOR=$DEFAULT_NOISE_FACTOR
 CFG_PENALTY_CAP=$DEFAULT_PENALTY_CAP
 CFG_EDIT_PREMIUM=$DEFAULT_EDIT_PREMIUM
+CFG_CARRY_CAP=$DEFAULT_CARRY_CAP
 
 OF_TARGET=""
 OF_BASE=""
@@ -138,6 +140,7 @@ read_config(){
       penalty_noise_factor) is_num "$_val" && CFG_NOISE_FACTOR=$_val ;;
       penalty_cap) is_num "$_val" && CFG_PENALTY_CAP=$_val ;;
       edit_premium) is_num "$_val" && CFG_EDIT_PREMIUM=$_val ;;
+      carry_cap) is_num "$_val" && CFG_CARRY_CAP=$_val ;;
     esac
   done < "$_cp"
 }

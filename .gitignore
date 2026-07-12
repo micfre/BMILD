@@ -13,6 +13,7 @@ tmp/
 .claude
 .codex
 .DS_Store
+.ruff_cache
 .serena/
 CLAUDE.md
 opencode.json
