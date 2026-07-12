@@ -9,6 +9,11 @@
 #   3. Consumer-side loaders: bmild-roundtable step-01-open.md AND step-02-debate.md
 #      reference SOUL.md; the old heading-boundary scrape
 #      ("### Your Role and Voice" ... "### NON-NEGOTIABLE") is gone.
+#   4. Session-continuity contract (FR7.3/FR7.4): every standard persona SKILL.md
+#      carries the Same-Session Resumption section and the Facilitator-interlude
+#      suspension rule with its verbatim suspension phrase.
+#   5. Anti-mode-selection-narration parity (FR1.5): every standard persona
+#      SKILL.md carries the rule, not just Arch.
 #
 # Mechanism: bash + rg. Layout-portable: scans known skill roots
 # (.agents/skills, .claude/skills) relative to the repo root, never hardcoding one.
@@ -71,6 +76,23 @@ for root in "${SKILL_ROOTS[@]}"; do
       fi
       if rg -q -F "## What I believe" "${skillmd}"; then
         fail "${skillmd}: voice body present in SKILL.md (should be only the stub)"
+      fi
+
+      # Session-continuity contract (FR7.3/FR7.4): suspend without Exit,
+      # resume without re-emitting Opening Stance or re-running mode lookup.
+      if ! rg -q -F "### Same-Session Resumption" "${skillmd}"; then
+        fail "${skillmd}: missing 'Same-Session Resumption' section (FR7.3)"
+      fi
+      if ! rg -q -F "Facilitator interlude" "${skillmd}"; then
+        fail "${skillmd}: missing 'Facilitator interlude' suspension rule (FR7.4)"
+      fi
+      if ! rg -q -F "Suspending at [section]" "${skillmd}"; then
+        fail "${skillmd}: missing verbatim suspension phrase (FR7.4)"
+      fi
+
+      # Anti-mode-selection-narration parity (FR1.5): all seven, not just Arch.
+      if ! rg -q -F "Do not open with placeholder mode-selection narration" "${skillmd}"; then
+        fail "${skillmd}: missing anti-narration rule (FR1.5)"
       fi
     fi
   done

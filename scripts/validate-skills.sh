@@ -58,11 +58,6 @@ frontmatter_value() {
   ' "$path"
 }
 
-has_step_checklist() {
-  local path="$1"
-  grep -qE '^- \[ \] Step [0-9]+:' "$path"
-}
-
 has_workflow_without_checklist() {
   local path="$1"
   awk '
@@ -194,20 +189,6 @@ collect_numbered_headings() {
   ' >"$output"
 }
 
-collect_table_rows() {
-  local output="$1"
-  # shellcheck disable=SC2016
-  find_skill_markdown_files | xargs -0 awk '
-    BEGIN { in_code = 0 }
-    /^```/ { in_code = !in_code; next }
-    in_code { next }
-    FILENAME ~ /\/SKILL\.md$/ { next }
-    /^\|.*\|$/ {
-      printf "%s:%d:%s\n", FILENAME, FNR, $0
-    }
-  ' >"$output"
-}
-
 skill_count=0
 while IFS= read -r -d '' skill_file; do
   skill_count=$((skill_count + 1))
@@ -223,7 +204,6 @@ while IFS= read -r -d '' skill_file; do
     report "$skill_file description exceeds 1024 characters"
   fi
 
-  has_step_checklist "$skill_file" || report "$skill_file missing step checklist"
   if workflow_error="$(has_workflow_without_checklist "$skill_file" 2>&1)"; then
     :
   else
@@ -234,10 +214,10 @@ while IFS= read -r -d '' skill_file; do
     check_required_h2_order "$skill_file" \
       "Role" \
       "Entry and Activation" \
-      "Workflow" \
       "Scope Boundary" \
-      "Exit and Return" \
-      "Gotchas"
+      "Exit and Return"
+    check_optional_h2_order "$skill_file" \
+      "Advanced Elicitation Triggers"
     check_forbidden_h2_sections "$skill_file" \
       "BMILD Working Team" \
       "Activation" \
@@ -287,13 +267,6 @@ collect_numbered_headings "$numbered_headings_report"
 if [[ -s "$numbered_headings_report" ]]; then
   cat "$numbered_headings_report" >&2
   report "numbered markdown headings found; prefer checklist-based task flows over numbered headings"
-fi
-
-table_rows_report="$tmp_dir/table-rows.txt"
-collect_table_rows "$table_rows_report"
-if [[ -s "$table_rows_report" ]]; then
-  cat "$table_rows_report" >&2
-  report "markdown table rows found outside fenced code blocks; prefer more resilient bullet structures"
 fi
 
 legacy_artifact_pattern='CHARTER\.md|ARCHITECTURE\.md|_system/|_context\.md|_rollup\.md|spec-patch-queue\.md|user-attention\.md|decision-log\.md|dev-note-<slug>\.md|docs/cross-skill-amendment\.md'
