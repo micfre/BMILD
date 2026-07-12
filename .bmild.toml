@@ -1,6 +1,6 @@
 user_name = "Mike"
 plan_folder = "plans/"
-slice_target = 231000
+slice_target = 300000
 tokenizer_base = 25000
 tokenizer_multiplier = 1.0
 tokenizer_ratio = 4.0

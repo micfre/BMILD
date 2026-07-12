@@ -9,6 +9,7 @@ test/
 tmp/
 
 # Local OS/editor noise
+.ck
 .claude
 .codex
 .DS_Store
