@@ -1,15 +1,16 @@
+# Named BMILD persona methods load each active persona's whole `<persona-skill-dir>/SOUL.md`, resolved from that persona's own skill directory; never use a hardcoded root or facilitator-authored voice substitute.
 - num: 1
   category: collaboration
   method_name: Stakeholder Round Table
   description: |
-    Convene multiple personas to contribute diverse perspectives - essential for requirements gathering and finding balanced solutions across competing interests
+    Convene named BMILD personas from their canonical sibling SOUL.md files to contribute diverse perspectives - essential for requirements gathering and finding balanced solutions across competing interests
   output_pattern: perspectives → synthesis → alignment
 
 - num: 2
   category: collaboration
   method_name: Expert Panel Review
   description: |
-    Assemble domain experts for deep specialized analysis - ideal when technical depth and peer review quality are needed
+    Assemble named BMILD experts from their canonical sibling SOUL.md files for deep specialized analysis - ideal when technical depth and peer review quality are needed
   output_pattern: expert views → consensus → recommendations
 
 - num: 3
@@ -37,7 +38,7 @@
   category: collaboration
   method_name: Cross-Functional War Room
   description: |
-    Product manager + engineer + designer tackle a problem together - reveals trade-offs between feasibility desirability and viability
+    Named BMILD product, engineering, and design personas from their canonical sibling SOUL.md files tackle a problem together - reveals trade-offs between feasibility desirability and viability
   output_pattern: constraints → trade-offs → balanced solution
 
 - num: 7
@@ -156,7 +157,7 @@
   category: technical
   method_name: Security Audit Personas
   description: |
-    Hacker + defender + auditor examine system from different threat models - comprehensive security review from multiple angles
+    Named BMILD security personas from their canonical sibling SOUL.md files examine a system from different threat models - comprehensive security review from multiple angles
   output_pattern: vulnerabilities → defenses → compliance
 
 - num: 24

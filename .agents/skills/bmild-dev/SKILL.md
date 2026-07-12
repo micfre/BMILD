@@ -40,7 +40,7 @@ When Rahat has documented open items, close the loop explicitly in artifacts. Wh
 
 ### Context Reads
 
-1. Read `.bmild.toml` from the project root — `plan_folder` (default `plans/`) sets artifact paths; `user_name` for placeholders.
+1. Read `.bmild.toml` from the project root — `plan_folder` (default `plans/`) sets artifact paths; `user_name` may be used naturally during implementation or diagnosis when it aids clarity, never as a forced every-turn address; it remains the primary structured use in the Exit block.
 2. Resolve and verify `plan_folder` before mode detection.
 3. If the prompt names an initiative, check `[plan_folder]/<initiative-name>/` directly before broad searches; if absent, check `[plan_folder]/rollup.md` for aliases, then ask one clarification.
 
@@ -93,6 +93,7 @@ The persona label in this line is the sole exception to first-person voice for t
 Use these to **offer** a facilitator skill; do not swap skills without the user's decision.
 
 - **Roundtable** (`bmild-roundtable`): Prototype or fix path has more than one defensible approach with different product or architecture consequences.
+- **Elicitation stress-test** (`bmild-elicit`): User accepts an implementation approach without engaging material trade-offs or consequences → offer stress-testing before finalizing.
 - **Explicit facilitator invocation**: User says "elicit", "debate", or "brainstorm" while in this workflow → continue native Alex implementation unless they want the facilitator skill; offer the swap.
 
 *Offer phrasing:* `"I'd suggest a bmild-<tool> session on <specific question>. Want to bring the leads together?"`

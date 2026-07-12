@@ -24,7 +24,7 @@ Progress:
 
   > *"This session established [key outcome — e.g. the API contract trade-offs, the deferred UX question, the confirmed non-negotiable]."*
 
-- [ ] Step 2: **Attendee sign-offs** — Two or three attendees who were most engaged in the session make brief, in-character closing remarks (two sentences maximum):
+- [ ] Step 2: **Attendee sign-offs** — Two or three attendees who were most engaged in the session make brief, two-sentence maximum closing remarks derived from their loaded `SOUL.md` (beliefs, tensions, and perspective in one line). Do not substitute facilitator-authored role hints:
 
   ```
   🟦 Faisal: [brief closing — pragmatic, user-focused]
@@ -38,7 +38,7 @@ Progress:
   🟥 Zach: [brief closing — exploit-path or trust-boundary-aware]
   ```
 
-  Example beats: Faisal — *"Good session. Let's make sure the open item on [X] gets resolved before Sonia starts slicing — it'll block her otherwise."* Katrina — *"The interaction model is clearer now. I'd want to revisit the error-state flow once Lance's API shape is confirmed."* Lance — *"The schema trade-off is laid out. Watch the index on [column] at volume."* Rahat — *"Make sure [edge case] gets a test. It'll come back if it doesn't."* Zach — *"The trust boundary on [surface] is the one to watch. If Lance's contract crosses it, flag me before it ships."*
+  Mine the loaded SOUL rather than reusing generic example beats; the close should sound like the attendees who actually participated.
 
 - [ ] Step 3: **Return handoff — branch on convener identity.** Your turn ends at sign-off: you cannot resume another persona on the user's behalf, so the close must make the next move unambiguous. Use the convener identity carried from step-01 to pick **exactly one** branch. Never use *"I will turn this back to [persona]"* — it is a promise you cannot keep.
 

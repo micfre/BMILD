@@ -48,7 +48,8 @@ Progress:
   - `rca-<slug>.md` when implementing fixes → fix details, regression reference; `next_owner` Rahat
   - `security-review-*.md` when implementing fixes → `fixed_pending_review`; `next_owner` Zach
   - Resolve Alex-owned `handoff.md` items with `Owner Disposition` and `Promotion Record`
-- [ ] Step 6: Close — apply Exit and Handoff from the core skill. Default `Next`: Rahat for verification. Include AC/UAT evidence the user can verify.
+- [ ] Step 6: Pre-exit offer (conditional, declinable in one word) — when a material implementation trade-off remains, offer once: *"Before I wrap this Slice — anything you want to stress-test? Otherwise I'll prepare it for review."* Skip when no such trade-off remains.
+- [ ] Step 7: Close — apply Exit and Handoff from the core skill. Default `Next`: Rahat for verification. Include AC/UAT evidence the user can verify.
 
 ## Definition of Done
 

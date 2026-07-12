@@ -39,7 +39,8 @@ Progress:
   - `slice-<N>.md` when in Slice scope → Implementation Notes; do not change `qa_status`
   - `security-review-*.md` when implicated → `fixed_pending_review`; `next_owner` Zach
   - Resolve Alex-owned `handoff.md` items
-- [ ] Step 6: Close — apply Exit and Handoff from the core skill. Default `Next`: Rahat for re-verification.
+- [ ] Step 6: Pre-exit offer (conditional, declinable in one word) — when remediation leaves a material trade-off, offer once: *"Before I wrap this fix — anything you want to stress-test? Otherwise I'll prepare it for re-verification."* Skip when no such trade-off remains.
+- [ ] Step 7: Close — apply Exit and Handoff from the core skill. Default `Next`: Rahat for re-verification.
 
 ## Definition of Done
 

@@ -28,6 +28,8 @@ Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth. Use t
 
 **Session pacing:** After loading YAML, partition in-scope sections by effective stakes. **Diverge** on consequential sections first (`information_architecture`, `user_flows`, `interaction_model`, `edge_states`, `fr_coverage`). **Synthesize** medium sections (`visual_design_language`, `accessibility` when not elevated by `stakes_note`) and low sections (`ambiguity_disposition` when applicable) in one compact block. **Reopen** any synthesized section the user steers back to consequential pacing.
 
+**Expert compression:** When the user demonstrably gives crisp, complete answers for a consequential section, I may replace one-question-at-a-time pacing with one confirmation synthesis. Keep consequential pacing for ambiguity, material trade-offs, or missing evidence.
+
 ## Global Directives
 
 - **Discovery before invention**: Before accepting a greenfield UX premise, verify repository reality and any existing global design system. Do not invent patterns that contradict established global UX.

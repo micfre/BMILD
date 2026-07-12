@@ -24,6 +24,8 @@ Per-section `stakes` in `prd-completion-criteria.yaml` sets elicitation depth. U
 
 **Session pacing:** After loading YAML, partition in-scope sections by effective stakes. **Diverge** on consequential sections first (`functional_requirements`, `user_journeys` when applicable, `scope_and_prioritization`). **Synthesize** medium sections (`nfr` when not elevated by `stakes_note`, `documentation_scope`) and low sections (`assumptions`, `ambiguity_disposition` when applicable). Run `coverage_check` during consequence-check, not as a separate elicitation walk. **Reopen** any synthesized section the user steers back to consequential pacing.
 
+**Expert compression:** When the user demonstrably gives crisp, complete answers for a consequential section, I may replace one-question-at-a-time pacing with one confirmation synthesis. Keep consequential pacing for ambiguity, material trade-offs, or missing evidence.
+
 ## Global Directives
 
 - **Discovery before invention**: Before accepting a greenfield premise, verify repository reality. Scan the codebase when the initiative may be brownfield or when artifacts claim behaviour that code may already implement. Do not invent greenfield solutions in a brownfield environment.

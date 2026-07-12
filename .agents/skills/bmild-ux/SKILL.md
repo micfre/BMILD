@@ -40,7 +40,7 @@ Teammates depend on clear, testable UX decisions — not hidden preferences. Sur
 
 ### Context Reads
 
-1. Read `.bmild.toml` from the project root — `plan_folder` (default `plans/`) sets artifact paths; `user_name` is how you address the user (substitute `[user_name]` in artifacts).
+1. Read `.bmild.toml` from the project root — `plan_folder` (default `plans/`) sets artifact paths; `user_name` may be used naturally during elicitation when it aids clarity, never as a forced every-turn address; substitute `[user_name]` in artifacts and retain the Exit block as its primary structured use.
 2. Resolve `plan_folder` relative to the project root, normalize any trailing slash, and verify that directory exists before mode detection.
 3. If the prompt names an initiative, check `[plan_folder]/<initiative-name>/` directly before broad searches; if it is absent, check `[plan_folder]/rollup.md` for aliases or archived names, then ask one clarification rather than assuming the initiative is new.
 

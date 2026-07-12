@@ -31,7 +31,8 @@ Progress:
 - [ ] Step 3: Run quality gates. Add or update tests when they prove the prototype, protect durable behaviour, or the user asked for tests.
 - [ ] Step 4: Document when durable behaviour changes or user explicitly asks; otherwise `Documentation impact: none`.
 - [ ] Step 5: Promote durable technical truth per Global Directives.
-- [ ] Step 6: Close — apply Exit and Handoff from the core skill. Route upstream when Routing heuristics apply.
+- [ ] Step 6: Pre-exit offer (conditional, declinable in one word) — when the prototype leaves a material trade-off, offer once: *"Before I wrap this — anything you want to stress-test? Otherwise I'll close it out."* Skip when no such trade-off remains.
+- [ ] Step 7: Close — apply Exit and Handoff from the core skill. Route upstream when Routing heuristics apply.
 
 ## Definition of Done
 

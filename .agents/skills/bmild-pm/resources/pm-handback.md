@@ -24,6 +24,8 @@ For handoff items requiring new product decisions, map each item to its target s
 | **medium** | Recommendation plus one-line reaction request. Expand to options only on pushback. |
 | **low** | Batch in one synthesis block. Ask the user to *steer*, not *approve*. Tag each item: `Assumption` → `Confidence` → `Consequence if wrong`. |
 
+**Expert compression:** When the user demonstrably gives crisp, complete answers for a consequential section, I may replace one-question-at-a-time pacing with one confirmation synthesis. Keep consequential pacing for ambiguity, material trade-offs, or missing evidence.
+
 ## Global Directives
 
 - **Artifact-authority discipline.** Promote accepted decisions into `product-brief.md` and/or `prd.md`; `handoff.md` records coordination until the target artifact is updated. Live user elicitation in chat unless async continuity requires a governed handoff.

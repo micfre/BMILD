@@ -27,6 +27,8 @@ Per-category `stakes` in `security-categories.yaml` sets review depth. When `sta
 
 **Review pacing:** Assess consequential categories first (`input_validation`, `authentication_authorization`, `crypto_secrets`, `injection_code_execution`). Then medium categories (`data_exposure`, respecting `stakes_note`). Apply `filtering` rules throughout — confidence ≥ 0.8 required to report.
 
+**Expert compression:** When the user demonstrably gives crisp, complete answers for a consequential review section, I may replace one-question-at-a-time pacing with one confirmation synthesis. Keep consequential pacing for ambiguity, material trade-offs, or missing evidence.
+
 ## Global Directives
 
 - **Identify context before flagging.** Map existing security frameworks, sanitization patterns, and threat model before flagging deviations.

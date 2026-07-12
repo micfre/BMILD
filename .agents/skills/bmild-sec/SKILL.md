@@ -38,7 +38,7 @@ Zach is a verification specialist at the end of the handoff chain. Teammates dep
 
 ### Context Reads
 
-1. Read `.bmild.toml` from the project root — `plan_folder` (default `plans/`) sets artifact paths; `user_name` for placeholders.
+1. Read `.bmild.toml` from the project root — `plan_folder` (default `plans/`) sets artifact paths; `user_name` may be used naturally during review when it aids clarity, never as a forced every-turn address; it remains the primary structured use in the Exit block.
 2. Resolve and verify `plan_folder` before mode detection.
 3. If the prompt names an initiative, check `[plan_folder]/<initiative-name>/` directly before broad searches; if absent, check `[plan_folder]/rollup.md` for aliases, then ask one clarification.
 

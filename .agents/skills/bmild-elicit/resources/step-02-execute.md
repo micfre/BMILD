@@ -15,20 +15,20 @@ Apply the selected method to the current working content, assess whether to appl
 ## Global Directives
 
 - **Apply with judgment.** After each method, assess whether output is a clear improvement consistent with the user's direction. Apply and report when yes. When competing alternatives or ambiguous direction: `[y] apply / [n] discard / [other] instructions`. User can say "undo" to revert.
-- **Loop until `[x]`.** Re-present the 2–3 method menu after each method. Do not exit until user selects `[x]`.
+- **Loop until `[x]`.** After the first method, use a compact continuation prompt with the 2–3 follow-up methods and `[x]`; show the full menu again only on `[r]` or `[a]`. Do not exit until user selects `[x]`.
 - **Provocative alternatives** require user choice before application — do not auto-apply.
 - **Artifact writes.** Pause for user confirmation before writing any artifact not owned by the active caller.
 - **Roundtable suggestion.** Structured multi-persona deliberation needed → suggest `bmild-roundtable`; do not convene autonomously.
 
 ## Procedure
 
-Apply the selected method to the current version of the content — not the original if it has already been enhanced. Show the work — present what the method revealed, not just the changed output. Apply clear improvements consistent with the user's stated direction and report what was applied. Halt and ask only when the method produces competing alternatives or genuinely ambiguous direction. Always re-present the 1–3, `[r]`, `[a]`, `[x]` menu after each method — iteration is the point. Do not exit until the user selects `[x]`.
+Apply the selected method to the current version of the content — not the original if it has already been enhanced. Show the work — present what the method revealed, not just the changed output. Apply clear improvements consistent with the user's stated direction and report what was applied. Halt and ask only when the method produces competing alternatives or genuinely ambiguous direction. After the first iteration, continue compactly with the follow-up methods and `[x]`; expand back to the full menu only on `[r]` or `[a]`. Do not exit until the user selects `[x]`.
 
 1. **Number selection (1–3)** — When the user picks a numbered method:
    - [ ] Name the method at the top of your response: *"Applying: [Method Name]"*
    - [ ] Show the method output applied to the current content. Format depends on the method's pattern:
      - Analysis methods (First Principles, 5 Whys, etc.): show the analysis first, then implications for the content
-     - Persona methods (Stakeholder Round Table, Cross-Functional War Room, etc.): play personas in turn, labeled clearly; if a debate session is active, use Faisal, Katrina, Lance, Rahat, and Zach. Label a speaker only when the speaker changes — do not repeat icon and name on every paragraph from the same speaker.
+     - Persona methods (Stakeholder Round Table, Expert Panel Review, Cross-Functional War Room, Security Audit Personas, and any method playing named BMILD personas): load each active persona's whole `<persona-skill-dir>/SOUL.md`, resolved relative to that persona's own skill directory, before speaking. The loaded SOUL is the sole voice source; do not add facilitator-authored impressions. If a debate session is active, use Faisal, Katrina, Lance, Rahat, and Zach. Label a speaker only when the speaker changes — do not repeat icon and name on every paragraph from the same speaker.
      - Generative methods (SCAMPER, What If, etc.): produce the generated content or alternatives first, then identify what's worth keeping
      - Competitive methods (Red Team, Shark Tank, etc.): run the adversarial scenario fully before proposing improvements
    - [ ] Summarise what changed or was revealed in 2–3 bullets: what assumption was surfaced, what gap was found, what improvement is proposed
@@ -41,10 +41,10 @@ Apply the selected method to the current version of the content — not the orig
      > *"[Brief description of the tension or alternatives]. Which direction? [y] Apply first option / [n] Discard / [other] Instructions"*
      Wait for the user's response before continuing.
 
-   - [ ] Re-present the menu:
+   - [ ] Continue after the first iteration with this compact prompt (use the full menu only on `[r]` or `[a]`):
 
      ```
-     Continue elicitation:
+     Continue:
      1. [Method Name]
      2. [Method Name]
      3. [Method Name]

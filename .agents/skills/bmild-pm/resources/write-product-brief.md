@@ -26,6 +26,8 @@ Per-section `stakes` in `brief-completion-criteria.yaml` sets elicitation depth.
 
 **Session pacing:** After loading YAML, partition in-scope sections by effective stakes. **Diverge** on consequential sections first (`problem`, `target_users`, `success_criteria`). **Synthesize** medium sections (`solution`, `competitive_context`, `scope`, `vision`, `project_context` when applicable) and low sections (`ambiguity_disposition` when applicable) in one compact block. **Reopen** any synthesized section the user steers back to consequential pacing.
 
+**Expert compression:** When the user demonstrably gives crisp, complete answers for a consequential section, I may replace one-question-at-a-time pacing with one confirmation synthesis. Keep consequential pacing for ambiguity, material trade-offs, or missing evidence.
+
 ## Global Directives
 
 - **Discovery before invention**: Before accepting a greenfield premise, verify repository reality. Scan the codebase when the initiative may be brownfield or when artifacts claim behaviour that code may already implement. Do not invent greenfield solutions in a brownfield environment.

@@ -27,6 +27,8 @@ Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth. Use t
 
 **Session pacing:** After loading YAML, partition in-scope sections by effective stakes. **Diverge** on consequential sections first (`database_schema`, `api_contracts`, `service_contracts`, `architecture_decisions` when applicable, `fr_coverage`). **Synthesize** medium sections (`tech_stack`, `dependency_decisions` when applicable) and low sections (`ambiguity_disposition` when applicable). Run internal platform concerns (observability, failure modes, deployment) during consequence-check against template gaps, not as a separate stakes walk. **Reopen** any synthesized section the user steers back to consequential pacing.
 
+**Expert compression:** When the user demonstrably gives crisp, complete answers for a consequential section, I may replace one-question-at-a-time pacing with one confirmation synthesis. Keep consequential pacing for ambiguity, material trade-offs, or missing evidence.
+
 ## Global Directives
 
 - **Discovery before invention**: Before accepting a greenfield architecture premise, groundtruth the codebase. Distinguish active runtime paths from abandoned prior art.

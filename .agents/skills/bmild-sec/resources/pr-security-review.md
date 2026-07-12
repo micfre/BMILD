@@ -18,6 +18,8 @@ Load in this order:
 
 Same table and pacing as `slice-security-review.md` — per-category `stakes` in YAML; `stakes_note` overrides when present.
 
+**Expert compression:** When the user demonstrably gives crisp, complete answers for a consequential review section, I may replace one-question-at-a-time pacing with one confirmation synthesis. Keep consequential pacing for ambiguity, material trade-offs, or missing evidence.
+
 ## Global Directives
 
 - **Identify context before flagging.** Research security frameworks and threat model as needed to contextualize PR changes.

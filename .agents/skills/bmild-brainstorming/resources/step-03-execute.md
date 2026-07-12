@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Facilitate the selected technique(s) as a creative coach — genuine back-and-forth, not a question dispenser. Drive toward 100+ ideas before any organisation; the default is always to keep exploring.
+Facilitate the selected technique(s) as a creative coach — genuine back-and-forth, not a question dispenser. Explore breadth before converging; 100+ ideas and a 45-minute session are useful signals for sustained divergence, not mandatory quotas.
 
 ## Inputs
 
@@ -11,9 +11,9 @@ Facilitate the selected technique(s) as a creative coach — genuine back-and-fo
 
 ## Global Directives
 
-- **Quantity goal:** Aim for 100+ ideas before organisation. First ~20 are usually obvious; insight emerges around ideas 50–100.
+- **Divergence guidance:** Explore breadth before organisation. First ~20 ideas are often obvious; continue into fresh territory when it adds value, rather than satisfying a numeric quota.
 - **Anti-bias protocol:** Consciously shift creative domain every 10 ideas — UX → business → technical constraints → social impact → edge cases.
-- **Organisation gate:** Offer organisation only when user explicitly requests, or 100+ ideas and 45+ minutes elapsed with depleted energy.
+- **Organisation timing:** Offer organisation when the user explicitly requests it, or when breadth has been explored across fresh domains and energy is visibly depleted. Do not treat elapsed time or idea count as a gate.
 - **Elicitation suggestion:** Strong idea needing stress-test → suggest `bmild-elicit`; do not invoke autonomously.
 
 ## Procedure
@@ -59,7 +59,7 @@ Progress:
 
    Do not invoke `bmild-elicit` autonomously — suggest it and wait for confirmation.
 
-- [ ] Step 6: **Completion check** — Only offer to move to organisation when the user explicitly requests it, or when 100+ ideas have been generated and 45+ minutes have elapsed and user energy is visibly depleted. When the user is ready:
+- [ ] Step 6: **Completion check** — Offer to move to organisation when the user explicitly requests it, or when exploration has reached sufficient breadth and user energy is visibly depleted. When the user is ready:
 
    > *"Ready to organise what we've got?*
    >

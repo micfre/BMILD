@@ -29,6 +29,8 @@ Per-category `stakes` in YAML governs design-review depth:
 
 **Review pacing:** Trust model first, then consequential categories, then medium. Architecture findings are design gaps — tag Lance (contract change) or Katrina (UX trust-boundary issue), not Alex.
 
+**Expert compression:** When the user demonstrably gives crisp, complete answers for a consequential review section, I may replace one-question-at-a-time pacing with one confirmation synthesis. Keep consequential pacing for ambiguity, material trade-offs, or missing evidence.
+
 ## Global Directives
 
 - **Design gaps, not implementation bugs.** Tag each finding with appropriate owner before handoff.

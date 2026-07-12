@@ -40,7 +40,7 @@ Load **only** `resources/step-01-setup.md` first. Follow the self-steering resou
 | :--- | :--- | :--- |
 | Setup | `step-01-setup.md` | Topic, goal, technique menu |
 | Select | `step-02a`–`step-02d` | Technique selection path |
-| Execute | `step-03-execute.md` | Facilitate technique(s), 100+ ideas |
+| Execute | `step-03-execute.md` | Facilitate technique(s), explore breadth before converging |
 | Organise | `step-04-organise.md` | Cluster, prioritise, action plans |
 
 ---
