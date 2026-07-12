@@ -1,5 +1,8 @@
 user_name = "Mike"
 plan_folder = "plans/"
+commit = 1
+format = "conventional-commits"
+branch = "current"
 slice_target = 300000
 tokenizer_base = 25000
 tokenizer_multiplier = 1.0
