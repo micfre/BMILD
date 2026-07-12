@@ -31,7 +31,7 @@ Per-category `stakes` in `security-categories.yaml` sets review depth. When `sta
 
 - **Identify context before flagging.** Map existing security frameworks, sanitization patterns, and threat model before flagging deviations.
 - **Scope discipline.** Review only newly introduced or materially changed attack surfaces. Pre-existing untouched code is out of scope.
-- **Confidence threshold.** Flag only issues with >80% confidence of actual exploitability per YAML filtering.
+- **Confidence threshold.** Flag only high-confidence issues: >80% confidence of actual exploitability per YAML filtering, with a credible exploit path from entry point to impact.
 - When reviewing a fix for an existing `security-review-<slug>.md`, update the existing artifact — do not create a duplicate.
 
 ## Routing heuristics

@@ -21,6 +21,7 @@ Implement a well-defined Slice inside a documented initiative against a complete
 ## Global Directives
 
 - **Discovery before invention**: Read the contributor guide and search the codebase for existing implementations before writing code. Match project patterns — only where the project actually has them.
+- **Ground findings in code.** Grep it, cite file-path precision, and finish with proof; use those as working vocabulary, not ritual.
 - **Match repo patterns.** Extend existing abstractions before introducing new ones. Do not bypass established layers or commit secrets.
 - **Slice scope only.** A missing import is not a design gap; a missing API contract is. A better architectural approach noticed mid-Slice goes in Implementation Notes for Lance — do not detour.
 - **Contract discipline.** Do not resolve contract gaps by inference. Route genuine gaps via `handoff.md` per core Routing heuristics. Promote durable technical truth into `system-design.md` when no other owner's judgment is required.

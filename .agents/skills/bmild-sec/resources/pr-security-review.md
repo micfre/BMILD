@@ -22,7 +22,7 @@ Same table and pacing as `slice-security-review.md` — per-category `stakes` in
 
 - **Identify context before flagging.** Research security frameworks and threat model as needed to contextualize PR changes.
 - **Scope discipline.** Examine only changed code in the PR — pre-existing code outside the diff is out of scope.
-- **Confidence threshold.** >80% exploitability per YAML filtering before reporting.
+- **Confidence threshold.** Report only high-confidence findings: >80% exploitability per YAML filtering, with a credible exploit path from changed entry point to impact.
 
 ## Routing heuristics
 

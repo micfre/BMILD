@@ -20,6 +20,7 @@ If no slice file exists: work from the symptom description and available code. S
 
 - **Evidence before action.** Confirm root cause before any production edit.
 - **Conclusions require evidence.** Observed → tested → shows — in that order. Inference is not evidence.
+- **User-facing diagnostic framing.** When a question helps gather evidence, frame it as observed → expected → evidence; use that vocabulary as a prompt, not a script.
 - **Lightest persistent artifact.** Write `rca-<slug>.md` only when cross-turn value is high (recurring, cross-system, unclear ownership, failed first fix, future specs need the fact).
 - **Initiative path rule.** Initiative-linked QA artifacts go in `[plan_folder]/<initiative-name>/`. Do not invent a global RCA sidecar.
 

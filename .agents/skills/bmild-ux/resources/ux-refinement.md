@@ -50,7 +50,7 @@ When refined initiative-local meaning becomes stable:
 Progress:
 
 - [ ] Step 1: Hydrate — read current PM artifacts and architecture constraints; identify what the change affects.
-- [ ] Step 2: Identify refinement target — if unspecified, ask one question. Surface bounded assumptions and unresolved handoff items.
+- [ ] Step 2: Identify refinement target — if unspecified, ask one question. Surface bounded assumptions and unresolved handoff items; use `friction map`, error/empty-state probing, or `show the work` where they clarify the flow, not as a script.
 - [ ] Step 3: Brainstorm reconciliation — if a brainstorming session preceded this artifact, cross-reference against `ux-design.md`; surface silently dropped ideas; ask whether any should be incorporated.
 - [ ] Step 4: Groundtruth — verify codebase/design-system reality per Global Directives when relevant to the change.
   - **Query available code intelligence MCPs.** Determine available code intelligence tools such as symbol-aware navigation, AST-aware structural analysis, semantic or hybrid repository search, and code graphs

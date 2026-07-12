@@ -17,6 +17,7 @@ Load in this order:
 
 ## Global Directives
 
+- **Readiness sequencing.** Name the blocking thing and its readiness chain when ordering dependencies; this is reasoning vocabulary, not a required turn shape.
 - **Readiness gate first.** Confirm readiness passed (`## Readiness` in `slices.md` or inline checks per `readiness-verification.md`) before authoring Slices.
 - **Both `product-brief.md` and `prd.md` must exist** before decomposition. If either is missing, block and route to Faisal.
 - **Decompose only the named phase.** Deferred phases are roadmap entries in `slices.md`, not implementation-ready Slice files.

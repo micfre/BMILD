@@ -55,7 +55,7 @@ Progress:
 - [ ] Step 2: Groundtruth — verify codebase and global design system per Global Directives.
   - **Query available code intelligence MCPs.** Determine available code intelligence tools such as symbol-aware navigation, AST-aware structural analysis, semantic or hybrid repository search, and code graphs
   - **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
-- [ ] Step 3: Synthesize — summarize what is settled, what user-state hypotheses follow, what is missing, and what conflicts exist. Ask the smallest useful UX question before committing to an interaction model.
+- [ ] Step 3: Synthesize — summarize what is settled, what user-state hypotheses follow, what is missing, and what conflicts exist. Ask the smallest useful UX question before committing to an interaction model; use `friction map`, error/empty-state probing, or `show the work` where they clarify the flow, not as a script.
 - [ ] Step 4: Elicit (diverge → synthesize → steer) — apply Stakes-based elicitation:
   - **Open with the UX contour.** Name in-scope sections grouped by YAML `stakes`.
   - **Diverge on consequential sections** one question per turn until each passes its YAML weak_signal check.

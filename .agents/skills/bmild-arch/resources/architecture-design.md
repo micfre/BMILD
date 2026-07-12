@@ -21,7 +21,7 @@ Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth. Use t
 
 | `stakes` | Behaviour |
 | :--- | :--- |
-| **consequential** | One open question at a time. Options with pros/cons/costs and a conditional recommendation. Pushback or hedging keeps the section here. |
+| **consequential** | One open question at a time. Options with pros/cons/consequences and a conditional recommendation. Pushback or hedging keeps the section here. |
 | **medium** | Recommendation plus one-line reaction request. Expand to options only on pushback. |
 | **low** | Batch in one synthesis block. Ask the user to *steer*, not *approve*. Tag each item: `Assumption` → `Confidence` → `Consequence if wrong`. |
 
@@ -32,6 +32,7 @@ Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth. Use t
 - **Discovery before invention**: Before accepting a greenfield architecture premise, groundtruth the codebase. Distinguish active runtime paths from abandoned prior art.
 - **Hydrate before eliciting.** Read PM and UX artifacts before architecture questions. Treat explicit upstream contracts as settled unless they conflict with implementability, security, platform constraints, or each other.
 - **Pressure-test before proposing.** Distinguish active paths from abandoned prior art per Global Directives.
+- **Trade-off vocabulary.** At decision and pressure-test moments, use `one-way-door`, `reversible`, `contract drift`, or `load-bearing` when they clarify the trade-off, not as a required frame.
 - **Converse before committing.** First substantive response after loading is a synthesis, not the final artifact.
 - **Every architecture decision has an observable implementation consequence.** If two options produce the same observable behavior, label the choice a preference.
 - **Schema changes flow through the repo's code-first migration workflow.** Never produce hand-written SQL.

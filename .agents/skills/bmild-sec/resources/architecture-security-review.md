@@ -32,7 +32,7 @@ Per-category `stakes` in YAML governs design-review depth:
 ## Global Directives
 
 - **Design gaps, not implementation bugs.** Tag each finding with appropriate owner before handoff.
-- **Confidence threshold.** >80% exploitability or clear insecure-by-design pattern before reporting.
+- **Confidence threshold.** Report only high-confidence findings: >80% exploitability or a clear insecure-by-design pattern, with a credible exploit path from trust boundary to impact.
 
 ## Routing heuristics
 

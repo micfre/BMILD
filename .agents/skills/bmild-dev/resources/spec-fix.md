@@ -20,6 +20,7 @@ Identify entry artifact: `rca-<slug>.md`, verification matrix item, or named Sli
 ## Global Directives
 
 - **Trust Rahat's diagnosis** unless new evidence contradicts — then stop and route back to Rahat.
+- **Ground findings in code.** Grep it, cite file-path precision, and finish with proof; use those as working vocabulary, not ritual.
 - **Scope discipline.** Fix only what the entry artifact specifies. Route remaining contract defects via `handoff.md`.
 - **Verification matrix.** Mark items `implemented` or `blocked` with evidence — never `passed`.
 - **Do not mark security findings resolved** — set `fixed_pending_review`; `next_owner` Zach.

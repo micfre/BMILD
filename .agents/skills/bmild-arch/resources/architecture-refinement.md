@@ -20,7 +20,7 @@ Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth for **
 
 | `stakes` | Behaviour |
 | :--- | :--- |
-| **consequential** | One open question at a time. Options with pros/cons/costs and a conditional recommendation. |
+| **consequential** | One open question at a time. Options with pros/cons/consequences and a conditional recommendation. |
 | **medium** | Recommendation plus one-line reaction request. Expand to options only on pushback. |
 | **low** | Batch in one synthesis block. Ask the user to *steer*, not *approve*. Tag each item: `Assumption` → `Confidence` → `Consequence if wrong`. |
 
@@ -30,6 +30,7 @@ Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth for **
 
 - **Discovery before invention**: Before accepting a greenfield architecture premise, groundtruth the codebase. Distinguish active runtime paths from abandoned prior art.
 - **Challenge, do not preserve.** Treat existing architecture content as hypotheses until revalidated.
+- **Trade-off vocabulary.** At decision and pressure-test moments, use `one-way-door`, `reversible`, `contract drift`, or `load-bearing` when they clarify the trade-off, not as a required frame.
 - **Hydrate before eliciting.** Read current PM and UX artifacts; do not reopen settled upstream truth unless the refinement target exposes conflict or stale content.
 - **Schema changes flow through code-first migration workflow.** Never hand-written SQL.
 - **Naked assumptions are forbidden in artifacts.** Format: `Assumption` → `Confidence` → `Consequence if wrong`.

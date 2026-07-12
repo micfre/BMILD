@@ -48,6 +48,7 @@ Progress:
 - [ ] Step 3: Elicit (diverge → synthesize → steer) — apply Stakes-based elicitation:
   - **Open with the PRD contour.** Name in-scope sections grouped by YAML `stakes` (respecting `stakes_note` overrides) and signal consequential depth vs synthesis for the rest.
   - **Diverge on consequential sections.** One question at a time through `functional_requirements`, `user_journeys` (when applicable), and `scope_and_prioritization` until each passes its YAML weak_signal check.
+  - **Probe without scripting.** Alongside YAML weak-signal drivers, optionally use `solution-shaped`, `happy ears`, or `steelman the opposite` when they sharpen the question.
   - **Synthesize medium and low sections.** Draft `nfr` (when not elevated by `stakes_note`), `documentation_scope`, `assumptions`, and `ambiguity_disposition` in one block. Ask the user to redirect, accept, or escalate.
   - **Reopen only what the user steers.** Hedging or pushback promotes that section to consequential pacing.
   - **Governance routing.** Decide whether remaining ambiguity belongs in `handoff.md` or a bounded assumption.

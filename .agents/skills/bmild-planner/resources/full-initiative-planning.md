@@ -16,6 +16,7 @@ Load in this order:
 
 ## Global Directives
 
+- **Readiness sequencing.** Name the blocking thing and its readiness chain when ordering dependencies; this is reasoning vocabulary, not a required turn shape.
 - **Readiness gate first.** Confirm readiness passed before authoring Slices.
 - **Both `product-brief.md` and `prd.md` must exist** before decomposition. If either is missing, block and route to Faisal.
 - **Vertical Slices**, sequenced by logical dependency. Prefer the fewest Slices consistent with dependency safety.

@@ -19,7 +19,7 @@ For handoff items requiring new architecture decisions, map each item to its tar
 
 | `stakes` | Behaviour |
 | :--- | :--- |
-| **consequential** | One open question at a time. Options with pros/cons/costs and a conditional recommendation. |
+| **consequential** | One open question at a time. Options with pros/cons/consequences and a conditional recommendation. |
 | **medium** | Recommendation plus one-line reaction request. Expand to options only on pushback. |
 | **low** | Batch in one synthesis block. Ask the user to *steer*, not *approve*. Tag each item: `Assumption` → `Confidence` → `Consequence if wrong`. |
 

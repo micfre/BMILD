@@ -51,6 +51,7 @@ Progress:
 - [ ] Step 2: Elicit (diverge → synthesize → steer) — apply Stakes-based elicitation:
   - **Open with the brief contour.** Name in-scope sections grouped by YAML `stakes` and signal that consequential sections get depth and medium/low sections will be synthesized — not a serial walk.
   - **Diverge on consequential sections.** Work `problem`, `target_users`, and `success_criteria` one question per turn until each passes its YAML weak_signal check.
+  - **Probe without scripting.** Alongside YAML weak-signal drivers, optionally use `solution-shaped`, `happy ears`, or `steelman the opposite` when they sharpen the question.
   - **Synthesize medium and low sections.** Draft inferred answers for remaining in-scope sections in one compact block, each tagged with confidence. Ask the user to redirect, accept, or escalate any item.
   - **Reopen only what the user steers.** Pushback or hedging promotes that section to consequential pacing; otherwise lock the synthesis.
   - **Capture tangents in chat.** Fold out-of-band input into the next probe or synthesis block.
