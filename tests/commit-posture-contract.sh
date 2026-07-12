@@ -41,6 +41,7 @@ for mode in "${MODES[@]}"; do
     [ "$eligibility_line" -lt "$completion_line" ] || fail "$file: eligibility is not before completion"
     [ "$completion_line" -lt "$close_line" ] || fail "$file: completion is not before Close"
     ! rg -q 'resources/commit-posture\.md' "$file" || fail "$file: shared runtime indirection found"
+    ! printf '%s\n%s\n' "$preflight" "$completion" | rg -qi 'git (fetch|pull|push|remote)\b' || fail "$file: network git operation in posture blocks"
 done
 
 rg -q -F '`ready-for-review`' "${ROOT}/.agents/skills/bmild-dev/resources/spec-dev.md" || fail "Spec-Dev eligibility missing"
