@@ -64,6 +64,18 @@ run_est --reads "$FIXTURES/small.py" "$FIXTURES/small.py" "$FIXTURES/small.py"
 expect_eq "FR7 carry=(K+1)/2" "$(budget_val "$RUN_OUT" carry_factor)" "2.00"
 expect_eq "FR7 K=provided count" "$(budget_val "$RUN_OUT" K)" "3"
 
+# --- FR7b: carry_cap bounds the carry factor at high K ---
+# Config override caps below the triangular value: K=3 -> 2.0, capped to 1.5
+box=$(mktemp -d)
+echo 'carry_cap = 1.5' > "$box/.bmild.toml"
+out7b=$(cd "$box" && sh "$ESTIMATOR" --reads "$FIXTURES/small.py" "$FIXTURES/small.py" "$FIXTURES/small.py")
+expect_eq "FR7b carry capped to config (1.50)" "$(budget_val "$out7b" carry_factor)" "1.50"
+# Default cap (2.5) applies when carry_cap absent: K=10 -> 5.5, capped to 2.50
+echo 'slice_target = 231000' > "$box/.bmild.toml"
+out7c=$(cd "$box" && sh "$ESTIMATOR" --reads "$FIXTURES/small.py" "$FIXTURES/small.py" "$FIXTURES/small.py" "$FIXTURES/small.py" "$FIXTURES/small.py" "$FIXTURES/small.py" "$FIXTURES/small.py" "$FIXTURES/small.py" "$FIXTURES/small.py" "$FIXTURES/small.py")
+expect_eq "FR7b default carry_cap bounds high K (2.50)" "$(budget_val "$out7c" carry_factor)" "2.50"
+rm -rf "$box"
+
 # --- FR8: 2x edit premium (same file read vs edit) ---
 run_est --reads "$FIXTURES/small.py"
 re_ff=$(row_cell "$RUN_OUT" READS "$FIXTURES/small.py" 7)

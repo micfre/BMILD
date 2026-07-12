@@ -25,6 +25,7 @@ $script:DEFAULT_NOISE_BPL = 500
 $script:DEFAULT_NOISE_FACTOR = 2.0
 $script:DEFAULT_PENALTY_CAP = 10.0
 $script:DEFAULT_EDIT_PREMIUM = 2.0
+$script:DEFAULT_CARRY_CAP = 2.5
 
 $script:CFG_TARGET = $script:DEFAULT_TARGET
 $script:CFG_BASE = $script:DEFAULT_BASE
@@ -36,6 +37,7 @@ $script:CFG_NOISE_BPL = $script:DEFAULT_NOISE_BPL
 $script:CFG_NOISE_FACTOR = $script:DEFAULT_NOISE_FACTOR
 $script:CFG_PENALTY_CAP = $script:DEFAULT_PENALTY_CAP
 $script:CFG_EDIT_PREMIUM = $script:DEFAULT_EDIT_PREMIUM
+$script:CFG_CARRY_CAP = $script:DEFAULT_CARRY_CAP
 
 # CLI overrides ($null = not set)
 $script:OF_TARGET = $null
@@ -151,6 +153,7 @@ function Read-Config([string]$path) {
             'penalty_noise_factor' { if (Test-Num $val) { $script:CFG_NOISE_FACTOR = [double]$val } }
             'penalty_cap' { if (Test-Num $val) { $script:CFG_PENALTY_CAP = [double]$val } }
             'edit_premium' { if (Test-Num $val) { $script:CFG_EDIT_PREMIUM = [double]$val } }
+            'carry_cap' { if (Test-Num $val) { $script:CFG_CARRY_CAP = [double]$val } }
         }
     }
 }
@@ -357,6 +360,7 @@ $nbpl = $script:CFG_NOISE_BPL
 $nfactor = $script:CFG_NOISE_FACTOR
 $cap = $script:CFG_PENALTY_CAP
 $eprem = $script:CFG_EDIT_PREMIUM
+$ccap = $script:CFG_CARRY_CAP
 $mult = $script:CFG_MULTIPLIER
 $base = $script:CFG_BASE
 $target = $script:CFG_TARGET
@@ -386,6 +390,7 @@ foreach ($r in $script:records) {
 
 $K = $script:reads_n + $script:edits_n + $new_count
 $carry = ($K + 1) / 2.0
+if ($carry -gt $ccap) { $carry = $ccap }
 $est = [int][math]::Floor(($wr + $we) * $carry * $mult + $base + 0.5)
 if ($est -le $target) { $stat = 'WITHIN BUDGET'; $delta = $target - $est }
 else { $stat = 'OVER BUDGET'; $delta = $est - $target }

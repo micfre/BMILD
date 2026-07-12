@@ -10,3 +10,4 @@ penalty_noise_bpl = 500
 penalty_noise_factor = 2.0
 penalty_cap = 10.0
 edit_premium = 2.0
+carry_cap = 2.5

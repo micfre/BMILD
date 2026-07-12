@@ -126,6 +126,21 @@ Run-Est '--reads' $smallpy $smallpy $smallpy
 Expect-Eq 'FR7 carry=(K+1)/2' (Budget-Val $script:RUN_OUT 'carry_factor') '2.00'
 Expect-Eq 'FR7 K=provided count' (Budget-Val $script:RUN_OUT 'K') '3'
 
+# --- FR7b: carry_cap bounds the carry factor at high K ---
+# Config override caps below the triangular value: K=3 -> 2.0, capped to 1.5
+$boxC = Join-Path ([System.IO.Path]::GetTempFileName().TrimEnd('.tmp')) 'bmild-fr7b'
+$null = New-Item -ItemType Directory -Force -Path $boxC
+[System.IO.File]::WriteAllText((Join-Path $boxC '.bmild.toml'), "carry_cap = 1.5`n")
+Push-Location $boxC
+try { Run-Est '--reads' $smallpy $smallpy $smallpy } finally { Pop-Location }
+Expect-Eq 'FR7b carry capped to config (1.50)' (Budget-Val $script:RUN_OUT 'carry_factor') '1.50'
+# Default cap (2.5) applies when carry_cap absent: K=10 -> 5.5, capped to 2.50
+[System.IO.File]::WriteAllText((Join-Path $boxC '.bmild.toml'), "slice_target = 231000`n")
+Push-Location $boxC
+try { Run-Est '--reads' $smallpy $smallpy $smallpy $smallpy $smallpy $smallpy $smallpy $smallpy $smallpy $smallpy } finally { Pop-Location }
+Expect-Eq 'FR7b default carry_cap bounds high K (2.50)' (Budget-Val $script:RUN_OUT 'carry_factor') '2.50'
+Remove-Item -Recurse -Force -LiteralPath $boxC -ErrorAction SilentlyContinue
+
 # --- FR8: 2x edit premium (same file read vs edit) ---
 Run-Est '--reads' $smallpy
 $reEff = Row-Cell $script:RUN_OUT 'READS' $smallpy 7

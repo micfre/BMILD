@@ -286,7 +286,7 @@ awk -F '\t' -v OFS='\t' \
   -v nbpl="$CFG_NOISE_BPL" -v noisef="$CFG_NOISE_FACTOR" -v cap="$CFG_PENALTY_CAP" \
   -v eprem="$CFG_EDIT_PREMIUM" -v mult="$CFG_MULTIPLIER" -v base="$CFG_BASE" \
   -v target="$CFG_TARGET" -v nrd="$reads_n" -v ned="$edits_n" -v newcount="$new_count" \
-  -v PEN="$PENFILE" '
+  -v ccap="$CFG_CARRY_CAP" -v PEN="$PENFILE" '
 BEGIN{
   wr=0; we=0; rawtot=0
   while((getline pline < PEN) > 0){
@@ -312,7 +312,7 @@ END{
     if(ro[i] == "read") wr += eff; else we += eff
   }
   K = nrd + ned + newcount
-  carry = (K+1)/2.0
+  carry = (K+1)/2.0; if(carry > ccap) carry = ccap
   est = int((wr+we)*carry*mult + base + 0.5)
   within = (est <= target)
   if(within){ stat="WITHIN BUDGET"; delta=target-est } else { stat="OVER BUDGET"; delta=est-target }
