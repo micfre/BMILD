@@ -10,6 +10,7 @@ Apply the selected method to the current working content, assess whether to appl
 - 2–3 follow-up methods (carried from `step-01-select.md`).
 - Current working version of the content (use this version, not the original if already enhanced).
 - `./methods.yaml` — required for `[a] List all`.
+- Convener identity and suspended session state from `step-01-select.md` when persona-convened.
 
 ## Global Directives
 
@@ -27,7 +28,7 @@ Apply the selected method to the current version of the content — not the orig
    - [ ] Name the method at the top of your response: *"Applying: [Method Name]"*
    - [ ] Show the method output applied to the current content. Format depends on the method's pattern:
      - Analysis methods (First Principles, 5 Whys, etc.): show the analysis first, then implications for the content
-     - Persona methods (Stakeholder Round Table, Cross-Functional War Room, etc.): play personas in turn, labeled clearly; if a debate session is active, use Faisal, Katrina, Lance, and Rahat. Label a speaker only when the speaker changes — do not repeat icon and name on every paragraph from the same speaker.
+     - Persona methods (Stakeholder Round Table, Cross-Functional War Room, etc.): play personas in turn, labeled clearly; if a debate session is active, use Faisal, Katrina, Lance, Rahat, and Zach. Label a speaker only when the speaker changes — do not repeat icon and name on every paragraph from the same speaker.
      - Generative methods (SCAMPER, What If, etc.): produce the generated content or alternatives first, then identify what's worth keeping
      - Competitive methods (Red Team, Shark Tank, etc.): run the adversarial scenario fully before proposing improvements
    - [ ] Summarise what changed or was revealed in 2–3 bullets: what assumption was surfaced, what gap was found, what improvement is proposed
@@ -70,8 +71,8 @@ Apply the selected method to the current version of the content — not the orig
    - Present final working version of the content.
    - If invoked from a named persona workflow, produce a handoff note (target owner, artifact/section, patch-ready changes, open decisions) rather than writing their artifact.
    - Save only when user invoked with explicit write authority or caller owns the target; update `registry.md` if document changed meaningfully.
-   - Sign off with a **branch-aware close** — never *"I will turn this back to [persona]"*, because your turn ends at sign-off and you cannot resume another persona on the user's behalf. Determine the convener at close from whether a named persona is the active caller versus the user:
-     - **Persona convened** → *"Facilitator ⚡ closing. Refined content is ready — resume as [convener name] [icon] and apply it to [their active artifact]."*
+   - Sign off with a **branch-aware close** — never *"I will turn this back to [persona]"*, because your turn ends at sign-off and you cannot resume another persona on the user's behalf. Use the convener identity and suspended session state carried from step-01:
+     - **Persona convened** → *"Facilitator ⚡ closing. Refined content is ready. Resume **[convener name] [icon]** with the message \"continue `[initiative-name]` [mode/resource] from [artifact section in progress] with the [facilitator output] above.\""*
      - **You convened** → *"Facilitator ⚡ closing. For you, [user_name]: [only a real step-completion action — omit if there is none]. Next: invoke the persona who owns the next artifact when ready, or tell me what's next."*
      - `For you` appears only when a genuine user-facing step-completion action exists; keep `For you` and `Next` separate. Sign off as `— Facilitator ⚡`.
 

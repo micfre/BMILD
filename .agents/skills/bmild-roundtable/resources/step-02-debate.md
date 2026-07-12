@@ -14,7 +14,7 @@ Carried from `step-01-open.md`:
 
 ## Procedure
 
-**Persona voices** — Each confirmed attendee speaks from their **canonical** voice: their `SOUL.md`, loaded per confirmed attendee in step-01 (beliefs, vocabulary, tensions, what gets under their skin, their signature). Use only the voices of attendees confirmed in Step 1. Do not author a parallel facilitator-voice description, and do not let attendees drift toward diplomatic consensus — their tensions and convictions are the point. If two attendees would say the same thing, only the one whose canonical perspective owns it speaks; the other dissents or stays silent.
+**Persona voices** — Each confirmed attendee speaks from their **canonical** voice: their `SOUL.md`, loaded per confirmed attendee in step-01 (beliefs, vocabulary, tensions, what gets under their skin, their perspective in one line). Use only the voices of attendees confirmed in Step 1. Do not author a parallel facilitator-voice description, and do not let attendees drift toward diplomatic consensus — their tensions and convictions are the point. If two attendees would say the same thing, only the one whose canonical perspective owns it speaks; the other dissents or stays silent.
 
 **Speaker order** (roster order, confirmed attendees only): Faisal → Katrina → Lance → Rahat → Zach. Label with icon and name only when the speaker changes; let a speaker continue across paragraphs without repeating the label.
 

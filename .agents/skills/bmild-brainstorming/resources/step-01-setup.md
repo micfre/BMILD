@@ -8,18 +8,22 @@ Gather the brainstorming topic and goals, confirm understanding, then route to t
 
 - `.bmild.toml`: resolved `plan_folder` and optional `user_name`.
 - Any topic or context already present in conversation.
+- For a named-persona convener: suspended session state — persona, mode/resource, initiative, artifact section in progress, and pending work.
 
 ## Global Directives
 
 - **Registry discipline.** All techniques from `resources/brain-methods.yaml` — do not invent names from memory. Local registry labels may differ from familiar brainstorming labels.
 - **Ownership boundary.** Return ideas to the invoking persona; do not write their artifact directly unless write authority is explicit.
 - **Users often arrive with one preferred answer** — still generate enough divergent volume to reveal alternatives.
+- **Convener continuity.** When a named persona convened this session, record its identity and suspended session state at open; carry it to close so the persona can resume the exact work point.
 
 ## Procedure
 
 Progress:
 
 - [ ] Step 1: **Open** — Ask directly, no preamble:
+
+   Record the convener as `[convener name] [icon]` when a named persona is active, otherwise `user`. For a persona convener, record the suspended session state: persona, mode/resource, initiative, artifact section in progress, and pending work.
 
    > *"What are we brainstorming about? And what kind of output are you hoping for — new ideas, solutions to a specific problem, directions to explore, or something else?"*
 

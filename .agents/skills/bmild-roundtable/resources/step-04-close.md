@@ -10,6 +10,7 @@ Carried from prior steps:
 
 - Invocation context (forward-direction or course-correction).
 - Convener identity (a named persona, or `user`), carried from step-01.
+- Suspended session state for a persona convener: persona, mode/resource, initiative, artifact section in progress, and pending work.
 - Final attendee list and which attendees were most engaged.
 - Key outcome established in synthesis.
 
@@ -41,9 +42,9 @@ Progress:
 
 - [ ] Step 3: **Return handoff — branch on convener identity.** Your turn ends at sign-off: you cannot resume another persona on the user's behalf, so the close must make the next move unambiguous. Use the convener identity carried from step-01 to pick **exactly one** branch. Never use *"I will turn this back to [persona]"* — it is a promise you cannot keep.
 
-  **A — Persona convened (default; the convener resumes).** Yield the floor and re-activate the convener so the next turn is that persona continuing with the synthesis as input:
+  **A — Persona convened (default; the convener resumes).** Yield the floor with this copy-ready invocation so the next turn continues at the recorded suspended point with the synthesis as input:
 
-  > *"Facilitator 🌀 closing. Synthesis is ready — resume as [convener name] [icon] and apply it to [their active artifact]. [Only if a real user action remains:] For you, [user_name]: [ratify/answer the unresolved Open item]."*
+  > *"Facilitator 🌀 closing. Synthesis is ready. Resume **[convener name] [icon]** with the message \"continue `[initiative-name]` [mode/resource] from [artifact section in progress] with the [facilitator output] above.\" [Only if a real user action remains:] For you, [user_name]: [ratify/answer the unresolved Open item]."*
 
   **B — User convened (no invoking persona to return to).** Emit the core-style routing block so the user has a clear next step:
 

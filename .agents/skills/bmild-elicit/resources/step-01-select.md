@@ -8,6 +8,7 @@ Understand the content being elicited, identify the content type and most likely
 
 - `./methods.yaml` — full method registry (keys: `num, category, method_name, description, output_pattern`). Load and read the full file before selecting or displaying any methods.
 - Content to be elicited — from the current conversation context.
+- For a named-persona convener: suspended session state — persona, mode/resource, initiative, artifact section in progress, and pending work.
 
 > **Interchangeable with BMAD source:** `_bmad/core/workflows/advanced-elicitation/methods.csv` uses the same format. Drop in a new file to update the method set — no changes to skill logic required.
 
@@ -18,13 +19,15 @@ Understand the content being elicited, identify the content type and most likely
 - **Start proactively, then choose interactively.** Run one best-fit method immediately; then offer 2–3 follow-ups — do not run multiple additional methods without user selection.
 - **Build on the current version.** Each method applies to the working version, not the original.
 - **Domain boundaries.** If refinement crosses into another persona's authority, name the boundary and suggest that persona — do not decide for them.
-- **Debate persona integration.** For collaboration methods during an active debate/roundtable context, use Faisal, Katrina, Lance, and Rahat as personas.
+- **Debate persona integration.** For collaboration methods during an active debate/roundtable context, use Faisal, Katrina, Lance, Rahat, and Zach as personas.
+- **Convener continuity.** When a named persona convened this session, record its identity and suspended session state at open; carry it to the close so the persona can resume the exact work point.
 
 ## Procedure
 
 Progress:
 
 - [ ] Step 1: **Identify context** — Before selecting methods:
+  - Record the convener as `[convener name] [icon]` when a named persona is active, otherwise `user`. For a persona convener, record the suspended session state: persona, mode/resource, initiative, artifact section in progress, and pending work.
   - State the document, section, or decision being examined (one sentence). If not stated by the user, infer from conversation context.
   - Identify the content type: Requirements/problem framing (favour core, risk, collaboration) / UX design (creative, collaboration, risk) / Architecture (technical, advanced, risk) / Slice decomposition (core, risk, structural) / RCA/diagnosis (core: 5 Whys, First Principles; technical; risk)
   - Identify the most likely weakness: Vague requirements (Socratic Questioning, First Principles, Critique and Refine) / Untested assumptions (Pre-mortem, Challenge from Critical Perspective, Self-Consistency Validation) / Missing perspectives (Stakeholder Round Table, Cross-Functional War Room, User Persona Focus Group) / Complexity/hidden coupling (Tree of Thoughts, Architecture Decision Records, Failure Mode Analysis) / Over-engineered (Occam's Razor, Reverse Engineering, First Principles)

@@ -24,7 +24,7 @@ Available roster:
 
 Sonia 🟧 and Alex 🟪 do not attend — they consume synthesis, not produce trade-offs. The invoker may convene any subset of the available roster.
 
-These one-liners are for **attendance selection only**. They are deliberately minimal and must not be used as an attendee's speaking voice — that flattens perspective and drifts from the canonical source. Each attendee's full identity — beliefs, vocabulary, tensions, and signature — lives in their own `SOUL.md` (sibling of their `SKILL.md`). Load it in Step 5 so attendees speak with their genuine, distinct voice rather than a facilitator-authored approximation.
+These one-liners are for **attendance selection only**. They are deliberately minimal and must not be used as an attendee's speaking voice — that flattens perspective and drifts from the canonical source. Each attendee's full identity — beliefs, vocabulary, tensions, and perspective in one line — lives in their own `SOUL.md` (sibling of their `SKILL.md`). Load it in Step 5 so attendees speak with their genuine, distinct voice rather than a facilitator-authored approximation.
 
 ## Global Directives
 
@@ -58,7 +58,7 @@ Progress:
 
   Determine the context from the invoker or by asking once: *"Is this a forward-direction session or a course-correction consultation? (Default: forward-direction.)"*
 
-  Also record **convener identity**: `[convener name] [icon]` when a named persona is the active caller (the one who convened this session), or `user` when the user convened directly. The close step branches on this — to re-activate the convener, or to route the user — so it must be carried forward. (In course-correction the convener is Sonia 🟧, but routing there still lands on the user for ratification.)
+  Also record **convener identity**: `[convener name] [icon]` when a named persona is the active caller (the one who convened this session), or `user` when the user convened directly. For a persona convener, also record the suspended session state: persona, mode/resource, initiative, artifact section in progress, and pending work. Carry this state to close so one paste can resume the exact work point. (In course-correction the convener is Sonia 🟧, but routing there still lands on the user for ratification.)
 
 - [ ] Step 4: **Propose and confirm attendees** — Propose attendees based on the question's surface:
 
@@ -96,4 +96,4 @@ Progress:
 
 ## Next Step
 
-On confirmation of question, context, and attendees, load `resources/step-02-debate.md`. Carry forward: confirmed question, invocation context, convener identity (persona or `user`), final attendee list, and the canonical `### Your Role and Voice` section for each confirmed attendee.
+On confirmation of question, context, and attendees, load `resources/step-02-debate.md`. Carry forward: confirmed question, invocation context, convener identity and suspended session state (when persona-convened), final attendee list, and each confirmed attendee's loaded `SOUL.md`.
