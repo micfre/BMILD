@@ -95,7 +95,7 @@ commit = 0                        # 0: off; 1: message + eligible local commit; 
 branch = "current"                # current | initiative
 ```
 
-Use `commit = 2` when you want Alex to prepare a message without changing Git state. Use `commit = 1` when you want at most one eligible local commit after successful, attributable work. In either mode, repository and harness guidance can only reduce that authority. With posture `1`, BMILD preserves unrelated changes, uses normal hooks, and commits only the paths Alex changed in that invocation. If the state is unsafe, incomplete, blocked, or cannot be cleanly attributed, Alex falls back to a message-only result or does nothing.
+Use `commit = 2` when you want Alex to prepare a message without changing Git state. Use `commit = 1` when you want at most one eligible local commit after successful, attributable work. In either mode, repository and harness guidance can only reduce that authority (this means that if for example AGENTS.md forbids an LLM to commmit, BMILD will respect that and not override it.). With posture `1`, BMILD preserves unrelated changes, uses normal hooks, and commits only the paths Alex changed in that invocation. If the state is unsafe, incomplete, blocked, or cannot be cleanly attributed, Alex falls back to a message-only result.
 
 Set `format = "conventional-commits"` for that explicit message style [q.v.](https://www.conventionalcommits.org/en/v1.0.0/); otherwise Alex makes a bounded attempt to infer the local convention before falling back to it. Keep `branch = "current"` to stay on your selected branch. Use `branch = "initiative"` only when you want eligible commit work to use the kebab-case initiative branch name and when you understand that a clean worktree is required for any switch or creation.
 
@@ -276,6 +276,10 @@ Use a capable coding model, design target is roughly anything in the top-15 SWE-
 BMILD grew out of [BMAD-METHOD](https://github.com/the-bmad-group/bmad) or more correctly my longtime use and appreciation of it, whose persona archetypes and interactive patterns were formative. The difference is one of operating model: BMAD runs a fuller Agile-with-AI approach; BMILD is artifact-led, and deliberately less prescriptive.
 
 Do not install BMILD and BMAD skills side-by-side in the same project. They share trigger language and can make an agent select unpredictably.
+
+### The whole package is the single product
+
+BMILD consists of 10 skills, sibling support files and subfolders within those skills. There is no utility in a solitary skill or a subset of these skills. At least one skills aggregation and distribution site [q.v.](https://skillsmp.com/creators/micfre/bmild/agents-skills-bmild-pm) will index and offer skill downloads as one-offs -- don't attempt using the skills this way, BMILD will break.
 
 ### Removing BMILD
 
