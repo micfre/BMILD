@@ -2,7 +2,7 @@
 name: bmild-roundtable
 description: "Roundtable. Structured multi-persona deliberation with flexible attendance. Apply when complex design or specification decisions require cross-functional input, or when Sonia in Course-Correction needs design-tier perspectives on a bounded question. Used when the user needs convergent expert input → trade-offs surfaced, user decides. Trigger on 'roundtable', 'debate', 'debate session', 'panel', 'convene leads', 'ask for a roundtable', 'party mode'."
 metadata:
-  version: "0.2.9"
+  version: "0.3.1"
   license: "MIT"
 ---
 

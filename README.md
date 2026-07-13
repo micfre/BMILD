@@ -5,7 +5,7 @@
 *Big Methods, Ideally Less Drama*
 
 <!-- bmild-version-badge -->
-![Version](https://img.shields.io/badge/Version-0.3.0-orange)
+![Version](https://img.shields.io/badge/Version-0.3.1-orange)
 [![Build Status](https://github.com/micfre/BMILD/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/micfre/BMILD/actions/workflows/ci.yml)
 [![Release Status](https://github.com/micfre/BMILD/actions/workflows/release.yml/badge.svg)](https://github.com/micfre/BMILD/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -65,7 +65,7 @@ The first day should feel practical, not like onboarding for a project-managemen
 - **Starting something new?** Ask Faisal to frame it. He helps establish the problem, users, scope, success criteria, and the first version of the requirements. Faisal will both help with and force decision-making where needed, he will guard against solutioning at this stage.
 - **Already have direction?** Go straight to Katrina for interaction design or Lance for architecture. BMILD does not make you recreate a product brief just to earn permission to discuss an API.
 - **Ready to implement a written spec?** Ask Sonia for readiness and a Slice plan, then hand a Slice to Alex. Sonia will check for contract completeness, and she will let you know if you need to visit a design-tier persona before moving on.
-- **The work has been planned?** Ask Alex to dev the slice and he will work through it. Alex will respond like a real team member if you ask him to do work without a formal spec: he'll do it, and log it, without complaint.
+- **The work has been planned?** Ask Alex to dev the slice and he will work through it. Alex will respond like a real team member if you ask him to do work without a formal spec: he'll do it, and promote durable truth as needed.
 - **Fixing a bug or an awkward old area?** Start with Rahat. The point is to establish a cause and evidence before changing code, not force a greenfield process onto a maintenance task. Rahat is skilled with a breadth-first RCA approach.
 - **Facing a real trade-off?** Ask for a Roundtable, or use Elicit to push a draft past its first plausible answer. You still make the call. Advanced elicitation modes are a real antidote to LLM sycophancy and goal-seeking behaviour.
 
@@ -78,7 +78,7 @@ By the end of the first day using BMILD, you should have a small body of project
 ```toml
 user_name = "Developer"
 plan_folder = "plans/"
-slice_target = 300000
+slice_target = 130000
 ```
 
 - `user_name` lets the named personas address you naturally. It is a small thing, but it makes a long working session less anonymous, and most models don't overuse it.
@@ -161,7 +161,7 @@ A handoff is not “someone else’s problem now.” It is a precise request to 
 This is a major part of how BMILD contains spec drift. Decisions and unresolved questions do not hang indefinitely in an ever-expanding chat log, where a later session can miss or reinterpret them. A resolution lands in the artifact that governs the work; its downstream consumers are then classified as unaffected, needing a minor update, or stale. Larger cascades go to Sonia for course-correction.
 
 > [!NOTE]
-> A handoff is for a judgment another owner still needs to make. When a fact is already settled—by the code, a ratified decision, or a single clear constraint—a persona may scribe that narrow fact into another owner’s artifact in the same session. Scribing records settled truth; it never authors a new decision. It carries provenance and checks the target persona’s point of view, while project-wide `DESIGN.md`, `context-map.md`, and ADRs always use the normal owner route.
+> A handoff is for a judgment another owner still needs to make. When a fact is already settled -- by the code, a ratified decision, or a single clear constraint -- a persona may scribe that narrow fact into another owner’s artifact in the same session. Scribing records settled truth; it never authors a new decision. It carries provenance and checks the target persona’s point of view, while project-wide `DESIGN.md`, `context-map.md`, and ADRs always use the normal owner route.
 
 This makes BMILD particularly comfortable for work that crosses sessions, agents, or people. It gives continuity without pretending that the system can make unresolved decisions on your behalf.
 
@@ -287,7 +287,7 @@ Remove the `bmild-*` folders from your skills directory, and the `.bmild.toml` f
 
 ## What to look at next
 
-- You made it through the README, well done.
+- You made it through the README, you're well on your way, great start.
 - Browse [`.agents/skills/`](.agents/skills/) to see the skill folders that make up the framework.
 - Read the `SOUL.md` in each persona folder to discover the point of view behind its role.
 - Read [`AGENTS.md`](AGENTS.md) for the authoritative artifact map, ownership rules, memory layout, and governance details.
