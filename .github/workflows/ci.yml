@@ -30,6 +30,14 @@ jobs:
             .agents/**/*.md
             docs/**/*.md
 
+  readme-version:
+    name: Verify README Version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check README badge matches VERSION
+        run: bash scripts/check-readme-version.sh
+
   # bash-tokenizer FR1/FR2/FR13: native golden tests on each first-class OS.
   # macOS catches BSD find/wc/od quirks and bash 3.2 regressions; Windows
   # catches real PowerShell 5.1 behavior (the canonical PS gate per design §7).

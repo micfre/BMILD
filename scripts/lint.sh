@@ -34,4 +34,7 @@ if ((${#SH_FILES[@]} > 0)); then
     shellcheck "${SH_FILES[@]}"
 fi
 
+echo "Checking README version badge..."
+bash "$ROOT/scripts/check-readme-version.sh"
+
 echo "All checks passed."
