@@ -1,6 +1,6 @@
 # Verification
 
-Check test coverage and run quality gates on completed code. Lean workflow applies — switch to Diagnostic mode if a failure is found during verification.
+Check test coverage and run quality gates on completed code. Lean workflow applies — switch to Spec-Fix (tracked Slice/matrix/RCA context) or Direct-Fix (no tracked context) if a failure is found during verification.
 
 ## Additional Context
 
@@ -30,7 +30,7 @@ Load in this order:
 - *Root cause investigation needed, or documented Slice produced a new bug* → write or update `rca-<slug>.md` in the initiative folder.
 - *Documentation missing, stale, or behaviour-inaccurate* → record verification finding with next owner Alex.
 - *Regression evidence passes for an RCA* → mark RCA `resolved`. Not before.
-- *Gate failure reveals a bug* → switch to Diagnostic mode.
+- *Gate failure reveals a bug* → switch to Spec-Fix when a Slice, matrix item, or RCA is in scope; otherwise Direct-Fix.
 - *Design-contract defect or another owner must promote a fix* → route through `handoff.md`.
 
 **Quality gate format.** Check the contributor guide for exact commands:

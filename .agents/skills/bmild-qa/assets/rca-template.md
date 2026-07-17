@@ -36,9 +36,20 @@ Exact steps to trigger the symptom.
 
 One sentence. Confirmed by evidence before handoff or QA-owned repair.
 
+## Implementation Context
+
+Context carrier for a declined Fix Election (or any handoff that must survive a fresh window). Omit when not handing off implementation.
+
+- Implicated files: [path:line refs]
+- Traced code paths: [call/data flow relevant to the failure]
+- Constraints and repo conventions discovered: [patterns the fix must honor]
+- Approaches considered and rejected: [option — why not]
+- Recommended approach: [what should change and why]
+
 ## Handoff / QA-Owned Repair
 
 - Production fix needed: yes / no
+- Fix election: offered — accepted | declined | n/a
 - Next owner: Alex / Rahat / Lance / Katrina / none
 - Required action: what must change and why
 - QA-owned work completed: tests, matrix updates, RCA evidence, or none

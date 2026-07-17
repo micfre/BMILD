@@ -2,7 +2,7 @@
 
 Resolve QA-owned governance items raised by other personas. Promote accepted changes into source artifacts so the queue does not become shadow memory.
 
-For new diagnostic work use Diagnostic mode; for repairs use Spec-Fix or Direct-Fix.
+For new defect work use Spec-Fix (tracked entry context) or Direct-Fix (outside tracked context).
 
 ## Additional Context
 

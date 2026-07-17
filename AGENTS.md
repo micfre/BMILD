@@ -51,17 +51,17 @@ Project-level settings are defined in `.bmild.toml` at the repository root. The 
 - `plan_folder`: (Default: `"plans/"`) Directory where BMILD's memory artifacts (specs, designs, slices) are stored. Used globally by all personas to read and write context files.
 - `user_name`: (Optional) The user's preferred name. Used by named personas (e.g., Faisal, Katrina, Sonia) to address the user personally in their conversational responses.
 - `slice_target`: (Default: `170000`) Target context token limit for sizing vertical implementation slices. Used by `bmild-planner` (Sonia) when performing Slice Budgeting to evaluate if work exceeds safe token boundaries.
-- `commit`: (Default: `0`; `commit = 0`) Alex completion posture. `commit = 1` requests a rich message plus one eligible local Git commit, and `commit = 2` requests the message only.
-- `format`: (Optional) Alex commit-message format. MVP recognizes `conventional-commits`; omission uses bounded local-history inference (10-message maximum, 3 usable minimum, 60% agreement) with Conventional Commits fallback.
-- `branch`: (Default: `"current"`) Alex commit target, either the attached current branch or the confirmed initiative slug. A required initiative switch/create is allowed only from a completely clean repository.
+- `commit`: (Default: `0`; `commit = 0`) Alex/Rahat completion posture. `commit = 1` requests a rich message plus one eligible local Git commit, and `commit = 2` requests the message only.
+- `format`: (Optional) Alex/Rahat commit-message format. MVP recognizes `conventional-commits`; omission uses bounded local-history inference (10-message maximum, 3 usable minimum, 60% agreement) with Conventional Commits fallback.
+- `branch`: (Default: `"current"`) Alex/Rahat commit target, either the attached current branch or the confirmed initiative slug. A required initiative switch/create is allowed only from a completely clean repository.
 
-### Alex commit-posture contract
+### Alex/Rahat commit-posture contract
 
-- Applies only after the distinct commit-ready gates in Spec-Dev, Spec-Fix, Direct-Dev, and Direct-Fix; failed, blocked, incomplete, no-change, unsafe, or baseline-overlap work is never commit-ready.
+- Applies only after the distinct commit-ready gates in Alex's Spec-Dev, Spec-Fix, Direct-Dev, and Direct-Fix and Rahat's Spec-Fix and Direct-Fix; failed, blocked, incomplete, no-change, unsafe, baseline-overlap, or declined Fix Election handoff work is never commit-ready.
 - Active harness and applicable `AGENTS.md`, `CLAUDE.md`, `CONTRIBUTING*`, and nested guidance is deny-wins. Configured posture is durable authorization only where guidance permits explicit requests; ambiguity or unreadable applicable policy downgrades to message-only.
 - Posture `1` creates at most one local commit with normal hooks, `git commit --only`, and literal message/path transport. Only invocation-attributable paths that were clean at baseline are eligible; unrelated index and working-tree state must survive.
 - Branch mutation requires clean state and never uses stash. Commit posture never fetches, pulls, pushes, opens PRs, bypasses hooks, amends, rebases, resets, reverts, or otherwise rewrites history.
-- The four mode resources carry byte-identical marked preflight and completion blocks at point of use. `tests/commit-posture-contract.sh` guards identity, placement, configuration/docs alignment, and isolated Git fixture behavior.
+- The six mode resources (four Alex + two Rahat) carry byte-identical marked preflight and completion blocks at point of use. `tests/commit-posture-contract.sh` guards identity, placement, configuration/docs alignment, and isolated Git fixture behavior. Rahat's Fix Election and RCA protocol blocks are guarded by `tests/fix-election-contract.sh`.
 - MVP supports Conventional Commits plus inferred local repository structure. Additional named/custom formats are Growth; native non-Git commits are Vision.
 
 ## Memory structure
@@ -150,7 +150,7 @@ timestamp: YYYY-MM-DD
 - `change-proposal-<slug>.md`: created by Sonia in Course-Correction mode when a change affects ≥2 source-artifact owners; carries the impact map, bounded questions, roundtable synthesis records, ordered handoff chain, and handoff references. Sonia coordinates and orders; design-tier decisions are deliberated via Roundtable and authored by the owning persona in Handback.
 - `slices.md` and `slice-<N>.md`: created by Sonia; consumed and updated by Alex; verified by Rahat and Zach; recut by Sonia when implementation reveals a planning problem.
 - `verification-matrix.md`: created by Sonia during readiness when proof boundaries matter; repaired or expanded by Rahat; consumed by Alex; validated by Rahat during verification.
-- `rca-<slug>.md`: created or updated by Rahat for confirmed defects; consumed by Rahat or Alex for fixes depending on scope; closed by Rahat after evidence shows the regression is covered.
+- `rca-<slug>.md`: created or updated by Rahat for confirmed defects; after root-cause confirmation Rahat offers Fix Election — implement in-session or hand off to Alex with Implementation Context so a fresh window retains discovery; closed by Rahat after evidence shows the regression is covered.
 - `security-review-<slug>.md`: created by Zach when exploitable findings exist; consumed by Alex for implementation fixes or Lance/Katrina for design changes; closed by Zach after remediation is verified.
 - Documentation files: requirements defined by Faisal, implemented by Alex, and verified by Rahat against the shipped behaviour.
 

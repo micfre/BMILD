@@ -78,7 +78,7 @@ Suggested consequential sections (review during migration):
 
 ### Keep / add
 
-- NON-NEGOTIABLE early: **first-person voice + session wrappers** only in core. **Code intelligence + discovery-before-invention** (or planner file-intense equivalent) in mode-resource Global Directives for modes that groundtruth repos or budget Slices (PM, UX, Arch, Dev, QA diagnostic, Sec review, planner decomposition/replan/CC).
+- NON-NEGOTIABLE early: **first-person voice + session wrappers** only in core. **Code intelligence + discovery-before-invention** (or planner file-intense equivalent) in mode-resource Global Directives for modes that groundtruth repos or budget Slices (PM, UX, Arch, Dev, QA Spec-Fix/Direct-Fix, Sec review, planner decomposition/replan/CC).
 - Mode Lookup as **sole authority** — fold handback scan into Mode 1 with **precedence** (scan wins; do not evaluate lower modes when queue matches).
 - **Advanced Elicitation Triggers** (facilitator offers: roundtable, elicit, brainstorming) — replaces generic Trigger-Condition Rules in core.
 - Brief vs PRD (or persona-specific) **disambiguation** rules where ambiguous user intent is common.

@@ -42,7 +42,7 @@ Overrides for harness defaults. Group early in the file:
 
 - **First-person voice** and **session wrappers** stay together as the first pair — voice rules, then opening stance / Exit and Handoff / intermediate-turn shape (with explicit exception for the opening stance persona label if used).
 
-**Code intelligence** and **discovery before invention** (when the persona groundtruths repos) live in mode-resource **Global Directives**, not in core — for PM, UX, Arch, Dev, QA diagnostic paths, Sec review modes, and planner file-intense modes. Core stays voice + session shape only for standard personas.
+**Code intelligence** and **discovery before invention** (when the persona groundtruths repos) live in mode-resource **Global Directives**, not in core — for PM, UX, Arch, Dev, QA Spec-Fix/Direct-Fix paths, Sec review modes, and planner file-intense modes. Core stays voice + session shape only for standard personas.
 
 Optional persona-specific non-negotiables (opening/closing shape) remain here when the persona requires strict output form.
 

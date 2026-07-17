@@ -9,9 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added Fix Election to Rahat's Spec-Fix and Direct-Fix: after an in-session RCA confirms a root cause, Rahat offers one declinable choice — implement the fix in-session or hand off to Alex with a mandatory context-rich RCA (`## Implementation Context`). Election is skipped when the user already arrives with a confirmed entry artifact and an explicit fix request. Declined elections are never commit-ready. Guarded by `tests/fix-election-contract.sh`.
+
+- Extended opt-in commit posture from Alex to Rahat's Spec-Fix and Direct-Fix. The six mode resources (Alex Spec-Dev/Spec-Fix/Direct-Dev/Direct-Fix + Rahat Spec-Fix/Direct-Fix) share byte-identical marked preflight and completion blocks; `tests/commit-posture-contract.sh` now covers both skills.
+
 - Added opt-in Alex commit posture across Spec-Dev, Spec-Fix, Direct-Dev, and Direct-Fix: `commit = 1` can create one policy-compliant targeted local Git commit, while `commit = 2` emits the full repository-consistent message only. Missing configuration and `commit = 0` retain the prior zero-side-effect close. Contributor guidance is deny-wins; unsafe attribution or branch state degrades safely; all operations remain local-only with normal hooks and no remote or destructive history actions.
 
 ### Changed
+
+- Consolidated bmild-qa from six modes to five by absorbing Diagnostic into Spec-Fix (tracked entry context: named Slice, `rca-<slug>`, or verification-matrix item) and Direct-Fix (outside tracked context). Both modes are self-contained RCA → Fix Election → repair-and-commit or handoff flows. Mode axis is structural, not intent-based; "diagnose"-phrased requests match by bug signals, and diagnosis-only intent is honored by declining the election. Version `0.3.1` → `0.4.0`.
 
 - Completed Slice 3 of `enhance-interactivity`: Elicit now resolves each active named BMILD persona's sibling `SOUL.md` as its sole voice source, Roundtable mines loaded SOULs for attendee sign-offs, and the ADR 0003 consumer note is routed to Lance. All seven standard personas may use `user_name` naturally when helpful; Alex now has declinable pre-exit stress-test offers. PM, UX, Architecture, and Security stakes flows may compress only for demonstrably crisp, complete answers, while Brainstorming and Elicit avoid quota- and menu-driven filler.
 

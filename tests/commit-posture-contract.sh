@@ -3,7 +3,15 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-MODES=(spec-dev spec-fix direct-dev direct-fix)
+# Alex Spec-Dev/Spec-Fix/Direct-Dev/Direct-Fix + Rahat Spec-Fix/Direct-Fix
+POSTURE_FILES=(
+    .agents/skills/bmild-dev/resources/spec-dev.md
+    .agents/skills/bmild-dev/resources/spec-fix.md
+    .agents/skills/bmild-dev/resources/direct-dev.md
+    .agents/skills/bmild-dev/resources/direct-fix.md
+    .agents/skills/bmild-qa/resources/spec-fix.md
+    .agents/skills/bmild-qa/resources/direct-fix.md
+)
 failures=0
 fail() { echo "FAIL: $*" >&2; failures=$((failures + 1)); }
 
@@ -14,8 +22,8 @@ extract_block() {
 
 reference_preflight=""
 reference_completion=""
-for mode in "${MODES[@]}"; do
-    file="${ROOT}/.agents/skills/bmild-dev/resources/${mode}.md"
+for rel in "${POSTURE_FILES[@]}"; do
+    file="${ROOT}/${rel}"
     [ -f "$file" ] || { fail "missing $file"; continue; }
     for marker in commit-posture-preflight commit-posture-completion; do
         count=$(rg -c -F "<!-- ${marker}:start -->" "$file" || true)
@@ -44,12 +52,16 @@ for mode in "${MODES[@]}"; do
     ! printf '%s\n%s\n' "$preflight" "$completion" | rg -qi 'git (fetch|pull|push|remote)\b' || fail "$file: network git operation in posture blocks"
 done
 
-rg -q -F '`ready-for-review`' "${ROOT}/.agents/skills/bmild-dev/resources/spec-dev.md" || fail "Spec-Dev eligibility missing"
-rg -q -F 'completed documented fix' "${ROOT}/.agents/skills/bmild-dev/resources/spec-fix.md" || fail "Spec-Fix eligibility missing"
-rg -q -F 'completed bounded work' "${ROOT}/.agents/skills/bmild-dev/resources/direct-dev.md" || fail "Direct-Dev eligibility missing"
-rg -q -F 'confirmed root cause' "${ROOT}/.agents/skills/bmild-dev/resources/direct-fix.md" || fail "Direct-Fix eligibility missing"
+rg -q -F '`ready-for-review`' "${ROOT}/.agents/skills/bmild-dev/resources/spec-dev.md" || fail "Alex Spec-Dev eligibility missing"
+rg -q -F 'completed documented fix' "${ROOT}/.agents/skills/bmild-dev/resources/spec-fix.md" || fail "Alex Spec-Fix eligibility missing"
+rg -q -F 'completed bounded work' "${ROOT}/.agents/skills/bmild-dev/resources/direct-dev.md" || fail "Alex Direct-Dev eligibility missing"
+rg -q -F 'confirmed root cause' "${ROOT}/.agents/skills/bmild-dev/resources/direct-fix.md" || fail "Alex Direct-Fix eligibility missing"
+rg -q -F 'confirmed root cause' "${ROOT}/.agents/skills/bmild-qa/resources/spec-fix.md" || fail "Rahat Spec-Fix eligibility missing"
+rg -q -F 'confirmed root cause' "${ROOT}/.agents/skills/bmild-qa/resources/direct-fix.md" || fail "Rahat Direct-Fix eligibility missing"
+rg -q -F 'declined-election handoff' "${ROOT}/.agents/skills/bmild-qa/resources/spec-fix.md" || fail "Rahat Spec-Fix declined-election gate missing"
+rg -q -F 'declined-election handoff' "${ROOT}/.agents/skills/bmild-qa/resources/direct-fix.md" || fail "Rahat Direct-Fix declined-election gate missing"
 
-for file in .agents/skills/bmild-dev/SKILL.md README.md AGENTS.md; do
+for file in .agents/skills/bmild-dev/SKILL.md .agents/skills/bmild-qa/SKILL.md README.md AGENTS.md; do
     for token in 'commit = 0' 'commit = 1' 'commit = 2' 'conventional-commits' 'branch'; do
         rg -q -F "$token" "${ROOT}/${file}" || fail "$file: missing aligned token '$token'"
     done

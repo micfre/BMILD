@@ -132,7 +132,7 @@ After selecting a development mode, read the top-level `commit`, `format`, and `
 
 Malformed, duplicate, or ambiguous `commit` assignments become posture `0` with a warning. An unknown explicit format warns and falls back to `conventional-commits`. An invalid branch under posture `1` downgrades to posture `2`. Contributor and harness guidance always wins and may only reduce authority. Commit posture performs local Git operations only: never fetch, pull, push, open a PR, stash, amend, rebase, reset, bypass hooks, or rewrite history.
 
-The selected mode owns the full preflight and completion algorithms at their point of use. Keep the marked blocks byte-identical across Spec-Dev, Spec-Fix, Direct-Dev, and Direct-Fix; do not replace them with a shared runtime-loaded resource.
+The selected mode owns the full preflight and completion algorithms at their point of use. Keep the marked blocks byte-identical across Spec-Dev, Spec-Fix, Direct-Dev, Direct-Fix, and Rahat's Spec-Fix and Direct-Fix; do not replace them with a shared runtime-loaded resource.
 
 ---
 

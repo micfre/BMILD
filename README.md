@@ -66,7 +66,7 @@ The first day should feel practical, not like onboarding for a project-managemen
 - **Already have direction?** Go straight to Katrina for interaction design or Lance for architecture. BMILD does not make you recreate a product brief just to earn permission to discuss an API.
 - **Ready to implement a written spec?** Ask Sonia for readiness and a Slice plan, then hand a Slice to Alex. Sonia will check for contract completeness, and she will let you know if you need to visit a design-tier persona before moving on.
 - **The work has been planned?** Ask Alex to dev the slice and he will work through it. Alex will respond like a real team member if you ask him to do work without a formal spec: he'll do it, and promote durable truth as needed.
-- **Fixing a bug or an awkward old area?** Start with Rahat. The point is to establish a cause and evidence before changing code, not force a greenfield process onto a maintenance task. Rahat is skilled with a breadth-first RCA approach.
+- **Fixing a bug or an awkward old area?** Start with Rahat. The point is to establish a cause and evidence before changing code, not force a greenfield process onto a maintenance task. Rahat is skilled with a breadth-first RCA approach; after confirmation, choose whether Rahat implements the fix or hands a context-rich RCA to Alex.
 - **Facing a real trade-off?** Ask for a Roundtable, or use Elicit to push a draft past its first plausible answer. You still make the call. Advanced elicitation modes are a real antidote to LLM sycophancy and goal-seeking behaviour.
 
 By the end of the first day using BMILD, you should have a small body of project memory that an agent can re-enter tomorrow: the current problem, a few decisions, what is live, what is stale, and what comes next. You do not need every artifact for every piece of work. If you forget where you left off, just ask Sonia, she knows.
@@ -87,7 +87,7 @@ slice_target = 130000
 
 ## About automated commits
 
-The default is `commit = 0`: Alex makes no commit and does not prepare a commit message. The following is a safe starting point when you want to make the behaviour explicit:
+The default is `commit = 0`: Alex and Rahat make no commit and do not prepare a commit message. The following is a safe starting point when you want to make the behaviour explicit:
 
 ```toml
 commit = 0                        # 0: off; 1: message + eligible local commit; 2: message only
@@ -95,9 +95,9 @@ commit = 0                        # 0: off; 1: message + eligible local commit; 
 branch = "current"                # current | initiative
 ```
 
-Use `commit = 2` when you want Alex to prepare a message without changing Git state. Use `commit = 1` when you want at most one eligible local commit after successful, attributable work. In either mode, repository and harness guidance can only reduce that authority (this means that if for example AGENTS.md forbids an LLM to commmit, BMILD will respect that and not override it.). With posture `1`, BMILD preserves unrelated changes, uses normal hooks, and commits only the paths Alex changed in that invocation. If the state is unsafe, incomplete, blocked, or cannot be cleanly attributed, Alex falls back to a message-only result.
+Use `commit = 2` when you want Alex or Rahat to prepare a message without changing Git state. Use `commit = 1` when you want at most one eligible local commit after successful, attributable work. In either mode, repository and harness guidance can only reduce that authority (this means that if for example AGENTS.md forbids an LLM to commmit, BMILD will respect that and not override it.). With posture `1`, BMILD preserves unrelated changes, uses normal hooks, and commits only the paths that persona changed in that invocation. If the state is unsafe, incomplete, blocked, or cannot be cleanly attributed, the result falls back to message-only.
 
-Set `format = "conventional-commits"` for that explicit message style [q.v.](https://www.conventionalcommits.org/en/v1.0.0/); otherwise Alex makes a bounded attempt to infer the local convention before falling back to it. Keep `branch = "current"` to stay on your selected branch. Use `branch = "initiative"` only when you want eligible commit work to use the kebab-case initiative branch name and when you understand that a clean worktree is required for any switch or creation.
+Set `format = "conventional-commits"` for that explicit message style [q.v.](https://www.conventionalcommits.org/en/v1.0.0/); otherwise Alex or Rahat makes a bounded attempt to infer the local convention before falling back to it. Keep `branch = "current"` to stay on your selected branch. Use `branch = "initiative"` only when you want eligible commit work to use the kebab-case initiative branch name and when you understand that a clean worktree is required for any switch or creation.
 
 > [!WARNING]
 > Automated commit posture is deliberately local-only. It never fetches, pulls, pushes, opens a pull request, stashes, amends, rebases, resets, bypasses hooks, or rewrites history.
@@ -174,7 +174,7 @@ BMILD has seven standard personas and three interactive modes. They are delibera
 - **Lance 🟫 -- Architect:** turns a chosen direction into implementable data, API, service, and technology contracts; makes trade-offs explicit.
 - **Sonia 🟧 -- Delivery Planner:** checks whether a design is ready to build, creates verification coverage, sizes vertical Slices, and re-plans when reality changes.
 - **Alex 🟪 -- Developer:** implements Slices, bounded direct work, and fixes while respecting the project’s existing code and durable memory.
-- **Rahat 🟨 -- QA & Reliability:** diagnoses before fixing, plans proof, records RCAs where they will matter later, and verifies the shipped behaviour.
+- **Rahat 🟨 -- QA & Reliability:** diagnoses before fixing, plans proof, records RCAs where they will matter later, and verifies the shipped behaviour. After confirming a root cause, offers a single choice — implement the fix in-session or hand off to Alex with a context-rich RCA for a fresh window or different model.
 - **Zach 🟥 -- Security:** performs contextual security review and prioritizes concrete, exploitable issues over generic warning noise.
 
 The three interactive modes are available whenever they help. A persona may suggest one when the work would benefit from wider options, a stress test, or cross-functional trade-offs; you can also ask for one directly at any time. The calling session is suspended, not discarded, so the original persona resumes with the facilitator’s output and does not re-ask what you have already settled.
@@ -188,7 +188,7 @@ The three interactive modes are available whenever they help. A persona may sugg
 > [!NOTE]
 > **Workflow visual placeholder**  --  will be replaced with a BMILD workflow image.
 
-The workflow is intentionally non-linear. You might start at Alex for a small bounded direct-dev request or spike. Rahat may surface a design flaw that needs Lance. An existing UX design may be enough to begin planning. Sonia may send a change upstream rather than papering over a gap. The important part is that the next move is based on the state of the work, not which box you were supposed to visit first. Agents are good about calling out next moves, if in doubt.
+The workflow is intentionally non-linear. You might start at Alex for a small bounded direct-dev request or spike. Rahat may diagnose a failure and then either implement the confirmed fix or hand the RCA to Alex when you want a fresh window. Rahat may also surface a design flaw that needs Lance. An existing UX design may be enough to begin planning. Sonia may send a change upstream rather than papering over a gap. The important part is that the next move is based on the state of the work, not which box you were supposed to visit first. Agents are good about calling out next moves, if in doubt.
 
 ### Readiness is a quality check, not a ceremony
 
