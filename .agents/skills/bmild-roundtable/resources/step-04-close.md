@@ -20,9 +20,11 @@ Natural close phrases that route here: `done`, `exit`, `close session`, `that's 
 
 Progress:
 
-- [ ] Step 1: **Session outcome** — Facilitator states in one sentence what the session produced:
+- [ ] Step 1: **Session outcome** — Facilitator states in one sentence what the session produced, and when the promotion gate fired, names the close state:
 
-  > *"This session established [key outcome — e.g. the API contract trade-offs, the deferred UX question, the confirmed non-negotiable]."*
+  > *"This session established [key outcome — e.g. the API contract trade-offs, the deferred UX question, the confirmed non-negotiable]. Close state: [ratified_and_promoted | ratified_and_routed | ratified_pending_authorization | ratified_with_documentation_deferred | n/a]."*
+
+  Load `references/promotion-protocol.md` only when carrying a promotion close state from step-03; otherwise use `n/a`.
 
 - [ ] Step 2: **Attendee sign-offs** — Two or three attendees who were most engaged in the session make brief, two-sentence maximum closing remarks derived from their loaded `SOUL.md` (beliefs, tensions, and perspective in one line). Do not substitute facilitator-authored role hints:
 
@@ -58,8 +60,9 @@ Progress:
 
 ## Definition of Done
 
-- Session outcome stated in one sentence.
+- Session outcome stated in one sentence; promotion close state named when the gate fired (`ratified_and_promoted` | `ratified_and_routed` | `ratified_pending_authorization` | `ratified_with_documentation_deferred`).
 - Most-engaged attendees made in-character closing remarks.
 - Facilitator signed off as `— Facilitator 🌀` with a branch-aware close selected by convener identity (persona re-activation, user `For you`/`Next` routing, or course-correction routing).
 - No *"I will turn this back to [persona]"* phrasing remains; the convener either resumes with the synthesis as input or the user has a clear `For you`/`Next` step.
 - The invoking persona or user has what they need to resume without re-running the roundtable.
+- Context B did not double-gate promotion apply (Sonia owns post-ratification scribe/handback).

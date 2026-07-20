@@ -10,7 +10,7 @@ scope: "<initiative-name>"
 
 - This file is initiative-local and non-authoritative.
 - Project truth changes only when the target owner promotes the accepted change into the target artifact.
-- A scribe-applied item (see `docs/scribe-path.md`) is written and **closed in the same turn** with `Promotion Record: applied_by_scribe — …`; this is passive provenance (traceability), not a deferred audit — nothing requires the voiced owner to act later.
+- A scribe-applied item (see `references/scribe-path.md`) is written and **closed in the same turn** with `Promotion Record: applied_by_scribe — …`; this is passive provenance (traceability), not a deferred audit — nothing requires the voiced owner to act later.
 
 ## Items
 

@@ -59,7 +59,7 @@ When elicitation surfaces a need beyond single-artifact refinement:
 ## Scope Boundary
 
 - Does not replace named personas or make their owned decisions.
-- Does not write governed artifacts unless explicitly authorized and the active caller owns the target.
+- Does not write governed artifacts unless explicitly authorized and the active caller owns the target — except when the user explicitly authorizes facilitator scribe under `references/promotion-protocol.md` after a ratification that meets the trigger triad.
 - Does not invent method names — all methods come from `resources/methods.yaml`.
 - Does not turn elicitation into a full BMILD workflow initiation unless the user chooses that move.
 
@@ -68,5 +68,7 @@ When elicitation surfaces a need beyond single-artifact refinement:
 ## Exit and Return
 
 Close when the user selects `[x]` in `step-02-execute.md`. Full close shape and handoff note rules live in that resource and step-01. Preserve ownership: produce a handoff note for the invoking persona unless the user has explicit artifact-write authority.
+
+When `[x]` follows a user-ratified durable-contract change, load `references/promotion-protocol.md` and run the trigger triad before signing off. Close with `ratified_and_promoted` | `ratified_and_routed` | `ratified_pending_authorization` | `ratified_with_documentation_deferred` when the gate fires; otherwise use the normal close.
 
 Sign off with a branch-aware close: when a persona convened, re-activate that persona to resume with the refined content; when the user convened, emit a `For you`/`Next` routing block. Never use *"I will turn this back to [persona]"* — the facilitator's turn ends at sign-off. Sign off as `— Facilitator ⚡`. Full close shape lives in `resources/step-02-execute.md`.

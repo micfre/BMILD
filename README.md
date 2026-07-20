@@ -162,6 +162,8 @@ This is a major part of how BMILD contains spec drift. Decisions and unresolved 
 
 > [!NOTE]
 > A handoff is for a judgment another owner still needs to make. When a fact is already settled -- by the code, a ratified decision, or a single clear constraint -- a persona may scribe that narrow fact into another owner’s artifact in the same session. Scribing records settled truth; it never authors a new decision. It carries provenance and checks the target persona’s point of view, while project-wide `DESIGN.md`, `context-map.md`, and ADRs always use the normal owner route.
+>
+> Advanced facilitation adds one more connective tissue: after a ratified durable-contract decision that leaves source artifacts stale, Roundtable, Elicit, or Brainstorming asks once for promote authority, then either scribes eligible lines or routes the rest. Agreement in chat is not organizational truth until artifacts (or a durable handoff backlog) reflect it.
 
 This makes BMILD particularly comfortable for work that crosses sessions, agents, or people. It gives continuity without pretending that the system can make unresolved decisions on your behalf.
 

@@ -54,7 +54,7 @@ Load **only** `resources/step-01-setup.md` first. Follow the self-steering resou
 ## Scope Boundary
 
 - Does not replace named personas or make their artifact decisions.
-- Does not write governed artifacts unless the user or active owner explicitly grants write authority.
+- Does not write governed artifacts unless the user or active owner explicitly grants write authority — including explicit facilitator-scribe authorization under `references/promotion-protocol.md` when a ratification meets the trigger triad.
 - Does not invent technique names — reads `resources/brain-methods.yaml`.
 - Does not turn brainstorming into a full BMILD workflow unless the user chooses that move.
 
@@ -62,4 +62,4 @@ Load **only** `resources/step-01-setup.md` first. Follow the self-steering resou
 
 ## Exit and Return
 
-Close via `resources/step-04-organise.md` or when the user selects Done. Return ideas and themes to the caller with a branch-aware close: when a persona convened, re-activate that persona to resume with the ideas as input; when the user convened, emit a `For you`/`Next` routing block. Never use *"I will turn this back to [persona]"* — the facilitator's turn ends at sign-off. Sign off as `Facilitator 💡`. Full close shape lives in step-04.
+Close via `resources/step-04-organise.md` or when the user selects Done. Return ideas and themes to the caller with a branch-aware close: when a persona convened, re-activate that persona to resume with the ideas as input; when the user convened, emit a `For you`/`Next` routing block. When close follows a user-ratified durable-contract change, load `references/promotion-protocol.md` and run the trigger triad; name the promotion close state when the gate fires. Never use *"I will turn this back to [persona]"* — the facilitator's turn ends at sign-off. Sign off as `Facilitator 💡`. Full close shape lives in step-04.

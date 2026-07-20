@@ -163,6 +163,8 @@ Design guidance:
 
 - Advanced skills may suggest other BMILD tools, but they should not create a parallel workflow without user or invoker confirmation.
 - A facilitator can prepare patch-ready notes for an owner. Direct artifact writes require explicit authority from the user or active owner context.
+- **Shared protocols (duplication floor):** when an advanced skill must execute a cross-cutting procedure (e.g. Ratification→Promotion), ship an identical `references/<two-word-kebab>.md` under each executing skill. Compact gate summaries live at point of use in `SKILL.md` / step resources; the full procedure loads via a relative path from the **active** skill root only. Never `docs/…` (does not ship) and never `../bmild-other/…` (cross-skill traversal). Drift is guarded by a repo-root identity/placement contract test (see `tests/promotion-protocol-contract.sh`).
+- After a ratified durable-contract decision that leaves source artifacts stale, facilitators run the promotion gate before close: inventory with action classes, ask once, apply only scribe-eligible lines, route canonical-tier / multi-owner / high-stakes work. Close with an explicit state (`ratified_and_promoted` | `ratified_and_routed` | `ratified_pending_authorization` | `ratified_with_documentation_deferred`).
 
 ## Scope Boundary
 
@@ -175,6 +177,7 @@ Contains:
 - Does not turn a facilitation session into a new BMILD workflow unless the user chooses that move.
 - Does not invent technique or method names when a local registry exists.
 - Skill-specific non-authority rules, such as roundtable not recommending a decision.
+- Does not treat user authorization as a bypass of Scribe-Eligibility, canonical-tier fences, or ≥2-owner Course-Correction routing.
 
 Design guidance:
 
@@ -199,6 +202,7 @@ Design guidance:
 - Do not force named-persona `For you` / `Next` language onto advanced skills unless the current skill already uses those semantics.
 - Preserve existing close phrases and return lines where they carry behavioural meaning.
 - Roundtable may branch by invocation context: forward-direction returns synthesis to the invoking persona; course-correction returns or appends to `change-proposal-<slug>.md` as already specified.
+- When the Ratification→Promotion gate fired, name the close state in the session outcome so consumers can honor it without re-asking the same gate.
 
 ## Gotchas
 
@@ -210,8 +214,10 @@ Use for:
 - User behaviour that predictably derails facilitation.
 - Method or technique registry traps.
 - Roundtable consensus, attendee, and recommendation traps.
+- Ratified durable contracts that close without a promotion ask (leave the user to orchestrate documentation).
 
 Design guidance:
 
 - Do not restate rules already established elsewhere.
 - Keep gotchas practical and specific.
+- Prefer lived-session regressions: e.g. multi-artifact ratification without an ask-once promotion gate; wording-only tweaks that incorrectly fire the gate.

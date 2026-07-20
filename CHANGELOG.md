@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added the **Ratification→Promotion** protocol for advanced facilitators: after a ratified durable-contract decision that leaves source artifacts stale, Roundtable / Elicit / Brainstorming load a skill-local `references/promotion-protocol.md`, ask once with a concrete impact inventory, apply only scribe-eligible lines as presiding scribe, and close with an explicit state (`ratified_and_promoted`, `ratified_and_routed`, `ratified_pending_authorization`, `ratified_with_documentation_deferred`). Authorization does not override Scribe-Eligibility, canonical-tier fences, high-stakes surfaces, or ≥2-owner Course-Correction. Three identical copies + load/close-state placement guarded by `tests/promotion-protocol-contract.sh`. Standard personas honor close states without re-running the facilitation gate; Planner keeps slices out of default promotion.
+
+- Relocated the **In-Context Guest-Voice Scribe Path** from `docs/scribe-path.md` (non-shipping) into seven identical skill-local `references/scribe-path.md` copies under the standard personas. Runtime consumers load their own relative copy; `docs/scribe-path.md` is now a maintainer sync note. Identity and retarget guarded by `tests/scribe-path-contract.sh`.
+
 - Added Fix Election to Rahat's Spec-Fix and Direct-Fix: after an in-session RCA confirms a root cause, Rahat offers one declinable choice — implement the fix in-session or hand off to Alex with a mandatory context-rich RCA (`## Implementation Context`). Election is skipped when the user already arrives with a confirmed entry artifact and an explicit fix request. Declined elections are never commit-ready. Guarded by `tests/fix-election-contract.sh`.
 
 - Extended opt-in commit posture from Alex to Rahat's Spec-Fix and Direct-Fix. The six mode resources (Alex Spec-Dev/Spec-Fix/Direct-Dev/Direct-Fix + Rahat Spec-Fix/Direct-Fix) share byte-identical marked preflight and completion blocks; `tests/commit-posture-contract.sh` now covers both skills.

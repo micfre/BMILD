@@ -38,6 +38,21 @@ jobs:
       - name: Check README badge matches VERSION
         run: bash scripts/check-readme-version.sh
 
+  contract-tests:
+    name: Skill Contract Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install ripgrep
+        run: sudo apt-get update && sudo apt-get install -y ripgrep
+      - name: Run contract tests
+        run: |
+          set -euo pipefail
+          for s in tests/*-contract.sh; do
+            echo "== ${s} =="
+            bash "$s"
+          done
+
   # bash-tokenizer FR1/FR2/FR13: native golden tests on each first-class OS.
   # macOS catches BSD find/wc/od quirks and bash 3.2 regressions; Windows
   # catches real PowerShell 5.1 behavior (the canonical PS gate per design §7).
