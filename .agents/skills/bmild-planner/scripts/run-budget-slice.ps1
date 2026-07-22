@@ -1,12 +1,11 @@
-# BMILD slice-budget estimator (PowerShell 5.1).
-# Byte-based token model with superlinear attention-risk penalty layer and
-# triangular carry-forward. Emits TSV per the bash-tokenizer system-design
-# output contract. PS 5.1 builtins only: no -AsByteStream (uses -Encoding
-# Byte), no ternary, no null-coalescing (??). Algorithm mirrors
-# run-budget-slice.sh exactly; equivalence enforced by tests (Slice 3).
+# BMILD slice-budget estimator (PowerShell 5.1) — peak_live_v2.
+# Predicts peak live context occupancy for an implementation session under
+# code-intel / LSP workflows (full contract reads + capped symbol excerpts).
+# Emits TSV with fixed sections matching run-budget-slice.sh. PS 5.1 builtins
+# only: no -AsByteStream, no ternary, no null-coalescing. Algorithm mirrors
+# the POSIX script exactly; equivalence enforced by tests.
 # Plain param() (no [CmdletBinding()]): advanced binding rejects the manual
-# argv-walk pass-through flags (--reads/--penalty/...). Bash does a manual
-# $# walk; this mirrors it. Strictness comes from Set-StrictMode + $ErrorActionPreference.
+# argv-walk pass-through flags.
 param()
 $ErrorActionPreference = "Stop"
 Set-StrictMode -Version 3.0
@@ -14,38 +13,27 @@ Set-StrictMode -Version 3.0
 $script:TAB = [char]9
 $script:NL = [char]10
 
-# --- defaults (documented hypotheses, not calibrations) ---
+# --- user-configurable defaults ---
 $script:DEFAULT_TARGET = 170000
 $script:DEFAULT_BASE = 15000
 $script:DEFAULT_MULTIPLIER = 1.0
-$script:DEFAULT_RATIO = 4.0
-$script:DEFAULT_SIZE_THRESHOLD = 24000
-$script:DEFAULT_SIZE_EXPONENT = 1.5
-$script:DEFAULT_NOISE_BPL = 500
-$script:DEFAULT_NOISE_FACTOR = 2.0
-$script:DEFAULT_PENALTY_CAP = 10.0
-$script:DEFAULT_EDIT_PREMIUM = 2.0
-$script:DEFAULT_CARRY_CAP = 2.5
+
+# --- peak_live_v2 internal constants ---
+$script:MODEL_ID = 'peak_live_v2'
+$script:BYTES_PER_TOKEN = 4
+$script:TURN_RESERVE = 20000
+$script:SYMBOL_READ_CAP = 2500
+$script:SYMBOL_EDIT_CAP = 5000
+$script:ITEM_OVERHEAD = 500
 
 $script:CFG_TARGET = $script:DEFAULT_TARGET
 $script:CFG_BASE = $script:DEFAULT_BASE
 $script:CFG_MULTIPLIER = $script:DEFAULT_MULTIPLIER
-$script:CFG_RATIO = $script:DEFAULT_RATIO
-$script:CFG_SIZE_THRESHOLD = $script:DEFAULT_SIZE_THRESHOLD
-$script:CFG_SIZE_EXPONENT = $script:DEFAULT_SIZE_EXPONENT
-$script:CFG_NOISE_BPL = $script:DEFAULT_NOISE_BPL
-$script:CFG_NOISE_FACTOR = $script:DEFAULT_NOISE_FACTOR
-$script:CFG_PENALTY_CAP = $script:DEFAULT_PENALTY_CAP
-$script:CFG_EDIT_PREMIUM = $script:DEFAULT_EDIT_PREMIUM
-$script:CFG_CARRY_CAP = $script:DEFAULT_CARRY_CAP
 
-# CLI overrides ($null = not set)
 $script:OF_TARGET = $null
 $script:OF_BASE = $null
 $script:OF_MULTIPLIER = $null
-$script:OF_RATIO = $null
 
-# new-file state
 $script:NEW_SET = 0
 $script:NEW_VAL = $null
 $script:src = ""
@@ -54,18 +42,17 @@ $script:NEW_AVG_RAW = 0
 $script:NEW_EST_RAW = 0
 $script:NEW_MEASURED = $false
 
-# parsed inputs
 $script:reads_n = 0
 $script:edits_n = 0
-$script:mode = "read"
+$script:mode = 'full_read'
 $script:records = New-Object System.Collections.ArrayList
 $script:skipped = New-Object System.Collections.ArrayList
 $script:pen = @{}
 $script:seenPaths = @{}
+$script:legacyKeys = New-Object System.Collections.ArrayList
 
 $script:out = New-Object System.Text.StringBuilder
 
-# --- helpers ---
 function Fail-Budget([string]$msg) {
     [Console]::Error.WriteLine("Error: $msg")
     exit 1
@@ -73,22 +60,28 @@ function Fail-Budget([string]$msg) {
 
 function Show-Usage {
     $u = "Usage: run-budget-slice.ps1 [options]"
-    $u += $script:NL + $script:NL + "Estimate implementation-session context tokens (byte-based model)."
-    $u += $script:NL + "Output is TSV with fixed sections in order: STATUS, BUDGET, READS,"
-    $u += $script:NL + "EDITS, SKIPPED_READS, SKIPPED_EDITS, SKIPPED_NEW, NEW_FILE_ESTIMATE."
+    $u += $script:NL + $script:NL + "Estimate peak live context tokens for one implementation Slice (peak_live_v2)."
+    $u += $script:NL + "Assumes code-intelligence / LSP workflows: contracts and docs are full-file"
+    $u += $script:NL + "context; source navigation is capped symbol excerpts. Output is TSV with"
+    $u += $script:NL + "fixed sections: STATUS, BUDGET, READS, EDITS, SKIPPED_READS, SKIPPED_EDITS,"
+    $u += $script:NL + "SKIPPED_NEW, NEW_FILE_ESTIMATE."
     $u += $script:NL + $script:NL + "Options:"
-    $u += $script:NL + "  --target <int>           token budget override"
-    $u += $script:NL + "  --base <int>             tokenizer base (K=0 overhead) override"
-    $u += $script:NL + "  --multiplier <float>     residual multiplier override (default 1.0)"
-    $u += $script:NL + "  --ratio <float>          bytes-per-token ratio override (default 4.0)"
-    $u += $script:NL + "  --reads <path>...        switch to read-role mode; collect read files"
-    $u += $script:NL + "  --edits <path>...        switch to edit-role mode; collect edit files"
+    $u += $script:NL + "  --target <int>           token budget override (slice_target)"
+    $u += $script:NL + "  --base <int>             mandatory-context overhead override (tokenizer_base)"
+    $u += $script:NL + "  --multiplier <float>     residual safety margin override (tokenizer_multiplier)"
+    $u += $script:NL + "  --full-reads <path>...   switch to full-read mode; collect full-file reads"
+    $u += $script:NL + "  --symbol-reads <path>... switch to symbol-read mode; collect capped excerpts"
+    $u += $script:NL + "  --full-edits <path>...   switch to full-edit mode; collect full-file edits"
+    $u += $script:NL + "  --symbol-edits <path>... switch to symbol-edit mode; collect capped edits"
+    $u += $script:NL + "  --reads <path>...        alias for --full-reads (compatibility)"
+    $u += $script:NL + "  --edits <path>...        alias for --full-edits (compatibility)"
     $u += $script:NL + "  --new <int>              count of new files to estimate"
     $u += $script:NL + "  --src <path>             representative source dir (required when --new > 0)"
     $u += $script:NL + "  --penalty <path> <float> multiplicative indicator penalty (repeatable)"
     $u += $script:NL + "  -h, --help               show this help and exit"
-    $u += $script:NL + $script:NL + "Penalty thresholds, exponents, and the edit premium are read from .bmild.toml"
-    $u += $script:NL + "and are not exposed as flags. Every estimate is an informed guess."
+    $u += $script:NL + $script:NL + "User-facing .bmild.toml keys: slice_target, tokenizer_base, tokenizer_multiplier."
+    $u += $script:NL + "Byte/token ratio, turn reserve, symbol caps, and per-item overhead are fixed"
+    $u += $script:NL + "by peak_live_v2. Every estimate is an informed guess."
     [Console]::Out.WriteLine($u)
     exit 0
 }
@@ -132,6 +125,12 @@ function Find-BmildToml([string]$startDir) {
     }
 }
 
+function Note-Legacy([string]$key) {
+    if (-not $script:legacyKeys.Contains($key)) {
+        $null = $script:legacyKeys.Add($key)
+    }
+}
+
 function Read-Config([string]$path) {
     if (-not $path) { return }
     if (-not (Test-Path -LiteralPath $path)) { return }
@@ -146,23 +145,20 @@ function Read-Config([string]$path) {
             'slice_target' { if (Test-UInt $val) { $script:CFG_TARGET = [int]$val } }
             'tokenizer_base' { if (Test-UInt $val) { $script:CFG_BASE = [int]$val } }
             'tokenizer_multiplier' { if (Test-Num $val) { $script:CFG_MULTIPLIER = [double]$val } }
-            'tokenizer_ratio' { if (Test-Num $val) { $script:CFG_RATIO = [double]$val } }
-            'penalty_size_threshold' { if (Test-UInt $val) { $script:CFG_SIZE_THRESHOLD = [int]$val } }
-            'penalty_size_exponent' { if (Test-Num $val) { $script:CFG_SIZE_EXPONENT = [double]$val } }
-            'penalty_noise_bpl' { if (Test-UInt $val) { $script:CFG_NOISE_BPL = [int]$val } }
-            'penalty_noise_factor' { if (Test-Num $val) { $script:CFG_NOISE_FACTOR = [double]$val } }
-            'penalty_cap' { if (Test-Num $val) { $script:CFG_PENALTY_CAP = [double]$val } }
-            'edit_premium' { if (Test-Num $val) { $script:CFG_EDIT_PREMIUM = [double]$val } }
-            'carry_cap' { if (Test-Num $val) { $script:CFG_CARRY_CAP = [double]$val } }
+            'tokenizer_ratio' { Note-Legacy $key }
+            'penalty_size_threshold' { Note-Legacy $key }
+            'penalty_size_exponent' { Note-Legacy $key }
+            'penalty_noise_bpl' { Note-Legacy $key }
+            'penalty_noise_factor' { Note-Legacy $key }
+            'penalty_cap' { Note-Legacy $key }
+            'edit_premium' { Note-Legacy $key }
+            'carry_cap' { Note-Legacy $key }
         }
     }
 }
 
 function Test-Binary([string]$p) {
-    # PS 5.1 path: -Encoding Byte (never -AsByteStream, which is PS6+ and
-    # forbidden by the design). PS 7 (Core) removed -Encoding Byte, so that
-    # binding error falls through to a .NET read of the first 4096 bytes --
-    # identical behaviour, keeps the script runnable on PS 7 for logic testing.
+    # PS 5.1 path: -Encoding Byte. PS 7 removed it; fall through to .NET read.
     $head = $null
     try {
         $head = Get-Content -LiteralPath $p -Encoding Byte -ReadCount 4096 -TotalCount 4096 -WarningAction SilentlyContinue
@@ -177,42 +173,21 @@ function Test-Binary([string]$p) {
     return $false
 }
 
-function Get-NoiseFlag([string]$p) {
-    # Normalize backslashes so the path-segment patterns match on both
-    # separators (bash uses '/'; Windows native paths use '\').
-    $n = $p -replace '\\', '/'
-    if ($n -like '*/vendor/*') { return 1 }
-    if ($n -like '*/node_modules/*') { return 1 }
-    if ($n -like '*/dist/*') { return 1 }
-    if ($n -like '*/build/*') { return 1 }
-    if ($n -like '*/target/*') { return 1 }
-    if ($n -like '*.min.*') { return 1 }
-    if ($n -like '*.generated.*') { return 1 }
-    if ($n -like '*_generated.*') { return 1 }
-    if ($n -like '*.pb.go') { return 1 }
-    if ($n -like '*.proto.go') { return 1 }
-    return 0
-}
-
 function Measure-File([string]$path, [string]$role) {
     $p = Normalize-Path $path
-    # -Force is load-bearing on Get-Item: PowerShell sets the Hidden attribute
-    # on dotfiles, so Get-Item throws "Could not find item" without it (Test-Path
-    # needs no -Force -- it reports existence regardless of the Hidden attribute).
-    # Contract (system-design §5, line 432): hidden files are included on both
-    # platforms (find includes them by default; PowerShell requires -Force).
+    if ($role -eq 'full_read' -or $role -eq 'symbol_read') { $skipRole = 'read' }
+    else { $skipRole = 'edit' }
     if (-not (Test-Path -LiteralPath $p -PathType Leaf)) {
-        $null = $script:skipped.Add([pscustomobject]@{ Role = $role; Path = $p })
+        $null = $script:skipped.Add([pscustomobject]@{ Role = $skipRole; Path = $p })
         return
     }
     $bytes = (Get-Item -LiteralPath $p -Force).Length
     if (Test-Binary $p) {
-        $null = $script:skipped.Add([pscustomobject]@{ Role = $role; Path = $p })
+        $null = $script:skipped.Add([pscustomobject]@{ Role = $skipRole; Path = $p })
         return
     }
     $lines = 0
-    $nf = Get-NoiseFlag $p
-    if ($nf -eq 0 -and $bytes -gt 0) {
+    if ($bytes -gt 0) {
         $all = [System.IO.File]::ReadAllBytes($p)
         $nl = 0
         foreach ($b in $all) { if ($b -eq 10) { $nl++ } }
@@ -220,7 +195,7 @@ function Measure-File([string]$path, [string]$role) {
     }
     $null = $script:records.Add([pscustomobject]@{
         Role = $role; Path = $p; Bytes = $bytes; Lines = $lines
-        RawOverride = $null; SizeBasis = $bytes; NoiseFlag = $nf
+        RawOverride = $null
     })
     $script:seenPaths[$p] = 1
 }
@@ -239,8 +214,6 @@ function Measure-SourceDir([string]$srcDir) {
     $script:NEW_AVG_BYTES = [int][math]::Floor($sum / $cnt)
     return 'ok'
 }
-
-function ConvertTo-Rhu([double]$x) { return [int][math]::Floor($x + 0.5) }
 
 function ConvertTo-Fmt([double]$x) {
     $s = [int][math]::Floor($x * 100 + 0.5)
@@ -265,16 +238,17 @@ $i = 0
 while ($i -lt $args.Count) {
     $a = "$($args[$i])"
     if ($a -eq '--help' -or $a -eq '-h') { Show-Usage }
-    elseif ($a -eq '--reads') { $script:mode = 'read'; $i++ }
-    elseif ($a -eq '--edits') { $script:mode = 'edit'; $i++ }
-    elseif ($a -eq '--target' -or $a -eq '--base' -or $a -eq '--multiplier' -or $a -eq '--ratio') {
+    elseif ($a -eq '--full-reads' -or $a -eq '--reads') { $script:mode = 'full_read'; $i++ }
+    elseif ($a -eq '--symbol-reads') { $script:mode = 'symbol_read'; $i++ }
+    elseif ($a -eq '--full-edits' -or $a -eq '--edits') { $script:mode = 'full_edit'; $i++ }
+    elseif ($a -eq '--symbol-edits') { $script:mode = 'symbol_edit'; $i++ }
+    elseif ($a -eq '--target' -or $a -eq '--base' -or $a -eq '--multiplier') {
         if (($i + 1) -ge $args.Count) { Fail-Budget "$a requires a value" }
         $v = "$($args[$i + 1])"
         switch ($a) {
             '--target' { if (-not (Test-UInt $v)) { Fail-Budget "--target must be a non-negative integer" }; $script:OF_TARGET = [int]$v }
             '--base' { if (-not (Test-UInt $v)) { Fail-Budget "--base must be a non-negative integer" }; $script:OF_BASE = [int]$v }
             '--multiplier' { if (-not (Test-Num $v)) { Fail-Budget "--multiplier must be numeric" }; $script:OF_MULTIPLIER = [double]$v }
-            '--ratio' { if (-not (Test-Num $v)) { Fail-Budget "--ratio must be numeric" }; $script:OF_RATIO = [double]$v }
         }
         $i += 2
     }
@@ -299,8 +273,11 @@ while ($i -lt $args.Count) {
     }
     elseif ($a.StartsWith('--')) { Fail-Budget "unknown option: $a" }
     else {
-        if ($script:mode -eq 'read') { Measure-File $a 'read'; $script:reads_n++ }
-        else { Measure-File $a 'edit'; $script:edits_n++ }
+        if ($script:mode -eq 'full_read' -or $script:mode -eq 'symbol_read') {
+            Measure-File $a $script:mode; $script:reads_n++
+        } else {
+            Measure-File $a $script:mode; $script:edits_n++
+        }
         $i++
     }
 }
@@ -323,7 +300,11 @@ Read-Config $cfgPath
 if ($null -ne $script:OF_TARGET) { $script:CFG_TARGET = $script:OF_TARGET }
 if ($null -ne $script:OF_BASE) { $script:CFG_BASE = $script:OF_BASE }
 if ($null -ne $script:OF_MULTIPLIER) { $script:CFG_MULTIPLIER = $script:OF_MULTIPLIER }
-if ($null -ne $script:OF_RATIO) { $script:CFG_RATIO = $script:OF_RATIO }
+
+if ($script:legacyKeys.Count -gt 0) {
+    $joined = ($script:legacyKeys -join ' ')
+    [Console]::Error.WriteLine("Warning: ignoring legacy .bmild.toml keys ($joined). peak_live_v2 accepts only slice_target, tokenizer_base, tokenizer_multiplier; remove the obsolete keys.")
+}
 
 # --- new-file estimation ---
 if ($new_count -gt 0) {
@@ -331,18 +312,18 @@ if ($new_count -gt 0) {
     if ($r -eq 'fail') {
         $null = $script:skipped.Add([pscustomobject]@{ Role = 'new'; Path = $script:src })
     } elseif ($r -eq 'ok') {
-        $script:NEW_AVG_RAW = [int][math]::Floor($script:NEW_AVG_BYTES / $script:CFG_RATIO)
+        $script:NEW_AVG_RAW = [int][math]::Floor($script:NEW_AVG_BYTES / $script:BYTES_PER_TOKEN)
         $script:NEW_EST_RAW = $new_count * $script:NEW_AVG_RAW
         $script:NEW_MEASURED = $true
         $null = $script:records.Add([pscustomobject]@{
             Role = 'newedit'; Path = '<new-files>'; Bytes = 0; Lines = 0
-            RawOverride = $script:NEW_EST_RAW; SizeBasis = $script:NEW_AVG_BYTES; NoiseFlag = 0
+            RawOverride = $script:NEW_EST_RAW
         })
         $script:seenPaths['<new-files>'] = 1
     }
 }
 
-# --- validate --penalty paths against measured inputs ---
+# --- validate --penalty paths ---
 $badPen = $false
 foreach ($pk in @($script:pen.Keys)) {
     if (-not $script:seenPaths.ContainsKey($pk)) {
@@ -353,79 +334,91 @@ foreach ($pk in @($script:pen.Keys)) {
 if ($badPen) { exit 1 }
 
 # --- per-file compute + role sums ---
-$ratio = $script:CFG_RATIO
-$thr = $script:CFG_SIZE_THRESHOLD
-$sexp = $script:CFG_SIZE_EXPONENT
-$nbpl = $script:CFG_NOISE_BPL
-$nfactor = $script:CFG_NOISE_FACTOR
-$cap = $script:CFG_PENALTY_CAP
-$eprem = $script:CFG_EDIT_PREMIUM
-$ccap = $script:CFG_CARRY_CAP
+$bpt = $script:BYTES_PER_TOKEN
+$srcap = $script:SYMBOL_READ_CAP
+$secap = $script:SYMBOL_EDIT_CAP
+$ioh = $script:ITEM_OVERHEAD
+$tres = $script:TURN_RESERVE
 $mult = $script:CFG_MULTIPLIER
 $base = $script:CFG_BASE
 $target = $script:CFG_TARGET
 
-$wr = 0; $we = 0; $rawtot = 0
+$fr = 0; $sr = 0; $fe = 0; $se = 0; $nf = 0; $rawtot = 0
 foreach ($r in $script:records) {
     if ($null -ne $r.RawOverride) { $raw = [int]$r.RawOverride }
-    else { $raw = [int][math]::Floor($r.Bytes / $ratio) }
-    if ($r.SizeBasis -le $thr) { $sp = 1.0 }
-    else { $sp = [math]::Pow($r.SizeBasis / $thr, $sexp) }
-    $lc = if ($r.Lines -lt 1) { 1 } else { $r.Lines }
-    $bpl = $r.Bytes / $lc
-    if ($r.NoiseFlag -eq 1 -or $bpl -gt $nbpl) { $np = $nfactor } else { $np = 1.0 }
+    else { $raw = [int][math]::Floor($r.Bytes / $bpt) }
     if ($script:pen.ContainsKey($r.Path)) { $ip = $script:pen[$r.Path] } else { $ip = 1.0 }
-    $prod = $sp * $np * $ip
-    if ($prod -gt $cap) { $prod = $cap }
-    if ($r.Role -eq 'read') { $prem = 1.0 } else { $prem = $eprem }
-    $eff = [int][math]::Floor($raw * $prod * $prem + 0.5)
+    if ($r.Role -eq 'symbol_read') {
+        $access = 'symbol'; $kind = 'read'
+        if ($raw -lt $srcap) { $capped = $raw } else { $capped = $srcap }
+    } elseif ($r.Role -eq 'symbol_edit') {
+        $access = 'symbol'; $kind = 'edit'
+        if ($raw -lt $secap) { $capped = $raw } else { $capped = $secap }
+    } elseif ($r.Role -eq 'newedit') {
+        $access = 'full'; $kind = 'edit'; $capped = $raw
+    } elseif ($r.Role -eq 'full_edit') {
+        $access = 'full'; $kind = 'edit'; $capped = $raw
+    } else {
+        $access = 'full'; $kind = 'read'; $capped = $raw
+    }
+    $eff = [int][math]::Floor($capped * $ip + 0.5)
     $rawtot += $raw
-    if ($r.Role -eq 'read') { $wr += $eff } else { $we += $eff }
+    if ($r.Role -eq 'full_read') { $fr += $eff }
+    elseif ($r.Role -eq 'symbol_read') { $sr += $eff }
+    elseif ($r.Role -eq 'full_edit') { $fe += $eff }
+    elseif ($r.Role -eq 'symbol_edit') { $se += $eff }
+    elseif ($r.Role -eq 'newedit') { $nf += $eff }
     $null = Add-Member -InputObject $r -NotePropertyName Raw -NotePropertyValue $raw -Force
-    $null = Add-Member -InputObject $r -NotePropertyName Sp -NotePropertyValue $sp -Force
-    $null = Add-Member -InputObject $r -NotePropertyName Np -NotePropertyValue $np -Force
+    $null = Add-Member -InputObject $r -NotePropertyName Access -NotePropertyValue $access -Force
+    $null = Add-Member -InputObject $r -NotePropertyName Kind -NotePropertyValue $kind -Force
     $null = Add-Member -InputObject $r -NotePropertyName Ip -NotePropertyValue $ip -Force
     $null = Add-Member -InputObject $r -NotePropertyName Eff -NotePropertyValue $eff -Force
 }
 
 $K = $script:reads_n + $script:edits_n + $new_count
-$carry = ($K + 1) / 2.0
-if ($carry -gt $ccap) { $carry = $ccap }
-$est = [int][math]::Floor(($wr + $we) * $carry * $mult + $base + 0.5)
-if ($est -le $target) { $stat = 'WITHIN BUDGET'; $delta = $target - $est }
-else { $stat = 'OVER BUDGET'; $delta = $est - $target }
+$overhead = $K * $ioh
+$variable = $fr + $sr + $fe + $se + $nf + $overhead
+$est = [int][math]::Floor($base + $tres + $variable * $mult + 0.5)
+if ($est -le $target) { $stat = 'WITHIN BUDGET'; $delta = $target - $est; $headroom = $delta }
+else { $stat = 'OVER BUDGET'; $delta = $est - $target; $headroom = 0 - $delta }
 
-# --- emit TSV (fixed section order) ---
+# --- emit TSV ---
 Emit-Row 'STATUS' $stat 'informed_guess'
 Emit-Blank
 Emit-Line 'BUDGET'
 Emit-Row 'field' 'value'
+Emit-Row 'model' $script:MODEL_ID
 Emit-Row 'target' "$target"
+Emit-Row 'estimated_peak' "$est"
 Emit-Row 'estimated_total' "$est"
 Emit-Row 'delta' "$delta"
+Emit-Row 'headroom' "$headroom"
 Emit-Row 'raw_file_tokens' "$rawtot"
-Emit-Row 'weighted_reads' "$wr"
-Emit-Row 'weighted_edits' "$we"
-Emit-Row 'carry_factor' (ConvertTo-Fmt $carry)
+Emit-Row 'full_reads' "$fr"
+Emit-Row 'symbol_reads' "$sr"
+Emit-Row 'full_edits' "$fe"
+Emit-Row 'symbol_edits' "$se"
+Emit-Row 'new_file_tokens' "$nf"
+Emit-Row 'item_overhead' "$overhead"
+Emit-Row 'turn_reserve' "$tres"
 Emit-Row 'K' "$K"
 Emit-Row 'tokenizer_base' "$base"
 Emit-Row 'tokenizer_multiplier' (ConvertTo-Fmt $mult)
-Emit-Row 'tokenizer_ratio' (ConvertTo-Fmt $ratio)
 Emit-Row 'estimate_confidence' 'informed_guess'
 Emit-Blank
 Emit-Line 'READS'
-Emit-Row 'path' 'bytes' 'raw_tokens' 'size_penalty' 'noise_penalty' 'indicator_penalty' 'effective_tokens'
+Emit-Row 'path' 'bytes' 'raw_tokens' 'access' 'indicator_penalty' 'effective_tokens'
 foreach ($r in $script:records) {
-    if ($r.Role -eq 'read') {
-        Emit-Row "$($r.Path)" "$($r.Bytes)" "$($r.Raw)" (ConvertTo-Fmt $r.Sp) (ConvertTo-Fmt $r.Np) (ConvertTo-Fmt $r.Ip) "$($r.Eff)"
+    if ($r.Kind -eq 'read') {
+        Emit-Row "$($r.Path)" "$($r.Bytes)" "$($r.Raw)" "$($r.Access)" (ConvertTo-Fmt $r.Ip) "$($r.Eff)"
     }
 }
 Emit-Blank
 Emit-Line 'EDITS'
-Emit-Row 'path' 'bytes' 'raw_tokens' 'size_penalty' 'noise_penalty' 'indicator_penalty' 'effective_tokens'
+Emit-Row 'path' 'bytes' 'raw_tokens' 'access' 'indicator_penalty' 'effective_tokens'
 foreach ($r in $script:records) {
-    if ($r.Role -ne 'read') {
-        Emit-Row "$($r.Path)" "$($r.Bytes)" "$($r.Raw)" (ConvertTo-Fmt $r.Sp) (ConvertTo-Fmt $r.Np) (ConvertTo-Fmt $r.Ip) "$($r.Eff)"
+    if ($r.Kind -eq 'edit') {
+        Emit-Row "$($r.Path)" "$($r.Bytes)" "$($r.Raw)" "$($r.Access)" (ConvertTo-Fmt $r.Ip) "$($r.Eff)"
     }
 }
 Emit-Blank

@@ -28,10 +28,11 @@ Load in this order:
 
 ## Routing heuristics (Slice budgeting)
 
-Run `bash <planner-skill-dir>/scripts/run-budget-slice.sh --target [slice_target] --base [tokenizer_base] --multiplier [tokenizer_multiplier] --reads <read-files> --edits <edit-files> [--new <count> --src <dir>]` from the project root.
+Run `bash <planner-skill-dir>/scripts/run-budget-slice.sh --target [slice_target] --base [tokenizer_base] --multiplier [tokenizer_multiplier] --full-reads <contracts/docs> --symbol-reads <source-excerpts> --full-edits <full-file edits> --symbol-edits <capped source edits> [--new <count> --src <dir>]` from the project root. On Windows-native hosts use `powershell -File <planner-skill-dir>/scripts/run-budget-slice.ps1` with the same flags. `--reads` / `--edits` remain aliases for `--full-reads` / `--full-edits`.
 
 - *Budget OVER target* → split, recut, or hand back. Persist estimate fields in each Slice's `## Slice token estimate` and Planning Notes.
-- *Reads/edits mixed or omitted, or new-file creation unestimated* → treat estimate as invalid; re-run with separate `--reads`, `--edits`, and when needed `--new` plus `--src`.
+- *Access roles mixed or omitted, or new-file creation unestimated* → treat estimate as invalid; re-run with explicit full vs symbol roles and, when needed, `--new` plus `--src`.
+- *Source files budgeted as full reads* → only when Alex must load the whole file; prefer `--symbol-reads` / `--symbol-edits` when code intel / LSP will navigate.
 - *`--src` points at a broad mixed tree* → prefer the closest stable peer directory for the artifact type Alex will create.
 
 ## Tasks

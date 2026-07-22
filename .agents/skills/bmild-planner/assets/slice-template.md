@@ -71,17 +71,22 @@ One concrete outcome advanced by this Slice.
 
 ## Slice token estimate
 
-- Estimated consumption: <estimated_total> tokens / <slice_target> budget (<percent>% of context window), <WITHIN BUDGET | OVER BUDGET>
-- Estimate nature: informed guess — planning-time signals only
+- Estimated peak live context: <estimated_peak> tokens / <slice_target> budget (<percent>% of context window), <WITHIN BUDGET | OVER BUDGET>
+- Model: peak_live_v2 — informed guess; predicts peak occupancy risk, not cumulative provider tokens or cost
 - Raw script values:
+  - estimated_peak: <estimated_peak>
+  - headroom: <headroom>
   - raw_file_tokens: <raw_file_tokens>
-  - weighted_reads: <weighted_reads>
-  - weighted_edits: <weighted_edits>
-  - carry_factor: <carry_factor>
+  - full_reads: <full_reads>
+  - symbol_reads: <symbol_reads>
+  - full_edits: <full_edits>
+  - symbol_edits: <symbol_edits>
+  - new_file_tokens: <new_file_tokens>
+  - item_overhead: <item_overhead>
+  - turn_reserve: <turn_reserve>
   - K: <K>
   - tokenizer_base: <tokenizer_base>
   - tokenizer_multiplier: <tokenizer_multiplier>
-  - tokenizer_ratio: <tokenizer_ratio>
   - estimate_confidence: informed_guess
 
 ## Verifiable End Condition
@@ -94,8 +99,10 @@ Specific enough to reuse during backward coverage checking.
 
 ## Planning Notes
 
-- Budgeted reads: <none/list>.
-- Budgeted edits: <none/list>.
+- Budgeted full reads: <none/list>.
+- Budgeted symbol reads: <none/list>.
+- Budgeted full edits: <none/list>.
+- Budgeted symbol edits: <none/list>.
 - Budgeted new files: <0/N> from <path/to/src or none>.
 - Budget skips: skipped reads: <none/list>; skipped new: <none/list>; skipped edits: <none/list>.
 
@@ -109,9 +116,12 @@ Specific enough to reuse during backward coverage checking.
 
 ## Actuals
 
-Completed by Alex at Slice completion. Sonia/Rahat consume for planning quality and model-deviation tracking.
+Completed by Alex at Slice completion. Sonia/Rahat consume for planning quality and model-deviation tracking. Prefer per-turn peak signals over cumulative provider totals; do not use cached-token aggregates for calibration.
 
 - turns_taken: <integer>
+- compaction_count: <integer; 0 if none>
+- peak_live_context: <optional, best-effort peak live input tokens in one turn>
+- peak_context_pct: <optional, peak_live_context / advertised window as percent>
 - unplanned_reads: <none | list of paths opened that were not in Likely Required Reads>
-- peak_context: <optional, best-effort>
+- unexpected_whole_file_source_reads: <none | list of source files loaded whole despite symbol budgeting>
 - felt_budget: <optional, qualitative over / about-right / under>

@@ -1,48 +1,42 @@
 #!/bin/sh
-# BMILD slice-budget estimator (POSIX sh).
-# Byte-based token model with superlinear attention-risk penalty layer and
-# triangular carry-forward. Emits TSV per the bash-tokenizer system-design
-# output contract. No format-string emission (ADR 0007); awk uses print only.
+# BMILD slice-budget estimator (POSIX sh) — peak_live_v2.
+# Predicts peak live context occupancy for an implementation session under
+# code-intel / LSP workflows (full contract reads + capped symbol excerpts).
+# Emits TSV with fixed sections: STATUS, BUDGET, READS, EDITS, SKIPPED_*,
+# NEW_FILE_ESTIMATE. No format-string emission (ADR 0007); awk uses print only.
 set -eu
 
 TAB='	'
 NL='
 '
 
+# --- user-configurable defaults (overridable via .bmild.toml / CLI) ---
 DEFAULT_TARGET=170000
 DEFAULT_BASE=15000
 DEFAULT_MULTIPLIER=1.0
-DEFAULT_RATIO=4.0
-DEFAULT_SIZE_THRESHOLD=24000
-DEFAULT_SIZE_EXPONENT=1.5
-DEFAULT_NOISE_BPL=500
-DEFAULT_NOISE_FACTOR=2.0
-DEFAULT_PENALTY_CAP=10.0
-DEFAULT_EDIT_PREMIUM=2.0
-DEFAULT_CARRY_CAP=2.5
+
+# --- peak_live_v2 internal constants (model definition, not preferences) ---
+MODEL_ID=peak_live_v2
+BYTES_PER_TOKEN=4
+TURN_RESERVE=20000
+SYMBOL_READ_CAP=2500
+SYMBOL_EDIT_CAP=5000
+ITEM_OVERHEAD=500
 
 CFG_TARGET=$DEFAULT_TARGET
 CFG_BASE=$DEFAULT_BASE
 CFG_MULTIPLIER=$DEFAULT_MULTIPLIER
-CFG_RATIO=$DEFAULT_RATIO
-CFG_SIZE_THRESHOLD=$DEFAULT_SIZE_THRESHOLD
-CFG_SIZE_EXPONENT=$DEFAULT_SIZE_EXPONENT
-CFG_NOISE_BPL=$DEFAULT_NOISE_BPL
-CFG_NOISE_FACTOR=$DEFAULT_NOISE_FACTOR
-CFG_PENALTY_CAP=$DEFAULT_PENALTY_CAP
-CFG_EDIT_PREMIUM=$DEFAULT_EDIT_PREMIUM
-CFG_CARRY_CAP=$DEFAULT_CARRY_CAP
 
 OF_TARGET=""
 OF_BASE=""
 OF_MULTIPLIER=""
-OF_RATIO=""
 NEW_SET=0
 NEW_VAL=""
 src=""
-mode="read"
+mode="full_read"
 reads_n=0
 edits_n=0
+LEGACY_WARN=""
 
 WORKDIR="${TMPDIR:-/tmp}"
 RECFILE="$WORKDIR/bmild-budget.rec.$$"
@@ -62,24 +56,30 @@ usage(){
 cat <<'EOF'
 Usage: run-budget-slice.sh [options]
 
-Estimate implementation-session context tokens (byte-based model).
-Output is TSV with fixed sections in order: STATUS, BUDGET, READS,
-EDITS, SKIPPED_READS, SKIPPED_EDITS, SKIPPED_NEW, NEW_FILE_ESTIMATE.
+Estimate peak live context tokens for one implementation Slice (peak_live_v2).
+Assumes code-intelligence / LSP workflows: contracts and docs are full-file
+context; source navigation is capped symbol excerpts. Output is TSV with
+fixed sections: STATUS, BUDGET, READS, EDITS, SKIPPED_READS, SKIPPED_EDITS,
+SKIPPED_NEW, NEW_FILE_ESTIMATE.
 
 Options:
-  --target <int>           token budget override
-  --base <int>             tokenizer base (K=0 overhead) override
-  --multiplier <float>     residual multiplier override (default 1.0)
-  --ratio <float>          bytes-per-token ratio override (default 4.0)
-  --reads <path>...        switch to read-role mode; collect read files
-  --edits <path>...        switch to edit-role mode; collect edit files
+  --target <int>           token budget override (slice_target)
+  --base <int>             mandatory-context overhead override (tokenizer_base)
+  --multiplier <float>     residual safety margin override (tokenizer_multiplier)
+  --full-reads <path>...   switch to full-read mode; collect full-file reads
+  --symbol-reads <path>... switch to symbol-read mode; collect capped excerpts
+  --full-edits <path>...   switch to full-edit mode; collect full-file edits
+  --symbol-edits <path>... switch to symbol-edit mode; collect capped edits
+  --reads <path>...        alias for --full-reads (compatibility)
+  --edits <path>...        alias for --full-edits (compatibility)
   --new <int>              count of new files to estimate
   --src <path>             representative source dir (required when --new > 0)
   --penalty <path> <float> multiplicative indicator penalty (repeatable)
   -h, --help               show this help and exit
 
-Penalty thresholds, exponents, and the edit premium are read from .bmild.toml
-and are not exposed as flags. Every estimate is an informed guess.
+User-facing .bmild.toml keys: slice_target, tokenizer_base, tokenizer_multiplier.
+Byte/token ratio, turn reserve, symbol caps, and per-item overhead are fixed
+by peak_live_v2. Every estimate is an informed guess.
 EOF
 }
 
@@ -114,6 +114,13 @@ find_bmild_toml(){
   done
 }
 
+note_legacy(){
+  case "$LEGACY_WARN" in
+    *"$1"*) ;;
+    *) LEGACY_WARN="${LEGACY_WARN}${LEGACY_WARN:+ }$1" ;;
+  esac
+}
+
 read_config(){
   _cp="$1"
   [ -n "$_cp" ] && [ -f "$_cp" ] || return 0
@@ -133,14 +140,9 @@ read_config(){
       slice_target) is_uint "$_val" && CFG_TARGET=$_val ;;
       tokenizer_base) is_uint "$_val" && CFG_BASE=$_val ;;
       tokenizer_multiplier) is_num "$_val" && CFG_MULTIPLIER=$_val ;;
-      tokenizer_ratio) is_num "$_val" && CFG_RATIO=$_val ;;
-      penalty_size_threshold) is_uint "$_val" && CFG_SIZE_THRESHOLD=$_val ;;
-      penalty_size_exponent) is_num "$_val" && CFG_SIZE_EXPONENT=$_val ;;
-      penalty_noise_bpl) is_uint "$_val" && CFG_NOISE_BPL=$_val ;;
-      penalty_noise_factor) is_num "$_val" && CFG_NOISE_FACTOR=$_val ;;
-      penalty_cap) is_num "$_val" && CFG_PENALTY_CAP=$_val ;;
-      edit_premium) is_num "$_val" && CFG_EDIT_PREMIUM=$_val ;;
-      carry_cap) is_num "$_val" && CFG_CARRY_CAP=$_val ;;
+      tokenizer_ratio|penalty_size_threshold|penalty_size_exponent|penalty_noise_bpl|penalty_noise_factor|penalty_cap|edit_premium|carry_cap)
+        note_legacy "$_key"
+        ;;
     esac
   done < "$_cp"
 }
@@ -157,27 +159,28 @@ is_binary(){
   [ "${1:-0}" -gt 0 ]
 }
 
+# role is one of: full_read | symbol_read | full_edit | symbol_edit
 measure_file(){
   _p=$(normalize_path "$1")
   _role="$2"
+  case "$_role" in
+    full_read|symbol_read) _skiprole="read" ;;
+    *) _skiprole="edit" ;;
+  esac
   if [ ! -f "$_p" ]; then
-    echo "${_role}${TAB}${_p}" >> "$SKIPFILE"
+    echo "${_skiprole}${TAB}${_p}" >> "$SKIPFILE"
     return
   fi
   # shellcheck disable=SC2046  # intentional: split wc's "lines bytes" output
   set -- $(wc -l -c < "$_p"); _lines=$1; _bytes=$2
   if is_binary "$_p"; then
-    echo "${_role}${TAB}${_p}" >> "$SKIPFILE"
+    echo "${_skiprole}${TAB}${_p}" >> "$SKIPFILE"
     return
   fi
   if [ "$_bytes" -gt 0 ] && [ -n "$(tail -c 1 "$_p")" ]; then
     _lines=$((_lines + 1))
   fi
-  case "$_p" in
-    */vendor/*|*/node_modules/*|*/dist/*|*/build/*|*/target/*|*.min.*|*.generated.*|*_generated.*|*.pb.go|*.proto.go) _nf=1 ;;
-    *) _nf=0 ;;
-  esac
-  echo "${_role}${TAB}${_p}${TAB}${_bytes}${TAB}${_lines}${TAB}${TAB}${_bytes}${TAB}${_nf}" >> "$RECFILE"
+  echo "${_role}${TAB}${_p}${TAB}${_bytes}${TAB}${_lines}" >> "$RECFILE"
 }
 
 measure_source_dir(){
@@ -206,15 +209,16 @@ measure_source_dir(){
 while [ $# -gt 0 ]; do
   case "$1" in
     --help|-h) usage; exit 0 ;;
-    --reads) mode="read"; shift ;;
-    --edits) mode="edit"; shift ;;
-    --target|--base|--multiplier|--ratio)
+    --full-reads|--reads) mode="full_read"; shift ;;
+    --symbol-reads) mode="symbol_read"; shift ;;
+    --full-edits|--edits) mode="full_edit"; shift ;;
+    --symbol-edits) mode="symbol_edit"; shift ;;
+    --target|--base|--multiplier)
       [ $# -ge 2 ] || fail "$1 requires a value"
       case "$1" in
         --target) is_uint "$2" || fail "--target must be a non-negative integer"; OF_TARGET=$2 ;;
         --base) is_uint "$2" || fail "--base must be a non-negative integer"; OF_BASE=$2 ;;
         --multiplier) is_num "$2" || fail "--multiplier must be numeric"; OF_MULTIPLIER=$2 ;;
-        --ratio) is_num "$2" || fail "--ratio must be numeric"; OF_RATIO=$2 ;;
       esac
       shift 2
       ;;
@@ -236,11 +240,14 @@ while [ $# -gt 0 ]; do
       ;;
     --*) fail "unknown option: $1" ;;
     *)
-      if [ "$mode" = read ]; then
-        measure_file "$1" read; reads_n=$((reads_n + 1))
-      else
-        measure_file "$1" edit; edits_n=$((edits_n + 1))
-      fi
+      case "$mode" in
+        full_read|symbol_read)
+          measure_file "$1" "$mode"; reads_n=$((reads_n + 1))
+          ;;
+        *)
+          measure_file "$1" "$mode"; edits_n=$((edits_n + 1))
+          ;;
+      esac
       shift
       ;;
   esac
@@ -267,79 +274,106 @@ read_config "$cfg_path"
 [ -n "$OF_TARGET" ] && CFG_TARGET=$OF_TARGET
 [ -n "$OF_BASE" ] && CFG_BASE=$OF_BASE
 [ -n "$OF_MULTIPLIER" ] && CFG_MULTIPLIER=$OF_MULTIPLIER
-[ -n "$OF_RATIO" ] && CFG_RATIO=$OF_RATIO
+
+if [ -n "$LEGACY_WARN" ]; then
+  echo "Warning: ignoring legacy .bmild.toml keys (${LEGACY_WARN}). peak_live_v2 accepts only slice_target, tokenizer_base, tokenizer_multiplier; remove the obsolete keys." >&2
+fi
 
 # --- new-file estimation ---
 if [ "$new_count" -gt 0 ]; then
   if ! measure_source_dir "$src"; then
     echo "new${TAB}${src}" >> "$SKIPFILE"
   elif [ -n "$NEW_AVG_BYTES" ]; then
-    NEW_AVG_RAW=$(awk -v b="$NEW_AVG_BYTES" -v r="$CFG_RATIO" 'BEGIN{print int(b/r)}')
+    NEW_AVG_RAW=$((NEW_AVG_BYTES / BYTES_PER_TOKEN))
     NEW_EST_RAW=$((new_count * NEW_AVG_RAW))
-    echo "newedit${TAB}<new-files>${TAB}0${TAB}0${TAB}${NEW_EST_RAW}${TAB}${NEW_AVG_BYTES}${TAB}0" >> "$RECFILE"
+    echo "newedit${TAB}<new-files>${TAB}0${TAB}0${TAB}${NEW_EST_RAW}" >> "$RECFILE"
   fi
 fi
 
 # --- emit STATUS / BUDGET / READS / EDITS ---
 awk -F '\t' -v OFS='\t' \
-  -v ratio="$CFG_RATIO" -v thr="$CFG_SIZE_THRESHOLD" -v sexp="$CFG_SIZE_EXPONENT" \
-  -v nbpl="$CFG_NOISE_BPL" -v noisef="$CFG_NOISE_FACTOR" -v cap="$CFG_PENALTY_CAP" \
-  -v eprem="$CFG_EDIT_PREMIUM" -v mult="$CFG_MULTIPLIER" -v base="$CFG_BASE" \
-  -v target="$CFG_TARGET" -v nrd="$reads_n" -v ned="$edits_n" -v newcount="$new_count" \
-  -v ccap="$CFG_CARRY_CAP" -v PEN="$PENFILE" '
+  -v bpt="$BYTES_PER_TOKEN" -v srcap="$SYMBOL_READ_CAP" -v secap="$SYMBOL_EDIT_CAP" \
+  -v ioh="$ITEM_OVERHEAD" -v tres="$TURN_RESERVE" -v model="$MODEL_ID" \
+  -v mult="$CFG_MULTIPLIER" -v base="$CFG_BASE" -v target="$CFG_TARGET" \
+  -v nrd="$reads_n" -v ned="$edits_n" -v newcount="$new_count" \
+  -v PEN="$PENFILE" '
 BEGIN{
-  wr=0; we=0; rawtot=0
+  fr=0; sr=0; fe=0; se=0; nf=0; rawtot=0
   while((getline pline < PEN) > 0){
     if(split(pline, pa, "\t") >= 2){ pk=pa[1]; pf=pa[2]+0; if(pk in pen) pen[pk]*=pf; else pen[pk]=pf }
   }
   close(PEN)
 }
-{ N++; ro[N]=$1; pa[N]=$2; by[N]=$3+0; ln[N]=$4+0; rv[N]=$5; sb[N]=$6+0; nfg[N]=$7+0; seen[$2]=1 }
+{
+  N++; ro[N]=$1; pa[N]=$2; by[N]=$3+0; ln[N]=$4+0
+  if(NF >= 5 && $5 != ""){ rv[N]=$5+0; hasrv[N]=1 } else { hasrv[N]=0 }
+  seen[$2]=1
+}
 END{
   for(pk in pen){ if(!(pk in seen)){ print "Error: --penalty path not present in reads/edits: " pk > "/dev/stderr"; bad=1 } }
   if(bad) exit 1
   for(i=1;i<=N;i++){
-    raw = (rv[i] != "") ? (rv[i]+0) : int(by[i]/ratio)
-    if(sb[i] <= thr+0) sp=1.0; else sp=(sb[i]/thr)^sexp
-    bpl = by[i]/(ln[i] < 1 ? 1 : ln[i])
-    if(nfg[i] || bpl > nbpl) np=noisef; else np=1.0
+    if(hasrv[i]) raw = rv[i]
+    else raw = int(by[i]/bpt)
     ip = (pa[i] in pen) ? pen[pa[i]] : 1.0
-    prod = sp*np*ip; if(prod > cap) prod=cap
-    prem = (ro[i] == "read") ? 1.0 : eprem
-    eff = int(raw*prod*prem + 0.5)
-    rsp[i]=sp; rnp[i]=np; rip[i]=ip; rraw[i]=raw; reff[i]=eff
+    if(ro[i] == "symbol_read"){
+      cap = srcap; access = "symbol"; kind = "read"
+      capped = (raw < cap) ? raw : cap
+    } else if(ro[i] == "symbol_edit"){
+      cap = secap; access = "symbol"; kind = "edit"
+      capped = (raw < cap) ? raw : cap
+    } else if(ro[i] == "newedit"){
+      access = "full"; kind = "edit"; capped = raw
+    } else if(ro[i] == "full_edit"){
+      access = "full"; kind = "edit"; capped = raw
+    } else {
+      access = "full"; kind = "read"; capped = raw
+    }
+    eff = int(capped*ip + 0.5)
+    racc[i]=access; rkind[i]=kind; rraw[i]=raw; rcapped[i]=capped; rip[i]=ip; reff[i]=eff
     rawtot += raw
-    if(ro[i] == "read") wr += eff; else we += eff
+    if(ro[i] == "full_read") fr += eff
+    else if(ro[i] == "symbol_read") sr += eff
+    else if(ro[i] == "full_edit") fe += eff
+    else if(ro[i] == "symbol_edit") se += eff
+    else if(ro[i] == "newedit") nf += eff
   }
   K = nrd + ned + newcount
-  carry = (K+1)/2.0; if(carry > ccap) carry = ccap
-  est = int((wr+we)*carry*mult + base + 0.5)
+  overhead = K * ioh
+  variable = fr + sr + fe + se + nf + overhead
+  est = int(base + tres + variable * mult + 0.5)
   within = (est <= target)
   if(within){ stat="WITHIN BUDGET"; delta=target-est } else { stat="OVER BUDGET"; delta=est-target }
   print "STATUS", stat, "informed_guess"
   print ""
   print "BUDGET"
   print "field", "value"
+  print "model", model
   print "target", target
+  print "estimated_peak", est
   print "estimated_total", est
   print "delta", delta
+  print "headroom", (within ? delta : 0 - delta)
   print "raw_file_tokens", rawtot
-  print "weighted_reads", wr
-  print "weighted_edits", we
-  print "carry_factor", fmt(carry)
+  print "full_reads", fr
+  print "symbol_reads", sr
+  print "full_edits", fe
+  print "symbol_edits", se
+  print "new_file_tokens", nf
+  print "item_overhead", overhead
+  print "turn_reserve", tres
   print "K", K
   print "tokenizer_base", base
   print "tokenizer_multiplier", fmt(mult)
-  print "tokenizer_ratio", fmt(ratio)
   print "estimate_confidence", "informed_guess"
   print ""
   print "READS"
-  print "path", "bytes", "raw_tokens", "size_penalty", "noise_penalty", "indicator_penalty", "effective_tokens"
-  for(i=1;i<=N;i++) if(ro[i] == "read") print pa[i], by[i], rraw[i], fmt(rsp[i]), fmt(rnp[i]), fmt(rip[i]), reff[i]
+  print "path", "bytes", "raw_tokens", "access", "indicator_penalty", "effective_tokens"
+  for(i=1;i<=N;i++) if(rkind[i] == "read") print pa[i], by[i], rraw[i], racc[i], fmt(rip[i]), reff[i]
   print ""
   print "EDITS"
-  print "path", "bytes", "raw_tokens", "size_penalty", "noise_penalty", "indicator_penalty", "effective_tokens"
-  for(i=1;i<=N;i++) if(ro[i] != "read") print pa[i], by[i], rraw[i], fmt(rsp[i]), fmt(rnp[i]), fmt(rip[i]), reff[i]
+  print "path", "bytes", "raw_tokens", "access", "indicator_penalty", "effective_tokens"
+  for(i=1;i<=N;i++) if(rkind[i] == "edit") print pa[i], by[i], rraw[i], racc[i], fmt(rip[i]), reff[i]
   print ""
 }
 function fmt(x, s,w,f){ s=int(x*100+0.5); w=int(s/100); f=s%100; if(f < 10) return w ".0" f; return w "." f }

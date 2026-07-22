@@ -21,6 +21,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Refactored Planner slice budgeting to `peak_live_v2`: estimates peak live context occupancy under code-intel / LSP workflows (full contract/doc reads + capped symbol excerpts) instead of cumulative whole-file surface with triangular carry-forward. User-facing `.bmild.toml` controls are only `slice_target`, `tokenizer_base`, and `tokenizer_multiplier`; legacy `tokenizer_ratio`, `penalty_*`, `edit_premium`, and `carry_cap` keys are ignored with a migration warning. Slice Actuals now capture compaction count and per-turn peak signals for future calibration without using cached totals.
+
 - Replaced rigid persona opening and closing templates with shared semantic contracts: first-turn openings use a plain identity rail plus a SOUL-derived stance (no "I'll work on…" filler; no persona traits duplicated into core), and final-turn closes use ordinary Markdown with literal `For you:` / `Next:` labels and explicit anti-fence/blockquote/italics rendering rules. Alex/Rahat commit reporting is compacted to one outcome line (plus a fenced message only when message-only). Guarded by `tests/session-wrapper-contract.sh` and extended `tests/commit-posture-contract.sh`.
 
 - Consolidated bmild-qa from six modes to five by absorbing Diagnostic into Spec-Fix (tracked entry context: named Slice, `rca-<slug>`, or verification-matrix item) and Direct-Fix (outside tracked context). Both modes are self-contained RCA → Fix Election → repair-and-commit or handoff flows. Mode axis is structural, not intent-based; "diagnose"-phrased requests match by bug signals, and diagnosis-only intent is honored by declining the election. Version `0.3.1` → `0.4.0`.

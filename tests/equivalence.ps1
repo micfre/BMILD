@@ -1,17 +1,5 @@
-# Cross-platform equivalence gate for the bash/PowerShell budget estimator
-# (Windows-native runner).
-#
-# Executes both implementations against the same fixture scenarios, normalizes
-# line endings, and diffs. Companion to equivalence.sh; the canonical CI gate is
-# a single Linux runner with pwsh (design §7 layer 3). This Windows variant lets
-# a Windows-native dev run the same comparison locally and serves as a
-# redundant CI signal on windows-latest.
-#
-# Requires a bash available on PATH (Git for Windows ships one). SKIPs with
-# exit 0 when no bash/sh is present.
-#
-# PS 5.1 clean: no -AsByteStream, no ternary, no ?? / ?. No format-string
-# injection; explicit concatenation only.
+# Cross-platform equivalence gate for peak_live_v2 (Windows-native runner).
+# Companion to equivalence.sh. PS 5.1 clean.
 [CmdletBinding()]
 param()
 $ErrorActionPreference = "Stop"
@@ -23,7 +11,6 @@ $SH_EST    = (Resolve-Path (Join-Path $TESTS_DIR '..\.agents\skills\bmild-planne
 $PS_EST    = (Resolve-Path (Join-Path $TESTS_DIR '..\.agents\skills\bmild-planner\scripts\run-budget-slice.ps1')).Path
 $script:PS_EXE = (Get-Process -Id $PID).Path
 
-# Locate a bash/sh. Git for Windows provides bash; WSL provides sh/bash too.
 $script:SH_EXE = $null
 foreach ($cand in @('bash', 'sh')) {
     $found = Get-Command $cand -ErrorAction SilentlyContinue
@@ -38,8 +25,9 @@ if (-not $script:SH_EXE) {
 $script:PASS = 0
 $script:FAIL = 0
 $script:FAILED = New-Object System.Collections.ArrayList
+$script:SH_OUT = ""; $script:SH_RC = 0
+$script:PS_OUT = ""; $script:PS_RC = 0
 
-# Normalize captured output: drop CR, strip trailing blank lines.
 function Normalize-Out([string]$text) {
     $lines = ($text -replace "`r", "") -split "`n"
     $end = $lines.Count - 1
@@ -49,13 +37,11 @@ function Normalize-Out([string]$text) {
     return ($out -join "`n")
 }
 
-# Run-Shell <cwd> <args...> -> sets $script:SH_OUT, $script:SH_RC
 function Run-Shell {
     param([string]$Cwd, [Parameter(ValueFromRemainingArguments = $true)][string[]]$Args)
     $script:SH_OUT = ""; $script:SH_RC = 0
     Push-Location -LiteralPath $Cwd
     try {
-        # bash/sh -c style: invoke the estimator with args. Capture stdout.
         $argStr = ($Args | ForEach-Object { '"' + ($_ -replace '"', '\"') + '"' }) -join ' '
         $cmd = '"' + $script:SH_EXE + '" "' + $script:SH_EST + '" ' + $argStr
         $tmp = [System.IO.Path]::GetTempFileName()
@@ -66,7 +52,6 @@ function Run-Shell {
         Remove-Item -Force -LiteralPath $tmp -ErrorAction SilentlyContinue
     } finally { Pop-Location }
 }
-# Run-Ps <cwd> <args...> -> sets $script:PS_OUT, $script:PS_RC
 function Run-Ps {
     param([string]$Cwd, [Parameter(ValueFromRemainingArguments = $true)][string[]]$Args)
     $script:PS_OUT = ""; $script:PS_RC = 0
@@ -112,60 +97,72 @@ function Cmp-Case([string]$Label, [string]$So, [int]$Sr, [string]$Po, [int]$Pr, 
     Write-Output "PASS $Label"; $script:PASS++
 }
 
-# --- build temp fixture corpus (runtime-generated inputs that cannot commit) ---
 $WORK = Join-Path ([System.IO.Path]::GetTempPath()) ("bmild-equiv-" + [System.Guid]::NewGuid().ToString('N'))
 New-Item -ItemType Directory -Force -Path $WORK | Out-Null
 
 $MINIF = Join-Path $WORK 'minified.js'
-$line = ('abcdefghij' * 70)
-Set-Content -LiteralPath $MINIF -Value $line -NoNewline -Encoding UTF8
-Add-Content -LiteralPath $MINIF -Value ""
+Set-Content -LiteralPath $MINIF -Value (('abcdefghij' * 70) + "`n") -NoNewline -Encoding UTF8
 
 $BINFILE = Join-Path $WORK 'binary.bin'
 $zeroes = New-Object byte[] 64
-([System.IO.File]::WriteAllBytes($BINFILE, $zeroes))
+[System.IO.File]::WriteAllBytes($BINFILE, $zeroes)
+
+$LARGE = Join-Path $WORK 'large.txt'
+[System.IO.File]::WriteAllText($LARGE, ('abcdefghij' * 4000))
 
 $HIDDEN = Join-Path $FIXTURES '.hidden-config.yaml'
 
-# sandbox with NO .bmild.toml ancestor so defaults apply
 $SANDBOX = Join-Path $WORK 'sandbox'; New-Item -ItemType Directory -Force -Path $SANDBOX | Out-Null
-# sandbox with a low size threshold to activate size_penalty on medium.py
-$LOWTB = Join-Path $WORK 'lowthresh'; New-Item -ItemType Directory -Force -Path $LOWTB | Out-Null
-Set-Content -LiteralPath (Join-Path $LOWTB '.bmild.toml') -Value "penalty_size_threshold = 100`npenalty_size_exponent = 1.5`n"
+$CFGBOX = Join-Path $WORK 'cfg'; New-Item -ItemType Directory -Force -Path $CFGBOX | Out-Null
+Set-Content -LiteralPath (Join-Path $CFGBOX '.bmild.toml') -Value "slice_target = 90000`ntokenizer_base = 11000`ntokenizer_multiplier = 2.0`n"
+$LEGBOX = Join-Path $WORK 'legacy'; New-Item -ItemType Directory -Force -Path $LEGBOX | Out-Null
+Set-Content -LiteralPath (Join-Path $LEGBOX '.bmild.toml') -Value "tokenizer_ratio = 8.0`ncarry_cap = 1.5`nslice_target = 120000`n"
 
 $A_small  = Join-Path $FIXTURES 'small.py'
 $A_medium = Join-Path $FIXTURES 'medium.py'
 $A_vendor = Join-Path $FIXTURES 'vendor\vendor-file.go'
 $A_srcdir = Join-Path $FIXTURES '-src-dir'
 
-# --- scenarios: identical args to both scripts; cwd selects .bmild.toml ---
 try {
-    Run-Shell $SANDBOX --reads $A_small; Run-Ps $SANDBOX --reads $A_small
-    Cmp-Case 'baseline-read' $script:SH_OUT $script:SH_RC $script:PS_OUT $script:PS_RC
+    Run-Shell $SANDBOX --full-reads $A_small; Run-Ps $SANDBOX --full-reads $A_small
+    Cmp-Case 'baseline-full-read' $script:SH_OUT $script:SH_RC $script:PS_OUT $script:PS_RC
 
-    Run-Shell $SANDBOX --reads $A_small $A_medium; Run-Ps $SANDBOX --reads $A_small $A_medium
-    Cmp-Case 'multi-read-carry' $script:SH_OUT $script:SH_RC $script:PS_OUT $script:PS_RC
+    Run-Shell $SANDBOX --reads $A_small; Run-Ps $SANDBOX --reads $A_small
+    Cmp-Case 'alias-reads' $script:SH_OUT $script:SH_RC $script:PS_OUT $script:PS_RC
+
+    Run-Shell $SANDBOX --symbol-reads $LARGE; Run-Ps $SANDBOX --symbol-reads $LARGE
+    Cmp-Case 'symbol-read-cap' $script:SH_OUT $script:SH_RC $script:PS_OUT $script:PS_RC
+
+    Run-Shell $SANDBOX --symbol-edits $LARGE; Run-Ps $SANDBOX --symbol-edits $LARGE
+    Cmp-Case 'symbol-edit-cap' $script:SH_OUT $script:SH_RC $script:PS_OUT $script:PS_RC
+
+    Run-Shell $SANDBOX --full-reads $A_small $A_medium; Run-Ps $SANDBOX --full-reads $A_small $A_medium
+    Cmp-Case 'multi-read-breadth' $script:SH_OUT $script:SH_RC $script:PS_OUT $script:PS_RC
+
+    Run-Shell $SANDBOX --full-edits $A_small; Run-Ps $SANDBOX --full-edits $A_small
+    Cmp-Case 'full-edit' $script:SH_OUT $script:SH_RC $script:PS_OUT $script:PS_RC
 
     Run-Shell $SANDBOX --edits $A_small; Run-Ps $SANDBOX --edits $A_small
-    Cmp-Case 'edit-premium' $script:SH_OUT $script:SH_RC $script:PS_OUT $script:PS_RC
+    Cmp-Case 'alias-edits' $script:SH_OUT $script:SH_RC $script:PS_OUT $script:PS_RC
 
-    Run-Shell $SANDBOX --reads $A_small --edits $A_medium; Run-Ps $SANDBOX --reads $A_small --edits $A_medium
-    Cmp-Case 'interleaved' $script:SH_OUT $script:SH_RC $script:PS_OUT $script:PS_RC
+    Run-Shell $SANDBOX --full-reads $A_small --symbol-edits $A_medium
+    Run-Ps $SANDBOX --full-reads $A_small --symbol-edits $A_medium
+    Cmp-Case 'interleaved-roles' $script:SH_OUT $script:SH_RC $script:PS_OUT $script:PS_RC
 
-    Run-Shell $SANDBOX --reads $MINIF; Run-Ps $SANDBOX --reads $MINIF
-    Cmp-Case 'noise-bpl' $script:SH_OUT $script:SH_RC $script:PS_OUT $script:PS_RC
+    Run-Shell $SANDBOX --full-reads $MINIF; Run-Ps $SANDBOX --full-reads $MINIF
+    Cmp-Case 'full-minified' $script:SH_OUT $script:SH_RC $script:PS_OUT $script:PS_RC
 
-    Run-Shell $SANDBOX --reads $A_vendor; Run-Ps $SANDBOX --reads $A_vendor
-    Cmp-Case 'noise-vendor' $script:SH_OUT $script:SH_RC $script:PS_OUT $script:PS_RC
+    Run-Shell $SANDBOX --full-reads $A_vendor; Run-Ps $SANDBOX --full-reads $A_vendor
+    Cmp-Case 'vendor-full-read' $script:SH_OUT $script:SH_RC $script:PS_OUT $script:PS_RC
 
-    Run-Shell $SANDBOX --reads $BINFILE $A_small; Run-Ps $SANDBOX --reads $BINFILE $A_small
+    Run-Shell $SANDBOX --full-reads $BINFILE $A_small; Run-Ps $SANDBOX --full-reads $BINFILE $A_small
     Cmp-Case 'binary-skip' $script:SH_OUT $script:SH_RC $script:PS_OUT $script:PS_RC
 
-    Run-Shell $SANDBOX --reads $HIDDEN; Run-Ps $SANDBOX --reads $HIDDEN
+    Run-Shell $SANDBOX --full-reads $HIDDEN; Run-Ps $SANDBOX --full-reads $HIDDEN
     Cmp-Case 'hidden-file' $script:SH_OUT $script:SH_RC $script:PS_OUT $script:PS_RC
 
     $nope = Join-Path $WORK 'nope.py'
-    Run-Shell $SANDBOX --reads $nope; Run-Ps $SANDBOX --reads $nope
+    Run-Shell $SANDBOX --full-reads $nope; Run-Ps $SANDBOX --full-reads $nope
     Cmp-Case 'missing-file' $script:SH_OUT $script:SH_RC $script:PS_OUT $script:PS_RC
 
     Run-Shell $SANDBOX --new 2 --src $A_srcdir; Run-Ps $SANDBOX --new 2 --src $A_srcdir
@@ -175,17 +172,20 @@ try {
     Run-Shell $SANDBOX --new 1 --src $missingDir; Run-Ps $SANDBOX --new 1 --src $missingDir
     Cmp-Case 'new-missing-src' $script:SH_OUT $script:SH_RC $script:PS_OUT $script:PS_RC
 
-    Run-Shell $SANDBOX --reads $A_small --penalty $A_small 1.5
-    Run-Ps    $SANDBOX --reads $A_small --penalty $A_small 1.5
+    Run-Shell $SANDBOX --full-reads $A_small --penalty $A_small 1.5
+    Run-Ps    $SANDBOX --full-reads $A_small --penalty $A_small 1.5
     Cmp-Case 'penalty-present' $script:SH_OUT $script:SH_RC $script:PS_OUT $script:PS_RC
 
     $absent = Join-Path $WORK 'absent.py'
-    Run-Shell $SANDBOX --reads $A_small --penalty $absent 1.5
-    Run-Ps    $SANDBOX --reads $A_small --penalty $absent 1.5
+    Run-Shell $SANDBOX --full-reads $A_small --penalty $absent 1.5
+    Run-Ps    $SANDBOX --full-reads $A_small --penalty $absent 1.5
     Cmp-Case 'penalty-absent-errors' $script:SH_OUT $script:SH_RC $script:PS_OUT $script:PS_RC -MustError
 
-    Run-Shell $LOWTB --reads $A_medium; Run-Ps $LOWTB --reads $A_medium
-    Cmp-Case 'config-size-penalty' $script:SH_OUT $script:SH_RC $script:PS_OUT $script:PS_RC
+    Run-Shell $CFGBOX --full-reads $A_small; Run-Ps $CFGBOX --full-reads $A_small
+    Cmp-Case 'config-three-keys' $script:SH_OUT $script:SH_RC $script:PS_OUT $script:PS_RC
+
+    Run-Shell $LEGBOX --full-reads $A_small; Run-Ps $LEGBOX --full-reads $A_small
+    Cmp-Case 'legacy-keys-ignored' $script:SH_OUT $script:SH_RC $script:PS_OUT $script:PS_RC
 } finally {
     Remove-Item -Recurse -Force -LiteralPath $WORK -ErrorAction SilentlyContinue
 }

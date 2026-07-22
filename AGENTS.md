@@ -50,7 +50,9 @@ Project-level settings are defined in `.bmild.toml` at the repository root. The 
 
 - `plan_folder`: (Default: `"plans/"`) Directory where BMILD's memory artifacts (specs, designs, slices) are stored. Used globally by all personas to read and write context files.
 - `user_name`: (Optional) The user's preferred name. Used by named personas (e.g., Faisal, Katrina, Sonia) to address the user personally in their conversational responses.
-- `slice_target`: (Default: `170000`) Target context token limit for sizing vertical implementation slices. Used by `bmild-planner` (Sonia) when performing Slice Budgeting to evaluate if work exceeds safe token boundaries.
+- `slice_target`: (Default: `170000`) Peak live context token budget for sizing vertical implementation slices. Used by `bmild-planner` (Sonia) when performing Slice Budgeting to evaluate if work exceeds safe per-turn occupancy.
+- `tokenizer_base`: (Default: `15000`) Fixed mandatory-context overhead (system prompt, user prompt, always-on reads) included in the peak estimate.
+- `tokenizer_multiplier`: (Default: `1.0`) Residual safety margin applied to the variable working set (reads, edits, new files, per-item overhead).
 - `commit`: (Default: `0`; `commit = 0`) Alex/Rahat completion posture. `commit = 1` requests a rich message plus one eligible local Git commit, and `commit = 2` requests the message only.
 - `format`: (Optional) Alex/Rahat commit-message format. MVP recognizes `conventional-commits`; omission uses bounded local-history inference (10-message maximum, 3 usable minimum, 60% agreement) with Conventional Commits fallback.
 - `branch`: (Default: `"current"`) Alex/Rahat commit target, either the attached current branch or the confirmed initiative slug. A required initiative switch/create is allowed only from a completely clean repository.
@@ -197,7 +199,7 @@ Do not make any modifications to any files in `external_references/` folders
 ## Documentation
 
 Keep README, AGENTS and CHANGELOG up to date as project evolves. PM defines which documentation needs to change, Dev owns the edits, and QA verifies that the resulting documentation matches implemented behaviour.
-Planner slice-budgeting references invoke the platform-native estimator directly: resolve the active `bmild-planner` skill directory for the current harness, then run `bash <planner-skill-dir>/scripts/run-budget-slice.sh` on macOS/Linux/WSL or `powershell -File <planner-skill-dir>/scripts/run-budget-slice.ps1` on Windows-native. For example, the planner skill may live under `.agents/skills/bmild-planner/` in many CLI/IDE environments or `.claude/skills/bmild-planner/` in Claude Code. The agent invoking the script already knows the host OS (its own shell tells it), so no launcher wrapper or interpreter probing is used; both scripts emit the same byte-identical TSV contract (see `plans/bash-tokenizer/system-design.md` §4 and ADR 0005).
+Planner slice-budgeting references invoke the platform-native estimator directly: resolve the active `bmild-planner` skill directory for the current harness, then run `bash <planner-skill-dir>/scripts/run-budget-slice.sh` on macOS/Linux/WSL or `powershell -File <planner-skill-dir>/scripts/run-budget-slice.ps1` on Windows-native. For example, the planner skill may live under `.agents/skills/bmild-planner/` in many CLI/IDE environments or `.claude/skills/bmild-planner/` in Claude Code. The agent invoking the script already knows the host OS (its own shell tells it), so no launcher wrapper or interpreter probing is used; both scripts emit the same byte-identical `peak_live_v2` TSV contract.
 
 ## Versioning
 

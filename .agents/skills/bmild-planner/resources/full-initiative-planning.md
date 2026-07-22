@@ -27,7 +27,7 @@ Load in this order:
 
 ## Routing heuristics (Slice budgeting)
 
-Same as Phase-Scoped Planning — run `bash <planner-skill-dir>/scripts/run-budget-slice.sh` with separate `--reads`, `--edits`, and when needed `--new` plus `--src`. OVER target → split, recut, or hand back.
+Same as Phase-Scoped Planning — run `bash <planner-skill-dir>/scripts/run-budget-slice.sh` with explicit `--full-reads` / `--symbol-reads` / `--full-edits` / `--symbol-edits` (or the `--reads` / `--edits` full-file aliases), and when needed `--new` plus `--src`. OVER target → split, recut, or hand back.
 
 ## Tasks
 

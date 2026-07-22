@@ -28,7 +28,7 @@ When recovery scope would materially shift an active Slice's acceptance criteria
 
 ## Routing heuristics (Slice budgeting)
 
-When reads, edits, or new-file estimates change, re-run `bash <planner-skill-dir>/scripts/run-budget-slice.sh` and refresh `## Slice token estimate` and Planning Notes. Same invalid-input rules as phase-scoped planning.
+When reads, edits, access roles, or new-file estimates change, re-run `bash <planner-skill-dir>/scripts/run-budget-slice.sh` (or the PowerShell twin) and refresh `## Slice token estimate` and Planning Notes. Same invalid-input rules as phase-scoped planning.
 
 ## Tasks
 

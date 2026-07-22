@@ -83,7 +83,7 @@ slice_target = 130000
 
 - `user_name` lets the named personas address you naturally. It is a small thing, but it makes a long working session less anonymous, and most models don't overuse it.
 - `plan_folder` is where BMILD keeps its memory and project artifacts, relative to the repository root. Leave it as `plans/` or anywhere else if you have a reason to keep generated project memory elsewhere.
-- `slice_target` is the target token budget Sonia uses for one implementation Slice. It is not the model’s advertised maximum context window: leave room for the agent’s instructions, repository context, tool output, reasoning, and verification. As a starting point, aim for roughly 30% of the advertised window when you want to be conservative; up to 50% is a more liberal ceiling for stable, well-understood work. Context quality degrades as a window fills, so lower is usually safer.
+- `slice_target` is the peak live context budget Sonia uses for one implementation Slice. It is not the model’s advertised maximum context window and is not a cumulative or cost estimate: leave room for the agent’s instructions, repository context, tool output, reasoning, and verification. As a starting point, aim for roughly 30% of the advertised window when you want to be conservative; up to 50% is a more liberal ceiling for stable, well-understood work. Context quality degrades as a window fills, so lower is usually safer.
 
 ## About automated commits
 
@@ -104,14 +104,14 @@ Set `format = "conventional-commits"` for that explicit message style [q.v.](htt
 
 ### About Slice sizing and tokenizer settings
 
-Sonia budgets Slices for an LLM implementation session rather than estimating human effort as an Agile story attempts to do. This is a useful distinction: an apparently small change can require too many reads, edits, and decisions to fit safely in one context window; a larger-looking change can be straightforward when the context is tight and stable. She of course prioritizes phasing and falsifiable/testable work output, that is not second-class to the context optimising approach.
+Sonia budgets Slices for an LLM implementation session rather than estimating human effort as an Agile story attempts to do. The estimator (`peak_live_v2`) predicts peak live context occupancy under code-intelligence / LSP workflows — full contract and doc reads plus capped symbol excerpts for source — so a Slice that would drive context rot can be split before Alex starts. It is not a provider cost model and does not attempt to predict cumulative or cached token totals.
 
-You do **not** need to tune the tokenizer settings on day one. Leave `slice_target` and the `tokenizer_*`, `penalty_*`, `edit_premium`, and `carry_cap` values alone unless you are deliberately calibrating the planner for a known model and repository shape. They are informed planning controls, not an exact science. The default behaviour is the right place to start.
+You do **not** need to tune the tokenizer settings on day one. The only user-facing controls are `slice_target`, `tokenizer_base`, and `tokenizer_multiplier`. Leave them alone unless you are deliberately calibrating for a known model and repository shape. Byte/token ratio, turn reserve, symbol caps, and per-item overhead are fixed by the model version.
 
-If you later want to tune the planning budget, begin with only `slice_target`: set it to a conservative implementation-session context budget for the model you actually use. Treat the resulting estimate as a signal to split, recut, or hand back work—not a promise about token consumption.
+If you later want to tune the planning budget, begin with only `slice_target`: set it to a conservative peak live context budget for the model you actually use. Treat the resulting estimate as a signal to split, recut, or hand back work—not a promise about measured token consumption.
 
 > [!NOTE]
-> Every LLM provider, model tier, and reasoning depth will have significantly different token consumption and while BMILD has a "real" tokenizer, it cannot be calibrated for every variant out there. You can tune the preferences over time, but this is not something to worry about early on. It's easier and more direct in early experience with BMILD to simply ask Sonia to combine or separate Slices as your experience and comfort dictates.
+> Every LLM provider, model tier, and reasoning depth will have significantly different token consumption and while BMILD has a planning tokenizer, it cannot be calibrated for every variant out there. Prefer per-turn peak telemetry over cumulative billing totals when refining budgets. Early on it is easier to simply ask Sonia to combine or separate Slices as your experience and comfort dictates.
 
 ## Why BMILD is different
 

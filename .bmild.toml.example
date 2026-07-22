@@ -1,8 +1,8 @@
 user_name = "Developer"     # persona will address user by this name
 plan_folder = "plans/"      # desired location relative to project root to store context memory and planning documents
-slice_target = 172000       # planner will attempt to decompose tasks to not exceed this window size
-tokenizer_base = 15000      # fixed overhead associated with system prompt, user prompt and mandatory context reads
-tokenizer_multiplier = 1.25 # buffer to apply to token consumption estimates
+slice_target = 172000       # peak live context budget for one implementation Slice
+tokenizer_base = 15000      # fixed overhead: system prompt, user prompt, mandatory context
+tokenizer_multiplier = 1.25 # residual safety margin applied to the variable working set
 commit = 0                  # 0: off; 1: message + eligible local commit; 2: message only
 # format = "conventional-commits" # omit to infer local history, then fall back here
 branch = "current"         # current | initiative
