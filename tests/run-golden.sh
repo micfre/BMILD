@@ -161,12 +161,16 @@ err_leg="$(cat /tmp/bmild-leg-err.$$)"
 rm -f /tmp/bmild-leg-err.$$
 expect_eq "legacy keys still exit 0" "$rc_leg" "0"
 expect_eq "legacy does not change target" "$(budget_val "$out_leg" target)" "120000"
-if echo "$err_leg" | grep -q 'ignoring legacy .bmild.toml keys' \
+leg_field=$(budget_val "$out_leg" legacy_keys_ignored)
+if echo "$leg_field" | grep -q 'tokenizer_ratio' \
+  && echo "$leg_field" | grep -q 'carry_cap'; then
+  ok "legacy key migration warning"
+elif echo "$err_leg" | grep -q 'ignoring legacy .bmild.toml keys' \
   && echo "$err_leg" | grep -q 'tokenizer_ratio' \
   && echo "$err_leg" | grep -q 'carry_cap'; then
   ok "legacy key migration warning"
 else
-  bad "legacy warn" "stderr=[$err_leg]"
+  bad "legacy warn" "field=[$leg_field] stderr=[$err_leg]"
 fi
 # ratio ignored: raw still bytes/4
 bytes=$(wc -c < "$FIXTURES/small.py"); exp_raw=$((bytes/4))

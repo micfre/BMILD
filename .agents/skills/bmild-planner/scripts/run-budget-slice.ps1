@@ -308,9 +308,9 @@ if ($null -ne $script:OF_TARGET) { $script:CFG_TARGET = $script:OF_TARGET }
 if ($null -ne $script:OF_BASE) { $script:CFG_BASE = $script:OF_BASE }
 if ($null -ne $script:OF_MULTIPLIER) { $script:CFG_MULTIPLIER = $script:OF_MULTIPLIER }
 
-if ($script:legacyWarn -ne "") {
-    [Console]::Error.WriteLine("Warning: ignoring legacy .bmild.toml keys ($($script:legacyWarn)). peak_live_v2 accepts only slice_target, tokenizer_base, tokenizer_multiplier; remove the obsolete keys.")
-}
+# Legacy-key stderr warning is deferred until after stdout. Writing to the
+# error stream before emission makes powershell.exe return exit code 1 and
+# some hosts drop/clear captured stdout under $ErrorActionPreference Stop.
 
 # --- new-file estimation ---
 if ($new_count -gt 0) {
@@ -410,6 +410,8 @@ Emit-Row 'turn_reserve' "$tres"
 Emit-Row 'K' "$K"
 Emit-Row 'tokenizer_base' "$base"
 Emit-Row 'tokenizer_multiplier' (ConvertTo-Fmt $mult)
+if ($script:legacyWarn -eq "") { Emit-Row 'legacy_keys_ignored' '-' }
+else { Emit-Row 'legacy_keys_ignored' $script:legacyWarn }
 Emit-Row 'estimate_confidence' 'informed_guess'
 Emit-Blank
 Emit-Line 'READS'
@@ -455,4 +457,8 @@ Emit-Row 'estimated_tokens' $estR
 
 [Console]::Out.Write($script:out.ToString())
 [Console]::Out.Flush()
+# Do not write the legacy-key migration notice to stderr here: on Windows
+# PowerShell hosts, error-stream activity makes the process exit code 1 even
+# after a successful estimate, which breaks golden/CI gates. The BUDGET field
+# legacy_keys_ignored is the portable warning channel (bash still prints stderr).
 exit 0

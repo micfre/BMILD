@@ -296,6 +296,7 @@ awk -F '\t' -v OFS='\t' \
   -v ioh="$ITEM_OVERHEAD" -v tres="$TURN_RESERVE" -v model="$MODEL_ID" \
   -v mult="$CFG_MULTIPLIER" -v base="$CFG_BASE" -v target="$CFG_TARGET" \
   -v nrd="$reads_n" -v ned="$edits_n" -v newcount="$new_count" \
+  -v legacy="$LEGACY_WARN" \
   -v PEN="$PENFILE" '
 BEGIN{
   fr=0; sr=0; fe=0; se=0; nf=0; rawtot=0
@@ -365,6 +366,7 @@ END{
   print "K", K
   print "tokenizer_base", base
   print "tokenizer_multiplier", fmt(mult)
+  print "legacy_keys_ignored", (legacy == "" ? "-" : legacy)
   print "estimate_confidence", "informed_guess"
   print ""
   print "READS"

@@ -34,16 +34,25 @@ function Run-Est {
     $script:RUN_OUT = ""
     $script:RUN_RC = 0
     $script:RUN_ERR = ""
+    $lines = @()
     $errTmp = [System.IO.Path]::GetTempFileName()
+    # pwsh may treat native non-zero exit as terminating under Stop; legacy
+    # stderr warnings must not wipe captured stdout.
+    $prevNative = $null
+    if (Test-Path variable:PSNativeCommandUseErrorActionPreference) {
+        $prevNative = $PSNativeCommandUseErrorActionPreference
+        $PSNativeCommandUseErrorActionPreference = $false
+    }
     try {
-        # Capture stderr to a file so legacy-key warnings are available to
-        # assertions without going through the parent's error stream.
         $lines = & $script:PS_EXE -NoProfile -File $ESTIMATOR @InvArgs 2>$errTmp
         if ($null -eq $LASTEXITCODE) { $script:RUN_RC = 0 } else { $script:RUN_RC = $LASTEXITCODE }
     } catch {
         $script:RUN_RC = 1
-        $lines = @()
         if ($script:RUN_ERR -eq "") { $script:RUN_ERR = "$_" }
+    } finally {
+        if ($null -ne $prevNative) {
+            $PSNativeCommandUseErrorActionPreference = $prevNative
+        }
     }
     if ($null -eq $lines) { $lines = @() }
     $script:RUN_OUT = ($lines -join "`n") -replace "`r", ""
@@ -191,15 +200,24 @@ Remove-Item -Recurse -Force -LiteralPath $box2 -ErrorAction SilentlyContinue
 # --- legacy keys ---
 $box3 = Join-Path ([System.IO.Path]::GetTempFileName().TrimEnd('.tmp')) 'bmild-leg'
 $null = New-Item -ItemType Directory -Force -Path $box3
-[System.IO.File]::WriteAllText((Join-Path $box3 '.bmild.toml'), "tokenizer_ratio = 8.0`ncarry_cap = 1.5`nedit_premium = 9.0`npenalty_cap = 3.0`nslice_target = 120000`n")
+# ASCII encoding avoids a UTF-8 BOM that some PS 5.1 Get-Content paths mishandle
+# on the first key; slice_target must still apply.
+[System.IO.File]::WriteAllText(
+    (Join-Path $box3 '.bmild.toml'),
+    "tokenizer_ratio = 8.0`ncarry_cap = 1.5`nedit_premium = 9.0`npenalty_cap = 3.0`nslice_target = 120000`n",
+    [System.Text.UTF8Encoding]::new($false)
+)
 Push-Location $box3
 try { Run-Est '--full-reads' $smallpy } finally { Pop-Location }
 Expect-Eq 'legacy keys still exit 0' "$($script:RUN_RC)" '0'
 Expect-Eq 'legacy does not change target' (Budget-Val $script:RUN_OUT 'target') '120000'
-if ($script:RUN_ERR -match 'ignoring legacy .bmild.toml keys' -and $script:RUN_ERR -match 'tokenizer_ratio' -and $script:RUN_ERR -match 'carry_cap') {
+$legField = Budget-Val $script:RUN_OUT 'legacy_keys_ignored'
+if ($legField -match 'tokenizer_ratio' -and $legField -match 'carry_cap') {
+    Ok 'legacy key migration warning'
+} elseif ($script:RUN_ERR -match 'ignoring legacy .bmild.toml keys' -and $script:RUN_ERR -match 'tokenizer_ratio' -and $script:RUN_ERR -match 'carry_cap') {
     Ok 'legacy key migration warning'
 } else {
-    Bad 'legacy warn' "stderr=[$($script:RUN_ERR)]"
+    Bad 'legacy warn' "field=[$legField] stderr=[$($script:RUN_ERR)]"
 }
 Expect-Eq 'legacy ratio ignored' (Row-Cell $script:RUN_OUT 'READS' $smallpy 3) "$expRaw"
 Remove-Item -Recurse -Force -LiteralPath $box3 -ErrorAction SilentlyContinue
