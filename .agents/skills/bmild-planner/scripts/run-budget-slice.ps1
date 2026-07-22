@@ -49,7 +49,7 @@ $script:records = New-Object System.Collections.ArrayList
 $script:skipped = New-Object System.Collections.ArrayList
 $script:pen = @{}
 $script:seenPaths = @{}
-$script:legacyKeys = New-Object System.Collections.ArrayList
+$script:legacyWarn = ""
 
 $script:out = New-Object System.Text.StringBuilder
 
@@ -126,8 +126,15 @@ function Find-BmildToml([string]$startDir) {
 }
 
 function Note-Legacy([string]$key) {
-    if (-not $script:legacyKeys.Contains($key)) {
-        $null = $script:legacyKeys.Add($key)
+    # Mirror the POSIX note_legacy string accumulator (no ArrayList.Contains).
+    if ($script:legacyWarn -ne "") {
+        foreach ($part in ($script:legacyWarn -split ' ')) {
+            if ($part -eq '') { continue }
+            if ($part -eq $key) { return }
+        }
+        $script:legacyWarn = $script:legacyWarn + " " + $key
+    } else {
+        $script:legacyWarn = $key
     }
 }
 
@@ -301,9 +308,8 @@ if ($null -ne $script:OF_TARGET) { $script:CFG_TARGET = $script:OF_TARGET }
 if ($null -ne $script:OF_BASE) { $script:CFG_BASE = $script:OF_BASE }
 if ($null -ne $script:OF_MULTIPLIER) { $script:CFG_MULTIPLIER = $script:OF_MULTIPLIER }
 
-if ($script:legacyKeys.Count -gt 0) {
-    $joined = ($script:legacyKeys -join ' ')
-    [Console]::Error.WriteLine("Warning: ignoring legacy .bmild.toml keys ($joined). peak_live_v2 accepts only slice_target, tokenizer_base, tokenizer_multiplier; remove the obsolete keys.")
+if ($script:legacyWarn -ne "") {
+    [Console]::Error.WriteLine("Warning: ignoring legacy .bmild.toml keys ($($script:legacyWarn)). peak_live_v2 accepts only slice_target, tokenizer_base, tokenizer_multiplier; remove the obsolete keys.")
 }
 
 # --- new-file estimation ---

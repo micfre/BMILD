@@ -36,16 +36,20 @@ function Run-Est {
     $script:RUN_ERR = ""
     $errTmp = [System.IO.Path]::GetTempFileName()
     try {
+        # Capture stderr to a file so legacy-key warnings are available to
+        # assertions without going through the parent's error stream.
         $lines = & $script:PS_EXE -NoProfile -File $ESTIMATOR @InvArgs 2>$errTmp
-        $script:RUN_RC = $LASTEXITCODE
+        if ($null -eq $LASTEXITCODE) { $script:RUN_RC = 0 } else { $script:RUN_RC = $LASTEXITCODE }
     } catch {
         $script:RUN_RC = 1
         $lines = @()
+        if ($script:RUN_ERR -eq "") { $script:RUN_ERR = "$_" }
     }
     if ($null -eq $lines) { $lines = @() }
     $script:RUN_OUT = ($lines -join "`n") -replace "`r", ""
     if (Test-Path -LiteralPath $errTmp) {
-        $script:RUN_ERR = ([System.IO.File]::ReadAllText($errTmp) -replace "`r", "")
+        $errText = ([System.IO.File]::ReadAllText($errTmp) -replace "`r", "")
+        if ($errText -ne "") { $script:RUN_ERR = $errText }
         Remove-Item -Force -LiteralPath $errTmp -ErrorAction SilentlyContinue
     }
 }
