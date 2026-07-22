@@ -21,6 +21,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Replaced rigid persona opening and closing templates with shared semantic contracts: first-turn openings use a plain identity rail plus a SOUL-derived stance (no "I'll work on…" filler; no persona traits duplicated into core), and final-turn closes use ordinary Markdown with literal `For you:` / `Next:` labels and explicit anti-fence/blockquote/italics rendering rules. Alex/Rahat commit reporting is compacted to one outcome line (plus a fenced message only when message-only). Guarded by `tests/session-wrapper-contract.sh` and extended `tests/commit-posture-contract.sh`.
+
 - Consolidated bmild-qa from six modes to five by absorbing Diagnostic into Spec-Fix (tracked entry context: named Slice, `rca-<slug>`, or verification-matrix item) and Direct-Fix (outside tracked context). Both modes are self-contained RCA → Fix Election → repair-and-commit or handoff flows. Mode axis is structural, not intent-based; "diagnose"-phrased requests match by bug signals, and diagnosis-only intent is honored by declining the election. Version `0.3.1` → `0.4.0`.
 
 - Completed Slice 3 of `enhance-interactivity`: Elicit now resolves each active named BMILD persona's sibling `SOUL.md` as its sole voice source, Roundtable mines loaded SOULs for attendee sign-offs, and the ADR 0003 consumer note is routed to Lance. All seven standard personas may use `user_name` naturally when helpful; Alex now has declinable pre-exit stress-test offers. PM, UX, Architecture, and Security stakes flows may compress only for demonstrably crisp, complete answers, while Brainstorming and Elicit avoid quota- and menu-driven filler.

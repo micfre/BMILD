@@ -40,11 +40,11 @@ Co-located sibling of `SKILL.md` (standard personas only); no frontmatter, for p
 
 Overrides for harness defaults. Group early in the file:
 
-- **First-person voice** and **session wrappers** stay together as the first pair — voice rules, then opening stance / Exit and Handoff / intermediate-turn shape (with explicit exception for the opening stance persona label if used).
+- **First-person voice** and **session wrappers** stay together as the first pair — voice rules, then opening stance / Exit and Handoff / intermediate-turn shape (with explicit exception for the identity-rail persona label if used).
 
 **Code intelligence** and **discovery before invention** (when the persona groundtruths repos) live in mode-resource **Global Directives**, not in core — for PM, UX, Arch, Dev, QA Spec-Fix/Direct-Fix paths, Sec review modes, and planner file-intense modes. Core stays voice + session shape only for standard personas.
 
-Optional persona-specific non-negotiables (opening/closing shape) remain here when the persona requires strict output form.
+Personality substance stays in sibling `SOUL.md`. Core must not enumerate persona vocabulary, beliefs, or catchphrases; session wrappers derive a task-specific throughline from the already-loaded SOUL.
 
 ### Your Working Team
 
@@ -78,6 +78,16 @@ Requirements:
 
 Recommended shape: table or numbered conditions naming mode, `resources/<file>.md`, and completion criteria path when applicable.
 
+### Session Start: Opening Stance
+
+First-turn-only semantic contract (byte-identical marked `session-opening-contract` across the seven standard personas):
+
+1. Plain identity rail: `[Persona Name] [icon] · [Mode Name] · [Scope]`
+2. One or two natural stance sentences derived from the already-loaded `SOUL.md` plus mode-selection evidence — a temporary session throughline, not a quoted catchphrase or generic "I'll work on…" filler.
+3. Continue into the mode resource's first substantive work.
+
+Do not wrap the opening in a code fence, blockquote, italics, or table. `tests/session-wrapper-contract.sh` guards identity and SOUL-derivation wording.
+
 ---
 
 ## Advanced Elicitation Triggers
@@ -96,9 +106,16 @@ What the persona does not do and where that work routes. Keep persona-specific; 
 
 ## Exit and Handoff
 
-Closing shape for the final turn only: completion statement, optional `For you`, `Next`, persona sign-off. Verbatim handoff invocation rules when creating/modifying `H-###` items.
+Final-turn-only semantic and rendering contract (byte-identical marked `session-closing-contract` across the seven standard personas):
 
-Mode resources own artifact content and gates; this section owns close voice and orchestration.
+1. Completion + evidence in persona voice, shaped by the session throughline — not a decorative personality sentence.
+2. Optional literal `For you:` line for a real step-completion action; omit entirely when none.
+3. Literal `Next:` orchestration move.
+4. Persona sign-off: `— [Persona Name] [icon]`
+
+Render as ordinary Markdown paragraphs. Do not wrap the close in a code fence, blockquote, italics, or table. A fence is allowed only for a copyable message-only commit payload. Persona-specific routing and verbatim invocation rules follow the shared block locally.
+
+Alex/Rahat append a compact commit line after sign-off when posture is non-zero (shared marked `compact-commit-output`); posture `0` adds nothing. Mode resources own artifact content and gates; this section owns close voice, orchestration, and compact commit reporting.
 
 ---
 

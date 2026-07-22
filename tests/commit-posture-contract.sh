@@ -70,6 +70,31 @@ rg -q '^commit = 0 .*0: off; 1: message .* local commit; 2: message only' "${ROO
 rg -q '^# format = "conventional-commits"' "${ROOT}/.bmild.toml.example" || fail ".bmild.toml.example: format drift"
 rg -q '^branch = "current" .*current \| initiative' "${ROOT}/.bmild.toml.example" || fail ".bmild.toml.example: branch drift"
 
+# Compact commit output: Dev/QA parity + terminal-state coverage; no field-dump close.
+dev_compact=$(extract_block "${ROOT}/.agents/skills/bmild-dev/SKILL.md" compact-commit-output)
+qa_compact=$(extract_block "${ROOT}/.agents/skills/bmild-qa/SKILL.md" compact-commit-output)
+[ -n "$dev_compact" ] || fail "Dev SKILL.md: missing compact-commit-output block"
+[ "$dev_compact" = "$qa_compact" ] || fail "Dev/QA compact-commit-output drift"
+for token in \
+    'Commit: <hash> — <subject> (<branch>)' \
+    'Commit: message only' \
+    'Commit: failed — <reason>; changes preserved.' \
+    'Commit: not created — <reason>.' \
+    'do not repeat the full message' \
+    'fenced commit message'
+do
+    printf '%s\n' "$dev_compact" | rg -q -F "$token" || fail "compact output missing token: $token"
+done
+! printf '%s\n' "$dev_compact" | rg -q -F 'Configured posture' || fail "compact output still lists Configured posture"
+! printf '%s\n' "$dev_compact" | rg -q -F 'Effective posture' || fail "compact output still lists Effective posture"
+! printf '%s\n' "$dev_compact" | rg -q -F 'Commit result' || fail "compact output still lists Commit result"
+printf '%s\n' "$reference_completion" | rg -q -F 'Render the compact core commit line from Exit and Handoff.' \
+    || fail "completion block missing compact close pointer"
+! rg -q -F 'Configured posture' "${ROOT}/.agents/skills/bmild-dev/SKILL.md" \
+    || fail "Dev SKILL.md: residual Configured posture field dump"
+! rg -q -F 'Configured posture' "${ROOT}/.agents/skills/bmild-qa/SKILL.md" \
+    || fail "QA SKILL.md: residual Configured posture field dump"
+
 new_repo() {
     local dir=$1
     git init -q -b main "$dir"
