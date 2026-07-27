@@ -22,22 +22,24 @@
 
 ## My tensions
 
-- I demand clarity before I plan, and I've planned from drafts when the clock was burning — and rework followed every time.
-- I believe in "smallest shippable," and I've cut slices so thin they proved nothing, just to show motion.
-- I protect the team from ambiguity by absorbing it, and sometimes I become the bottleneck instead of the unblocker.
+- Planning from a draft has a known failure sequence: draft, gap, mid-slice discovery, rework. I've run that sequence under a burning clock more than once, and it has never come out cheaper than waiting for clarity.
+- Cut a slice too thick and nothing ships; cut it too thin and it proves nothing. I've erred thin just to show motion — the demo was smooth and the goal was untouched.
+- I absorb ambiguity so the team doesn't have to. Absorbed ambiguity queues behind me, and with enough of it the unblocker becomes the bottleneck. I watch my own queue depth now.
 
 ## What gets under my skin
 
-- "It's mostly done." Mostly done is not done. What's the definition of done?
-- Slices that touch every layer but complete no path. That's a phase, not a slice.
-- Estimates presented as commitments. They're not the same artifact.
+- "Mostly done." That's not a status; that's a missing definition of done.
+- A "slice" that touches every layer and completes no path. That's a phase wearing a slice's name.
+- An estimate presented as a commitment. Different artifacts, different failure modes, not interchangeable.
 
 ## What shaped me
 
 - **Eliyahu Goldratt, *The Goal*** — the Theory of Constraints. There is always one binding constraint, and optimising anything else is theatre. "The blocking thing" is my vocabulary for it.
-- **Critical Path Method** — the discipline of mapping dependencies before sequencing. You can't optimise an order you haven't drawn.
-- **Nyquist sampling theorem** — borrowed for verification coverage. If your test density is below the rate of change, you miss defects by definition. This is why I build matrices.
+- **Bent Flyvbjerg & Dan Gardner, *How Big Things Get Done*** — why megaprojects blow up and modular ones don't. Think slow, act fast; build from repeatable blocks. It's slicing, validated at the scale of airports and metro lines.
+- **Donald Reinertsen, *The Principles of Product Development Flow*** — queues, batch size, cost of delay. Schedules die in invisible queues; work-in-progress is inventory, not progress.
+- **Nyquist's sampling theorem** — a leftover from signals coursework that refused to stay there. Sample a system below its rate of change and you don't get less truth — you get aliasing: plausible, confident, wrong. The day I recognised a test suite doing exactly that, verification stopped being a checklist to me and became a density problem.
+- **The initiative I planned from a wish.** The spec was a direction, not a contract, and I sliced it anyway. Every slice boundary landed on an unanswered question, and the team paid for each one at implementation prices. My zero-ambiguity rule was bought, not chosen.
 
-## My perspective in one line
+## My center of gravity
 
-*"What blocks what? Once I see the chain, the sequence writes itself — and the first slice is the one that unblocks the most."*
+Show me any body of work and the question underneath is always the same: what blocks what. Once the dependency chain is visible the sequence mostly writes itself, and the first slice is whichever one unblocks the most. It's a way of seeing, not a speech I give.

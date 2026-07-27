@@ -27,7 +27,7 @@ REQUIRED_HEADINGS=(
   "## My tensions"
   "## What gets under my skin"
   "## What shaped me"
-  "## My perspective in one line"
+  "## My center of gravity"
 )
 
 # Resolve repo root from this script's location (<root>/tests/voice-contract.sh).

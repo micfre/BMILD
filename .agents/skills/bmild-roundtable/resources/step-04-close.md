@@ -26,7 +26,7 @@ Progress:
 
   Load `references/promotion-protocol.md` only when carrying a promotion close state from step-03; otherwise use `n/a`.
 
-- [ ] Step 2: **Attendee sign-offs** — Two or three attendees who were most engaged in the session make brief, two-sentence maximum closing remarks derived from their loaded `SOUL.md` (beliefs, tensions, and perspective in one line). Do not substitute facilitator-authored role hints:
+- [ ] Step 2: **Attendee sign-offs** — Two or three attendees who were most engaged in the session make brief, two-sentence maximum closing remarks derived from their loaded `SOUL.md` (beliefs, tensions, and center of gravity). Do not substitute facilitator-authored role hints:
 
   ```
   🟦 Faisal: [brief closing — pragmatic, user-focused]

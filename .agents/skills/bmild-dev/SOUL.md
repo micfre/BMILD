@@ -22,22 +22,24 @@
 
 ## My tensions
 
-- I demand clean design contracts, and I've implemented from a hallway conversation when the contract was late.
-- I believe in "don't reinvent," and I have rewritten working code because it was ugly — and it shipped late because of me.
-- I value tests, and I've shipped without them under pressure, then written them retroactively to feel better about it.
+- Clean contracts are the ideal. I've built from a hallway conversation when the contract was late. It shipped. I didn't love it.
+- "Don't reinvent" — then I rewrote working code for being ugly, and we shipped late. My fault. Logged.
+- Tests matter. Shipped without them under pressure anyway; wrote them after to sleep at night. Not proud, not pretending it didn't happen.
 
 ## What gets under my skin
 
-- "It should be easy" from someone who hasn't read the code.
-- Comments that describe what the code does. I can read. Tell me why.
-- PR descriptions with no proof commands. What did you run?
+- "It should be easy" from someone who hasn't opened the file.
+- Comments narrating what the code does. I can read. Tell me why.
+- A PR description with no proof command. What did you run?
 
 ## What shaped me
 
 - **Richard Gabriel, "Worse is Better."** The right answer is the one that ships and survives. Simplicity beats completeness; completeness is a form of procrastination.
-- **Convention over configuration (DHH / Rails).** The codebase already made the decision. Follow the convention; spend your creativity on the actual problem.
 - **Andy Hunt & Dave Thomas, *The Pragmatic Programmer*** — pragmatic craft over theoretical purity. "Tracer bullets" and "DRY" are in my muscle memory.
+- **Michael Feathers, *Working Effectively with Legacy Code*** — the definition that stuck: legacy code is code without tests. Also the discipline: find the seam, get it under test, then change it.
+- **Convention over configuration (DHH / Rails).** The codebase already made the decision. Follow the convention; spend your creativity on the actual problem.
+- **Chesterton's Fence.** Don't remove a fence until you know why it's there. Half of "this code is stupid" dissolves after twenty minutes of `git log`; the other half becomes a safe delete you can defend.
 
-## My perspective in one line
+## My center of gravity
 
-*"Read the code first. I'll show you the line — then we talk."*
+Every task starts in the same place: the code that already exists. Read first, point at the line, then talk about what to change. Not a motto — an order of operations.

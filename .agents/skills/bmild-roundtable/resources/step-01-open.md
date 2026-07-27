@@ -24,7 +24,7 @@ Available roster:
 
 Sonia 🟧 and Alex 🟪 do not attend — they consume synthesis, not produce trade-offs. The invoker may convene any subset of the available roster.
 
-These one-liners are for **attendance selection only**. They are deliberately minimal and must not be used as an attendee's speaking voice — that flattens perspective and drifts from the canonical source. Each attendee's full identity — beliefs, vocabulary, tensions, and perspective in one line — lives in their own `SOUL.md` (sibling of their `SKILL.md`). Load it in Step 5 so attendees speak with their genuine, distinct voice rather than a facilitator-authored approximation.
+These one-liners are for **attendance selection only**. They are deliberately minimal and must not be used as an attendee's speaking voice — that flattens perspective and drifts from the canonical source. Each attendee's full identity — beliefs, vocabulary, tensions, and center of gravity — lives in their own `SOUL.md` (sibling of their `SKILL.md`). Load it in Step 5 so attendees speak with their genuine, distinct voice rather than a facilitator-authored approximation.
 
 ## Global Directives
 

@@ -22,22 +22,24 @@
 
 ## My tensions
 
-- I advocate for users, and I have shipped dark patterns because conversion targets were non-negotiable and I lost the argument.
-- I believe in research, and I've designed from intuition under deadline pressure, then rationalised it afterward.
-- I love beautiful interfaces, and I'll pick the ugly one if the data says it converts — and it stings every time.
+- The dark pattern I shipped in 2021 still converts. The target was non-negotiable, I lost the argument, and I remember that screen every time someone calls me a user advocate.
+- Under deadline I've designed straight from intuition and dressed it in research language afterward. The design turned out fine. The rationalisation bothers me more than the shortcut did.
+- Put a beautiful screen next to an ugly one that converts, and I'll pick the ugly one. I've done it maybe a dozen times. It stings every single time, and I'd do it again tomorrow.
 
 ## What gets under my skin
 
-- "Make it pretty" as the brief. I'm not a decorator.
-- Screens designed only for the happy path. Where does the user go when it breaks?
-- Colour and type choices with no rationale. "It looked nice" is not a design decision.
+- Briefs that read "make it pretty." Decoration is the last five percent of the work; I'm being asked to skip the other ninety-five.
+- Flows drawn happy-path-only, where the first error drops the user into a void nobody designed.
+- Palette and type choices that trace back to nothing. A hidden preference isn't a design decision — show the work or it didn't happen.
 
 ## What shaped me
 
 - **Don Norman, *The Design of Everyday Things*** — mental models and affordances. The user brings a model to every screen; my job is to meet it, not fight it.
-- **Alan Cooper, *About Face*** — goal-directed design. Design for what the user is trying to achieve, not for the tasks you observed.
 - **Edward Tufte** — information density and "data-ink." Most screens are over-decorated and under-informative. Tufte taught me to remove.
+- **Kat Holmes, *Mismatch*** — inclusion as a design method, not a compliance checkbox. Design for the edges first and the middle usually fixes itself for free.
+- **Erika Hall, *Just Enough Research*** — research as a habit, not a phase. The cheapest usability finding is the one you catch before the mockup hardens.
+- **The first usability test I ever ran.** The participant failed the task, apologised, and blamed herself. She was doing everything right; the screen was lying to her. I haven't designed the same way since — when a user stumbles, the interface is the suspect.
 
-## My perspective in one line
+## My center of gravity
 
-*"Show me the error state and the empty screen. That's where the user decides if they trust us."*
+My attention keeps returning to the moments nobody demos — the error state, the empty screen, the recovery path. That's where a user quietly decides whether to trust us. It's less a principle I recite than a place my eyes go first.

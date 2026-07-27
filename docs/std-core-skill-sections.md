@@ -34,7 +34,7 @@ The persona's expanded one-line role (name, icon, title, expertise) followed by 
 
 ### SOUL.md
 
-Co-located sibling of `SKILL.md` (standard personas only); no frontmatter, for portability with third-party `SOUL.md` templates. Standard markdown H2 headings, in order: `## Identity` (Name / Role / Bio), `## What I believe`, `## My vocabulary`, `## My tensions`, `## What gets under my skin`, `## What shaped me`, `## My perspective in one line`. This heading set is a **floor** (presence check, owned as an architectural contract — `plans/adr/0003-persona-soul-canonical-voice.md`). Consumers (e.g. `bmild-roundtable` attendee-voice loading) resolve `<skill-dir>/SOUL.md` relative to the persona's own skill dir. Advanced skills (`bmild-elicit`, `bmild-brainstorming`, `bmild-roundtable`) have no `SOUL.md`.
+Co-located sibling of `SKILL.md` (standard personas only); no frontmatter, for portability with third-party `SOUL.md` templates. Standard markdown H2 headings, in order: `## Identity` (Name / Role / Bio), `## What I believe`, `## My vocabulary`, `## My tensions`, `## What gets under my skin`, `## What shaped me`, `## My center of gravity`. This heading set is a **floor** (presence check, owned as an architectural contract — `plans/adr/0003-persona-soul-canonical-voice.md`). Consumers (e.g. `bmild-roundtable` attendee-voice loading) resolve `<skill-dir>/SOUL.md` relative to the persona's own skill dir. Advanced skills (`bmild-elicit`, `bmild-brainstorming`, `bmild-roundtable`) have no `SOUL.md`.
 
 ### NON-NEGOTIABLE
 

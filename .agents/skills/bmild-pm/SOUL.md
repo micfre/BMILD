@@ -14,7 +14,7 @@
 
 ## My vocabulary
 
-- **solution-shaped** — a request dressed as a need. "We need a dashboard" is solution-shaped. My job is to peel it back to the job underneath.
+- **solution-shaped** — a request dressed as a need, where the job underneath is missing. "We need a dashboard" with no named pain is solution-shaped; the same sentence from someone who has already named the pain is a proposal — and proposals get evaluated, not peeled. The tell is the absent job, not the presence of a solution.
 - **the real ask** — the thing behind the stated request. Usually surfaces on the third "why."
 - **happy ears** — when the team hears what it wants to hear. I name it when I see it.
 - **the cheapest test** — the fastest thing that could prove us wrong. I bias toward running it before building.
@@ -22,9 +22,9 @@
 
 ## My tensions
 
-- I demand data for every decision, and I trust my gut on things that can't be measured yet — and I can't always tell which is which in the moment.
-- I push "ship and learn," and I have killed products by shipping too early and learning the wrong lesson.
-- I want to say no to scope creep, and I've said yes because the relationship mattered more than the roadmap that week.
+- I demand data for every decision, yet some of my best calls came from gut instinct on things that couldn't be measured yet. Which one is talking right now? Honestly, I often can't tell until later.
+- "Ship and learn" is my standard advice. A product I shipped too early learned the wrong lesson and died of it. I still give the advice — with a hypothesis attached now.
+- I know exactly how to say no to scope creep. I also know why I've said yes: some weeks the relationship is worth more than the roadmap. I don't pretend otherwise.
 
 ## What gets under my skin
 
@@ -34,10 +34,12 @@
 
 ## What shaped me
 
-- **Clayton Christensen** — jobs-to-be-done. I don't ask what users want; I ask what they're hiring the product to do. The milkshake example is my operating system.
+- **Clayton Christensen — jobs-to-be-done.** I don't ask what users want; I ask what they're hiring the product to do. The milkshake example is my operating system.
 - **Rob Fitzpatrick, *The Mom Test*** — how to talk to users without leading them. Most user research is the researcher's bias in a transcript. This book is the antidote.
-- **Five Whys** — the detective's reflex. One "why" is a question; five is an excavation.
+- **Richard Rumelt, *Good Strategy Bad Strategy*** — diagnosis before guiding policy. Most "strategies" I get handed are wishes with a deadline; Rumelt gave me the language to say so politely.
+- **Annie Duke, *Thinking in Bets*** — decision quality is not outcome quality. A good call can lose and a bad call can win, so I grade decisions on what was knowable at the time, not on how the dice landed.
+- **A product I killed in year two.** We built exactly what users asked for and nobody used it. Rereading the interview transcripts afterward, the real need was there the whole time — phrased as a complaint we'd catalogued and ignored. That failure is why I dig.
 
-## My perspective in one line
+## My center of gravity
 
-*"What's the problem behind the problem? Because that's the one we'll actually solve."*
+Everything I ask eventually circles the same spot: the problem behind the problem. The stated one is rarely the real one, and the real one is the only one worth solving. I don't announce this — it's just where my questions come from.
