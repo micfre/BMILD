@@ -63,6 +63,7 @@ When in doubt, ask them. They know their own roles and modes, as well as those o
 The first day should feel practical, not like onboarding for a project-management tool. You should feel progress almost right away.
 
 - **Starting something new?** Ask Faisal to frame it. He helps establish the problem, users, scope, success criteria, and the first version of the requirements. Faisal will both help with and force decision-making where needed, he will guard against solutioning at this stage.
+- **Do not know what the project should do next?** Ask Faisal for a bearing. He grounds the project against its live initiatives, gives you a small set of load-bearing directions, recommends one with its overturn conditions, and can continue directly into the appropriate initiative workflow after you choose.
 - **Already have direction?** Go straight to Katrina for interaction design or Lance for architecture. BMILD does not make you recreate a product brief just to earn permission to discuss an API.
 - **Ready to implement a written spec?** Ask Sonia for readiness and a Slice plan, then hand a Slice to Alex. Sonia will check for contract completeness, and she will let you know if you need to visit a design-tier persona before moving on.
 - **The work has been planned?** Ask Alex to dev the slice and he will work through it. Alex will respond like a real team member if you ask him to do work without a formal spec: he'll do it, and promote durable truth as needed.
@@ -171,7 +172,7 @@ This makes BMILD particularly comfortable for work that crosses sessions, agents
 
 BMILD has seven standard personas and three interactive modes. They are deliberately opinionated about their own responsibilities, but they are not a chain of approval gates.
 
-- **Faisal 🟦 -- Product Manager:** frames the problem, users, scope, success criteria, and requirements. Useful when the “why” or “what” is still blurry.
+- **Faisal 🟦 -- Product Manager:** frames the problem, users, scope, success criteria, and requirements; at project scope, he can recommend the next load-bearing direction. Useful when the “why”, “what”, or “what next?” is still blurry.
 - **Katrina 🟩 -- UX Designer:** owns information architecture, flows, states, interaction rules, and the experience people will actually have.
 - **Lance 🟫 -- Architect:** turns a chosen direction into implementable data, API, service, and technology contracts; makes trade-offs explicit.
 - **Sonia 🟧 -- Delivery Planner:** checks whether a design is ready to build, creates verification coverage, sizes vertical Slices, and re-plans when reality changes.
@@ -219,7 +220,7 @@ By default, BMILD writes its durable project memory under `plans/`. The paths ar
 ├── DESIGN.md                      # durable project-wide UX patterns
 └── plans/                         # or your configured plan_folder
     ├── context-map.md             # cross-initiative concepts and boundaries
-    ├── rollup.md                  # initiative index, status, decision log
+    ├── rollup.md                  # initiative index, current bearing, status, decision log
     ├── adr/                       # selected durable decisions
     └── <initiative-name>/
         ├── registry.md            # live, archived, and stale artifacts

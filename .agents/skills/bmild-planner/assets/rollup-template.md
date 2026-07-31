@@ -4,7 +4,18 @@ title: "<short display name>"
 description: "<one-line summary>"
 timestamp: YYYY-MM-DD
 owner: Sonia (Planner)
+bearing_owner: Faisal (PM)
 ---
+
+<!-- Add after the user selects a project-level direction:
+
+## Current Bearing
+
+- Direction: <the next load-bearing project lift>
+- Why now: <what it unlocks or risk it retires>
+- Set: YYYY-MM-DD
+- Reconsider when: <specific evidence or condition>
+-->
 
 ## Initiative Registry
 

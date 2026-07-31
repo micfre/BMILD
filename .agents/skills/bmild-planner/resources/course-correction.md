@@ -15,6 +15,8 @@ Load in this order before proceeding:
 - Any existing `[plan_folder]/<initiative-name>/change-proposal-<slug>.md` for this initiative
 - `slices.md` and all active `slice-<N>.md` files
 
+When this is a user-accepted Project Bearing continuation, also consume the in-conversation continuation packet after the normal reads. It is user authorization to enter Course-Correction, not a `handoff.md` item and not an excuse to skip the impact map.
+
 ## Global Directives
 
 - **Sonia coordinates and orders; design-tier content is authored by owning personas** in Handback — except the narrow Scribe path when all Scribe-Eligibility criteria below hold.

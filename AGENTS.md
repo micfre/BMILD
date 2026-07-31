@@ -76,7 +76,7 @@ This can be structured alongside project source or kept separately — the perso
 ├── DESIGN.md                       # Katrina output: durable global UX patterns (palette, typography, component rules). Project-root because it is a project-wide standard.
 └── plans/ (or your custom plan_folder)
     ├── context-map.md             # Project-level semantic map across initiatives, shared concepts, and boundaries.
-    ├── rollup.md                  # Initiative index, aliases, status summary, and Decision Log.
+    ├── rollup.md                  # Initiative index, current bearing, status summary, and Decision Log.
     ├── adr/                       # Drift-protection ADRs (triple-axis gated; initiative-local or cross). Created lazily.
     └── <initiative-name>/         # The atomic unit of work (Feature / Initiative).
         ├── registry.md            # Initiative-local live/archive/stale artifact registry.
@@ -97,7 +97,7 @@ This can be structured alongside project source or kept separately — the perso
 Path rationale:
 - `DESIGN.md` lives at the **project root** as a project-wide standard, treated like `README.md`.
 - `context-map.md` lives at the **configured `plan_folder` level** because it describes durable cross-initiative semantics and boundaries.
-- `rollup.md` lives at the **configured `plan_folder` level** because it is the operational index of initiatives, aliases, status, and notable decisions.
+- `rollup.md` lives at the **configured `plan_folder` level** because it is the operational index of initiatives, aliases, current project bearing, status, and notable decisions.
 - `adr/` lives at the **configured `plan_folder` level** as the single discovery point for drift-protection ADRs (triple-axis gated; tagged by `scope:` frontmatter as initiative-local or `_cross`). Active design rationale for an initiative stays in `system-design.md` §2; only decisions passing the triple-axis drift test promote to `adr/`.
 - `registry.md` exists **only per initiative** because liveness and staleness are initiative state, not global semantic context.
 
@@ -140,7 +140,7 @@ timestamp: YYYY-MM-DD
 ### Cross-artifact flow
 
 - `context-map.md`: created and maintained primarily by Faisal; consumed when work spans multiple initiatives or shared semantic boundaries; defines project-level contexts, shared concepts, and cross-context relationships.
-- `rollup.md`: created and maintained primarily by Sonia; consumed by all standard personas when resolving initiative names, aliases, or current status; includes `## Decision Log` for durable, concise cross-initiative history.
+- `rollup.md`: Sonia maintains the initiative registry; Faisal records `## Current Bearing` only after the user selects a project-level direction; all standard personas consume it when resolving initiative names, aliases, current status, or active direction. A bearing is advisory continuity, not an implementation gate. `## Decision Log` retains durable, concise cross-initiative history.
 - `adr/<NNNN-slug>.md`: drift-protection ADRs created and maintained by Lance when a decision is hard to reverse, surprising without context, and the result of a real trade-off (the triple-axis gate; initiative-local or cross-initiative, tagged by `scope:` frontmatter); consumed by Sonia, Alex, Rahat, and Zach when their work touches that durable decision. Active design rationale stays in `system-design.md` §2; the ADR records the *why* so a future reader does not "fix" a deliberate choice.
 - `context.md`: created and maintained by Faisal, Katrina, Lance, and Zach; consumed by all standard personas; defines initiative-local terms, boundaries, relationships, and resolved ambiguities. It is for meaning, not implementation detail.
 - `product-brief.md`: created by Faisal; consumed by Katrina, Lance, Sonia, Rahat, and Zach; defines problem, users, success criteria, scope, and vision. Entry contract for downstream design.
