@@ -14,7 +14,7 @@ Carried from prior steps:
 - Final attendee list and which attendees were most engaged.
 - Key outcome established in synthesis.
 
-Natural close phrases that route here: `done`, `exit`, `close session`, `that's enough`, `wrap up`. The `[E]` option at the end of each round also routes here.
+Natural close phrases that route here: `done`, `exit`, `close session`, `that's enough`, `wrap up`. Choosing to close at the end-of-round fork also routes here.
 
 ## Procedure
 
@@ -42,9 +42,13 @@ Progress:
 
   Mine the loaded SOUL rather than reusing generic example beats; the close should sound like the attendees who actually participated.
 
-- [ ] Step 3: **Return handoff — branch on convener identity.** Your turn ends at sign-off: you cannot resume another persona on the user's behalf, so the close must make the next move unambiguous. Use the convener identity carried from step-01 to pick **exactly one** branch. Never use *"I will turn this back to [persona]"* — it is a promise you cannot keep.
+- [ ] Step 3: **Return handoff — branch on convener identity.** The close must make the next move unambiguous. Use the convener identity carried from step-01 to pick **exactly one** branch. When the convener's suspended session is present in this conversation, resume it in-turn (Branch A) — that is a performed handoff, not a promise. Never use *"I will turn this back to [persona]"* for work you are not continuing in this turn.
 
-  **A — Persona convened (default; the convener resumes).** Yield the floor with this copy-ready invocation so the next turn continues at the recorded suspended point with the synthesis as input:
+  **A — Persona convened (default; resume in-turn).** When the suspended session state was recorded at open and the convener's session is present in this conversation, resume it yourself — do not hand the user a relay message. Sign off as facilitator, then continue this same turn as the convener per its Same-Session Resumption contract: no Opening Stance re-emit, resume the suspended resource and step with the synthesis (and any promotion close state) as input, without re-eliciting settled content:
+
+  > *"Facilitator 🌀 closing. Synthesis is ready. [If the gate fired: Close state: [state].] Resuming **[convener name] [icon]** at [artifact section in progress] with the synthesis as input."* — then continue as [convener name].
+
+  Fallback — suspended state not in this conversation (e.g. the roundtable was invoked in a fresh window); yield the floor with a copy-ready invocation instead:
 
   > *"Facilitator 🌀 closing. Synthesis is ready. Resume **[convener name] [icon]** with the message \"continue `[initiative-name]` [mode/resource] from [artifact section in progress] with the [facilitator output] above.\" [Only if a real user action remains:] For you, [user_name]: [ratify/answer the unresolved Open item]."*
 
@@ -62,7 +66,7 @@ Progress:
 
 - Session outcome stated in one sentence; promotion close state named when the gate fired (`ratified_and_promoted` | `ratified_and_routed` | `ratified_pending_authorization` | `ratified_with_documentation_deferred`).
 - Most-engaged attendees made in-character closing remarks.
-- Facilitator signed off as `— Facilitator 🌀` with a branch-aware close selected by convener identity (persona re-activation, user `For you`/`Next` routing, or course-correction routing).
-- No *"I will turn this back to [persona]"* phrasing remains; the convener either resumes with the synthesis as input or the user has a clear `For you`/`Next` step.
+- Facilitator signed off as `— Facilitator 🌀` with a branch-aware close selected by convener identity (in-turn persona resume, fallback copy-ready invocation, user `For you`/`Next` routing, or course-correction routing).
+- No *"I will turn this back to [persona]"* phrasing remains for work not continued in this turn; the convener either resumes in-turn with the synthesis as input or the user has a clear `For you`/`Next` step or a copy-ready invocation.
 - The invoking persona or user has what they need to resume without re-running the roundtable.
 - Context B did not double-gate promotion apply (Sonia owns post-ratification scribe/handback).

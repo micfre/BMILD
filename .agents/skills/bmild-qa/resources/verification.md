@@ -27,7 +27,7 @@ Load in this order:
 
 - *Expected proof missing / blocked / failed / newly satisfied* → update `verification-matrix.md`.
 - *Issue local to the Slice, no RCA needed* → update `slice-<N>.md` Implementation Notes.
-- *Root cause investigation needed, or documented Slice produced a new bug* → write or update `rca-<slug>.md` in the initiative folder.
+- *Root cause investigation needed, or documented Slice produced a new bug* → do not author `rca-<slug>.md` in Verification mode; switch to Spec-Fix (tracked context) or Direct-Fix (untracked) first so Fix Election, RCA persistence, and the Alex handoff path apply.
 - *Documentation missing, stale, or behaviour-inaccurate* → record verification finding with next owner Alex.
 - *Regression evidence passes for an RCA* → mark RCA `resolved`. Not before.
 - *Gate failure reveals a bug* → switch to Spec-Fix when a Slice, matrix item, or RCA is in scope; otherwise Direct-Fix.
@@ -46,12 +46,12 @@ Load in this order:
 
 Progress:
 
-- [ ] Step 1: Test coverage review — evaluate acceptance criteria against existing tests. Identify untested happy paths, error paths, and edge cases. Test observable behaviour, not internals. Verify documentation against implementation when docs were part of the spec. Check whether Alex changed matrix, RCA, or security statuses; verify evidence before closing them.
+- [ ] Step 1: Test coverage review — evaluate acceptance criteria against existing tests. Identify untested happy paths, error paths, and edge cases. Test observable behaviour, not internals. Verify documentation against implementation when docs were part of the spec. Check whether Alex changed matrix, RCA, or security statuses; verify evidence before closing them. Reconcile matrix↔handoff drift: when a matrix item's `Handoff reference` points to a closed or applied handoff item, re-run the named proof and update the item with evidence — never leave `implemented` or `blocked` rows whose linked handoff is closed without a recorded reason.
 - [ ] Step 2: Quality gate verification — run each gate per contributor guide. Report which passed, which failed, and failure output. Apply Routing heuristics on failure.
-- [ ] Step 3: Document verification findings — persist gaps per Routing heuristics. Do not hand off failure-path issues, missing integration coverage, or failed gates only in chat.
-- [ ] Step 4: Update Slice status — `qa_status` → `verified` when passing; `failed` or `blocked` with next owner when not.
-- [ ] Step 5: Register — confirm QA artifacts are in `## Live` in `registry.md`.
-- [ ] Step 6: Close — apply Exit and Handoff from the core skill. If root cause requires design change, hand off to Lance or Katrina with confirmed root cause and a precise question.
+- [ ] Step 3: Document verification findings — persist gaps per Routing heuristics. Do not hand off failure-path issues, missing integration coverage, or failed gates only in chat. Any Alex-actionable outcome must be persisted before close in the Slice's `## QA / Security Follow-up` section: open item, next owner Alex, and the `rca-<slug>` link when one exists (RCA authoring happens in Spec-Fix/Direct-Fix, not this mode).
+- [ ] Step 4: Update Slice status — `qa_status` → `verified` when passing; `failed` or `blocked` with next owner when not. On pass, when security is terminal (`security_status` ∈ {`cleared`, `not_applicable`, `not_reviewed`} and no open `security-review-<slug>.md` exists for the Slice), also set slice `status: done` and the `slices.md` Slice Registry `Status: done`.
+- [ ] Step 5: Register — confirm QA artifacts are in `## Live` in `registry.md`. When the Slice reached `status: done` in Step 4, move `slice-<N>.md` from `## Live` to `## Archived` (Archived = terminal: done or superseded). Never archive a Slice before `done`.
+- [ ] Step 6: Close — apply Exit and Handoff from the core skill. If root cause requires design change, hand off to Lance or Katrina with confirmed root cause and a precise question. When an Alex-actionable outcome was persisted (RCA or Slice follow-up item), include a verbatim invocation in `Next:` — *Invoke **Alex** with the message "fix `rca-<slug>` in `[initiative-name]`"* or *"continue Slice <N> in `[initiative-name]` — QA follow-up items are open in `slice-<N>.md`"* — so the assignment survives a fresh window.
 
 ## Definition of Done
 

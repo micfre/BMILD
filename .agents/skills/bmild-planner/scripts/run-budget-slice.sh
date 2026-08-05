@@ -39,9 +39,27 @@ edits_n=0
 LEGACY_WARN=""
 
 WORKDIR="${TMPDIR:-/tmp}"
-RECFILE="$WORKDIR/bmild-budget.rec.$$"
-SKIPFILE="$WORKDIR/bmild-budget.skip.$$"
-PENFILE="$WORKDIR/bmild-budget.pen.$$"
+if command -v mktemp >/dev/null 2>&1; then
+  RECFILE=$(mktemp "$WORKDIR/bmild-budget.rec.XXXXXX")
+  SKIPFILE=$(mktemp "$WORKDIR/bmild-budget.skip.XXXXXX")
+  PENFILE=$(mktemp "$WORKDIR/bmild-budget.pen.XXXXXX")
+else
+  # Fallback: noclobber-create the first free PID+counter candidate. Atomic
+  # create makes concurrent runs safe even when they share the same `$$`
+  # (sourced execution or POSIX subshell `$$` semantics).
+  _i=0
+  while :; do
+    RECFILE="$WORKDIR/bmild-budget.rec.$$_i"
+    if (set -C; : > "$RECFILE") 2>/dev/null; then break; fi
+    _i=$((_i + 1))
+    if [ "$_i" -gt 100 ]; then
+      echo "Error: cannot create unique temp file in $WORKDIR" >&2
+      exit 1
+    fi
+  done
+  SKIPFILE="$WORKDIR/bmild-budget.skip.$$_i"
+  PENFILE="$WORKDIR/bmild-budget.pen.$$_i"
+fi
 cleanup(){ rm -f "$RECFILE" "$SKIPFILE" "$PENFILE"; }
 trap cleanup EXIT
 : > "$RECFILE"

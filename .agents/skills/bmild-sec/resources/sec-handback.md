@@ -37,7 +37,7 @@ Progress:
 
 - [ ] Step 1: Read each handoff item targeting Zach — most are re-verification requests for open findings.
 - [ ] Step 2: Re-run security assessment on each affected boundary.
-- [ ] Step 3: For resolved findings — update `security-review-<slug>.md` with closure evidence; update `Owner Disposition` and `Promotion Record`; run Promotion Cascade Check.
+- [ ] Step 3: For resolved findings — update `security-review-<slug>.md` with closure evidence; update `Owner Disposition` and `Promotion Record`; run Promotion Cascade Check. When no findings remain open for a Slice, set its `security_status: cleared` and update linked `verification-matrix.md` items with closure evidence; keep `findings_open` while any finding stays open.
 - [ ] Step 4: Note residual or newly-introduced findings.
 - [ ] Step 5: For findings still open — keep open with updated next owner (Alex implementation, Lance/Katrina design); route handoff item; mark original deferred, rejected, or superseded as appropriate.
 - [ ] Step 6: Persist changes; update `timestamp` frontmatter.

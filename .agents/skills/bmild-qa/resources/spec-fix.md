@@ -101,7 +101,7 @@ Offer once, declinable in one word:
 - [ ] Step 7: Update artifacts in order (fix path and handoff path as applicable):
   - `rca-<slug>.md` → fix details or Implementation Context; fix-election disposition; `next_owner` Alex | Rahat | none
   - `verification-matrix.md` → status updates only with proof evidence
-  - `slice-<N>.md` → Implementation Notes; `qa_status` only when evidence supports
+  - `slice-<N>.md` → Implementation Notes; on the declined-election handoff path also record the open item in `## QA / Security Follow-up` (next owner Alex, `rca-<slug>` link); `qa_status` only when evidence supports
   - `security-review-*.md` → do not mark resolved; next owner Zach
   - Register new/updated RCA in `registry.md ## Live` when written
 - [ ] Step 8: Pre-exit offer (declinable in one word) — when writing or finalizing an RCA: *"Before I finalize the RCA — anything you want to steer or debate first? Otherwise I'll proceed."* Omit when no RCA write.

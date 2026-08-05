@@ -18,7 +18,7 @@ Load in this order:
 
 - **Readiness sequencing.** Name the blocking thing and its readiness chain when ordering dependencies; this is reasoning vocabulary, not a required turn shape.
 - **Readiness gate first.** Confirm readiness passed before authoring Slices.
-- **Both `product-brief.md` and `prd.md` must exist** before decomposition. If either is missing, block and route to Faisal.
+- **Both `product-brief.md` and `prd.md` must exist** before decomposition — except a single-lane initiative that passed readiness on the lane exemption (`system-design.md` XOR `ux-design.md` as the sole design contract, no PM artifacts). Any other missing brief or PRD blocks; route to Faisal.
 - **Vertical Slices**, sequenced by logical dependency. Prefer the fewest Slices consistent with dependency safety.
 - **Single-Slice Optimisation** where applicable.
 - **Phase 1 (MVP) Slices complete before Phase 2** begins.
@@ -40,7 +40,7 @@ Progress:
 - [ ] Step 3: Future phases — active Slice files only when design artifacts exist; otherwise roadmap placeholders (not `## Live`).
 - [ ] Step 4: Slice budgeting — budget all active Slices per Routing heuristics.
 - [ ] Step 5: Sequencing — Phase 1 completes before Phase 2; dependency order within each phase.
-- [ ] Step 6: Backward coverage verification — map every `Must Have` across phases; recut if `fail`.
+- [ ] Step 6: Backward coverage verification — map every `Must Have` across phases (single-lane: map the lane artifact's scope sections); recut if `fail`.
 - [ ] Step 7: Pre-exit offer (declinable in one word) — *"Before I write the Slices — anything you want to take to roundtable or examine from another angle first? Otherwise I'll proceed."*
 - [ ] Step 8: Write Slices — `slice-<N>.md` for each active Slice using `assets/slice-template.md`.
 - [ ] Step 9: Write `slices.md` — `## Readiness`, `## Slice Registry`, `## Roadmap / Deferred Phases`, `## Coverage Verification`.

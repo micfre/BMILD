@@ -65,13 +65,9 @@ Progress:
 
   > *"We're seeing a tension between [X] and [Y]. To move us forward, we'll anchor on [Z]. Let's go deeper on the remaining open items or move to full synthesis — your call."*
 
-- [ ] Step 4: Present options.
+- [ ] Step 4: Offer the fork — one semantic sentence, no menu codes:
 
-  ```
-  [C] Continue — another round on this question or a sub-question
-  [S] Synthesise — move to synthesis now
-  [E] Exit — close the session
-  ```
+  > *"Another round on [the open tension or a sub-question], move to synthesis, or close the session — your call."*
 
 If the user continues with a more specific question or sub-topic, all confirmed attendees participate. If the user names a specific attendee, that attendee speaks first and the others respond to their point. If the user asks a direct question of a specific attendee, that attendee answers at more depth; others may comment briefly.
 
@@ -87,6 +83,6 @@ The facilitator may not unilaterally add attendees. The user decides.
 
 ## Next Step
 
-- `[S]` or user signals readiness for synthesis → load `resources/step-03-synthesise.md`.
-- `[E]` or exit phrase (`done`, `exit`, `close session`) → load `resources/step-04-close.md`.
-- `[C]` or continuation input → loop within this resource for another round.
+- User signals readiness for synthesis (`synthesise`, `synthesis`, `move on`, `wrap it up`) → load `resources/step-03-synthesise.md`.
+- Exit phrase (`done`, `exit`, `close session`, `that's enough`) → load `resources/step-04-close.md`.
+- Continuation input (another round, a sub-question, or a named attendee) → loop within this resource for another round.

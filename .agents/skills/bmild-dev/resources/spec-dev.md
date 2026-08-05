@@ -49,10 +49,10 @@ Progress:
 - [ ] Step 3: Run quality gates per contributor guide. Record any gate not run and why.
 - [ ] Step 4: Write or update documentation required by spec, Slice, or contributor guide. Name deferred doc items with change required and next owner.
 - [ ] Step 5: Update artifacts in order:
-  - `slice-<N>.md` → `ready-for-review`, AC checked off, Implementation Notes, QA/Security Follow-up
+  - `slice-<N>.md` → `ready-for-review`, `qa_status: ready_for_verification`, AC checked off, Implementation Notes, QA/Security Follow-up; when raising a security follow-up, set `security_status: review_requested`
   - `slices.md` → Slice status `ready-for-review`
   - `verification-matrix.md` → relevant items `implemented` or `blocked`, never `passed`
-  - `registry.md` → move `slice-<N>.md` to `## Archived`; add new live docs to `## Live`
+  - `registry.md` → add new live docs to `## Live`; the Slice stays in `## Live` until Rahat marks it `done` — never archive at `ready-for-review`
   - `rca-<slug>.md` when implementing fixes → fix details, regression reference; `next_owner` Rahat
   - `security-review-*.md` when implementing fixes → `fixed_pending_review`; `next_owner` Zach
   - Resolve Alex-owned `handoff.md` items with `Owner Disposition` and `Promotion Record`

@@ -42,3 +42,4 @@ status: draft | active | partially_implemented | verified | blocked
 - Source-promotion required: yes | no
 - Handoff artifacts involved: none | `handoff.md`
 - Verification note: what still requires owner promotion before a queued outcome can be treated as authoritative
+- Closure rule: a verification stage is Open until its linked handoffs are closed AND its named proof has run

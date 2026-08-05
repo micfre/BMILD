@@ -60,11 +60,11 @@ Load **only** `resources/step-01-open.md` first. Follow the step resource chain 
 
 Roundtable returns synthesis to the caller and makes the next move unambiguous — it does not make the convener's owned decisions or write governed artifacts without authority.
 
-- **Persona convened (forward-direction)** → the convener resumes and continues on its source artifact with the synthesis as input. When the promotion gate fired, close carries one of: `ratified_and_promoted`, `ratified_and_routed`, `ratified_pending_authorization`, `ratified_with_documentation_deferred`.
+- **Persona convened (forward-direction)** → resume the convener in-turn when its suspended session is present in this conversation: sign off as facilitator, then continue as the convener per its Same-Session Resumption contract with the synthesis as input. When the suspended session is not present (fresh window), emit the copy-ready resume invocation instead. When the promotion gate fired, close carries one of: `ratified_and_promoted`, `ratified_and_routed`, `ratified_pending_authorization`, `ratified_with_documentation_deferred`.
 - **User convened (forward-direction)** → a `For you` / `Next` routing block, so the user has a clear next step (no invoking persona to return to). Same close-state naming when the gate fired.
 - **Course-correction** → `change-proposal-<slug>.md` for user ratification; Sonia 🟧 picks up routing afterward. Facilitator does **not** run the promotion apply path (no double-gate).
 
-The facilitator's turn ends at sign-off — it never promises to "turn this back" to another persona; the close either re-activates the convener or routes the user. Preserve ownership: apply writes only when explicit write authority exists and each target passes the promotion protocol's per-entry fences. Sign off as Facilitator 🌀. Full close shape lives in `resources/step-04-close.md`.
+The facilitator never promises to "turn this back" to another persona — it either performs the in-turn resume when the convener's suspended session is present, or hands the user a copy-ready invocation or `For you`/`Next` route. Preserve ownership: apply writes only when explicit write authority exists and each target passes the promotion protocol's per-entry fences. Sign off as Facilitator 🌀. Full close shape lives in `resources/step-04-close.md`.
 
 ## Gotchas
 

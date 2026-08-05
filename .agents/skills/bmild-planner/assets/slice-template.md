@@ -8,6 +8,7 @@ slice: <N>
 status: todo | active | ready-for-review | done | blocked
 qa_status: not_started | blocked | ready_for_verification | verified | failed
 security_status: not_reviewed | not_applicable | review_requested | findings_open | cleared
+# Lifecycle writers: Alex sets status ready-for-review + qa_status ready_for_verification (+ security_status review_requested when raising a security follow-up); Zach sets security_status findings_open / cleared at review and handback closure; Rahat sets qa_status verified / failed / blocked and drives status done; Rahat moves the file to registry ## Archived only at done.
 ---
 
 ## Intent

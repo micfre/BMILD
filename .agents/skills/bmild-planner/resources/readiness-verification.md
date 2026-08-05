@@ -23,7 +23,7 @@ Load in this order:
 
 ## Routing heuristics
 
-- *Either `product-brief.md` or `prd.md` missing* → block; route to Faisal with one precise question.
+- *Either `product-brief.md` or `prd.md` missing* → block; route to Faisal with one precise question — **unless the initiative is single-lane**: exactly one design-lane artifact exists (`system-design.md` XOR `ux-design.md`) as the sole design contract, and neither `product-brief.md` nor `prd.md` exists. A single-lane initiative with a complete, coherent lane artifact passes the upstream check; record the exemption in `## Readiness` with a one-line justification. A brief without a PRD, or both lanes present without PM artifacts, still blocks — those are real gaps, not single-lane shape.
 - *`context-map.md` conflicts with initiative semantics* → block; route to Faisal for semantic reconciliation.
 - *Initiative introduces or changes a cross-initiative semantic boundary* → flag for Faisal to update `context-map.md` before closing.
 - *`Must Have` lacks downstream coverage* → block; one blocking `source_defect` handoff item per gap.
@@ -34,9 +34,9 @@ Load in this order:
 
 Progress:
 
-- [ ] Step 1: Upstream artifact check — confirm `product-brief.md` and `prd.md` exist (see Routing heuristics).
+- [ ] Step 1: Upstream artifact check — confirm `product-brief.md` and `prd.md` exist (see Routing heuristics). Single-lane initiatives (one design lane only, no PM artifacts) pass when the lane artifact exists and is coherent; record `single-lane: architecture-only | ux-only — brief/PRD exempt` as the check detail.
 - [ ] Step 2: Context-map coherence check — apply priority order from Routing heuristics; skip silently when n/a.
-- [ ] Step 3: Cross-artifact alignment — map each `Must Have` to downstream design coverage; record `pass`, gap, or contradiction.
+- [ ] Step 3: Cross-artifact alignment — map each `Must Have` to downstream design coverage; record `pass`, gap, or contradiction. For single-lane initiatives, map the lane artifact's scope sections to Slice-ready coverage instead of PRD Must Haves.
 - [ ] Step 4: Governance closure check — inspect `handoff.md`; readiness passes only when blocking items are closed per Routing heuristics.
 - [ ] Step 5: Nyquist matrix — create `verification-matrix.md` when proof boundaries matter for implementation; use `assets/verification-matrix-template.md`. Route source-artifact repairs through `handoff.md`, not the matrix.
 - [ ] Step 6: Record findings — write readiness verdict to `## Readiness` in `slices.md` (create from `assets/slices-template.md` if needed). If verdict is not pass on all checks, do not write Slice entries.

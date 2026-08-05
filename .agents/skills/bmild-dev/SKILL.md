@@ -61,7 +61,7 @@ Treat `broken`, `regression`, `error`, `failing`, `crash`, `exception`, `not wor
 | Mode | Condition | Resource File |
 | :--- | :--- | :--- |
 | **Mode 1: Spec-Dev** | Message names `slice-<N>` and `[plan_folder]/<initiative>/slice-<N>.md` exists. | `resources/spec-dev.md` |
-| **Mode 1a: Spec-Dev (inferred)** | Message names an initiative, no bug signals, no concrete repo work product, `slices.md` exists, and `registry.md` has exactly one live/active `slice-<N>.md` — announce inferred Slice in Opening Stance and proceed. If more than one live Slice exists, ask which to execute. | `resources/spec-dev.md` |
+| **Mode 1a: Spec-Dev (inferred)** | Message names an initiative, no bug signals, no concrete repo work product, `slices.md` exists, and `slices.md` has exactly one Slice in `todo` or `active` status — announce inferred Slice in Opening Stance and proceed. If more than one unstarted or active Slice exists, ask which to execute. | `resources/spec-dev.md` |
 | **Mode 1b: Spec-Dev (clarify)** | Message names an initiative, no bug signals, no concrete repo work product, `slices.md` exists, but no single live Slice can be inferred — ask one clarification; do not fall through to Direct-Dev. | — *(ask, then re-match)* |
 | **Mode 2: Spec-Fix** | Message names `rca-<slug>` **or** a verification matrix item **or** a named Slice with bug signals. | `resources/spec-fix.md` |
 | **Mode 3: Direct-Fix** | Bug signals — no attached artifact named. | `resources/direct-fix.md` |

@@ -60,7 +60,7 @@ Progress:
 - [ ] Step 2: Compare Slice new code against established secure patterns; flag deviations and new attack surfaces only within Slice scope.
 - [ ] Step 3: Examine implementation files — trace data flow per Stakes-based elicitation and YAML categories.
 - [ ] Step 4: Pre-exit offer (declinable in one word) — *"Before I finalise these findings — anything you want to stress-test first? Otherwise I'll write up the review."* Omit when no findings to write.
-- [ ] Step 5: Write `security-review-<slug>.md` using `assets/security-review-template.md` if vulnerabilities found. Reference `handoff.md` path for source-artifact defects. No artifact for clean review.
+- [ ] Step 5: Record outcome. Findings path: write `security-review-<slug>.md` using `assets/security-review-template.md` and set slice `security_status: findings_open`; reference `handoff.md` path for source-artifact defects. Clean path: no artifact — set slice `security_status: cleared` instead. In both paths, update linked `verification-matrix.md` security items with evidence.
 - [ ] Step 6: Register — add `security-review-<slug>.md` to `## Live` in `registry.md` when written.
 - [ ] Step 7: Semantic distillation gate — apply Semantic Memory rules when triggered.
 - [ ] Step 8: Close — apply Exit and Handoff from the core skill.
@@ -70,7 +70,7 @@ Progress:
 - [ ] Repository security context researched before flagging
 - [ ] `security-categories.yaml` applied for scope, stakes pacing, and false-positive filtering
 - [ ] Only High or Medium severity issues with credible exploitability reported
-- [ ] `security-review-<slug>.md` written if vulnerabilities found; no artifact for clean review
+- [ ] `security-review-<slug>.md` written if vulnerabilities found; no artifact for clean review; slice `security_status` and linked matrix items updated in both paths
 - [ ] `registry.md` updated if artifact written
 - [ ] `context.md` and/or `context-map.md` updated only if the semantic distillation gate fired
 - [ ] Close message: scope and categories checked, findings summary, next owner
