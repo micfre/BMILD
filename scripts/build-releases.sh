@@ -61,11 +61,16 @@ echo "Packaging release v${VERSION}..."
 # Stage release contents
 cp -R "$PROJECT_ROOT/.agents" "$STAGING_DIR/.agents"
 
+# Generate per-harness consult subagent definitions into the package
+"$PROJECT_ROOT/scripts/generate-consult-agents.sh" \
+    --skills-dir "$STAGING_DIR/.agents/skills" \
+    --out "$STAGING_DIR"
+
 # Create the tarball
-# Includes .agents/ folder
+# Includes .agents/ folder and harness/ consult-agent definitions
 # Using tar with -z (gzip) and -c (create) -f (file)
 # We use relative paths to ensure the structure is preserved within the archive
-tar -czf "${DIST_DIR}/${FILENAME}" -C "$STAGING_DIR" .agents
+tar -czf "${DIST_DIR}/${FILENAME}" -C "$STAGING_DIR" .agents harness
 
 echo "Successfully created ${DIST_DIR}/${FILENAME}"
 

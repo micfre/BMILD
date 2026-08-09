@@ -68,7 +68,7 @@ For ratified changes that did NOT take the scribe path. Each entry: target perso
 
 ## SP Items
 
-- SP-### — <target artifact> — <target owner> — Blocked-By: <prior SP-###s> — Disposition: <pending | applied_by_scribe | applied_by_handback>
+- SP-### — <target artifact> — <target owner> — Blocked-By: <prior SP-###s> — Disposition: <pending | applied_by_scribe | applied_by_handback | authored_by_consult>
 
 ## Decision Log Echo
 

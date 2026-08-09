@@ -11,6 +11,7 @@ scope: "<initiative-name>"
 - This file is initiative-local and non-authoritative.
 - Project truth changes only when the target owner promotes the accepted change into the target artifact.
 - A scribe-applied item (see `references/scribe-path.md`) is written and **closed in the same turn** with `Promotion Record: applied_by_scribe — …`; this is passive provenance (traceability), not a deferred audit — nothing requires the voiced owner to act later.
+- A consult-resolved item (see `references/consult-path.md`) is authored by the owning persona's consult subagent and **closed on write** with `Promotion Record: authored_by_consult — …`; same passive-provenance rule.
 
 ## Items
 
@@ -26,7 +27,7 @@ scope: "<initiative-name>"
 - Why It Matters: [what becomes wrong, unsafe, or stale]
 - Requested Change: [specific requested source update]
 - Discovered During: [optional mode, artifact, or implementation context]
-- Promotion Record: pending | [artifact section, date, short summary] | applied_by_scribe — voiced-for: [owner]; scribe: [presiding persona]; settled-from: [code-truth | in-session | prior-debate | obvious]; [date]
+- Promotion Record: pending | [artifact section, date, short summary] | applied_by_scribe — voiced-for: [owner]; scribe: [presiding persona]; settled-from: [code-truth | in-session | prior-debate | obvious]; [date] | authored_by_consult — owner: [persona]; consult-of: [presiding persona]; depth: 1; [date] (record model + effort when the harness reports it)
 - Cascade: none | <follow-up H-IDs> | routed to `change-proposal-<slug>.md`
 - Supersedes: none | H-###
 - Superseded By: none | H-###

@@ -284,4 +284,33 @@ if (( fail )); then
   exit 1
 fi
 
+# Consult-agent generator smoke check: canonical definitions must generate
+# per-harness outputs with the correct tier mapping (frontier pair for
+# design-tier + planner, inherit/default otherwise).
+gen_out="$tmp_dir/consult-gen"
+if bash "$root/scripts/generate-consult-agents.sh" --skills-dir "$skills_dir" --out "$gen_out" >/dev/null 2>&1; then
+  gen_count="$(find "$gen_out/harness/claude-code/agents" -name 'bmild-*-consult.md' 2>/dev/null | wc -l | tr -d ' ')"
+  [[ "$gen_count" == "7" ]] || report "generator emitted $gen_count claude-code consult agents, expected 7"
+  for persona in pm ux arch planner; do
+    rg -q '^model: opus' "$gen_out/harness/claude-code/agents/bmild-$persona-consult.md" 2>/dev/null \
+      || report "generated claude-code consult for $persona missing 'model: opus'"
+    rg -q '"Sol"' "$gen_out/harness/codex/consult-agents.toml" 2>/dev/null \
+      || report "generated codex fragment missing frontier model for $persona"
+  done
+  for persona in dev qa sec; do
+    rg -q '^model: inherit' "$gen_out/harness/claude-code/agents/bmild-$persona-consult.md" 2>/dev/null \
+      || report "generated claude-code consult for $persona missing 'model: inherit'"
+  done
+  rg -q 'reasoning_effort = "high"' "$gen_out/harness/codex/consult-agents.toml" 2>/dev/null \
+    || report "generated codex fragment missing frontier reasoning_effort"
+  rg -c '^reasoning_effort' "$gen_out/harness/codex/consult-agents.toml" 2>/dev/null | rg -q '^4$' \
+    || report "generated codex fragment should carry exactly 4 reasoning_effort entries (pm/ux/arch/planner)"
+else
+  report "generate-consult-agents.sh failed against $skills_dir"
+fi
+
+if (( fail )); then
+  exit 1
+fi
+
 printf 'Skill validation passed.\n'

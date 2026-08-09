@@ -6,3 +6,6 @@ tokenizer_multiplier = 1.25 # residual safety margin applied to the variable wor
 commit = 0                  # 0: off; 1: message + eligible local commit; 2: message only
 # format = "conventional-commits" # omit to infer local history, then fall back here
 branch = "current"         # current | initiative
+# consult = 3               # 1: auto-dispatch in-session consults; 2: ask inline first; 3 or absent: off (default)
+# consult_model = "Sol"     # optional frontier model override for design-tier + planner consults (harness permitting)
+# consult_effort = "high"   # optional reasoning-depth override paired with consult_model (harness permitting)

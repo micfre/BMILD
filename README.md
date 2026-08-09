@@ -103,6 +103,18 @@ Set `format = "conventional-commits"` for that explicit message style [q.v.](htt
 > [!WARNING]
 > Automated commit posture is deliberately local-only. It never fetches, pulls, pushes, opens a pull request, stashes, amends, rebases, resets, bypasses hooks, or rewrites history.
 
+### About in-session consults
+
+The default is off: absent `consult` (or `consult = 3`) preserves the handoff workflow exactly. When enabled, a persona that hits an open single-owner design gap may dispatch the owning persona's consult subagent in-session — the subagent runs at that persona's pinned model tier (Frontier for Faisal, Katrina, Lance, and Sonia), authors the decision into its own artifact, and closes the handoff item on write:
+
+```toml
+# consult = 2                 # 1: auto-dispatch; 2: ask inline first; 3 or absent: off (default)
+# consult_model = "Sol"       # optional frontier model override (harness permitting)
+# consult_effort = "high"     # optional reasoning-depth override (harness permitting)
+```
+
+Consult subagents are leaf nodes (they never dispatch further agents), canonical-tier artifacts (`DESIGN.md`, `context-map.md`, `adr/`) and multi-owner cascades still route normally, and harnesses without subagent support fall back to handoff routing. Release tarballs carry generated per-harness consult definitions under `harness/` (Claude Code, OpenCode, Codex); `scripts/generate-consult-agents.sh` regenerates them locally.
+
 ### About Slice sizing and tokenizer settings
 
 Sonia budgets Slices for an LLM implementation session rather than estimating human effort as an Agile story attempts to do. The estimator (`peak_live_v2`) predicts peak live context occupancy under code-intelligence / LSP workflows — full contract and doc reads plus capped symbol excerpts for source — so a Slice that would drive context rot can be split before Alex starts. It is not a provider cost model and does not attempt to predict cumulative or cached token totals.
@@ -165,6 +177,8 @@ This is a major part of how BMILD contains spec drift. Decisions and unresolved 
 > A handoff is for a judgment another owner still needs to make. When a fact is already settled -- by the code, a ratified decision, or a single clear constraint -- a persona may scribe that narrow fact into another owner’s artifact in the same session. Scribing records settled truth; it never authors a new decision. It carries provenance and checks the target persona’s point of view, while project-wide `DESIGN.md`, `context-map.md`, and ADRs always use the normal owner route.
 >
 > Advanced facilitation adds one more connective tissue: after a ratified durable-contract decision that leaves source artifacts stale, Roundtable, Elicit, or Brainstorming asks once for promote authority, then either scribes eligible lines or routes the rest. Agreement in chat is not organizational truth until artifacts (or a durable handoff backlog) reflect it.
+>
+> With `consult` enabled in `.bmild.toml` (off by default), an open single-owner judgment can be delivered in-session instead of as a separate session: the presiding persona dispatches the owner's consult subagent, which runs at that owner's pinned model tier, authors the decision into the canonical artifact, and closes the handoff item on write. Multi-owner changes and project-wide artifacts still use the normal owner route.
 
 This makes BMILD particularly comfortable for work that crosses sessions, agents, or people. It gives continuity without pretending that the system can make unresolved decisions on your behalf.
 
