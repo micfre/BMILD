@@ -21,7 +21,7 @@ Consult may fire only when **all** of the following hold:
 1. **Scribe gate failed or is inapplicable.** The item is genuinely open (real trade-off, live Preference options) *or* settled-but-high-stakes (scribe gate §2 condition 3: data-model, API-contract, security, or compliance surface). If the full scribe gate passes, scribe instead — consult is the more expensive tier.
 2. **Single owner.** Exactly one persona owns the requested change. Judge by who authors that class of change per the cross-artifact flow, not by artifact filename alone: where two personas share write authority on one artifact (e.g. `verification-matrix.md` — Sonia authors at readiness, Rahat repairs/expands), consult targets the persona responsible for the requested class of change; a request spanning both classes routes. ≥2-owner cascades route to Course-Correction.
 3. **Non-canonical-tier.** Target is not `context-map.md`, `[plan_folder]/adr/`, or project-root `DESIGN.md`. Canonical-tier artifacts always route (hard fence, §7).
-4. **Consult enabled.** `.bmild.toml` carries `consult = 1` (auto) or `consult = 2` (ask). Absent or `3` means off → route normally. Malformed values behave as absent (off) with a one-line warning.
+4. **Consult enabled.** `.bmild.toml` carries `consult = 1` (auto) or `consult = 2` (ask). Absent or `0` means off → route normally. Malformed values behave as absent (off) with a one-line warning.
 5. **Chain budget available.** The chain budget (§6) has not been exhausted for this gap.
 
 If any condition fails → normal `handoff.md` routing, exactly as today.
@@ -30,7 +30,7 @@ If any condition fails → normal `handoff.md` routing, exactly as today.
 
 - `consult = 1` (**auto**): dispatch without asking.
 - `consult = 2` (**ask**): emit one inline line — `Consult <Persona> on <bounded question>? Frontier call: <model>/<effort>.` — and dispatch only on yes. A no routes normally.
-- `consult` absent or `3` (**off**): never dispatch; behaviour is byte-identical to the pre-consult workflow. This is the default.
+- `consult` absent or `0` (**off**): never dispatch; behaviour is byte-identical to the pre-consult workflow. This is the default.
 
 Optional pass-throughs `consult_model` and `consult_effort` override the frontier pair (model, reasoning depth) for frontier-pinned consults where the harness exposes both dimensions. Where the harness cannot express one dimension, that override is ignored with a one-line notice (`<key> not supported by this harness — using shipped default.`). Never silently substitute a lower tier: if the pinned or configured model is unavailable, route to `handoff.md` with a one-line notice instead of downgrading.
 

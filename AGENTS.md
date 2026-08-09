@@ -56,7 +56,7 @@ Project-level settings are defined in `.bmild.toml` at the repository root. The 
 - `commit`: (Default: `0`; `commit = 0`) Alex/Rahat completion posture. `commit = 1` requests a rich message plus one eligible local Git commit, and `commit = 2` requests the message only.
 - `format`: (Optional) Alex/Rahat commit-message format. MVP recognizes `conventional-commits`; omission uses bounded local-history inference (10-message maximum, 3 usable minimum, 60% agreement) with Conventional Commits fallback.
 - `branch`: (Default: `"current"`) Alex/Rahat commit target, either the attached current branch or the confirmed initiative slug. A required initiative switch/create is allowed only from a completely clean repository.
-- `consult`: (Default: absent/`3` = off) In-session Frontier consults. `1` = auto-dispatch, `2` = ask inline first. Off preserves the pre-consult handoff workflow byte-identically and is the required state on harnesses without subagent dispatch.
+- `consult`: (Default: absent/`0` = off) In-session Frontier consults. `1` = auto-dispatch, `2` = ask inline first. Off preserves the pre-consult handoff workflow byte-identically and is the required state on harnesses without subagent dispatch.
 - `consult_model`, `consult_effort`: (Optional) Frontier (model, reasoning-depth) pair override for design-tier + planner consult subagents, applied where the harness exposes both dimensions; ignored with a one-line notice otherwise. Never silently downgrades tier — an unavailable pinned model routes via `handoff.md`.
 
 ### Alex/Rahat commit-posture contract

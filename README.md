@@ -105,10 +105,10 @@ Set `format = "conventional-commits"` for that explicit message style [q.v.](htt
 
 ### About in-session consults
 
-The default is off: absent `consult` (or `consult = 3`) preserves the handoff workflow exactly. When enabled, a persona that hits an open single-owner design gap may dispatch the owning persona's consult subagent in-session — the subagent runs at that persona's pinned model tier (Frontier for Faisal, Katrina, Lance, and Sonia), authors the decision into its own artifact, and closes the handoff item on write:
+The default is off: absent `consult` (or `consult = 0`) preserves the handoff workflow exactly. When enabled, a persona that hits an open single-owner design gap may dispatch the owning persona's consult subagent in-session — the subagent runs at that persona's pinned model tier (Frontier for Faisal, Katrina, Lance, and Sonia), authors the decision into its own artifact, and closes the handoff item on write:
 
 ```toml
-# consult = 2                 # 1: auto-dispatch; 2: ask inline first; 3 or absent: off (default)
+# consult = 0                 # 0 or absent: off (default); 1: auto-dispatch; 2: ask inline first
 # consult_model = "Sol"       # optional frontier model override (harness permitting)
 # consult_effort = "high"     # optional reasoning-depth override (harness permitting)
 ```
