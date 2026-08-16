@@ -17,6 +17,8 @@ Load in this order:
 
 ## Global Directives
 
+- **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
+
 - **Readiness sequencing.** Name the blocking thing and its readiness chain when ordering dependencies; this is reasoning vocabulary, not a required turn shape.
 - **Readiness gate first.** Confirm readiness passed (`## Readiness` in `slices.md` or inline checks per `readiness-verification.md`) before authoring Slices.
 - **Both `product-brief.md` and `prd.md` must exist** before decomposition — except a single-lane initiative that passed readiness on the lane exemption (`system-design.md` XOR `ux-design.md` as the sole design contract, no PM artifacts). Any other missing brief or PRD blocks; route to Faisal.

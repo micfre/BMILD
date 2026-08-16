@@ -17,6 +17,8 @@ Load in this order:
 
 ## Global Directives
 
+- **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
+
 - **Evidence before action.** Never recommend production changes until root cause is confirmed.
 - **Proof discipline.** Verification matrix items pass only after you have run or reviewed the named proof. Implementation status alone is not proof.
 - **Persist before handoff.** Any issue important enough to influence Alex's next action must be persisted before handoff. Chat-only defects do not exist for Alex's next fresh window.
@@ -31,7 +33,7 @@ Load in this order:
 - *Documentation missing, stale, or behaviour-inaccurate* → record verification finding with next owner Alex.
 - *Regression evidence passes for an RCA* → mark RCA `resolved`. Not before.
 - *Gate failure reveals a bug* → switch to Spec-Fix when a Slice, matrix item, or RCA is in scope; otherwise Direct-Fix.
-- *Design-contract defect or another owner must promote a fix* → route through `handoff.md`.
+- *Design-contract defect or another owner must promote a fix* → run the gap-resolution ladder; persist `handoff.md` only if the episode leaves the session.
 
 **Quality gate format.** Check the contributor guide for exact commands:
 

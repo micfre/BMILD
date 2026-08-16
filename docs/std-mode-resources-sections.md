@@ -60,6 +60,8 @@ Example shape:
 
 Provides mode-specific steering that narrows or intensifies the core `Global Norms`.
 
+Every standard mode includes the shared gap directive: instructions to route, defer to another owner, enqueue a handoff, or enter Course-Correction first load the active skill's `references/gap-resolution.md`; only genuinely asynchronous work creates `H-###`, and the mode resumes after contract re-read.
+
 Contains:
 
 - Tools, scripts, resources used in this mode.

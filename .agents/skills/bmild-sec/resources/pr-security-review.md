@@ -22,6 +22,8 @@ Same table and pacing as `slice-security-review.md` — per-category `stakes` in
 
 ## Global Directives
 
+- **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
+
 - **Identify context before flagging.** Research security frameworks and threat model as needed to contextualize PR changes.
 - **Scope discipline.** Examine only changed code in the PR — pre-existing code outside the diff is out of scope.
 - **Confidence threshold.** Report only high-confidence findings: >80% exploitability per YAML filtering, with a credible exploit path from changed entry point to impact.

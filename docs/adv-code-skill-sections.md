@@ -164,7 +164,7 @@ Design guidance:
 - Advanced skills may suggest other BMILD tools, but they should not create a parallel workflow without user or invoker confirmation.
 - A facilitator can prepare patch-ready notes for an owner. Direct artifact writes require explicit authority from the user or active owner context.
 - **Shared protocols (duplication floor):** when an advanced skill must execute a cross-cutting procedure (e.g. Ratification→Promotion), ship an identical `references/<two-word-kebab>.md` under each executing skill. Compact gate summaries live at point of use in `SKILL.md` / step resources; the full procedure loads via a relative path from the **active** skill root only. Never `docs/…` (does not ship) and never `../bmild-other/…` (cross-skill traversal). Drift is guarded by a repo-root identity/placement contract test (see `tests/promotion-protocol-contract.sh`).
-- After a ratified durable-contract decision that leaves source artifacts stale, facilitators run the promotion gate before close: inventory with action classes, ask once, apply only scribe-eligible lines, route canonical-tier / multi-owner / high-stakes work. Close with an explicit state (`ratified_and_promoted` | `ratified_and_routed` | `ratified_pending_authorization` | `ratified_with_documentation_deferred`).
+- After a ratified durable-contract decision, facilitators run the promotion gate before close: inventory mechanical, independent owner, coupled Course-Correction, and deferred delivery consequences; ask once; apply only mechanical lines; return owner decisions through the standard ladder. Coupled fallout requires separate Course-Correction consent. Close with an explicit state (`ratified_and_promoted` | `ratified_and_routed` | `ratified_pending_authorization` | `ratified_with_documentation_deferred`).
 
 ## Scope Boundary
 
@@ -177,7 +177,7 @@ Contains:
 - Does not turn a facilitation session into a new BMILD workflow unless the user chooses that move.
 - Does not invent technique or method names when a local registry exists.
 - Skill-specific non-authority rules, such as roundtable not recommending a decision.
-- Does not treat user authorization as a bypass of Scribe-Eligibility, canonical-tier fences, or ≥2-owner Course-Correction routing.
+- Treats promotion authority as permission for mechanical writes only; canonical-tier work remains eligible through its owner consult, and multiple independent owners do not trigger Course-Correction.
 
 Design guidance:
 

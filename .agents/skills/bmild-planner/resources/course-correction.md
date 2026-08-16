@@ -1,6 +1,6 @@
 # Course-Correction
 
-Coordinate cross-artifact change. Decompose the change into bounded questions, run `bmild-roundtable` consultations per question, populate the change-proposal artifact, sequence handbacks, and route the chain. **Sonia coordinates and orders — she does not author design-tier content.** Decisions about descope, rework, or rollback are presented as options to the user via roundtable and routed to the owning persona for patching, with one narrow exception (the Scribe path below).
+Coordinate a user-approved coupled cross-artifact change. Decompose it into bounded questions, run `bmild-roundtable` consultations where deliberation is needed, resolve owner consequences through `references/gap-resolution.md`, and return to replanning. **Sonia coordinates and orders — she does not author another owner's judgment.**
 
 ## Additional Context
 
@@ -19,19 +19,20 @@ When this is a user-accepted Project Bearing continuation, also consume the in-c
 
 ## Global Directives
 
-- **Sonia coordinates and orders; design-tier content is authored by owning personas** in Handback — except the narrow Scribe path when all Scribe-Eligibility criteria below hold.
+- **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
+
+- **User confirmation is an entry condition.** If the user has not explicitly approved Course-Correction after seeing the coupled scope/sequencing/proof impact, stop and ask once before creating or changing a proposal.
+- **Sonia coordinates and orders; design-tier content is authored by owning personas** through guest voice, owner consult, or durable handoff under the ladder. Mechanical consequences use simplified scribe.
 - **Conflict-of-interest:** If the trigger is the plan itself rather than upstream design (e.g., "the slice plan is wrong"), Sonia is not the neutral party. Before producing the orchestration plan, recommend `bmild-roundtable` with Faisal, Lance, and the user as deciders, framed as "is the current slice plan still the right shape given X?" Do not self-justify the existing plan.
 - **Sonia never writes canonical-tier artifacts** (`context-map.md`, `[plan_folder]/adr/`, project-root `DESIGN.md`) under any path.
 
-**Scribe-Eligibility (shared gate).** Sonia's Course-Correction scribe uses the shared **Scribe-Eligibility gate** and procedure in this skill's `references/scribe-path.md` — load the local copy; do not re-derive the criteria here. A roundtable-ratified change satisfies the gate's *settled source* condition via the *prior ratified debate/roundtable* arm **only when** the synthesis carries solely **Non-negotiable** items and the user ratified a single option without modification (no "yes but also do X" that introduces new authorial judgment). If a real **Preference** option remains live, it is not settled → standard handback. The shared fences (`references/scribe-path.md` §5) and "no deferred audit" rule (§4) apply in full; canonical-tier artifacts always route.
-
-**Scribe application mechanics.** When applying as scribe, Sonia follows the shared procedure (`references/scribe-path.md` §3) and additionally:
+**Resolution application mechanics.** For each ratified decision, run a bounded ladder episode for each independent owner consequence. Batch all same-owner artifact edits. Owner consults may author their canonical-tier artifacts. When applying mechanical consequences as scribe:
 
 - Writes the exact ratified patch to the target source artifact and updates the `timestamp` frontmatter date.
-- Writes the SP item with `Owner Disposition: applied_by_scribe — voiced-for: [owner]; scribe: Sonia; settled-from: prior-debate (<roundtable session ref>); [date]` and `Promotion Record: <Sonia as scribe, date, change-proposal-<slug>.md>`. Authorship attribution is the roundtable session, not Sonia.
+- Writes artifact-local `Resolution: applied_by_scribe — ...` provenance. If an existing handoff is resolved, closes it with a Promotion Record pointing to the edit; creates no audit-only item.
 - Runs the **Promotion Cascade Check** from `planning-handback.md` identically to a normal Handback.
-- Does NOT run the owning persona's distillation gate or gap checklist — scribe-eligibility excludes cases where they would apply.
-- Appends the application to the change-proposal's `## Scribe Applications` section.
+- Does not run an owner's judgment or distillation gate; those belong to guest voice or owner consult.
+- Appends the episode to the change-proposal's `## Resolution Record`.
 - Appends a line to `[plan_folder]/rollup.md` `## Decision Log` when the outcome has cross-initiative or durable coordination value.
 
 ## Tasks
@@ -41,7 +42,7 @@ Progress:
 - [ ] Step 1: **Trigger identification.** Name precisely what changed, what triggered the recognition, and the evidence. If unclear, ask one question. Do not infer speculatively.
 - [ ] Step 2: **Conflict-of-interest check** — apply Global Directives; recommend roundtable when Sonia is not neutral.
 - [ ] Step 3: **Pre-exit offer (declinable in one word)** — *"Before I populate the change proposal — anything you want to take to roundtable or examine from another angle first? Otherwise I'll proceed."*
-- [ ] Step 4: **Impact mapping.** Create or open `change-proposal-<slug>.md` from `assets/change-proposal-template.md` if needed. For each source artifact (`product-brief.md`, `prd.md`, `ux-design.md`, `system-design.md`, `slices.md`, `slice-<N>.md`, `verification-matrix.md`, `security-review-<slug>.md`), classify as `unaffected | minor-update | requires-handback | requires-redesign | requires-rollback`. Use `AGENTS.md`'s cross-artifact flow as the dependency map.
+- [ ] Step 4: **Impact mapping.** Create or open `change-proposal-<slug>.md` from `assets/change-proposal-template.md` if needed. For each source artifact (`product-brief.md`, `prd.md`, `ux-design.md`, `system-design.md`, `slices.md`, `slice-<N>.md`, `verification-matrix.md`, `security-review-<slug>.md`), classify as `unaffected | mechanical | owner-decision | coupled-change | stale`. Use `AGENTS.md`'s cross-artifact flow as the dependency map.
   - **Query available code intelligence MCPs.** Determine available code intelligence tools such as symbol-aware navigation, AST-aware structural analysis, semantic or hybrid repository search, and code graphs
   - **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
 - [ ] Step 5: **Question decomposition.** Decompose into 1–N discrete, bounded questions. Each covers one trade-off, scoped to artifacts that share it, answerable in one roundtable session. Order by leverage.
@@ -52,29 +53,12 @@ Progress:
   - Append synthesis to `## Roundtable Synthesis Records`.
   - If ratification collapses or changes a downstream question, update the question list and continue.
 
-  **Scribe-Eligibility check.** After each ratification, evaluate against the shared Scribe-Eligibility gate (`references/scribe-path.md` §2; Sonia's qualifier stated in Global Directives above). If all criteria hold, offer:
+  **Resolution check.** After each ratification, classify consequences by owner. Apply mechanical consequences immediately; run independent owner episodes separately. Do not ask for scribe permission and do not manufacture a handoff for provenance.
 
-  > *"This decision is scribe-eligible — I can apply it directly. Confirm, or say 'route through [persona]' to use standard handback."*
-
-  Default to scribe on confirmation. Otherwise enter the ordered handoff chain (Step 7).
-
-- [ ] Step 7: **Ordered handoff chain.** For every ratified change that did NOT take the scribe path, produce the ordered chain: target persona, mode (typically Handback), source artifact, verbatim invocation prompt, `Blocked-By` references. Append to `## Ordered Handoff Chain`.
-- [ ] Step 8: **Handoff item population.** Write or update `handoff.md` with one item per ratified change, `Blocked-By` reflecting the chain. Scribe-applied items close in the same turn with promotion record pointing to the roundtable session.
-- [ ] Step 9: **Context memory update.** Move newly-affected artifacts to `## Stale` in `registry.md` with handoff references; add `change-proposal-<slug>.md` to `## Live`.
-- [ ] Step 10: **Close.** Apply Exit and Handoff from the core skill. `Next` is an ordered handoff chain (multiple bullets). Sonia returns in Replanning after design-tier handbacks complete.
-
-  Example close:
-
-  > *Course-correction proposal complete.* Change-proposal `change-proposal-tokenizer-stdlib.md` written; 2 questions ratified, 1 applied by scribe, 1 routed for handback.
-  >
-  > *For you, [user_name].* The proposal is ready to ratify the open questions and run the chain. Each invocation below is copy-paste-ready.
-  >
-  > *Next.* Ordered chain:
-  > 1. **Faisal** — Refine-PRD on `prd.md` — *"resolve H-007 in `py-tokenizer/handoff.md`"* — targets `prd.md`. Blocked-By: none.
-  > 2. **Lance** — Architecture-Handback on `system-design.md` — *"resolve H-008 in `py-tokenizer/handoff.md`"* — targets `system-design.md`. Blocked-By: 1.
-  > 3. **Sonia** — Replanning on `slices.md` and `slice-2.md`. Blocked-By: 2.
-  >
-  > — Sonia 🟧
+- [ ] Step 7: **Owner resolution.** Run the ladder for every ratified owner consequence in dependency order. Append results to `## Resolution Record`; use `## Ordered Handoff Chain` only for episodes that genuinely leave the session. Existing handoffs close rather than duplicate.
+- [ ] Step 8: **Context memory update.** Mark only unresolved artifacts stale and reference their durable handoff or proposal; return resolved artifacts to `## Live`. Add `change-proposal-<slug>.md` to `## Live` while coordination remains active.
+- [ ] Step 9: **Replan and resume.** Re-read changed source contracts. Recut `slices.md`, affected Slice files, and proof boundaries as Sonia's bounded planning episode, then resume the work that triggered Course-Correction.
+- [ ] Step 10: **Close.** Apply Exit and Handoff from the core skill only after in-session resolution and replanning are exhausted. `Next` lists only genuinely asynchronous handoffs; otherwise it names the resumed execution or verification step.
 
 ## Definition of Done
 
@@ -82,8 +66,8 @@ Progress:
 - [ ] Impact map written to change-proposal artifact
 - [ ] Bounded questions decomposed and ordered by leverage
 - [ ] Each ratified question recorded with roundtable synthesis
-- [ ] Scribe-Eligibility evaluated for each ratification; scribe applications under `## Scribe Applications`
-- [ ] Non-scribe ratifications in `## Ordered Handoff Chain` with verbatim invocation prompts
-- [ ] `handoff.md` updated with sequenced handoff items
-- [ ] `registry.md` `## Stale` reflects affected artifacts; `change-proposal-<slug>.md` in `## Live`
-- [ ] Close message presents ordered chain with copy-paste-ready invocations and Sonia's Replanning re-entry point
+- [ ] Each ratified consequence resolved through a bounded owner episode with artifact-local provenance
+- [ ] `## Ordered Handoff Chain` contains only work that genuinely left the session
+- [ ] Existing handoffs closed without replacements; no audit-only handoffs created
+- [ ] `registry.md` marks only unresolved artifacts stale; `change-proposal-<slug>.md` state is accurate
+- [ ] Replanning completed from re-read contracts and the suspended work resumed, or exact asynchronous blockers recorded

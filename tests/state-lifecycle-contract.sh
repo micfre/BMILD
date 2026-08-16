@@ -71,6 +71,18 @@ for root in "${SKILL_ROOTS[@]}"; do
   qa_verification="${root}/bmild-qa/resources/verification.md"
   [ -f "${qa_verification}" ] || fail "missing ${qa_verification}"
   rg -q -F 'status: done' "${qa_verification}" || fail "${qa_verification}: no status done writer"
+
+  # 5. Review independence: Alex can request verification, never sign it off.
+  if rg -q -F 'qa_status: verified' "${root}/bmild-dev/resources"; then
+    fail "${root}/bmild-dev: Alex must not author qa_status verified"
+  fi
+  if rg -q -F 'security_status: cleared' "${root}/bmild-dev/resources"; then
+    fail "${root}/bmild-dev: Alex must not author security clearance"
+  fi
+  gap="${root}/bmild-dev/references/gap-resolution.md"
+  rg -q -F 'Alex may author implementation-complete' "${gap}" || fail "${gap}: missing Alex boundary"
+  rg -q -F 'Rahat alone authors QA evidence' "${gap}" || fail "${gap}: missing Rahat evidence ownership"
+  rg -q -F 'Zach alone authors security findings' "${gap}" || fail "${gap}: missing Zach clearance ownership"
 done
 
 if [ "${failures}" -gt 0 ]; then

@@ -1,108 +1,63 @@
 # Artifact Promotion Protocol
 
-> Shared definition for advanced facilitators (`bmild-{roundtable,elicit,brainstorming}`). Each facilitator ships an identical copy under its own `references/promotion-protocol.md`. The active skill loads **this skill's** copy via a relative path — never `docs/`, never another skill's tree.
+> Shared definition for advanced facilitators (`bmild-{roundtable,elicit,brainstorming}`). Each facilitator ships an identical local copy. This protocol returns durable consequences to the standard persona gap-resolution ladder; it does not create a facilitator-owned orchestration layer.
 
-Promotion turns ratified agreement into organizational truth (promotion-only truth). It does **not** create a second authoring privilege. Facilitator apply is **presiding scribe** over scribe-eligible inventory lines, or durable routing for everything else.
+## Trigger
 
-## 1. Trigger triad
+Run the promotion gate before close only when the user ratified a decision, the decision changes a durable contract, and at least one source artifact is now incomplete or stale. Otherwise use the facilitator's normal close.
 
-Fire the gate between ratification and close when **all** of these hold:
+## Impact inventory
 
-1. The user has **ratified** a decision, not merely expressed a preference.
-2. The decision changes a **durable contract**: requirements, authority, data semantics, system boundary, interaction behavior, verification, terminology, or phase scope.
-3. At least one **source-of-truth artifact** is now stale or incomplete relative to the ratification.
+List each affected artifact, owner, consequence, and one action class:
 
-If any condition fails → skip the promotion gate; use the skill's normal close.
+- `mechanical-scribe` — settled reversible propagation with no judgment.
+- `owner-episode` — one causally bounded decision and all same-owner consequences, including canonical-tier artifacts owned by that persona.
+- `coupled-course-correction` — choices across owners are causally coupled and materially alter scope, sequencing, or proof boundaries.
+- `planner-deferred` — delivery artifacts are excluded unless the user included them or Sonia was the convener.
 
-**Counterexample:** wording tweak to an already-decided error label → no gate unless it changes an existing UX/source artifact.
+Group all same-owner consequences from one decision into one episode, even when several owned artifacts change. Separate independent owners into separate episodes. Multiple owners alone never imply Course-Correction.
 
-**Regression example:** ratified operator-configured authority, per-record commercial semantics, MVP inheritance, Growth deferral, new UI status treatment, and new verification obligations → inventory product, architecture, UX, QA, terminology, ADR (canonical-route), and handoff impacts; ask once; do not author delivery slices without planner/user direction.
+## Ask once
 
-## 2. Impact inventory
+Name the impact and ask once for promotion authority:
 
-Produce a compact inventory. Each line:
+> “I found [N] affected artifacts: [M] mechanical updates, [O] independent owner episode(s), [C] coupled Course-Correction decision(s), and [P] deferred delivery artifact(s). Promote the mechanical items and return the owner episodes through BMILD's resolution ladder now?”
 
-- **Artifact** — path under initiative or project root
-- **Owner** — persona who owns the artifact
-- **Action class** — exactly one of:
-  - `scribe` — settled, reversible, non-high-stakes, non-canonical; eligible for facilitator scribe if authorized
-  - `owner-handback` — needs owning persona judgment or Handback (open Preference, high-stakes surface, unsettled wording)
-  - `canonical-route` — `context-map.md`, `[plan_folder]/adr/`, or project-root `DESIGN.md` — **never** facilitator-written
-  - `planner-deferred` — `slices.md` / `slice-<N>.md` unless the user explicitly includes delivery
+- Authorization allows only `mechanical-scribe` writes by the facilitator. It returns `owner-episode` lines to the presiding standard persona's ladder.
+- If `coupled-course-correction` exists, offer Sonia once with the named coupled choices and wait for explicit consent. Promotion authority does not imply Course-Correction consent.
+- “Not now” closes `ratified_pending_authorization`; explicit documentation deferral closes `ratified_with_documentation_deferred`.
 
-Classification hints:
+## Apply
 
-- Product semantics / scope → product brief, PRD, context
-- System / data contract → system design, context; ADR → `canonical-route`
-- User-visible behavior → UX design; global patterns → `DESIGN.md` as `canonical-route`
-- Proof / acceptance → verification matrix
-- Historical routing → handoff, registry; RCA → dated addendum, not retrospective rewrite
-- Delivery decomposition → `planner-deferred` by default
+For authorized `mechanical-scribe` lines, do not load an owner's `SOUL.md`. Verify the source is already authoritative and the edit is reversible, no-judgment propagation. Write:
 
-## 3. Owner-count / cascade gate
+`Resolution: applied_by_scribe — owner: <owner>; scribe: Facilitator (<skill>); source: <ratified decision>; <date>`
 
-Before asking for apply authority:
+Record provenance beside the authoritative edit. Do not create a closed-on-write handoff for history. If an existing handoff is resolved, close it and point its Promotion Record at the edit.
 
-1. Count **distinct design-tier owners** with non-trivial `scribe` or `owner-handback` updates (PM, UX, Arch, QA as owners of their source artifacts).
-2. If **≥2** such owners → do **not** batch-scribe across owners. Recommend Sonia Course-Correction (or resume the planner convener). Close as `ratified_and_routed` (or pending/deferred if the user declines routing). Persist the inventory in `handoff.md` or the active `change-proposal-<slug>.md` when write authority permits.
-3. If **1** owner (or only `canonical-route` / `planner-deferred` lines remain) → proceed to the one authorization ask.
+Return every `owner-episode` to the presiding standard persona, which loads its own `references/gap-resolution.md` and runs capability-gated guest voice or owner consult. Owner consult may author canonical-tier artifacts. If the session was user-convened, activate the first owner as presiding persona and carry the full inventory; each independent consequence remains a separate episode.
 
-After any successful scribe, run the **Promotion Cascade Check**. If the cascade marks **≥2** stale owners → stop further batch apply; mark `registry.md ## Stale` and route Course-Correction.
+After each resolution, re-read changed contracts, scribe mechanical fallout, classify remaining impact, and resume the suspended work. Mark only unresolved artifacts stale.
 
-## 4. Ask once
+**Elicit / Brainstorming boundary:** these facilitators still require explicit authorization for direct mechanical writes. Without it, return the inventory to the convener.
 
-Ask for authorization with concrete cost — not a vague “what next?”:
+**Course-Correction consultation:** append synthesis to the active change proposal and return to Sonia. Sonia owns the standard ladder episodes. Do not run a second promotion ask.
 
-> “I found [N] impacted design artifacts ([list action classes: M scribe-eligible, K route/handback, C canonical-route]) and [P] planner-owned delivery artifact(s). Do you want me to promote the ratified decisions into the scribe-eligible design artifacts now, route the rest via handoff/Course-Correction, and leave Slice authoring for Sonia?”
-
-Preserve user control:
-
-- **Authorize apply** → attempt each `scribe` line under §5; route non-scribable lines.
-- **Not now** → `ratified_pending_authorization` + durable backlog when permitted.
-- **Explicitly defer docs** → `ratified_with_documentation_deferred` + durable backlog when permitted.
-
-## 5. Apply rules (authorization is necessary, not sufficient)
-
-For each inventory line after authorization:
-
-1. Re-check action class. `canonical-route` and `planner-deferred` never become facilitator writes from this protocol.
-2. For `scribe` candidates, run full **Scribe-Eligibility** (settled source, reversible, no high-stakes surface, no canonical-tier). Roundtable-ratified content additionally requires Non-negotiable-only synthesis and unmodified ratification (same qualifier as Course-Correction scribe).
-3. On pass:
-   - Load the target owner's entire `SOUL.md` (voice-resolution: sibling of that persona's `SKILL.md`).
-   - Settlement-verify against their beliefs/tensions/vocabulary.
-   - Write the exact settled patch; update `timestamp`.
-   - Dual attribution: in-artifact `Owner Disposition: applied_by_scribe — voiced-for: [owner]; scribe: Facilitator ([skill]); settled-from: prior-debate; [date]` and a **closed-on-write** `handoff.md` entry with matching `Promotion Record`.
-   - Run Promotion Cascade Check.
-4. On fail → `owner-handback` or `canonical-route`; enqueue open handoff / recommend owning persona or Course-Correction. Do not silently skip without recording the route.
-
-**Elicit / Brainstorming write boundary:** default close remains a handoff note to the convener. Facilitator scribe apply requires explicit user authorization for facilitator writes (same as Roundtable forward-direction). Without that authorization, close `ratified_pending_authorization` and resume the convener.
-
-**Context B (course-correction consultation):** the facilitator does **not** run this apply path. Append synthesis to the change-proposal; Sonia owns post-ratification scribe/handback. No double-gate.
-
-## 6. Close states
+## Close states
 
 When the gate fired, close with exactly one state:
 
-- `ratified_and_promoted` — every attempted `scribe` line succeeded; remaining inventory lines were routed (canonical / handback / planner-deferred) with durable backlog entries where required
-- `ratified_and_routed` — no facilitator scribe apply; inventory persisted as routing/CC/handoff backlog
-- `ratified_pending_authorization` — user did not authorize promote/route writes yet; inventory remains in chat and, when permitted, an open `handoff.md` promotion_request
-- `ratified_with_documentation_deferred` — user explicitly deferred documentation; same durability rules as pending
+- `ratified_and_promoted` — all authorized mechanical writes and in-session owner episodes completed; only explicitly deferred delivery remains.
+- `ratified_and_routed` — unresolved work genuinely left the session or user-approved Course-Correction owns the coupled fallout.
+- `ratified_pending_authorization` — promotion or Course-Correction authority was not granted.
+- `ratified_with_documentation_deferred` — the user explicitly deferred artifact updates.
 
-Forbidden: claim `ratified_and_promoted` if any attempted scribe failed, or if canonical-tier / multi-owner work was written by the facilitator.
+Never claim `ratified_and_promoted` while an owner episode remains unresolved or an artifact is stale from the ratification.
 
-## 7. Durable backlog
+## Durable backlog
 
-Pending, deferred, and routed closes that need async continuity write (when handoff write authority exists):
+Create a handoff only when work genuinely leaves the session because required capability is unavailable or rejected, user input/authority is missing or declined, or ownership remains asynchronous. Reuse an existing matching item. Persist the inventory, exact blocked episode, owner, artifact, and resumption condition. Do not create handoffs for completed in-session promotion.
 
-- One open `handoff.md` item per deferred promotion inventory (type `promotion_request`), body carries the inventory, **no** `applied_by_scribe` until apply.
-- Or append to an existing initiative `change-proposal-<slug>.md` when Course-Correction is already active.
+## RCA and delivery
 
-Chat-only synthesis is insufficient for fresh-window reload policy.
-
-## 8. RCA addenda
-
-Historical `rca-<slug>.md` files receive **dated addenda** when a ratification changes understanding of a past defect. Do not rewrite historical evidence sections retrospectively.
-
-## 9. Design vs delivery
-
-Default promotion excludes `slices.md` and `slice-<N>.md`. Include them only when the user explicitly authorizes planner-owned delivery artifacts, or when a separate Planner session is invoked.
+Historical `rca-<slug>.md` files receive dated addenda; do not rewrite evidence retrospectively. Delivery artifacts remain excluded unless explicitly authorized or Sonia is already presiding.

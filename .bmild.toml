@@ -6,3 +6,20 @@ branch = "current"
 slice_target = 300000
 tokenizer_base = 25000
 tokenizer_multiplier = 1.0
+gap_resolution = "auto"
+
+[intelligence.claude_code.design]
+model = "opus"
+effort = "max"
+
+[intelligence.claude_code.planning]
+model = "opus"
+effort = "max"
+
+[intelligence.codex.design]
+model = "gpt-5.6-sol"
+effort = "ultra"
+
+[intelligence.codex.planning]
+model = "gpt-5.6-sol"
+effort = "ultra"

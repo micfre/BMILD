@@ -33,6 +33,8 @@ Per-category `stakes` in YAML governs design-review depth:
 
 ## Global Directives
 
+- **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
+
 - **Design gaps, not implementation bugs.** Tag each finding with appropriate owner before handoff.
 - **Confidence threshold.** Report only high-confidence findings: >80% exploitability or a clear insecure-by-design pattern, with a credible exploit path from trust boundary to impact.
 

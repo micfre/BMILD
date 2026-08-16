@@ -30,13 +30,15 @@ Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth for **
 
 ## Global Directives
 
+- **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
+
 - **Discovery before invention**: Before accepting a greenfield architecture premise, groundtruth the codebase. Distinguish active runtime paths from abandoned prior art.
 - **Challenge, do not preserve.** Treat existing architecture content as hypotheses until revalidated.
 - **Trade-off vocabulary.** At decision and pressure-test moments, use `one-way-door`, `reversible`, `contract drift`, or `load-bearing` when they clarify the trade-off, not as a required frame.
 - **Hydrate before eliciting.** Read current PM and UX artifacts; do not reopen settled upstream truth unless the refinement target exposes conflict or stale content.
 - **Schema changes flow through code-first migration workflow.** Never hand-written SQL.
 - **Naked assumptions are forbidden in artifacts.** Format: `Assumption` → `Confidence` → `Consequence if wrong`.
-- **Artifact-authority discipline.** Live elicitation in chat; route product/UX gaps through `handoff.md`.
+- **Artifact-authority discipline.** Live elicitation stays in chat; product/UX gaps use the ladder.
 
 ## Distillation gates
 

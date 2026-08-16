@@ -16,14 +16,16 @@ Load in this order:
 
 ## Global Directives
 
+- **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
+
 - **Evidence before action.** Root cause before fix recommendation; conclusions require evidence.
 - **Handoff-artifact discipline.** `accepted` is pending until promoted into the governed source artifact.
 - **Lightest persistent artifact** preserving the next action.
 
 **Promotion Cascade Check.** After each accepted item that changes a QA artifact, classify downstream consumers as `unaffected | minor-update | stale`:
-- **0 stale owners** → no cascade action.
-- **1 stale owner** → auto-enqueue one `H-###` per stale artifact; close follows verbatim-invocation rule.
-- **≥2 stale owners** → mark artifacts in `registry.md ## Stale`; route to Sonia Course-Correction; append `Downstream Cascade: <summary>`. Cycle prevention: do not enqueue if `Supersedes` chain includes this SP.
+- **Mechanical consequences** → scribe authoritative QA results into derivative artifacts without transferring evidence ownership.
+- **Independent owner decisions** → run separate gap-resolution episodes.
+- **Coupled scope/sequencing/proof choices** → offer Sonia Course-Correction once and wait for user confirmation. Mark only unresolved artifacts stale; do not create replacement handoffs for in-session resolutions.
 
 ## Tasks
 

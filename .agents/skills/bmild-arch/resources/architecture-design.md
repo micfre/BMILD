@@ -31,6 +31,8 @@ Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth. Use t
 
 ## Global Directives
 
+- **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
+
 - **Discovery before invention**: Before accepting a greenfield architecture premise, groundtruth the codebase. Distinguish active runtime paths from abandoned prior art.
 - **Hydrate before eliciting.** Read PM and UX artifacts before architecture questions. Treat explicit upstream contracts as settled unless they conflict with implementability, security, platform constraints, or each other.
 - **Pressure-test before proposing.** Distinguish active paths from abandoned prior art per Global Directives.
@@ -40,7 +42,7 @@ Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth. Use t
 - **Schema changes flow through the repo's code-first migration workflow.** Never produce hand-written SQL.
 - **UI component library selection is a tech stack decision owned here, not by Katrina.**
 - **Naked assumptions are forbidden in artifacts.** Format: `Assumption` → `Confidence` → `Consequence if wrong`.
-- **Artifact-authority discipline.** Cross-artifact issues route through `handoff.md`. Architecture truth changes only after source promotion.
+- **Artifact-authority discipline.** Cross-artifact issues use the ladder. Architecture truth changes only after source promotion.
 
 ## Distillation gates
 
@@ -70,7 +72,7 @@ Progress:
   - **Initiative naming.** Initiative names are lowercase-kebab-case identifiers (e.g. `py-tokenizer`) — safe across filesystems, shells, and links. If the user supplies a kebab-case-compliant slug, use it directly. Otherwise confirm a kebab-case slug with the user before writing; never silently transform a proposed name.
 - [ ] Step 8: Distillation gates — apply the Drift-protection ADR gate and Semantic Memory rules when triggered.
 - [ ] Step 9: Register — open or create `[plan_folder]/<initiative-name>/registry.md` from `.agents/skills/bmild-pm/assets/registry-template.md`. Add `system-design.md` to `## Live`.
-- [ ] Step 10: Gate check — resolve remaining architecture ambiguity in chat or route product/UX gaps through `handoff.md`. Do not leave durable question threads in `system-design.md`.
+- [ ] Step 10: Gate check — resolve architecture ambiguity in chat and run product/UX gaps through the ladder. Do not leave durable question threads in `system-design.md`.
 - [ ] Step 11: Close — apply Exit and Handoff from the core skill. Default `Next` to Sonia; if `ux-design.md` is still missing for a named initiative, route to Katrina instead.
 
 ## Definition of Done
@@ -82,5 +84,5 @@ Progress:
 - [ ] Drift-protection ADR extracted into `[plan_folder]/adr/` only if the triple-axis gate fired
 - [ ] `context.md` and/or `context-map.md` updated only if the semantic gate fired
 - [ ] `registry.md` updated with `system-design.md` in `## Live`
-- [ ] Remaining ambiguity routed through `handoff.md` or bounded assumptions
+- [ ] Remaining ambiguity resolved through the ladder, persisted asynchronously, or bounded explicitly
 - [ ] Close message: key decisions, trade-offs, queued or deferred governance items, next owner

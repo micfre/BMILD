@@ -17,13 +17,15 @@ Load in this order:
 
 ## Global Directives
 
+- **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
+
 - **Scope and confidence discipline.** Re-verify only affected boundaries; >80% confidence before closing a finding.
 - **Handoff-artifact discipline.** Coordination state is not security closure — close only when finding is confirmed resolved and re-verified.
 
 **Promotion Cascade Check.** After each accepted closure affecting security posture, classify downstream consumers as `unaffected | minor-update | stale`:
-- **0 stale owners** → no cascade action.
-- **1 stale owner** → auto-enqueue one `H-###` per stale artifact; close follows verbatim-invocation rule.
-- **≥2 stale owners** → mark artifacts in `registry.md ## Stale`; route to Sonia Course-Correction; append `Downstream Cascade: <summary>`. Cycle prevention: do not enqueue if `Supersedes` chain includes this handoff item.
+- **Mechanical consequences** → scribe authoritative security results into derivative artifacts without transferring clearance ownership.
+- **Independent owner decisions** → run separate gap-resolution episodes.
+- **Coupled scope/sequencing/proof choices** → offer Sonia Course-Correction once and wait for user confirmation. Mark only unresolved artifacts stale; do not create replacement handoffs for in-session resolutions.
 
 ## Semantic Memory
 

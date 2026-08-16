@@ -2,7 +2,7 @@
 
 Resolve planning-owned governance items raised by other personas. Promote accepted changes into source artifacts so the handoff does not become shadow memory.
 
-For design-change-driven plan revisions use Replanning; for ≥2-owner cascades use Course-Correction.
+For design-change-driven plan revisions use Replanning. Resolve independent owner consequences through separate ladder episodes; use Course-Correction only for user-approved coupled choices.
 
 ## Additional Context
 
@@ -17,11 +17,13 @@ Load in this order:
 
 ## Global Directives
 
+- **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
+
 - **Accepted handoff items are not truth until promoted** in the source artifact.
 - **Classify before resolving:**
   - *Bounded-to-planning* → resolve here (`slices.md`, `slice-<N>.md`, `verification-matrix.md` only).
   - *Design-change-driven* → exit to Replanning.
-  - *Multi-artifact cascade (≥2 design-tier owners)* → exit to Course-Correction.
+  - *Cross-artifact impact* → separate independent owner episodes; offer Course-Correction only when the choices are coupled and materially change scope, sequencing, or proof.
 
 ## Tasks
 
@@ -33,7 +35,7 @@ Progress:
   - Update `slices.md`, affected `slice-<N>.md`, or `verification-matrix.md`
   - Re-run slice budgeting if reads, edits, or new-file estimates changed
   - Update `Owner Disposition` and `Promotion Record`
-  - Run **Promotion Cascade Check**: classify downstream consumers as `unaffected | minor-update | stale`. (a) **0 stale** → no action. (b) **1 stale owner** → auto-enqueue one `H-###` per stale artifact; close follows verbatim-invocation rule. (c) **≥2 stale owners** → mark artifacts in `registry.md ## Stale`; route to Course-Correction; append `Downstream Cascade: <summary>`. Cycle prevention: do not enqueue if `Supersedes` chain includes this handoff.
+  - Run the **Promotion Cascade Check** from `references/gap-resolution.md`: classify consumers `unaffected | mechanical | owner-decision | stale`; scribe mechanical propagation; resolve independent owner decisions through separate ladder episodes; offer Course-Correction only for coupled choices and wait for user confirmation. Mark only unresolved consumers stale and append `Downstream Cascade: <summary>`; do not replace an in-session resolution with a new handoff.
 - [ ] Step 4: Defer items needing design input — name missing constraint; route with one precise handoff item when another owner must act.
 - [ ] Step 5: Write — persist planning changes; update `timestamp` frontmatter.
 - [ ] Step 6: Register — update `registry.md` (`## Live` / `## Archived`).

@@ -18,9 +18,11 @@ Load in this order:
 
 ## Global Directives
 
+- **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
+
 - **Completed Slices are fixed history** — do not revise.
 - **At most one recut pass** on affected unstarted Slices, then one coverage verification pass. If coverage still fails, hand back with one precise question.
-- **Multi-artifact cascades** → exit to Course-Correction mode, not this mode.
+- **Cross-artifact impact** → resolve independent owners through separate ladder episodes. Offer Course-Correction only for coupled scope/sequencing/proof choices and wait for user confirmation.
 
 ## Recovery-scope split rule
 

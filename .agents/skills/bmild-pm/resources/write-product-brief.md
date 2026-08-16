@@ -30,6 +30,8 @@ Per-section `stakes` in `brief-completion-criteria.yaml` sets elicitation depth.
 
 ## Global Directives
 
+- **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
+
 - **Discovery before invention**: Before accepting a greenfield premise, verify repository reality. Scan the codebase when the initiative may be brownfield or when artifacts claim behaviour that code may already implement. Do not invent greenfield solutions in a brownfield environment.
 - **Diverge before converging.** Consequential sections from YAML first; medium and low sections synthesized for steering.
 - **Problem framing precedes features.** Capture full vision and a tight initiative boundary in the brief. Defer MVP-vs-Growth bucketing and documentation scope to PRD mode.
@@ -62,7 +64,7 @@ Progress:
   - Target users are named, not generic
   - At least one success criterion is measurable
   - Scope is a tight boundary, not a feature list
-  - Any unresolved user-owned ambiguity is resolved live, routed through `handoff.md` only when async owner-to-owner continuity is required, or documented as a bounded assumption only when low-risk and reversible
+  - Any user-owned ambiguity is resolved live or documented as a bounded assumption only when low-risk and reversible; other-owner gaps run the ladder and persist a handoff only for asynchronous continuity
   - Every in-scope section in `brief-completion-criteria.yaml` passes falsifiable / good_signal / weak_signal
 - [ ] Step 4: Pre-exit offer (declinable in one word) — name 1–2 session-appropriate bmild-elicit methods from this artifact's shortlist (**Challenge from Critical Perspective**, **Shark Tank Pitch**), chosen by what was actually contentious: *"Before I write the brief — I could run **Challenge from Critical Perspective** or **Shark Tank Pitch** in a bmild-elicit session, or take anything to roundtable. Otherwise I'll proceed."* On acceptance, swap to `bmild-elicit` with the method pre-selected; offer roundtable per core Advanced Elicitation Triggers when trade-offs are still open. Any decline or proceed signal continues directly to the Write step in the same turn — no further confirmation.
 - [ ] Step 5: Write — write `[plan_folder]/<initiative-name>/product-brief.md` using `assets/product-brief-template.md`. Substitute `[user_name]` from `.bmild.toml`.
@@ -75,7 +77,7 @@ Progress:
 
 - [ ] Problem, target users, competitive context, success criteria, scope, and vision are documented
 - [ ] `brief-completion-criteria.yaml` verified for all in-scope sections
-- [ ] Remaining ambiguity routed through `handoff.md` or bounded assumptions — not durable question sections in `product-brief.md`
+- [ ] Remaining ambiguity resolved through the ladder, persisted asynchronously, or bounded explicitly — not left as durable question sections
 - [ ] `product-brief.md` written to `[plan_folder]/<initiative-name>/`
 - [ ] `context.md` and `context-map.md` updated only if the semantic distillation gate fired
 - [ ] `registry.md` updated with `product-brief.md` in `## Live`

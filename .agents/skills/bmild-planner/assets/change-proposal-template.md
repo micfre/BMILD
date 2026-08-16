@@ -18,7 +18,7 @@ status: open | in-progress | applied | abandoned
 
 ## Impact Map
 
-Classify each source artifact as `unaffected | minor-update | requires-handback | requires-redesign | requires-rollback`.
+Classify each source artifact as `unaffected | mechanical | owner-decision | coupled-change | stale`.
 
 - product-brief.md: <classification>
 - prd.md: <classification>
@@ -51,15 +51,15 @@ Append a record per ratified roundtable session. Synthesis is the facilitator's 
 
 ### Q2: ...
 
-## Scribe Applications
+## Resolution Record
 
-Ratified roundtable decisions Sonia applied directly under Scribe-Eligibility criteria (see `course-correction.md`). Each entry: target artifact, roundtable session ref, date, SP-### closed. Authorship attribution is the roundtable session record — Sonia is the transcriber.
+Record each bounded episode after the ratified decision: causal episode, owner, affected owned artifacts, resolution method, provenance location, and downstream impact. Same-owner consequences are one entry even when multiple artifacts change.
 
-- SP-### — `<artifact>` — applied by Sonia as scribe from <roundtable session, YYYY-MM-DD>
+- R-### — <episode> — <owner> — `<artifacts>` — `applied_by_scribe | authored_by_guest | authored_by_consult` — <provenance pointer, YYYY-MM-DD>
 
 ## Ordered Handoff Chain
 
-For ratified changes that did NOT take the scribe path. Each entry: target persona, mode, specific artifact, exact verbatim invocation prompt, `Blocked-By` references to prior entries.
+Only work that genuinely left the session because capability or authority was unavailable/rejected, user input was unavailable, or ownership remained asynchronous. Each entry: target persona, mode, artifact, exact invocation, `Blocked-By`, and resume condition. Completed in-session episodes never appear here.
 
 1. <persona> — <mode> on `<artifact>` — verbatim prompt: *"<invocation text>"* — Blocked-By: none
 2. <persona> — <mode> on `<artifact>` — verbatim prompt: *"<invocation text>"* — Blocked-By: 1
@@ -68,10 +68,10 @@ For ratified changes that did NOT take the scribe path. Each entry: target perso
 
 ## SP Items
 
-- SP-### — <target artifact> — <target owner> — Blocked-By: <prior SP-###s> — Disposition: <pending | applied_by_scribe | applied_by_handback | authored_by_consult>
+- SP-### — <target artifact> — <target owner> — Blocked-By: <prior SP-###s> — Disposition: <pending | applied_by_handback> — Resume condition: <exact condition>
 
 ## Decision Log Echo
 
-Mirrors entries summarized into `[plan_folder]/rollup.md` `## Decision Log` as each handback (or scribe application) completes. Maintained for traceability.
+Mirrors entries summarized into `[plan_folder]/rollup.md` `## Decision Log` as each owner episode or asynchronous handback completes. Maintained for traceability.
 
 - YYYY-MM-DD — <persona|scribe> — <one-line decision summary> — SP-### — change-proposal-<slug>

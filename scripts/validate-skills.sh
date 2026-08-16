@@ -284,27 +284,37 @@ if (( fail )); then
   exit 1
 fi
 
-# Consult-agent generator smoke check: canonical definitions must generate
-# per-harness outputs with the correct tier mapping (frontier pair for
-# design-tier + planner, inherit/default otherwise).
+# Consult-agent generator smoke check: first-class Claude Code, Codex, and
+# OpenCode outputs with pinned design/planning and inherited execution tiers.
 gen_out="$tmp_dir/consult-gen"
 if bash "$root/scripts/generate-consult-agents.sh" --skills-dir "$skills_dir" --out "$gen_out" >/dev/null 2>&1; then
   gen_count="$(find "$gen_out/harness/claude-code/agents" -name 'bmild-*-consult.md' 2>/dev/null | wc -l | tr -d ' ')"
   [[ "$gen_count" == "7" ]] || report "generator emitted $gen_count claude-code consult agents, expected 7"
   for persona in pm ux arch planner; do
-    rg -q '^model: opus' "$gen_out/harness/claude-code/agents/bmild-$persona-consult.md" 2>/dev/null \
+    rg -q '^model: opus$' "$gen_out/harness/claude-code/agents/bmild-$persona-consult.md" 2>/dev/null \
       || report "generated claude-code consult for $persona missing 'model: opus'"
-    rg -q '"Sol"' "$gen_out/harness/codex/consult-agents.toml" 2>/dev/null \
-      || report "generated codex fragment missing frontier model for $persona"
+    rg -q '^effort: max$' "$gen_out/harness/claude-code/agents/bmild-$persona-consult.md" 2>/dev/null \
+      || report "generated claude-code consult for $persona missing 'effort: max'"
+    rg -q '^model = "gpt-5.6-sol"$' "$gen_out/harness/codex/agents/bmild-$persona-consult.toml" 2>/dev/null \
+      || report "generated codex role missing pinned model for $persona"
+    rg -q '^model_reasoning_effort = "ultra"$' "$gen_out/harness/codex/agents/bmild-$persona-consult.toml" 2>/dev/null \
+      || report "generated codex role missing pinned effort for $persona"
   done
   for persona in dev qa sec; do
-    rg -q '^model: inherit' "$gen_out/harness/claude-code/agents/bmild-$persona-consult.md" 2>/dev/null \
+    rg -q '^model: inherit$' "$gen_out/harness/claude-code/agents/bmild-$persona-consult.md" 2>/dev/null \
       || report "generated claude-code consult for $persona missing 'model: inherit'"
+    if rg -q '^model( |_)' "$gen_out/harness/codex/agents/bmild-$persona-consult.toml" 2>/dev/null; then
+      report "generated codex consult for $persona must inherit model/effort"
+    fi
   done
-  rg -q 'reasoning_effort = "high"' "$gen_out/harness/codex/consult-agents.toml" 2>/dev/null \
-    || report "generated codex fragment missing frontier reasoning_effort"
-  rg -c '^reasoning_effort' "$gen_out/harness/codex/consult-agents.toml" 2>/dev/null | rg -q '^4$' \
-    || report "generated codex fragment should carry exactly 4 reasoning_effort entries (pm/ux/arch/planner)"
+  for file in "$gen_out"/harness/opencode/agent/*.md; do
+    rg -q '^  task: deny$' "$file" || report "$file missing OpenCode leaf task deny"
+    if rg -q '^(model|variant):' "$file"; then
+      report "$file must inherit OpenCode model and variant"
+    fi
+  done
+  rg -q '^expose_spawn_agent_model_overrides = true$' "$gen_out/harness/codex/config.toml" \
+    || report "generated Codex config missing runtime override exposure"
 else
   report "generate-consult-agents.sh failed against $skills_dir"
 fi

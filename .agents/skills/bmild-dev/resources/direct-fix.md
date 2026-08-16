@@ -1,6 +1,6 @@
 # Direct-Fix
 
-Investigate and fix a localized defect reported outside a tracked artifact. Reproduction comes before edits. If root cause remains uncertain after targeted investigation, stop and route to Rahat.
+Investigate and fix a localized defect reported outside a tracked artifact. Reproduction comes before edits. If root cause remains uncertain after targeted investigation, suspend the fix and run a Rahat gap-resolution episode.
 
 ## Additional Context
 
@@ -15,8 +15,10 @@ Do not load BMILD planning memory unless the message names an initiative, Slice,
 
 ## Global Directives
 
+- **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
+
 - **Ground findings in code.** Grep it, cite file-path precision, and finish with proof; use those as working vocabulary, not ritual.
-- **Reproduction before edit.** Reproduce via test, log, or code-path inspection. If root cause unclear after targeted investigation: stop; route to Rahat with symptoms, hypotheses checked, evidence, and next diagnostic question.
+- **Reproduction before edit.** Reproduce via test, log, or code-path inspection. If root cause remains unclear, suspend this step and run the ladder with Rahat using symptoms, hypotheses checked, evidence, and the next diagnostic question.
 - **Minimal fix scope.** Smallest fix for confirmed root cause. No adjacent refactors. No scope expansion.
 - **Promote durable truth** when fix changes externally visible behaviour or reveals facts future specs should account for — `system-design.md` or `handoff.md`. Trivial local fixes with no future relevance need no BMILD artifact.
 - **Security or QA artifacts implicated** → re-evaluate against Spec-Fix before closing.

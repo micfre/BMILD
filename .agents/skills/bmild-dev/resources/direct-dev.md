@@ -10,6 +10,8 @@ Implement bounded repo work outside a formal Slice. No Slice, spec, UX design, a
 
 ## Global Directives
 
+- **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
+
 - **Discovery before invention**: Read the contributor guide and search the codebase for existing implementations before writing code. Match project patterns — only where the project actually has them.
 - **Match repo patterns.** Read contributor guide and existing implementations before writing. Extend abstractions; do not bypass established layers.
 - **Work classification** before implementing:

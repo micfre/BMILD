@@ -28,6 +28,8 @@ Per-section `stakes` in `prd-completion-criteria.yaml` sets elicitation depth. U
 
 ## Global Directives
 
+- **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
+
 - **Discovery before invention**: Before accepting a greenfield premise, verify repository reality. Scan the codebase when the initiative may be brownfield or when artifacts claim behaviour that code may already implement. Do not invent greenfield solutions in a brownfield environment.
 - **Diverge before converging.** Consequential sections from YAML first; medium and low sections synthesized for steering.
 - **Naked assumptions are forbidden in artifacts.** Every documented assumption, deferral, and open question carries `Assumption` → `Confidence` → `Consequence if wrong`.
@@ -53,7 +55,7 @@ Progress:
   - **Probe without scripting.** Alongside YAML weak-signal drivers, optionally use `solution-shaped`, `happy ears`, or `steelman the opposite` when they sharpen the question.
   - **Synthesize medium and low sections.** Draft `nfr` (when not elevated by `stakes_note`), `documentation_scope`, `assumptions`, and `ambiguity_disposition` in one block. Ask the user to redirect, accept, or escalate.
   - **Reopen only what the user steers.** Hedging or pushback promotes that section to consequential pacing.
-  - **Governance routing.** Decide whether remaining ambiguity belongs in `handoff.md` or a bounded assumption.
+  - **Governance resolution.** Decide whether remaining ambiguity is user-owned chat, a bounded assumption, or another-owner ladder episode.
 - [ ] Step 4: Consequence-check — privately verify before writing:
   - Every Must Have traceable to a user need from `product-brief.md`
   - Phase 1 is the absolute minimum to validate the idea
@@ -65,7 +67,7 @@ Progress:
 - [ ] Step 5: Pre-exit offer (declinable in one word) — name 1–2 session-appropriate bmild-elicit methods from this artifact's shortlist (**Pre-mortem Analysis**, **Challenge from Critical Perspective**), chosen by what was actually contentious: *"Before I write the PRD — I could run **Pre-mortem Analysis** or **Challenge from Critical Perspective** in a bmild-elicit session, or take anything to roundtable. Otherwise I'll proceed."* On acceptance, swap to `bmild-elicit` with the method pre-selected; offer roundtable per core Advanced Elicitation Triggers when trade-offs are still open. Any decline or proceed signal continues directly to the Write step in the same turn — no further confirmation.
 - [ ] Step 6: Write — write `[plan_folder]/<initiative-name>/prd.md` using `assets/prd-template.md`. Substitute `[user_name]` from `.bmild.toml`.
   - **Initiative naming.** Initiative names are lowercase-kebab-case identifiers (e.g. `py-tokenizer`) — safe across filesystems, shells, and links. If the user supplies a kebab-case-compliant slug, use it directly. Otherwise confirm a kebab-case slug with the user before writing; never silently transform a proposed name.
-- [ ] Step 7: Gate check — resolve any remaining product-domain ambiguity synchronously in chat, or route UX/architecture gaps through `handoff.md`. Do not leave durable question threads in `prd.md`.
+- [ ] Step 7: Gate check — resolve product-domain ambiguity synchronously in chat and run UX/architecture gaps through the ladder. Do not leave durable question threads in `prd.md`.
 - [ ] Step 8: Register — add `prd.md` to `## Live` in `registry.md`. Archive any superseded predecessor.
 - [ ] Step 9: Semantic distillation gate — apply Semantic Memory rules when triggered.
 - [ ] Step 10: Close — apply Exit and Handoff from the core skill. Downstream design handoff is allowed; `Next` may point to Katrina, Lance, or both.
@@ -74,7 +76,7 @@ Progress:
 
 - [ ] Functional requirements, user journeys, scope/prioritization, NFRs, documentation scope, and assumptions documented
 - [ ] `prd-completion-criteria.yaml` verified for all in-scope sections
-- [ ] Remaining ambiguity routed through `handoff.md` or bounded assumptions — not embedded question sections
+- [ ] Remaining ambiguity resolved through the ladder, persisted asynchronously, or bounded explicitly — not embedded question sections
 - [ ] `prd.md` written to `[plan_folder]/<initiative-name>/`
 - [ ] `context.md` and/or `context-map.md` updated only if the semantic distillation gate fired
 - [ ] `registry.md` updated with `prd.md` in `## Live`

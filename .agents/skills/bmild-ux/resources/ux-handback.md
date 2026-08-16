@@ -27,6 +27,8 @@ For handoff items requiring new UX decisions, map each item to its target sectio
 
 ## Global Directives
 
+- **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
+
 - **Artifact-authority discipline.** Promote accepted decisions into `ux-design.md`; `handoff.md` records coordination until the target artifact is updated.
 - **Observable decisions only.** Label preferences as preferences.
 - **Naked assumptions are forbidden in artifacts.** Document promoted assumptions with `Assumption` → `Confidence` → `Consequence if wrong`.
@@ -51,9 +53,9 @@ Progress:
 - [ ] Step 4: Resolve — for each accepted item that changes design truth:
   - Update `ux-design.md` (or create if needed)
   - Update the handoff item's `Owner Disposition` and `Promotion Record`
-  - Run the **Promotion Cascade Check**: identify downstream consumers per `AGENTS.md` cross-artifact flow; classify each as `unaffected | minor-update | stale`. Count distinct `Target Owner` values for `stale` artifacts. (a) **0 stale owners** → no cascade action. (b) **1 stale owner** → auto-enqueue one follow-up `H-###` per stale artifact (`Type: cross_artifact_conflict`, `Target Owner: <owner>`, `Raised By: Katrina`, `Blocking: yes`, `Why It Matters: <named upstream change>`, `Requested Change: <pointer to source artifact section>`). Close follows the verbatim-invocation rule. (c) **≥2 stale owners** → mark each artifact in `registry.md ## Stale` with the upstream handoff reference; route the user to Sonia in Course-Correction mode. Append `Cascade: <summary>` to the handoff item being closed. Cycle prevention: do not enqueue an item whose `Supersedes` chain already includes this handoff.
+  - Run the **Promotion Cascade Check** from `references/gap-resolution.md`: classify consumers `unaffected | mechanical | owner-decision | stale`; scribe mechanical propagation; resolve each independent owner-decision as a separate ladder episode; offer Course-Correction only when choices are coupled and materially change scope, sequencing, or proof, and wait for user confirmation. Mark only unresolved consumers stale. Append `Cascade: <summary>` to the handoff being closed; do not create a replacement for an in-session resolution.
   - Note the consequence for the originating persona's artifact
-- [ ] Step 5: Defer items needing product or architecture input — name the missing constraint; route back with one precise handoff item when another owner must act.
+- [ ] Step 5: For product or architecture input, name the missing constraint and run one bounded owner episode; persist a precise handoff only if it leaves the session.
 - [ ] Step 6: Consequence-check — verify updated sections against `completion-criteria.yaml` for all in-scope sections.
 - [ ] Step 7: Write — update `ux-design.md` and `timestamp` frontmatter when design changes result.
 - [ ] Step 8: Distillation gates — apply Global pattern distillation (DESIGN.md) and Semantic Memory (`context.md` / `context-map.md`) rules when triggered.

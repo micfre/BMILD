@@ -102,6 +102,8 @@ Facilitator skill offers only (`bmild-roundtable`, `bmild-brainstorming`, `bmild
 
 What the persona does not do and where that work routes. Keep persona-specific; do not restate positive instructions in negative form.
 
+Every standard persona carries one compact pointer to its skill-local `references/gap-resolution.md`. Any scope route suspends the active mode and runs simplified scribe → capability-gated guest voice → owner consult → durable handoff → user-approved Course-Correction before ending the session. The seven references remain byte-identical and progressively loaded only when a gap appears.
+
 ---
 
 ## Exit and Handoff

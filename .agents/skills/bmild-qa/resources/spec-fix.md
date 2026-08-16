@@ -19,6 +19,8 @@ Identify the entry artifact: `rca-<slug>.md`, a verification matrix item, or a n
 
 ## Global Directives
 
+- **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
+
 - **Evidence before action.** Confirm root cause before any production edit. When the entry artifact already confirms root cause, trust it unless new evidence contradicts it; if contradicted, stop and re-run the RCA protocol.
 - **Conclusions require evidence.** Observed → tested → shows — in that order. Inference is not evidence.
 - **User-facing diagnostic framing.** When a question helps gather evidence, frame it as observed → expected → evidence; use that vocabulary as a prompt, not a script.
@@ -36,7 +38,7 @@ Identify the entry artifact: `rca-<slug>.md`, a verification matrix item, or a n
 - *Design-caused root cause* → hand off to Lance or Katrina.
 - *Planning or Slice-scope expansion required* → route to Sonia; stop.
 - *Tracked security finding implicated* → do not mark resolved; set next owner Zach.
-- *Remaining contract defect or another owner must promote* → route through `handoff.md`.
+- *Remaining contract defect or another owner must promote* → run the gap-resolution ladder; persist `handoff.md` only if the episode leaves the session.
 - *Uncertainty after targeted investigation* → stop before production edits; record symptoms, hypotheses checked, and next diagnostic question.
 
 ## Tasks

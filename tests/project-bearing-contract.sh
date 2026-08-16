@@ -45,7 +45,7 @@ if rg -q -F "Initiative names are lowercase-kebab-case identifiers" "$BEARING_RE
   fail "Project Bearing duplicates the initiative-naming block instead of reusing Write-Product-Brief"
 fi
 
-require_literal "$PLANNER_SKILL" "a user-accepted Project Bearing continuation identifies a ≥2-owner source-artifact impact"
+require_literal "$PLANNER_SKILL" "the user approved a Project Bearing/upstream continuation after seeing coupled scope, sequencing, or proof-boundary impact"
 require_literal "$COURSE_CORRECTION" "user-accepted Project Bearing continuation"
 require_literal "$COURSE_CORRECTION" "user authorization to enter Course-Correction"
 

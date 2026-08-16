@@ -17,6 +17,8 @@ If the rollup conflicts with a registry or current artifact, name the mismatch a
 
 ## Global Directives
 
+- **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
+
 - **Ground project reality before recommending direction.** A visible UI opportunity does not outrank integrity, operationalization, evidence, or a dependency merely because it feels rewarding.
 - **Think in lifts, not task inventories.** A candidate bearing is an outcome that may later create, resume, or redirect one or more initiatives. It is not a Slice, an issue list, or a mandatory process gate.
 - **Keep uncertainty proportionate.** Surface only unknowns that could change the recommendation. Do not manufacture a tree of future decisions, tickets, claims, fog, or a separate backlog.
@@ -48,7 +50,8 @@ Progress:
   - **Existing initiative with `product-brief.md` but no `prd.md`:** offer Write-PRD.
   - **Existing initiative whose problem, users, success criteria, scope boundary, or vision changes:** offer Refine-Brief.
   - **Existing initiative whose requirements, phase priority, journeys, NFRs, or documentation scope changes:** offer Refine-PRD.
-  - **A bearing that materially affects source artifacts owned by two or more personas:** offer Sonia Course-Correction. On acceptance, carry a transient continuation packet — selected bearing, why now, target initiative, rejected alternatives, reconsideration condition, and suspected affected artifacts — into Sonia's Course-Correction session. User acceptance authorizes the transition; it does not create a `handoff.md` item or skip normal Course-Correction reads.
+  - **Independent source-artifact consequences across owners:** run separate gap-resolution episodes; multiple owners alone do not justify Course-Correction.
+  - **Coupled consequences that materially alter scope, sequencing, or proof boundaries:** offer Sonia Course-Correction once. On acceptance, carry a transient continuation packet — selected bearing, why now, target initiative, rejected alternatives, reconsideration condition, and suspected affected artifacts — into Sonia's session. User acceptance authorizes the transition; it does not create a `handoff.md` item or skip normal Course-Correction reads.
   - **Existing artifacts already express the bearing:** do not manufacture an edit. Offer the genuinely appropriate downstream owner or let the user stop.
 - [ ] Step 8: If the user accepts a Faisal continuation, load the selected resource and continue in the same session without a closing block, a second Opening Stance, or repeated groundtruth. If the user accepts Course-Correction, activate Sonia with the continuation packet; Sonia opens once in her own voice and follows normal Course-Correction. If the user declines, close with the bearing recorded and a clear later re-entry point.
 

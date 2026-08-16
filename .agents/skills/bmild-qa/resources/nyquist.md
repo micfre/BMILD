@@ -18,6 +18,8 @@ Load in this order:
 
 ## Global Directives
 
+- **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
+
 - **Proof discipline.** Each matrix row names demonstrable proof — implementation status alone is not proof.
 - **Planning-artifact discipline.** Sonia-authored matrices are validated and repaired here, not treated as already proven.
 - **Handoff-artifact discipline.** Include proof that authoritative source promotion occurred before handoff outcomes are treated as complete.

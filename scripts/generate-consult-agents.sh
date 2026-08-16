@@ -1,29 +1,16 @@
 #!/usr/bin/env bash
-# Generate per-harness consult subagent definitions from the canonical
-# .agents/skills/bmild-*/agents/consult.md sources.
-#
-# Outputs (under --out, default: project root):
-#   harness/claude-code/agents/bmild-<persona>-consult.md
-#   harness/opencode/agent/bmild-<persona>-consult.md
-#   harness/codex/consult-agents.toml
-#
-# Tier mapping (from canonical frontmatter):
-#   model_tier: frontier -> claude-code: opus | opencode: $FRONTIER_MODEL | codex: $CODEX_FRONTIER_MODEL
-#   model_tier: inherit  -> claude-code: inherit | opencode: omit (session model) | codex: omit
-#   effort_tier: high    -> codex: reasoning_effort = $CODEX_FRONTIER_EFFORT (default high)
-#                           claude-code: not expressible per subagent (comment only)
-#                           opencode: provider options placeholder (comment only)
-#
-# Overrides: FRONTIER_MODEL (opencode model id), CODEX_FRONTIER_MODEL,
-# CODEX_FRONTIER_EFFORT env vars. Runtime .bmild.toml consult_model /
-# consult_effort are applied by the dispatching persona, not baked in here.
+# Generate first-class Claude Code, Codex, and OpenCode leaf consult agents
+# from the skill-local canonical agents/consult.md definitions.
 set -euo pipefail
 
 SKILLS_DIR=".agents/skills"
 OUT_DIR="."
-FRONTIER_MODEL="${FRONTIER_MODEL:-anthropic/claude-opus-4-1}"
-CODEX_FRONTIER_MODEL="${CODEX_FRONTIER_MODEL:-Sol}"
-CODEX_FRONTIER_EFFORT="${CODEX_FRONTIER_EFFORT:-high}"
+
+# Release-pinned defaults for tiers that must not inherit implicitly.
+CLAUDE_DESIGN_MODEL="opus"
+CLAUDE_DESIGN_EFFORT="max"
+CODEX_DESIGN_MODEL="gpt-5.6-sol"
+CODEX_DESIGN_EFFORT="ultra"
 
 usage() {
   cat <<'USAGE'
@@ -34,7 +21,7 @@ Usage: generate-consult-agents.sh [--skills-dir PATH] [--out DIR]
 USAGE
 }
 
-while [ $# -gt 0 ]; do
+while [ "$#" -gt 0 ]; do
   case "$1" in
     --skills-dir) SKILLS_DIR="$2"; shift 2 ;;
     --out) OUT_DIR="$2"; shift 2 ;;
@@ -59,13 +46,14 @@ fm_value() {
 CLAUDE_DIR="$OUT_DIR/harness/claude-code/agents"
 OPENCODE_DIR="$OUT_DIR/harness/opencode/agent"
 CODEX_DIR="$OUT_DIR/harness/codex"
-mkdir -p "$CLAUDE_DIR" "$OPENCODE_DIR" "$CODEX_DIR"
+CODEX_AGENT_DIR="$CODEX_DIR/agents"
+mkdir -p "$CLAUDE_DIR" "$OPENCODE_DIR" "$CODEX_AGENT_DIR"
 
-CODEX_TOML="$CODEX_DIR/consult-agents.toml"
+CODEX_TOML="$CODEX_DIR/config.toml"
 {
-  echo "# BMILD consult subagents — merge into ~/.codex/config.toml (or project .codex/config.toml)."
-  echo "# Requires Codex multi-agent v2. Frontier pair is overridable at runtime via"
-  echo "# .bmild.toml consult_model / consult_effort."
+  echo "# BMILD leaf consult roles — merge into Codex config.toml."
+  echo "# Dispatchers apply .bmild.toml [intelligence.codex.<tier>] with runtime"
+  echo "# spawn model/reasoning overrides. Invalid explicit pairs must not retry."
   echo "[features.multi_agent_v2]"
   echo "enabled = true"
   echo "expose_spawn_agent_model_overrides = true"
@@ -77,23 +65,30 @@ for consult in "$SKILLS_DIR"/bmild-*/agents/consult.md; do
   [ -f "$consult" ] || continue
   name="$(fm_value name "$consult")"
   description="$(fm_value description "$consult")"
-  model_tier="$(fm_value model_tier "$consult")"
-  effort_tier="$(fm_value effort_tier "$consult")"
+  intelligence_tier="$(fm_value intelligence_tier "$consult")"
   body="$(awk 'BEGIN{n=0} /^---$/{n++; next} n>=2{print}' "$consult")"
   skill_dir="$(dirname "$(dirname "$consult")")"
   count=$((count + 1))
 
-  # --- Claude Code (.claude/agents/<name>.md) ---
-  claude_model="inherit"
-  [ "$model_tier" = "frontier" ] && claude_model="opus"
+  case "$intelligence_tier" in
+    design|planning) pinned=1 ;;
+    implementation|reviewer) pinned=0 ;;
+    *) echo "FAIL: invalid intelligence_tier '$intelligence_tier' in $consult" >&2; exit 1 ;;
+  esac
+
+  # Claude Code: effort is emitted only for pinned tiers; omission inherits
+  # the active session for implementation/reviewer tiers. Agent/Task tools
+  # are excluded from the allowlist so consults remain leaves.
   {
     echo "---"
     echo "name: $name"
     echo "description: \"$description\""
-    echo "model: $claude_model"
-    # Reasoning effort is not expressible per subagent in Claude Code.
-    echo "# effort_tier: $effort_tier (not expressible per subagent; session-level only)"
-    # Task excluded: consult subagents are leaf nodes (consult-path §5.6).
+    if [ "$pinned" -eq 1 ]; then
+      echo "model: $CLAUDE_DESIGN_MODEL"
+      echo "effort: $CLAUDE_DESIGN_EFFORT"
+    else
+      echo "model: inherit"
+    fi
     echo "tools: Read, Grep, Glob, Edit, Write, Bash"
     echo "---"
     echo ""
@@ -102,15 +97,12 @@ for consult in "$SKILLS_DIR"/bmild-*/agents/consult.md; do
     echo "$body"
   } > "$CLAUDE_DIR/$name.md"
 
-  # --- Opencode (.opencode/agent/<name>.md) ---
+  # OpenCode intentionally inherits the user's harness-wide model and
+  # variant. Do not emit either field or attempt runtime synchronization.
   {
     echo "---"
     echo "description: $description"
     echo "mode: subagent"
-    if [ "$model_tier" = "frontier" ]; then
-      echo "model: $FRONTIER_MODEL"
-    fi
-    # effort_tier: $effort_tier — map to your provider's reasoning option (variant/options) if supported.
     echo "permission:"
     echo "  task: deny"
     echo "---"
@@ -120,16 +112,29 @@ for consult in "$SKILLS_DIR"/bmild-*/agents/consult.md; do
     echo "$body"
   } > "$OPENCODE_DIR/$name.md"
 
-  # --- Codex (config.toml fragment) ---
+  # Codex named roles point at schema-valid role config files. The role file
+  # carries release defaults for design/planning; other tiers inherit unless
+  # the dispatcher supplies runtime model/reasoning overrides.
   {
     echo "[agents.$name]"
-    if [ "$model_tier" = "frontier" ]; then
-      echo "model = \"$CODEX_FRONTIER_MODEL\""
-      echo "reasoning_effort = \"$CODEX_FRONTIER_EFFORT\""
-    fi
     echo "description = \"$description\""
+    echo "config_file = \"agents/$name.toml\""
     echo ""
   } >> "$CODEX_TOML"
+
+  {
+    echo "name = \"$name\""
+    echo "description = \"$description\""
+    if [ "$pinned" -eq 1 ]; then
+      echo "model = \"$CODEX_DESIGN_MODEL\""
+      echo "model_reasoning_effort = \"$CODEX_DESIGN_EFFORT\""
+    fi
+    echo "developer_instructions = \"\"\""
+    echo "Skill directory: $skill_dir"
+    echo ""
+    echo "$body"
+    echo "\"\"\""
+  } > "$CODEX_AGENT_DIR/$name.toml"
 done
 
 if [ "$count" -eq 0 ]; then
@@ -137,7 +142,4 @@ if [ "$count" -eq 0 ]; then
   exit 1
 fi
 
-echo "Generated $count consult agents:"
-echo "  $CLAUDE_DIR (claude-code)"
-echo "  $OPENCODE_DIR (opencode)"
-echo "  $CODEX_TOML (codex fragment)"
+echo "Generated $count consult agents for Claude Code, Codex, and OpenCode."

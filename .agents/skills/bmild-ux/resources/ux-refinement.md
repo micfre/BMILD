@@ -31,6 +31,8 @@ Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth for **
 
 ## Global Directives
 
+- **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
+
 - **Discovery before invention**: Before accepting a greenfield UX premise, verify repository reality and any existing global design system. Do not invent patterns that contradict established global UX.
 - **Challenge, do not preserve.** Treat existing UX content as hypotheses until revalidated.
 - **Hydrate before eliciting.** Read current PM artifacts; do not reopen settled requirements unless the refinement target exposes conflict or stale content.

@@ -17,9 +17,11 @@ Load in this order:
 
 ## Global Directives
 
+- **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
+
 - **Accepted handoff items are not truth until promoted** in the source artifact. Verify owning artifacts reflect resolutions — do not treat handoff status alone as authoritative.
 - **Readiness blocks decomposition.** If any check fails, record findings and hand back one precise question — do not write Slice entries.
-- **Source defects route through `handoff.md`.** User-owned clarification stays in chat unless async continuity requires a governed handoff.
+- **Source defects invoke the gap-resolution ladder.** User-owned clarification stays in chat; `handoff.md` is only for episodes that genuinely leave the session.
 
 ## Routing heuristics
 

@@ -69,4 +69,4 @@ Progress:
 - Facilitator signed off as `— Facilitator 🌀` with a branch-aware close selected by convener identity (in-turn persona resume, fallback copy-ready invocation, user `For you`/`Next` routing, or course-correction routing).
 - No *"I will turn this back to [persona]"* phrasing remains for work not continued in this turn; the convener either resumes in-turn with the synthesis as input or the user has a clear `For you`/`Next` step or a copy-ready invocation.
 - The invoking persona or user has what they need to resume without re-running the roundtable.
-- Context B did not double-gate promotion apply (Sonia owns post-ratification scribe/handback).
+- Context B did not double-gate promotion apply (Sonia owns post-ratification ladder episodes).

@@ -32,6 +32,8 @@ Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth. Use t
 
 ## Global Directives
 
+- **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
+
 - **Discovery before invention**: Before accepting a greenfield UX premise, verify repository reality and any existing global design system. Do not invent patterns that contradict established global UX.
 - **Observable decisions only.** A UX decision exists only if an observable user behavior or testable screen state distinguishes it from alternatives; otherwise label it preference.
 - **Hydrate before eliciting.** Read PM artifacts and architecture constraints before asking UX questions. Do not reopen settled PM requirements unless artifacts conflict, contradict existing UX patterns, or require a UX trade-off PM did not decide. Do not infer user goals from backend shape.
@@ -69,7 +71,7 @@ Progress:
   - **Initiative naming.** Initiative names are lowercase-kebab-case identifiers (e.g. `py-tokenizer`) — safe across filesystems, shells, and links. If the user supplies a kebab-case-compliant slug, use it directly. Otherwise confirm a kebab-case slug with the user before writing; never silently transform a proposed name.
 - [ ] Step 8: Distillation gates — apply Global pattern distillation (DESIGN.md) and Semantic Memory (`context.md` / `context-map.md`) rules when triggered.
 - [ ] Step 9: Register — open or create `[plan_folder]/<initiative-name>/registry.md` from `.agents/skills/bmild-pm/assets/registry-template.md`. Add `ux-design.md` (and `DESIGN.md` if updated) to `## Live`.
-- [ ] Step 10: Gate check — resolve remaining UX ambiguity in chat or route product/architecture gaps through `handoff.md`. Do not leave durable question threads in `ux-design.md`.
+- [ ] Step 10: Gate check — resolve UX ambiguity in chat and run product/architecture gaps through the ladder. Do not leave durable question threads in `ux-design.md`.
 - [ ] Step 11: Close — apply Exit and Handoff from the core skill.
 
 ## Definition of Done
@@ -81,5 +83,5 @@ Progress:
 - [ ] `DESIGN.md` updated only if global pattern distillation gate fired
 - [ ] `context.md` and/or `context-map.md` updated only if the semantic gate fired
 - [ ] `registry.md` updated with artifacts in `## Live`
-- [ ] Remaining ambiguity resolved in chat, routed through `handoff.md`, or handled as bounded assumptions
+- [ ] Remaining ambiguity resolved in chat or through the ladder, persisted asynchronously when required, or handled as a bounded assumption
 - [ ] Close message: key decisions, trade-offs, queued or deferred governance items, next owner

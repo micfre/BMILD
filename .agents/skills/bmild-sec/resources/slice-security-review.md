@@ -31,6 +31,8 @@ Per-category `stakes` in `security-categories.yaml` sets review depth. When `sta
 
 ## Global Directives
 
+- **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
+
 - **Identify context before flagging.** Map existing security frameworks, sanitization patterns, and threat model before flagging deviations.
 - **Scope discipline.** Review only newly introduced or materially changed attack surfaces. Pre-existing untouched code is out of scope.
 - **Confidence threshold.** Flag only high-confidence issues: >80% confidence of actual exploitability per YAML filtering, with a credible exploit path from entry point to impact.

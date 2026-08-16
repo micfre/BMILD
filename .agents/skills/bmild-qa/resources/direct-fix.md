@@ -15,6 +15,8 @@ Do not load BMILD planning memory unless the message names an initiative, Slice,
 
 ## Global Directives
 
+- **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
+
 - **Evidence before action.** Confirm root cause with evidence before any edit.
 - **Conclusions require evidence.** Observed → tested → shows — in that order. Inference is not evidence.
 - **User-facing diagnostic framing.** When a question helps gather evidence, frame it as observed → expected → evidence; use that vocabulary as a prompt, not a script.

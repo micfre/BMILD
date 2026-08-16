@@ -5,7 +5,7 @@
 *Big Methods, Ideally Less Drama*
 
 <!-- bmild-version-badge -->
-![Version](https://img.shields.io/badge/Version-0.3.1-orange)
+![Version](https://img.shields.io/badge/Version-0.4.0-orange)
 [![Build Status](https://github.com/micfre/BMILD/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/micfre/BMILD/actions/workflows/ci.yml)
 [![Release Status](https://github.com/micfre/BMILD/actions/workflows/release.yml/badge.svg)](https://github.com/micfre/BMILD/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -25,7 +25,7 @@ BMILD is for people who want the useful parts of spec-driven development: cleare
 - Let the relevant persona write a spec into an artifact and hand you to the next owner when there is one.
 - When the spec is ready to be worked, Sonia turns it into small vertical Slices sized for an LLM implementation session, with verification planned before the code is written.
 - Alex will implement on a slice-by-slice basis, and will then give you any notes on discrepancy versus contract, or to give you the next step for you to test first-hand or to deliver to automated verification.
-- If the work changes, BMILD marks affected artifacts stale, records the decision and routes the repair to the right owner. Active work -- and as you'll discover, inter-persona handoffs -- are tracked for you so you don't need to hold that in your own mental picture.
+- If the work changes, BMILD resolves affected owner decisions in-session where capability permits, marks only unresolved artifacts stale, and keeps any genuinely asynchronous handoffs precise. You do not need to hold the dependency picture yourself.
 
 That is the whole idea: retain context and judgment while keeping the interaction human and direct.
 
@@ -41,7 +41,6 @@ cp -R /path/to/BMILD/.agents/skills/bmild-* .agents/skills/
 Skill locations for harnesses are:
 
 - **Codex:** `.agents/skills/`
-  (as well as many other harnesses which use 'standard' discovery paths)
 - **Claude Code:** `.claude/skills/`
 - **OpenCode:** `.opencode/skills/`
 
@@ -80,11 +79,13 @@ By the end of the first day using BMILD, you should have a small body of project
 user_name = "Developer"
 plan_folder = "plans/"
 slice_target = 130000
+gap_resolution = "auto"
 ```
 
 - `user_name` lets the named personas address you naturally. It is a small thing, but it makes a long working session less anonymous, and most models don't overuse it.
 - `plan_folder` is where BMILD keeps its memory and project artifacts, relative to the repository root. Leave it as `plans/` or anywhere else if you have a reason to keep generated project memory elsewhere.
 - `slice_target` is the peak live context budget Sonia uses for one implementation Slice. It is not the model’s advertised maximum context window and is not a cumulative or cost estimate: leave room for the agent’s instructions, repository context, tool output, reasoning, and verification. As a starting point, aim for roughly 30% of the advertised window when you want to be conservative; up to 50% is a more liberal ceiling for stable, well-understood work. Context quality degrades as a window fills, so lower is usually safer.
+- `gap_resolution` controls whether owner consults run automatically, ask first, or leave the session. `auto` is the default and keeps mechanical/eligible owner resolution in-session.
 
 ## About automated commits
 
@@ -103,17 +104,27 @@ Set `format = "conventional-commits"` for that explicit message style [q.v.](htt
 > [!WARNING]
 > Automated commit posture is deliberately local-only. It never fetches, pulls, pushes, opens a pull request, stashes, amends, rebases, resets, bypasses hooks, or rewrites history.
 
-### About in-session consults
+### About automatic gap resolution
 
-The default is off: absent `consult` (or `consult = 0`) preserves the handoff workflow exactly. When enabled, a persona that hits an open single-owner design gap may dispatch the owning persona's consult subagent in-session — the subagent runs at that persona's pinned model tier (Frontier for Faisal, Katrina, Lance, and Sonia), authors the decision into its own artifact, and closes the handoff item on write:
+The default is `auto`: when a persona finds a gap owned elsewhere, it suspends the current step, runs a skill-native resolution ladder, and resumes after re-reading the changed contract. The ladder uses simplified mechanical scribing first, then capability-gated guest voice, then an owner consult. A durable `H-###` is created only when work truly leaves the session; Course-Correction is reserved for coupled scope, sequencing, or proof changes and requires your approval.
 
 ```toml
-# consult = 0                 # 0 or absent: off (default); 1: auto-dispatch; 2: ask inline first
-# consult_model = "Sol"       # optional frontier model override (harness permitting)
-# consult_effort = "high"     # optional reasoning-depth override (harness permitting)
+gap_resolution = "auto" # auto (default) | ask-consult | handoff-only
+
+[intelligence.claude_code.design]
+model = "opus"
+effort = "max"
+
+[intelligence.codex.design]
+model = "gpt-5.6-sol"
+effort = "ultra"
 ```
 
-Consult subagents are leaf nodes (they never dispatch further agents), canonical-tier artifacts (`DESIGN.md`, `context-map.md`, `adr/`) and multi-owner cascades still route normally, and harnesses without subagent support fall back to handoff routing. Release tarballs carry generated per-harness consult definitions under `harness/` (Claude Code, OpenCode, Codex); `scripts/generate-consult-agents.sh` regenerates them locally.
+The intelligence tiers are `design` (Faisal, Katrina, Lance), `planning` (Sonia), `implementation` (Alex), and `reviewer` (Rahat, Zach). Claude Code and Codex accept optional native model/effort pairs per tier. Missing design/planning tiers use the release-pinned highest-capability defaults shown in `.bmild.toml.example`; implementation/reviewer inherit the session unless configured. OpenCode always inherits the user's harness-wide model and variant and ignores BMILD tier overrides.
+
+`ask-consult` pauses only before the consult rung. `handoff-only` still allows mechanical scribing but sends owner judgment to the durable queue. Legacy `consult`, `consult_model`, and `consult_effort` keys are rejected with migration guidance; BMILD never maps them silently. An invalid explicit model/effort pair is reported exactly once, is never retried or substituted, and leaves one durable handoff for that affected episode.
+
+Consult agents are leaves. Owner consults may author anything they canonically own, including `DESIGN.md`, `context-map.md`, and ADRs. Release tarballs carry current definitions for Claude Code, Codex, and OpenCode under `harness/`; `scripts/generate-consult-agents.sh` regenerates them locally.
 
 ### About Slice sizing and tokenizer settings
 
@@ -165,20 +176,18 @@ Plans change. Implementation reveals constraints. A product decision invalidates
 
 When a change affects multiple design owners, Sonia’s course-correction mode maps the impact, breaks it into bounded questions, convenes the required perspectives, and orders the repairs. It is re-planning without throwing away the context that made the original plan useful.
 
-### It makes handoffs useful and durable
+### It closes ownership gaps before handing off
 
-You will usually first encounter a "Handoff" when an agent raises a conflict or gap. It's essentially an owner and a suggested resolution.
+When an agent raises a conflict or gap, BMILD first tries to close it in the same session and resume the original work. A handoff appears only when required capability or user input is unavailable, authority is declined, or ownership must genuinely continue later.
 
-A handoff is not “someone else’s problem now.” It is a precise request to the persona that owns the canonical artifact: what changed, why it matters, the decision or evidence they need, and exactly what source document may need repair. When that owner returns, their handback updates the canonical spec and records the promotion. The handoff itself is coordination history, never a competing source of truth.
+A handoff is not “someone else’s problem now.” It is a precise asynchronous request: what changed, why it matters, what capability or decision is missing, the exact source document, and the condition for resuming suspended work. The handoff remains coordination history, never a competing source of truth.
 
 This is a major part of how BMILD contains spec drift. Decisions and unresolved questions do not hang indefinitely in an ever-expanding chat log, where a later session can miss or reinterpret them. A resolution lands in the artifact that governs the work; its downstream consumers are then classified as unaffected, needing a minor update, or stale. Larger cascades go to Sonia for course-correction.
 
 > [!NOTE]
-> A handoff is for a judgment another owner still needs to make. When a fact is already settled -- by the code, a ratified decision, or a single clear constraint -- a persona may scribe that narrow fact into another owner’s artifact in the same session. Scribing records settled truth; it never authors a new decision. It carries provenance and checks the target persona’s point of view, while project-wide `DESIGN.md`, `context-map.md`, and ADRs always use the normal owner route.
+> A handoff is for work that genuinely leaves the session. Settled reversible facts and authoritative statuses are propagated mechanically without loading another persona's voice. A causally bounded single-owner decision may be authored through capability-gated guest voice or an owner consult. All in-session paths record provenance beside the authoritative edit; they do not create a closed handoff merely for history.
 >
-> Advanced facilitation adds one more connective tissue: after a ratified durable-contract decision that leaves source artifacts stale, Roundtable, Elicit, or Brainstorming asks once for promote authority, then either scribes eligible lines or routes the rest. Agreement in chat is not organizational truth until artifacts (or a durable handoff backlog) reflect it.
->
-> With `consult` enabled in `.bmild.toml` (off by default), an open single-owner judgment can be delivered in-session instead of as a separate session: the presiding persona dispatches the owner's consult subagent, which runs at that owner's pinned model tier, authors the decision into the canonical artifact, and closes the handoff item on write. Multi-owner changes and project-wide artifacts still use the normal owner route.
+> Advanced facilitation adds one more connective tissue: after a ratified durable-contract decision, independent owner consequences return through separate ladder episodes. Coupled fallout offers Sonia's Course-Correction once and waits for consent. Agreement in chat is not organizational truth until the owned artifacts or a genuinely asynchronous backlog reflect it.
 
 This makes BMILD particularly comfortable for work that crosses sessions, agents, or people. It gives continuity without pretending that the system can make unresolved decisions on your behalf.
 
@@ -209,7 +218,7 @@ The workflow is intentionally non-linear. You might start at Alex for a small bo
 
 ### Readiness is a quality check, not a ceremony
 
-Before Sonia decomposes a design into implementation Slices, she checks that the work is actually ready: the required intent is covered downstream, the contracts are usable, and the proof boundary is clear enough to verify. If the answer is no, the useful outcome is a specific handoff to repair the gap.
+Before Sonia decomposes a design into implementation Slices, she checks that the work is actually ready: the required intent is covered downstream, the contracts are usable, and the proof boundary is clear enough to verify. If the answer is no, she runs a bounded owner-resolution episode and resumes planning; only a genuinely unavailable resolution becomes a handoff.
 
 This is where BMILD earns its place. An LLM can produce code very quickly from a weak prompt. It can also create a polished but expensive misunderstanding. Readiness exists to keep the agent from silently accepting product, UX, or architectural questions that have not actually been decided.
 
@@ -284,7 +293,7 @@ You can name an initiative, point at a failing test, paste a decision, or say �
 
 ## Compatibility and expectations
 
-BMILD is designed on and for Codex, Claude Code, and OpenCode, and it will likely work perfectly well in other environments that support the agent Skills pattern. The planner uses a native shell script on macOS, Linux, and WSL, and an equivalent PowerShell script on non-WSL Windows environments.
+BMILD's first-class harness targets are Codex, Claude Code, and OpenCode. Release validation and generated consult packages cover those three only. The planner uses a native shell script on macOS, Linux, and WSL, and an equivalent PowerShell script on non-WSL Windows environments.
 
 Use a capable coding model, design target is roughly anything in the top-15 SWE-bench Verified ranking (score > 66). BMILD relies heavily on the agent to make semantic distinctions. Better reasoning models will make more of the framework; a 3B parameter running locally will disappoint.
 

@@ -19,7 +19,9 @@ Identify entry artifact: `rca-<slug>.md`, verification matrix item, or named Sli
 
 ## Global Directives
 
-- **Trust Rahat's diagnosis** unless new evidence contradicts — then stop and route back to Rahat.
+- **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
+
+- **Trust Rahat's diagnosis** unless new evidence contradicts — then suspend the affected step and run a Rahat resolution episode.
 - **Ground findings in code.** Grep it, cite file-path precision, and finish with proof; use those as working vocabulary, not ritual.
 - **Scope discipline.** Fix only what the entry artifact specifies. Route remaining contract defects via `handoff.md`.
 - **Verification matrix.** Mark items `implemented` or `blocked` with evidence — never `passed`.
@@ -37,7 +39,7 @@ For effective posture `1`, require a Git worktree; record attached branch, `HEAD
 
 Progress:
 
-- [ ] Step 1: Confirm entry contract. If root cause not confirmed in artifact, route to Rahat. If fix exceeds scope, route to Sonia with evidence.
+- [ ] Step 1: Confirm entry contract. If root cause is not confirmed, run a Rahat episode. If the fix exceeds scope, run a Sonia episode with evidence.
 - [ ] Step 2: Implement fix per artifact. Implement regression test exactly as specified, or add one when practical.
 - [ ] Step 3: Run quality gates and regression test. Record gates not run and why.
 - [ ] Step 4: Document when externally visible behaviour changed; otherwise `Documentation impact: none`.

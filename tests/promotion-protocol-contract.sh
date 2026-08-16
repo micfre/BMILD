@@ -81,9 +81,15 @@ for root in "${SKILL_ROOTS[@]}"; do
         fail "${file}: missing close state ${state}"
       fi
     done
-    if ! rg -q 'canonical-route' "${file}"; then
-      fail "${file}: missing canonical-route action class"
-    fi
+    for action in mechanical-scribe owner-episode coupled-course-correction planner-deferred; do
+      if ! rg -q "${action}" "${file}"; then
+        fail "${file}: missing ${action} action class"
+      fi
+    done
+    rg -q 'separate episodes' "${file}" || fail "${file}: independent-owner resolution missing"
+    rg -q 'wait for explicit consent' "${file}" || fail "${file}: Course-Correction consent missing"
+    rg -q -F "do not load an owner's \`SOUL.md\`" "${file}" \
+      || fail "${file}: simplified facilitator scribe must explicitly skip SOUL.md"
   done
 
   for rel in "${LOAD_FILES[@]}"; do
@@ -111,6 +117,9 @@ for root in "${SKILL_ROOTS[@]}"; do
     fi
     if ! rg -q 'Ratification→Promotion gate \(Context A only\)' "${step03}"; then
       fail "${step03}: expected Context A promotion gate heading"
+    fi
+    if ! rg -q 'Multiple owners alone do not trigger Course-Correction' "${step03}"; then
+      fail "${step03}: expected independent-owner rule"
     fi
   fi
 

@@ -29,6 +29,8 @@ Per-section `stakes` in `brief-completion-criteria.yaml` sets elicitation depth 
 
 ## Global Directives
 
+- **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
+
 - **Discovery before invention**: Before accepting a greenfield premise, verify repository reality. Scan the codebase when the initiative may be brownfield or when artifacts claim behaviour that code may already implement. Do not invent greenfield solutions in a brownfield environment.
 - **Challenge, do not preserve.** Treat existing brief content as hypotheses until revalidated.
 - **Problem framing precedes features.** Do not drift into PRD detail except to flag downstream implications.
@@ -54,7 +56,7 @@ Progress:
 - [ ] Step 6: Consequence-check — privately verify changed sections and any cross-section impacts before writing; run `brief-completion-criteria.yaml` for all in-scope sections.
 - [ ] Step 7: Pre-exit offer (conditional, declinable in one word) — when any **consequential** section (per YAML `stakes`, respecting `stakes_note`) is being materially changed, offer once, naming 1–2 session-appropriate bmild-elicit methods from this artifact's shortlist (**Challenge from Critical Perspective**, **Shark Tank Pitch**), chosen by what was actually contentious: *"Before I update the brief — I could run **Challenge from Critical Perspective** or **Shark Tank Pitch** in a bmild-elicit session, or take anything to roundtable. Otherwise I'll proceed."* On acceptance, swap to `bmild-elicit` with the method pre-selected; offer roundtable per core Advanced Elicitation Triggers when trade-offs are still open. Skip when only medium/low sections change or the session is a single-field alignment. Any decline or proceed signal continues directly to the update in the same turn — no further confirmation.
 - [ ] Step 8: Write — update `[plan_folder]/<initiative-name>/product-brief.md` using `assets/product-brief-template.md`. Preserve unchanged sections. Update `timestamp` frontmatter.
-- [ ] Step 9: Gate check — resolve remaining product ambiguity in chat or route through `handoff.md` when another owner must act.
+- [ ] Step 9: Gate check — resolve product ambiguity in chat; run the gap-resolution ladder when another owner must act.
 - [ ] Step 10: Semantic distillation gate — apply Semantic Memory rules when triggered.
 - [ ] Step 11: Register — confirm `product-brief.md` in `## Live`; archive superseded predecessors if applicable.
 - [ ] Step 12: Downstream impact — if brief changes force `prd.md` updates only, offer Refine-PRD as `Next`; if changes cascade to planning/design artifacts beyond PM ownership, offer Sonia in `bmild-planner` Course-Correction mode.
