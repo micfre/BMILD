@@ -1,8 +1,8 @@
 user_name = "Developer"     # persona will address user by this name
 plan_folder = "plans/"      # desired location relative to project root to store context memory and planning documents
-slice_target = 172000       # peak live context budget for one implementation Slice
+slice_target = 150000       # peak live context budget for one implementation Slice
 tokenizer_base = 15000      # fixed overhead: system prompt, user prompt, mandatory context
-tokenizer_multiplier = 1.25 # residual safety margin applied to the variable working set
+tokenizer_multiplier = 1.00 # residual safety margin applied to the variable working set
 commit = 0                  # 0: off; 1: message + eligible local commit; 2: message only
 # format = "conventional-commits" # omit to infer local history, then fall back here
 branch = "current"         # current | initiative
@@ -10,29 +10,30 @@ gap_resolution = "auto"    # auto (default) | ask-consult | handoff-only
 
 # Claude Code and Codex tier overrides are optional. Design/planning fall back
 # to release-pinned highest-capability pairs; implementation/reviewer inherit.
+# Effort values are model-specific and must use the exact spellings shown.
 [intelligence.claude_code.design]
 model = "opus"
-effort = "max"
+effort = "max" # Claude opus: "low", "medium", "high", "max"; Opus 4.7 also "xhigh"
 
 [intelligence.claude_code.planning]
 model = "opus"
-effort = "max"
+effort = "max" # Claude opus: "low", "medium", "high", "max"; Opus 4.7 also "xhigh"
 
 [intelligence.codex.design]
 model = "gpt-5.6-sol"
-effort = "ultra"
+effort = "ultra" # Codex gpt-5.6-sol: "low", "medium", "high", "xhigh", "max", "ultra"
 
 [intelligence.codex.planning]
 model = "gpt-5.6-sol"
-effort = "ultra"
+effort = "ultra" # Codex gpt-5.6-sol: "low", "medium", "high", "xhigh", "max", "ultra"
 
 # Optional inherited-tier overrides:
 # [intelligence.codex.implementation]
 # model = "gpt-5.6-terra"
-# effort = "high"
+# effort = "high" # Codex gpt-5.6-terra: "low", "medium", "high", "xhigh", "max", "ultra"
 #
 # [intelligence.codex.reviewer]
 # model = "gpt-5.6-terra"
-# effort = "high"
+# effort = "high" # Codex gpt-5.6-terra: "low", "medium", "high", "xhigh", "max", "ultra"
 
 # OpenCode consults always inherit the user's harness-wide model and variant.

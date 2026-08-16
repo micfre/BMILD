@@ -19,6 +19,13 @@ for harness in claude_code codex; do
   done
 done
 
+claude_efforts='Claude opus: "low", "medium", "high", "max"; Opus 4.7 also "xhigh"'
+codex_sol_efforts='Codex gpt-5.6-sol: "low", "medium", "high", "xhigh", "max", "ultra"'
+codex_terra_efforts='Codex gpt-5.6-terra: "low", "medium", "high", "xhigh", "max", "ultra"'
+[ "$(rg -c -F "$claude_efforts" "$EXAMPLE")" -eq 2 ] || fail "example missing Claude opus effort enums"
+[ "$(rg -c -F "$codex_sol_efforts" "$EXAMPLE")" -eq 2 ] || fail "example missing Codex sol effort enums"
+[ "$(rg -c -F "$codex_terra_efforts" "$EXAMPLE")" -eq 2 ] || fail "example missing Codex terra effort enums"
+
 if rg -q '^[[:space:]]*(consult|consult_model|consult_effort)[[:space:]]*=' "$EXAMPLE"; then
   fail "example preserves a legacy consult assignment"
 fi
