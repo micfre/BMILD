@@ -34,10 +34,10 @@ Identify the entry artifact: `rca-<slug>.md`, a verification matrix item, or a n
 
 - *Entry artifact confirms root cause and user asked to fix* → skip Fix Election; proceed to fix path.
 - *Root cause not confirmed in entry artifact* → run RCA protocol; then Fix Election when a production fix is needed.
-- *Fix reveals product, UX, architecture, or security decision* → stop; route to owning persona with evidence.
+- *Fix reveals a product, UX, or architecture decision* → stop; route to the owning persona with evidence.
 - *Design-caused root cause* → hand off to Lance or Katrina.
 - *Planning or Slice-scope expansion required* → route to Sonia; stop.
-- *Tracked security finding implicated* → do not mark resolved; set next owner Zach.
+- *Tracked security finding implicated* → after the fix, re-run the affected-boundary security proof in-session; resolve only on evidence, otherwise preserve `findings_open` and route the remediation owner.
 - *Remaining contract defect or another owner must promote* → run the gap-resolution ladder; persist `handoff.md` only if the episode leaves the session.
 - *Uncertainty after targeted investigation* → stop before production edits; record symptoms, hypotheses checked, and next diagnostic question.
 
@@ -103,8 +103,8 @@ Offer once, declinable in one word:
 - [ ] Step 7: Update artifacts in order (fix path and handoff path as applicable):
   - `rca-<slug>.md` → fix details or Implementation Context; fix-election disposition; `next_owner` Alex | Rahat | none
   - `verification-matrix.md` → status updates only with proof evidence
-  - `slice-<N>.md` → Implementation Notes; on the declined-election handoff path also record the open item in `## QA / Security Follow-up` (next owner Alex, `rca-<slug>` link); `qa_status` only when evidence supports
-  - `security-review-*.md` → do not mark resolved; next owner Zach
+  - `slice-<N>.md` → Implementation Notes; on the declined-election handoff path also record the open item in `## Review Follow-up` (next owner Alex, `rca-<slug>` link); review statuses only when evidence supports
+  - `security-review-*.md` → closure evidence and `resolved` only after the affected exploit path is re-verified; otherwise keep the finding open with the actual remediation owner
   - Register new/updated RCA in `registry.md ## Live` when written
 - [ ] Step 8: Pre-exit offer (declinable in one word) — when writing or finalizing an RCA: *"Before I finalize the RCA — anything you want to steer or debate first? Otherwise I'll proceed."* Omit when no RCA write.
 - [ ] Step 9: Establish mode eligibility: confirmed root cause, completed fix (elected, skipped-election, or in-authority minimal), regression/manual proof, gate evidence, and a safe non-empty attributable path set. Failed, blocked, incomplete, no-change, baseline-overlap, or declined-election handoff work is not commit-ready.

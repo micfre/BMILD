@@ -1,0 +1,75 @@
+# bmild-qa/resources/code-review-categories.yaml
+meta:
+  artifact: slice-review-evidence
+  governed_by: bmild-qa
+  loading_note: >
+    Load for Code Review and Comprehensive Review. Repository-documented standards
+    override this baseline. Baseline smells are judgment prompts, never hard violations;
+    skip checks already enforced by tooling.
+
+smells:
+  - id: mysterious_name
+    name: Mysterious Name
+    signal: A function, variable, or type name does not reveal what it does or holds.
+    remediation: Rename it; if no honest name emerges, clarify the design.
+
+  - id: duplicated_code
+    name: Duplicated Code
+    signal: The same logic shape appears in more than one changed hunk or file.
+    remediation: Extract the shared shape and call it from both sites.
+
+  - id: feature_envy
+    name: Feature Envy
+    signal: A method reaches into another object's data more than its own.
+    remediation: Move the behavior onto the data it uses when that improves cohesion.
+
+  - id: data_clumps
+    name: Data Clumps
+    signal: The same fields or parameters repeatedly travel together.
+    remediation: Bundle the coherent domain concept into one type.
+
+  - id: primitive_obsession
+    name: Primitive Obsession
+    signal: A primitive or string substitutes for a domain concept with its own rules.
+    remediation: Introduce a small domain type when the behavior justifies it.
+
+  - id: repeated_switches
+    name: Repeated Switches
+    signal: The same switch or conditional cascade on one kind recurs across the change.
+    remediation: Centralize the mapping or use polymorphism where the repository supports it.
+
+  - id: shotgun_surgery
+    name: Shotgun Surgery
+    signal: One logical change requires scattered edits across many files.
+    remediation: Gather the changing responsibility behind one coherent boundary.
+
+  - id: divergent_change
+    name: Divergent Change
+    signal: One file or module is edited for several unrelated reasons.
+    remediation: Split responsibilities so each module changes for one reason.
+
+  - id: speculative_generality
+    name: Speculative Generality
+    signal: Abstractions, parameters, or hooks serve needs absent from the specification.
+    remediation: Remove or inline them until a real requirement exists.
+
+  - id: message_chains
+    name: Message Chains
+    signal: A caller depends on a long navigation chain through collaborators.
+    remediation: Hide the traversal behind a meaningful method on the owning boundary.
+
+  - id: middle_man
+    name: Middle Man
+    signal: A class or function primarily delegates without adding a useful boundary.
+    remediation: Call the real target directly unless the repository convention values the boundary.
+
+  - id: refused_bequest
+    name: Refused Bequest
+    signal: A subtype ignores or overrides most of what it inherits.
+    remediation: Prefer composition or a narrower interface.
+
+reporting:
+  documented_standard_breach: hard_when_directly_cited
+  baseline_smell: judgment_call
+  repo_standard_overrides_baseline: true
+  skip_tool_enforced_rules: true

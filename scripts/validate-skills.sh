@@ -289,7 +289,7 @@ fi
 gen_out="$tmp_dir/consult-gen"
 if bash "$root/scripts/generate-consult-agents.sh" --skills-dir "$skills_dir" --out "$gen_out" >/dev/null 2>&1; then
   gen_count="$(find "$gen_out/harness/claude-code/agents" -name 'bmild-*-consult.md' 2>/dev/null | wc -l | tr -d ' ')"
-  [[ "$gen_count" == "7" ]] || report "generator emitted $gen_count claude-code consult agents, expected 7"
+  [[ "$gen_count" == "6" ]] || report "generator emitted $gen_count claude-code consult agents, expected 6"
   for persona in pm ux arch planner; do
     rg -q '^model: opus$' "$gen_out/harness/claude-code/agents/bmild-$persona-consult.md" 2>/dev/null \
       || report "generated claude-code consult for $persona missing 'model: opus'"
@@ -300,7 +300,7 @@ if bash "$root/scripts/generate-consult-agents.sh" --skills-dir "$skills_dir" --
     rg -q '^model_reasoning_effort = "ultra"$' "$gen_out/harness/codex/agents/bmild-$persona-consult.toml" 2>/dev/null \
       || report "generated codex role missing pinned effort for $persona"
   done
-  for persona in dev qa sec; do
+  for persona in dev qa; do
     rg -q '^model: inherit$' "$gen_out/harness/claude-code/agents/bmild-$persona-consult.md" 2>/dev/null \
       || report "generated claude-code consult for $persona missing 'model: inherit'"
     if rg -q '^model( |_)' "$gen_out/harness/codex/agents/bmild-$persona-consult.toml" 2>/dev/null; then

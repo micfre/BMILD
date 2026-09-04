@@ -39,10 +39,9 @@ Add to each migrated `SKILL.md` under Mode Lookup:
 | **bmild-pm** | `brief-completion-criteria.yaml`, `prd-completion-criteria.yaml` | Done (reference) |
 | **bmild-ux** | `completion-criteria.yaml` | Extend in place (add stakes, trim loading_note, rename `governance_routing` → `ambiguity_disposition`) |
 | **bmild-arch** | `completion-criteria.yaml` | Same as UX |
-| **bmild-sec** | `security-categories.yaml` | Extend in place only — **not** renamed to completion-criteria; keep taxonomy/checklist role |
+| **bmild-qa** | `security-categories.yaml`, `code-review-categories.yaml` | Preserve as review taxonomies; do not add completion-criteria YAML |
 | **bmild-planner** | — | **No YAML.** Mode resources carry method and routing. |
 | **bmild-dev** | — | **No YAML.** |
-| **bmild-qa** | — | **No YAML.** |
 | **bmild-roundtable**, **bmild-elicit**, **bmild-brainstorming** | `methods.yaml` / `brain-methods.yaml` | Keep as lazy-loaded step catalogs; **do not** add completion-criteria files |
 
 ---
@@ -52,9 +51,9 @@ Add to each migrated `SKILL.md` under Mode Lookup:
 **`stakes` / `stakes_note` apply only to:**
 
 - **Design-tier artifact skills:** `bmild-pm`, `bmild-ux`, `bmild-arch`
-- **Security review:** `bmild-sec` (on applicable entries in `security-categories.yaml`)
+- **Security review:** `bmild-qa` Security Review and Comprehensive Review modes (on applicable entries in `security-categories.yaml`)
 
-**Stakes do not apply to:** `bmild-planner`, `bmild-dev`, `bmild-qa`, or advanced elicitation skills.
+**Stakes do not apply to:** `bmild-planner`, `bmild-dev`, QA modes other than Security Review / Comprehensive Review, or advanced elicitation skills.
 
 ### Where stakes live
 
@@ -78,7 +77,7 @@ Suggested consequential sections (review during migration):
 
 ### Keep / add
 
-- NON-NEGOTIABLE early: **first-person voice + session wrappers** only in core. **Code intelligence + discovery-before-invention** (or planner file-intense equivalent) in mode-resource Global Directives for modes that groundtruth repos or budget Slices (PM, UX, Arch, Dev, QA Spec-Fix/Direct-Fix, Sec review, planner decomposition/replan/CC).
+- NON-NEGOTIABLE early: **first-person voice + session wrappers** only in core. **Code intelligence + discovery-before-invention** (or planner file-intense equivalent) in mode-resource Global Directives for modes that groundtruth repos or budget Slices (PM, UX, Arch, Dev, QA fix/review modes, planner decomposition/replan/CC).
 - Mode Lookup as **sole authority** — fold handback scan into Mode 1 with **precedence** (scan wins; do not evaluate lower modes when queue matches).
 - **Advanced Elicitation Triggers** (facilitator offers: roundtable, elicit, brainstorming) — replaces generic Trigger-Condition Rules in core.
 - Brief vs PRD (or persona-specific) **disambiguation** rules where ambiguous user intent is common.
@@ -106,7 +105,7 @@ Suggested consequential sections (review during migration):
 
 ---
 
-## YAML refactor checklist (PM, UX, Arch, Sec only)
+## YAML refactor checklist (PM, UX, Arch, and QA security review only)
 
 - Trim `loading_note` to coverage/completeness only — point behavioural rules to mode resource Stakes-based elicitation.
 - Add or preserve `stakes` per section (Option A editorial pass for UX/Arch).
@@ -121,7 +120,7 @@ Suggested consequential sections (review during migration):
 Phase 0  This contract + update docs/std-core-skill-sections.md     ✓
 Phase 1  bmild-ux ∥ bmild-arch   (stakes in YAML + skill thin)      ✓
 Phase 2  bmild-planner            (no YAML, no stakes)              ✓
-Phase 3  bmild-qa → bmild-sec     (no new YAML; Sec gets stakes on categories) ✓
+Phase 3  bmild-qa                    (security and code-review taxonomies; security stakes stay mode-local) ✓
 Phase 4  bmild-dev                (no YAML, no stakes)              ✓
 Phase 5  roundtable, elicit, brainstorming  (thin SKILL only)        ✓
 ```
@@ -137,9 +136,8 @@ Phase 5  roundtable, elicit, brainstorming  (thin SKILL only)        ✓
 | pm | ✓ | existing | — | Golden reference |
 | ux | ✓ | existing | — | DESIGN.md distillation in mode resources |
 | arch | ✓ | existing | — | adr/ promotion in mode resources |
-| sec | ✓ | `security-categories.yaml` only | — | Taxonomy file, not completion-criteria shape |
+| qa | security modes | `security-categories.yaml` + `code-review-categories.yaml` | in resources | Review taxonomies, not completion-criteria shape |
 | planner | — | none | partial | CC exception stays in Mode Lookup; slice budget in Context Reads |
-| qa | — | none | in resources | Evidence-before-action in mode resources |
 | dev | — | none | short block OK | No handback mode |
 | advanced | — | step catalogs only | — | Step resources are execution script |
 

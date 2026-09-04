@@ -19,7 +19,7 @@
 # (.agents/skills, .claude/skills) relative to the repo root, never hardcoding one.
 set -euo pipefail
 
-STANDARD_PERSONAS=(pm ux arch dev qa sec planner)
+STANDARD_PERSONAS=(pm ux arch dev qa planner)
 REQUIRED_HEADINGS=(
   "## Identity"
   "## What I believe"
@@ -90,7 +90,7 @@ for root in "${SKILL_ROOTS[@]}"; do
         fail "${skillmd}: missing verbatim suspension phrase (FR7.4)"
       fi
 
-      # Anti-mode-selection-narration parity (FR1.5): all seven, not just Arch.
+      # Anti-mode-selection-narration parity (FR1.5): all six, not just Arch.
       if ! rg -q -F "Do not open with placeholder mode-selection narration" "${skillmd}"; then
         fail "${skillmd}: missing anti-narration rule (FR1.5)"
       fi

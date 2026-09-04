@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
 # State-lifecycle contract test.
 #
-# Guards the slice/QA/security lifecycle ownership rules:
-#   - exactly one Slice archive-move instruction exists, it lives in
-#     bmild-qa/resources/verification.md, and it fires only at status done
-#     (never at ready-for-review — Archived is terminal, not "superseded");
-#   - security_status has writers: findings_open/cleared in the slice review,
-#     cleared in sec handback;
-#   - qa_status ready_for_verification has a writer (Alex, spec-dev);
-#   - status done has a writer (Rahat, verification).
+# Guards the unified Rahat review lifecycle:
+#   - every Slice-capable review mode reconciles closure itself and archives
+#     only after status done;
+#   - Rahat writes QA, security, and code-review outcomes;
+#   - Alex requests QA and code review but never signs either off;
+#   - the final review mode closes directly, with no reviewer self-handoff.
 # Drift in any rule fails the test rather than silently re-creating ambiguous
 # completion state (LLM second-guessing, git-history archaeology).
 #
@@ -37,52 +35,58 @@ fail() { echo "FAIL: $*" >&2; failures=$((failures + 1)); }
 for root in "${SKILL_ROOTS[@]}"; do
   echo "== state-lifecycle contract: ${root} =="
 
-  # 1. Exactly one Slice archive-move instruction, in qa/verification.md, gated on done.
-  archive_hits=$(rg -N -F 'move `slice-<N>.md`' "${root}" --glob '*.md' || true)
-  archive_count=$(printf '%s\n' "${archive_hits}" | grep -c . || true)
-  if [ "${archive_count}" -ne 1 ]; then
-    fail "${root}: expected exactly 1 Slice archive-move instruction, found ${archive_count}"
-  else
-    case "${archive_hits}" in
-      *"bmild-qa/resources/verification.md"*) ;;
-      *) fail "${root}: Slice archive-move instruction lives outside bmild-qa/resources/verification.md: ${archive_hits}" ;;
-    esac
-    case "${archive_hits}" in
-      *"status: done"*) ;;
-      *) fail "${root}: Slice archive-move instruction is not gated on status done: ${archive_hits}" ;;
-    esac
-  fi
+  # 1. Every Slice-capable review mode owns terminal reconciliation.
+  for mode in verification security-review code-review comprehensive-review qa-handback; do
+    resource="${root}/bmild-qa/resources/${mode}.md"
+    [ -f "${resource}" ] || { fail "missing ${resource}"; continue; }
+    rg -q -F 'status: done' "${resource}" || fail "${resource}: no done-gated reconciliation"
+    rg -q -F 'move `slice-<N>.md`' "${resource}" || fail "${resource}: no terminal archive move"
+    rg -q -F 'do not hand back to Rahat' "${resource}" \
+      || rg -q -F 'never create a Rahat-to-Rahat closure handoff' "${resource}" \
+      || rg -q -F 'never hand back to Rahat' "${resource}" \
+      || fail "${resource}: reviewer self-handoff prohibition missing"
+  done
 
-  # 2. security_status writers.
-  slice_review="${root}/bmild-sec/resources/slice-security-review.md"
-  [ -f "${slice_review}" ] || fail "missing ${slice_review}"
-  rg -q -F 'security_status: findings_open' "${slice_review}" || fail "${slice_review}: no findings_open writer"
-  rg -q -F 'security_status: cleared' "${slice_review}" || fail "${slice_review}: no cleared writer (clean-review path)"
-  sec_handback="${root}/bmild-sec/resources/sec-handback.md"
-  [ -f "${sec_handback}" ] || fail "missing ${sec_handback}"
-  rg -q -F 'security_status: cleared' "${sec_handback}" || fail "${sec_handback}: no cleared writer at closure"
+  # 2. QA/security/code-review outcome writers live under Rahat.
+  security_review="${root}/bmild-qa/resources/security-review.md"
+  comprehensive="${root}/bmild-qa/resources/comprehensive-review.md"
+  code_review="${root}/bmild-qa/resources/code-review.md"
+  for writer in "${security_review}" "${comprehensive}"; do
+    rg -q -F 'security_status: findings_open' "${writer}" || fail "${writer}: no security findings_open writer"
+    rg -q -F 'security_status: cleared' "${writer}" || fail "${writer}: no security cleared writer"
+  done
+  for writer in "${code_review}" "${comprehensive}"; do
+    rg -q -F 'code_review_status: findings_open' "${writer}" || fail "${writer}: no code-review findings_open writer"
+    rg -q -F 'code_review_status: cleared' "${writer}" || fail "${writer}: no code-review cleared writer"
+  done
+  rg -q -F 'qa_status: verified | failed | blocked' "${comprehensive}" || fail "${comprehensive}: no QA outcome writer"
 
-  # 3. qa_status ready_for_verification writer (Alex).
+  # 3. Review-requested writers (Alex).
   spec_dev="${root}/bmild-dev/resources/spec-dev.md"
   [ -f "${spec_dev}" ] || fail "missing ${spec_dev}"
   rg -q -F 'qa_status: ready_for_verification' "${spec_dev}" || fail "${spec_dev}: no ready_for_verification writer"
+  rg -q -F 'code_review_status: review_requested' "${spec_dev}" || fail "${spec_dev}: no code-review request writer"
 
   # 4. status done writer (Rahat).
   qa_verification="${root}/bmild-qa/resources/verification.md"
   [ -f "${qa_verification}" ] || fail "missing ${qa_verification}"
   rg -q -F 'status: done' "${qa_verification}" || fail "${qa_verification}: no status done writer"
 
-  # 5. Review independence: Alex can request verification, never sign it off.
+  # 5. Review independence: Alex can request review, never sign it off.
   if rg -q -F 'qa_status: verified' "${root}/bmild-dev/resources"; then
     fail "${root}/bmild-dev: Alex must not author qa_status verified"
   fi
   if rg -q -F 'security_status: cleared' "${root}/bmild-dev/resources"; then
     fail "${root}/bmild-dev: Alex must not author security clearance"
   fi
+  if rg -q -F 'code_review_status: cleared' "${root}/bmild-dev/resources"; then
+    fail "${root}/bmild-dev: Alex must not author code-review clearance"
+  fi
   gap="${root}/bmild-dev/references/gap-resolution.md"
   rg -q -F 'Alex may author implementation-complete' "${gap}" || fail "${gap}: missing Alex boundary"
   rg -q -F 'Rahat alone authors QA evidence' "${gap}" || fail "${gap}: missing Rahat evidence ownership"
-  rg -q -F 'Zach alone authors security findings' "${gap}" || fail "${gap}: missing Zach clearance ownership"
+  rg -q -F 'security findings and `security_status: findings_open | cleared`' "${gap}" || fail "${gap}: missing Rahat security ownership"
+  rg -q -F 'code-review outcomes and `code_review_status: findings_open | cleared`' "${gap}" || fail "${gap}: missing Rahat code-review ownership"
 done
 
 if [ "${failures}" -gt 0 ]; then

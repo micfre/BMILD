@@ -2,7 +2,7 @@
 # Unified gap-resolution identity, wiring, ownership, and scenario contract.
 set -euo pipefail
 
-PERSONAS=(bmild-pm bmild-ux bmild-arch bmild-planner bmild-dev bmild-qa bmild-sec)
+PERSONAS=(bmild-pm bmild-ux bmild-arch bmild-planner bmild-dev bmild-qa)
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 ROOT="$REPO_ROOT/.agents/skills"
 failures=0
@@ -63,7 +63,10 @@ require_literal "$reference" 'persist one durable handoff for the affected episo
 require_literal "$reference" 'close that item and point its Promotion Record at the authoritative edit; never create a replacement'
 require_literal "$reference" 'Alex may author implementation-complete'
 require_literal "$reference" 'Rahat alone authors QA evidence'
-require_literal "$reference" 'Zach alone authors security findings'
+# shellcheck disable=SC2016 # Markdown backticks are literal contract text.
+require_literal "$reference" 'security findings and `security_status: findings_open | cleared`'
+# shellcheck disable=SC2016 # Markdown backticks are literal contract text.
+require_literal "$reference" 'code-review outcomes and `code_review_status: findings_open | cleared`'
 for scenario in \
   'Dev-time API gap' \
   'Same-owner batch' \

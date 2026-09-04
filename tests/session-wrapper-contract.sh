@@ -2,8 +2,8 @@
 # Session-wrapper identity + semantic-contract guard for standard personas.
 #
 # Asserts:
-#   1. Seven byte-identical <!-- session-opening-contract --> blocks
-#   2. Seven byte-identical <!-- session-closing-contract --> blocks
+#   1. Six byte-identical <!-- session-opening-contract --> blocks
+#   2. Six byte-identical <!-- session-closing-contract --> blocks
 #   3. Opening contract derives stance from loaded SOUL (no hardcoded persona traits)
 #   4. Closing contract requires plain Markdown + literal For you:/Next: labels
 #   5. Legacy rigid "I'll work on…" opening templates are gone
@@ -19,7 +19,6 @@ PERSONAS=(
   bmild-planner
   bmild-dev
   bmild-qa
-  bmild-sec
 )
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -103,7 +102,7 @@ for root in "${SKILL_ROOTS[@]}"; do
     fi
 
     # Opening must not hardcode persona-specific SOUL vocabulary/catchphrases.
-    if printf '%s\n' "${opening}" | rg -q 'Faisal|Katrina|Lance|Sonia|Alex|Rahat|Zach'; then
+    if printf '%s\n' "${opening}" | rg -q 'Faisal|Katrina|Lance|Sonia|Alex|Rahat'; then
       fail "${file}: opening contract hardcodes a persona name (should use placeholders)"
     fi
 

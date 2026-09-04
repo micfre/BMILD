@@ -41,5 +41,7 @@ status: draft | active | partially_implemented | verified | blocked
 
 - Source-promotion required: yes | no
 - Handoff artifacts involved: none | `handoff.md`
+- Required review axes: FR/NFR Nyquist | security | code review | comprehensive (all three)
+- Review status source: `slice-<N>.md` (`qa_status`, `security_status`, `code_review_status`)
 - Verification note: what still requires owner promotion before a queued outcome can be treated as authoritative
-- Closure rule: a verification stage is Open until its linked handoffs are closed AND its named proof has run
+- Closure rule: a review stage is Open until its linked handoffs are closed AND its named proof or review has run; Slice closure additionally requires every required review status to be terminal with no open finding

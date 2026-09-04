@@ -157,7 +157,7 @@
   category: technical
   method_name: Security Audit Personas
   description: |
-    Named BMILD security personas from their canonical sibling SOUL.md files examine a system from different threat models - comprehensive security review from multiple angles
+    Rahat uses the canonical sibling SOUL.md and several explicit threat-model perspectives to examine a system - comprehensive security review from multiple angles
   output_pattern: vulnerabilities → defenses → compliance
 
 - num: 24

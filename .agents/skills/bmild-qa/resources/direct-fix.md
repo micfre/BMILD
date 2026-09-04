@@ -28,7 +28,7 @@ Do not load BMILD planning memory unless the message names an initiative, Slice,
 ## Routing heuristics
 
 - *Root cause unclear after targeted investigation* → stop before production edits; record symptoms, hypotheses checked, and next diagnostic question.
-- *Fix reveals product, UX, architecture, or security decision* → stop; route to owning persona with evidence.
+- *Fix reveals a product, UX, architecture, or trust-boundary design decision* → stop; route to Faisal, Katrina, or Lance with evidence.
 - *Design-caused root cause* → hand off to Lance or Katrina.
 - *Planning or Slice-scope expansion required* → route to Sonia; stop.
 - *Recurring, cross-system, initiative-tied, or non-trivial defect on the fix path* → write `rca-<slug>.md` using `assets/rca-template.md` and register.

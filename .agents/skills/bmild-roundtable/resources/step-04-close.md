@@ -35,9 +35,7 @@ Progress:
 
   🟫 Lance: [brief closing — concrete, constraint-aware]
 
-  🟨 Rahat: [brief closing — risk or edge-case-aware]
-
-  🟥 Zach: [brief closing — exploit-path or trust-boundary-aware]
+  🟨 Rahat: [brief closing — risk, edge-case, or exploit-path-aware]
   ```
 
   Mine the loaded SOUL rather than reusing generic example beats; the close should sound like the attendees who actually participated.

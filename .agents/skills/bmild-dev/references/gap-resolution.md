@@ -1,6 +1,6 @@
 # Gap resolution
 
-> Shared runtime contract for all standard personas (`bmild-{pm,ux,arch,planner,dev,qa,sec}`). Each skill ships an identical local copy. Load this skill's copy whenever the active mode finds a gap owned by another persona or a downstream consequence outside the active persona's authority.
+> Shared runtime contract for all standard personas (`bmild-{pm,ux,arch,planner,dev,qa}`). Each skill ships an identical local copy. Load this skill's copy whenever the active mode finds a gap owned by another persona or a downstream consequence outside the active persona's authority.
 
 ## Purpose
 
@@ -16,14 +16,14 @@ Read `.bmild.toml` before using the ladder.
   - `auto`: run every eligible in-session rung without asking.
   - `ask-consult`: scribe and eligible guest voice remain automatic; ask once immediately before an owner consult. A decline persists one durable handoff.
   - `handoff-only`: mechanical scribing remains available, but skip guest voice and consult; persist one durable handoff when owner judgment is required.
-- Intelligence tiers are `design` (Faisal, Katrina, Lance), `planning` (Sonia), `implementation` (Alex), and `reviewer` (Rahat, Zach).
+- Intelligence tiers are `design` (Faisal, Katrina, Lance), `planning` (Sonia), `implementation` (Alex), and `reviewer` (Rahat).
 - Claude Code reads `[intelligence.claude_code.<tier>]`; Codex reads `[intelligence.codex.<tier>]`. Each configured tier uses native `model` and `effort` string values.
 - Missing Claude Code or Codex `design` / `planning` settings use the release-pinned pair carried by the generated consult definition: Claude Code `opus` / `max`; Codex `gpt-5.6-sol` / `ultra`.
 - Missing `implementation` / `reviewer` settings inherit the active session pair. OpenCode always inherits its user-configured harness model and variant for every tier; ignore BMILD tier overrides and do not mutate or synchronize OpenCode configuration.
 
 Legacy keys are a hard configuration error. If `consult`, `consult_model`, or `consult_effort` appears, stop BMILD configuration resolution and report:
 
-`Legacy consult configuration is unsupported in BMILD 0.4.0. Remove consult, consult_model, and consult_effort; use gap_resolution and [intelligence.<harness>.<tier>] instead.`
+`Legacy consult configuration is unsupported in BMILD 0.4.2. Remove consult, consult_model, and consult_effort; use gap_resolution and [intelligence.<harness>.<tier>] instead.`
 
 Do not map, interpret, preserve, or combine legacy values with the new configuration.
 
@@ -51,7 +51,7 @@ All conditions must hold:
 - The source is already authoritative: repository fact with direct evidence, explicit in-session user decision, ratified decision, or status written by its authorized owner.
 - The target edit is reversible and mechanical: terminology propagation, link/reference repair, status mirroring, registry/matrix/roadmap synchronization, or an equivalent no-judgment update.
 - The edit does not originate evidence, weigh a trade-off, interpret an unresolved preference, alter a consequential contract section, or write a canonical-tier artifact (`context-map.md`, `[plan_folder]/adr/`, project-root `DESIGN.md`).
-- Ownership independence remains intact. Alex may propagate completion state but never QA/security approval; only Rahat authors QA evidence/outcomes and only Zach authors security clearance.
+- Ownership independence remains intact. Alex may propagate implementation-complete and review-requested state but never QA, security, or code-review approval; only Rahat authors those review outcomes.
 
 Write beside the authoritative edit:
 
@@ -125,9 +125,8 @@ After scribe, guest, or consult resolution:
 
 ## Review independence
 
-- Alex may author implementation-complete and `qa_status: ready_for_verification`; Alex never authors `qa_status: verified`, security clearance, or approval evidence.
-- Rahat alone authors QA evidence, `qa_status: verified | failed | blocked`, and the verified `status: done` transition when security is terminal.
-- Zach alone authors security findings and `security_status: findings_open | cleared`.
+- Alex may author implementation-complete, `qa_status: ready_for_verification`, and review-requested states; Alex never authors verified/cleared review outcomes or approval evidence.
+- Rahat alone authors QA evidence, `qa_status: verified | failed | blocked`, security findings and `security_status: findings_open | cleared`, code-review outcomes and `code_review_status: findings_open | cleared`, and the verified `status: done` transition when every required review axis is terminal.
 - Any persona may scribe those already-authoritative outcomes into derivative registries, matrices, rollups, or roadmap records without acquiring approval authority.
 
 ## Examples

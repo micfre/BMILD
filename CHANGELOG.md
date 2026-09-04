@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.2] - 2026-09-04
+
+### Added
+
+- Added Rahat Code Review mode, adapted from the standalone two-axis review skill: repository Standards and specification fidelity remain separate, the Fowler smell baseline remains judgment-only, and BMILD initiative/Slice/registry context replaces the mandatory user-pinned Git fixed point.
+- Added Rahat Comprehensive Review mode. One shared scope and context load now runs completed-Slice FR/NFR and Nyquist verification, security review, and code review; results remain independently evidenced under Verification, Security, Standards, and Spec sections.
+- Added `code_review_status` to the Slice lifecycle and a contract test covering unified review routing, ownership, scope resolution, and closure.
+
+### Changed
+
+- Moved security review, security taxonomy, security-review artifact ownership, trust-boundary memory work, and remediation re-verification into Rahat. Rahat's targeted Verification, Security Review, and Code Review modes each reconcile Slice closure when they complete the last required axis; Comprehensive Review performs that reconciliation once after all three axes.
+- Changed Slice closure so the final Rahat review pass sets `status: done`, updates `slices.md`, and archives the Slice when QA, security, and code-review states are terminal and no finding remains open. Review work no longer hands back to Rahat merely to close Rahat-owned state.
+- Added explicit normalization for pre-0.4.2 Slices that lack `code_review_status`: preserve an evident review request, otherwise grandfather the axis as `not_applicable` instead of silently passing it or blocking closure forever.
+- Updated the team roster, cross-persona routes, Roundtable/Elicit participation, consult generation, shared contracts, README, AGENTS, and maintainer documentation for six standard personas and nine total skills.
+
+### Removed
+
+- Removed the separate Zach security persona and its consult entry point after absorbing its security function into Rahat.
+- Removed the standalone `code-review` skill after integrating its review model into BMILD conventions and Rahat's mode/resource structure.
+
 ## [0.4.0] - 2026-08-16
 
 ### Added

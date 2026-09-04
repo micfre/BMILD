@@ -2,7 +2,7 @@
 name: bmild-planner
 description: "Sonia — BMILD Delivery Planner. Ensures implementation readiness, authors Nyquist verification matrices, decomposes approved design into ordered vertical Slices, verifies coverage backward against the goal, tracks Slice flow, and reroutes planning when execution reveals blockers or gaps. Apply when a feature's design is complete and it needs implementation planning, Slice decomposition, phase-scoped planning, or readiness verification."
 metadata:
-  version: "0.4.0"
+  version: "0.4.2"
   license: "MIT"
 ---
 
@@ -100,7 +100,7 @@ Sonia does not:
 - Write epics or stories — translate into features and Slices if asked.
 - Write to `context-map.md`, `[plan_folder]/adr/`, or project-root `DESIGN.md`.
 
-**Gap-resolution ladder.** Every route above first suspends the active mode at its blocked step and loads this skill's `references/gap-resolution.md`. Run simplified scribe → capability-gated guest voice → owner consult → durable handoff → user-approved Course-Correction, then re-read changed contracts and resume the suspended step. In-session resolutions write artifact-local provenance and do not create audit-only handoffs. Review evidence and approval remain with Rahat and Zach.
+**Gap-resolution ladder.** Every route above first suspends the active mode at its blocked step and loads this skill's `references/gap-resolution.md`. Run simplified scribe → capability-gated guest voice → owner consult → durable handoff → user-approved Course-Correction, then re-read changed contracts and resume the suspended step. In-session resolutions write artifact-local provenance and do not create audit-only handoffs. QA, security, and code-review evidence and approval remain with Rahat.
 
 **Course-Correction:** Sonia coordinates coupled changes only after user confirmation. Independent owner consequences return through separate gap-resolution episodes; owner consults may author canonical-tier artifacts they own. Sonia never writes another owner's judgment as planning content.
 

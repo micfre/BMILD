@@ -42,7 +42,7 @@ Overrides for harness defaults. Group early in the file:
 
 - **First-person voice** and **session wrappers** stay together as the first pair — voice rules, then opening stance / Exit and Handoff / intermediate-turn shape (with explicit exception for the identity-rail persona label if used).
 
-**Code intelligence** and **discovery before invention** (when the persona groundtruths repos) live in mode-resource **Global Directives**, not in core — for PM, UX, Arch, Dev, QA Spec-Fix/Direct-Fix paths, Sec review modes, and planner file-intense modes. Core stays voice + session shape only for standard personas.
+**Code intelligence** and **discovery before invention** (when the persona groundtruths repos) live in mode-resource **Global Directives**, not in core — for PM, UX, Arch, Dev, QA fix/review paths, and planner file-intense modes. Core stays voice + session shape only for standard personas.
 
 Personality substance stays in sibling `SOUL.md`. Core must not enumerate persona vocabulary, beliefs, or catchphrases; session wrappers derive a task-specific throughline from the already-loaded SOUL.
 
@@ -80,7 +80,7 @@ Recommended shape: table or numbered conditions naming mode, `resources/<file>.m
 
 ### Session Start: Opening Stance
 
-First-turn-only semantic contract (byte-identical marked `session-opening-contract` across the seven standard personas):
+First-turn-only semantic contract (byte-identical marked `session-opening-contract` across the six standard personas):
 
 1. Plain identity rail: `[Persona Name] [icon] · [Mode Name] · [Scope]`
 2. One or two natural stance sentences derived from the already-loaded `SOUL.md` plus mode-selection evidence — a temporary session throughline, not a quoted catchphrase or generic "I'll work on…" filler.
@@ -102,13 +102,13 @@ Facilitator skill offers only (`bmild-roundtable`, `bmild-brainstorming`, `bmild
 
 What the persona does not do and where that work routes. Keep persona-specific; do not restate positive instructions in negative form.
 
-Every standard persona carries one compact pointer to its skill-local `references/gap-resolution.md`. Any scope route suspends the active mode and runs simplified scribe → capability-gated guest voice → owner consult → durable handoff → user-approved Course-Correction before ending the session. The seven references remain byte-identical and progressively loaded only when a gap appears.
+Every standard persona carries one compact pointer to its skill-local `references/gap-resolution.md`. Any scope route suspends the active mode and runs simplified scribe → capability-gated guest voice → owner consult → durable handoff → user-approved Course-Correction before ending the session. The six references remain byte-identical and progressively loaded only when a gap appears.
 
 ---
 
 ## Exit and Handoff
 
-Final-turn-only semantic and rendering contract (byte-identical marked `session-closing-contract` across the seven standard personas):
+Final-turn-only semantic and rendering contract (byte-identical marked `session-closing-contract` across the six standard personas):
 
 1. Completion + evidence in persona voice, shaped by the session throughline — not a decorative personality sentence.
 2. Optional literal `For you:` line for a real step-completion action; omit entirely when none.
@@ -134,15 +134,15 @@ Alex/Rahat append a compact commit line after sign-off when posture is non-zero 
 
 ---
 
-## Completion criteria YAML (design-tier + Sec only)
+## Completion criteria YAML (design-tier + QA review taxonomies)
 
 **Policy:** Do not add completion-criteria YAML to a skill that does not already have one.
 
-| Skills with criteria YAML | File(s) |
+| Skills with criteria or taxonomy YAML | File(s) |
 | :--- | :--- |
 | pm | `brief-completion-criteria.yaml`, `prd-completion-criteria.yaml` |
 | ux, arch | `completion-criteria.yaml` |
-| sec | `security-categories.yaml` (taxonomy/checklist — not renamed) |
+| qa | `security-categories.yaml`, `code-review-categories.yaml` (review taxonomies, not completion criteria) |
 
 **YAML owns:** `stakes` (where policy applies), `falsifiable`, `good_signal`, `weak_signal`, `applies_when`, `cross_ref`.
 
@@ -150,8 +150,8 @@ Alex/Rahat append a compact commit line after sign-off when posture is non-zero 
 
 ### Stakes policy
 
-- **`stakes` applies to:** pm, ux, arch, sec only.
-- **Does not apply to:** planner, dev, qa, advanced elicitation skills.
+- **`stakes` applies to:** pm, ux, arch, and QA security/comprehensive review only.
+- **Does not apply to:** planner, dev, QA's non-security modes, or advanced elicitation skills.
 - **Behaviour** for each stake level lives in the mode resource **Stakes-based elicitation** section — not in YAML `loading_note`.
 
 ---

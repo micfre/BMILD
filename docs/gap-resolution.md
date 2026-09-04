@@ -4,7 +4,7 @@
 
 ## Runtime location
 
-Seven byte-identical copies ship at `.agents/skills/bmild-<persona>/references/gap-resolution.md` for PM, UX, Arch, Planner, Dev, QA, and Sec. An active standard persona loads its own relative copy only when a mode encounters another owner's gap or downstream consequence.
+Six byte-identical copies ship at `.agents/skills/bmild-<persona>/references/gap-resolution.md` for PM, UX, Arch, Planner, Dev, and QA. An active standard persona loads its own relative copy only when a mode encounters another owner's gap or downstream consequence.
 
 The unified contract replaces the former `scribe-path.md` and `consult-path.md` references. It owns configuration migration, intelligence tiers, simplified scribing, capability-gated guest voice, leaf consults, durable handoff criteria, Course-Correction consent, rejoin behavior, and review independence.
 

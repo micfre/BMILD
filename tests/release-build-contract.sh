@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 0.4.0 release metadata and first-class harness packaging contract.
+# 0.4.2 release metadata and first-class harness packaging contract.
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -7,8 +7,8 @@ VERSION="$(cat "$REPO_ROOT/VERSION")"
 failures=0
 fail() { echo "FAIL: $*" >&2; failures=$((failures + 1)); }
 
-[ "$VERSION" = "0.4.0" ] || fail "VERSION is $VERSION, expected 0.4.0"
-rg -q -F "## [$VERSION] - 2026-08-16" "$REPO_ROOT/CHANGELOG.md" || fail "dated changelog release missing"
+[ "$VERSION" = "0.4.2" ] || fail "VERSION is $VERSION, expected 0.4.2"
+rg -q -F "## [$VERSION] - 2026-09-04" "$REPO_ROOT/CHANGELOG.md" || fail "dated changelog release missing"
 rg -q -F "Version-$VERSION-orange" "$REPO_ROOT/README.md" || fail "README badge out of sync"
 rg -q -F "first-class harness targets are Codex, Claude Code, and OpenCode" "$REPO_ROOT/README.md" \
   || fail "README first-class harness scope missing"

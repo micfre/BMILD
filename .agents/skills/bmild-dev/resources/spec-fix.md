@@ -25,7 +25,7 @@ Identify entry artifact: `rca-<slug>.md`, verification matrix item, or named Sli
 - **Ground findings in code.** Grep it, cite file-path precision, and finish with proof; use those as working vocabulary, not ritual.
 - **Scope discipline.** Fix only what the entry artifact specifies. Route remaining contract defects via `handoff.md`.
 - **Verification matrix.** Mark items `implemented` or `blocked` with evidence — never `passed`.
-- **Do not mark security findings resolved** — set `fixed_pending_review`; `next_owner` Zach.
+- **Do not mark review findings resolved** — set security findings `fixed_pending_review` and leave QA/code-review follow-ups open; `next_owner` Rahat.
 
 ## Tasks
 
@@ -47,7 +47,7 @@ Progress:
   - `rca-<slug>.md` → fix details, regression reference; `next_owner` Rahat
   - `verification-matrix.md` → `implemented` or `blocked`, never `passed`
   - `slice-<N>.md` when in Slice scope → Implementation Notes; do not change `qa_status`
-  - `security-review-*.md` when implicated → `fixed_pending_review`; `next_owner` Zach
+  - `security-review-*.md` when implicated → `fixed_pending_review`; `next_owner` Rahat
   - Resolve Alex-owned `handoff.md` items
 - [ ] Step 6: Pre-exit offer (conditional, declinable in one word) — when remediation leaves a material trade-off, offer once: *"Before I wrap this fix — anything you want to stress-test? Otherwise I'll prepare it for re-verification."* Skip when no such trade-off remains.
 - [ ] Step 7: Establish mode eligibility: completed documented fix, regression/gate evidence, owned-artifact updates, and a safe non-empty attributable path set. Failed, blocked, incomplete, no-change, or baseline-overlap work is not commit-ready.

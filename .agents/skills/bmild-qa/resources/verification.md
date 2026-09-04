@@ -1,6 +1,6 @@
 # Verification
 
-Check test coverage and run quality gates on completed code. Lean workflow applies — switch to Spec-Fix (tracked Slice/matrix/RCA context) or Direct-Fix (no tracked context) if a failure is found during verification.
+Verify a completed Slice's functional requirements, non-functional requirements, Nyquist proof, documentation, and quality gates. This is the targeted FR/NFR axis; use Comprehensive Review when security and code-review coverage are also requested.
 
 ## Additional Context
 
@@ -24,6 +24,7 @@ Load in this order:
 - **Persist before handoff.** Any issue important enough to influence Alex's next action must be persisted before handoff. Chat-only defects do not exist for Alex's next fresh window.
 - **Planning-artifact discipline.** Sonia-authored matrices are planning artifacts, not QA conclusions. Validate and revise them rather than treating them as already proven.
 - **Handoff-artifact discipline.** `accepted` is pending until the target owner promotes the change into the governed source artifact.
+- **Targeted-axis discipline.** Do not imply that Security or Code Review ran in this mode. Preserve their statuses and make the remaining review stage explicit.
 
 ## Routing heuristics
 
@@ -32,7 +33,7 @@ Load in this order:
 - *Root cause investigation needed, or documented Slice produced a new bug* → do not author `rca-<slug>.md` in Verification mode; switch to Spec-Fix (tracked context) or Direct-Fix (untracked) first so Fix Election, RCA persistence, and the Alex handoff path apply.
 - *Documentation missing, stale, or behaviour-inaccurate* → record verification finding with next owner Alex.
 - *Regression evidence passes for an RCA* → mark RCA `resolved`. Not before.
-- *Gate failure reveals a bug* → switch to Spec-Fix when a Slice, matrix item, or RCA is in scope; otherwise Direct-Fix.
+- *Gate failure reveals a bug* → persist the observed failure and switch to Spec-Fix when a Slice, matrix item, or RCA is in scope; otherwise Direct-Fix.
 - *Design-contract defect or another owner must promote a fix* → run the gap-resolution ladder; persist `handoff.md` only if the episode leaves the session.
 
 **Quality gate format.** Check the contributor guide for exact commands:
@@ -50,9 +51,9 @@ Progress:
 
 - [ ] Step 1: Test coverage review — evaluate acceptance criteria against existing tests. Identify untested happy paths, error paths, and edge cases. Test observable behaviour, not internals. Verify documentation against implementation when docs were part of the spec. Check whether Alex changed matrix, RCA, or security statuses; verify evidence before closing them. Reconcile matrix↔handoff drift: when a matrix item's `Handoff reference` points to a closed or applied handoff item, re-run the named proof and update the item with evidence — never leave `implemented` or `blocked` rows whose linked handoff is closed without a recorded reason.
 - [ ] Step 2: Quality gate verification — run each gate per contributor guide. Report which passed, which failed, and failure output. Apply Routing heuristics on failure.
-- [ ] Step 3: Document verification findings — persist gaps per Routing heuristics. Do not hand off failure-path issues, missing integration coverage, or failed gates only in chat. Any Alex-actionable outcome must be persisted before close in the Slice's `## QA / Security Follow-up` section: open item, next owner Alex, and the `rca-<slug>` link when one exists (RCA authoring happens in Spec-Fix/Direct-Fix, not this mode).
-- [ ] Step 4: Update Slice status — `qa_status` → `verified` when passing; `failed` or `blocked` with next owner when not. On pass, when security is terminal (`security_status` ∈ {`cleared`, `not_applicable`, `not_reviewed`} and no open `security-review-<slug>.md` exists for the Slice), also set slice `status: done` and the `slices.md` Slice Registry `Status: done`.
-- [ ] Step 5: Register — confirm QA artifacts are in `## Live` in `registry.md`. When the Slice reached `status: done` in Step 4, move `slice-<N>.md` from `## Live` to `## Archived` (Archived = terminal: done or superseded). Never archive a Slice before `done`.
+- [ ] Step 3: Document verification findings — persist gaps per Routing heuristics. Do not hand off failure-path issues, missing integration coverage, or failed gates only in chat. Any Alex-actionable outcome must be persisted before close in the Slice's `## Review Follow-up` section: open item, next owner Alex, and the `rca-<slug>` link when one exists (RCA authoring happens in Spec-Fix/Direct-Fix, not this mode).
+- [ ] Step 4: Update Slice status — `qa_status` → `verified` when passing; `failed` or `blocked` with next owner when not. Preserve `security_status` and `code_review_status`; never claim those targeted reviews ran.
+- [ ] Step 5: Reconcile Slice closure. Set `status: done`, update `slices.md`, and move `slice-<N>.md` from registry `## Live` to `## Archived` only when `qa_status: verified`, `security_status` is terminal (`cleared`, `not_applicable`, or `not_reviewed`), `code_review_status` is terminal (`cleared` or `not_applicable`), and no review finding remains open. Otherwise keep `ready-for-review`; do not hand back to Rahat merely for closure.
 - [ ] Step 6: Close — apply Exit and Handoff from the core skill. If root cause requires design change, hand off to Lance or Katrina with confirmed root cause and a precise question. When an Alex-actionable outcome was persisted (RCA or Slice follow-up item), include a verbatim invocation in `Next:` — *Invoke **Alex** with the message "fix `rca-<slug>` in `[initiative-name]`"* or *"continue Slice <N> in `[initiative-name]` — QA follow-up items are open in `slice-<N>.md`"* — so the assignment survives a fresh window.
 
 ## Definition of Done
@@ -62,4 +63,6 @@ Progress:
 - [ ] Verification matrix and Slice status updated with evidence
 - [ ] Issues affecting Alex's next action persisted before handoff
 - [ ] Required documentation checked against implementation, or gap recorded with next owner Alex
+- [ ] Security and code-review statuses preserved; incomplete review axis stated without a self-handoff
+- [ ] Slice closure reconciled from all review statuses in the same pass
 - [ ] Close message: what passed, what failed, what is blocked, artifacts updated, next owner

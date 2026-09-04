@@ -8,7 +8,8 @@ slice: <N>
 status: todo | active | ready-for-review | done | blocked
 qa_status: not_started | blocked | ready_for_verification | verified | failed
 security_status: not_reviewed | not_applicable | review_requested | findings_open | cleared
-# Lifecycle writers: Alex sets status ready-for-review + qa_status ready_for_verification (+ security_status review_requested when raising a security follow-up); Zach sets security_status findings_open / cleared at review and handback closure; Rahat sets qa_status verified / failed / blocked and drives status done; Rahat moves the file to registry ## Archived only at done.
+code_review_status: not_started | not_applicable | review_requested | findings_open | cleared
+# Lifecycle writers: Alex sets status ready-for-review + qa_status ready_for_verification + code_review_status review_requested (+ security_status review_requested when raising a security follow-up). Rahat writes all QA/security/code-review outcomes and drives status done. Any Rahat review mode that makes every required axis terminal closes the Slice and moves it to registry ## Archived; no reviewer handback is required.
 ---
 
 ## Intent
@@ -109,10 +110,11 @@ Specific enough to reuse during backward coverage checking.
 
 ## Implementation Notes
 
-## QA / Security Follow-up
+## Review Follow-up
 
 - Open QA items: ...
 - Open security items: ...
+- Open code-review items: ...
 - Resolution notes: ...
 
 ## Actuals

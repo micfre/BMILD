@@ -5,7 +5,7 @@
 *Big Methods, Ideally Less Drama*
 
 <!-- bmild-version-badge -->
-![Version](https://img.shields.io/badge/Version-0.4.0-orange)
+![Version](https://img.shields.io/badge/Version-0.4.2-orange)
 [![Build Status](https://github.com/micfre/BMILD/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/micfre/BMILD/actions/workflows/ci.yml)
 [![Release Status](https://github.com/micfre/BMILD/actions/workflows/release.yml/badge.svg)](https://github.com/micfre/BMILD/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -50,6 +50,7 @@ Then open your project with a capable coding model and say one of these things:
 Faisal, help me frame a feature for team invites.
 Katrina, design the experience for the existing billing settings.
 Rahat, diagnose this failing CI test.
+Rahat, run a comprehensive review of slice 2 for team-invites.
 Alex, implement slice 2 for team-invites.
 ```
 
@@ -120,7 +121,7 @@ model = "gpt-5.6-sol"
 effort = "ultra"
 ```
 
-The intelligence tiers are `design` (Faisal, Katrina, Lance), `planning` (Sonia), `implementation` (Alex), and `reviewer` (Rahat, Zach). Claude Code and Codex accept optional native model/effort pairs per tier. Missing design/planning tiers use the release-pinned highest-capability defaults shown in `.bmild.toml.example`; implementation/reviewer inherit the session unless configured. OpenCode always inherits the user's harness-wide model and variant and ignores BMILD tier overrides.
+The intelligence tiers are `design` (Faisal, Katrina, Lance), `planning` (Sonia), `implementation` (Alex), and `reviewer` (Rahat). Claude Code and Codex accept optional native model/effort pairs per tier. Missing design/planning tiers use the release-pinned highest-capability defaults shown in `.bmild.toml.example`; implementation/reviewer inherit the session unless configured. OpenCode always inherits the user's harness-wide model and variant and ignores BMILD tier overrides.
 
 `ask-consult` pauses only before the consult rung. `handoff-only` still allows mechanical scribing but sends owner judgment to the durable queue. Legacy `consult`, `consult_model`, and `consult_effort` keys are rejected with migration guidance; BMILD never maps them silently. An invalid explicit model/effort pair is reported exactly once, is never retried or substituted, and leaves one durable handoff for that affected episode.
 
@@ -193,15 +194,14 @@ This makes BMILD particularly comfortable for work that crosses sessions, agents
 
 ## The team
 
-BMILD has seven standard personas and three interactive modes. They are deliberately opinionated about their own responsibilities, but they are not a chain of approval gates.
+BMILD has six standard personas and three interactive modes. They are deliberately opinionated about their own responsibilities, but they are not a chain of approval gates.
 
 - **Faisal 🟦 -- Product Manager:** frames the problem, users, scope, success criteria, and requirements; at project scope, he can recommend the next load-bearing direction. Useful when the “why”, “what”, or “what next?” is still blurry.
 - **Katrina 🟩 -- UX Designer:** owns information architecture, flows, states, interaction rules, and the experience people will actually have.
 - **Lance 🟫 -- Architect:** turns a chosen direction into implementable data, API, service, and technology contracts; makes trade-offs explicit.
 - **Sonia 🟧 -- Delivery Planner:** checks whether a design is ready to build, creates verification coverage, sizes vertical Slices, and re-plans when reality changes.
 - **Alex 🟪 -- Developer:** implements Slices, bounded direct work, and fixes while respecting the project’s existing code and durable memory.
-- **Rahat 🟨 -- QA & Reliability:** diagnoses before fixing, plans proof, records RCAs where they will matter later, and verifies the shipped behaviour. After confirming a root cause, offers a single choice — implement the fix in-session or hand off to Alex with a context-rich RCA for a fresh window or different model.
-- **Zach 🟥 -- Security:** performs contextual security review and prioritizes concrete, exploitable issues over generic warning noise.
+- **Rahat 🟨 -- Quality & Reliability:** owns the complete independent review loop: Slice FR/NFR and Nyquist verification, high-confidence security review, and code review against repository standards and the governing specification. Ask for a **comprehensive review** to run all three from one context load and close the Slice in the same pass when every axis is clear. Rahat also diagnoses before fixing, records durable RCAs, and can implement a confirmed minimal fix after Fix Election.
 
 The three interactive modes are available whenever they help. A persona may suggest one when the work would benefit from wider options, a stress test, or cross-functional trade-offs; you can also ask for one directly at any time. The calling session is suspended, not discarded, so the original persona resumes with the facilitator’s output and does not re-ask what you have already settled.
 
@@ -231,7 +231,7 @@ BMILD uses more tokens than asking an agent for a one-shot patch. It spends them
 
 It manages that cost through progressive disclosure [q.v.](https://agentskills.io/specification#progressive-disclosure) rather than loading the whole project memory every turn. The compact core skill selects the active mode; detailed mode instructions load only when that mode needs them. Personas load the relevant **live** artifacts for the named initiative and task, not archived or stale material and not unrelated initiative folders.
 
-There is an important safety exception. UX and Architecture may reuse artifact contents already visible in the conversation when they are still trustworthy, and the advanced modes prefer the current conversation unless files are needed to ground the question. Planner, QA, and Security deliberately reload relevant live artifacts from disk because stale planning, verification, or security context can do more damage than the extra tokens. In other words, BMILD optimizes context in a sensible way while not pretenting it's free.
+There is an important safety exception. UX and Architecture may reuse artifact contents already visible in the conversation when they are still trustworthy, and the advanced modes prefer the current conversation unless files are needed to ground the question. Planner and Rahat deliberately reload relevant live artifacts from disk because stale planning, verification, code-review, or security context can do more damage than the extra tokens. In other words, BMILD optimizes context in a sensible way while not pretending it's free.
 
 ## Memory, without a platform
 
@@ -284,7 +284,11 @@ Alex, implement slice 1 for team-invites.
 
 Rahat, this intermittent invitation-email test is failing in CI. Diagnose it before changing code.
 
-Zach, review the invitation acceptance endpoint and its trust boundaries.
+Rahat, security-review the invitation acceptance endpoint and its trust boundaries.
+
+Rahat, code-review slice 1 against repository standards and the team-invites specification.
+
+Rahat, run a comprehensive review of slice 1 for team-invites.
 
 Debate the question of whether invitations should expire.
 ```
@@ -305,7 +309,7 @@ Do not install BMILD and BMAD skills side-by-side in the same project. They shar
 
 ### The whole package is the single product
 
-BMILD consists of 10 skills, sibling support files and subfolders within those skills. There is no utility in a solitary skill or a subset of these skills. At least one skills aggregation and distribution site [q.v.](https://skillsmp.com/creators/micfre/bmild/agents-skills-bmild-pm) will index and offer skill downloads as one-offs -- don't attempt using the skills this way, BMILD will break.
+BMILD consists of 9 skills, sibling support files and subfolders within those skills. There is no utility in a solitary skill or a subset of these skills. At least one skills aggregation and distribution site [q.v.](https://skillsmp.com/creators/micfre/bmild/agents-skills-bmild-pm) will index and offer skill downloads as one-offs -- don't attempt using the skills this way, BMILD will break.
 
 ### Removing BMILD
 

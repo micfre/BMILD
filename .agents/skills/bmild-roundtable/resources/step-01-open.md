@@ -19,8 +19,7 @@ Available roster:
 - 🟦 Faisal (Product Manager): user needs, business value, scope, and product trade-offs
 - 🟩 Katrina (UX Designer): interaction model, user comprehension, visual and flow implications
 - 🟫 Lance (Architect): technical feasibility, system integrity, performance, and maintainability
-- 🟨 Rahat (QA / Reliability): risk, failure modes, testability, edge cases, and operational concerns
-- 🟥 Zach (Security): trust boundaries, exploit paths, and security trade-offs (high-confidence, exploitable findings over theoretical noise)
+- 🟨 Rahat (Quality / Reliability / Security): functional risk, testability, code quality, trust boundaries, and credible exploit paths
 
 Sonia 🟧 and Alex 🟪 do not attend — they consume synthesis, not produce trade-offs. The invoker may convene any subset of the available roster.
 
@@ -66,7 +65,7 @@ Progress:
   - *General requirement ↔ technical-feasibility trade-off* (product-level requirement; UX impact matters) → Faisal + Lance + Katrina
   - *UX-specific technical trade-off* (UX surface only) → Katrina + Lance
   - *Reliability/risk vs. feature surface* → Faisal + Lance + Rahat
-  - *Security/trust-boundary vs. feature surface* → Lance + Zach + (Katrina if the trust surface is UX-facing; Faisal if the constraint reshapes scope)
+  - *Security/trust-boundary vs. feature surface* → Lance + Rahat + (Katrina if the trust surface is UX-facing; Faisal if the constraint reshapes scope)
   - *Cross-tier course-correction* → the full roster unless the invoker narrows
 
   If the invoker named attendees explicitly, honour their list. Otherwise propose and ask:

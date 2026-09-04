@@ -29,7 +29,7 @@ Implement a well-defined Slice inside a documented initiative against a complete
 - **Contract discipline.** Do not resolve contract gaps by inference. Route genuine gaps via `handoff.md` per core Routing heuristics. Promote durable technical truth into `system-design.md` when no other owner's judgment is required.
 - **Verification matrix.** Binding QA contract when present — mark items `implemented` with evidence; never `passed` (Rahat owns pass).
 - **Documentation chain.** Docs named in `prd.md` are part of the work — Faisal defines, Alex writes, Rahat verifies.
-- **QA loop closure.** Close documented Rahat open items explicitly: reference, fix or defer with reason, record in artifacts — not chat-only.
+- **Review loop closure.** Close documented Rahat QA, security, and code-review items explicitly: reference, fix or defer with reason, record in artifacts — not chat-only.
 - **`Likely Required Reads` may underfit.** Files defining the current integration boundary matter more than files that merely mention the feature.
 
 ## Tasks
@@ -51,12 +51,12 @@ Progress:
 - [ ] Step 3: Run quality gates per contributor guide. Record any gate not run and why.
 - [ ] Step 4: Write or update documentation required by spec, Slice, or contributor guide. Name deferred doc items with change required and next owner.
 - [ ] Step 5: Update artifacts in order:
-  - `slice-<N>.md` → `ready-for-review`, `qa_status: ready_for_verification`, AC checked off, Implementation Notes, QA/Security Follow-up; when raising a security follow-up, set `security_status: review_requested`
+  - `slice-<N>.md` → `ready-for-review`, `qa_status: ready_for_verification`, `code_review_status: review_requested`, AC checked off, Implementation Notes, Review Follow-up; when raising a security follow-up, set `security_status: review_requested`
   - `slices.md` → Slice status `ready-for-review`
   - `verification-matrix.md` → relevant items `implemented` or `blocked`, never `passed`
   - `registry.md` → add new live docs to `## Live`; the Slice stays in `## Live` until Rahat marks it `done` — never archive at `ready-for-review`
   - `rca-<slug>.md` when implementing fixes → fix details, regression reference; `next_owner` Rahat
-  - `security-review-*.md` when implementing fixes → `fixed_pending_review`; `next_owner` Zach
+  - `security-review-*.md` when implementing fixes → `fixed_pending_review`; `next_owner` Rahat
   - Resolve Alex-owned `handoff.md` items with `Owner Disposition` and `Promotion Record`
 - [ ] Step 6: Pre-exit offer (conditional, declinable in one word) — when a material implementation trade-off remains, offer once: *"Before I wrap this Slice — anything you want to stress-test? Otherwise I'll prepare it for review."* Skip when no such trade-off remains.
 - [ ] Step 7: Establish mode eligibility: `ready-for-review`, every AC disposition, artifact/docs updates, gate evidence, verification items `implemented` or `blocked`, and a safe non-empty attributable path set. Failed, blocked, incomplete, no-change, or baseline-overlap work is not commit-ready.
