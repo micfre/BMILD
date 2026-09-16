@@ -5,7 +5,8 @@ description: "<one-line summary>"
 timestamp: YYYY-MM-DD
 scope: "<initiative-name> | _system"
 slug: <slug>
-slice: <N>
+outcome: "<authorized outcome identifier or direct change>"
+# Optional legacy reference: slice: <N>
 severity: low | medium | high | critical
 created: YYYY-MM-DD
 status: open | resolved
@@ -60,7 +61,7 @@ Reference to the test added by Rahat, or the regression proof Alex must add or r
 
 ## Closure Evidence
 
-- Closed by: [commit / file refs / Slice notes / handoff target]
+- Closed by: [commit / file refs / outcome evidence / handoff target]
 - Verification command: ...
 - Result: pass / fail / blocked
 

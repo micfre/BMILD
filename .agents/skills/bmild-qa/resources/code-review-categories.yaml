@@ -1,6 +1,6 @@
 # bmild-qa/resources/code-review-categories.yaml
 meta:
-  artifact: slice-review-evidence
+  artifact: outcome-review-evidence
   governed_by: bmild-qa
   loading_note: >
     Load for Code Review and Comprehensive Review. Repository-documented standards

@@ -5,7 +5,7 @@
 *Big Methods, Ideally Less Drama*
 
 <!-- bmild-version-badge -->
-![Version](https://img.shields.io/badge/Version-0.4.2-orange)
+![Version](https://img.shields.io/badge/Version-0.5.0-orange)
 [![Build Status](https://github.com/micfre/BMILD/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/micfre/BMILD/actions/workflows/ci.yml)
 [![Release Status](https://github.com/micfre/BMILD/actions/workflows/release.yml/badge.svg)](https://github.com/micfre/BMILD/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -14,7 +14,7 @@ BMILD is a small cross-functional team for your coding agent. It gives the agent
 
 Copy a handful of skill folders into your project. Talk to a persona when you need one. The work and its decisions live in normal Markdown beside your code. There is no service to run, no installer, no proprietary mediation layer. As the name suggests, there is also no prescribed ceremony to perform.
 
-BMILD is for people who want the useful parts of spec-driven development: clearer intent, implementable decisions, appropriately-sized work, real verification, and a record of why things are the way they are.
+BMILD is for people who want the useful parts of spec-driven development: clearer intent, implementable decisions, adaptive execution, real verification, and a record of why things are the way they are.
 
 ## First two minutes with BMILD
 
@@ -23,8 +23,8 @@ BMILD is for people who want the useful parts of spec-driven development: cleare
 
 - Start where you actually are, not at a prescribed workflow starting point. For example: `Faisal, help me frame a feature for team invites.`
 - Let the relevant persona write a spec into an artifact and hand you to the next owner when there is one.
-- When the spec is ready to be worked, Sonia turns it into small vertical Slices sized for an LLM implementation session, with verification planned before the code is written.
-- Alex will implement on a slice-by-slice basis, and will then give you any notes on discrepancy versus contract, or to give you the next step for you to test first-hand or to deliver to automated verification.
+- Ask Alex to implement an approved phase/outcome directly. Sonia helps with readiness, coverage, and consequential dependencies; a Slice plan is not a prerequisite.
+- Alex chooses and revises the engineering approach within the spec's MVP/Growth/Vision boundaries. For build-and-verify, Rahat reviews in a fresh independent context and authorized repairs return to development before re-verification.
 - If the work changes, BMILD resolves affected owner decisions in-session where capability permits, marks only unresolved artifacts stale, and keeps any genuinely asynchronous handoffs precise. You do not need to hold the dependency picture yourself.
 
 That is the whole idea: retain context and judgment while keeping the interaction human and direct.
@@ -50,8 +50,8 @@ Then open your project with a capable coding model and say one of these things:
 Faisal, help me frame a feature for team invites.
 Katrina, design the experience for the existing billing settings.
 Rahat, diagnose this failing CI test.
-Rahat, run a comprehensive review of slice 2 for team-invites.
-Alex, implement slice 2 for team-invites.
+Rahat, independently review the team-invites MVP in a new context.
+Alex, implement and verify the approved MVP for team-invites.
 ```
 
 There is no required “start BMILD” command. Calling the persona by name is the best way to activate them (their names aren't just ornamentation, they are unique calling cards which activate the skills). A persona looks at the available context and the state of the work, then takes the appropriate approach. If you have an existing project and a specific problem, say so. If you have a vague idea, say that instead.
@@ -65,8 +65,8 @@ The first day should feel practical, not like onboarding for a project-managemen
 - **Starting something new?** Ask Faisal to frame it. He helps establish the problem, users, scope, success criteria, and the first version of the requirements. Faisal will both help with and force decision-making where needed, he will guard against solutioning at this stage.
 - **Do not know what the project should do next?** Ask Faisal for a bearing. He grounds the project against its live initiatives, gives you a small set of load-bearing directions, recommends one with its overturn conditions, and can continue directly into the appropriate initiative workflow after you choose.
 - **Already have direction?** Go straight to Katrina for interaction design or Lance for architecture. BMILD does not make you recreate a product brief just to earn permission to discuss an API.
-- **Ready to implement a written spec?** Ask Sonia for readiness and a Slice plan, then hand a Slice to Alex. Sonia will check for contract completeness, and she will let you know if you need to visit a design-tier persona before moving on.
-- **The work has been planned?** Ask Alex to dev the slice and he will work through it. Alex will respond like a real team member if you ask him to do work without a formal spec: he'll do it, and promote durable truth as needed.
+- **Ready to implement a written spec?** Ask Alex to implement and verify the approved phase/outcome. Alex checks sufficient readiness, uses Sonia for unresolved completeness questions, and preserves committed design constraints.
+- **Already have a plan or old Slices?** They remain useful context. Alex can execute the authorized outcome without re-planning it into Slices or selecting one merely because several exist.
 - **Fixing a bug or an awkward old area?** Start with Rahat. The point is to establish a cause and evidence before changing code, not force a greenfield process onto a maintenance task. Rahat is skilled with a breadth-first RCA approach; after confirmation, choose whether Rahat implements the fix or hands a context-rich RCA to Alex.
 - **Facing a real trade-off?** Ask for a Roundtable, or use Elicit to push a draft past its first plausible answer. You still make the call. Advanced elicitation modes are a real antidote to LLM sycophancy and goal-seeking behaviour.
 
@@ -79,13 +79,11 @@ By the end of the first day using BMILD, you should have a small body of project
 ```toml
 user_name = "Developer"
 plan_folder = "plans/"
-slice_target = 130000
 gap_resolution = "auto"
 ```
 
 - `user_name` lets the named personas address you naturally. It is a small thing, but it makes a long working session less anonymous, and most models don't overuse it.
 - `plan_folder` is where BMILD keeps its memory and project artifacts, relative to the repository root. Leave it as `plans/` or anywhere else if you have a reason to keep generated project memory elsewhere.
-- `slice_target` is the peak live context budget Sonia uses for one implementation Slice. It is not the model’s advertised maximum context window and is not a cumulative or cost estimate: leave room for the agent’s instructions, repository context, tool output, reasoning, and verification. As a starting point, aim for roughly 30% of the advertised window when you want to be conservative; up to 50% is a more liberal ceiling for stable, well-understood work. Context quality degrades as a window fills, so lower is usually safer.
 - `gap_resolution` controls whether owner consults run automatically, ask first, or leave the session. `auto` is the default and keeps mechanical/eligible owner resolution in-session.
 
 ## About automated commits
@@ -107,7 +105,7 @@ Set `format = "conventional-commits"` for that explicit message style [q.v.](htt
 
 ### About automatic gap resolution
 
-The default is `auto`: when a persona finds a gap owned elsewhere, it suspends the current step, runs a skill-native resolution ladder, and resumes after re-reading the changed contract. The ladder uses simplified mechanical scribing first, then capability-gated guest voice, then an owner consult. A durable `H-###` is created only when work truly leaves the session; Course-Correction is reserved for coupled scope, sequencing, or proof changes and requires your approval.
+The default is `auto`: when a persona finds a gap owned elsewhere, it suspends the current step, runs a skill-native resolution ladder, and resumes after re-reading the changed contract. The ladder uses simplified mechanical scribing first, then authorized owner voice, then an owner consult. A durable `H-###` is created only when work truly leaves the session; Course-Correction is reserved for coupled scope, sequencing, or proof changes and requires your approval.
 
 ```toml
 gap_resolution = "auto" # auto (default) | ask-consult | handoff-only
@@ -121,22 +119,19 @@ model = "gpt-5.6-sol"
 effort = "ultra"
 ```
 
-The intelligence tiers are `design` (Faisal, Katrina, Lance), `planning` (Sonia), `implementation` (Alex), and `reviewer` (Rahat). Claude Code and Codex accept optional native model/effort pairs per tier. Missing design/planning tiers use the release-pinned highest-capability defaults shown in `.bmild.toml.example`; implementation/reviewer inherit the session unless configured. OpenCode always inherits the user's harness-wide model and variant and ignores BMILD tier overrides.
+The intelligence tiers are `design` (Faisal, Katrina, Lance), `planning` (Sonia), `implementation` (Alex), and `reviewer` (Rahat). Claude Code and Codex accept optional native model/effort pairs per tier. All unspecified tiers inherit the user-selected session model and effort. Explicit owner-dispatch overrides remain binding; BMILD does not rank model names or require exact-model attestation for authorized in-session judgment. OpenCode always inherits the user's harness-wide model and variant and ignores BMILD tier overrides.
 
 `ask-consult` pauses only before the consult rung. `handoff-only` still allows mechanical scribing but sends owner judgment to the durable queue. Legacy `consult`, `consult_model`, and `consult_effort` keys are rejected with migration guidance; BMILD never maps them silently. An invalid explicit model/effort pair is reported exactly once, is never retried or substituted, and leaves one durable handoff for that affected episode.
 
 Consult agents are leaves. Owner consults may author anything they canonically own, including `DESIGN.md`, `context-map.md`, and ADRs. Release tarballs carry current definitions for Claude Code, Codex, and OpenCode under `harness/`; `scripts/generate-consult-agents.sh` regenerates them locally.
 
-### About Slice sizing and tokenizer settings
+### Outcome execution and continuity
 
-Sonia budgets Slices for an LLM implementation session rather than estimating human effort as an Agile story attempts to do. The estimator (`peak_live_v2`) predicts peak live context occupancy under code-intelligence / LSP workflows — full contract and doc reads plus capped symbol excerpts for source — so a Slice that would drive context rot can be split before Alex starts. It is not a provider cost model and does not attempt to predict cumulative or cached token totals.
+Outcome Development is the primary spec-backed path. The outcome section in `verification-matrix.md` records phase authorization, source requirements, implementation evidence, open obligations, and independent review. Alex owns task order and internal structure; forecasts and file inventories are not contracts. Sonia checks intent and coverage; Rahat checks correctness, completeness, security applicability, standards/spec fidelity, and relevant scalability and maintainability.
 
-You do **not** need to tune the tokenizer settings on day one. The only user-facing controls are `slice_target`, `tokenizer_base`, and `tokenizer_multiplier`. Leave them alone unless you are deliberately calibrating for a known model and repository shape. Byte/token ratio, turn reserve, symbol caps, and per-item overhead are fixed by the model version.
+Token estimation is retired. `slice_target`, `tokenizer_base`, and `tokenizer_multiplier` in existing configs are inert and can be removed. There is no fallback calculator or calibration task. Use the harness's context facilities and a concise durable checkpoint when needed. Old Slice files and estimates remain historical inputs; no bulk migration is required.
 
-If you later want to tune the planning budget, begin with only `slice_target`: set it to a conservative peak live context budget for the model you actually use. Treat the resulting estimate as a signal to split, recut, or hand back work—not a promise about measured token consumption.
-
-> [!NOTE]
-> Every LLM provider, model tier, and reasoning depth will have significantly different token consumption and while BMILD has a planning tokenizer, it cannot be calibrated for every variant out there. Prefer per-turn peak telemetry over cumulative billing totals when refining budgets. Early on it is easier to simply ask Sonia to combine or separate Slices as your experience and comfort dictates.
+A build-and-verify engagement can continue across contexts without user relays. Review requires a fresh context that did not implement the change or inherit its development transcript. You can explicitly choose a separate new review window. Where automatic isolated dispatch is unavailable, BMILD leaves acceptance pending and provides a concise transition grounded in artifacts. A reviewer-authored production fix needs another independent reviewer before acceptance. Review-only requests do not authorize production fixes.
 
 ## Why BMILD is different
 
@@ -152,7 +147,7 @@ It also adapts to you. If you want help finding the questions, the design-tier p
 
 Epics, stories, sprints, and points were built to coordinate people and forecast human capacity. They can be useful in their setting. They are not a natural unit of work for a coding model.
 
-BMILD uses an **initiative** for a coherent piece of product or system work and a **Slice** for a vertical, verifiable implementation unit. Slices are deliberately bounded by the context an LLM needs to read, reason, edit, and verify safely.
+BMILD uses an **initiative** for a coherent piece of product or system work. Execution targets an authorized **phase/outcome**, with source requirements and demonstrable acceptance. The agent chooses useful internal work units; existing Slice records remain optional historical context.
 
 This is the central design choice in BMILD. The framework optimizes the agent’s usable context and the clarity of its inputs. You can still use your existing issue tracker, sprint cadence, or team rituals if they serve people on your team. BMILD simply does not mistake them for the agent’s operating system.
 
@@ -162,7 +157,7 @@ The memory is plain Markdown, but it is not a chat transcript. Each meaningful d
 
 - product and requirements documents capture intent and priority;
 - UX and system-design documents make the experience and technical contracts concrete;
-- Slices and Nyquist verification matrices turn approved work into an implementable, provable plan;
+- outcome evidence records connect authorized scope to implementation, continuation state, and independent proof;
 - RCA and security-review artifacts keep confirmed failures and findings from becoming scattered knowledge.
 
 BMILD can work from either greenfield or in a brownfield environment. BMILD is designed to groundtruth at every stage, it will not -- or rather tries hard not to -- write a beautiful spec document that collides with existing code reality that it never thought to look for.
@@ -175,7 +170,7 @@ Plans change. Implementation reveals constraints. A product decision invalidates
 - `context.md` keeps initiative-local terms, boundaries, and resolved ambiguities. `context-map.md` carries the cross-initiative version of that shared meaning.
 - A decision goes into an ADR only when it is hard to reverse, surprising without context, and the product of a real trade-off. Active rationale stays where the work happens; the ADR protects the decisions future maintainers are most likely to “fix” by accident.
 
-When a change affects multiple design owners, Sonia’s course-correction mode maps the impact, breaks it into bounded questions, convenes the required perspectives, and orders the repairs. It is re-planning without throwing away the context that made the original plan useful.
+When a change affects multiple design owners, Sonia’s course-correction mode handles user-authorized coupled scope/contract/proof changes; ordinary execution-plan revisions stay with Alex. It is re-planning without throwing away the context that made the original plan useful.
 
 ### It closes ownership gaps before handing off
 
@@ -186,7 +181,7 @@ A handoff is not “someone else’s problem now.” It is a precise asynchronou
 This is a major part of how BMILD contains spec drift. Decisions and unresolved questions do not hang indefinitely in an ever-expanding chat log, where a later session can miss or reinterpret them. A resolution lands in the artifact that governs the work; its downstream consumers are then classified as unaffected, needing a minor update, or stale. Larger cascades go to Sonia for course-correction.
 
 > [!NOTE]
-> A handoff is for work that genuinely leaves the session. Settled reversible facts and authoritative statuses are propagated mechanically without loading another persona's voice. A causally bounded single-owner decision may be authored through capability-gated guest voice or an owner consult. All in-session paths record provenance beside the authoritative edit; they do not create a closed handoff merely for history.
+> A handoff is for work that genuinely leaves the session. Settled reversible facts and authoritative statuses are propagated mechanically without loading another persona's voice. A causally bounded single-owner decision may be authored through authorized owner voice or an owner consult. All in-session paths record provenance beside the authoritative edit; they do not create a closed handoff merely for history.
 >
 > Advanced facilitation adds one more connective tissue: after a ratified durable-contract decision, independent owner consequences return through separate ladder episodes. Coupled fallout offers Sonia's Course-Correction once and waits for consent. Agreement in chat is not organizational truth until the owned artifacts or a genuinely asynchronous backlog reflect it.
 
@@ -199,9 +194,9 @@ BMILD has six standard personas and three interactive modes. They are deliberate
 - **Faisal 🟦 -- Product Manager:** frames the problem, users, scope, success criteria, and requirements; at project scope, he can recommend the next load-bearing direction. Useful when the “why”, “what”, or “what next?” is still blurry.
 - **Katrina 🟩 -- UX Designer:** owns information architecture, flows, states, interaction rules, and the experience people will actually have.
 - **Lance 🟫 -- Architect:** turns a chosen direction into implementable data, API, service, and technology contracts; makes trade-offs explicit.
-- **Sonia 🟧 -- Delivery Planner:** checks whether a design is ready to build, creates verification coverage, sizes vertical Slices, and re-plans when reality changes.
-- **Alex 🟪 -- Developer:** implements Slices, bounded direct work, and fixes while respecting the project’s existing code and durable memory.
-- **Rahat 🟨 -- Quality & Reliability:** owns the complete independent review loop: Slice FR/NFR and Nyquist verification, high-confidence security review, and code review against repository standards and the governing specification. Ask for a **comprehensive review** to run all three from one context load and close the Slice in the same pass when every axis is clear. Rahat also diagnoses before fixing, records durable RCAs, and can implement a confirmed minimal fix after Fix Election.
+- **Sonia 🟧 -- Delivery Planner:** checks whether a design is ready to build, creates verification coverage, checks phase/outcome completeness and proof, and advises on meaningful dependencies when needed.
+- **Alex 🟪 -- Developer:** implements approved phase-bounded outcomes, bounded direct work, and fixes while respecting the project’s existing code and durable memory.
+- **Rahat 🟨 -- Quality & Reliability:** owns the complete independent review loop: outcome FR/NFR and completeness verification, high-confidence security review, and code review against repository standards and the governing specification. Ask for a **comprehensive review** to run all three from one context load and accept the outcome in the same pass when every axis is clear. Rahat also diagnoses before fixing and records durable RCAs. Existing repair authority or Fix Election permits a bounded fix, whose acceptance then belongs to another independent review context.
 
 The three interactive modes are available whenever they help. A persona may suggest one when the work would benefit from wider options, a stress test, or cross-functional trade-offs; you can also ask for one directly at any time. The calling session is suspended, not discarded, so the original persona resumes with the facilitator’s output and does not re-ask what you have already settled.
 
@@ -214,16 +209,13 @@ The three interactive modes are available whenever they help. A persona may sugg
 > [!NOTE]
 > **Workflow visual placeholder**  --  will be replaced with a BMILD workflow image.
 
-The workflow is intentionally non-linear. You might start at Alex for a small bounded direct-dev request or spike. Rahat may diagnose a failure and then either implement the confirmed fix or hand the RCA to Alex when you want a fresh window. Rahat may also surface a design flaw that needs Lance. An existing UX design may be enough to begin planning. Sonia may send a change upstream rather than papering over a gap. The important part is that the next move is based on the state of the work, not which box you were supposed to visit first. Agents are good about calling out next moves, if in doubt.
+The workflow is intentionally non-linear. You might start at Alex for a bounded direct-dev request or spike. Rahat may diagnose a failure and then either implement the confirmed fix or hand the RCA to Alex when you want a fresh window. Rahat may also surface a design flaw that needs Lance. An existing UX design may be enough to begin planning. Sonia may send a change upstream rather than papering over a gap. The important part is that the next move is based on the state of the work, not which box you were supposed to visit first. Agents are good about calling out next moves, if in doubt.
 
-### Readiness is a quality check, not a ceremony
+### Readiness and independent acceptance
 
-Before Sonia decomposes a design into implementation Slices, she checks that the work is actually ready: the required intent is covered downstream, the contracts are usable, and the proof boundary is clear enough to verify. If the answer is no, she runs a bounded owner-resolution episode and resumes planning; only a genuinely unavailable resolution becomes a handoff.
+Readiness checks whether the authorized outcome has coherent intent, usable constraints, and demonstrable completion criteria. Alex can apply the same criteria in execution; Sonia can lead a dedicated assessment when useful. A missing document filename does not block an otherwise sufficient contract. A real product or security ambiguity does. Independent authorized work can continue while a different obligation is blocked.
 
-This is where BMILD earns its place. An LLM can produce code very quickly from a weak prompt. It can also create a polished but expensive misunderstanding. Readiness exists to keep the agent from silently accepting product, UX, or architectural questions that have not actually been decided.
-
-> [!TIP]
-> Use a model and reasoning depth you trust for Sonia’s readiness and Slice planning, and for Rahat’s Nyquist verification and final evidence. Sonia’s plan directly shapes Alex’s implementation effort; Rahat’s verification closes the loop against it. Deeper reasoning is most valuable on consequential work, but it is not a substitute for clear requirements, code evidence, or an honest “not ready” verdict.
+Rahat checks the original spec rather than trusting only the matrix or Alex's tests. Every required review axis needs current evidence. Security `not_reviewed`, an omitted axis, or a passing test run without independent review cannot close an outcome. Relevant performance assumptions and maintainability are reviewed explicitly; unverified limits stay visible.
 
 ### Context has a cost
 
@@ -254,7 +246,7 @@ By default, BMILD writes its durable project memory under `plans/`. The paths ar
         ├── system-design.md
         ├── handoff.md
         ├── verification-matrix.md
-        ├── slices.md and slice-<N>.md
+        ├── slices.md and slice-<N>.md  # legacy records, optional
         ├── rca-<slug>.md
         └── security-review-<slug>.md
 ```
@@ -278,17 +270,17 @@ Katrina, the invite flow exists but feels confusing. Design a better flow from t
 
 Lance, we need tenant-aware roles. Design the data and API contracts for it.
 
-Sonia, check whether team-invites is ready and plan the first implementation phase.
+Sonia, check readiness and coverage for the approved team-invites MVP.
 
-Alex, implement slice 1 for team-invites.
+Alex, implement and verify the approved MVP for team-invites.
 
 Rahat, this intermittent invitation-email test is failing in CI. Diagnose it before changing code.
 
 Rahat, security-review the invitation acceptance endpoint and its trust boundaries.
 
-Rahat, code-review slice 1 against repository standards and the team-invites specification.
+Rahat, code-review the team-invites MVP against repository standards and the specification.
 
-Rahat, run a comprehensive review of slice 1 for team-invites.
+Rahat, run a comprehensive review of the team-invites MVP in a fresh context.
 
 Debate the question of whether invitations should expire.
 ```
@@ -297,7 +289,7 @@ You can name an initiative, point at a failing test, paste a decision, or say �
 
 ## Compatibility and expectations
 
-BMILD's first-class harness targets are Codex, Claude Code, and OpenCode. Release validation and generated consult packages cover those three only. The planner uses a native shell script on macOS, Linux, and WSL, and an equivalent PowerShell script on non-WSL Windows environments.
+BMILD's first-class harness targets are Codex, Claude Code, and OpenCode. Release validation and generated consult packages cover those three only. Other harnesses rely on compatibility without additional BMILD design effort. Runtime development has no token-estimator interpreter dependency.
 
 Use a capable coding model, design target is roughly anything in the top-15 SWE-bench Verified ranking (score > 66). BMILD relies heavily on the agent to make semantic distinctions. Better reasoning models will make more of the framework; a 3B parameter running locally will disappoint.
 
@@ -326,13 +318,13 @@ Remove the `bmild-*` folders from your skills directory, and the `.bmild.toml` f
 ## Roadmap
 
 > [!TIP]
-> **You are here: v0.3.** The foundations are in place; the remaining work is to make the framework interactivity intuitive and smooth enough for a first public release.
+> **You are here: v0.5.** Outcome execution preserves phase scope and independent assurance while leaving engineering strategy to the executor. Comparative model/harness performance remains an ongoing evaluation obligation.
 
 - [x] **v0.1**  --  Initial commit
 - [x] **v0.2**  --  Persona scope stable
 - [x] **v0.3**  --  Context memory structure stable
-- [ ] **v0.4**  --  Persona interactivity stable
-- [ ] **v0.5**  --  First public version
+- [x] **v0.4**  --  Persona interactivity contracts
+- [x] **v0.5**  --  Outcome-based development and independent acceptance
 
 ## Personal Note
 

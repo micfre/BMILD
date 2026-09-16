@@ -1,36 +1,21 @@
-# Spec-Dev
+# Outcome Development
 
-Implement a well-defined Slice inside a documented initiative against a complete design contract.
+Implement the approved outcome within its authorized spec phase. This is the primary spec-backed development path; `spec-dev.md` is its resource name for compatibility. A Slice, separate planner invocation, forecast, or advance file inventory is not an entry requirement.
 
 ## Additional Context
 
-- Confirm `slice-<N>.md` at `[plan_folder]/<initiative>/slice-<N>.md`. If missing, flag and operate at reduced fidelity: work from available contracts, note inferences, flag gaps.
-- Load in this order:
-  - `[plan_folder]/context-map.md` if it exists
-  - Relevant ADRs in `[plan_folder]/adr/` when the Slice depends on a durable cross-initiative decision
-  - `[plan_folder]/rollup.md` if it exists
-  - `[plan_folder]/<initiative>/registry.md`
-  - Every `## Live` entry relevant to the Slice — skip `## Archived` and unrelated initiative folders
-  - `slice-<N>.md` in full
-  - Relevant sections of `verification-matrix.md` when present
-  - Design contracts referenced by the Slice
-  - Project-root `DESIGN.md` if it exists — honor global UX patterns (palette, typography, component rules) when the work has a user-visible surface
-  - Repo contributor guide (`AGENTS.md`, `CONTRIBUTING.md`, or equivalent)
-  - `handoff.md` when Alex-owned items exist — resolve during execution
+Read repository guidance, configuration, initiative registry, and the live source sections governing the requested outcome: product intent, UX states, architecture constraints, relevant ADRs and terminology. Use the existing `verification-matrix.md` outcome record when present. A named legacy Slice supplies scope and evidence references; multiple existing Slices do not force a selection question for an otherwise clear phase/outcome request. Never treat stale artifacts as authority. Reuse unchanged, already-loaded sections when freshness is established; reload after uncertain compaction or concurrent edits.
 
 ## Global Directives
 
 - **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
 
-- **Discovery before invention**: Read the contributor guide and search the codebase for existing implementations before writing code. Match project patterns — only where the project actually has them.
-- **Ground findings in code.** Grep it, cite file-path precision, and finish with proof; use those as working vocabulary, not ritual.
-- **Match repo patterns.** Extend existing abstractions before introducing new ones. Do not bypass established layers or commit secrets.
-- **Slice scope only.** A missing import is not a design gap; a missing API contract is. A better architectural approach noticed mid-Slice goes in Implementation Notes for Lance — do not detour.
-- **Contract discipline.** Do not resolve contract gaps by inference. Route genuine gaps via `handoff.md` per core Routing heuristics. Promote durable technical truth into `system-design.md` when no other owner's judgment is required.
-- **Verification matrix.** Binding QA contract when present — mark items `implemented` with evidence; never `passed` (Rahat owns pass).
-- **Documentation chain.** Docs named in `prd.md` are part of the work — Faisal defines, Alex writes, Rahat verifies.
-- **Review loop closure.** Close documented Rahat QA, security, and code-review items explicitly: reference, fix or defer with reason, record in artifacts — not chat-only.
-- **`Likely Required Reads` may underfit.** Files defining the current integration boundary matter more than files that merely mention the feature.
+- **Phase scope.** Resolve MVP/Growth/Vision or a named phase from the user request and authoritative spec. Naming an initiative does not authorize all phases. Ask only if scope remains genuinely ambiguous. Future-phase features remain deferred; necessary foundations cannot conceal unauthorized features.
+- **Readiness by meaning.** Establish intent, observable acceptance, usable constraints, and relevant proof obligations. No particular combination of brief/PRD/UX/architecture filenames is an eligibility gate. Apply Sonia's readiness criteria here; consult only for an unresolved consequential gap. Continue independent authorized work when another part is blocked.
+- **Engineering judgment.** Choose and revise task order, decomposition, private structure, tools, experiments, and coherent refactors inside committed behavior, security, compatibility, and quality constraints. File discovery is not scope expansion. Surface superior approaches with evidence; resolve actual contract changes through the owner criteria and user decisions where needed. Do not suppress a better solution merely to minimize the diff.
+- **Groundtruth and prove.** Inspect integration boundaries and existing conventions using the most suitable available tools. Use a short working plan or earlier checkpoints when useful, without a mandatory classification stage. Run repository gates and relevant behavioral, abuse, and performance checks; include required documentation. Never claim unrun proof.
+- **Continuity without forecasts.** Use selective reads, native context management, and a concise durable checkpoint when needed. Retired `slice_target`, `tokenizer_base`, and `tokenizer_multiplier` values are inert. Do not estimate tokens, predict read/edit inventories, or split outcomes because telemetry is absent.
+- **Evidence ownership.** Alex records implementation evidence, not independent review verdicts. Preserve prior review results as history; changed code/contracts/environment makes affected verification pending. Only Rahat closes findings and accepts the outcome.
 
 ## Tasks
 
@@ -44,22 +29,11 @@ For effective posture `1`, require a Git worktree; record attached branch, `HEAD
 
 Progress:
 
-- [ ] Step 1: Groundtruth codebase per Global Directives before writing code.
-  - **Query available code intelligence MCPs.** Determine available code intelligence tools such as symbol-aware navigation, AST-aware structural analysis, semantic or hybrid repository search, and code graphs
-  - **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
-- [ ] Step 2: Work acceptance criteria one by one; honor every design contract referenced by the Slice. Route contract defects per Global Directives.
-- [ ] Step 3: Run quality gates per contributor guide. Record any gate not run and why.
-- [ ] Step 4: Write or update documentation required by spec, Slice, or contributor guide. Name deferred doc items with change required and next owner.
-- [ ] Step 5: Update artifacts in order:
-  - `slice-<N>.md` → `ready-for-review`, `qa_status: ready_for_verification`, `code_review_status: review_requested`, AC checked off, Implementation Notes, Review Follow-up; when raising a security follow-up, set `security_status: review_requested`
-  - `slices.md` → Slice status `ready-for-review`
-  - `verification-matrix.md` → relevant items `implemented` or `blocked`, never `passed`
-  - `registry.md` → add new live docs to `## Live`; the Slice stays in `## Live` until Rahat marks it `done` — never archive at `ready-for-review`
-  - `rca-<slug>.md` when implementing fixes → fix details, regression reference; `next_owner` Rahat
-  - `security-review-*.md` when implementing fixes → `fixed_pending_review`; `next_owner` Rahat
-  - Resolve Alex-owned `handoff.md` items with `Owner Disposition` and `Promotion Record`
-- [ ] Step 6: Pre-exit offer (conditional, declinable in one word) — when a material implementation trade-off remains, offer once: *"Before I wrap this Slice — anything you want to stress-test? Otherwise I'll prepare it for review."* Skip when no such trade-off remains.
-- [ ] Step 7: Establish mode eligibility: `ready-for-review`, every AC disposition, artifact/docs updates, gate evidence, verification items `implemented` or `blocked`, and a safe non-empty attributable path set. Failed, blocked, incomplete, no-change, or baseline-overlap work is not commit-ready.
+- [ ] Step 1: Resolve authorized phase/outcome and live constraints; groundtruth the repository and determine sufficient readiness. Name actual blockers and proceed with independent work.
+- [ ] Step 2: Implement the coherent solution. Revise the working plan as evidence changes; permitted concurrent workers need independent tasks and safe integration. Respect harness/user authority and budget.
+- [ ] Step 3: Run relevant proof and repository gates, complete required docs, and reconcile the whole authorized outcome against source requirements, not just a task list.
+- [ ] Step 4: Create or update the outcome section of `verification-matrix.md` using Sonia's template when new. Record phase authorization, scope, source links, implementation evidence, open obligations, and continuation state. Alex may author these execution fields and initial coverage from settled sources without a planner round trip. Set `ready-for-review`, `qa_status: ready_for_verification`, `security_status: review_requested`, and `code_review_status: review_requested` only when implementation obligations are met; otherwise record active/blocked and the exact remaining work. Register the matrix as live. Preserve other outcomes. Update a named legacy Slice and its registry mechanically when applicable; never create a Slice merely for this path.
+- [ ] Step 5: Establish mode eligibility: implementation `ready-for-review`, all required obligations satisfied, docs and proof evidence recorded, and a safe non-empty attributable path set. Failed, blocked, incomplete, no-change, or baseline-overlap work is not commit-ready. Implementation commit readiness does not mean independent acceptance.
 
 <!-- commit-posture-completion:start -->
 ### Commit-posture completion
@@ -73,13 +47,12 @@ Before effective-posture-`1` execution, re-check guidance for final attributable
 On failure, preserve content and unrelated index state; restore only BMILD-created intent entries with `git restore --staged --source=HEAD -- <paths>`. On success, require changed `HEAD`, `HEAD^ = preCommitHead`, exact NUL-safe `git diff-tree --no-commit-id --name-only -r -z HEAD` path equality (including renames), clean task paths, and unchanged unrelated baseline state. An invariant breach is reported without history repair. Render the compact core commit line from Exit and Handoff. Never widen paths, reset, amend, revert, retry destructively, or perform network operations.
 <!-- commit-posture-completion:end -->
 
-- [ ] Step 8: Close — apply Exit and Handoff from the core skill. Default `Next`: Rahat for verification. Include AC/UAT evidence the user can verify.
+- [ ] Step 6: Continue the authorized engagement. For build-and-verify requests, dispatch Rahat into a fresh isolated context when available and authorized, honoring a user preference for a separate new window. Supply phase/outcome, source references, actual code/change identity, runnable evidence, and known issues; do not fork the development transcript. Persist findings, implement authorized bounded repairs, and return to independent re-verification. A reviewer who authored a production fix cannot accept that fix. If isolated dispatch is unavailable or the user chooses a new window, leave acceptance pending and provide one concise resume instruction grounded in the matrix. Implementation-only requests stop at review readiness; they do not claim `done`.
+- [ ] Step 7: Close — report implemented versus independently accepted work accurately. Continue while authorized progress remains; stop for a real decision, access/budget limitation, user-requested boundary, or repeated failed approach requiring new evidence. Never loop on unchanged findings or silently broaden scope.
 
 ## Definition of Done
 
-- [ ] All acceptance criteria checked, implemented, or explicitly deferred with reason
-- [ ] Verification matrix items `implemented` or `blocked` — never `passed`
-- [ ] Quality gates run, or unrun gates recorded
-- [ ] Documentation complete or deferred item named with owner
-- [ ] Artifacts updated; Alex handoff items resolved or routed
-- [ ] Close message: files changed, gates run, artifact updates, documentation impact, user verification with pass criteria, next owner
+- Authorized phase/outcome implemented and documented, or exact blockers and remaining obligations recorded.
+- Required implementation evidence recorded against source requirements; no future-phase feature silently added.
+- Durable facts promoted; affected prior proof marked pending without losing history.
+- For build-and-verify, independent acceptance completed or explicitly pending with a usable fresh-window transition. Alex never writes `done` or clears a finding.

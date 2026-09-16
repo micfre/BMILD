@@ -1,47 +1,43 @@
 ---
 type: Verification Matrix
-title: "<short display name>"
-description: "<one-line summary>"
+title: "<initiative> outcomes and evidence"
+description: "Authorized outcomes, continuation state, and independent acceptance evidence"
 timestamp: YYYY-MM-DD
-scope: "<initiative-name> | _system"
-created: YYYY-MM-DD
-author: "[user_name] + Sonia (Planner) | Rahat (QA)"
-mode: nyquist-readiness | nyquist
-status: draft | active | partially_implemented | verified | blocked
+scope: "<initiative-name>"
+author: "[user_name] + Sonia / Alex / Rahat"
 ---
 
-## Test Infrastructure
+## Outcome: <stable descriptive identifier>
 
-- Commands: ...
-- Tools: ...
-- Required fixtures or mocks: ...
+Repeat only for separately authorized outcomes. Preserve previous outcomes and evidence when starting another phase. Link source requirements; no Slice or forecast is required.
 
-## Requirement Coverage Matrix
+- Phase: MVP | Growth | Vision | explicitly authorized named phase
+- Authorization: <user request or authoritative scope decision>
+- Scope and deferred work: <observable outcome, exclusions, source links>
+- Contracts: <relevant source sections; omit absent artifacts>
+- Readiness: ready | partially_ready | blocked — <intent, constraints, unresolved dependencies; Sonia or Alex applying the same criteria>
+- Status: active | blocked | ready-for-review | done
+- Required review axes: functionality/completeness, security applicability, standards/spec fidelity, applicable scalability/maintainability
+- qa_status: not_started | ready_for_verification | verified | failed | blocked
+- security_status: not_reviewed | review_requested | findings_open | cleared | not_applicable
+- code_review_status: not_started | review_requested | findings_open | cleared | not_applicable
+- Review independence: pending | established — <reviewer context identity; did not implement reviewed production changes; no inherited development transcript>
+- Reviewed state: <code/change and source-contract identity, relevant environment>
 
-- Requirement: ...
-  - Source: [PRD](./prd.md) §... / [UX Design](./ux-design.md) §... / [System Design](./system-design.md) §...
-  - Covered by Slice: Slice <N>
-  - Test case / verification action: ...
-  - Type: unit / integration / e2e / manual
-  - Status: draft / implemented / passed / failed / blocked
-  - Created by: Sonia
-  - Implementation consumer: Alex
-  - Verification owner: Rahat
-  - Evidence: [test file, command, manual check, or pending]
-  - Next owner: Alex / Rahat / Lance / Katrina / none
-  - Handoff reference: none | `handoff.md#...`
+### Coverage and evidence
 
-## Open Verification Dependencies
+- Requirement: <stable source reference, including relevant NFR/documentation/UX obligations>
+  - Proof: <observable check and command/test/manual procedure; missing infrastructure if blocked>
+  - Implementation: pending | implemented | blocked — <Alex's evidence>
+  - Verification: pending | passed | failed | blocked — <Rahat's independently checked evidence and reviewed state>
+  - Applicability: <Rahat's reason only when a review dimension does not apply>
 
-- Use this section only for proof-owned dependencies, blocked evidence, or missing verification setup.
-- Do not place source-artifact repair requests here. Route product, UX, architecture, and other source-truth defects through `handoff.md`, keep missing user input in chat unless another owner must act, and reference the handoff item ID here only when verification depends on it.
-- ...
+### Continuation and review follow-up
 
-## Governance Checks
+- Current state / next action: <only what another context needs>
+- Decisions and dependencies: <source links; commitments versus delegated engineering choices>
+- Open obligation or finding: <evidence, consequence, owner, resolution condition>
+- Repair: pending | fixed_pending_review — <change and regression evidence; reviewer closes>
+- Review transition: <phase/outcome, source links, change identity, commands, issues; no developer reasoning transcript>
 
-- Source-promotion required: yes | no
-- Handoff artifacts involved: none | `handoff.md`
-- Required review axes: FR/NFR Nyquist | security | code review | comprehensive (all three)
-- Review status source: `slice-<N>.md` (`qa_status`, `security_status`, `code_review_status`)
-- Verification note: what still requires owner promotion before a queued outcome can be treated as authoritative
-- Closure rule: a review stage is Open until its linked handoffs are closed AND its named proof or review has run; Slice closure additionally requires every required review status to be terminal with no open finding
+Sonia owns readiness and coverage planning; Alex owns implementation and continuation evidence; Rahat owns review verdicts and `done`. A matrix is not proof. Preserve historical review evidence and mark affected proof pending when code/contracts/environment change. Verify completeness directly against the sources. `not_reviewed` is never terminal; justify not-applicable axes. Multiple outcomes remain independent. Keep the matrix live while it supports active work; archive only when all outcomes are terminal and it is no longer needed for continuity.

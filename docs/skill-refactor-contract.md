@@ -60,7 +60,7 @@ Add to each migrated `SKILL.md` under Mode Lookup:
 - **YAML:** categorization only (`consequential` | `medium` | `low`; optional `stakes_note` override).
 - **Mode resource:** **Stakes-based elicitation** section — behaviour table and session pacing (diverge → synthesize → reopen on steer).
 
-Skills **without** criteria YAML use mode-resource **Global Directives** for method (evidence discipline, reproduction-first, slice boundaries, etc.) — **not** a Stakes-based elicitation section tied to YAML.
+Skills **without** criteria YAML use mode-resource **Global Directives** for method (evidence discipline, reproduction-first, authorized phase/outcome boundaries, etc.) — **not** a Stakes-based elicitation section tied to YAML.
 
 ### Option A (UX / Arch)
 
@@ -77,7 +77,7 @@ Suggested consequential sections (review during migration):
 
 ### Keep / add
 
-- NON-NEGOTIABLE early: **first-person voice + session wrappers** only in core. **Code intelligence + discovery-before-invention** (or planner file-intense equivalent) in mode-resource Global Directives for modes that groundtruth repos or budget Slices (PM, UX, Arch, Dev, QA fix/review modes, planner decomposition/replan/CC).
+- NON-NEGOTIABLE early: **first-person voice + session wrappers** only in core. **Code intelligence + discovery-before-invention** (or planner file-intense equivalent) in mode-resource Global Directives for modes that groundtruth repositories (PM, UX, Arch, Dev, QA fix/review modes, planner readiness/delivery strategy/CC).
 - Mode Lookup as **sole authority** — fold handback scan into Mode 1 with **precedence** (scan wins; do not evaluate lower modes when queue matches).
 - **Advanced Elicitation Triggers** (facilitator offers: roundtable, elicit, brainstorming) — replaces generic Trigger-Condition Rules in core.
 - Brief vs PRD (or persona-specific) **disambiguation** rules where ambiguous user intent is common.
@@ -100,7 +100,7 @@ Suggested consequential sections (review during migration):
 - **Stakes-based elicitation** — **only** when the skill has criteria YAML with `stakes` fields.
 - Unified **Tasks** + **Definition of Done**.
 - **Consequence-check** step referencing YAML falsifiability (not duplicating good/weak prose).
-- **Pre-exit:** unconditional before initial artifact write; **conditional** before refine write when consequential sections change materially.
+- **Pre-exit:** preserve useful design-tier elicitation; execution and assurance ask only for an unresolved consequential decision. Do not add ritual offers before routine record updates.
 - Add groundtruth/code-intelligence directives to Global Directives when the mode has a Groundtruth or repository-research step; task steps reference **Global Directives**, not core NON-NEGOTIABLE.
 
 ---
@@ -125,7 +125,7 @@ Phase 4  bmild-dev                (no YAML, no stakes)              ✓
 Phase 5  roundtable, elicit, brainstorming  (thin SKILL only)        ✓
 ```
 
-**One skill per PR / agent session** to avoid context saturation during migration.
+Coordinate changes across all affected skills when a shared contract changes; use isolated work and suitable checkpoints rather than a fixed one-skill limit.
 
 ---
 
@@ -137,7 +137,7 @@ Phase 5  roundtable, elicit, brainstorming  (thin SKILL only)        ✓
 | ux | ✓ | existing | — | DESIGN.md distillation in mode resources |
 | arch | ✓ | existing | — | adr/ promotion in mode resources |
 | qa | security modes | `security-categories.yaml` + `code-review-categories.yaml` | in resources | Review taxonomies, not completion-criteria shape |
-| planner | — | none | partial | CC exception stays in Mode Lookup; slice budget in Context Reads |
+| planner | — | none | partial | Readiness default; optional strategy; no token budget or required Slices |
 | dev | — | none | short block OK | No handback mode |
 | advanced | — | step catalogs only | — | Step resources are execution script |
 

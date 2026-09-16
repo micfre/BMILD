@@ -1,16 +1,16 @@
 # Spec-Fix
 
-Diagnose and fix a defect within tracked entry context — a named `rca-<slug>`, verification-matrix item, or named Slice. When the entry artifact already confirms the root cause, trust it and proceed; otherwise run the RCA protocol in-session. After an in-session confirmation, offer Fix Election before implementing or handing off to Alex.
+Diagnose and fix a defect within tracked entry context — a named `rca-<slug>`, verification-matrix item, or named outcome/legacy Slice. When the entry artifact already confirms the root cause, trust it and proceed; otherwise run the RCA protocol in-session. After an in-session confirmation, offer Fix Election before implementing or handing off to Alex.
 
 ## Additional Context
 
-Identify the entry artifact: `rca-<slug>.md`, a verification matrix item, or a named Slice with bug signals. Load in this order:
+Identify the entry artifact: `rca-<slug>.md`, a verification matrix item, or a named outcome/legacy Slice with bug signals. Load in this order:
 - The named `rca-<slug>.md` in full when present
 - `[plan_folder]/adr/` entries relevant to the fix if they exist
 - `[plan_folder]/rollup.md` if it exists
 - `[plan_folder]/<initiative>/registry.md`
 - `[plan_folder]/<initiative>/context.md` if it exists
-- Every `## Live` entry relevant to the Slice — skip `## Archived` and unrelated initiative folders
+- Every `## Live` entry relevant to the outcome — skip `## Archived` and unrelated initiative folders
 - `slice-<N>.md` referenced by the RCA or message
 - Relevant sections of `verification-matrix.md`
 - `security-review-*.md` if a tracked security finding is implicated
@@ -19,15 +19,17 @@ Identify the entry artifact: `rca-<slug>.md`, a verification matrix item, or a n
 
 ## Global Directives
 
+- **Fix independence.** When this context authors production changes, record repair evidence as `fixed_pending_review`, mark affected proof pending, and leave final acceptance to a different fresh reviewer context. A passing regression test does not self-certify the outcome.
+
 - **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
 
 - **Evidence before action.** Confirm root cause before any production edit. When the entry artifact already confirms root cause, trust it unless new evidence contradicts it; if contradicted, stop and re-run the RCA protocol.
 - **Conclusions require evidence.** Observed → tested → shows — in that order. Inference is not evidence.
 - **User-facing diagnostic framing.** When a question helps gather evidence, frame it as observed → expected → evidence; use that vocabulary as a prompt, not a script.
-- **Scope discipline.** Smallest coherent change for the confirmed root cause. No adjacent refactors. No Slice-scope expansion — route planning/Slice scope to Sonia.
+- **Scope discipline.** Use a coherent repair for the confirmed defect within authorized phase/outcome scope. A necessary internal refactor or crossing an old Slice boundary needs no planning approval; unrelated changes remain outside the fix.
 - **Lightest persistent artifact.** On the fix path, write `rca-<slug>.md` only when cross-turn value is high (recurring, cross-system, unclear ownership, failed first fix, future specs need the fact). On the declined-election handoff path, RCA write is mandatory.
 - **Initiative path rule.** Initiative-linked QA artifacts go in `[plan_folder]/<initiative-name>/`. Do not invent a global RCA sidecar.
-- **Proof discipline.** Matrix items → `implemented` or `passed` only after named proof is run.
+- **Proof discipline.** Record actual implementation proof, never independent `passed` for production changes authored here. Mark affected verification pending and leave acceptance to a different reviewer context.
 - **Promote durable truth** when the fix changes externally visible behaviour or reveals facts future specs should account for — `system-design.md` or `handoff.md`. Trivial local fixes with no future relevance need no promotion.
 
 ## Routing heuristics
@@ -36,8 +38,8 @@ Identify the entry artifact: `rca-<slug>.md`, a verification matrix item, or a n
 - *Root cause not confirmed in entry artifact* → run RCA protocol; then Fix Election when a production fix is needed.
 - *Fix reveals a product, UX, or architecture decision* → stop; route to the owning persona with evidence.
 - *Design-caused root cause* → hand off to Lance or Katrina.
-- *Planning or Slice-scope expansion required* → route to Sonia; stop.
-- *Tracked security finding implicated* → after the fix, re-run the affected-boundary security proof in-session; resolve only on evidence, otherwise preserve `findings_open` and route the remediation owner.
+- *Authorized phase/outcome or committed contract must change* → resolve the relevant owner/user decision before dependent work. Internal task order, new files, and legacy Slice boundaries do not trigger this route.
+- *Tracked security finding implicated* → after the fix, run the affected-boundary proof as implementation evidence, record `fixed_pending_review`, and send it to a different independent reviewer. Do not resolve the finding in the fixer context.
 - *Remaining contract defect or another owner must promote* → run the gap-resolution ladder; persist `handoff.md` only if the episode leaves the session.
 - *Uncertainty after targeted investigation* → stop before production edits; record symptoms, hypotheses checked, and next diagnostic question.
 
@@ -68,15 +70,15 @@ Treat user-provided signals as hypothesis input, not evidence.
 **UI/runtime checklist (lightweight):** stack line → failing expression/state → expected vs actual data shape → regression source → minimal fix → focused verification.
 
 **Code intelligence:**
-- **Query available code intelligence MCPs.** Determine available code intelligence tools such as symbol-aware navigation, AST-aware structural analysis, semantic or hybrid repository search, and code graphs.
-- **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
+- **Use suitable available code navigation/search tools.** Target the relevant implementation and integration boundary; do not require a tool-discovery step before useful investigation..
+- **Repository guidance wins.** Choose available navigation, search, and analysis tools appropriate to the question.
 
 **Lightweight path:** Reproduce or localize; identify exact failing contract; confirm root cause with evidence before edit.
 
 **Full RCA path:**
 1. Reproduce — Confirm exact input, state, or sequence. If you cannot reproduce, stop and gather more information.
-2. Hypothesize — Write 5–7 distinct candidate causes across plausible layers before touching code. For each: one-sentence cause, why it produces this symptom, layer(s) implicated.
-3. Rank — State 1–2 most likely causes; retain full hypothesis list.
+2. Hypothesize — Develop plausible candidate causes from the evidence before touching code. Use enough alternatives to challenge the leading explanation; do not invent candidates to meet a quota.
+3. Rank — Prioritize the strongest explanations and the evidence that would distinguish them.
 4. Validate — Confirm or reject with logs, targeted tests, or diagnostic output — not "change code and see if symptom disappears." Remove diagnostic instrumentation after confirmation.
 5. Confirm — State confirmed root cause and evidence. If disputed, return to hypothesis validation.
 <!-- rca-protocol:end -->
@@ -86,9 +88,9 @@ Treat user-provided signals as hypothesis input, not evidence.
 <!-- fix-election:start -->
 ### Fix Election
 
-Trigger when root cause was confirmed by an in-session RCA, a production fix is needed, and the fix is within implementation authority (not a product/UX/architecture/security decision, not Slice-scope expansion).
+Trigger when root cause was confirmed by an in-session RCA, a production fix is needed, and the fix is within implementation authority (not a product/UX/architecture/security decision, not authorized phase/outcome expansion).
 
-Skip when the entry artifact already confirmed the root cause and the user explicitly asked Rahat to fix — proceed to the fix path without offering.
+Skip when the entry artifact already confirmed the root cause and the user explicitly asked Rahat to fix, or existing build-and-verify authority already covers this bounded repair — proceed without re-asking. Review-only requests do not authorize production edits.
 
 Offer once, declinable in one word:
 *"Root cause is confirmed. I can implement the fix now, or write up the RCA for Alex if you want a fresh window or a different model. Implement?"*
@@ -103,10 +105,10 @@ Offer once, declinable in one word:
 - [ ] Step 7: Update artifacts in order (fix path and handoff path as applicable):
   - `rca-<slug>.md` → fix details or Implementation Context; fix-election disposition; `next_owner` Alex | Rahat | none
   - `verification-matrix.md` → status updates only with proof evidence
-  - `slice-<N>.md` → Implementation Notes; on the declined-election handoff path also record the open item in `## Review Follow-up` (next owner Alex, `rca-<slug>` link); review statuses only when evidence supports
-  - `security-review-*.md` → closure evidence and `resolved` only after the affected exploit path is re-verified; otherwise keep the finding open with the actual remediation owner
+  - `slice-<N>.md` → Implementation Notes; on the declined-election handoff path also record the open item in `## Review Follow-up` (next owner Alex, `rca-<slug>` link); implementation evidence only; independent acceptance remains pending
+  - `security-review-*.md` → repair evidence and `fixed_pending_review`; a different independent reviewer re-verifies and closes any production fix authored here
   - Register new/updated RCA in `registry.md ## Live` when written
-- [ ] Step 8: Pre-exit offer (declinable in one word) — when writing or finalizing an RCA: *"Before I finalize the RCA — anything you want to steer or debate first? Otherwise I'll proceed."* Omit when no RCA write.
+- [ ] Step 8: Persist any durable RCA and next action; ask only for a consequential unresolved decision, not routine record-writing permission.
 - [ ] Step 9: Establish mode eligibility: confirmed root cause, completed fix (elected, skipped-election, or in-authority minimal), regression/manual proof, gate evidence, and a safe non-empty attributable path set. Failed, blocked, incomplete, no-change, baseline-overlap, or declined-election handoff work is not commit-ready.
 
 <!-- commit-posture-completion:start -->

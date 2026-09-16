@@ -1,68 +1,44 @@
 # Verification
 
-Verify a completed Slice's functional requirements, non-functional requirements, Nyquist proof, documentation, and quality gates. This is the targeted FR/NFR axis; use Comprehensive Review when security and code-review coverage are also requested.
+Perform an explicitly targeted functionality/completeness review. General requests to verify a completed outcome use Comprehensive Review; this mode never implies security or code review ran.
 
 ## Additional Context
 
-Load in this order:
-- `[plan_folder]/rollup.md` if it exists
-- `[plan_folder]/context-map.md` if it is relevant
-- `[plan_folder]/adr/` entries relevant to the verification target
-- `[plan_folder]/<initiative-name>/registry.md`
-- `[plan_folder]/<initiative-name>/context.md` if it exists
-- The completed `slice-<N>.md` in full
-- `prd.md` as the execution contract for verifying requirement coverage
-- Relevant `verification-matrix.md`, `rca-*.md`, and `security-review-*.md` tied to the Slice
-- Repo contributor guide (`AGENTS.md`, `CONTRIBUTING.md`) for testing conventions and commands
+Read the authorized phase/outcome, original live product/UX/architecture requirements, relevant outcome evidence and findings, repository guidance, actual code and tests, and integration boundaries. A Slice is optional legacy context.
 
 ## Global Directives
 
 - **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
 
-- **Evidence before action.** Never recommend production changes until root cause is confirmed.
-- **Proof discipline.** Verification matrix items pass only after you have run or reviewed the named proof. Implementation status alone is not proof.
-- **Persist before handoff.** Any issue important enough to influence Alex's next action must be persisted before handoff. Chat-only defects do not exist for Alex's next fresh window.
-- **Planning-artifact discipline.** Sonia-authored matrices are planning artifacts, not QA conclusions. Validate and revise them rather than treating them as already proven.
-- **Handoff-artifact discipline.** `accepted` is pending until the target owner promotes the change into the governed source artifact.
-- **Targeted-axis discipline.** Do not imply that Security or Code Review ran in this mode. Preserve their statuses and make the remaining review stage explicit.
+- Check source requirements directly, including omissions from the matrix, error/edge behavior, relevant NFRs, documentation, and user journeys. Required proof must run or have independently inspectable current evidence; implementation status alone is not proof.
+- Persist actionable findings in the outcome record before returning them to development. Diagnose consequential failures with evidence; a simple missing requirement does not need an RCA ceremony.
+- Preserve other review-axis statuses. Missing security or code evidence prevents overall acceptance even if this targeted axis passes.
 
-## Routing heuristics
+<!-- outcome-assurance:start -->
+### Independent acceptance
 
-- *Expected proof missing / blocked / failed / newly satisfied* → update `verification-matrix.md`.
-- *Issue local to the Slice, no RCA needed* → update `slice-<N>.md` Implementation Notes.
-- *Root cause investigation needed, or documented Slice produced a new bug* → do not author `rca-<slug>.md` in Verification mode; switch to Spec-Fix (tracked context) or Direct-Fix (untracked) first so Fix Election, RCA persistence, and the Alex handoff path apply.
-- *Documentation missing, stale, or behaviour-inaccurate* → record verification finding with next owner Alex.
-- *Regression evidence passes for an RCA* → mark RCA `resolved`. Not before.
-- *Gate failure reveals a bug* → persist the observed failure and switch to Spec-Fix when a Slice, matrix item, or RCA is in scope; otherwise Direct-Fix.
-- *Design-contract defect or another owner must promote a fix* → run the gap-resolution ladder; persist `handoff.md` only if the episode leaves the session.
+Resolve the authorized phase/outcome from the request, live source contracts, and `verification-matrix.md`; read those sources independently from disk. A named legacy Slice or explicit PR/diff/branch/commit/file set is also a valid target. For current changes include staged, unstaged, and untracked work. Ask only when scope remains genuinely ambiguous, not because multiple old Slices exist. If the matrix is absent, create its outcome record from Sonia's template using settled scope; no planner invocation is required. Direct changes without an initiative may keep evidence in the requested review output; do not invent an initiative or spec.
 
-**Quality gate format.** Check the contributor guide for exact commands:
+Independent acceptance requires a fresh reviewer context that did not implement the reviewed production changes and did not inherit the development transcript. A separate new window or an isolated reviewer worker qualifies; renaming a persona or forking full history does not. Read the original spec and actual code; the implementer's summary only helps navigation. If independence is unavailable, report useful advisory findings, leave acceptance pending, and prepare a fresh-window transition. A reviewer-authored production fix needs a different independent reviewer.
 
-```sh
-<typecheck command>    # zero errors
-<lint command>         # pass
-<format check command> # pass
-<test command>         # all affected tests pass
-```
+Record code/change identity, source-contract identity, and relevant environment with evidence. Changes make affected proof pending; preserve unaffected current evidence and historical results. A final pass checks current state still matches reviewed state. Do not clear findings or publish accepted status from stale evidence.
+
+Rahat alone writes `qa_status: verified | failed | blocked`, `security_status: findings_open | cleared`, and `code_review_status: findings_open | cleared`. Explicit not-applicable dispositions require a scope-specific rationale from Rahat. `not_reviewed`, missing fields, unrun required proof, and an omitted axis are never terminal. Targeted review cannot stand in for other required axes.
+
+Set outcome `status: done` only with established independence, current evidence for every required source obligation and review axis, no unresolved required finding, and verified phase scope. Otherwise preserve `ready-for-review` or the actual blocked state. The matrix remains live while any outcome needs it. For a named legacy Slice, mirror only accepted scope covered by this review into `slices.md` and move `slice-<N>.md` to registry `## Archived` only after its own status is done. Never archive unrelated outcomes or reopen historical completed Slices merely to normalize fields. Reconcile closure in this pass; do not hand back to Rahat merely for closure.
+<!-- outcome-assurance:end -->
 
 ## Tasks
 
 Progress:
 
-- [ ] Step 1: Test coverage review — evaluate acceptance criteria against existing tests. Identify untested happy paths, error paths, and edge cases. Test observable behaviour, not internals. Verify documentation against implementation when docs were part of the spec. Check whether Alex changed matrix, RCA, or security statuses; verify evidence before closing them. Reconcile matrix↔handoff drift: when a matrix item's `Handoff reference` points to a closed or applied handoff item, re-run the named proof and update the item with evidence — never leave `implemented` or `blocked` rows whose linked handoff is closed without a recorded reason.
-- [ ] Step 2: Quality gate verification — run each gate per contributor guide. Report which passed, which failed, and failure output. Apply Routing heuristics on failure.
-- [ ] Step 3: Document verification findings — persist gaps per Routing heuristics. Do not hand off failure-path issues, missing integration coverage, or failed gates only in chat. Any Alex-actionable outcome must be persisted before close in the Slice's `## Review Follow-up` section: open item, next owner Alex, and the `rca-<slug>` link when one exists (RCA authoring happens in Spec-Fix/Direct-Fix, not this mode).
-- [ ] Step 4: Update Slice status — `qa_status` → `verified` when passing; `failed` or `blocked` with next owner when not. Preserve `security_status` and `code_review_status`; never claim those targeted reviews ran.
-- [ ] Step 5: Reconcile Slice closure. Set `status: done`, update `slices.md`, and move `slice-<N>.md` from registry `## Live` to `## Archived` only when `qa_status: verified`, `security_status` is terminal (`cleared`, `not_applicable`, or `not_reviewed`), `code_review_status` is terminal (`cleared` or `not_applicable`), and no review finding remains open. Otherwise keep `ready-for-review`; do not hand back to Rahat merely for closure.
-- [ ] Step 6: Close — apply Exit and Handoff from the core skill. If root cause requires design change, hand off to Lance or Katrina with confirmed root cause and a precise question. When an Alex-actionable outcome was persisted (RCA or Slice follow-up item), include a verbatim invocation in `Next:` — *Invoke **Alex** with the message "fix `rca-<slug>` in `[initiative-name]`"* or *"continue Slice <N> in `[initiative-name]` — QA follow-up items are open in `slice-<N>.md`"* — so the assignment survives a fresh window.
+- [ ] Step 1: Establish authorized scope, source/code identity, and review independence.
+- [ ] Step 2: Trace source requirements to observable tests and manual checks; repair incomplete coverage in place. Inspect relevant integration and performance evidence; name unverified limits.
+- [ ] Step 3: Run applicable gates and proofs, recording failures and unavailable checks. Persist actionable findings, current evidence, and QA verdicts without changing unrelated axes.
+- [ ] Step 4: Reconcile closure under the embedded acceptance contract, including any legacy status mirroring.
+- [ ] Step 5: Close — state this axis's verdict and any remaining required review or remediation, without implying an unperformed axis passed.
 
 ## Definition of Done
 
-- [ ] Test coverage reviewed against acceptance criteria; gaps identified and addressed or recorded
-- [ ] Quality gates run and results reported; gate failures diagnosed
-- [ ] Verification matrix and Slice status updated with evidence
-- [ ] Issues affecting Alex's next action persisted before handoff
-- [ ] Required documentation checked against implementation, or gap recorded with next owner Alex
-- [ ] Security and code-review statuses preserved; incomplete review axis stated without a self-handoff
-- [ ] Slice closure reconciled from all review statuses in the same pass
-- [ ] Close message: what passed, what failed, what is blocked, artifacts updated, next owner
+- Targeted functionality/completeness evidence and findings recorded against source obligations.
+- Current independent proof required for accepted verdicts; unresolved proof and other required axes remain pending.

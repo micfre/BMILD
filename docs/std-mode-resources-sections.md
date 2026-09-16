@@ -50,10 +50,10 @@ Example shape:
 ```markdown
 ## Additional Context
 
-- Load `[plan_folder]/<initiative>/slice-<N>.md` in full.
+- Load the authorized outcome and relevant live source contracts; a named legacy Slice is optional scope context.
 - Load relevant `verification-matrix.md` entries when present.
 - Read contributor guidance (`AGENTS.md`, `CONTRIBUTING.md`, or equivalent) before edits.
-- If `slice-<N>.md` is missing, stop and route to Sonia unless the user explicitly asks for reduced-fidelity direct work.
+- Absence of a Slice never blocks spec-backed work. Assess sufficient intent, constraints, phase authorization, and proof obligations.
 ```
 
 ## Additional Norms
@@ -117,7 +117,7 @@ Forbidden:
 Design guidance:
 
 - Use steps for true sequence. Use prose or ordinary bullets for non-sequential guidance.
-- Keep each step outcome-oriented: "Update `slice-<N>.md` with checked AC and implementation notes" is better than "Think about the slice."
+- Keep each step outcome-oriented: "Record implementation evidence against the authorized outcome" is better than "Think about the task."
 - Include validation loops where failure is likely and self-correction is possible.
 - State handoff-impacting artifact updates in the task sequence, not only in DoD.
 

@@ -18,14 +18,7 @@ codex="$OUT/harness/codex"
 [ "$(find "$opencode" -type f -name 'bmild-*-consult.md' | wc -l)" -eq 6 ] || fail "OpenCode agent count"
 [ "$(find "$codex/agents" -type f -name 'bmild-*-consult.toml' | wc -l)" -eq 6 ] || fail "Codex role count"
 
-for persona in pm ux arch planner; do
-  rg -q '^model: opus$' "$claude/bmild-$persona-consult.md" || fail "Claude $persona model"
-  rg -q '^effort: max$' "$claude/bmild-$persona-consult.md" || fail "Claude $persona effort"
-  rg -q '^model = "gpt-5.6-sol"$' "$codex/agents/bmild-$persona-consult.toml" || fail "Codex $persona model"
-  rg -q '^model_reasoning_effort = "ultra"$' "$codex/agents/bmild-$persona-consult.toml" || fail "Codex $persona effort"
-done
-
-for persona in dev qa; do
+for persona in pm ux arch planner dev qa; do
   rg -q '^model: inherit$' "$claude/bmild-$persona-consult.md" || fail "Claude $persona inheritance"
   rg -q '^effort:' "$claude/bmild-$persona-consult.md" && fail "Claude $persona must inherit effort"
   rg -q '^model( |_)' "$codex/agents/bmild-$persona-consult.toml" && fail "Codex $persona must inherit pair"
@@ -42,6 +35,19 @@ done
 [ "$(rg -c '^\[agents\.bmild-.*-consult\]$' "$codex/config.toml")" -eq 6 ] || fail "Codex named-role count"
 [ "$(rg -c '^config_file = "agents/bmild-.*-consult\.toml"$' "$codex/config.toml")" -eq 6 ] || fail "Codex config_file count"
 rg -q '^expose_spawn_agent_model_overrides = true$' "$codex/config.toml" || fail "Codex runtime overrides disabled"
+
+python3 - "$codex" <<'CHECK'
+from pathlib import Path
+import sys, tomllib
+root = Path(sys.argv[1])
+config = tomllib.loads((root / 'config.toml').read_text())
+assert len(config['agents']) == 6
+for name, role in config['agents'].items():
+    data = tomllib.loads((root / role['config_file']).read_text())
+    assert data['name'] == name
+    assert data['developer_instructions'].strip()
+    assert 'model' not in data and 'model_reasoning_effort' not in data
+CHECK
 
 if [ "$failures" -gt 0 ]; then
   echo "generator-contract: $failures failure(s)" >&2

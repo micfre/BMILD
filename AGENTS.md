@@ -17,7 +17,7 @@ BMILD skills must follow these API-like design principles:
 3. **Skill Structure**:
    Keep skill structure aligned across all personas to the extent that is reasonable to do to. Avoid patching a single skill as this may solve the local issue but will lead to drift that makes skills behave differently over time and create for more maintanace overhead.
 4. **Context-Aware Personas**:
-   Personas do their own thinking and are not bound by prescriptive linear flows or rigid tiers. They are domain specialists activated by the artifact state. Personas PM, UX, Arch are referred to as design-tier personas; Planner, Dev, and QA are execution-tier personas. Rahat's QA role includes functional/NFR verification, security review, and code review. Together they are the 'standard' personas. Brainstorming, Elicit and Roundtable are the advanced elicitation skills.
+   Personas do their own thinking and are not bound by prescriptive linear flows or rigid tiers. They are domain specialists activated by the artifact state. Personas PM, UX, Arch are referred to as design-tier personas; Planner, Dev, and QA are execution-tier personas. Rahat's QA role includes functional/NFR completeness, security, scalability/maintainability, standards, and spec-fidelity review with fresh-context acceptance. Together they are the 'standard' personas. Brainstorming, Elicit and Roundtable are the advanced elicitation skills.
 5. **Context Loading Policy**:
    - PM and Dev usually reload memory artifacts because they often run in fresh windows. Dev may skip BMILD memory reads in Prototype or Bug Fix Mode when the work is local and does not depend on documented behaviour, but if implementation reveals durable technical truth it should be promoted into `system-design.md`; gaps owned elsewhere first use the skill-local resolution ladder.
    - UX and Arch may skip disk reads only when the required artifact contents are visibly present in the current conversation and are not likely stale; otherwise reload.
@@ -38,30 +38,29 @@ First-class design targets:
 
 - Claude Code
 - Codex CLI
-- Opencode
+- OpenCode
+
+Other harnesses may work through compatibility without additional BMILD design effort.
 
 ### LLMs
 
-- Floating list: top 15 SWE-Bench Verified performers
+- Support capable coding models across a range of strengths. Evaluate weaker-model reliability and stronger-model quality at matched resources; model rankings or self-reported confidence do not grant authority.
 
 ## Configuration (`.bmild.toml`)
 
 Project-level settings are defined in `.bmild.toml` at the repository root. The personas read these configurations to dynamically adapt their behavior.
 
-- `plan_folder`: (Default: `"plans/"`) Directory where BMILD's memory artifacts (specs, designs, slices) are stored. Used globally by all personas to read and write context files.
+- `plan_folder`: (Default: `"plans/"`) Directory where BMILD's memory artifacts (specs, designs, outcome evidence) are stored. Used globally by all personas to read and write context files.
 - `user_name`: (Optional) The user's preferred name. Used by named personas (e.g., Faisal, Katrina, Sonia) to address the user personally in their conversational responses.
-- `slice_target`: (Default: `170000`) Peak live context token budget for sizing vertical implementation slices. Used by `bmild-planner` (Sonia) when performing Slice Budgeting to evaluate if work exceeds safe per-turn occupancy.
-- `tokenizer_base`: (Default: `15000`) Fixed mandatory-context overhead (system prompt, user prompt, always-on reads) included in the peak estimate.
-- `tokenizer_multiplier`: (Default: `1.0`) Residual safety margin applied to the variable working set (reads, edits, new files, per-item overhead).
 - `commit`: (Default: `0`; `commit = 0`) Alex/Rahat completion posture. `commit = 1` requests a rich message plus one eligible local Git commit, and `commit = 2` requests the message only.
 - `format`: (Optional) Alex/Rahat commit-message format. MVP recognizes `conventional-commits`; omission uses bounded local-history inference (10-message maximum, 3 usable minimum, 60% agreement) with Conventional Commits fallback.
 - `branch`: (Default: `"current"`) Alex/Rahat commit target, either the attached current branch or the confirmed initiative slug. A required initiative switch/create is allowed only from a completely clean repository.
 - `gap_resolution`: (Default: `"auto"`) Gap-resolution posture: `auto`, `ask-consult`, or `handoff-only`. Mechanical scribing remains available in every posture. Legacy `consult`, `consult_model`, and `consult_effort` keys are rejected and never mapped.
-- `[intelligence.claude_code.<tier>]`, `[intelligence.codex.<tier>]`: Optional native `model` / `effort` pairs for `design`, `planning`, `implementation`, and `reviewer`. Missing design/planning tiers use release-pinned highest-capability defaults; implementation/reviewer inherit. OpenCode always inherits the user's harness default and ignores tier overrides.
+- `[intelligence.claude_code.<tier>]`, `[intelligence.codex.<tier>]`: Optional native `model` / `effort` pairs for `design`, `planning`, `implementation`, and `reviewer`. All unspecified tiers inherit the active user-selected model and effort; explicit dispatch overrides remain binding. OpenCode always inherits the user's harness default and ignores tier overrides.
 
 ### Alex/Rahat commit-posture contract
 
-- Applies only after the distinct commit-ready gates in Alex's Spec-Dev, Spec-Fix, Direct-Dev, and Direct-Fix and Rahat's Spec-Fix and Direct-Fix; failed, blocked, incomplete, no-change, unsafe, baseline-overlap, or declined Fix Election handoff work is never commit-ready.
+- Applies only after the distinct commit-ready gates in Alex's Outcome Development (`spec-dev.md`), Spec-Fix, Direct-Dev, and Direct-Fix and Rahat's Spec-Fix and Direct-Fix; failed, blocked, incomplete, no-change, unsafe, baseline-overlap, or declined Fix Election handoff work is never commit-ready.
 - Active harness and applicable `AGENTS.md`, `CLAUDE.md`, `CONTRIBUTING*`, and nested guidance is deny-wins. Configured posture is durable authorization only where guidance permits explicit requests; ambiguity or unreadable applicable policy downgrades to message-only.
 - Posture `1` creates at most one local commit with normal hooks, `git commit --only`, and literal message/path transport. Only invocation-attributable paths that were clean at baseline are eligible; unrelated index and working-tree state must survive.
 - Branch mutation requires clean state and never uses stash. Commit posture never fetches, pulls, pushes, opens PRs, bypasses hooks, amends, rebases, resets, reverts, or otherwise rewrites history.
@@ -89,9 +88,9 @@ This can be structured alongside project source or kept separately — the perso
         ├── system-design.md       # Lance output: schema, API contracts, service contracts, tech choices, and durable implementation-confirmed technical truth.
         ├── handoff.md             # Initiative-local owner-to-owner coordination for source defects, cross-artifact conflicts, and promotion requests.
         ├── change-proposal-<slug>.md # Sonia output (Course-Correction mode): impact map, bounded questions, roundtable synthesis records, ordered handoff chain, and related handoff references for a cross-artifact change.
-        ├── verification-matrix.md # Sonia/Rahat: proof map for requirements and Slices.
-        ├── slices.md              # Sonia output: Slice registry.
-        ├── slice-<N>.md           # One file per Slice.
+        ├── verification-matrix.md # Sonia/Alex/Rahat: outcome scope, continuity, implementation and independent evidence.
+        ├── slices.md              # Legacy Slice registry; optional historical context.
+        ├── slice-<N>.md           # Legacy Slice record; no new Slice prerequisite.
         ├── rca-<slug>.md          # Rahat output: root cause analysis.
         └── security-review-<slug>.md # Rahat output: security findings.
 ```
@@ -152,8 +151,9 @@ timestamp: YYYY-MM-DD
 - `system-design.md`: created by Lance; consumed by Sonia, Alex, and Rahat; validated through implementability, testability, code review, and security review. Alex also writes durable implementation-confirmed technical truth here when no other owner's judgment is required.
 - `handoff.md`: initiative-local queue only for work that genuinely leaves the session because tooling/model is unavailable or rejected, user input/authority is declined or unavailable, or ownership remains asynchronous. It is non-authoritative until the target owner updates the target artifact. In-session scribe, guest, and consult resolutions record provenance beside the authoritative edit and close any existing handoff without creating a replacement.
 - `change-proposal-<slug>.md`: created by Sonia only after user approval when coupled choices materially affect scope, sequencing, or proof boundaries; carries the impact map, bounded questions, roundtable synthesis, in-session resolution records, and any genuinely asynchronous ordered handoff chain. Independent owner consequences use separate ladder episodes instead.
-- `slices.md` and `slice-<N>.md`: created by Sonia; consumed and updated by Alex; verified and closed by Rahat; recut by Sonia when implementation reveals a planning problem. Readiness requires both PM artifacts except single-lane initiatives — exactly one design lane (`system-design.md` XOR `ux-design.md`) with no PM artifacts — which Sonia plans against the lane artifact's scope. Slice status lifecycle has named writers: Alex sets `status: ready-for-review`, `qa_status: ready_for_verification`, and `code_review_status: review_requested` (plus `security_status: review_requested` when raising a security follow-up). Rahat writes all QA/security/code-review outcomes. Any Rahat review mode that makes every required axis terminal sets `status: done`, updates `slices.md`, and moves the Slice to `## Archived` in the same pass; no reviewer-to-reviewer closure handoff exists. A clean security review writes no artifact because `security_status: cleared` is its closure record.
-- `verification-matrix.md`: created by Sonia during readiness when proof boundaries matter; repaired or expanded by Rahat; consumed by Alex; validated by Rahat during verification.
+- `verification-matrix.md`: the live outcome record. Sonia owns readiness and coverage planning; Alex may create from settled contracts and owns implementation/continuation fields; Rahat owns review verdicts and `done`. Each outcome records authorized MVP/Growth/Vision scope, source references, evidence, current code/spec/environment identity, open obligations, and fresh-review context identity. Readiness checks sufficient meaning, not a required artifact combination. New phases create separate outcome records without overwriting previous evidence.
+- `slices.md` and `slice-<N>.md`: optional legacy inputs. Never require a new Slice, budget, or predicted file list. Alex may mirror implementation readiness; Rahat mirrors independently accepted scope and archives a named Slice only when its own obligations pass. Preserve completed historical records. The matrix stays live while any outcome needs it.
+- Independent acceptance requires a fresh reviewer context that did not implement the production changes or inherit their development transcript. All applicable functionality/completeness, security, standards/spec, scalability, and maintainability obligations require current evidence. `not_reviewed`, missing fields, unrun required proof, and stale evidence never close an outcome. Not-applicable dispositions require explicit reviewer rationale. Reviewer-authored repairs require a different independent reviewer; unavailable isolation leaves acceptance pending for a new window. Review-only requests do not authorize production edits.
 - `rca-<slug>.md`: created or updated by Rahat for confirmed defects; after root-cause confirmation Rahat offers Fix Election — implement in-session or hand off to Alex with Implementation Context so a fresh window retains discovery; closed by Rahat after evidence shows the regression is covered.
 - `security-review-<slug>.md`: created by Rahat when exploitable findings exist; consumed by Alex for implementation fixes or Lance/Katrina for design changes; closed by Rahat after remediation is verified. Clean security reviews create no artifact.
 - Documentation files: requirements defined by Faisal, implemented by Alex, and verified by Rahat against the shipped behaviour.
@@ -162,7 +162,7 @@ Governance rule:
 - authoritative state lives in BMILD source artifacts, not in `handoff.md` history
 - `accepted` is an intermediate workflow state, not a truth state
 - unresolved user elicitation lives in chat unless asynchronous continuity requires a governed handoff item
-- **Gap resolution** (each standard persona's byte-identical `references/gap-resolution.md`; `docs/gap-resolution.md` is a maintainer sync note only): simplified scribe → capability-gated guest voice → owner consult → durable handoff → user-approved Course-Correction. The active persona re-reads changed contracts, mechanically absorbs consequences, and resumes its suspended mode. Scribe never loads `SOUL.md` or exercises judgment. Guest voice requires exact harness-attested tier parity and cannot touch canonical-tier artifacts. Owner consults are leaf agents and may author every artifact they canonically own, including `DESIGN.md`, `context-map.md`, and ADRs. Independent owners resolve in separate episodes; Course-Correction is only for coupled scope/sequencing/proof decisions and requires consent. QA, security, and code-review evidence remain exclusively Rahat's. Identity and scenarios are guarded by `tests/gap-resolution-contract.sh`.
+- **Gap resolution** (six byte-identical skill-local `references/gap-resolution.md` copies): simplified scribe → authorized owner voice → owner consult → durable handoff → user-approved Course-Correction. Ordinary internal engineering choices need no owner episode. In-session owner judgment applies the relevant specialist criteria and existing authority without model-identity gating; canonical artifacts retain their substantive criteria. Honor explicit model choices and required user decisions. Review independence cannot be bypassed by owner voice. Consults remain leaves. Source promotion establishes truth; update only affected proof and resume useful work. Independent owners resolve separately; only coupled consequential changes need Course-Correction. Identity and wiring are guarded by `tests/gap-resolution-contract.sh`.
 - **Promotion protocol** (each advanced facilitator's `references/promotion-protocol.md`): after a ratified durable-contract decision, independent consequences return through the standard ladder. Coupled fallout offers Course-Correction once and waits for user consent. In-session promotion records provenance in the source artifact; asynchronous backlog is used only when the work leaves the session. Close states remain `ratified_and_promoted`, `ratified_and_routed`, `ratified_pending_authorization`, and `ratified_with_documentation_deferred`. Identity is guarded by `tests/promotion-protocol-contract.sh`.
 - **Harness agents:** each persona ships a thin `agents/consult.md` leaf definition. `scripts/generate-consult-agents.sh` produces current packages only for Claude Code, Codex, and OpenCode. Claude Code excludes nested-delegation tools, Codex uses schema-valid named roles and runtime model/reasoning overrides, and OpenCode omits model/variant overrides with `task: deny`.
 
@@ -202,7 +202,7 @@ Do not make any modifications to any files in `external_references/` folders
 ## Documentation
 
 Keep README, AGENTS and CHANGELOG up to date as project evolves. PM defines which documentation needs to change, Dev owns the edits, and QA verifies that the resulting documentation matches implemented behaviour.
-Planner slice-budgeting references invoke the platform-native estimator directly: resolve the active `bmild-planner` skill directory for the current harness, then run `bash <planner-skill-dir>/scripts/run-budget-slice.sh` on macOS/Linux/WSL or `powershell -File <planner-skill-dir>/scripts/run-budget-slice.ps1` on Windows-native. For example, the planner skill may live under `.agents/skills/bmild-planner/` in many CLI/IDE environments or `.claude/skills/bmild-planner/` in Claude Code. The agent invoking the script already knows the host OS (its own shell tells it), so no launcher wrapper or interpreter probing is used; both scripts emit the same byte-identical `peak_live_v2` TSV contract.
+Token estimation is retired. `slice_target`, `tokenizer_base`, and `tokenizer_multiplier` in old configurations are inert; no compatibility calculator or blocking migration is allowed. Preserve historical estimates as history. Native context handling, selective reads, and durable continuation state replace forecast-driven decomposition.
 
 ## Versioning
 

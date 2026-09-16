@@ -1,60 +1,49 @@
 # Comprehensive Review
 
-Perform all three Rahat review axes in one session and one context load: completed-Slice FR/NFR verification, security review, and two-axis code review. Preserve separate findings and evidence; consolidate only lifecycle reconciliation and the final handoff.
+Verify the whole authorized outcome against its source specification, security obligations, and code quality. This is the default for completed-outcome verification and build-and-verify engagements. Use one context load for shared evidence while preserving independent verdicts.
 
 ## Additional Context
 
-Resolve scope through BMILD context:
-
-- Honor a named initiative and Slice directly.
-- If only an initiative is named, read its `registry.md` and `slices.md`; infer only when exactly one Slice is `ready-for-review`, otherwise ask which Slice or bounded change set to review.
-- Honor an explicit PR, diff, branch, commit range, worktree, or file set. For "current changes," include staged, unstaged, and untracked work. No user-pinned fixed point is required.
-- If no bounded target can be resolved, ask one scope question before review.
-
-Load once, in authority order:
-
-- Relevant `[plan_folder]/adr/` entries and `[plan_folder]/context-map.md`
-- `[plan_folder]/rollup.md` when present
-- Initiative `registry.md`, `context.md`, named Slice, and `slices.md`
-- Live `product-brief.md`, `prd.md`, `ux-design.md`, and `system-design.md` sections governing the scope
-- Relevant `verification-matrix.md`, `rca-*.md`, and `security-review-*.md`
-- Repository guidance and coding standards applicable to changed files
-- The resolved change set, tests, and nearby implementation needed to understand it
-- `resources/security-categories.yaml` and `resources/code-review-categories.yaml`
-
-For a direct change with no authoritative specification, run the available functional/gate evidence, security, and Standards axes; report the Spec sub-axis as unavailable rather than blocking the entire review.
+Read live source requirements, UX states, architecture contracts, applicable ADRs, repository standards, the outcome evidence record, relevant findings, actual changed code, tests, and affected integration boundaries. Load `resources/security-categories.yaml` and `resources/code-review-categories.yaml`. Legacy Slice scope is an input, not a required artifact. Without an authoritative spec for a direct change, review against the user's request and observed evidence; state the Spec limitation honestly.
 
 ## Global Directives
 
 - **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
-- **One context load, three independent verdicts.** Reuse shared evidence, but do not let a pass on one axis offset a failure on another.
-- **Complete the audit before routing.** A discovered defect becomes a persisted finding; do not abandon the remaining review axes by switching into a fix mode mid-review.
-- **Changed-scope discipline.** Functional verification follows the named Slice/contracts; security and code findings must arise from newly introduced or materially changed behavior in the resolved scope.
-- **Proof discipline.** Matrix items pass only after the named proof runs. Implementation status is not evidence.
-- **Security threshold.** Apply `security-categories.yaml`; only High or Medium issues at confidence 0.8 or greater with a credible exploit path become vulnerabilities.
-- **Code-review separation.** Keep Standards and Spec findings distinct; repository rules override taxonomy smells, smells remain judgment calls, and tool-enforced noise is skipped.
-- **Review is not implementation.** Persist and route findings; production fixes require the appropriate Fix mode and authority.
-- **Code intelligence first.** Prefer available symbol-aware, AST-aware, semantic, hybrid-search, or code-graph capabilities before broad text/file scans when repository guidance permits.
+
+- Verify from the source, not only the planner's matrix or implementer's tests. Find omitted requirements and integration effects; preserve MVP/Growth/Vision boundaries.
+- Keep functionality/completeness, security, standards, and spec verdicts separate. A pass on one never offsets failure on another. Required documentation and user journeys count as outcome obligations.
+- Assess relevant scalability from workload/resource assumptions, algorithmic/query behavior, and applicable performance proof. Review maintainability, cohesion, complexity, dependency fit, failure handling, and operability. A passing unit suite or smaller diff is not sufficient evidence for these claims.
+- Complete the requested audit before coordinating repairs. Review-only requests do not authorize production changes. For an authorized build-and-verify engagement, return actionable findings to development, then independently re-verify affected proof without requiring another user relay.
+- Apply security taxonomy and credible exploit tracing; retain the High/Medium confidence threshold for vulnerability findings. Missing required security proof is blocked evidence, not a fabricated vulnerability or a clean pass.
+
+<!-- outcome-assurance:start -->
+### Independent acceptance
+
+Resolve the authorized phase/outcome from the request, live source contracts, and `verification-matrix.md`; read those sources independently from disk. A named legacy Slice or explicit PR/diff/branch/commit/file set is also a valid target. For current changes include staged, unstaged, and untracked work. Ask only when scope remains genuinely ambiguous, not because multiple old Slices exist. If the matrix is absent, create its outcome record from Sonia's template using settled scope; no planner invocation is required. Direct changes without an initiative may keep evidence in the requested review output; do not invent an initiative or spec.
+
+Independent acceptance requires a fresh reviewer context that did not implement the reviewed production changes and did not inherit the development transcript. A separate new window or an isolated reviewer worker qualifies; renaming a persona or forking full history does not. Read the original spec and actual code; the implementer's summary only helps navigation. If independence is unavailable, report useful advisory findings, leave acceptance pending, and prepare a fresh-window transition. A reviewer-authored production fix needs a different independent reviewer.
+
+Record code/change identity, source-contract identity, and relevant environment with evidence. Changes make affected proof pending; preserve unaffected current evidence and historical results. A final pass checks current state still matches reviewed state. Do not clear findings or publish accepted status from stale evidence.
+
+Rahat alone writes `qa_status: verified | failed | blocked`, `security_status: findings_open | cleared`, and `code_review_status: findings_open | cleared`. Explicit not-applicable dispositions require a scope-specific rationale from Rahat. `not_reviewed`, missing fields, unrun required proof, and an omitted axis are never terminal. Targeted review cannot stand in for other required axes.
+
+Set outcome `status: done` only with established independence, current evidence for every required source obligation and review axis, no unresolved required finding, and verified phase scope. Otherwise preserve `ready-for-review` or the actual blocked state. The matrix remains live while any outcome needs it. For a named legacy Slice, mirror only accepted scope covered by this review into `slices.md` and move `slice-<N>.md` to registry `## Archived` only after its own status is done. Never archive unrelated outcomes or reopen historical completed Slices merely to normalize fields. Reconcile closure in this pass; do not hand back to Rahat merely for closure.
+<!-- outcome-assurance:end -->
 
 ## Tasks
 
 Progress:
 
-- [ ] Step 1: Query available code-intelligence capabilities, then state the single BMILD-resolved scope, changed files/behavior, authoritative contracts, and any reduced-fidelity limitation.
-- [ ] Step 2: Run Slice FR/NFR verification — map Acceptance Criteria and NFRs to tests/manual proof, inspect happy/error/edge paths, verify required documentation, run repository quality gates, and update verification-matrix evidence.
-- [ ] Step 3: Run security review — map trust boundaries and sensitive flows, apply every relevant security category, and trace consequential candidates from untrusted entry to impact.
-- [ ] Step 4: Run code review Standards axis — check applicable repository rules, then judgment-call taxonomy smells; cite the rule or changed hunk for each finding.
-- [ ] Step 5: Run code review Spec axis — report missing/partial requirements, unrequested behavior, and incorrectly implemented requirements with source-contract citations. If no authoritative spec exists, state that and skip only this sub-axis.
-- [ ] Step 6: Present four clearly separated sections: `## Verification`, `## Security`, `## Standards`, and `## Spec`. Each records pass/fail/blocked, evidence, findings count, and worst finding where one exists. Do not collapse them into one score.
-- [ ] Step 7: Persist findings and statuses once. Update `qa_status: verified | failed | blocked`; set `security_status: findings_open | cleared`; set `code_review_status: findings_open | cleared`. Write/update `security-review-<slug>.md` only for security findings. Put actionable functional and code-review items in Slice `## Review Follow-up`, update linked matrix governance evidence, and register any new artifact.
-- [ ] Step 8: Reconcile Slice closure once. Set `status: done`, update `slices.md`, and move `slice-<N>.md` from registry `## Live` to `## Archived` only when `qa_status: verified`, `security_status: cleared`, `code_review_status: cleared`, and no review finding remains open. Otherwise keep `ready-for-review`; never hand back to Rahat for a second closure pass.
-- [ ] Step 9: Close — apply Exit and Handoff from the core skill. `Next:` lists only actual remediation owners in dependency order; use `none` when all axes pass and closure is complete.
+- [ ] Step 1: Resolve scope and independence, then identify the source/code state being reviewed.
+- [ ] Step 2: Verify functionality and completeness from all source obligations, including omitted matrix entries, error/edge cases, docs, journeys, NFRs, and integration effects. Run or independently inspect the applicable reproducible evidence; report unavailable proof as blocked.
+- [ ] Step 3: Establish security applicability, map trust boundaries and sensitive flows, and trace consequential exploit candidates. Record reasons for inapplicable areas.
+- [ ] Step 4: Review repository Standards and Spec fidelity separately, including meaningful scalability and maintainability evidence. Taxonomy smells are judgment prompts; omit tool-owned noise. Flag unauthorized future-phase behavior.
+- [ ] Step 5: Report `## Verification`, `## Security`, `## Standards`, and `## Spec` with evidence and pass/fail/blocked dispositions. Persist actionable findings once in the outcome record; use a security-review artifact only for actual vulnerabilities. Preserve independent per-axis statuses.
+- [ ] Step 6: Reconcile acceptance using the embedded contract. Continue authorized repairs through development and independent re-verification, or leave an actionable fresh-window transition. No fixed retry count substitutes for evidence of progress; stop an unchanged failing approach and identify the missing decision or capability.
+- [ ] Step 7: Close — distinguish independently accepted outcomes from advisory checks, blocked proof, and pending review. Name only genuine remaining work.
 
 ## Definition of Done
 
-- [ ] FR/NFR verification, security review, Standards review, and Spec review all completed for one shared scope
-- [ ] Each axis reported independently with evidence and findings count
-- [ ] Applicable gates and named proofs run, or blockers recorded
-- [ ] Security taxonomy and code-review taxonomy applied under their distinct thresholds
-- [ ] Slice artifacts and all three review statuses updated in one pass when applicable
-- [ ] Slice closed and archived when every axis is terminal, otherwise the true remediation owner is named
+- All requested axes evaluated against the whole authorized outcome and source requirements.
+- Evidence current and independently established for acceptance; missing proof and independence remain visible.
+- Findings, applicability, and lifecycle state accurately recorded without a closure-only handoff.

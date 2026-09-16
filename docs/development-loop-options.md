@@ -1,8 +1,8 @@
 # BMILD development loop: manage the floor, leave the ceiling open
 
-Discussion plan · 2026-09-16 · Option C selected; operating details under refinement
+Implementation reference · 2026-09-16 · Option C and estimator retirement authorized
 
-This evaluates the current skills as product source, without activating BMILD personas. The user selected Option C and clarified the constraints recorded below. The plan remains under discussion before implementation; it does not change the shipped workflow or supersede existing contracts or ADRs.
+This evaluates the current skills as product source, without activating BMILD personas. The user selected Option C and clarified the constraints recorded below. The user subsequently authorized execution. The source findings below describe baseline revision `fcc4f93e49a199091a47b4f1c197196fb7b51492`; retrieve historical sources with `git show <revision>:<path>`. Current implementation and validation are recorded in [development-loop-validation.md](development-loop-validation.md).
 
 ## 1. Selected direction
 
@@ -10,7 +10,7 @@ This evaluates the current skills as product source, without activating BMILD pe
 
 Codex, Claude Code, and OpenCode are the first-class design and validation targets. Other harnesses may work through compatibility, without additional BMILD design effort. Native execution remains an evaluation baseline, not a competing product direction. Options A, B, and D below are retained as the record of alternatives considered.
 
-The selected direction respects the spec's MVP/Growth/Vision phases and supports independent review in a separate, new context window. The revised recommendation is to retire token estimation entirely, including its optional/fallback path. That removal is a proposed operating detail, distinguished from the user's already-settled Option C decision.
+The selected direction respects the spec's MVP/Growth/Vision phases and supports independent review in a separate, new context window. The revised recommendation is to retire token estimation entirely, including its optional/fallback path. The user authorized the revised plan, including retirement, before implementation.
 
 Do not make “fewer Slices” the final objective. A single mandatory Slice can still carry the same predictive paperwork, ownership boundaries, and restricted judgment. The objective is a shorter path from user intent to a demonstrably good result, with more room for capable models to improve that result.
 
@@ -40,19 +40,19 @@ The spec's MVP/Growth/Vision boundaries remain binding. Execution freedom applie
 
 ### 3.1 The normal spec-backed entry point is a Slice
 
-[Alex's routing](../.agents/skills/bmild-dev/SKILL.md) selects Spec-Dev from a named existing Slice or exactly one eligible Slice. Multiple candidate Slices trigger a selection question. Direct-Dev already supports bounded work without a Slice, including durable changes and conditional memory loading, so BMILD does not universally prohibit development without planning.
+Alex's routing (`.agents/skills/bmild-dev/SKILL.md` at the baseline revision) selects Spec-Dev from a named existing Slice or exactly one eligible Slice. Multiple candidate Slices trigger a selection question. Direct-Dev already supports bounded work without a Slice, including durable changes and conditional memory loading, so BMILD does not universally prohibit development without planning.
 
 “Implement this approved initiative outcome” becomes the primary development mode, bounded by its authorized spec phase. Core routing, persona instructions, context loading, completion state, and review all start from that contract. Existing Slice artifacts supply historical or transitional context without remaining a hidden prerequisite. Direct fixes and exploratory work keep appropriate entry points, but outcome execution is neither a Slice exemption nor a special case of Direct-Dev.
 
 ### 3.2 Planning predicts implementation details before implementation discovers them
 
-[Phase-scoped planning](../.agents/skills/bmild-planner/resources/phase-scoped-planning.md) requires vertical decomposition, budgeting for each Slice, coverage mapping, artifact registration, and a one-Slice-at-a-time handoff. The [Slice template](../.agents/skills/bmild-planner/assets/slice-template.md) contains 16 second-level sections, including predicted reads, predicted edits, new-file estimates, a reads checklist, estimator output, and planning notes.
+Phase-scoped planning (`.agents/skills/bmild-planner/resources/phase-scoped-planning.md` at the baseline revision) requires vertical decomposition, budgeting for each Slice, coverage mapping, artifact registration, and a one-Slice-at-a-time handoff. The Slice template (`.agents/skills/bmild-planner/assets/slice-template.md` at the baseline revision) contains 16 second-level sections, including predicted reads, predicted edits, new-file estimates, a reads checklist, estimator output, and planning notes.
 
 Useful discovered entry points can help a constrained model or a fresh worker. Mandatory forecasts go further: they require Sonia to explore a codebase that Alex must subsequently groundtruth. The likely costs are duplicated discovery, stale predictions, and attention spent maintaining a model of the work rather than improving the work. Remove predicted read/edit inventories as required artifacts. An executor can keep useful navigation notes without classifying files for a budget calculation or maintaining a complete advance inventory.
 
 ### 3.3 An acknowledged estimate becomes a hard execution boundary
 
-The estimator identifies itself as an `informed_guess`; its [implementation](../.agents/skills/bmild-planner/scripts/run-budget-slice.sh) uses fixed byte/token, symbol-read, symbol-edit, item-overhead, and turn-reserve assumptions. Planning nevertheless requires splitting, recutting, or handing back when the result exceeds the target.
+The estimator identifies itself as an `informed_guess`; its implementation (`.agents/skills/bmild-planner/scripts/run-budget-slice.sh` at the baseline revision) uses fixed byte/token, symbol-read, symbol-edit, item-overhead, and turn-reserve assumptions. Planning nevertheless requires splitting, recutting, or handing back when the result exceeds the target.
 
 **Revised recommendation: remove the estimator from the shipped Option C workflow, rather than retain it as optional diagnostics or a fallback.** The user's experience is that it is heavy and inaccurate. This source audit establishes the predictive assumptions and maintenance footprint, but has not measured prediction error. There is no demonstrated benefit here sufficient to justify preserving it by default.
 
@@ -68,21 +68,21 @@ Reintroducing estimation would require a demonstrated failure that simpler conte
 
 ### 3.4 Implementation strategy is too easily treated as governed scope
 
-[Spec-Dev](../.agents/skills/bmild-dev/resources/spec-dev.md) says to work acceptance criteria one by one and to put a better architectural approach in notes rather than detour. [Replanning](../.agents/skills/bmild-planner/resources/replanning.md) permits at most one recut pass, freezes active work unless fundamentally invalid, and requires a new Slice for materially shifted recovery scope; new files beyond planned reads/edits appear among its triggers.
+Spec-Dev (`.agents/skills/bmild-dev/resources/spec-dev.md` at the baseline revision) says to work acceptance criteria one by one and to put a better architectural approach in notes rather than detour. Replanning (`.agents/skills/bmild-planner/resources/replanning.md` at the baseline revision) permits at most one recut pass, freezes active work unless fundamentally invalid, and requires a new Slice for materially shifted recovery scope; new files beyond planned reads/edits appear among its triggers.
 
 Preserving completed evidence and controlling product scope are valuable. Requiring a planning episode to change an implementation boundary is often avoidable. File discovery, task ordering, and recovery work can change while the authorized outcome remains identical. A fixed one-pass limit also substitutes a process constant for a judgment about progress and cost.
 
 ### 3.5 Readiness sometimes tests document shape instead of sufficient meaning
 
-[Readiness verification](../.agents/skills/bmild-planner/resources/readiness-verification.md) permits a complete architecture-only or UX-only initiative with no PM artifacts, but blocks when both design artifacts exist without PM artifacts. A brief without a PRD also blocks.
+Readiness verification (`.agents/skills/bmild-planner/resources/readiness-verification.md` at the baseline revision) permits a complete architecture-only or UX-only initiative with no PM artifacts, but blocks when both design artifacts exist without PM artifacts. A brief without a PRD also blocks.
 
 Those shapes may reveal missing product intent, but they do not establish its absence. Adding a useful UX document to a sufficient architecture-only contract should not automatically make the same work unready. Check whether purpose, scope, behavior, constraints, and proof are sufficiently established for the authorized work. Keep high-quality spec authoring; allow an explicit record of where the needed content lives instead of requiring redundant documents purely for eligibility.
 
-There is also a routing inconsistency: [planner core](../.agents/skills/bmild-planner/SKILL.md) defaults to full-initiative planning when scope is not phase-named, while the [full-initiative resource](../.agents/skills/bmild-planner/resources/full-initiative-planning.md) says to use it only on explicit request. Removing accidental broad planning is a small, immediately useful correction.
+There is also a routing inconsistency: planner core (`.agents/skills/bmild-planner/SKILL.md` at the baseline revision) defaults to full-initiative planning when scope is not phase-named, while the full-initiative resource (`.agents/skills/bmild-planner/resources/full-initiative-planning.md` at the baseline revision) says to use it only on explicit request. Removing accidental broad planning is a small, immediately useful correction.
 
 ### 3.6 Model identity is used as a proxy for permission and capability
 
-The [gap-resolution contract](../.agents/skills/bmild-dev/references/gap-resolution.md) allows guest authorship only when the harness attests an exact match to the target owner's model and effort. Its release-pinned Codex design/planning default is `gpt-5.6-sol` / `ultra`. A different active model fails this equality test regardless of its ability. Canonical-tier artifacts require an owner consult even when the session otherwise qualifies.
+The gap-resolution contract (`.agents/skills/bmild-dev/references/gap-resolution.md` at the baseline revision) allows guest authorship only when the harness attests an exact match to the target owner's model and effort. Its release-pinned Codex design/planning default is `gpt-5.6-sol` / `ultra`. A different active model fails this equality test regardless of its ability. Canonical-tier artifacts require an owner consult even when the session otherwise qualifies.
 
 The existing ladder already makes useful progress: automatic in-session resolution, same-owner batching, mechanical propagation, and asynchronous handoffs only when genuinely needed. Preserve those benefits. Replace identity-based authorship eligibility with an explicit authority policy, relevant specialist criteria, and evidence appropriate to the decision. A persona's ownership should determine the criteria and accountability for an artifact, not automatically force a new process boundary.
 
@@ -90,7 +90,7 @@ Respect explicit user model choices. For unspecified tiers, inherited user-selec
 
 ### 3.7 Persona prose can impose a quality ceiling
 
-[Alex's SOUL](../.agents/skills/bmild-dev/SOUL.md) defines minimum viable change as the smallest diff and says everything else is another PR. It also contains “Simplicity beats completeness; completeness is a form of procrastination.” [Sonia's SOUL](../.agents/skills/bmild-planner/SOUL.md) declares zero tolerance for input ambiguity and describes planning from drafts as never cheaper than waiting.
+Alex's SOUL (`.agents/skills/bmild-dev/SOUL.md` at the baseline revision) defines minimum viable change as the smallest diff and says everything else is another PR. It also contains “Simplicity beats completeness; completeness is a form of procrastination.” Sonia's SOUL (`.agents/skills/bmild-planner/SOUL.md` at the baseline revision) declares zero tolerance for input ambiguity and describes planning from drafts as never cheaper than waiting.
 
 These are understandable reactions to scope creep and weak planning. They are unsafe absolutes when interpreted as execution policy. A capable agent may improve maintainability by changing more code, or resolve technical uncertainty cheaply through a reversible experiment. Smaller diffs and complete advance certainty are not universal proxies for user value.
 
@@ -98,7 +98,7 @@ Keep the personas' recognizable perspectives, but remove instructions that glori
 
 ### 3.8 Upstream design can also overdetermine execution
 
-[Architecture completion](../.agents/skills/bmild-arch/resources/architecture-design.md) asks for enough detail to implement without architectural choices. Its [criteria](../.agents/skills/bmild-arch/resources/completion-criteria.yaml) include specifying each internal service method's signature and errors.
+Architecture completion (`.agents/skills/bmild-arch/resources/architecture-design.md` at the baseline revision) asks for enough detail to implement without architectural choices. Its criteria (`.agents/skills/bmild-arch/resources/completion-criteria.yaml` at the baseline revision) include specifying each internal service method's signature and errors.
 
 Public APIs, security boundaries, persistent data, compatibility, and consequential trade-offs benefit from precise contracts. Private method structure often benefits from implementation-time judgment. Lance should distinguish committed constraints from illustrative designs and delegated engineering choices. Otherwise deleting Slices simply moves implementation micromanagement upstream.
 
@@ -106,9 +106,9 @@ This is a boundary refinement to preserve and improve spec quality, not a propos
 
 ### 3.9 The review foundation is strong, but needs decoupling and a clearer security obligation
 
-[Comprehensive review](../.agents/skills/bmild-qa/resources/comprehensive-review.md) already loads shared context once and checks function, security, standards, and spec separately. It accepts bounded diffs and direct changes. Keep this foundation, including verification of source requirements rather than trusting the planner's matrix.
+Comprehensive review (`.agents/skills/bmild-qa/resources/comprehensive-review.md` at the baseline revision) already loads shared context once and checks function, security, standards, and spec separately. It accepts bounded diffs and direct changes. Keep this foundation, including verification of source requirements rather than trusting the planner's matrix.
 
-However, [verification](../.agents/skills/bmild-qa/resources/verification.md) and [code review](../.agents/skills/bmild-qa/resources/code-review.md) can close a Slice with `security_status: not_reviewed`. Comprehensive review requires `cleared`, so the behavior depends on the path taken. “Done” is therefore not universally evidence of security review today.
+However, verification (`.agents/skills/bmild-qa/resources/verification.md` at the baseline revision) and code review (`.agents/skills/bmild-qa/resources/code-review.md` at the baseline revision) can close a Slice with `security_status: not_reviewed`. Comprehensive review requires `cleared`, so the behavior depends on the path taken. “Done” is therefore not universally evidence of security review today.
 
 Proposed rule: every completed production outcome gets explicit security applicability and required review. An applicable review must run; a justified not-applicable decision is evidence, whereas not-reviewed remains incomplete. Scalability and maintainability also need explicit, context-appropriate evidence beyond a passing test suite or a code-smell checklist.
 
@@ -341,4 +341,4 @@ Revised recommendation:
 
 - Retire token estimation entirely, including optional/fallback selection, prediction bookkeeping, dedicated code/test/CI maintenance, and active configuration. Retain ordinary context continuity and optional evaluation measurements. The burden of proof is on reintroduction, not on keeping a speculative fallback alive.
 
-Remaining design refinement concerns how delegated engineering judgment and cross-context review/remediation operate on the three target harnesses. Resolve those details within Option C without reopening the selected direction or introducing a new mandatory planning layer. The current task updates this discussion plan; implementation of the skills remains subsequent work.
+Remaining design refinement concerns how delegated engineering judgment and cross-context review/remediation operate on the three target harnesses. Resolve those details within Option C without reopening the selected direction or introducing a new mandatory planning layer. Implementation is authorized; the validation record distinguishes completed checks from unrun comparative trials.

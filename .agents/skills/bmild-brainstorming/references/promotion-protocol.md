@@ -35,7 +35,7 @@ For authorized `mechanical-scribe` lines, do not load an owner's `SOUL.md`. Veri
 
 Record provenance beside the authoritative edit. Do not create a closed-on-write handoff for history. If an existing handoff is resolved, close it and point its Promotion Record at the edit.
 
-Return every `owner-episode` to the presiding standard persona, which loads its own `references/gap-resolution.md` and runs capability-gated guest voice or owner consult. Owner consult may author canonical-tier artifacts. If the session was user-convened, activate the first owner as presiding persona and carry the full inventory; each independent consequence remains a separate episode.
+Return every `owner-episode` to the presiding standard persona, which loads its own `references/gap-resolution.md` and runs authorized owner voice or owner consult. Owner voice or consult applies the canonical artifact owner's criteria and required authority; independent review remains separate. If the session was user-convened, activate the first owner as presiding persona and carry the full inventory; each independent consequence remains a separate episode.
 
 After each resolution, re-read changed contracts, scribe mechanical fallout, classify remaining impact, and resume the suspended work. Mark only unresolved artifacts stale.
 

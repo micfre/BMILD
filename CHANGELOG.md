@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-09-16
+
+### Changed
+
+- Made phase-bounded Outcome Development the primary spec-backed execution path. Alex chooses and revises implementation strategy; Sonia supplies readiness, completeness, and optional delivery advice without mandatory Slice planning.
+- Extended the verification matrix into per-outcome authorization, continuity, implementation, and independent acceptance records. Preserve MVP/Growth/Vision boundaries and legacy Slice history without a bulk migration.
+- Required fresh-context independence and current code/spec evidence for acceptance. Security `not_reviewed` and omitted axes no longer permit closure. Production fixes authored by a reviewer require another independent reviewer; build-and-verify can coordinate authorized repairs across contexts.
+- Replaced exact-model guest-authoring eligibility with authorized owner criteria. Generated consults inherit the active model/effort in all unspecified tiers; explicit dispatch overrides remain binding. Codex, Claude Code, and OpenCode remain the only first-class design targets.
+- Clarified committed architecture boundaries versus delegated private implementation, and removed minimum-diff and zero-ambiguity absolutes that could suppress better solutions.
+
+### Removed
+
+- Retired token-estimation scripts, calibration fields, predicted file inventories, dedicated fixtures/tests/CI, and active estimator settings. Old settings are inert, with no fallback calculator or blocking migration.
+- Retired mandatory Slice authoring templates and phase/full decomposition and recut resources. Existing project Slice records remain valid historical inputs.
+
+### Validation
+
+- Added outcome/independence/phase contract guards and a reproducible behavioral evaluation protocol. Structural and source-scenario evidence is distinguished from unrun multi-model, multi-harness performance trials.
+
 ## [0.4.2] - 2026-09-04
 
 ### Added

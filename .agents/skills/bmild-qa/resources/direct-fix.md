@@ -11,16 +11,18 @@ Load in this order:
 - Repo contributor guide
 - Project-root `DESIGN.md` if it exists — honor global UX patterns when the fix alters a user-visible surface (project-root repo context, not BMILD planning memory)
 
-Do not load BMILD planning memory unless the message names an initiative, Slice, or RCA — in that case re-evaluate against core Mode Lookup before proceeding.
+Load relevant BMILD memory when the request names tracked work, depends on documented behavior, or could change durable understanding; re-evaluate against Spec-Fix when a governing contract is found. Purely local work otherwise needs no memory ceremony.
 
 ## Global Directives
+
+- **Fix independence.** When this context authors production changes, record repair evidence as `fixed_pending_review`, mark affected proof pending, and leave final acceptance to a different fresh reviewer context. A passing regression test does not self-certify the outcome.
 
 - **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
 
 - **Evidence before action.** Confirm root cause with evidence before any edit.
 - **Conclusions require evidence.** Observed → tested → shows — in that order. Inference is not evidence.
 - **User-facing diagnostic framing.** When a question helps gather evidence, frame it as observed → expected → evidence; use that vocabulary as a prompt, not a script.
-- **Scope discipline.** Smallest coherent change for the confirmed root cause. No adjacent refactors. No scope expansion.
+- **Scope discipline.** Use a coherent repair for the confirmed defect within authorized scope. Necessary internal refactoring can be part of that repair; unrelated changes remain outside the fix.
 - **Lightest persistent artifact.** On the fix path, write `rca-<slug>.md` only when cross-turn value is high (recurring, cross-system, unclear ownership, failed first fix, future specs need the fact). On the declined-election handoff path, RCA write is mandatory.
 - **Initiative path rule.** When an initiative exists, place `rca-<slug>.md` under `[plan_folder]/<initiative-name>/` and register in `registry.md`.
 - **Promote durable truth** when the fix changes externally visible behaviour or reveals facts future specs should account for — `system-design.md` or `handoff.md`. Trivial local fixes with no future relevance need no BMILD artifact.
@@ -30,7 +32,7 @@ Do not load BMILD planning memory unless the message names an initiative, Slice,
 - *Root cause unclear after targeted investigation* → stop before production edits; record symptoms, hypotheses checked, and next diagnostic question.
 - *Fix reveals a product, UX, architecture, or trust-boundary design decision* → stop; route to Faisal, Katrina, or Lance with evidence.
 - *Design-caused root cause* → hand off to Lance or Katrina.
-- *Planning or Slice-scope expansion required* → route to Sonia; stop.
+- *Authorized phase/outcome or committed contract must change* → resolve the relevant owner/user decision before dependent work. Internal task order, new files, and legacy Slice boundaries do not trigger this route.
 - *Recurring, cross-system, initiative-tied, or non-trivial defect on the fix path* → write `rca-<slug>.md` using `assets/rca-template.md` and register.
 - *Security or tracked QA artifacts implicated mid-session* → re-evaluate against Spec-Fix before closing.
 
@@ -61,15 +63,15 @@ Treat user-provided signals as hypothesis input, not evidence.
 **UI/runtime checklist (lightweight):** stack line → failing expression/state → expected vs actual data shape → regression source → minimal fix → focused verification.
 
 **Code intelligence:**
-- **Query available code intelligence MCPs.** Determine available code intelligence tools such as symbol-aware navigation, AST-aware structural analysis, semantic or hybrid repository search, and code graphs.
-- **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
+- **Use suitable available code navigation/search tools.** Target the relevant implementation and integration boundary; do not require a tool-discovery step before useful investigation..
+- **Repository guidance wins.** Choose available navigation, search, and analysis tools appropriate to the question.
 
 **Lightweight path:** Reproduce or localize; identify exact failing contract; confirm root cause with evidence before edit.
 
 **Full RCA path:**
 1. Reproduce — Confirm exact input, state, or sequence. If you cannot reproduce, stop and gather more information.
-2. Hypothesize — Write 5–7 distinct candidate causes across plausible layers before touching code. For each: one-sentence cause, why it produces this symptom, layer(s) implicated.
-3. Rank — State 1–2 most likely causes; retain full hypothesis list.
+2. Hypothesize — Develop plausible candidate causes from the evidence before touching code. Use enough alternatives to challenge the leading explanation; do not invent candidates to meet a quota.
+3. Rank — Prioritize the strongest explanations and the evidence that would distinguish them.
 4. Validate — Confirm or reject with logs, targeted tests, or diagnostic output — not "change code and see if symptom disappears." Remove diagnostic instrumentation after confirmation.
 5. Confirm — State confirmed root cause and evidence. If disputed, return to hypothesis validation.
 <!-- rca-protocol:end -->
@@ -79,9 +81,9 @@ Treat user-provided signals as hypothesis input, not evidence.
 <!-- fix-election:start -->
 ### Fix Election
 
-Trigger when root cause was confirmed by an in-session RCA, a production fix is needed, and the fix is within implementation authority (not a product/UX/architecture/security decision, not Slice-scope expansion).
+Trigger when root cause was confirmed by an in-session RCA, a production fix is needed, and the fix is within implementation authority (not a product/UX/architecture/security decision, not authorized phase/outcome expansion).
 
-Skip when the entry artifact already confirmed the root cause and the user explicitly asked Rahat to fix — proceed to the fix path without offering.
+Skip when the entry artifact already confirmed the root cause and the user explicitly asked Rahat to fix, or existing build-and-verify authority already covers this bounded repair — proceed without re-asking. Review-only requests do not authorize production edits.
 
 Offer once, declinable in one word:
 *"Root cause is confirmed. I can implement the fix now, or write up the RCA for Alex if you want a fresh window or a different model. Implement?"*
@@ -94,7 +96,7 @@ Offer once, declinable in one word:
 - [ ] Step 5: Prove — on the fix path, run quality gates and add a regression test when practical (otherwise record manual proof). Handoff path: specify the regression proof Alex must add or run.
 - [ ] Step 6: Document — when externally visible behaviour changed; otherwise `Documentation impact: none`.
 - [ ] Step 7: Persist and promote — RCA per Routing heuristics or mandatory handoff write; promote durable technical truth per Global Directives; register in `registry.md` when an initiative RCA is written.
-- [ ] Step 8: Pre-exit offer (declinable in one word) — when writing or finalizing an RCA: *"Before I finalize the RCA — anything you want to steer or debate first? Otherwise I'll proceed."* Omit when no RCA write.
+- [ ] Step 8: Persist any durable RCA and next action; ask only for a consequential unresolved decision, not routine record-writing permission.
 - [ ] Step 9: Establish mode eligibility: confirmed root cause, completed fix (elected, skipped-election, or in-authority minimal), regression/manual proof, gate evidence, and a safe non-empty attributable path set. Failed, blocked, incomplete, no-change, baseline-overlap, or declined-election handoff work is not commit-ready.
 
 <!-- commit-posture-completion:start -->

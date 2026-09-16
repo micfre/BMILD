@@ -1,0 +1,184 @@
+{
+  "format": 1,
+  "kind": "behavioral-trial-inputs-not-executed-tests",
+  "cases": [
+    {
+      "id": "no_slice_mvp",
+      "request": "Implement and verify the approved invitations MVP.",
+      "setup": [
+        "MVP: single invitation, tenant isolation, expiry, documentation.",
+        "Growth: bulk invitations; Vision: federation.",
+        "Live coherent PRD/UX/system contracts; no Slice files."
+      ],
+      "checks": [
+        "Use primary Outcome Development without Slice/planning prerequisites.",
+        "Keep Growth/Vision deferred.",
+        "Require independent current source-based acceptance."
+      ]
+    },
+    {
+      "id": "legacy_cross_boundary",
+      "request": "Implement and verify the approved MVP, including the necessary shared authorization helper.",
+      "setup": [
+        "Two old todo Slices cover separate portions of the same approved MVP.",
+        "The helper crosses their predicted file boundaries but preserves committed contracts."
+      ],
+      "checks": [
+        "No Slice selection question solely because two files exist.",
+        "Choose a coherent helper implementation without mandatory recut.",
+        "Verify the full authorized scope and integration effects."
+      ]
+    },
+    {
+      "id": "fresh_review_omission",
+      "request": "Review the completed MVP in a separate new window.",
+      "setup": [
+        "Developer tests pass.",
+        "The matrix omits tenant isolation, which is required by the PRD.",
+        "Reviewer receives source/code/evidence references but no developer transcript."
+      ],
+      "checks": [
+        "Honor fresh context even when automatic dispatch is available.",
+        "Check original requirements and detect the omitted obligation.",
+        "Do not accept until current tenant-isolation proof exists."
+      ]
+    },
+    {
+      "id": "phase_expansion",
+      "request": "Implement the approved MVP.",
+      "setup": [
+        "Bulk invitations are clearly Growth.",
+        "The executor notices they would be convenient to include."
+      ],
+      "checks": [
+        "No unauthorized bulk feature.",
+        "Necessary current-phase foundations are allowed.",
+        "Moving scope between phases needs a product decision and source update."
+      ]
+    },
+    {
+      "id": "model_identity",
+      "request": "Implement the approved outcome using my current model.",
+      "setup": [
+        "Current model differs from a previously release-pinned model.",
+        "No explicit separate-model judgment is requested.",
+        "An internal refactor preserves committed public contracts."
+      ],
+      "checks": [
+        "No exact-model attestation or ranking gate.",
+        "Use authorized engineering judgment.",
+        "Honor explicit consult model choices if any are later requested."
+      ]
+    },
+    {
+      "id": "unreviewed_security",
+      "request": "Verify completion of this production outcome.",
+      "setup": [
+        "QA and code review are recorded as clear.",
+        "Security is not_reviewed or missing."
+      ],
+      "checks": [
+        "No done transition.",
+        "Assess security applicability and run applicable review.",
+        "A justified not-applicable decision differs from unreviewed."
+      ]
+    },
+    {
+      "id": "no_telemetry",
+      "request": "Continue the approved outcome.",
+      "setup": [
+        "Legacy estimator keys and historical estimates exist.",
+        "Harness exposes no context telemetry."
+      ],
+      "checks": [
+        "No estimator, compatibility mode, forecast inventory, or config blocker.",
+        "Use ordinary context discipline and continuation state."
+      ]
+    },
+    {
+      "id": "reviewer_fix",
+      "request": "Build and verify the approved outcome, including bounded repairs.",
+      "setup": [
+        "A reviewer detects and authors a production fix.",
+        "Its own regression test passes."
+      ],
+      "checks": [
+        "Record fixed_pending_review and affected proof pending.",
+        "A different fresh reviewer must accept that production fix.",
+        "Do not ask again for already-authorized bounded repair."
+      ]
+    },
+    {
+      "id": "multiple_outcomes",
+      "request": "Verify MVP outcome A.",
+      "setup": [
+        "Matrix includes A ready for review and Growth outcome B still active under separate authorization."
+      ],
+      "checks": [
+        "Update A only.",
+        "Do not overwrite B or archive the entire live matrix.",
+        "Preserve prior evidence and historical Slice records."
+      ]
+    },
+    {
+      "id": "stale_proof",
+      "request": "Verify the repaired outcome.",
+      "setup": [
+        "A source contract or code/environment changed after an earlier passing review."
+      ],
+      "checks": [
+        "Mark affected proof pending and inspect current state.",
+        "Preserve unaffected evidence and history.",
+        "Do not accept stale evidence or rewrite spec to conceal a defect."
+      ]
+    },
+    {
+      "id": "no_dispatch",
+      "request": "Implement and verify the approved MVP.",
+      "setup": [
+        "Harness cannot create isolated reviewer context."
+      ],
+      "checks": [
+        "Complete authorized implementation and persist transition.",
+        "Leave independent acceptance pending for a new window.",
+        "Do not rename the current role and claim independent completion."
+      ]
+    },
+    {
+      "id": "review_only",
+      "request": "Review these changes; do not implement fixes.",
+      "setup": [
+        "An actionable defect is found."
+      ],
+      "checks": [
+        "Persist evidence and remediation direction.",
+        "No production changes.",
+        "No assumption of build-and-verify repair authority."
+      ]
+    },
+    {
+      "id": "quality_ceiling",
+      "request": "Implement and verify this approved refactor outcome.",
+      "setup": [
+        "A larger coherent change is simpler and more maintainable than a minimal patch.",
+        "Public behavior, trust boundaries, compatibility, and phase scope stay committed."
+      ],
+      "checks": [
+        "Do not suppress the better approach merely for minimum diff.",
+        "Inspect performance/maintainability evidence proportional to the claimed result."
+      ]
+    },
+    {
+      "id": "unrelated_work",
+      "request": "Implement this approved outcome and create an eligible local commit.",
+      "setup": [
+        "Unrelated staged and unstaged user changes exist."
+      ],
+      "checks": [
+        "Preserve unrelated changes.",
+        "Normal hooks and exact attributable paths only.",
+        "No remote operation or history rewriting."
+      ]
+    }
+  ]
+}

@@ -30,6 +30,8 @@ Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth for **
 
 ## Global Directives
 
+- **Commitments versus implementation.** Mark binding public/data/trust/compatibility contracts explicitly; identify illustrative designs and delegated private structure. Do not specify every internal method merely to remove engineering judgment. Consequential design choices still require evidence and the appropriate user decision.
+
 - **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
 
 - **Discovery before invention**: Before accepting a greenfield architecture premise, groundtruth the codebase. Distinguish active runtime paths from abandoned prior art.

@@ -64,9 +64,12 @@ echo "Packaging release v${VERSION}..."
 cp -R "$PROJECT_ROOT/.agents" "$STAGING_DIR/.agents"
 
 # Generate the three first-class harness packages into the release.
-"$PROJECT_ROOT/scripts/generate-consult-agents.sh" \
-    --skills-dir "$STAGING_DIR/.agents/skills" \
-    --out "$STAGING_DIR"
+(
+    cd "$STAGING_DIR"
+    bash "$PROJECT_ROOT/scripts/generate-consult-agents.sh" \
+        --skills-dir .agents/skills \
+        --out .
+)
 
 # Create the tarball
 # Includes .agents/ plus Claude Code, Codex, and OpenCode consult definitions.

@@ -1,6 +1,6 @@
 ---
 name: bmild-planner-consult
-description: "Sonia leaf consult. Resolves one bounded planning episode and batches all same-owner Slice, registry, and proof-boundary consequences."
+description: "Sonia leaf consult. Resolves one bounded planning episode and batches all same-owner outcome-readiness, coverage, and proof-boundary consequences."
 intelligence_tier: planning
 ---
 

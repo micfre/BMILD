@@ -61,7 +61,7 @@ One-way entry: resolve environment → minimal shared context → choose exactly
 Shared context before mode selection only:
 
 - Read `.bmild.toml`; resolve and verify `plan_folder`; read `user_name` when present.
-- Persona-specific global settings when present (e.g. Sonia's `slice_target` reference for slice budgeting — detail in planner mode resources).
+- Persona-specific global settings when present (e.g. authorized phase/outcome and existing continuation state).
 - Initiative folder / `rollup.md` alias resolution.
 - **Do not** load mode-specific artifacts here except existence checks required for mode detection.
 
@@ -102,7 +102,7 @@ Facilitator skill offers only (`bmild-roundtable`, `bmild-brainstorming`, `bmild
 
 What the persona does not do and where that work routes. Keep persona-specific; do not restate positive instructions in negative form.
 
-Every standard persona carries one compact pointer to its skill-local `references/gap-resolution.md`. Any scope route suspends the active mode and runs simplified scribe → capability-gated guest voice → owner consult → durable handoff → user-approved Course-Correction before ending the session. The six references remain byte-identical and progressively loaded only when a gap appears.
+Every standard persona carries one compact pointer to its skill-local `references/gap-resolution.md`. Any scope route suspends the active mode and runs simplified scribe → authorized owner voice → owner consult → durable handoff → user-approved Course-Correction before ending the session. The six references remain byte-identical and progressively loaded only when a gap appears.
 
 ---
 

@@ -53,11 +53,11 @@ for root in "${SKILL_ROOTS[@]}"; do
   code_review="${root}/bmild-qa/resources/code-review.md"
   for writer in "${security_review}" "${comprehensive}"; do
     rg -q -F 'security_status: findings_open' "${writer}" || fail "${writer}: no security findings_open writer"
-    rg -q -F 'security_status: cleared' "${writer}" || fail "${writer}: no security cleared writer"
+    rg -q -F 'security_status: findings_open | cleared' "${writer}" || fail "${writer}: no security cleared writer"
   done
   for writer in "${code_review}" "${comprehensive}"; do
     rg -q -F 'code_review_status: findings_open' "${writer}" || fail "${writer}: no code-review findings_open writer"
-    rg -q -F 'code_review_status: cleared' "${writer}" || fail "${writer}: no code-review cleared writer"
+    rg -q -F 'code_review_status: findings_open | cleared' "${writer}" || fail "${writer}: no code-review cleared writer"
   done
   rg -q -F 'qa_status: verified | failed | blocked' "${comprehensive}" || fail "${comprehensive}: no QA outcome writer"
 
@@ -85,8 +85,8 @@ for root in "${SKILL_ROOTS[@]}"; do
   gap="${root}/bmild-dev/references/gap-resolution.md"
   rg -q -F 'Alex may author implementation-complete' "${gap}" || fail "${gap}: missing Alex boundary"
   rg -q -F 'Rahat alone authors QA evidence' "${gap}" || fail "${gap}: missing Rahat evidence ownership"
-  rg -q -F 'security findings and `security_status: findings_open | cleared`' "${gap}" || fail "${gap}: missing Rahat security ownership"
-  rg -q -F 'code-review outcomes and `code_review_status: findings_open | cleared`' "${gap}" || fail "${gap}: missing Rahat code-review ownership"
+  rg -q -F 'security findings and clearance' "${gap}" || fail "${gap}: missing Rahat security ownership"
+  rg -q -F 'code-review outcomes' "${gap}" || fail "${gap}: missing Rahat code-review ownership"
 done
 
 if [ "${failures}" -gt 0 ]; then

@@ -4,13 +4,13 @@ Implement a localized fix driven by a confirmed root cause from Rahat. Do not re
 
 ## Additional Context
 
-Identify entry artifact: `rca-<slug>.md`, verification matrix item, or named Slice with bug signals. Load in this order:
+Identify entry artifact: `rca-<slug>.md`, verification matrix item, or outcome/legacy Slice with bug signals. Load in this order:
 - Named `rca-<slug>.md` in full when present
 - Relevant ADRs in `[plan_folder]/adr/` when fix touches durable cross-initiative decisions
 - `[plan_folder]/rollup.md` if it exists
 - `[plan_folder]/<initiative>/registry.md`
-- Every `## Live` entry relevant to the Slice — skip `## Archived` and unrelated initiative folders
-- `slice-<N>.md` referenced by RCA or message
+- Every `## Live` entry relevant to the outcome — skip `## Archived` and unrelated initiative folders
+- Named legacy `slice-<N>.md` only when referenced
 - Relevant sections of `verification-matrix.md`
 - `security-review-*.md` if tracked security finding implicated
 - Repo contributor guide
@@ -39,13 +39,13 @@ For effective posture `1`, require a Git worktree; record attached branch, `HEAD
 
 Progress:
 
-- [ ] Step 1: Confirm entry contract. If root cause is not confirmed, run a Rahat episode. If the fix exceeds scope, run a Sonia episode with evidence.
-- [ ] Step 2: Implement fix per artifact. Implement regression test exactly as specified, or add one when practical.
+- [ ] Step 1: Confirm entry contract. If root cause is not confirmed, run a Rahat episode. If the fix changes authorized phase or committed contracts, resolve that decision. Internal decomposition/file changes need no planning permission.
+- [ ] Step 2: Implement fix per artifact. Choose regression proof that demonstrates the corrected behavior; preserve the proof obligation while adapting implementation details to evidence.
 - [ ] Step 3: Run quality gates and regression test. Record gates not run and why.
 - [ ] Step 4: Document when externally visible behaviour changed; otherwise `Documentation impact: none`.
 - [ ] Step 5: Update artifacts:
   - `rca-<slug>.md` → fix details, regression reference; `next_owner` Rahat
-  - `verification-matrix.md` → `implemented` or `blocked`, never `passed`
+  - `verification-matrix.md` → implementation `implemented` or `blocked`, never `passed`; mark affected prior proof pending, record reviewed-state change and independent re-verification needed
   - `slice-<N>.md` when in Slice scope → Implementation Notes; do not change `qa_status`
   - `security-review-*.md` when implicated → `fixed_pending_review`; `next_owner` Rahat
   - Resolve Alex-owned `handoff.md` items
@@ -64,7 +64,7 @@ Before effective-posture-`1` execution, re-check guidance for final attributable
 On failure, preserve content and unrelated index state; restore only BMILD-created intent entries with `git restore --staged --source=HEAD -- <paths>`. On success, require changed `HEAD`, `HEAD^ = preCommitHead`, exact NUL-safe `git diff-tree --no-commit-id --name-only -r -z HEAD` path equality (including renames), clean task paths, and unchanged unrelated baseline state. An invariant breach is reported without history repair. Render the compact core commit line from Exit and Handoff. Never widen paths, reset, amend, revert, retry destructively, or perform network operations.
 <!-- commit-posture-completion:end -->
 
-- [ ] Step 8: Close — apply Exit and Handoff from the core skill. Default `Next`: Rahat for re-verification.
+- [ ] Step 8: Close — apply Exit and Handoff from the core skill. Continue already-authorized build-and-verify through a fresh independent reviewer, or leave a concise new-window transition with acceptance pending.
 
 ## Definition of Done
 

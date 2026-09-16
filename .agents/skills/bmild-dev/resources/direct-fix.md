@@ -11,7 +11,7 @@ Load in this order:
 - Repo contributor guide
 - Project-root `DESIGN.md` if it exists — honor global UX patterns when the fix alters a user-visible surface (project-root repo context, not BMILD planning memory)
 
-Do not load BMILD planning memory unless the message names an initiative, Slice, or RCA — re-evaluate against core Mode Lookup before proceeding.
+Load relevant BMILD memory when the request names tracked work, depends on documented behavior, or could change durable understanding; re-evaluate against Spec-Fix when a governing contract is found. Purely local work otherwise needs no memory ceremony.
 
 ## Global Directives
 
@@ -19,7 +19,7 @@ Do not load BMILD planning memory unless the message names an initiative, Slice,
 
 - **Ground findings in code.** Grep it, cite file-path precision, and finish with proof; use those as working vocabulary, not ritual.
 - **Reproduction before edit.** Reproduce via test, log, or code-path inspection. If root cause remains unclear, suspend this step and run the ladder with Rahat using symptoms, hypotheses checked, evidence, and the next diagnostic question.
-- **Minimal fix scope.** Smallest fix for confirmed root cause. No adjacent refactors. No scope expansion.
+- **Coherent fix scope.** Repair the confirmed defect within authorized scope; necessary internal refactoring is allowed, unrelated changes are not.
 - **Promote durable truth** when fix changes externally visible behaviour or reveals facts future specs should account for — `system-design.md` or `handoff.md`. Trivial local fixes with no future relevance need no BMILD artifact.
 - **Security or QA artifacts implicated** → re-evaluate against Spec-Fix before closing.
 
@@ -36,7 +36,7 @@ For effective posture `1`, require a Git worktree; record attached branch, `HEAD
 Progress:
 
 - [ ] Step 1: Investigate before edit — reproduce, identify root cause with evidence, confirm localized scope. Route to Rahat per Global Directives when uncertain.
-- [ ] Step 2: Implement minimal confirmed fix.
+- [ ] Step 2: Implement the coherent confirmed repair.
 - [ ] Step 3: Run quality gates. Add regression test when practical; otherwise record manual proof sequence Rahat can re-run.
 - [ ] Step 4: Document when externally visible behaviour changed; otherwise `Documentation impact: none`.
 - [ ] Step 5: Promote durable technical truth per Global Directives.

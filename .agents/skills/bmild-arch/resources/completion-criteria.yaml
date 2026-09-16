@@ -70,20 +70,20 @@ sections:
   - id: service_contracts
     required: false
     stakes: consequential
-    applies_when: any internal service layer method is introduced or changed
+    applies_when: a service boundary has committed interoperability, side-effect, security, or compatibility obligations
     cross_ref:
       - prd.md
     falsifiable: >
       A developer can write a unit test for a service method's inputs, outputs, and
       error cases from this contract alone, without reading the implementation.
     good_signal: >
-      Every service method specifies parameter names and types, return type, and all
+      Every committed service boundary specifies the necessary inputs, outputs, and
       error conditions it throws or returns. Side effects (writes, events, queue
       messages) are named.
     weak_signal: >
-      Methods described by intent only ("handles user creation") without parameter or
-      return type specification, or error conditions stated in aggregate rather than
-      per-method.
+      A committed boundary lacks testable behavior or error semantics. Private method
+      choices left to the executor are not a completeness defect when boundary
+      obligations remain precise.
 
   - id: dependency_decisions
     required: false

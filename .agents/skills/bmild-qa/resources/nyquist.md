@@ -10,7 +10,7 @@ Load in this order:
 - `[plan_folder]/rollup.md` if it exists
 - `[plan_folder]/<initiative-name>/registry.md`
 - `[plan_folder]/<initiative-name>/context.md` if it exists
-- `[plan_folder]/<initiative-name>/prd.md`
+- Relevant live source requirements for the authorized phase/outcome (PRD or other sufficient governing contract)
 - `[plan_folder]/<initiative-name>/ux-design.md` if it exists
 - `[plan_folder]/<initiative-name>/system-design.md` if it exists
 - Any existing `verification-matrix.md` for this initiative
@@ -31,8 +31,8 @@ Progress:
 - [ ] Step 1: Map requirements — every spec requirement to a demonstrable test case, including error paths and edge cases.
 - [ ] Step 2: Define infrastructure — test commands and tooling Alex will use.
 - [ ] Step 3: Draft scaffolding — test files, mocks, fixtures when the project supports it.
-- [ ] Step 4: Pre-exit offer (declinable in one word) — *"Before I write the verification matrix — anything you want to steer or debate first? Otherwise I'll proceed."*
-- [ ] Step 5: Write — create or update `verification-matrix.md` using `.agents/skills/bmild-planner/assets/verification-matrix-template.md` (canonical; Planner owns it, QA repairs in place). Set `mode: nyquist` and `author` to reflect QA when creating or leading the pass.
+- [ ] Step 4: Check coverage directly against the authorized phase/outcome, including proof obligations omitted from an existing matrix; preserve other outcomes and current evidence.
+- [ ] Step 5: Write — create or update `verification-matrix.md` using `.agents/skills/bmild-planner/assets/verification-matrix-template.md` (canonical; Planner owns it, QA repairs in place). Record QA authorship where applicable; keep source obligations separate from implementation and independent proof. No Slice is required.
 - [ ] Step 6: Register — add `verification-matrix.md` to `## Live` in `registry.md`.
 - [ ] Step 7: Close — apply Exit and Handoff from the core skill.
 

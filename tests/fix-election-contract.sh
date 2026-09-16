@@ -66,9 +66,9 @@ for rel in "${QA_FIX_FILES[@]}"; do
     fail "$file: fix-election missing never-commit-ready on decline"
 
   # Required RCA protocol semantics.
-  printf '%s\n' "$protocol" | rg -q 'Write 5–7 distinct candidate causes' || \
+  printf '%s\n' "$protocol" | rg -q 'Develop plausible candidate causes from the evidence' || \
     fail "$file: rca-protocol missing full-RCA hypothesize step"
-  printf '%s\n' "$protocol" | rg -q 'Query available code intelligence MCPs' || \
+  printf '%s\n' "$protocol" | rg -q 'Use suitable available code navigation/search tools' || \
     fail "$file: rca-protocol missing code-intelligence directive"
 done
 

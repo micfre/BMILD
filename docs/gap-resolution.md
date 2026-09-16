@@ -6,12 +6,12 @@
 
 Six byte-identical copies ship at `.agents/skills/bmild-<persona>/references/gap-resolution.md` for PM, UX, Arch, Planner, Dev, and QA. An active standard persona loads its own relative copy only when a mode encounters another owner's gap or downstream consequence.
 
-The unified contract replaces the former `scribe-path.md` and `consult-path.md` references. It owns configuration migration, intelligence tiers, simplified scribing, capability-gated guest voice, leaf consults, durable handoff criteria, Course-Correction consent, rejoin behavior, and review independence.
+The unified contract replaces the former `scribe-path.md` and `consult-path.md` references. It owns configuration migration, intelligence tiers, simplified scribing, authorized owner voice, leaf consults, durable handoff criteria, Course-Correction consent, rejoin behavior, and review independence.
 
 ## Editing
 
 1. Edit one runtime copy.
-2. Sync the other six byte-for-byte.
+2. Sync the other five byte-for-byte.
 3. Update all affected mode resources, consult-agent definitions, generated harness shapes, and promotion rules together.
 4. Run `bash tests/gap-resolution-contract.sh` and `bash scripts/validate-skills.sh`.
 

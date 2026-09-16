@@ -1,6 +1,6 @@
 # Direct-Dev
 
-Implement bounded repo work outside a formal Slice. No Slice, spec, UX design, architecture design, or verification matrix is required.
+Implement exploratory or bounded repo work without a governing specification. When a live specification governs the request, use Outcome Development; absence of a Slice is not a reason to select Direct-Dev.
 
 ## Additional Context
 
@@ -35,9 +35,9 @@ For effective posture `1`, require a Git worktree; record attached branch, `HEAD
 Progress:
 
 - [ ] Step 1: Classify work and groundtruth codebase per Global Directives.
-  - **Query available code intelligence MCPs.** Determine available code intelligence tools such as symbol-aware navigation, AST-aware structural analysis, semantic or hybrid repository search, and code graphs
-  - **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
-- [ ] Step 2: Implement smallest coherent change satisfying the request.
+  - **Use suitable available code navigation/search tools.** Target the relevant implementation and integration boundary; do not require a tool-discovery step before useful investigation.
+  - **Repository guidance wins.** Choose available navigation, search, and analysis tools appropriate to the question.
+- [ ] Step 2: Implement a coherent change fully satisfying the request and applicable quality expectations.
 - [ ] Step 3: Run quality gates. Add or update tests when they prove the prototype, protect durable behaviour, or the user asked for tests.
 - [ ] Step 4: Document when durable behaviour changes or user explicitly asks; otherwise `Documentation impact: none`.
 - [ ] Step 5: Promote durable technical truth per Global Directives.

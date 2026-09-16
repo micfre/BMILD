@@ -36,47 +36,29 @@ if rg -q 'references/(scribe|consult)-path\.md' "$ROOT"; then
   rg -n 'references/(scribe|consult)-path\.md' "$ROOT" >&2 || true
 fi
 
-# Ladder and close-the-loop invariants.
-# shellcheck disable=SC2016 # Markdown backticks are literal contract text.
+# Shared authority, continuity, and independence invariants.
 for literal in \
   'Simplified scribe' \
-  'Capability-gated guest voice' \
+  'Authorized owner voice' \
   'Owner consult' \
-  'Durable inter-agent handoff' \
+  'Durable handoff' \
   'User-approved Course-Correction' \
-  'Resume the exact suspended mode step' \
   'do not retry or substitute' \
   'OpenCode always inherits' \
-  'including project-root `DESIGN.md`, `context-map.md`, and ADRs'; do
+  'All unspecified tiers inherit' \
+  'Resume the suspended work' \
+  'Rahat alone authors QA evidence' \
+  'fresh context that did not implement' \
+  'without the developer transcript' \
+  'Source promotion' \
+  'slice_target'; do
   require_literal "$reference" "$literal"
 done
-
-# Scenario fixtures expressed as enforceable contract assertions.
-require_literal "$reference" 'status mirroring, registry/matrix/roadmap synchronization'
-require_literal "$reference" 'A bounded Sonia planning consult may recut affected delivery artifacts as its own episode'
-require_literal "$reference" 'Batch all same-owner consequences across owned artifacts before returning'
-# shellcheck disable=SC2016 # Markdown backticks are literal contract text.
-require_literal "$ROOT/bmild-arch/agents/consult.md" 'including `[plan_folder]/adr/`'
-require_literal "$reference" 'Independent consequences owned by different personas are separate ladder episodes'
-require_literal "$reference" 'wait for explicit user confirmation before entering it'
-require_literal "$reference" 'persist one durable handoff for the affected episode'
-require_literal "$reference" 'close that item and point its Promotion Record at the authoritative edit; never create a replacement'
-require_literal "$reference" 'Alex may author implementation-complete'
-require_literal "$reference" 'Rahat alone authors QA evidence'
-# shellcheck disable=SC2016 # Markdown backticks are literal contract text.
-require_literal "$reference" 'security findings and `security_status: findings_open | cleared`'
-# shellcheck disable=SC2016 # Markdown backticks are literal contract text.
-require_literal "$reference" 'code-review outcomes and `code_review_status: findings_open | cleared`'
-for scenario in \
-  'Dev-time API gap' \
-  'Same-owner batch' \
-  'Canonical ADR' \
-  'Independent owners' \
-  'Coupled change' \
-  'Rejected pair' \
-  'Existing queue item'; do
-  require_literal "$reference" "$scenario"
-done
+if rg -q 'exactly match|exact harness-attested tier parity|requires exact' "$reference"; then
+  fail "model-identity authorization gate returned"
+fi
+require_literal "$ROOT/bmild-qa/agents/consult.md" 'without the development transcript'
+require_literal "$ROOT/bmild-qa/agents/consult.md" 'leave acceptance pending for another reviewer'
 
 rg -q 'auto-enqueue' "$ROOT" && fail "obsolete automatic handoff cascade remains"
 

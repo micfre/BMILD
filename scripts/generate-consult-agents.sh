@@ -6,12 +6,6 @@ set -euo pipefail
 SKILLS_DIR=".agents/skills"
 OUT_DIR="."
 
-# Release-pinned defaults for tiers that must not inherit implicitly.
-CLAUDE_DESIGN_MODEL="opus"
-CLAUDE_DESIGN_EFFORT="max"
-CODEX_DESIGN_MODEL="gpt-5.6-sol"
-CODEX_DESIGN_EFFORT="ultra"
-
 usage() {
   cat <<'USAGE'
 Usage: generate-consult-agents.sh [--skills-dir PATH] [--out DIR]
@@ -71,24 +65,18 @@ for consult in "$SKILLS_DIR"/bmild-*/agents/consult.md; do
   count=$((count + 1))
 
   case "$intelligence_tier" in
-    design|planning) pinned=1 ;;
-    implementation|reviewer) pinned=0 ;;
+    design|planning|implementation|reviewer) ;;
     *) echo "FAIL: invalid intelligence_tier '$intelligence_tier' in $consult" >&2; exit 1 ;;
   esac
 
-  # Claude Code: effort is emitted only for pinned tiers; omission inherits
-  # the active session for implementation/reviewer tiers. Agent/Task tools
+  # Claude Code: every tier inherits unless explicitly selected at dispatch.
+  # Agent/Task tools
   # are excluded from the allowlist so consults remain leaves.
   {
     echo "---"
     echo "name: $name"
     echo "description: \"$description\""
-    if [ "$pinned" -eq 1 ]; then
-      echo "model: $CLAUDE_DESIGN_MODEL"
-      echo "effort: $CLAUDE_DESIGN_EFFORT"
-    else
-      echo "model: inherit"
-    fi
+    echo "model: inherit"
     echo "tools: Read, Grep, Glob, Edit, Write, Bash"
     echo "---"
     echo ""
@@ -113,7 +101,7 @@ for consult in "$SKILLS_DIR"/bmild-*/agents/consult.md; do
   } > "$OPENCODE_DIR/$name.md"
 
   # Codex named roles point at schema-valid role config files. The role file
-  # carries release defaults for design/planning; other tiers inherit unless
+  # inherits the active model/effort for every tier unless
   # the dispatcher supplies runtime model/reasoning overrides.
   {
     echo "[agents.$name]"
@@ -125,10 +113,6 @@ for consult in "$SKILLS_DIR"/bmild-*/agents/consult.md; do
   {
     echo "name = \"$name\""
     echo "description = \"$description\""
-    if [ "$pinned" -eq 1 ]; then
-      echo "model = \"$CODEX_DESIGN_MODEL\""
-      echo "model_reasoning_effort = \"$CODEX_DESIGN_EFFORT\""
-    fi
     echo "developer_instructions = \"\"\""
     echo "Skill directory: $skill_dir"
     echo ""

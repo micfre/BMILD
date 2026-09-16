@@ -138,10 +138,10 @@ for root in "${SKILL_ROOTS[@]}"; do
     done
   done
 
-  # Planner must preserve slice exclusion.
+  # Planner must preserve scope and implementation authority.
   planner="${root}/bmild-planner/SKILL.md"
-  if [ -f "${planner}" ] && ! rg -q 'Slice authoring or recut' "${planner}"; then
-    fail "${planner}: expected Slice exclusion under promotion close states"
+  if [ -f "${planner}" ] && ! rg -q 'does not expand phase scope or authorize implementation' "${planner}"; then
+    fail "${planner}: expected scope/implementation authority boundary under promotion close states"
   fi
 done
 

@@ -1,141 +1,49 @@
 # Gap resolution
 
-> Shared runtime contract for all standard personas (`bmild-{pm,ux,arch,planner,dev,qa}`). Each skill ships an identical local copy. Load this skill's copy whenever the active mode finds a gap owned by another persona or a downstream consequence outside the active persona's authority.
+> Shared runtime contract for all six standard personas. Load the local copy for an actual owner judgment outside the active role, not for ordinary implementation choices.
 
 ## Purpose
 
-Resolve ownership gaps without ending useful work prematurely. The active persona suspends the current mode at the exact blocked step, runs the cheapest eligible resolution episode, re-reads changed contracts, absorbs mechanical fallout, and resumes the suspended step.
-
-A **bounded episode** is one causal decision and all same-owner consequences of that decision. It may update several artifacts owned by that persona. It is not artificially split by file or patch, and it never creates a recursive handoff back to the same owner.
+Resolve missing contracts while preserving the authorized phase/outcome and useful execution context. Roles supply specialist criteria and accountability; they do not impose an automatic process boundary. A bounded episode is one causal decision and its owned consequences, not one file or patch.
 
 ## Configuration
 
-Read `.bmild.toml` before using the ladder.
+- `gap_resolution`: `auto` (default), `ask-consult`, or `handoff-only`. Auto resolves eligible episodes in-session. Ask-consult asks once before dispatch, not before settled mechanical propagation. Handoff-only permits scribing but routes unresolved owner judgment asynchronously.
+- Intelligence tiers: design (Faisal/Katrina/Lance), planning (Sonia), implementation (Alex), reviewer (Rahat). All unspecified tiers inherit the user's active harness model and effort; there are no release-pinned model defaults.
+- Claude Code and Codex accept explicit `[intelligence.<harness>.<tier>]` model/effort overrides for owner dispatch. Honor explicit pairs; never invent capability rankings or require exact-model attestation for ordinary authorized in-session work. If the user specifically requires another model's judgment, dispatch that model rather than impersonating it. OpenCode always inherits its user-configured model/variant and does not synchronize tier overrides.
+- If an explicit pair is rejected, report the exact pair and harness error; do not retry or substitute. Preserve one durable handoff for the affected episode and continue unaffected work.
+- Retired `slice_target`, `tokenizer_base`, and `tokenizer_multiplier` settings are inert. Their presence does not block work or trigger estimation.
 
-- `gap_resolution` accepts `"auto"` (default), `"ask-consult"`, or `"handoff-only"`.
-  - `auto`: run every eligible in-session rung without asking.
-  - `ask-consult`: scribe and eligible guest voice remain automatic; ask once immediately before an owner consult. A decline persists one durable handoff.
-  - `handoff-only`: mechanical scribing remains available, but skip guest voice and consult; persist one durable handoff when owner judgment is required.
-- Intelligence tiers are `design` (Faisal, Katrina, Lance), `planning` (Sonia), `implementation` (Alex), and `reviewer` (Rahat).
-- Claude Code reads `[intelligence.claude_code.<tier>]`; Codex reads `[intelligence.codex.<tier>]`. Each configured tier uses native `model` and `effort` string values.
-- Missing Claude Code or Codex `design` / `planning` settings use the release-pinned pair carried by the generated consult definition: Claude Code `opus` / `max`; Codex `gpt-5.6-sol` / `ultra`.
-- Missing `implementation` / `reviewer` settings inherit the active session pair. OpenCode always inherits its user-configured harness model and variant for every tier; ignore BMILD tier overrides and do not mutate or synchronize OpenCode configuration.
-
-Legacy keys are a hard configuration error. If `consult`, `consult_model`, or `consult_effort` appears, stop BMILD configuration resolution and report:
+Legacy `consult`, `consult_model`, and `consult_effort` remain unsupported. Report:
 
 `Legacy consult configuration is unsupported in BMILD 0.4.2. Remove consult, consult_model, and consult_effort; use gap_resolution and [intelligence.<harness>.<tier>] instead.`
 
 Do not map, interpret, preserve, or combine legacy values with the new configuration.
 
-An explicit model/effort pair that the harness rejects is not a fallback opportunity. Report the exact pair and harness error, do not retry or substitute, persist one durable handoff for the affected episode, and stop only that episode. Unaffected independent work may continue.
-
 ## Resolution ladder
 
-Run these rungs in order. Stop at the first completed resolution.
+Use the cheapest eligible resolution and resume the suspended work. Do not walk every rung when no gap exists.
 
-- [ ] Step 1: **Simplified scribe.** Apply a settled, reversible fact or already-authoritative status mechanically.
-- [ ] Step 2: **Capability-gated guest voice.** Author one bounded single-owner episode only when the current harness attests that the active model and effort exactly match the target owner's resolved intelligence tier.
-- [ ] Step 3: **Owner consult.** Dispatch the owning persona's leaf consult agent for an eligible single-owner episode.
-- [ ] Step 4: **Durable inter-agent handoff.** Persist one `H-###` only when work genuinely leaves the session.
-- [ ] Step 5: **User-approved Course-Correction.** Offer Sonia only for coupled choices that materially change scope, sequencing, or proof boundaries; wait for explicit user confirmation before entering it.
-- [ ] Step 6: **Rejoin.** Re-read authoritative edits, classify downstream impact, scribe mechanical consequences, and resume the suspended mode and step.
+- **Simplified scribe:** propagate a settled reversible fact or authoritative status mechanically. Do not load another owner's SOUL or originate a judgment. Record concise source provenance beside the edit. No audit-only handoff.
+- **Authorized owner voice:** for a bounded owner decision within existing authority, apply that owner's relevant criteria, source contracts, and completion bar in the current context. Load its SOUL only when actually adopting that voice. No exact model/effort equality test. Canonical artifacts (`DESIGN.md`, `context-map.md`, ADRs) require the owner's substantive criteria, including ADR eligibility; their filename alone does not force dispatch. Never use this path for implementer self-approval, unresolved user preferences, or to bypass an explicitly requested independent/model-specific judgment.
+- **Owner consult:** dispatch when independent specialist reasoning is useful/required, an explicit model choice requires it, or the current context cannot resolve the episode. Send the question, scope, relevant sources, owned edit boundaries, and expected evidence/decision. The consult is a leaf: no recursive dispatch, guest authorship, Course-Correction, or follow-up handoff creation. Return different-owner consequences to the presiding session. For review, send source/code/evidence references without the developer transcript and require fresh context.
+- **Durable handoff:** persist or update one `H-###` only when the resolution actually leaves the session: missing capability, rejected explicit model, unavailable user decision, declined authority, or asynchronous ownership. State the blocker, source references, next owner, and resumption condition. Do not create a closed item merely to log an in-session resolution.
+- **User-approved Course-Correction:** use for coupled changes to phase scope, committed contracts, real sequencing constraints, or proof obligations. Independent owner consequences are separate episodes. Routine internal planning and new-file discovery are not triggers. Name the consequential impact and wait for explicit user confirmation unless the existing request already authorizes that exact change.
 
-Independent consequences owned by different personas are separate ladder episodes. Do not escalate them to Course-Correction merely because there is more than one owner. Use Course-Correction only when the decisions are coupled and cannot be resolved independently without jointly changing scope, sequence, or proof.
-
-## Simplified scribe
-
-Scribing is transcription, not guest authorship. Do not load the target owner's `SOUL.md`.
-
-All conditions must hold:
-
-- The source is already authoritative: repository fact with direct evidence, explicit in-session user decision, ratified decision, or status written by its authorized owner.
-- The target edit is reversible and mechanical: terminology propagation, link/reference repair, status mirroring, registry/matrix/roadmap synchronization, or an equivalent no-judgment update.
-- The edit does not originate evidence, weigh a trade-off, interpret an unresolved preference, alter a consequential contract section, or write a canonical-tier artifact (`context-map.md`, `[plan_folder]/adr/`, project-root `DESIGN.md`).
-- Ownership independence remains intact. Alex may propagate implementation-complete and review-requested state but never QA, security, or code-review approval; only Rahat authors those review outcomes.
-
-Write beside the authoritative edit:
-
-`Resolution: applied_by_scribe — owner: <owner>; scribe: <active persona>; source: <authoritative evidence>; <date>`
-
-Do not create an `H-###` for audit history. If an existing handoff described the now-resolved fact, close that item and point its Promotion Record at the authoritative edit; never create a replacement.
-
-## Capability-gated guest voice
-
-Guest voice lets the active session speak with one owner's authority for a bounded causal episode. All conditions must hold:
-
-- Exactly one owner controls the decision and every authored consequence in the episode.
-- The harness positively attests that the active model and reasoning effort equal the target owner's resolved tier. Missing or ambiguous attestation means use consult, not guest voice.
-- Load the target owner's `SOUL.md`, the applicable artifact template/contract, current authoritative artifact sections, and their completion criteria before deciding.
-- The target is owned by that persona but is not canonical-tier. Consequential sections are eligible when the other conditions hold.
-- No unresolved user preference, conflict of interest, review-self-approval, or coupled multi-owner choice exists.
-
-Batch all same-owner consequences across owned artifacts before returning. Do not invoke another persona, recurse into the ladder, or hand off to the same owner while acting as guest. Return any different-owner consequences to the presiding persona as an impact list for separate episodes.
-
-Write beside each authoritative edit, or once in a shared decision block covering the batch:
-
-`Resolution: authored_by_guest — owner: <owner>; guest: <active persona>; episode: <bounded cause>; model: <model>; effort: <effort>; <date>`
-
-## Owner consult
-
-Consult is the normal authorship rung when guest voice is ineligible and in-session dispatch is available. The episode must have exactly one owner. Unlike scribe and guest voice, the owner consult may update anything it canonically owns, including project-root `DESIGN.md`, `context-map.md`, and ADRs.
-
-Dispatch the owner with:
-
-- presiding persona, suspended mode/resource/step, and initiative;
-- one bounded causal question and why it blocks progress;
-- required reads and exact owned artifacts/sections that may change;
-- resolved target model/effort and harness attestation request;
-- existing `H-###` reference when the consult is resolving queued work;
-- expected return: decision, edits, provenance, downstream impact list, and remaining user input.
-
-The consult agent is a leaf: it cannot dispatch, invoke guest voice, run Course-Correction, or create follow-up handoffs. It loads its own `SKILL.md`, `SOUL.md`, this reference, relevant artifact contracts, and completion criteria; authors the whole same-owner episode; records:
-
-`Resolution: authored_by_consult — owner: <owner>; consult-of: <presiding persona>; episode: <bounded cause>; model: <model>; effort: <effort>; <date>`
-
-No new handoff is created solely because a consult occurred. If an existing handoff is resolved, the consult closes it with a Promotion Record pointing at the authoritative edit. Different-owner consequences return as an impact list to the presiding persona.
-
-## Durable handoff
-
-Create or retain one `H-###` only when resolution genuinely leaves the session because:
-
-- the harness lacks required dispatch, model, effort, edit, or read capability;
-- explicit configured model/effort was rejected;
-- required user input cannot be obtained in-session;
-- the user declines consult authority or selects `handoff-only`;
-- ownership must be resolved asynchronously.
-
-Persist the question, evidence, target owner/artifact, blocked mode step, exact resumption condition, and rejected model/effort plus harness error when applicable. Reuse an existing relevant handoff and update its status instead of duplicating it. The active persona may continue unaffected work, but stops the affected episode.
-
-## Course-Correction boundary
-
-Course-Correction is not the default multi-owner branch. Resolve independent owner consequences in separate episodes. Offer Course-Correction once only when choices are causally coupled and would materially alter scope, Slice sequencing, or proof boundaries. Name the coupled decisions and impact before asking. Enter only after explicit user confirmation; a decline leaves one durable coordination item rather than a hidden partial rewrite.
+Batch same-owner consequences. Record `Resolution: applied_by_scribe | authored_by_guest | authored_by_consult — owner; source/decision; date` beside authoritative edits; record actual model identity only when available, never fabricate attestation. Close existing handoffs with a source pointer; do not create replacements for audit history.
 
 ## Rejoin and impact
 
-After scribe, guest, or consult resolution:
-
-- Re-read every changed authoritative section and any completion criteria that govern it.
-- Verify provenance is artifact-local and any pre-existing handoff is closed without a replacement.
-- Classify each downstream consumer `unaffected | mechanical | owner-decision | stale`.
-- Apply `mechanical` consequences through simplified scribe.
-- Run separate ladder episodes for independent `owner-decision` consequences.
-- Mark artifacts stale only for unresolved consequences; do not leave resolved in-session work stale.
-- Re-evaluate the suspended mode's scope, acceptance, and proof boundaries. A bounded Sonia planning consult may recut affected delivery artifacts as its own episode; it is not a special recursive exception.
-- Resume the exact suspended mode step. Do not emit an Exit block, new Opening Stance, or ask the user to reinvoke the active persona merely because a gap was resolved.
+Re-read changed authoritative contracts, classify downstream impact as `unaffected | mechanical | owner-decision | stale`, and apply mechanical consequences. Resolve independent owner questions separately; mark only unresolved consumers stale. A material source/code/environment change invalidates affected proof while preserving history and unrelated current evidence. Source promotion, not a handoff's accepted state, establishes truth. Resume the suspended work without a new opening, sign-off, or user reinvocation.
 
 ## Review independence
 
-- Alex may author implementation-complete, `qa_status: ready_for_verification`, and review-requested states; Alex never authors verified/cleared review outcomes or approval evidence.
-- Rahat alone authors QA evidence, `qa_status: verified | failed | blocked`, security findings and `security_status: findings_open | cleared`, code-review outcomes and `code_review_status: findings_open | cleared`, and the verified `status: done` transition when every required review axis is terminal.
-- Any persona may scribe those already-authoritative outcomes into derivative registries, matrices, rollups, or roadmap records without acquiring approval authority.
+Alex may author implementation-complete and review-requested states and propagate already-authoritative verdicts mechanically, but never independently approve its own work. Rahat alone authors QA evidence and verdicts, security findings and clearance, code-review outcomes, and the accepted `done` transition. This requires a fresh context that did not implement the reviewed production changes and did not inherit their development transcript. A role change or full-history fork is insufficient. Reviewer-authored production repairs need a different independent reviewer before acceptance. When isolated dispatch is unavailable or the user chooses it, persist a concise transition for a separate new window and leave acceptance pending.
 
 ## Examples
 
-- **Before:** Rahat verifies a Slice, then an `H-###` asks Sonia to copy the status into planning records. **After:** Rahat's outcome is authoritative; the active persona scribes it into derivative registries/matrices with `applied_by_scribe`, creates no handoff, and resumes.
-- **Dev-time API gap:** Alex suspends Spec-Dev at the contract-dependent step. Lance's owner consult authors the API contract in `system-design.md` with `authored_by_consult`. Alex re-reads it, classifies the Slice/proof impact, runs one bounded Sonia planning consult to recut affected delivery artifacts, then resumes implementation without a new opening or user relay.
-- **Same-owner batch:** A Katrina episode changes both `ux-design.md` and project-root `DESIGN.md`. Guest voice is ineligible because `DESIGN.md` is canonical-tier, so one Katrina consult owns both consequences; the work is not split into two consultations.
-- **Canonical ADR:** A bounded architecture trade-off passes the ADR gate. Lance's owner consult may author both `system-design.md` and the ADR; a non-owner scribe or guest may not.
-- **Independent owners:** A settled product requirement independently requires one Faisal episode and one Katrina episode. Run them separately; multiple owners alone do not justify Course-Correction.
-- **Coupled change:** A product choice and architecture constraint jointly alter scope, Slice order, and proof boundaries. Name the coupled impact, ask once, and enter Course-Correction only on user approval.
-- **Rejected pair:** Codex rejects configured `design = bad-model/max`. Record that exact pair and harness error, create or reuse one Lance handoff, do not retry with the release default, and continue only unaffected work.
-- **Existing queue item:** An owner consult resolves `H-014`. Close `H-014` with a pointer to the authoritative provenance; do not create `H-015` to record the consult.
+- An unplanned internal helper preserving committed behavior needs no owner episode or new Slice; Alex implements and tests it.
+- An API contract change uses Lance's criteria and the required user decision; record the contract update and invalidate affected proof before continuing.
+- A source requirement omitted from a matrix is still binding. Add the obligation from the source and obtain its proof; never rewrite the spec to conceal an implementation miss.
+- A verified outcome's status can be mirrored mechanically into its legacy Slice registry without a Sonia handoff.
+- A configured consult pair rejected by the harness leaves that episode pending; no silent model downgrade.

@@ -1,15 +1,15 @@
 # Security Review
 
-Review an architecture contract, completed Slice, or bounded change set for high-confidence security vulnerabilities. Focus on credible exploit paths and security implications introduced or materially changed by the resolved scope.
+Review an architecture contract, approved phase/outcome, or bounded change set for high-confidence security vulnerabilities. Focus on credible exploit paths and security implications introduced or materially changed by the resolved scope.
 
 ## Additional Context
 
 Resolve the target through BMILD context before reading broad code:
 
 - Named `system-design.md` or architecture review → architecture target.
-- Named `slice-<N>.md`, completed implementation, or feature review → Slice target.
+- Completed implementation or feature review → authorized outcome target; a named legacy Slice supplies scope references.
 - Explicit PR, diff, branch, commit range, worktree, or file set → bounded change-set target.
-- Initiative without an explicit target → read `registry.md` and `slices.md`; infer only when exactly one Slice is `ready-for-review`, otherwise ask one scope question.
+- Initiative without an explicit target → read `registry.md`, live source scope, and outcome evidence; ask only if the authorized phase/outcome remains ambiguous.
 
 Load the applicable subset in this order:
 
@@ -17,8 +17,8 @@ Load the applicable subset in this order:
 - `[plan_folder]/rollup.md` and relevant `[plan_folder]/context-map.md` when they exist
 - Initiative `registry.md` and `context.md`
 - `product-brief.md` and `prd.md` for actors, data sensitivity, and user trust assumptions
-- `system-design.md` for architecture or Slice targets; `ux-design.md` when the trust surface is user-facing
-- The named Slice, relevant verification-matrix entries, resolved changed files, and nearby secure-pattern examples for implementation targets
+- `system-design.md` for architecture or outcome targets; `ux-design.md` when the trust surface is user-facing
+- The outcome record or named legacy Slice, relevant verification-matrix entries, resolved changed files, and nearby secure-pattern examples for implementation targets
 - Existing `security-review-<slug>.md` when re-verifying a finding
 - `resources/security-categories.yaml`
 
@@ -39,7 +39,7 @@ If an architecture target has no `system-design.md`, state that design assumptio
 - **Confidence threshold.** Persist only High or Medium findings with confidence at least 0.8 and a credible path from untrusted entry to impact.
 - **Update, do not duplicate.** A review of an existing security finding updates its artifact and closure evidence.
 - **Review is not implementation.** Route implementation errors to Alex and design-contract gaps to Lance or Katrina.
-- **Code intelligence first.** For implementation targets, prefer available symbol-aware, AST-aware, semantic, hybrid-search, or code-graph capabilities before broad text/file scans when repository guidance permits.
+- **Code investigation.** Choose suitable available tools for the relevant implementation and integration boundary, honoring repository guidance.
 
 ## Routing heuristics
 
@@ -49,17 +49,31 @@ If an architecture target has no `system-design.md`, state that design assumptio
 - *Stable initiative-local security term* → update `context.md` using the canonical context template discipline.
 - *Cross-initiative semantic boundary* → route the proposed `context-map.md` change through the gap-resolution ladder.
 
+<!-- outcome-assurance:start -->
+### Independent acceptance
+
+Resolve the authorized phase/outcome from the request, live source contracts, and `verification-matrix.md`; read those sources independently from disk. A named legacy Slice or explicit PR/diff/branch/commit/file set is also a valid target. For current changes include staged, unstaged, and untracked work. Ask only when scope remains genuinely ambiguous, not because multiple old Slices exist. If the matrix is absent, create its outcome record from Sonia's template using settled scope; no planner invocation is required. Direct changes without an initiative may keep evidence in the requested review output; do not invent an initiative or spec.
+
+Independent acceptance requires a fresh reviewer context that did not implement the reviewed production changes and did not inherit the development transcript. A separate new window or an isolated reviewer worker qualifies; renaming a persona or forking full history does not. Read the original spec and actual code; the implementer's summary only helps navigation. If independence is unavailable, report useful advisory findings, leave acceptance pending, and prepare a fresh-window transition. A reviewer-authored production fix needs a different independent reviewer.
+
+Record code/change identity, source-contract identity, and relevant environment with evidence. Changes make affected proof pending; preserve unaffected current evidence and historical results. A final pass checks current state still matches reviewed state. Do not clear findings or publish accepted status from stale evidence.
+
+Rahat alone writes `qa_status: verified | failed | blocked`, `security_status: findings_open | cleared`, and `code_review_status: findings_open | cleared`. Explicit not-applicable dispositions require a scope-specific rationale from Rahat. `not_reviewed`, missing fields, unrun required proof, and an omitted axis are never terminal. Targeted review cannot stand in for other required axes.
+
+Set outcome `status: done` only with established independence, current evidence for every required source obligation and review axis, no unresolved required finding, and verified phase scope. Otherwise preserve `ready-for-review` or the actual blocked state. The matrix remains live while any outcome needs it. For a named legacy Slice, mirror only accepted scope covered by this review into `slices.md` and move `slice-<N>.md` to registry `## Archived` only after its own status is done. Never archive unrelated outcomes or reopen historical completed Slices merely to normalize fields. Reconcile closure in this pass; do not hand back to Rahat merely for closure.
+<!-- outcome-assurance:end -->
+
 ## Tasks
 
 Progress:
 
-- [ ] Step 1: Resolve and state the architecture, Slice, or change-set scope. For implementation review, query available code-intelligence capabilities and identify changed behavior/files without requiring a user-pinned Git baseline.
+- [ ] Step 1: Resolve and state the architecture, outcome, or change-set scope. For implementation review, query available code-intelligence capabilities and identify changed behavior/files without requiring a user-pinned Git baseline.
 - [ ] Step 2: Map trusted actors, untrusted inputs, sensitive data, boundary crossings, authentication/authorization, and sensitive sinks that the scope introduces or changes.
 - [ ] Step 3: Assess the scope against `security-categories.yaml` using stakes pacing and filtering. Trace consequential candidates end to end before assigning confidence or severity.
 - [ ] Step 4: Pre-exit offer, only when findings will be persisted: *"Before I finalise these findings — anything you want to stress-test first? Otherwise I'll write up the review."* A decline or proceed signal continues to Step 5 in the same turn.
-- [ ] Step 5: Record outcome. Findings path: write or update `security-review-<slug>.md` from `assets/security-review-template.md`; register it in `registry.md`; for a Slice set `security_status: findings_open` and update matrix security evidence. Clean path: create no artifact; for a Slice set `security_status: cleared` and update matrix evidence.
+- [ ] Step 5: Record outcome. Findings path: write or update `security-review-<slug>.md` from `assets/security-review-template.md`; register it in `registry.md`; for an outcome set `security_status: findings_open` and update matrix security evidence. Clean path: create no security-review artifact; for an outcome set `security_status: cleared` and update matrix evidence.
 - [ ] Step 6: Apply the initiative-local semantic-memory update when triggered; route cross-initiative changes per Routing heuristics.
-- [ ] Step 7: Reconcile Slice closure. Set `status: done`, update `slices.md`, and move `slice-<N>.md` from registry `## Live` to `## Archived` only when `qa_status: verified`, `security_status: cleared`, `code_review_status` is terminal (`cleared` or `not_applicable`), and no review finding remains open. Otherwise keep `ready-for-review`; do not hand back to Rahat merely for closure.
+- [ ] Step 7: Reconcile independent outcome acceptance under the embedded contract; mirror a named legacy Slice only when its own scope is accepted. Architecture-only security review cannot certify production implementation.
 - [ ] Step 8: Close — apply Exit and Handoff from the core skill. `Next:` names the remediation owner when findings remain; a clean terminal review uses `none`.
 
 ## Definition of Done
@@ -67,6 +81,6 @@ Progress:
 - [ ] Review scope and trust model stated
 - [ ] Security taxonomy applied with confidence filtering and credible exploit paths
 - [ ] Only High or Medium findings persisted; clean scope explicitly reported
-- [ ] Security artifact, registry, matrix, and Slice status updated when applicable
-- [ ] Slice closure reconciled in the same pass with no self-handoff
+- [ ] Security artifact, registry, matrix, and outcome status updated when applicable
+- [ ] Independent outcome closure reconciled in the same pass with no self-handoff
 - [ ] Next owner is the actual remediation owner or none

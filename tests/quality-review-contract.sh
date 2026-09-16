@@ -17,11 +17,11 @@ for literal in \
   '**Mode 1: Comprehensive Review**' \
   '**Mode 6: Security Review**' \
   '**Mode 7: Code Review**' \
-  '**Mode 8: Slice Verification (FR/NFR Nyquist)**' \
+  '**Mode 8: Targeted Verification (FR/NFR)**' \
   '"comprehensive review"' \
   '**Legacy Slice normalization.**' \
   'A missing field is never implicitly terminal.' \
-  'Runs Slice FR/NFR verification, security review, and code review in one session'; do
+  'Runs outcome completeness, security, and Standards/Spec review in one independent context'; do
   require_literal "$core" "$literal"
 done
 
@@ -39,22 +39,21 @@ for literal in \
   '## Standards' \
   '## Spec' \
   'one context load' \
-  'never hand back to Rahat'; do
+  'do not hand back to Rahat'; do
   require_literal "$comprehensive" "$literal"
 done
 
 security_review="$QA/resources/security-review.md"
-require_literal "$security_review" 'architecture contract, completed Slice, or bounded change set'
+require_literal "$security_review" 'architecture contract, approved phase/outcome, or bounded change set'
 require_literal "$security_review" 'system-design.md'
 require_literal "$security_review" 'Explicit PR, diff, branch, commit range, worktree, or file set'
 
 code_review="$QA/resources/code-review.md"
 # shellcheck disable=SC2016 # Markdown backticks are literal contract text.
 for literal in \
-  'Slice Scope, Acceptance Criteria, Design Contracts' \
-  'registry.md' \
-  'exactly one Slice is `ready-for-review`' \
-  'worktree' \
+  'phase/outcome' \
+  'verification-matrix.md' \
+  'staged, unstaged, and untracked' \
   '## Standards' \
   '## Spec'; do
   require_literal "$code_review" "$literal"
@@ -67,7 +66,7 @@ if rg -q -F 'ask for it' "$code_review"; then
 fi
 
 require_literal "$QA/assets/security-review-template.md" 'owner: Rahat'
-require_literal "$ROOT/bmild-planner/assets/slice-template.md" 'code_review_status:'
+require_literal "$ROOT/bmild-planner/assets/verification-matrix-template.md" 'code_review_status:'
 require_literal "$ROOT/bmild-dev/resources/spec-dev.md" 'code_review_status: review_requested'
 
 if rg -n 'Zach|bmild-sec' \

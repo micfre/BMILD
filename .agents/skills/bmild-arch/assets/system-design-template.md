@@ -58,11 +58,14 @@ Migration intent: ...
 - `200`: `{ ... }`
 - `400`: `{ error: string }` — when ...
 
-## 5. Service Contracts
+## 5. Service Contracts and Delegated Choices
 
 ### <ServiceName>.<methodName>(params): ReturnType
 
-Description. Throws: ...
+Describe binding boundary behavior, side effects, and errors. Specify signatures when interoperability or another committed constraint requires them. Mark private method sketches as illustrative.
+
+- Committed constraints: ...
+- Delegated implementation choices: ...
 
 ## 6. Bounded Assumptions
 

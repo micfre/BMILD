@@ -63,7 +63,7 @@ Only work that genuinely left the session because capability or authority was un
 
 1. <persona> — <mode> on `<artifact>` — verbatim prompt: *"<invocation text>"* — Blocked-By: none
 2. <persona> — <mode> on `<artifact>` — verbatim prompt: *"<invocation text>"* — Blocked-By: 1
-3. Sonia — Replanning on `slices.md` and affected `slice-<N>.md` — Blocked-By: 1, 2
+3. Sonia — Update affected outcome readiness and proof in `verification-matrix.md` — Blocked-By: 1, 2
 ...
 
 ## SP Items

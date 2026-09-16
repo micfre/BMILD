@@ -19,12 +19,13 @@ for harness in claude_code codex; do
   done
 done
 
-claude_efforts='Claude opus: "low", "medium", "high", "max"; Opus 4.7 also "xhigh"'
-codex_sol_efforts='Codex gpt-5.6-sol: "low", "medium", "high", "xhigh", "max", "ultra"'
-codex_terra_efforts='Codex gpt-5.6-terra: "low", "medium", "high", "xhigh", "max", "ultra"'
-[ "$(rg -c -F "$claude_efforts" "$EXAMPLE")" -eq 2 ] || fail "example missing Claude opus effort enums"
-[ "$(rg -c -F "$codex_sol_efforts" "$EXAMPLE")" -eq 2 ] || fail "example missing Codex sol effort enums"
-[ "$(rg -c -F "$codex_terra_efforts" "$EXAMPLE")" -eq 2 ] || fail "example missing Codex terra effort enums"
+rg -q -F 'All unspecified tiers inherit' "$REFERENCE" || fail "inherited tier defaults missing"
+if rg -q '^(model|effort)[[:space:]]*=' "$EXAMPLE"; then
+  fail "example sets a model/effort instead of inheriting by default"
+fi
+if rg -q '^(slice_target|tokenizer_base|tokenizer_multiplier)[[:space:]]*=' "$EXAMPLE"; then
+  fail "example retains active estimator keys"
+fi
 
 if rg -q '^[[:space:]]*(consult|consult_model|consult_effort)[[:space:]]*=' "$EXAMPLE"; then
   fail "example preserves a legacy consult assignment"
@@ -34,7 +35,7 @@ migration='Legacy consult configuration is unsupported in BMILD 0.4.2. Remove co
 rg -q -F "$migration" "$REFERENCE" || fail "exact migration guidance missing"
 rg -q -F 'Do not map, interpret, preserve, or combine legacy values' "$REFERENCE" || fail "legacy no-mapping rule missing"
 rg -q -F 'do not retry or substitute' "$REFERENCE" || fail "invalid-pair no-retry rule missing"
-rg -q -F 'Report the exact pair and harness error' "$REFERENCE" || fail "invalid-pair report rule missing"
+rg -q -F 'report the exact pair and harness error' "$REFERENCE" || fail "invalid-pair report rule missing"
 
 if [ "$failures" -gt 0 ]; then
   echo "configuration-contract: $failures failure(s)" >&2

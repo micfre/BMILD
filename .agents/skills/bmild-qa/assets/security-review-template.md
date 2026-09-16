@@ -5,7 +5,8 @@ description: "<one-line summary>"
 timestamp: YYYY-MM-DD
 scope: "<initiative-name> | _system"
 slug: <slug>
-slice: <N | none>
+outcome: "<authorized outcome identifier or direct change>"
+# Optional legacy reference: slice: <N>
 status: open | resolved
 owner: Rahat
 next_owner: Alex | Lance | Katrina | Rahat | none
@@ -31,7 +32,7 @@ Found [N] High severity and [M] Medium severity issues within [review scope].
 
 ## Closure Evidence
 
-- Remediation reference: [file refs / Slice notes / design update]
+- Remediation reference: [file refs / outcome evidence / design update]
 - Verification performed by Rahat: ...
 - Result: pass | fail | blocked
 - Source promotion status: pending | complete
