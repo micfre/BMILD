@@ -64,7 +64,7 @@ for root in "${SKILL_ROOTS[@]}"; do
   # 3. Review-requested writers (Alex).
   spec_dev="${root}/bmild-dev/resources/spec-dev.md"
   [ -f "${spec_dev}" ] || fail "missing ${spec_dev}"
-  rg -q -F 'qa_status: ready_for_verification' "${spec_dev}" || fail "${spec_dev}: no ready_for_verification writer"
+  rg -q -F 'qa_status: review_requested' "${spec_dev}" || fail "${spec_dev}: no QA review request writer"
   rg -q -F 'code_review_status: review_requested' "${spec_dev}" || fail "${spec_dev}: no code-review request writer"
 
   # 4. status done writer (Rahat).

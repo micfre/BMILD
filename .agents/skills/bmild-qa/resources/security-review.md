@@ -47,7 +47,7 @@ If an architecture target has no `system-design.md`, state that design assumptio
 - *Implementation vulnerability* → persist `security-review-<slug>.md`; next owner Alex.
 - *Clean review* → explicitly state scope and categories checked; create no security-review artifact.
 - *Stable initiative-local security term* → update `context.md` using the canonical context template discipline.
-- *Cross-initiative semantic boundary* → route the proposed `context-map.md` change through the gap-resolution ladder.
+- *Cross-initiative semantic boundary* → route the proposed `context-map.md` change through the gap-resolution ladder; when the owner-authorized edit needs a new file, create it from `.agents/skills/bmild-pm/assets/context-map-template.md`.
 
 <!-- outcome-assurance:start -->
 ### Independent acceptance
@@ -60,7 +60,7 @@ Record code/change identity, source-contract identity, and relevant environment 
 
 Rahat alone writes `qa_status: verified | failed | blocked`, `security_status: findings_open | cleared`, and `code_review_status: findings_open | cleared`. Explicit not-applicable dispositions require a scope-specific rationale from Rahat. `not_reviewed`, missing fields, unrun required proof, and an omitted axis are never terminal. Targeted review cannot stand in for other required axes.
 
-Set outcome `status: done` only with established independence, current evidence for every required source obligation and review axis, no unresolved required finding, and verified phase scope. Otherwise preserve `ready_for_review` or the actual blocked state. The matrix remains live while any outcome needs it. For a named legacy Slice, mirror only accepted scope covered by this review into `slices.md` and move `slice-<N>.md` to registry `## Archived` only after its own status is done. Never archive unrelated outcomes or reopen historical completed Slices merely to normalize fields. Reconcile closure in this pass; do not hand back to Rahat merely for closure.
+Set outcome `status: done` only with established independence, current evidence for every required source obligation and review axis, no unresolved required finding, and verified phase scope. Otherwise preserve `ready_for_review` or the actual blocked state. The matrix remains live while any outcome needs it. When setting the final outstanding outcome to `done`, Rahat moves `verification-matrix.md` from registry `## Live` to `## Archived` only if every outcome is `done` and no open handoff, RCA, security-review, or continuation obligation depends on it; otherwise keep it live and record the reason. On archival, also sync the initiative's `[plan_folder]/rollup.md` registry entry (`Status: complete`, `Last updated`) as a mechanical scribe update. For a named legacy Slice, mirror only accepted scope covered by this review into `slices.md` and move `slice-<N>.md` to registry `## Archived` only after its own status is done. Never archive unrelated outcomes or reopen historical completed Slices merely to normalize fields. Reconcile closure in this pass; do not hand back to Rahat merely for closure.
 <!-- outcome-assurance:end -->
 
 ## Tasks
@@ -71,7 +71,7 @@ Progress:
 - [ ] Step 2: Map trusted actors, untrusted inputs, sensitive data, boundary crossings, authentication/authorization, and sensitive sinks that the scope introduces or changes.
 - [ ] Step 3: Assess the scope against `security-categories.yaml` using stakes pacing and filtering. Trace consequential candidates end to end before assigning confidence or severity.
 - [ ] Step 4: Pre-exit offer, only when findings will be persisted: *"Before I finalise these findings — anything you want to stress-test first? Otherwise I'll write up the review."* A decline or proceed signal continues to Step 5 in the same turn.
-- [ ] Step 5: Record outcome. Findings path: write or update `security-review-<slug>.md` from `assets/security-review-template.md`; register it in `registry.md`; for an outcome set `security_status: findings_open` and update matrix security evidence. Clean path: create no security-review artifact; for an outcome set `security_status: cleared` and update matrix evidence.
+- [ ] Step 5: Record outcome. Findings path: write or update `security-review-<slug>.md` from `assets/security-review-template.md`; register it in `registry.md`; for an outcome set `security_status: findings_open` and update matrix security evidence. Clean path: create no security-review artifact; for an outcome set `security_status: cleared` and update matrix evidence. When all applicable persisted findings become `resolved`, map that result to matrix `cleared` while preserving the finding history; never treat matrix `cleared` as permission to erase the review artifact.
 - [ ] Step 6: Apply the initiative-local semantic-memory update when triggered; route cross-initiative changes per Routing heuristics.
 - [ ] Step 7: Reconcile independent outcome acceptance under the embedded contract; mirror a named legacy Slice only when its own scope is accepted. Architecture-only security review cannot certify production implementation.
 - [ ] Step 8: Close — apply Exit and Handoff from the core skill. `Next:` names the remediation owner when findings remain; a clean terminal review uses `none`.

@@ -10,7 +10,7 @@ Understand the content being elicited, identify the content type and most likely
 - Content to be elicited — from the current conversation context.
 - For a named-persona convener: suspended session state — persona, mode/resource, initiative, artifact section in progress, and pending work.
 
-> **Interchangeable with BMAD source:** `_bmad/core/workflows/advanced-elicitation/methods.csv` uses the same format. Drop in a new file to update the method set — no changes to skill logic required.
+`resources/methods.yaml` is the sole runtime registry. Replace or extend that file only when its documented keys remain compatible with this workflow.
 
 ## Global Directives
 

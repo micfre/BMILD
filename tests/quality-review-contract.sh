@@ -67,6 +67,7 @@ fi
 
 require_literal "$QA/assets/security-review-template.md" 'owner: Rahat'
 require_literal "$ROOT/bmild-planner/assets/verification-matrix-template.md" 'code_review_status:'
+require_literal "$ROOT/bmild-dev/resources/spec-dev.md" 'qa_status: review_requested'
 require_literal "$ROOT/bmild-dev/resources/spec-dev.md" 'code_review_status: review_requested'
 
 if rg -n 'Zach|bmild-sec' \

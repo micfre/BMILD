@@ -7,9 +7,18 @@ scope: "<initiative-name>"
 author: "[user_name] + Sonia / Alex / Rahat"
 ---
 
-## Outcome: <stable descriptive identifier>
+## Outcome Index
 
-Repeat only for separately authorized outcomes. Preserve previous outcomes and evidence when starting another phase. Link source requirements; no Slice or forecast is required.
+- O-001 — <descriptive title>
+  - Phase: MVP | Growth | Vision | explicitly authorized named phase
+  - Status: active | blocked | ready_for_review | done
+  - Last evidence: YYYY-MM-DD
+
+The index is the lookup surface, not a second source of truth. Update its title, phase, status, and last-evidence date whenever the corresponding outcome record changes.
+
+## O-001 — <descriptive title>
+
+Repeat only for separately authorized outcomes. Mint the next unused initiative-local `O-###` in numeric order; never reuse an ID. The ID remains immutable when the descriptive title changes, and every matrix, RCA, security-review, handoff, and cross-session reference uses the ID. Preserve previous outcomes and evidence when starting another phase. Link source requirements; no Slice or forecast is required.
 
 - Phase: MVP | Growth | Vision | explicitly authorized named phase
 - Authorization: <user request or authoritative scope decision>
@@ -18,9 +27,9 @@ Repeat only for separately authorized outcomes. Preserve previous outcomes and e
 - Readiness: ready | partially_ready | blocked — <intent, constraints, unresolved dependencies; Sonia or Alex applying the same criteria>
 - Status: active | blocked | ready_for_review | done
 - Required review axes: functionality/completeness, security applicability, standards/spec fidelity, applicable scalability/maintainability
-- qa_status: not_started | ready_for_verification | verified | failed | blocked
+- qa_status: not_reviewed | review_requested | verified | failed | blocked
 - security_status: not_reviewed | review_requested | findings_open | cleared | not_applicable
-- code_review_status: not_started | review_requested | findings_open | cleared | not_applicable
+- code_review_status: not_reviewed | review_requested | findings_open | cleared | not_applicable
 - Review independence: pending | established — <reviewer context identity; did not implement reviewed production changes; no inherited development transcript>
 - Reviewed state: <code/change and source-contract identity, relevant environment>
 
@@ -40,4 +49,4 @@ Repeat only for separately authorized outcomes. Preserve previous outcomes and e
 - Repair: pending | fixed_pending_review — <change and regression evidence; reviewer closes>
 - Review transition: <phase/outcome, source links, change identity, commands, issues; no developer reasoning transcript>
 
-Sonia owns readiness and coverage planning; Alex owns implementation and continuation evidence; Rahat owns review verdicts and `done`. A matrix is not proof. Preserve historical review evidence and mark affected proof pending when code/contracts/environment change. Verify completeness directly against the sources. `not_reviewed` is never terminal; justify not-applicable axes. Multiple outcomes remain independent. Keep the matrix live while it supports active work; archive only when all outcomes are terminal and it is no longer needed for continuity.
+Sonia owns readiness and coverage planning; Alex owns implementation and continuation evidence; Rahat owns review verdicts, `done`, and the final archival decision. A matrix is not proof. Preserve historical review evidence and mark affected proof pending when code/contracts/environment change. Verify completeness directly against the sources. `not_reviewed` is never terminal; justify not-applicable axes. Multiple outcomes remain independent. Rahat moves the matrix from registry `## Live` to `## Archived` only after every outcome is `done` and no open handoff, RCA, security-review, or continuation obligation still depends on it; otherwise it stays live.

@@ -5,7 +5,7 @@ description: "<one-line summary>"
 timestamp: YYYY-MM-DD
 scope: "<initiative-name> | _system"
 slug: <slug>
-outcome: "<authorized outcome identifier or direct change>"
+outcome: "<O-### or direct change>"
 # Optional legacy reference: slice: <N>
 status: open | resolved
 owner: Rahat
@@ -36,3 +36,5 @@ Found [N] critical, [M] high, [K] medium, and [L] low severity issues within [re
 - Verification performed by Rahat: ...
 - Result: pass | fail | blocked
 - Source promotion status: pending | complete
+
+When every required finding for the outcome is `resolved` and current independent evidence supports the result, set the matrix `security_status: cleared`. `cleared` is the matrix summary of resolved applicable findings; it never deletes finding history.

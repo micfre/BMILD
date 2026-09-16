@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Tightened lifecycle vocabulary and guard coverage: all review-axis initial states now use `not_reviewed`, the rollup `Lead` roster covers all six personas, the status-token guard also checks the indented Outcome Index lines, and AGENTS.md cites the three lifecycle contract tests.
+- Made the rollup Initiative Registry a mechanical projection of authoritative state: outcome activation and matrix archival sync the entry's phase, status, and last-updated date through the simplified-scribe rung, with Sonia retaining structural ownership.
+- Defined immutable initiative-local `O-###` outcome IDs, a compact verification-matrix Outcome Index, and consistent cross-artifact outcome references. Normalized QA request state to `review_requested`, anchored Alex's readiness criteria, and clarified that full independent acceptance uses a fresh Comprehensive Review rather than an ordinary bounded consult leaf.
+- Completed artifact lifecycle ownership: PM bootstraps a missing rollup on first initiative write, semantic authors create a missing context map from its canonical template, every handback owner restores successfully repaired artifacts from Stale to Live, and Rahat evaluates matrix archival when the final outcome reaches `done`.
+- Repaired executable instruction drift: the handoff schema now includes `Owner Disposition`, Brainstorming consumes only fields present in its technique registry and has a defined export destination, Elicit no longer advertises legacy Slice/BMAD surfaces, and security finding `resolved` states map explicitly to matrix `cleared` without losing history.
+- Narrowed Sonia activation to readiness, proof coverage, settled-scope delivery strategy, and consequential coordination; expanded Roundtable conveners to every standard persona while retaining the design/quality attendee roster.
+- Replaced the README workflow placeholder with the non-linear outcome flow and updated lifecycle documentation to avoid hard-coded current test counts.
 - Made Lance's system-design contract outcome-aware: initiative-wide invariants are separated from authorized phase/outcome commitments, and deferred phases no longer acquire implementation authority through architecture coverage.
 - Added first-class `committed`, `delegated`, `illustrative`, and `observed` dispositions across architecture artifacts and their Planner, Alex, and Rahat consumers. Alex can record implementation-confirmed observations mechanically while commitment changes still apply Lance's criteria. Legacy unlabelled designs retain substantive commitments without a bulk migration.
 - Expanded conditional architecture coverage from schema/API/service detail to system boundaries, quality attributes, failure and consistency behavior, operability, rollout, compatibility, and evolution without making those sections mandatory when they do not apply.
@@ -19,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Validation
 
+- Added contract coverage for outcome identity and archival, handoff/registry/rollup/context-map lifecycle, Brainstorming schema/export behavior, Roundtable convener alignment, and the complete Course-Correction flow. CI now runs the skill validator before contract tests.
 - Added structural regression coverage for architecture outcome granularity, contract dispositions, conditional system concerns, post-design routing, and implementation-truth promotion boundaries.
 - Added structural regression coverage for PRD phase mapping, bounded bearing provenance, UX outcome containment and contract authority, progressive refinement impact reads, and downstream consumer interpretation.
 

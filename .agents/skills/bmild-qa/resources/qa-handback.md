@@ -40,7 +40,7 @@ Record code/change identity, source-contract identity, and relevant environment 
 
 Rahat alone writes `qa_status: verified | failed | blocked`, `security_status: findings_open | cleared`, and `code_review_status: findings_open | cleared`. Explicit not-applicable dispositions require a scope-specific rationale from Rahat. `not_reviewed`, missing fields, unrun required proof, and an omitted axis are never terminal. Targeted review cannot stand in for other required axes.
 
-Set outcome `status: done` only with established independence, current evidence for every required source obligation and review axis, no unresolved required finding, and verified phase scope. Otherwise preserve `ready_for_review` or the actual blocked state. The matrix remains live while any outcome needs it. For a named legacy Slice, mirror only accepted scope covered by this review into `slices.md` and move `slice-<N>.md` to registry `## Archived` only after its own status is done. Never archive unrelated outcomes or reopen historical completed Slices merely to normalize fields. Reconcile closure in this pass; do not hand back to Rahat merely for closure.
+Set outcome `status: done` only with established independence, current evidence for every required source obligation and review axis, no unresolved required finding, and verified phase scope. Otherwise preserve `ready_for_review` or the actual blocked state. The matrix remains live while any outcome needs it. When setting the final outstanding outcome to `done`, Rahat moves `verification-matrix.md` from registry `## Live` to `## Archived` only if every outcome is `done` and no open handoff, RCA, security-review, or continuation obligation depends on it; otherwise keep it live and record the reason. On archival, also sync the initiative's `[plan_folder]/rollup.md` registry entry (`Status: complete`, `Last updated`) as a mechanical scribe update. For a named legacy Slice, mirror only accepted scope covered by this review into `slices.md` and move `slice-<N>.md` to registry `## Archived` only after its own status is done. Never archive unrelated outcomes or reopen historical completed Slices merely to normalize fields. Reconcile closure in this pass; do not hand back to Rahat merely for closure.
 <!-- outcome-assurance:end -->
 
 ## Tasks
@@ -50,8 +50,8 @@ Progress:
 - [ ] Step 1: Assess each handoff item targeting Rahat or a Rahat-owned security-review artifact — classify it as QA proof, security re-verification, code-review evidence, or a source-owner decision.
 - [ ] Step 2: Resolve accepted items — update `verification-matrix.md`, `rca-<slug>.md`, `security-review-<slug>.md`, and/or the outcome review follow-up; re-run named proof or affected-boundary security trace when required; update `Owner Disposition` and `Promotion Record`; run Promotion Cascade Check. Reconcile linked `qa_status`, `security_status`, and `code_review_status` in the same pass so no stage stays open past its evidence.
 - [ ] Step 3: Defer items needing design or implementation input — name missing constraint; route with one precise handoff item when another owner must act.
-- [ ] Step 4: Write — persist QA changes; update `timestamp` frontmatter.
-- [ ] Step 5: Reconcile outcome acceptance under the embedded contract; mirror and archive a named legacy Slice only when its scope meets the same bar. Never create a Rahat-to-Rahat closure handoff.
+- [ ] Step 4: Write and restore liveness — persist QA changes; update `timestamp` frontmatter. After successful source promotion, remove each repaired QA-owned artifact from registry `## Stale` and add it to `## Live`; leave only unresolved artifacts stale with their governing handoff/proposal reference.
+- [ ] Step 5: Reconcile outcome acceptance under the embedded contract; mirror and archive a named legacy Slice only when its scope meets the same bar. If this pass sets the final outstanding outcome to `done`, evaluate matrix archival and move `verification-matrix.md` from registry `## Live` to `## Archived` only when no open handoff, RCA, security-review, or continuation obligation depends on it; on archival, also sync the initiative's `[plan_folder]/rollup.md` registry entry (`Status: complete`, `Last updated`) as a mechanical scribe update. Never create a Rahat-to-Rahat closure handoff.
 - [ ] Step 6: Close — apply Exit and Handoff from the core skill. Route only unresolved implementation/design work to its actual owner.
 
 ## Definition of Done
@@ -60,4 +60,5 @@ Progress:
 - [ ] QA, security, code-review, or RCA changes written with evidence
 - [ ] Outcome review statuses updated if outcomes changed
 - [ ] Outcome closure reconciled without a self-handoff
+- [ ] Repaired QA artifacts returned from registry `## Stale` to `## Live`; matrix archival evaluated at final outcome closure
 - [ ] Close message: items resolved, deferred items, next owner

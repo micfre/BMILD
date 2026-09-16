@@ -7,7 +7,7 @@ Facilitate the selected technique(s) as a creative coach — genuine back-and-fo
 ## Inputs
 
 - Selected technique names (and phase order if progressive flow) carried forward from the technique-selection step.
-- `resources/brain-methods.yaml` for `facilitation_prompts` and `energy_level` fields per technique.
+- `resources/brain-methods.yaml` for each technique's `technique_name` and `description`.
 
 ## Global Directives
 
@@ -24,12 +24,12 @@ Progress:
 
    > *"Let's start with **[Technique Name]**. This isn't a Q&A — we're exploring together. I'll introduce one element at a time and build on what you bring."*
 
-   State the technique's primary goal and energy level from the YAML `facilitation_prompts` and `energy_level` fields.
+   State the technique's primary goal from its YAML `description`, then choose a conversational pace from the user's responses rather than inventing an energy field.
 
-- [ ] Step 2: **Facilitate** — Use `facilitation_prompts` from the YAML to drive exploration. Present one prompt, wait for the user's response, then:
+- [ ] Step 2: **Facilitate** — Derive prompts from the selected technique's `description`. Present one prompt, wait for the user's response, then:
   - If the response is brief: dig deeper — *"Tell me more about [specific aspect]. What would that look like in practice?"*
   - If the response is rich: build on it — *"Let's take that further. What if [extension of their idea]?"*
-  - If the user seems stuck: offer an angle — *"Here's a starting point: [gentle prompt from the YAML]. Which direction does that pull you?"*
+  - If the user seems stuck: offer an angle — *"Here's a starting point: [gentle prompt derived from the technique description]. Which direction does that pull you?"*
 
    Before each idea, internally ask: what domain haven't we explored yet? What would make this idea surprising or uncomfortable? Every 10 ideas, consciously shift to an orthogonal domain (UX → business → technical constraints → social impact → edge cases).
 

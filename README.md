@@ -209,8 +209,26 @@ The three interactive modes are available whenever they help. A persona may sugg
 
 ## What the work looks like
 
-> [!NOTE]
-> **Workflow visual placeholder**  --  will be replaced with a BMILD workflow image.
+```mermaid
+flowchart LR
+    U[User outcome] --> O{What is unsettled?}
+    O -->|Product intent| F[Faisal]
+    O -->|User experience| K[Katrina]
+    O -->|System contracts| L[Lance]
+    O -->|Settled scope| A[Alex]
+    F --> K
+    F --> L
+    K --> A
+    L --> A
+    S[Sonia: readiness, coverage, coordination] -. supports .-> F
+    S -. supports .-> K
+    S -. supports .-> L
+    S -. supports .-> A
+    A --> R[Rahat: independent acceptance]
+    R -->|accepted| D[Outcome done]
+    R -->|implementation defect| A
+    R -->|source-contract gap| O
+```
 
 The workflow is intentionally non-linear. You might start at Alex for a bounded direct-dev request or spike. Rahat may diagnose a failure and then either implement the confirmed fix or hand the RCA to Alex when you want a fresh window. Rahat may also surface a design flaw that needs Lance. An existing UX design may be enough to ground the next authorized outcome. Sonia may send a change upstream rather than papering over a gap. The important part is that the next move is based on the state of the work, not which box you were supposed to visit first. Agents are good about calling out next moves, if in doubt.
 

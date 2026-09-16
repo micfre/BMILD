@@ -48,6 +48,7 @@ jobs:
       - name: Run contract tests
         run: |
           set -euo pipefail
+          bash scripts/validate-skills.sh
           for s in tests/*-contract.sh; do
             echo "== ${s} =="
             bash "$s"

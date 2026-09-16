@@ -34,6 +34,7 @@ When this is a user-accepted Project Bearing continuation, also consume the in-c
 - Does not run an owner's judgment or distillation gate; those belong to guest voice or owner consult.
 - Appends the episode to the change-proposal's `## Resolution Record`.
 - Appends a line to `[plan_folder]/rollup.md` `## Decision Log` when the outcome has cross-initiative or durable coordination value.
+- Creates `[plan_folder]/rollup.md` from `assets/rollup-template.md` before that append when the file is absent; preserve existing initiative registry and bearing ownership.
 
 ## Tasks
 

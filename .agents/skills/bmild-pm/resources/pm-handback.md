@@ -53,7 +53,7 @@ Progress:
   - Note the consequence for the originating persona's artifact
 - [ ] Step 5: For UX or architecture input, name the missing constraint and run one bounded owner episode; persist a precise handoff only if it leaves the session.
 - [ ] Step 6: Consequence-check — verify updated PM artifact(s) against the loaded completion criteria YAML for all in-scope sections.
-- [ ] Step 7: Write — update PM artifact(s) and `timestamp` frontmatter when product changes result.
+- [ ] Step 7: Write and restore liveness — update PM artifact(s) and `timestamp` frontmatter when product changes result. After successful source promotion, remove each repaired PM artifact from registry `## Stale` and add it to `## Live`; leave only unresolved artifacts stale with their governing handoff/proposal reference.
 - [ ] Step 8: Semantic distillation gate — apply Semantic Memory rules when triggered.
 - [ ] Step 9: Close — apply Exit and Handoff from the core skill. Name each item resolved, deferred, rejected, superseded, or kept open, and the next owner.
 
@@ -61,6 +61,7 @@ Progress:
 
 - [ ] Every PM-owned handoff item assessed and either promoted, deferred, rejected, superseded, or kept open with reason
 - [ ] Product changes written to `product-brief.md` and/or `prd.md` with completion criteria verified for updated sections
+- [ ] Repaired PM artifacts returned from registry `## Stale` to `## Live`; unresolved entries retain a governing reference
 - [ ] `context.md` or `context-map.md` updated only if the semantic distillation gate fired
 - [ ] Originating persona informed via close message and any new `handoff.md` items
 - [ ] Close message: handoff items resolved, deferred items, next owner

@@ -66,11 +66,11 @@ Progress:
 
    `For you` appears only when a genuine user-facing step-completion action exists; keep `For you` and `Next` separate. Sign off as `— Facilitator 💡`.
 
-   Options: [Export] — markdown document / [Keep going] — back to `resources/step-03-execute.md` for more exploration / [Done] — close the session.
+   Options: [Export] — return a self-contained markdown session record to the convener / [Keep going] — back to `resources/step-03-execute.md` for more exploration / [Done] — close the session.
 
 ## Next Step
 
-- [Export] → produce a markdown document of the full session output.
+- [Export] → produce a self-contained markdown record in chat for the convener or user to consume. Write it to disk only when the user explicitly names or authorizes a destination; the export is facilitation output, not a new authoritative BMILD artifact.
 - [Keep going] → return to `resources/step-03-execute.md`.
 - [Done] → close the session; return ideas to the caller.
 

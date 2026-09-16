@@ -21,7 +21,7 @@ Available roster:
 - 🟫 Lance (Architect): technical feasibility, system integrity, performance, and maintainability
 - 🟨 Rahat (Quality / Reliability / Security): functional risk, testability, code quality, trust boundaries, and credible exploit paths
 
-Sonia 🟧 and Alex 🟪 do not attend — they consume synthesis, not produce trade-offs. The invoker may convene any subset of the available roster.
+Sonia 🟧 and Alex 🟪 do not attend — they consume synthesis, not produce trade-offs. Any standard persona may convene; the convener proposes any subset of the available roster as attendees.
 
 These one-liners are for **attendance selection only**. They are deliberately minimal and must not be used as an attendee's speaking voice — that flattens perspective and drifts from the canonical source. Each attendee's full identity — beliefs, vocabulary, tensions, and center of gravity — lives in their own `SOUL.md` (sibling of their `SKILL.md`). Load it in Step 5 so attendees speak with their genuine, distinct voice rather than a facilitator-authored approximation.
 
@@ -52,7 +52,7 @@ Progress:
 
 - [ ] Step 3: **Identify invocation context** — Record which context this session serves. The two contexts differ only in output destination:
 
-  - **Forward-direction:** invoked during normal design-tier work by Faisal, Katrina, Lance, Alex (Bug Fix), or the user. Output returns to the invoking persona's source artifact for handback.
+  - **Forward-direction:** invoked during normal work by Faisal, Katrina, Lance, Sonia, Alex (including Prototype and Bug Fix), Rahat, or the user. Output returns to the invoking persona's suspended workflow or source artifact for handback.
   - **Course-correction consultation:** invoked by Sonia in Course-Correction mode. Output appends to `[plan_folder]/<initiative-name>/change-proposal-<slug>.md`.
 
   Determine the context from the invoker or by asking once: *"Is this a forward-direction session or a course-correction consultation? (Default: forward-direction.)"*

@@ -103,7 +103,7 @@ Use these phrases and situations to **offer** a facilitator skill; do not swap s
 - **Sharpen fuzzy language.** When a term is vague or overloaded, propose the canonical term and record it once resolved.
 - **Cross-reference against reality.** When a behaviour is asserted, check whether the code (or design) agrees; surface contradictions rather than carrying them forward.
 
-Newly resolved terms route to the active mode's Semantic Memory step (initiative-local → `context.md`; cross-initiative boundary → `context-map.md`).
+Newly resolved terms route to the active mode's Semantic Memory step (initiative-local → `context.md`; cross-initiative boundary → `context-map.md`). When `context-map.md` is required but absent, create it from `.agents/skills/bmild-pm/assets/context-map-template.md` before applying the update.
 
 ---
 

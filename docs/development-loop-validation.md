@@ -6,7 +6,7 @@ Implementation: Option C, 0.5.0 · 2026-09-16
 
 The refactor changes the shipped skill instructions, evidence template, generated consult defaults, documentation, and deterministic regression guards. BMILD personas were not activated during this task. Source-scenario review predicts behavior from instructions; it is not a live workflow trial or proof of speed/quality improvement.
 
-Baseline revision: `fcc4f93e49a199091a47b4f1c197196fb7b51492`. All 17 baseline contract tests passed before editing. The selected direction, estimator retirement, and original reasoning are recorded in the [discussion plan](development-loop-options.md). Local project memory also records ADR 0012 and supersedes the three estimator ADRs; `plans/` remains excluded from version control by repository policy.
+Baseline revision: `fcc4f93e49a199091a47b4f1c197196fb7b51492`. All 18 baseline contract tests passed before this alignment work. The selected direction, estimator retirement, and original reasoning are recorded in the [discussion plan](development-loop-options.md). Local project memory also records ADR 0012 and supersedes the three estimator ADRs; `plans/` remains excluded from version control by repository policy.
 
 ## Completed implementation
 
@@ -37,7 +37,7 @@ bash scripts/lint.sh
 for test in tests/*-contract.sh; do bash "$test"; done
 ```
 
-The 0.5.0 suite had 16 contract scripts: two estimator-specific contracts were removed and `outcome-execution-contract.sh` was added. The architecture refinement adds `architecture-contract-granularity-contract.sh`, bringing the current suite to 17. Estimator-only golden/equivalence runners were retired with the calculator. Keep the distinction between source-contract guards and executable tests: marker checks do not demonstrate that an LLM follows a rule. Generator tests parse generated TOML and check inherited defaults; commit tests exercise isolated Git fixtures with unrelated state and hook failures.
+The 0.5.0 suite had 16 contract scripts: two estimator-specific contracts were removed and `outcome-execution-contract.sh` was added. Architecture and product/UX outcome refinements added two more, bringing the pre-alignment suite to 18. The alignment work adds lifecycle-focused guards; use the repository glob above rather than maintaining another hard-coded current count. Estimator-only golden/equivalence runners were retired with the calculator. Keep the distinction between source-contract guards and executable tests: marker checks do not demonstrate that an LLM follows a rule. Generator tests parse generated TOML and check inherited defaults; commit tests exercise isolated Git fixtures with unrelated state and hook failures.
 
 `outcome-execution-contract.sh` checks primary entry/phase/evidence requirements, byte-identical acceptance blocks at point of use in all five review modes, fixer independence, estimator surface removal, and literal skill-local resource references. `architecture-contract-granularity-contract.sh` protects architecture outcome scoping, disposition semantics, conditional system concerns, direct post-design routing, and the observation-to-commitment promotion boundary. Existing tests retain shared gap/promotion/session/commit/Fix Election identity and authority boundaries.
 

@@ -22,7 +22,7 @@ bearing_owner: Faisal (PM)
 - Initiative: <initiative-name>
   - Phase: MVP | Growth | Vision
   - Status: active | complete | archived
-  - Lead: Faisal | Lance | Katrina | Sonia
+  - Lead: Faisal | Katrina | Lance | Sonia | Alex | Rahat
   - Last updated: YYYY-MM-DD
 
 ## Decision Log

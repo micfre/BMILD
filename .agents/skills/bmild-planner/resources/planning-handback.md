@@ -37,7 +37,7 @@ Progress:
   - Run the **Promotion Cascade Check** from `references/gap-resolution.md`: classify consumers `unaffected | mechanical | owner-decision | stale`; scribe mechanical propagation; resolve independent owner decisions through separate ladder episodes; offer Course-Correction only for coupled choices and wait for user confirmation. Mark only unresolved consumers stale and append `Downstream Cascade: <summary>`; do not replace an in-session resolution with a new handoff.
 - [ ] Step 4: Defer items needing design input — name missing constraint; route with one precise handoff item when another owner must act.
 - [ ] Step 5: Write — persist planning changes; update `timestamp` frontmatter.
-- [ ] Step 6: Register — update `registry.md` (`## Live` / `## Archived`).
+- [ ] Step 6: Register — after successful promotion, remove repaired planning artifacts from registry `## Stale` and add them to `## Live`; leave only unresolved artifacts stale with their governing handoff/proposal reference. Move terminal artifacts to `## Archived` only under their explicit owner/trigger rule.
 - [ ] Step 7: Close — apply Exit and Handoff from the core skill. Name each item resolved, deferred, rejected, or superseded.
 
 ## Definition of Done

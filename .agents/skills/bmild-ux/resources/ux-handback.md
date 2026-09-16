@@ -59,7 +59,7 @@ Progress:
   - Note the consequence for the originating persona's artifact
 - [ ] Step 5: For product or architecture input, name the missing constraint and run one bounded owner episode; persist a precise handoff only if it leaves the session.
 - [ ] Step 6: Consequence-check — verify updated sections against `completion-criteria.yaml` for all applicable sections, including outcome containment and disposition clarity.
-- [ ] Step 7: Write — update `ux-design.md` and `timestamp` frontmatter when design changes result.
+- [ ] Step 7: Write and restore liveness — update `ux-design.md` and `timestamp` frontmatter when design changes result. After successful source promotion, remove repaired UX artifacts from registry `## Stale` and add them to `## Live`; leave only unresolved artifacts stale with their governing handoff/proposal reference.
 - [ ] Step 8: Distillation gates — apply Global pattern distillation (DESIGN.md) and Semantic Memory (`context.md` / `context-map.md`) rules when triggered.
 - [ ] Step 9: Close — apply Exit and Handoff from the core skill. Name each item resolved, deferred, rejected, superseded, or kept open, and the next owner.
 
@@ -68,6 +68,7 @@ Progress:
 - [ ] Every UX-owned handoff item assessed and either promoted, deferred, rejected, superseded, or kept open with reason
 - [ ] Promotion Cascade Check completed for all accepted changes
 - [ ] Design changes written to `ux-design.md` with completion criteria verified for updated sections
+- [ ] Repaired UX artifacts returned from registry `## Stale` to `## Live`; unresolved entries retain a governing reference
 - [ ] `DESIGN.md` updated only if global pattern distillation gate fired
 - [ ] `context.md` and/or `context-map.md` updated only if the semantic gate fired
 - [ ] Close message: handoff items resolved, deferred items, next owner

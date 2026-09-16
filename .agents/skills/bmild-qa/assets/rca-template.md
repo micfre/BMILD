@@ -5,7 +5,7 @@ description: "<one-line summary>"
 timestamp: YYYY-MM-DD
 scope: "<initiative-name> | _system"
 slug: <slug>
-outcome: "<authorized outcome identifier or direct change>"
+outcome: "<O-### or direct change>"
 # Optional legacy reference: slice: <N>
 severity: low | medium | high | critical
 created: YYYY-MM-DD

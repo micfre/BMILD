@@ -40,7 +40,7 @@ Progress:
   - Specific evidence that would overturn the choice
 - [ ] Step 4: Recommend one bearing conditionally. Name why the alternatives are not first, not merely why they are valid.
 - [ ] Step 5: Ask the user to select, modify, or reject the recommendation. Do not write a bearing or begin initiative work before that response.
-- [ ] Step 6: On selection, update `[plan_folder]/rollup.md`:
+- [ ] Step 6: On selection, create `[plan_folder]/rollup.md` from `.agents/skills/bmild-planner/assets/rollup-template.md` when absent, then update it:
   - Add or replace `## Current Bearing` with `Direction`, `Why now`, `Set`, and `Reconsider when`.
   - Append one concise `## Decision Log` line when the choice has durable cross-initiative value.
   - Preserve Sonia's Initiative Registry and unrelated history.

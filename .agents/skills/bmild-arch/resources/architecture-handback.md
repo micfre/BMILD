@@ -58,7 +58,7 @@ Progress:
   - Note the consequence for the originating persona's artifact
 - [ ] Step 5: For product or UX input, name the missing constraint and run one bounded owner episode; persist a precise handoff only if it leaves the session.
 - [ ] Step 6: Consequence-check — verify updated sections against `completion-criteria.yaml`, including outcome scope, disposition, and deferred-phase containment.
-- [ ] Step 7: Write — update `system-design.md` and `timestamp` frontmatter when design changes result.
+- [ ] Step 7: Write and restore liveness — update `system-design.md` and `timestamp` frontmatter when design changes result. After successful source promotion, remove repaired architecture artifacts from registry `## Stale` and add them to `## Live`; leave only unresolved artifacts stale with their governing handoff/proposal reference.
 - [ ] Step 8: Distillation gates — apply the Drift-protection ADR gate and Semantic Memory rules when triggered.
 - [ ] Step 9: Close — apply Exit and Handoff from the core skill. Name each item resolved, deferred, rejected, superseded, or kept open, and the next owner.
 
@@ -66,6 +66,7 @@ Progress:
 
 - [ ] Every architecture-owned handoff item assessed and either promoted, deferred, rejected, superseded, or kept open with reason
 - [ ] Design changes written to `system-design.md` with completion criteria verified for updated sections
+- [ ] Repaired architecture artifacts returned from registry `## Stale` to `## Live`; unresolved entries retain a governing reference
 - [ ] Promoted items identify outcome applicability and disposition; observations were not silently converted into commitments
 - [ ] Drift-protection ADR extracted into `[plan_folder]/adr/` only if the triple-axis gate fired
 - [ ] `context.md` and/or `context-map.md` updated only if the semantic gate fired

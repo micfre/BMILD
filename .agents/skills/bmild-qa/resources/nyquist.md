@@ -21,7 +21,8 @@ Load in this order:
 - **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
 
 - **Proof discipline.** Each matrix row names demonstrable proof — implementation status alone is not proof.
-- **Planning-artifact discipline.** Sonia-authored matrices are validated and repaired here, not treated as already proven.
+- **Planning-artifact discipline.** Validate and repair coverage rows regardless of whether Sonia created them or Alex created them from settled sources; neither authorship is proof.
+- **Outcome identity.** Preserve existing `O-###` IDs. When repairing an absent outcome record, mint the next unused initiative-local ID, never reuse it, and update the matrix Outcome Index in the same edit.
 - **Handoff-artifact discipline.** Include proof that authoritative source promotion occurred before handoff outcomes are treated as complete.
 
 ## Tasks
@@ -32,7 +33,7 @@ Progress:
 - [ ] Step 2: Define infrastructure — test commands and tooling Alex will use.
 - [ ] Step 3: Draft scaffolding — test files, mocks, fixtures when the project supports it.
 - [ ] Step 4: Check coverage directly against the authorized phase/outcome, including proof obligations omitted from an existing matrix; preserve other outcomes and current evidence.
-- [ ] Step 5: Write — create or update `verification-matrix.md` using `.agents/skills/bmild-planner/assets/verification-matrix-template.md` (canonical; Planner owns it, QA repairs in place). Record QA authorship where applicable; keep source obligations separate from implementation and independent proof. No Slice is required.
+- [ ] Step 5: Write — create or update the `O-###` record and Outcome Index in `verification-matrix.md` using `.agents/skills/bmild-planner/assets/verification-matrix-template.md` (canonical; Planner owns it, QA repairs in place). Record QA authorship where applicable; keep source obligations separate from implementation and independent proof. No Slice is required.
 - [ ] Step 6: Register — add `verification-matrix.md` to `## Live` in `registry.md`.
 - [ ] Step 7: Close — apply Exit and Handoff from the core skill.
 

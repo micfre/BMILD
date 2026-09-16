@@ -19,11 +19,11 @@ def require(body, terms):
 # Entry and evidence schema are phase/outcome based without a Slice prerequisite.
 require(text('bmild-dev/SKILL.md'), ['Mode 1: Outcome Development', '*(primary)*', 'several old Slices', 'authorized phase'])
 require(text('bmild-dev/resources/spec-dev.md'), ['MVP/Growth/Vision', 'A Slice, separate planner invocation', 'not an entry requirement', 'future-phase', 'fresh isolated context', 'do not fork the development transcript', 'Preserve other outcomes'])
-require(text('bmild-planner/assets/verification-matrix-template.md'), ['## Outcome:', '- Phase:', '- Authorization:', '- Reviewed state:', '- Review independence:', 'Implementation: pending', 'Verification: pending', 'Multiple outcomes remain independent', '- Status: active | blocked | ready_for_review | done'])
+require(text('bmild-planner/assets/verification-matrix-template.md'), ['## Outcome Index', '## O-001', '- Phase:', '- Authorization:', '- Reviewed state:', '- Review independence:', 'Implementation: pending', 'Verification: pending', 'Multiple outcomes remain independent', '- Status: active | blocked | ready_for_review | done'])
 
 # Machine-matched status tokens use underscores; hyphenated status forms are retired.
 for line in text('bmild-planner/assets/verification-matrix-template.md').splitlines():
-    if re.match(r'^- .*?(?:[Ss]tatus|Readiness|Repair):', line):
+    if re.match(r'^\s*- .*?(?:[Ss]tatus|Readiness|Repair):', line):
         assert not re.search(r'[a-z]+-[a-z]+', line.split(':', 1)[1]), f'Hyphenated status token: {line}'
 require(text('bmild-planner/assets/change-proposal-template.md'), ['status: open | in_progress | applied | abandoned'])
 for path in list(skills.rglob('*')) + [root / 'AGENTS.md']:
