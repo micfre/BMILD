@@ -9,7 +9,22 @@ author: "[user_name] + Katrina (UX)"
 
 ## 1. Initiative Context & Flow Goals
 
-What specific user behavior we are enabling.
+- **Authorized outcome / phase:** <MVP | Growth | Vision | named outcome | initiative-wide>
+- **Authorization source:** <request or authoritative outcome link>
+- **In-scope user-facing requirements:** <FR and journey IDs when present; otherwise precise request or source references>
+- **Deferred requirements and journeys:** <later phases that inform coherence but create no present implementation authority>
+- **Initiative-wide UX invariants:** <observable interaction or accessibility rules shared across outcomes>
+- **Affected existing surfaces:** <screens, routes, or flows changed by this outcome>
+- **Flow goal:** <specific user behavior this outcome enables>
+
+## UX contract interpretation
+
+User-observable behavior, information, available actions, states, accessibility, and
+consequential copy are `committed` by default. Standard component mechanics and private
+state handling are `delegated` when established `DESIGN.md` or repository conventions are
+sufficient. Mark examples or sketches `illustrative`; mark brownfield behavior `observed`
+when it records current reality rather than design intent. Add an explicit **Disposition**
+only where the default could be mistaken. Deferred-phase content is non-binding.
 
 ## 2. Information Architecture & Routing
 
@@ -21,6 +36,9 @@ New screens, names, routing structure, and URLs.
 
 Entry point → steps → exit condition. Include error paths and edge cases.
 
+- **Applies to:** <authorized outcome/phase | initiative-wide>
+- **Disposition:** <committed | delegated | illustrative | observed, only when needed>
+
 ## 4. Screens / Views
 
 ### <Screen Name>
@@ -28,11 +46,13 @@ Entry point → steps → exit condition. Include error paths and edge cases.
 - **Layout Regions:** ...
 - **Data Displayed:** ...
 - **Available Actions:** ...
-- **States:** loading / empty / error / populated
+- **States:** applicable loading / empty / error / populated states; identify a material state as not applicable with a reason
 
 ## 5. Initiative-Specific Interaction Model
 
-Component-level behaviour specific to this feature. What triggers what. What state is held where.
+Consequential or non-standard user-observable behaviour specific to this feature. State
+what triggers what and the visible response. Delegate standard component mechanics and
+private state handling when established conventions are sufficient.
 
 ## 6. Bounded Assumptions
 

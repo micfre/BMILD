@@ -15,6 +15,8 @@ Load in this order:
 - `./resources/completion-criteria.yaml`
 - Confirm no `## Archived` entries or other initiative folders were loaded
 
+Resolve the affected authorized outcome(s) or initiative-wide UX invariant before eliciting changes. Later-phase requirements remain context, not authority, unless the user explicitly includes them.
+
 ## Stakes-based elicitation
 
 Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth for **changed** sections. Use those values — do not re-derive stakes ad hoc. When `stakes_note` is present, it overrides `stakes` for pacing.
@@ -37,6 +39,8 @@ Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth for **
 - **Challenge, do not preserve.** Treat existing UX content as hypotheses until revalidated.
 - **Hydrate before eliciting.** Read current PM artifacts; do not reopen settled requirements unless the refinement target exposes conflict or stale content.
 - **Observable decisions only.** Label preferences as preferences.
+- **Outcome containment.** Preserve unaffected outcome contracts and initiative-wide invariants. Do not let a refinement silently authorize deferred-phase screens, flows, or states.
+- **Commitment strength.** Apply the core skill's UX contract defaults. Reclassify only content touched by the refinement; no bulk migration of a legacy design is required.
 - **Artifact-authority discipline.** Live elicitation in chat; `handoff.md` when another owner must act. Bounded assumptions only when low-risk and reversible.
 
 ## Global pattern distillation
@@ -53,7 +57,7 @@ When refined initiative-local meaning becomes stable:
 
 Progress:
 
-- [ ] Step 1: Hydrate — read current PM artifacts and architecture constraints; identify what the change affects.
+- [ ] Step 1: Hydrate — read current PM artifacts and architecture constraints; identify the affected authorized outcome(s), initiative-wide UX invariants, and deferred phases.
 - [ ] Step 2: Identify refinement target — if unspecified, ask one question. Surface bounded assumptions and unresolved handoff items; use `friction map`, error/empty-state probing, or `show the work` where they clarify the flow, not as a script.
 - [ ] Step 3: Brainstorm reconciliation — if a brainstorming session preceded this artifact, cross-reference against `ux-design.md`; surface silently dropped ideas; ask whether any should be incorporated.
 - [ ] Step 4: Groundtruth — verify codebase/design-system reality per Global Directives when relevant to the change.
@@ -61,7 +65,7 @@ Progress:
   - **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
 - [ ] Step 5: Preview the queue — name changed sections grouped by YAML `stakes` and approximate question count.
 - [ ] Step 6: Elicit refinements — apply Stakes-based elicitation to changed sections only.
-- [ ] Step 7: Consequence-check — verify changed sections and cross-section impacts; run `completion-criteria.yaml` for all in-scope sections.
+- [ ] Step 7: Consequence-check — verify changed sections, cross-section impacts, unaffected-outcome preservation, disposition clarity, and deferred-phase containment; run `completion-criteria.yaml` for all applicable sections.
 - [ ] Step 8: Pre-exit offer (conditional, declinable in one word) — when any **consequential** section is being materially changed, offer once, naming 1–2 session-appropriate bmild-elicit methods from this artifact's shortlist (**User Persona Focus Group**, **Challenge from Critical Perspective**), chosen by what was actually contentious: *"Before I update the UX design — I could run **User Persona Focus Group** or **Challenge from Critical Perspective** in a bmild-elicit session, or take anything to roundtable. Otherwise I'll proceed."* On acceptance, swap to `bmild-elicit` with the method pre-selected. Skip when only medium/low sections change or the session is a single-field alignment. Any decline or proceed signal continues directly to the update in the same turn — no further confirmation.
 - [ ] Step 9: Write — update `[plan_folder]/<initiative-name>/ux-design.md` using `assets/ux-design-template.md`. Preserve unchanged sections. Update `timestamp` frontmatter.
 - [ ] Step 10: Distillation gates — apply Global pattern distillation (DESIGN.md) and Semantic Memory (`context.md` / `context-map.md`) rules when triggered.
@@ -73,6 +77,8 @@ Progress:
 - [ ] Brainstorming ideas reconciled when applicable
 - [ ] Refinement target identified and affected sections updated
 - [ ] Existing decisions challenged, not merely preserved
+- [ ] Unaffected outcome contracts preserved and deferred phases remain non-binding
+- [ ] Changed content distinguishes committed UX from delegated, illustrative, and observed content where needed
 - [ ] `completion-criteria.yaml` verified for all in-scope sections
 - [ ] Relevant `handoff.md` items resolved, deferred, rejected, superseded, or routed with clear next owner
 - [ ] `ux-design.md` written with current `timestamp` date

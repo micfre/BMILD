@@ -35,6 +35,7 @@ Per-section `stakes` in `brief-completion-criteria.yaml` sets elicitation depth.
 - **Discovery before invention**: Before accepting a greenfield premise, verify repository reality. Scan the codebase when the initiative may be brownfield or when artifacts claim behaviour that code may already implement. Do not invent greenfield solutions in a brownfield environment.
 - **Diverge before converging.** Consequential sections from YAML first; medium and low sections synthesized for steering.
 - **Problem framing precedes features.** Capture full vision and a tight initiative boundary in the brief. Defer MVP-vs-Growth bucketing and documentation scope to PRD mode.
+- **Bearing provenance stays bounded.** When this mode directly continues a user-selected Project Bearing, preserve one concise origin reference in the brief. Do not copy the project-level rationale or reconsideration condition, and do not make the bearing initiative authority. When there is no direct bearing continuation, omit the field rather than inferring one.
 - **Naked assumptions are forbidden in artifacts.** Every documented assumption, deferral, and open question carries `Assumption` → `Confidence` → `Consequence if wrong`.
 - **Artifact-authority discipline.** `handoff.md` is for source-artifact defects, cross-artifact conflicts, and promotion requests that require another owner's action. Live user elicitation stays in chat unless async continuity truly requires a governed handoff. Bounded assumptions are only valid when low-risk and reversible.
 
@@ -65,6 +66,7 @@ Progress:
   - At least one success criterion is measurable
   - Scope is a tight boundary, not a feature list
   - Any user-owned ambiguity is resolved live or documented as a bounded assumption only when low-risk and reversible; other-owner gaps run the ladder and persist a handoff only for asynchronous continuity
+  - Direct Project Bearing continuations record only the optional provenance line; other briefs omit it
   - Every in-scope section in `brief-completion-criteria.yaml` passes falsifiable / good_signal / weak_signal
 - [ ] Step 4: Pre-exit offer (declinable in one word) — name 1–2 session-appropriate bmild-elicit methods from this artifact's shortlist (**Challenge from Critical Perspective**, **Shark Tank Pitch**), chosen by what was actually contentious: *"Before I write the brief — I could run **Challenge from Critical Perspective** or **Shark Tank Pitch** in a bmild-elicit session, or take anything to roundtable. Otherwise I'll proceed."* On acceptance, swap to `bmild-elicit` with the method pre-selected; offer roundtable per core Advanced Elicitation Triggers when trade-offs are still open. Any decline or proceed signal continues directly to the Write step in the same turn — no further confirmation.
 - [ ] Step 5: Write — write `[plan_folder]/<initiative-name>/product-brief.md` using `assets/product-brief-template.md`. Substitute `[user_name]` from `.bmild.toml`.

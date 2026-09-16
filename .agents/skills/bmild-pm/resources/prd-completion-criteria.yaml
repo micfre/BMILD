@@ -22,7 +22,7 @@ sections:
       support every FR.
     good_signal: >
       Requirements are organized by capability area, not by technology or layer. Each FR
-      uses the format: [Actor] can [capability]. Each FR can be read in isolation and
+      has a stable identifier and uses the format: [Actor] can [capability]. Each FR can be read in isolation and
       answered yes or no by a tester who has never seen the rest of the PRD. No UI
       details, performance numbers, or technology choices are embedded in FR statements.
       Every FR traces to a user need, success criterion, or journey step from
@@ -61,7 +61,7 @@ sections:
       A tester can write a test script for the happy path and at least one error path
       for each journey from this section alone.
     good_signal: >
-      At least one end-to-end sequence: named trigger, actor, ordered steps, and success
+      At least one end-to-end sequence with a stable identifier: named trigger, actor, ordered steps, and success
       exit. Edge or failure paths are acknowledged even if not fully specified. A journey
       requirements summary connects journeys to capability areas named in the FRs.
     weak_signal: >
@@ -73,16 +73,21 @@ sections:
     stakes: consequential
     falsifiable: >
       A planner can read this section and sequence delivery without re-negotiating scope
-      boundaries. Phase 1 is distinguishable from Phase 2 by a clear test.
+      boundaries. Each phase with specified requirements names its observable outcome and
+      included FR and journey IDs, and Phase 1 is distinguishable from Phase 2 without inference.
     good_signal: >
       Phase 1 (MVP) contains the absolute minimum needed to validate the idea. Phase 2 is
-      clearly post-MVP. Explicitly Out of Scope names things being actively decided
-      against. A planner could read this and sequence delivery without re-negotiating
-      scope boundaries.
+      clearly post-MVP. Each phase with detailed scope names an observable outcome and maps
+      to stable FR and journey IDs; an outcome-only Vision may remain unspecific until it is
+      refined. Requirements appear in one phase unless an explicit cross-phase reason is
+      stated. Explicitly Out of Scope names things being actively decided against. The document
+      makes clear that defining a phase does not itself authorize implementation. A planner
+      could read this and sequence delivery without re-negotiating scope boundaries.
     weak_signal: >
       MVP that includes everything discussed, Growth items that sound mandatory through
-      stakeholder language, or an out-of-scope list that is empty or too vague to bound
-      design decisions.
+      stakeholder language, phase bullets that cannot be traced to FR and journey IDs, a
+      defined future phase mistaken for present implementation authority, or an out-of-scope
+      list that is empty or too vague to bound design decisions.
 
   - id: nfr
     required: false

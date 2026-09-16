@@ -107,6 +107,23 @@ sections:
       Repeats the first initiative scope, uses marketing language without direction, or is
       so vague it could describe any product in the category.
 
+  - id: project_bearing_provenance
+    required: false
+    stakes: low
+    applies_when: this initiative was created or redirected directly from a user-selected Project Bearing
+    cross_ref:
+      - rollup.md
+    falsifiable: >
+      A reader can identify the selected project direction and selection date that originated
+      this initiative without treating the bearing as initiative-owned scope or authority.
+    good_signal: >
+      One concise line records the selected direction, date, and a link to rollup.md. It is
+      explicitly provenance only; project-level rationale, reconsideration conditions, and
+      current-bearing authority remain in rollup.md.
+    weak_signal: >
+      The origin is lost, or project-level bearing rationale and reconsideration logic are
+      copied into the brief and treated as initiative requirements.
+
   - id: project_context
     required: false
     stakes: medium

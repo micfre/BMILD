@@ -132,6 +132,8 @@ Consult agents are leaves. Owner consults may author anything they canonically o
 
 Outcome Development is the primary spec-backed path. The outcome section in `verification-matrix.md` records phase authorization, source requirements, implementation evidence, open obligations, and independent review. Alex owns task order and internal structure; forecasts and file inventories are not contracts. Sonia checks intent and coverage; Rahat checks correctness, completeness, security applicability, standards/spec fidelity, and relevant scalability and maintainability.
 
+Faisal's PRD maps stable requirement and journey IDs to phase outcomes; describing Growth or Vision does not authorize either phase. Katrina scopes binding UX to the authorized outcome while preserving initiative-wide interaction invariants. Observable behavior and applicable states bind implementation, while standard component mechanics may remain Alex's choice under established design conventions.
+
 A build-and-verify engagement can continue across contexts without user relays. Review requires a fresh context that did not implement the change or inherit its development transcript. You can explicitly choose a separate new review window. Where automatic isolated dispatch is unavailable, BMILD leaves acceptance pending and provides a concise transition grounded in artifacts. A reviewer-authored production fix needs another independent reviewer before acceptance. Review-only requests do not authorize production fixes.
 
 ## Why BMILD is different

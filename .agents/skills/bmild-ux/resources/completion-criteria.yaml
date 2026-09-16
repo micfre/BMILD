@@ -4,10 +4,46 @@ meta:
   loading_note: >
     Load before writing ux-design.md. Each section carries a `stakes` field that
     categorizes elicitation depth — apply the behavioural rules from the active mode
-    resource's Stakes-based elicitation section. For each in-scope section, privately
-    verify falsifiable, good_signal, and weak_signal. Do not present this file to the user.
+    resource's Stakes-based elicitation section. Evaluate only sections applicable to the
+    authorized outcome or an explicit initiative-wide UX invariant. Later phases are
+    coherence context without implementation authority. For each in-scope section,
+    privately verify falsifiable, good_signal, and weak_signal. Do not present this file
+    to the user.
 
 sections:
+
+  - id: outcome_scope
+    required: true
+    stakes: consequential
+    cross_ref:
+      - prd.md
+    falsifiable: >
+      A reader can identify the authorized outcome or phase, its source requirements,
+      affected existing surfaces, initiative-wide UX invariants, and deferred work without
+      inferring scope from the rest of the document.
+    good_signal: >
+      The design names its authorization source and in-scope requirements, using FR and journey
+      IDs when a PRD exists or precise request/source references for a direct UX engagement.
+      Later-phase flows remain deferred and receive no binding screen, interaction, or state
+      decisions unless they are necessary initiative-wide invariants or separately authorized.
+    weak_signal: >
+      The artifact covers the whole initiative without an authorized outcome, mixes
+      MVP/Growth/Vision into one binding design, or gives future flows present authority.
+
+  - id: contract_disposition
+    required: true
+    stakes: low
+    falsifiable: >
+      Alex and Rahat can distinguish binding user-observable behavior from delegated
+      implementation mechanics, illustrative examples, and observed brownfield behavior.
+    good_signal: >
+      The artifact states its default interpretation and labels exceptions where needed.
+      User-observable behavior, information, actions, states, accessibility, and consequential
+      copy are committed; standard component mechanics and private state remain delegated
+      when existing conventions suffice. Illustrative and observed content is non-binding.
+    weak_signal: >
+      Preferences or implementation mechanics can be mistaken for requirements, or a
+      consequential observable behavior is left ambiguous merely by calling it conventional.
 
   - id: information_architecture
     required: true
@@ -15,12 +51,12 @@ sections:
     cross_ref:
       - prd.md
     falsifiable: >
-      A reviewer can enumerate all screens and their navigation relationships by
-      reading this section alone, without inferring structure from other sections.
+      A reviewer can enumerate the screens introduced or affected by the authorized outcome
+      and their navigation relationships without inferring structure from other sections.
     good_signal: >
-      All screens are named, their hierarchy is explicit, how a user moves between
-      them is stated (link, button, redirect, etc.), and the data visible at each
-      level is identified.
+      All in-scope or affected screens are named, their hierarchy is explicit, how a user
+      moves between them is stated, and the information visible at each level is identified.
+      Unaffected and deferred-phase surfaces are not redesigned.
     weak_signal: >
       Screen names are listed without hierarchy or navigation paths, or the data
       displayed on each view is left to inference.
@@ -35,8 +71,8 @@ sections:
       for each flow from this section alone.
     good_signal: >
       Each flow names its trigger, each step, the success exit condition, and at least
-      one failure exit condition. Empty states and loading states are identified per
-      flow.
+      one failure exit condition. Applicable empty and loading states are identified per
+      flow. Every binding flow identifies its authorized outcome or initiative-wide scope.
     weak_signal: >
       Flows cover only the happy path, or steps are described at a level of abstraction
       that a developer would need to make UX decisions to implement.
@@ -47,16 +83,16 @@ sections:
     cross_ref:
       - prd.md
     falsifiable: >
-      For each interactive element, a developer can state what triggers it, what it
-      produces, and what state it holds, without asking a follow-up UX question.
+      For each consequential or non-standard interaction, a developer can state what
+      triggers it and what the user observes, while standard mechanics remain delegated.
     good_signal: >
-      For every non-trivial UI element: the trigger is named, the response is stated,
-      state transitions are explicit. Form validation rules are expressed as user-
-      observable conditions. Modal and dialog lifecycles are closed (open + dismiss
-      + completion paths all specified).
+      Consequential or non-standard elements name the trigger, visible response, and relevant
+      state transitions. Form validation is expressed as user-observable conditions. Modal
+      and dialog lifecycles close when they affect outcome behavior. Standard component
+      mechanics and private state handling may follow established conventions.
     weak_signal: >
-      Elements are named but their behavior is described qualitatively ("it should
-      be responsive") or left to implementation convention.
+      Consequential behavior is qualitative or unresolved, or standard implementation
+      mechanics are specified without a user-observable consequence.
 
   - id: visual_design_language
     required: false
@@ -82,14 +118,17 @@ sections:
     cross_ref:
       - prd.md
     falsifiable: >
-      A QA engineer can write test cases for each edge state on each screen without
-      inferring the intended behavior.
+      A QA engineer can test every applicable material edge state for the authorized outcome
+      and can see why a normally relevant state was marked not applicable.
     good_signal: >
-      Every screen has an explicit description of its empty state, loading state, and
-      error state. Error messages are specified, not just referenced.
+      In-scope screens identify applicable empty, loading, error, and populated states.
+      Material non-applicability has a reason. Exact error copy is committed when wording
+      affects trust, recovery, compliance, or product meaning; otherwise message intent and
+      established content conventions are sufficient.
     weak_signal: >
       Edge states mentioned in aggregate ("handle errors appropriately") rather than
-      per view, or error states that defer copy to the developer.
+      per view, missing states silently ignored, or preference-level copy frozen without a
+      consequential reason.
 
   - id: accessibility
     required: false
@@ -134,13 +173,16 @@ sections:
     cross_ref:
       - prd.md
     falsifiable: >
-      A reviewer can map each functional requirement from prd.md to at least one UX
-      design element (screen, flow, interaction, or state) — no FR is left unaddressed.
+      A reviewer can map each user-facing FR or direct source requirement in the authorized
+      outcome to at least one UX design element, or to an explicit rationale that no UX
+      treatment is required.
     good_signal: >
-      Every functional requirement from prd.md is addressed by the UX design. If an FR
-      has no corresponding screen, flow, or interaction, it is flagged as a gap or
-      routed through chat resolution or `handoff.md`. The mapping is derivable — a
-      reviewer can confirm coverage by tracing FRs through flows and screens.
+      Every applicable user-facing FR or direct source requirement in the authorized outcome
+      is addressed by a screen, flow, interaction, or state. Non-user-facing requirements may
+      be marked no UX treatment required with rationale. Later-phase requirements remain
+      visibly deferred. A reviewer can trace coverage without treating deferred work as a
+      present gap or requiring a PRD for an otherwise sufficient direct UX contract.
     weak_signal: >
-      Functional requirements from the PRD have no visible UX treatment, or coverage is
-      assumed without being traceable to specific design elements.
+      Authorized user-facing requirements have no visible UX treatment, coverage is assumed
+      without traceability, backend-only requirements generate invented UI, a missing PRD is
+      treated as a filename gate, or deferred requirements become current design obligations.

@@ -36,3 +36,11 @@ author: "[user_name] + Faisal (PM)"
 ## Long-term Vision
 
 [Where this goes if the first initiative succeeds. What it becomes. Inspiring but grounded.]
+
+<!-- Include only when this initiative was created or redirected directly from a user-selected Project Bearing:
+## Project Bearing Provenance
+
+- Origin: <selected project direction> — [project bearing](../rollup.md), selected YYYY-MM-DD
+
+This records origin only. The bearing remains project-scoped and authoritative in `rollup.md`.
+-->

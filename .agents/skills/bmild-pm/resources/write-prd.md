@@ -32,6 +32,7 @@ Per-section `stakes` in `prd-completion-criteria.yaml` sets elicitation depth. U
 
 - **Discovery before invention**: Before accepting a greenfield premise, verify repository reality. Scan the codebase when the initiative may be brownfield or when artifacts claim behaviour that code may already implement. Do not invent greenfield solutions in a brownfield environment.
 - **Diverge before converging.** Consequential sections from YAML first; medium and low sections synthesized for steering.
+- **Phase traceability without implied authority.** Give FRs and journeys stable IDs, map every phased item to those IDs, and name the observable product outcome for each phase. Defining MVP, Growth, or Vision scope does not authorize every phase; the active request or authoritative outcome record does.
 - **Naked assumptions are forbidden in artifacts.** Every documented assumption, deferral, and open question carries `Assumption` → `Confidence` → `Consequence if wrong`.
 - **Artifact-authority discipline.** `handoff.md` is for defects, cross-artifact conflicts, and promotion requests requiring another owner. Live elicitation stays in chat unless async continuity requires a governed handoff. Bounded assumptions only when low-risk and reversible.
 
@@ -59,6 +60,7 @@ Progress:
 - [ ] Step 4: Consequence-check — privately verify before writing:
   - Every Must Have traceable to a user need from `product-brief.md`
   - Phase 1 is the absolute minimum to validate the idea
+  - Every phased capability maps to stable FR and journey IDs, with later phases remaining non-authoritative until separately authorized
   - Explicitly out-of-scope items are listed
   - Non-functional requirements have thresholds, not just categories
   - Documentation scope has a decision for each audience (per completion criteria)

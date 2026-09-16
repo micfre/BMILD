@@ -31,6 +31,8 @@ For handoff items requiring new UX decisions, map each item to its target sectio
 
 - **Artifact-authority discipline.** Promote accepted decisions into `ux-design.md`; `handoff.md` records coordination until the target artifact is updated.
 - **Observable decisions only.** Label preferences as preferences.
+- **Outcome containment.** Resolve the originating outcome/phase and treat initiative-wide impact as explicit scope, not an inference. Preserve unrelated outcomes and deferred work.
+- **Commitment strength.** Apply the core skill's UX contract defaults to promoted content; label an exception when its authority could be mistaken.
 - **Naked assumptions are forbidden in artifacts.** Document promoted assumptions with `Assumption` → `Confidence` → `Consequence if wrong`.
 
 ## Global pattern distillation
@@ -47,7 +49,7 @@ When resolved decisions stabilize initiative-local meaning:
 
 Progress:
 
-- [ ] Step 1: Identify each handoff item and its target artifact.
+- [ ] Step 1: Identify each handoff item, its target artifact, and its originating outcome/phase or initiative-wide scope.
 - [ ] Step 2: Assess items targeting Katrina — which can be answered from existing design decisions vs which need new decisions (apply Stakes-based elicitation for the latter).
 - [ ] Step 3: Preview the handoff set — name items grouped by effective stakes and approximate question count.
 - [ ] Step 4: Resolve — for each accepted item that changes design truth:
@@ -56,7 +58,7 @@ Progress:
   - Run the **Promotion Cascade Check** from `references/gap-resolution.md`: classify consumers `unaffected | mechanical | owner-decision | stale`; scribe mechanical propagation; resolve each independent owner-decision as a separate ladder episode; offer Course-Correction only when choices are coupled and materially change scope, sequencing, or proof, and wait for user confirmation. Mark only unresolved consumers stale. Append `Cascade: <summary>` to the handoff being closed; do not create a replacement for an in-session resolution.
   - Note the consequence for the originating persona's artifact
 - [ ] Step 5: For product or architecture input, name the missing constraint and run one bounded owner episode; persist a precise handoff only if it leaves the session.
-- [ ] Step 6: Consequence-check — verify updated sections against `completion-criteria.yaml` for all in-scope sections.
+- [ ] Step 6: Consequence-check — verify updated sections against `completion-criteria.yaml` for all applicable sections, including outcome containment and disposition clarity.
 - [ ] Step 7: Write — update `ux-design.md` and `timestamp` frontmatter when design changes result.
 - [ ] Step 8: Distillation gates — apply Global pattern distillation (DESIGN.md) and Semantic Memory (`context.md` / `context-map.md`) rules when triggered.
 - [ ] Step 9: Close — apply Exit and Handoff from the core skill. Name each item resolved, deferred, rejected, superseded, or kept open, and the next owner.

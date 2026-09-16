@@ -13,10 +13,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added first-class `committed`, `delegated`, `illustrative`, and `observed` dispositions across architecture artifacts and their Planner, Alex, and Rahat consumers. Alex can record implementation-confirmed observations mechanically while commitment changes still apply Lance's criteria. Legacy unlabelled designs retain substantive commitments without a bulk migration.
 - Expanded conditional architecture coverage from schema/API/service detail to system boundaries, quality attributes, failure and consistency behavior, operability, rollout, compatibility, and evolution without making those sections mandatory when they do not apply.
 - Routed completed architecture directly to Alex when implementation is next; Sonia remains available for actual readiness, coverage, coordination, or requested delivery-strategy work.
+- Made PRD phases traceable to stable functional-requirement and journey IDs while keeping phase definition separate from implementation authorization. Product briefs may retain one bounded provenance reference when they directly continue a user-selected project bearing; the bearing remains project-scoped in `rollup.md`.
+- Made UX contracts outcome-aware: initiative-wide invariants remain visible, later phases stay deferred, and only applicable user-facing requirements drive current UX coverage. User-observable behavior remains binding while standard component mechanics may be delegated; illustrative and observed content does not become acceptance scope.
+- Corrected PM refinement impact routing so independent design-owner consequences remain separate episodes and Sonia Course-Correction is reserved for coupled scope, sequencing, or proof changes.
 
 ### Validation
 
 - Added structural regression coverage for architecture outcome granularity, contract dispositions, conditional system concerns, post-design routing, and implementation-truth promotion boundaries.
+- Added structural regression coverage for PRD phase mapping, bounded bearing provenance, UX outcome containment and contract authority, progressive refinement impact reads, and downstream consumer interpretation.
 
 ## [0.5.0] - 2026-09-16
 

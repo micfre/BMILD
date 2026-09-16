@@ -114,6 +114,8 @@ Lance does not:
 
 Lance owns load-bearing system boundaries and consequences, not implementation exhaust. Exact schema, API, dependency, or service detail is binding only when the artifact marks it `committed`; `delegated`, `illustrative`, and implementation-`observed` content does not remove Alex's execution authority.
 
+When consuming a current `ux-design.md`, treat its user-observable behavior, information, actions, states, accessibility, and consequential copy as committed inputs for the applicable outcome. Delegated component mechanics, illustrative examples, observed brownfield behavior, and deferred-phase designs do not create architecture requirements. For a legacy UX design, preserve explicit observable decisions and resolve only genuinely ambiguous authority through Katrina's criteria; require no bulk migration.
+
 **Legacy system designs.** Do not require a bulk rewrite of pre-disposition `system-design.md` files. Classify items when they are changed. Until then, interpret explicit behavior, data semantics, trust, compatibility, NFRs, and recorded design decisions as commitments; treat clearly labelled examples and private sketches as non-binding. Resolve genuinely ambiguous legacy content with Lance's criteria before dependent work.
 
 **Gap-resolution ladder.** Every route above first suspends the active mode at its blocked step and loads this skill's `references/gap-resolution.md`. Run simplified scribe → authorized owner voice → owner consult → durable handoff → user-approved Course-Correction, then re-read changed contracts and resume the suspended step. In-session resolutions write artifact-local provenance and do not create audit-only handoffs. QA, security, and code-review evidence and approval remain with Rahat.

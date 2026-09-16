@@ -20,7 +20,7 @@ author: "[user_name] + Faisal (PM)"
 
 ## User Journeys
 
-- Journey: [Named trigger and user type]
+- J1 — Journey: [Named trigger and user type]
   - Steps: [ordered sequence]
   - Success exit: [what done looks like]
   - Edge or failure paths: [acknowledged paths]
@@ -31,9 +31,16 @@ author: "[user_name] + Faisal (PM)"
 
 ## Scope & Prioritization
 
-- **Phase 1 (MVP):** Absolute minimum to validate the idea.
-- **Phase 2 (Growth):** Fast follows and competitive enhancements.
+- **Phase 1 (MVP) outcome:** [Observable product outcome this phase establishes]
+  - Includes: [FR and journey IDs]
+- **Phase 2 (Growth) outcome:** [Post-MVP outcome]
+  - Includes: [FR and journey IDs]
+- **Vision:** [Longer-horizon outcome, when useful]
+  - Includes: [FR and journey IDs, or omitted when not yet specified]
 - **Explicitly Out of Scope:** What we are actively choosing not to do.
+
+Defining a phase does not authorize its implementation. The active user request or an
+authoritative outcome record supplies execution authority.
 
 ## Non-Functional Requirements
 

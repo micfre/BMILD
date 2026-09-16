@@ -1,6 +1,6 @@
 # UX-Design
 
-Design the frontend experience for a new initiative. Produce observable, testable UX decisions — not visual preferences.
+Design the frontend experience required for an authorized outcome while preserving initiative-wide UX invariants. Produce observable, testable UX decisions — not visual preferences or binding designs for deferred phases.
 
 ## Additional Context
 
@@ -16,6 +16,8 @@ Load in this order:
 
 If no `product-brief.md` or `prd.md` exists: probe for key user needs and requirements before proceeding. Entry at the UX stage is not permission to skip problem framing.
 
+Resolve the authorized outcome or phase from the request and upstream sources. Read later-phase requirements for coherence, but treat them as deferred unless the user authorized initiative-wide UX. Defining a phase in `prd.md` is not implementation authority.
+
 ## Stakes-based elicitation
 
 Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth. Use those values — do not re-derive stakes ad hoc. When `stakes_note` is present, it overrides `stakes` for pacing.
@@ -26,7 +28,7 @@ Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth. Use t
 | **medium** | Recommendation plus one-line reaction request. Expand to options only on pushback. |
 | **low** | Batch in one synthesis block. Ask the user to *steer*, not *approve*. Tag each item: `Assumption` → `Confidence` → `Consequence if wrong`. |
 
-**Session pacing:** After loading YAML, partition in-scope sections by effective stakes. **Diverge** on consequential sections first (`information_architecture`, `user_flows`, `interaction_model`, `edge_states`, `fr_coverage`). **Synthesize** medium sections (`visual_design_language`, `accessibility` when not elevated by `stakes_note`) and low sections (`ambiguity_disposition` when applicable) in one compact block. **Reopen** any synthesized section the user steers back to consequential pacing.
+**Session pacing:** After loading YAML, partition in-scope sections by effective stakes. **Diverge** on consequential sections first (`outcome_scope`, `information_architecture`, `user_flows`, `interaction_model`, `edge_states`, `fr_coverage`). **Synthesize** medium sections (`visual_design_language`, `accessibility` when not elevated by `stakes_note`) and low sections (`contract_disposition`, `ambiguity_disposition` when applicable) in one compact block. **Reopen** any synthesized section the user steers back to consequential pacing.
 
 **Expert compression:** When the user demonstrably gives crisp, complete answers for a consequential section, I may replace one-question-at-a-time pacing with one confirmation synthesis. Keep consequential pacing for ambiguity, material trade-offs, or missing evidence.
 
@@ -36,6 +38,8 @@ Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth. Use t
 
 - **Discovery before invention**: Before accepting a greenfield UX premise, verify repository reality and any existing global design system. Do not invent patterns that contradict established global UX.
 - **Observable decisions only.** A UX decision exists only if an observable user behavior or testable screen state distinguishes it from alternatives; otherwise label it preference.
+- **Outcome granularity.** Separate initiative-wide UX invariants from the design committed for the authorized outcome. Later phases are coherence context, not present authority; do not specify binding screens, flows, or states for them unless they are necessary cross-phase foundations or separately authorized.
+- **Commitment strength.** Apply the core skill's UX contract defaults. Commit consequential user-observable behavior; delegate standard component mechanics and private state when established conventions suffice; label illustrative and observed content when it could be mistaken for intent.
 - **Hydrate before eliciting.** Read PM artifacts and architecture constraints before asking UX questions. Do not reopen settled PM requirements unless artifacts conflict, contradict existing UX patterns, or require a UX trade-off PM did not decide. Do not infer user goals from backend shape.
 - **Elicit before writing.** Write at the end or at a meaningful checkpoint.
 - **Naked assumptions are forbidden in artifacts.** Every assumption, deferral, and open question carries `Assumption` → `Confidence` → `Consequence if wrong`.
@@ -55,7 +59,7 @@ When initiative-local meaning becomes stable during this session:
 
 Progress:
 
-- [ ] Step 1: Hydrate — read PM artifacts and architecture constraints per Additional Context. Extract settled requirements, UX constraints, and open UX-only decisions.
+- [ ] Step 1: Hydrate and scope — read PM artifacts and architecture constraints per Additional Context. Resolve the authorized outcome/phase, its user-facing FRs and journeys, affected existing surfaces, initiative-wide UX invariants, deferred work, and open UX-only decisions.
 - [ ] Step 2: Groundtruth — verify codebase and global design system per Global Directives.
   - **Query available code intelligence MCPs.** Determine available code intelligence tools such as symbol-aware navigation, AST-aware structural analysis, semantic or hybrid repository search, and code graphs
   - **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
@@ -65,7 +69,7 @@ Progress:
   - **Diverge on consequential sections** one question per turn until each passes its YAML weak_signal check.
   - **Synthesize medium and low sections** in one block; ask the user to redirect, accept, or escalate.
   - **Reopen only what the user steers.** Capture tangents in chat for the next probe or synthesis block.
-- [ ] Step 5: Consequence-check — privately verify all in-scope YAML sections; confirm empty, loading, error, mobile, and accessibility coverage for consequential flows.
+- [ ] Step 5: Consequence-check — privately verify all applicable YAML sections; confirm outcome scope, binding-versus-delegated treatment, applicable empty/loading/error states, mobile, accessibility, authorized FR coverage, and deferred-phase containment for consequential flows.
 - [ ] Step 6: Pre-exit offer (declinable in one word) — name 1–2 session-appropriate bmild-elicit methods from this artifact's shortlist (**User Persona Focus Group**, **Challenge from Critical Perspective**), chosen by what was actually contentious: *"Before I write the UX design — I could run **User Persona Focus Group** or **Challenge from Critical Perspective** in a bmild-elicit session, or take anything to roundtable. Otherwise I'll proceed."* On acceptance, swap to `bmild-elicit` with the method pre-selected; offer roundtable per core Advanced Elicitation Triggers when trade-offs are still open. Any decline or proceed signal continues directly to the Write step in the same turn — no further confirmation.
 - [ ] Step 7: Write — write `[plan_folder]/<initiative-name>/ux-design.md` using `assets/ux-design-template.md`.
   - **Initiative naming.** Initiative names are lowercase-kebab-case identifiers (e.g. `py-tokenizer`) — safe across filesystems, shells, and links. If the user supplies a kebab-case-compliant slug, use it directly. Otherwise confirm a kebab-case slug with the user before writing; never silently transform a proposed name.
@@ -77,6 +81,8 @@ Progress:
 ## Definition of Done
 
 - [ ] All UX decisions are observable or testable — preferences labelled as such
+- [ ] Authorized outcome, source requirements, initiative-wide UX invariants, and deferred work are explicit
+- [ ] Binding user-observable behavior is distinguishable from delegated mechanics, illustrative examples, and observed behavior
 - [ ] `completion-criteria.yaml` verified for all in-scope sections
 - [ ] Empty, error, loading, mobile, and accessibility states considered
 - [ ] `ux-design.md` written to `[plan_folder]/<initiative-name>/`

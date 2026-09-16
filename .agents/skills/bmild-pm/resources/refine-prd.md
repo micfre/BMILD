@@ -34,6 +34,7 @@ Per-section `stakes` in `prd-completion-criteria.yaml` sets elicitation depth fo
 - **Discovery before invention**: Before accepting a greenfield premise, verify repository reality. Scan the codebase when the initiative may be brownfield or when artifacts claim behaviour that code may already implement. Do not invent greenfield solutions in a brownfield environment.
 - **Challenge, do not preserve.** Treat existing PRD content as hypotheses until revalidated. Do not skip elicitation because upstream work already exists.
 - **Traceability.** Changed requirements must remain mappable to `product-brief.md`.
+- **Phase traceability without implied authority.** Changed phase boundaries must map to stable FR and journey IDs. A defined future phase remains deferred until separately authorized.
 - **Artifact-authority discipline.** Live elicitation stays in chat; UX/architecture gaps use the ladder. Bounded assumptions are only for low-risk reversible uncertainty.
 
 ## Semantic Memory
@@ -53,10 +54,10 @@ Progress:
   - **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
 - [ ] Step 4: Preview the queue — name changed sections grouped by YAML `stakes` and approximate question count before the first probe.
 - [ ] Step 5: Elicit refinements — apply Stakes-based elicitation to changed sections only; unchanged sections skip elicitation.
-- [ ] Step 6: Consequence-check — privately verify changed sections and traceability to `product-brief.md`; run `prd-completion-criteria.yaml` for all in-scope sections (including `documentation_scope` when doc obligations may have changed).
+- [ ] Step 6: Consequence-check — privately verify changed sections and traceability to `product-brief.md`; when requirements or phase membership changed, verify stable FR/journey mapping and deferred-phase containment; run `prd-completion-criteria.yaml` for all in-scope sections (including `documentation_scope` when doc obligations may have changed).
 - [ ] Step 7: Pre-exit offer (conditional, declinable in one word) — when any **consequential** section (per YAML `stakes`, respecting `stakes_note`) is being materially changed, offer once, naming 1–2 session-appropriate bmild-elicit methods from this artifact's shortlist (**Pre-mortem Analysis**, **Challenge from Critical Perspective**), chosen by what was actually contentious: *"Before I update the PRD — I could run **Pre-mortem Analysis** or **Challenge from Critical Perspective** in a bmild-elicit session, or take anything to roundtable. Otherwise I'll proceed."* On acceptance, swap to `bmild-elicit` with the method pre-selected; offer roundtable per core Advanced Elicitation Triggers when trade-offs are still open. Skip when only medium/low sections change or the session is a single-field alignment. Any decline or proceed signal continues directly to the update in the same turn — no further confirmation.
 - [ ] Step 8: Write — update `[plan_folder]/<initiative-name>/prd.md` using `assets/prd-template.md`. Preserve unchanged sections. Update `timestamp` frontmatter.
-- [ ] Step 9: Gate check — resolve product ambiguity in chat; run UX/architecture ownership gaps through the ladder.
+- [ ] Step 9: Gate and impact check — resolve product ambiguity in chat; when changed FRs, journeys, or phase membership may affect live consumers, use `registry.md` to load only the affected sections of `ux-design.md`, `system-design.md`, or `verification-matrix.md`, then classify impact through the ladder. Do not preload unrelated downstream artifacts.
 - [ ] Step 10: Register — confirm `prd.md` in `## Live`; archive superseded predecessors if applicable.
 - [ ] Step 11: Semantic distillation gate — apply Semantic Memory rules when triggered.
 - [ ] Step 12: Close — apply Exit and Handoff from the core skill. Downstream design handoff is allowed when both PM artifacts are coherent.

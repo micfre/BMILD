@@ -59,7 +59,7 @@ Progress:
 - [ ] Step 9: Gate check — resolve product ambiguity in chat; run the gap-resolution ladder when another owner must act.
 - [ ] Step 10: Semantic distillation gate — apply Semantic Memory rules when triggered.
 - [ ] Step 11: Register — confirm `product-brief.md` in `## Live`; archive superseded predecessors if applicable.
-- [ ] Step 12: Downstream impact — if brief changes force `prd.md` updates only, offer Refine-PRD as `Next`; if changes cascade to planning/design artifacts beyond PM ownership, offer Sonia in `bmild-planner` Course-Correction mode.
+- [ ] Step 12: Downstream impact — if brief changes force `prd.md` updates only, offer Refine-PRD as `Next`. Classify any further consumer impact through the gap-resolution ladder: resolve independent Katrina, Lance, or Sonia consequences as separate owner episodes, and offer Sonia Course-Correction only when choices are coupled and materially change scope, sequencing, or proof boundaries.
 - [ ] Step 13: Close — apply Exit and Handoff from the core skill with the recommended next move from Step 12.
 
 ## Definition of Done
