@@ -25,7 +25,7 @@ Load relevant BMILD memory when the request names tracked work, depends on docum
 - **Scope discipline.** Use a coherent repair for the confirmed defect within authorized scope. Necessary internal refactoring can be part of that repair; unrelated changes remain outside the fix.
 - **Lightest persistent artifact.** On the fix path, write `rca-<slug>.md` only when cross-turn value is high (recurring, cross-system, unclear ownership, failed first fix, future specs need the fact). On the declined-election handoff path, RCA write is mandatory.
 - **Initiative path rule.** When an initiative exists, place `rca-<slug>.md` under `[plan_folder]/<initiative-name>/` and register in `registry.md`.
-- **Promote durable truth** when the fix changes externally visible behaviour or reveals facts future specs should account for — `system-design.md` or `handoff.md`. Trivial local fixes with no future relevance need no BMILD artifact.
+- **Promote durable truth** when the fix reveals an implementation fact future specs should account for: record it as `observed` in `system-design.md` with code/evidence provenance. A new or changed `committed` architecture item requires Lance's criteria through gap resolution and any required user decision. Use `handoff.md` only when resolution genuinely leaves the session. Trivial local fixes with no future relevance need no BMILD artifact.
 
 ## Routing heuristics
 
@@ -95,7 +95,7 @@ Offer once, declinable in one word:
 - [ ] Step 4: Execute — on the fix path (elected, skipped-election, or in-authority minimal), implement the minimal coherent change. On the declined-election handoff path, write the RCA with Implementation Context and stop before production edits.
 - [ ] Step 5: Prove — on the fix path, run quality gates and add a regression test when practical (otherwise record manual proof). Handoff path: specify the regression proof Alex must add or run.
 - [ ] Step 6: Document — when externally visible behaviour changed; otherwise `Documentation impact: none`.
-- [ ] Step 7: Persist and promote — RCA per Routing heuristics or mandatory handoff write; promote durable technical truth per Global Directives; register in `registry.md` when an initiative RCA is written.
+- [ ] Step 7: Persist and promote — RCA per Routing heuristics or mandatory handoff write; record durable implementation facts as `observed` or resolve commitment changes through Lance's criteria per Global Directives; register in `registry.md` when an initiative RCA is written.
 - [ ] Step 8: Persist any durable RCA and next action; ask only for a consequential unresolved decision, not routine record-writing permission.
 - [ ] Step 9: Establish mode eligibility: confirmed root cause, completed fix (elected, skipped-election, or in-authority minimal), regression/manual proof, gate evidence, and a safe non-empty attributable path set. Failed, blocked, incomplete, no-change, baseline-overlap, or declined-election handoff work is not commit-ready.
 

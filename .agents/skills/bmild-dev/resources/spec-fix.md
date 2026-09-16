@@ -26,6 +26,7 @@ Identify entry artifact: `rca-<slug>.md`, verification matrix item, or outcome/l
 - **Scope discipline.** Fix only what the entry artifact specifies. Route remaining contract defects via `handoff.md`.
 - **Verification matrix.** Mark items `implemented` or `blocked` with evidence — never `passed`.
 - **Do not mark review findings resolved** — set security findings `fixed_pending_review` and leave QA/code-review follow-ups open; `next_owner` Rahat.
+- **Architecture truth and promotion.** A fix may mechanically record an implementation-confirmed fact as `observed` in `system-design.md` with code/evidence provenance. A new or changed `committed` architecture item requires Lance's criteria through gap resolution and any required user decision; never rewrite a commitment to conceal a defect.
 
 ## Tasks
 
@@ -44,6 +45,7 @@ Progress:
 - [ ] Step 3: Run quality gates and regression test. Record gates not run and why.
 - [ ] Step 4: Document when externally visible behaviour changed; otherwise `Documentation impact: none`.
 - [ ] Step 5: Update artifacts:
+  - `system-design.md` when durable truth warrants it → implementation fact as `observed`, or Lance-resolved commitment change
   - `rca-<slug>.md` → fix details, regression reference; `next_owner` Rahat
   - `verification-matrix.md` → implementation `implemented` or `blocked`, never `passed`; mark affected prior proof pending, record reviewed-state change and independent re-verification needed
   - `slice-<N>.md` when in Slice scope → Implementation Notes; do not change `qa_status`

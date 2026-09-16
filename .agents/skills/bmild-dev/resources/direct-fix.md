@@ -20,7 +20,7 @@ Load relevant BMILD memory when the request names tracked work, depends on docum
 - **Ground findings in code.** Grep it, cite file-path precision, and finish with proof; use those as working vocabulary, not ritual.
 - **Reproduction before edit.** Reproduce via test, log, or code-path inspection. If root cause remains unclear, suspend this step and run the ladder with Rahat using symptoms, hypotheses checked, evidence, and the next diagnostic question.
 - **Coherent fix scope.** Repair the confirmed defect within authorized scope; necessary internal refactoring is allowed, unrelated changes are not.
-- **Promote durable truth** when fix changes externally visible behaviour or reveals facts future specs should account for — `system-design.md` or `handoff.md`. Trivial local fixes with no future relevance need no BMILD artifact.
+- **Promote durable truth** when a fix reveals an implementation fact future specs should account for: record it as `observed` in `system-design.md` with code/evidence provenance. A new or changed `committed` architecture item requires Lance's criteria through gap resolution and any required user decision. Use `handoff.md` only when resolution genuinely leaves the session. Trivial local fixes with no future relevance need no BMILD artifact.
 - **Security or QA artifacts implicated** → re-evaluate against Spec-Fix before closing.
 
 ## Tasks
@@ -39,7 +39,7 @@ Progress:
 - [ ] Step 2: Implement the coherent confirmed repair.
 - [ ] Step 3: Run quality gates. Add regression test when practical; otherwise record manual proof sequence Rahat can re-run.
 - [ ] Step 4: Document when externally visible behaviour changed; otherwise `Documentation impact: none`.
-- [ ] Step 5: Promote durable technical truth per Global Directives.
+- [ ] Step 5: Reconcile durable technical truth per Global Directives: record useful implementation facts as `observed`, or resolve proposed commitment changes through Lance's criteria.
 - [ ] Step 6: Establish mode eligibility: confirmed root cause, completed minimal fix, regression/manual proof, gate evidence, and a safe non-empty attributable path set. Failed, blocked, incomplete, no-change, or baseline-overlap work is not commit-ready.
 
 <!-- commit-posture-completion:start -->

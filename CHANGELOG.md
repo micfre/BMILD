@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Made Lance's system-design contract outcome-aware: initiative-wide invariants are separated from authorized phase/outcome commitments, and deferred phases no longer acquire implementation authority through architecture coverage.
+- Added first-class `committed`, `delegated`, `illustrative`, and `observed` dispositions across architecture artifacts and their Planner, Alex, and Rahat consumers. Alex can record implementation-confirmed observations mechanically while commitment changes still apply Lance's criteria. Legacy unlabelled designs retain substantive commitments without a bulk migration.
+- Expanded conditional architecture coverage from schema/API/service detail to system boundaries, quality attributes, failure and consistency behavior, operability, rollout, compatibility, and evolution without making those sections mandatory when they do not apply.
+- Routed completed architecture directly to Alex when implementation is next; Sonia remains available for actual readiness, coverage, coordination, or requested delivery-strategy work.
+
+### Validation
+
+- Added structural regression coverage for architecture outcome granularity, contract dispositions, conditional system concerns, post-design routing, and implementation-truth promotion boundaries.
+
 ## [0.5.0] - 2026-09-16
 
 ### Changed

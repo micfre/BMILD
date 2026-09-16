@@ -13,6 +13,8 @@ Load in this order:
 - `./resources/completion-criteria.yaml` when updating `system-design.md`
 - Confirm no `## Archived` entries or other initiative folders were loaded
 
+Resolve the originating outcome/phase from the handoff source. Treat initiative-wide impact as explicit scope, not a default expansion from one outcome.
+
 ## Stakes-based elicitation
 
 For handoff items requiring new architecture decisions, map each item to its target section in `completion-criteria.yaml` and use that section's `stakes` value. When `stakes_note` is present, it overrides `stakes`. Items that do not map to a YAML section default to **consequential**.
@@ -30,7 +32,8 @@ For handoff items requiring new architecture decisions, map each item to its tar
 - **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
 
 - **Artifact-authority discipline.** Promote accepted decisions into `system-design.md`; unpromoted handoff items are not resolved by conversation alone.
-- **Every architecture decision has an observable implementation consequence.**
+- **Outcome and disposition discipline.** Every promoted item declares whether it applies initiative-wide or to named outcome(s), plus one `Disposition`: `committed`, `delegated`, `illustrative`, or `observed`. Do not promote an implementation observation into a commitment without Lance's criteria and any required user decision.
+- **Every committed architecture decision has an observable behavior, quality, evolution, or operational consequence.**
 - **Naked assumptions are forbidden in artifacts.** Format: `Assumption` → `Confidence` → `Consequence if wrong`.
 
 ## Distillation gates
@@ -46,15 +49,15 @@ For handoff items requiring new architecture decisions, map each item to its tar
 Progress:
 
 - [ ] Step 1: Identify each handoff item and its target artifact.
-- [ ] Step 2: Assess items targeting Lance — which can be answered from existing design decisions vs which need new decisions (apply Stakes-based elicitation for the latter).
+- [ ] Step 2: Assess items targeting Lance — identify the originating outcome, whether initiative-wide consequences exist, which can be answered from existing design decisions, and which need new decisions (apply Stakes-based elicitation for the latter).
 - [ ] Step 3: Preview the handoff set — name items grouped by effective stakes and approximate question count.
 - [ ] Step 4: Resolve — for each accepted item that changes design truth:
-  - Update `system-design.md`
+  - Update `system-design.md` with outcome applicability and disposition
   - Update the handoff item's `Owner Disposition` and `Promotion Record`
   - Run the **Promotion Cascade Check** from `references/gap-resolution.md`: classify consumers `unaffected | mechanical | owner-decision | stale`; scribe mechanical propagation; resolve each independent owner-decision as a separate ladder episode; offer Course-Correction only when choices are coupled and materially change scope, sequencing, or proof, and wait for user confirmation. Mark only unresolved consumers stale. Append `Cascade: <summary>` to the handoff being closed; do not create a replacement for an in-session resolution.
   - Note the consequence for the originating persona's artifact
 - [ ] Step 5: For product or UX input, name the missing constraint and run one bounded owner episode; persist a precise handoff only if it leaves the session.
-- [ ] Step 6: Consequence-check — verify updated sections against `completion-criteria.yaml` for all in-scope sections.
+- [ ] Step 6: Consequence-check — verify updated sections against `completion-criteria.yaml`, including outcome scope, disposition, and deferred-phase containment.
 - [ ] Step 7: Write — update `system-design.md` and `timestamp` frontmatter when design changes result.
 - [ ] Step 8: Distillation gates — apply the Drift-protection ADR gate and Semantic Memory rules when triggered.
 - [ ] Step 9: Close — apply Exit and Handoff from the core skill. Name each item resolved, deferred, rejected, superseded, or kept open, and the next owner.
@@ -63,6 +66,7 @@ Progress:
 
 - [ ] Every architecture-owned handoff item assessed and either promoted, deferred, rejected, superseded, or kept open with reason
 - [ ] Design changes written to `system-design.md` with completion criteria verified for updated sections
+- [ ] Promoted items identify outcome applicability and disposition; observations were not silently converted into commitments
 - [ ] Drift-protection ADR extracted into `[plan_folder]/adr/` only if the triple-axis gate fired
 - [ ] `context.md` and/or `context-map.md` updated only if the semantic gate fired
 - [ ] Close message: handoff items resolved, deferred items, next owner

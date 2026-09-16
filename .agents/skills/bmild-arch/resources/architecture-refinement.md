@@ -1,6 +1,6 @@
 # Architecture-Refinement
 
-Extend or update an existing `system-design.md`. Probe what changed, challenge stale decisions, and update the artifact.
+Extend or update an existing `system-design.md`. Probe what changed, challenge stale decisions, and update only the initiative-wide or outcome-specific contracts actually affected.
 
 ## Additional Context
 
@@ -14,6 +14,8 @@ Load in this order:
 - `./resources/completion-criteria.yaml`
 - Confirm no `## Archived` entries or other initiative folders were loaded
 
+Resolve the affected authorized outcome(s) or initiative-wide invariant before eliciting changes. Later-phase requirements remain context, not authority, unless the user explicitly includes them.
+
 ## Stakes-based elicitation
 
 Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth for **changed** sections. Use those values — do not re-derive stakes ad hoc. When `stakes_note` is present, it overrides `stakes` for pacing.
@@ -24,13 +26,15 @@ Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth for **
 | **medium** | Recommendation plus one-line reaction request. Expand to options only on pushback. |
 | **low** | Batch in one synthesis block. Ask the user to *steer*, not *approve*. Tag each item: `Assumption` → `Confidence` → `Consequence if wrong`. |
 
-**Refinement pacing:** Map each section being changed to its YAML `stakes`. Preview the queue grouped by stakes. Apply consequential pacing only to changed consequential sections; synthesize changed medium/low sections unless the user steers back. Run `fr_coverage` during consequence-check when FRs or contracts change.
+**Refinement pacing:** Map each section being changed to its YAML `stakes`. Preview the queue grouped by stakes. Apply consequential pacing only to changed consequential sections; synthesize changed medium/low sections unless the user steers back. Run `outcome_scope`, `contract_disposition`, and `fr_coverage` during consequence-check when scope, FRs, or contracts change.
 
 **Expert compression:** When the user demonstrably gives crisp, complete answers for a consequential section, I may replace one-question-at-a-time pacing with one confirmation synthesis. Keep consequential pacing for ambiguity, material trade-offs, or missing evidence.
 
 ## Global Directives
 
-- **Commitments versus implementation.** Mark binding public/data/trust/compatibility contracts explicitly; identify illustrative designs and delegated private structure. Do not specify every internal method merely to remove engineering judgment. Consequential design choices still require evidence and the appropriate user decision.
+- **Outcome granularity.** Preserve unaffected outcome contracts and initiative-wide invariants. Do not turn later-phase context into present authority; change cross-phase commitments only when the refinement explicitly includes them.
+- **Commitments versus implementation.** Every changed architecture item declares `Applies to` and one `Disposition`: `committed`, `delegated`, `illustrative`, or `observed`. Only `committed` items bind behavior, data semantics, trust, compatibility, NFRs, or consequential choices. Do not specify internal methods, physical tuning, or exact dependency versions merely to remove engineering judgment.
+- **Legacy classification.** Do not bulk-rewrite untouched pre-disposition content. Classify each item when this refinement changes it; preserve substantive legacy commitments and resolve only genuinely ambiguous legacy authority before dependent work.
 
 - **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
 
@@ -54,26 +58,28 @@ Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth for **
 
 Progress:
 
-- [ ] Step 1: Hydrate — read current PM and UX artifacts; identify what the change affects.
-- [ ] Step 2: Identify refinement target — if unspecified, ask one question. Surface bounded assumptions and unresolved handoff items.
+- [ ] Step 1: Hydrate — read current PM and UX artifacts; identify the affected authorized outcome(s), initiative-wide invariants, and deferred phases.
+- [ ] Step 2: Identify refinement target — if unspecified, ask one question. State whether the target is initiative-wide or outcome-specific; surface bounded assumptions and unresolved handoff items.
 - [ ] Step 3: Brainstorm reconciliation — if a brainstorming session preceded this artifact, cross-reference against `system-design.md`; surface silently dropped ideas; ask whether any should be reconsidered.
 - [ ] Step 4: Groundtruth — verify codebase reality per Global Directives when relevant to the change.
   - **Query available code intelligence MCPs.** Determine available code intelligence tools such as symbol-aware navigation, AST-aware structural analysis, semantic or hybrid repository search, and code graphs
   - **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
 - [ ] Step 5: Preview the queue — name changed sections grouped by YAML `stakes` and approximate question count.
 - [ ] Step 6: Elicit refinements — apply Stakes-based elicitation to changed sections only.
-- [ ] Step 7: Consequence-check — verify changed sections, traceability to `prd.md`, and in-scope YAML sections.
+- [ ] Step 7: Consequence-check — verify changed sections, applicability/disposition labels, traceability to authorized source requirements, deferred-phase containment, and in-scope YAML sections.
 - [ ] Step 8: Pre-exit offer (conditional, declinable in one word) — when any **consequential** section is being materially changed, offer once, naming 1–2 session-appropriate bmild-elicit methods from this artifact's shortlist (**Architecture Decision Records**, **Failure Mode Analysis**), chosen by what was actually contentious: *"Before I update the system design — I could run **Architecture Decision Records** or **Failure Mode Analysis** in a bmild-elicit session, or take anything to roundtable. Otherwise I'll proceed."* On acceptance, swap to `bmild-elicit` with the method pre-selected. Skip when only medium/low sections change or the session is a single-field alignment. Any decline or proceed signal continues directly to the update in the same turn — no further confirmation.
 - [ ] Step 9: Write — update `[plan_folder]/<initiative-name>/system-design.md` using `assets/system-design-template.md`. Preserve unchanged sections. Update `timestamp` frontmatter.
 - [ ] Step 10: Distillation gates — apply the Drift-protection ADR gate and Semantic Memory rules when triggered.
 - [ ] Step 11: Register — confirm `system-design.md` in `## Live`; archive superseded predecessors if applicable.
-- [ ] Step 12: Close — apply Exit and Handoff from the core skill. Default `Next` to Sonia; route to Katrina if `ux-design.md` is still missing.
+- [ ] Step 12: Close — apply Exit and Handoff from the core skill. Route directly to Alex when implementation is the authorized next move; use Sonia only for an actual readiness, coverage, coordination, or requested delivery-strategy question; route to Katrina when required UX input is missing.
 
 ## Definition of Done
 
 - [ ] Brainstorming ideas reconciled when applicable
 - [ ] Refinement target identified and affected sections updated
 - [ ] Existing decisions challenged, not merely preserved
+- [ ] Affected outcomes or initiative-wide invariants identified; unrelated and deferred contracts remain unchanged
+- [ ] Every changed architecture item declares `Applies to` and `Disposition`; only `committed` items constrain Alex
 - [ ] `completion-criteria.yaml` verified for all in-scope sections
 - [ ] Relevant `handoff.md` items resolved, deferred, rejected, superseded, or kept open with clear next owner
 - [ ] `system-design.md` written with current `timestamp` date

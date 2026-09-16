@@ -14,7 +14,7 @@ Repeat only for separately authorized outcomes. Preserve previous outcomes and e
 - Phase: MVP | Growth | Vision | explicitly authorized named phase
 - Authorization: <user request or authoritative scope decision>
 - Scope and deferred work: <observable outcome, exclusions, source links>
-- Contracts: <relevant source sections; omit absent artifacts>
+- Contracts: <relevant committed source sections and delegated constraint envelopes; omit illustrative/observed content unless it is evidence>
 - Readiness: ready | partially_ready | blocked — <intent, constraints, unresolved dependencies; Sonia or Alex applying the same criteria>
 - Status: active | blocked | ready-for-review | done
 - Required review axes: functionality/completeness, security applicability, standards/spec fidelity, applicable scalability/maintainability
@@ -35,7 +35,7 @@ Repeat only for separately authorized outcomes. Preserve previous outcomes and e
 ### Continuation and review follow-up
 
 - Current state / next action: <only what another context needs>
-- Decisions and dependencies: <source links; commitments versus delegated engineering choices>
+- Decisions and dependencies: <source links; committed constraints versus delegated choices; observations used only as evidence>
 - Open obligation or finding: <evidence, consequence, owner, resolution condition>
 - Repair: pending | fixed_pending_review — <change and regression evidence; reviewer closes>
 - Review transition: <phase/outcome, source links, change identity, commands, issues; no developer reasoning transcript>

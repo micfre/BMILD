@@ -30,7 +30,7 @@ Identify the entry artifact: `rca-<slug>.md`, a verification matrix item, or a n
 - **Lightest persistent artifact.** On the fix path, write `rca-<slug>.md` only when cross-turn value is high (recurring, cross-system, unclear ownership, failed first fix, future specs need the fact). On the declined-election handoff path, RCA write is mandatory.
 - **Initiative path rule.** Initiative-linked QA artifacts go in `[plan_folder]/<initiative-name>/`. Do not invent a global RCA sidecar.
 - **Proof discipline.** Record actual implementation proof, never independent `passed` for production changes authored here. Mark affected verification pending and leave acceptance to a different reviewer context.
-- **Promote durable truth** when the fix changes externally visible behaviour or reveals facts future specs should account for — `system-design.md` or `handoff.md`. Trivial local fixes with no future relevance need no promotion.
+- **Promote durable truth** when the fix reveals an implementation fact future specs should account for: record it as `observed` in `system-design.md` with code/evidence provenance. A new or changed `committed` architecture item requires Lance's criteria through gap resolution and any required user decision. Use `handoff.md` only when resolution genuinely leaves the session. Trivial local fixes with no future relevance need no promotion.
 
 ## Routing heuristics
 

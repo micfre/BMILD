@@ -2,124 +2,221 @@ meta:
   artifact: system-design.md
   governed_by: bmild-arch
   loading_note: >
-    Load before writing system-design.md. Each section carries a `stakes` field that
-    categorizes elicitation depth — apply the behavioural rules from the active mode
-    resource's Stakes-based elicitation section. When `stakes_note` is present, it
-    overrides the default stakes value for elicitation pacing. For each in-scope section,
-    privately verify falsifiable, good_signal, and weak_signal. Do not present this file
+    Load before writing system-design.md. Each section carries a stakes field that
+    categorizes elicitation depth. Apply the behavioural rules from the active mode
+    resource. Evaluate only sections applicable to the authorized outcome or an explicit
+    initiative-wide invariant. Later phases are context without implementation authority.
+    Privately verify falsifiable, good_signal, and weak_signal. Do not present this file
     to the user.
 
 sections:
 
-  - id: tech_stack
-    required: false
-    stakes: medium
-    applies_when: platform engagement or any new runtime, framework, or library dependency
-    cross_ref: []
-    falsifiable: >
-      A developer can determine the runtime version, framework, and key library choices
-      for every new component introduced, without asking a follow-up architecture
-      question.
-    good_signal: >
-      Every new technology choice names the specific version or version constraint,
-      its role, and why it was chosen over at least one alternative. Existing choices
-      are confirmed unchanged or explicitly superseded. UI component library selection
-      is named when applicable.
-    weak_signal: >
-      Choices named without version or rationale, or a stack described at category
-      level ("use a relational database") without specifying the product.
-
-  - id: database_schema
-    required: false
+  - id: outcome_scope
+    required: true
     stakes: consequential
-    applies_when: any change to persisted data structures
     cross_ref:
+      - product-brief.md
       - prd.md
+      - ux-design.md
     falsifiable: >
-      A developer can run the code-first migration tool against this schema spec and
-      produce the correct migration without resolving any ambiguity.
+      A reader can identify the authorized outcome or phase, its source requirements,
+      initiative-wide invariants, and deferred work without inferring scope from the rest
+      of the document.
     good_signal: >
-      Every table change specifies column names, types, nullability, defaults, PKs,
-      FKs, indexes, and uniqueness constraints at the column level. Migration intent
-      is stated (what the migration tool is expected to generate).
+      The design names the authorization source, in-scope requirements, and explicit
+      exclusions. Later-phase requirements are marked deferred and receive no binding
+      implementation choices unless they are necessary foundations or separately authorized.
     weak_signal: >
-      Columns described without types or nullability, constraints stated in prose
-      without specifying enforcement layer (ORM vs app vs DB), or migration intent
-      absent.
+      The artifact says only "the initiative," mixes MVP/Growth/Vision requirements into
+      one undifferentiated design, or gives future work present implementation authority.
 
-  - id: api_contracts
+  - id: contract_disposition
+    required: true
+    stakes: low
+    falsifiable: >
+      For every architecture item, Alex can tell what it applies to and whether it is
+      committed, delegated, illustrative, or observed.
+    good_signal: >
+      Items carry Applies to and Disposition labels. Only committed content binds
+      implementation. Delegated content states its constraint boundary, illustrative
+      content is visibly non-binding, and observed facts remain descriptive until promoted.
+    weak_signal: >
+      Unlabelled detail can be mistaken for a commitment, a delegated choice has no outer
+      constraint, or implementation-observed reality is silently converted into design intent.
+
+  - id: system_boundaries
     required: false
     stakes: consequential
-    applies_when: any client-server or service-to-service boundary is introduced or changed
+    applies_when: a component, bounded context, ownership boundary, dependency direction, or trust zone is introduced or changed
     cross_ref:
       - prd.md
       - ux-design.md
     falsifiable: >
-      A frontend developer and a backend developer can implement both sides of each
-      endpoint independently and their implementations will integrate correctly on
-      first attempt.
+      A developer and reviewer can identify component responsibilities, allowed dependency
+      directions, trust crossings, and data ownership relevant to the authorized outcome.
     good_signal: >
-      Every endpoint specifies method, path, auth requirement, all request fields with
-      types and required/optional status, and all response shapes with status codes and
-      error meanings. Pagination, filtering, and sorting behavior is explicit if applicable.
+      Load-bearing boundaries name ownership, inputs/outputs, trust assumptions, prohibited
+      coupling, and the observable consequence of crossing or violating the boundary.
     weak_signal: >
-      Endpoints described without response shapes, or error conditions described
-      abstractly ("returns an error if something goes wrong") without status codes
-      or distinguishable error payloads.
+      Boxes are named without ownership or trust meaning, responsibility overlaps silently,
+      or a topology preference is presented as a boundary requirement.
+
+  - id: quality_attributes
+    required: false
+    stakes: medium
+    applies_when: the authorized outcome has material latency, availability, capacity, privacy, compliance, scalability, or maintainability requirements
+    cross_ref:
+      - prd.md
+    falsifiable: >
+      A reviewer can determine the measurable or otherwise observable quality constraints
+      the architecture must preserve and the evidence that will test them.
+    good_signal: >
+      Applicable quality attributes name a target or bounded expectation, operating context,
+      architectural consequence, and proof approach. Non-applicable dimensions are omitted.
+    weak_signal: >
+      Generic goals such as "fast," "scalable," or "secure" appear without a context,
+      bound, consequence, or validation method.
+
+  - id: tech_stack
+    required: false
+    stakes: medium
+    applies_when: a new runtime, framework, platform, or library choice creates a compatibility, security, build, operational, or lock-in commitment
+    cross_ref: []
+    falsifiable: >
+      A developer can identify each committed technology constraint and which technology
+      choices remain delegated.
+    good_signal: >
+      Committed products or version constraints name the constraint they satisfy, relevant
+      compatibility/security/operational effects, and an alternative. Exact versions are
+      specified only when they are themselves binding; ordinary package selection and
+      patch-level choice may remain delegated.
+    weak_signal: >
+      A tool is named without its constraint or consequence, every implementation library
+      is frozen pre-emptively, or a delegated choice is presented as a stack commitment.
+
+  - id: database_schema
+    required: false
+    stakes: consequential
+    applies_when: persisted data semantics, lifecycle, ownership, consistency, privacy, compatibility, or a physical schema commitment changes
+    cross_ref:
+      - prd.md
+    falsifiable: >
+      A developer can preserve committed data semantics and, when a physical schema is
+      committed, generate the intended code-first migration without resolving ambiguity.
+    good_signal: >
+      Identity, ownership, lifecycle, retention, consistency, privacy, compatibility, and
+      invariants are explicit when applicable. Committed physical schema specifies the
+      necessary names, types, nullability, defaults, keys, indexes, constraints, enforcement
+      layer, and migration intent. Physical representation and tuning remain delegated when
+      they do not affect a committed consequence.
+    weak_signal: >
+      Data meaning or migration compatibility is ambiguous, physical details are mandatory
+      without an architectural consequence, or a committed constraint lacks its enforcement
+      layer.
+
+  - id: api_contracts
+    required: false
+    stakes: consequential
+    applies_when: a client-server, service-to-service, event, or third-party integration boundary is introduced or changed
+    cross_ref:
+      - prd.md
+      - ux-design.md
+    falsifiable: >
+      Independent consumers and providers can interoperate for every committed boundary
+      while private transport or adapter choices remain delegated where appropriate.
+    good_signal: >
+      Committed contracts specify identity, auth/trust, required inputs, success and
+      distinguishable failure semantics, compatibility/versioning, and applicable ordering,
+      idempotency, pagination, filtering, or sorting. Exact wire shapes are included when
+      interoperability or compatibility requires them.
+    weak_signal: >
+      A committed boundary lacks interoperable behavior or error meaning, internal adapter
+      details are frozen without consequence, or auth and compatibility are left implicit.
 
   - id: service_contracts
     required: false
     stakes: consequential
-    applies_when: a service boundary has committed interoperability, side-effect, security, or compatibility obligations
+    applies_when: a service boundary has committed interoperability, side-effect, security, transactional, or compatibility obligations
     cross_ref:
       - prd.md
     falsifiable: >
-      A developer can write a unit test for a service method's inputs, outputs, and
-      error cases from this contract alone, without reading the implementation.
+      A developer can test a committed service boundary's behavior, side effects, and error
+      cases without requiring private method structure to be predesigned.
     good_signal: >
-      Every committed service boundary specifies the necessary inputs, outputs, and
-      error conditions it throws or returns. Side effects (writes, events, queue
-      messages) are named.
+      Each committed boundary specifies necessary inputs, outputs, side effects, error and
+      transactional semantics. Signatures appear only when interoperability or another
+      committed constraint requires them. Private methods, algorithms, and decomposition are
+      explicitly delegated.
     weak_signal: >
-      A committed boundary lacks testable behavior or error semantics. Private method
-      choices left to the executor are not a completeness defect when boundary
-      obligations remain precise.
+      A committed boundary lacks testable behavior, or private method and class structure is
+      specified as though it were architecture without a load-bearing consequence.
+
+  - id: failure_and_consistency
+    required: false
+    stakes: consequential
+    applies_when: partial failure, retry, concurrency, distributed state, asynchronous work, or recovery can affect committed behavior or data integrity
+    cross_ref:
+      - prd.md
+    falsifiable: >
+      A developer and reviewer can predict required behavior under the applicable failure,
+      retry, concurrency, and recovery conditions.
+    good_signal: >
+      Applicable scenarios define detection, atomicity or consistency expectations,
+      idempotency/retry behavior, degradation, reconciliation or rollback, recovery targets,
+      and which mechanisms remain delegated.
+    weak_signal: >
+      The happy path is precise but duplicate delivery, partial writes, timeouts, races, or
+      recovery behavior could change committed results without guidance.
 
   - id: dependency_decisions
     required: false
     stakes: medium
-    applies_when: any new external library, service, or infrastructure component is introduced
+    applies_when: an external library, service, or infrastructure component creates a material compatibility, security, build, operational, cost, or lock-in consequence
     cross_ref: []
     falsifiable: >
-      A reviewer can evaluate whether the dependency was justified by reading this
-      section alone, without access to the original discussion.
+      A reviewer can evaluate each committed dependency and its constraints while ordinary
+      implementation dependencies remain Alex's choice.
     good_signal: >
-      The dependency is justified against at least one alternative with explicit
-      trade-off rationale. The constraint it imposes on the existing system (versioning,
-      security surface, build process) is acknowledged.
+      A committed dependency names the constraint it satisfies, at least one viable
+      alternative, and material versioning, security, build, operational, cost, or lock-in
+      effects. Preference-level dependencies are delegated.
     weak_signal: >
-      Dependency named without alternatives considered, or justification is a claim
-      ("it is the best option") without evidence or trade-off.
+      Every library addition requires architecture approval, or a consequential dependency
+      is named without alternatives and material consequences.
+
+  - id: operability_and_evolution
+    required: false
+    stakes: medium
+    applies_when: deployment, rollback, migration, observability, capacity, compatibility, or deprecation affects safe delivery or operation
+    cross_ref:
+      - prd.md
+    falsifiable: >
+      Operators and developers can identify required signals, rollout/rollback expectations,
+      and compatibility or migration invariants for the authorized outcome.
+    good_signal: >
+      Applicable metrics/logs/traces, health signals, rollout and rollback constraints,
+      capacity assumptions, compatibility windows, and evolution triggers are explicit;
+      tool and implementation details remain delegated unless consequential.
+    weak_signal: >
+      The design cannot be safely observed, introduced, reversed, or evolved, or it mandates
+      operational tooling without naming the constraint it satisfies.
 
   - id: architecture_decisions
     required: false
     stakes: consequential
-    applies_when: any significant technical choice with more than one viable approach
+    applies_when: a significant technical choice has more than one viable approach with different behavior, quality, evolution, or operational consequences
     cross_ref:
       - prd.md
     falsifiable: >
-      For each decision, a reviewer can state what was decided, what alternatives were
-      considered, and why the chosen approach was preferred — without access to the
-      original discussion.
+      For each committed decision, a reviewer can state what was decided, the constraint it
+      satisfies, viable alternatives, why it was chosen, and what would reopen it.
     good_signal: >
-      Each significant architecture decision documents the context (why a decision was
-      needed), at least two alternatives with pros and cons, the decision and rationale,
-      and the consequence of the choice. Decisions that are preferences (no observable
-      difference between options) are labelled as such.
+      Each committed decision records context, evidence, viable alternatives with material
+      consequences, rationale, applicability, and a revisit trigger when useful. Preference-
+      level choices are delegated or illustrative rather than elevated into commitments.
     weak_signal: >
-      Decisions stated without alternatives, rationale that is a restatement of the
-      choice rather than a reason for it, or decisions that hide preferences as
-      architectural requirements.
+      Rationale restates the choice, alternatives differ only cosmetically, or a reversible
+      implementation preference is treated as a one-way architectural door.
 
   - id: fr_coverage
     required: true
@@ -127,19 +224,16 @@ sections:
     cross_ref:
       - prd.md
     falsifiable: >
-      A reviewer can map each functional requirement from prd.md to at least one
-      architectural element (endpoint, schema, service method, or decision) — no FR is
-      left without an implementable contract.
+      A reviewer can map every functional requirement in the authorized outcome to a
+      supporting architecture element or an explicit determination that no architecture
+      commitment is needed. Deferred-phase FRs are visibly outside present authority.
     good_signal: >
-      Every functional requirement from prd.md is supported by the system design. If an
-      FR has no corresponding endpoint, schema change, service contract, or decision, it
-      is flagged as a gap or routed through chat resolution or `handoff.md`. The
-      mapping is derivable — a developer can implement each FR by following the
-      contracts in this document.
+      Every in-scope FR maps to a boundary, data/API/service contract, decision, delegated
+      implementation envelope, or explicit no-architecture-needed disposition. Gaps are
+      resolved or routed. Later-phase FRs remain deferred unless separately authorized.
     weak_signal: >
-      Functional requirements from the PRD have no visible architectural support, or
-      coverage is assumed without being traceable to specific endpoints, schemas, or
-      service methods.
+      An authorized FR has no implementable support, every FR is forced into a low-level
+      architecture element, or future-phase FRs acquire binding design accidentally.
 
   - id: ambiguity_disposition
     required: false
@@ -148,14 +242,13 @@ sections:
       - prd.md
       - ux-design.md
     falsifiable: >
-      A reviewer can tell how unresolved ambiguity was governed without reading chat
-      history: user-owned gaps resolved in chat, cross-artifact issues in `handoff.md`,
-      or low-risk bounded assumptions in the consuming artifact.
+      A reviewer can tell how unresolved ambiguity was governed without reading chat history:
+      user-owned gaps resolved in chat, cross-artifact issues in handoff.md, or reversible
+      assumptions with a named revisit trigger.
     good_signal: >
-      The source artifact remains authoritative. User-owned architecture ambiguity is
-      resolved live or queued with one discrete prompt and a promotion target. Product
-      or UX issues identify the target artifact and owner rather than living as durable
-      handoff prose inside `system-design.md`.
+      Source artifacts remain authoritative. User-owned architecture ambiguity is resolved
+      live or queued with one discrete prompt and promotion target. Product or UX issues
+      identify their target artifact and owner rather than becoming shadow design truth.
     weak_signal: >
-      Embedded durable question sections in `system-design.md`, unresolved ambiguity left
-      only in chat, or cross-artifact issues with no target artifact or owner.
+      Durable questions remain embedded in system-design.md, ambiguity exists only in chat,
+      or cross-artifact issues lack a target artifact, owner, or resumption condition.

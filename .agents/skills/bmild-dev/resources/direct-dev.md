@@ -19,8 +19,8 @@ Implement exploratory or bounded repo work without a governing specification. Wh
   - *Exploratory* — may inform a future spec; leaves reusable code or documented finding
   - *Durable* — changes production behaviour; others will build on it
 - **Do not over-engineer** toward a spec that does not exist.
-- **Promote durable truth.** When work changes durable repo behaviour or reveals facts future specs should account for: update `system-design.md` or `handoff.md` as appropriate. Throwaway work with no future relevance needs no BMILD artifact.
-- **Route upstream decisions** per core Routing heuristics — do not resolve product, UX, or architecture choices unilaterally.
+- **Promote durable truth.** When work reveals a durable implementation fact future specs should account for, Alex may add an `observed` item to `system-design.md` with code/evidence provenance. Observations are descriptive. A new or changed `committed` architecture item requires Lance's criteria through gap resolution and any required user decision. Use `handoff.md` only when resolution genuinely leaves the session. Throwaway work with no future relevance needs no BMILD artifact.
+- **Route upstream decisions** per core Execution authority — do not resolve product, UX, or committed architecture choices unilaterally.
 
 ## Tasks
 
@@ -40,7 +40,7 @@ Progress:
 - [ ] Step 2: Implement a coherent change fully satisfying the request and applicable quality expectations.
 - [ ] Step 3: Run quality gates. Add or update tests when they prove the prototype, protect durable behaviour, or the user asked for tests.
 - [ ] Step 4: Document when durable behaviour changes or user explicitly asks; otherwise `Documentation impact: none`.
-- [ ] Step 5: Promote durable technical truth per Global Directives.
+- [ ] Step 5: Reconcile durable technical truth per Global Directives: record useful implementation facts as `observed`, or resolve proposed commitment changes through Lance's criteria.
 - [ ] Step 6: Pre-exit offer (conditional, declinable in one word) — when the prototype leaves a material trade-off, offer once: *"Before I wrap this — anything you want to stress-test? Otherwise I'll close it out."* Skip when no such trade-off remains.
 - [ ] Step 7: Establish mode eligibility: completed bounded work, gate evidence or recorded unavailability, and a safe non-empty attributable path set. Failed, blocked, incomplete, no-change, or baseline-overlap work is not commit-ready.
 
@@ -56,7 +56,7 @@ Before effective-posture-`1` execution, re-check guidance for final attributable
 On failure, preserve content and unrelated index state; restore only BMILD-created intent entries with `git restore --staged --source=HEAD -- <paths>`. On success, require changed `HEAD`, `HEAD^ = preCommitHead`, exact NUL-safe `git diff-tree --no-commit-id --name-only -r -z HEAD` path equality (including renames), clean task paths, and unchanged unrelated baseline state. An invariant breach is reported without history repair. Render the compact core commit line from Exit and Handoff. Never widen paths, reset, amend, revert, retry destructively, or perform network operations.
 <!-- commit-posture-completion:end -->
 
-- [ ] Step 8: Close — apply Exit and Handoff from the core skill. Route upstream when Routing heuristics apply.
+- [ ] Step 8: Close — apply Exit and Handoff from the core skill. Route upstream when core Execution authority applies.
 
 ## Definition of Done
 

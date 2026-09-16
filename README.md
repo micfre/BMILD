@@ -144,13 +144,13 @@ That matters in real repositories. Greenfield work may begin with product framin
 
 It also adapts to you. If you want help finding the questions, the design-tier personas probe and slow the agent down where the stakes are real. If you already know the decision, say it; the persona captures its consequences rather than making you sit through a performance of clever discovery. BMILD is meant to provide judgment and structure where they help, not to demand a ritual before useful work can start.
 
-### It replaces Agile ceremony with context management
+### It organizes execution around outcomes
 
 Epics, stories, sprints, and points were built to coordinate people and forecast human capacity. They can be useful in their setting. They are not a natural unit of work for a coding model.
 
 BMILD uses an **initiative** for a coherent piece of product or system work. Execution targets an authorized **phase/outcome**, with source requirements and demonstrable acceptance. The agent chooses useful internal work units; existing Slice records remain optional historical context.
 
-This is the central design choice in BMILD. The framework optimizes the agent’s usable context and the clarity of its inputs. You can still use your existing issue tracker, sprint cadence, or team rituals if they serve people on your team. BMILD simply does not mistake them for the agent’s operating system.
+This is the central design choice in BMILD. The framework keeps authorized scope, governing contracts, and proof obligations explicit while leaving internal decomposition to the executor. You can still use your existing issue tracker, sprint cadence, or team rituals if they serve people on your team. BMILD simply does not mistake them for the coding agent’s unit of work.
 
 ### It treats artifacts as working contracts
 
@@ -194,7 +194,7 @@ BMILD has six standard personas and three interactive modes. They are deliberate
 
 - **Faisal 🟦 -- Product Manager:** frames the problem, users, scope, success criteria, and requirements; at project scope, he can recommend the next load-bearing direction. Useful when the “why”, “what”, or “what next?” is still blurry.
 - **Katrina 🟩 -- UX Designer:** owns information architecture, flows, states, interaction rules, and the experience people will actually have.
-- **Lance 🟫 -- Architect:** turns a chosen direction into implementable data, API, service, and technology contracts; makes trade-offs explicit.
+- **Lance 🟫 -- Architect:** separates initiative-wide invariants from outcome-specific architecture; commits load-bearing boundaries, quality, data, integration, failure, and evolution constraints while leaving reversible implementation choices to Alex.
 - **Sonia 🟧 -- Delivery Planner:** checks whether a design is ready to build, creates verification coverage, checks phase/outcome completeness and proof, and advises on meaningful dependencies when needed.
 - **Alex 🟪 -- Developer:** implements approved phase-bounded outcomes, bounded direct work, and fixes while respecting the project’s existing code and durable memory.
 - **Rahat 🟨 -- Quality & Reliability:** owns the complete independent review loop: outcome FR/NFR and completeness verification, high-confidence security review, and code review against repository standards and the governing specification. Ask for a **comprehensive review** to run all three from one context load and accept the outcome in the same pass when every axis is clear. Rahat also diagnoses before fixing and records durable RCAs. Existing repair authority or Fix Election permits a bounded fix, whose acceptance then belongs to another independent review context.

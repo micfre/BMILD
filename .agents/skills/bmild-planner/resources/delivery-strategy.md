@@ -14,6 +14,7 @@ Read current scope and source contracts, `registry.md`, and relevant outcome sec
 - Decompose for actual dependency safety, risk isolation, coordination, or useful milestones. A cohesive cross-layer change or shared foundation can be preferable to forced vertical Slices.
 - Assess sufficient readiness using the readiness resource's criteria if not already established. Do not manufacture missing documents, token budgets, predicted file inventories, or a recut limit.
 - Retain settled constraints and proof obligations. Internal plan changes are not product decisions. Changes to committed intent or consequential contracts use owner resolution.
+- In architecture sources, only `committed` items constrain the plan. Keep `delegated` choices revisable by Alex; do not turn `illustrative` or `observed` content into planned requirements.
 
 ## Tasks
 

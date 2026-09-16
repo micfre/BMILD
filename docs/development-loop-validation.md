@@ -19,9 +19,15 @@ Baseline revision: `fcc4f93e49a199091a47b4f1c197196fb7b51492`. All 17 baseline c
 - All unspecified consult tiers inherit the active model/effort. Explicit dispatch overrides remain binding. Generated packages cover Codex, Claude Code, and OpenCode only.
 - Public/data/trust/compatibility contracts remain precise while private implementation choices can be delegated. Existing commit safety and unrelated-work protection remain intact.
 
+### Architecture contract granularity refinement
+
+A subsequent source audit found that execution had become outcome-first more completely than architecture authoring: Lance still consumed the whole PRD as one coverage target, only service contracts carried an explicit committed/delegated split, operational architecture concerns lacked completion criteria, completed architecture still defaulted through Sonia, and Alex's implementation-truth promotion boundary was implicit.
+
+The follow-up refinement keeps one initiative-level `system-design.md` while separating initiative-wide invariants from named outcome/phase contracts. Every new or changed architecture item now carries `Applies to` plus `committed`, `delegated`, `illustrative`, or `observed` disposition. Legacy unlabelled designs require no bulk migration: substantive behavior/data/trust/compatibility/NFR decisions remain binding, clear examples/private sketches remain non-binding, and ambiguous authority applies Lance's criteria. Conditional completion criteria cover system/trust boundaries, quality attributes, failure and consistency behavior, operability, rollout, compatibility, and evolution without requiring irrelevant sections. Later phases remain non-binding context. Completed architecture routes directly to Alex when implementation is next; Sonia remains conditional on a real readiness, coverage, coordination, or requested strategy need. Alex may record implementation-confirmed observations with provenance, but only Lance's criteria and required user decisions can create or change commitments. Planner and reviewer consumers apply the same disposition semantics.
+
 ## Regression checks
 
-Validation result: all 16 contract scripts, skill validation, ShellCheck, Markdown lint, and the local release-package integrity check passed on the implementation candidate. These checks establish source and packaging consistency, not comparative model performance.
+Validation result at the original 0.5.0 checkpoint: all 16 contract scripts, skill validation, ShellCheck, Markdown lint, and the local release-package integrity check passed. The subsequent architecture refinement adds a seventeenth contract script; current validation results are reported from the working tree rather than retroactively attributed to the earlier checkpoint. These checks establish source and packaging consistency, not comparative model performance.
 
 Run from the repository root:
 
@@ -31,9 +37,9 @@ bash scripts/lint.sh
 for test in tests/*-contract.sh; do bash "$test"; done
 ```
 
-The updated suite has 16 contract scripts: two estimator-specific contracts were removed and `outcome-execution-contract.sh` was added. Estimator-only golden/equivalence runners were retired with the calculator. Keep the distinction between source-contract guards and executable tests: marker checks do not demonstrate that an LLM follows a rule. Generator tests parse generated TOML and check inherited defaults; commit tests exercise isolated Git fixtures with unrelated state and hook failures.
+The 0.5.0 suite had 16 contract scripts: two estimator-specific contracts were removed and `outcome-execution-contract.sh` was added. The architecture refinement adds `architecture-contract-granularity-contract.sh`, bringing the current suite to 17. Estimator-only golden/equivalence runners were retired with the calculator. Keep the distinction between source-contract guards and executable tests: marker checks do not demonstrate that an LLM follows a rule. Generator tests parse generated TOML and check inherited defaults; commit tests exercise isolated Git fixtures with unrelated state and hook failures.
 
-`outcome-execution-contract.sh` checks primary entry/phase/evidence requirements, byte-identical acceptance blocks at point of use in all five review modes, fixer independence, estimator surface removal, and literal skill-local resource references. Existing tests retain shared gap/promotion/session/commit/Fix Election identity and authority boundaries.
+`outcome-execution-contract.sh` checks primary entry/phase/evidence requirements, byte-identical acceptance blocks at point of use in all five review modes, fixer independence, estimator surface removal, and literal skill-local resource references. `architecture-contract-granularity-contract.sh` protects architecture outcome scoping, disposition semantics, conditional system concerns, direct post-design routing, and the observation-to-commitment promotion boundary. Existing tests retain shared gap/promotion/session/commit/Fix Election identity and authority boundaries.
 
 ShellCheck and Markdown lint cover the changed sources. The local package check builds with `CI=1` to avoid tag/push operations, opens the archive, parses generated roles, checks absence of estimators, and verifies that each generated skill path resolves inside the archive. This found and corrected an existing absolute-temporary-path leak in release-generated consult definitions. No tag, push, or release publication is part of this refactor.
 
