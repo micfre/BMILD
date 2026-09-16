@@ -5,7 +5,7 @@ description: "<one-line summary>"
 timestamp: YYYY-MM-DD
 scope: "<initiative-name>"
 slug: <kebab-case-slug>
-status: open | in-progress | applied | abandoned
+status: open | in_progress | applied | abandoned
 ---
 
 ## Trigger
@@ -59,16 +59,16 @@ Record each bounded episode after the ratified decision: causal episode, owner, 
 
 ## Ordered Handoff Chain
 
-Only work that genuinely left the session because capability or authority was unavailable/rejected, user input was unavailable, or ownership remained asynchronous. Each entry: target persona, mode, artifact, exact invocation, `Blocked-By`, and resume condition. Completed in-session episodes never appear here.
+Only work that genuinely left the session because capability or authority was unavailable/rejected, user input was unavailable, or ownership remained asynchronous. Each entry: target persona, mode, artifact, exact invocation, `Blocked By`, and resume condition. Completed in-session episodes never appear here.
 
-1. <persona> — <mode> on `<artifact>` — verbatim prompt: *"<invocation text>"* — Blocked-By: none
-2. <persona> — <mode> on `<artifact>` — verbatim prompt: *"<invocation text>"* — Blocked-By: 1
-3. Sonia — Update affected outcome readiness and proof in `verification-matrix.md` — Blocked-By: 1, 2
+1. <persona> — <mode> on `<artifact>` — verbatim prompt: *"<invocation text>"* — Blocked By: none
+2. <persona> — <mode> on `<artifact>` — verbatim prompt: *"<invocation text>"* — Blocked By: 1
+3. Sonia — Update affected outcome readiness and proof in `verification-matrix.md` — Blocked By: 1, 2
 ...
 
 ## SP Items
 
-- SP-### — <target artifact> — <target owner> — Blocked-By: <prior SP-###s> — Disposition: <pending | applied_by_handback> — Resume condition: <exact condition>
+- SP-### — <target artifact> — <target owner> — Blocked By: <prior SP-###s> — Disposition: <pending | applied_by_handback> — Resume condition: <exact condition>
 
 ## Decision Log Echo
 

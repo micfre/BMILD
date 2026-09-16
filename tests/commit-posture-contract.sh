@@ -52,7 +52,7 @@ for rel in "${POSTURE_FILES[@]}"; do
     ! printf '%s\n%s\n' "$preflight" "$completion" | rg -qi 'git (fetch|pull|push|remote)\b' || fail "$file: network git operation in posture blocks"
 done
 
-rg -q -F '`ready-for-review`' "${ROOT}/.agents/skills/bmild-dev/resources/spec-dev.md" || fail "Alex Spec-Dev eligibility missing"
+rg -q -F '`ready_for_review`' "${ROOT}/.agents/skills/bmild-dev/resources/spec-dev.md" || fail "Alex Spec-Dev eligibility missing"
 rg -q -F 'completed documented fix' "${ROOT}/.agents/skills/bmild-dev/resources/spec-fix.md" || fail "Alex Spec-Fix eligibility missing"
 rg -q -F 'completed bounded work' "${ROOT}/.agents/skills/bmild-dev/resources/direct-dev.md" || fail "Alex Direct-Dev eligibility missing"
 rg -q -F 'confirmed root cause' "${ROOT}/.agents/skills/bmild-dev/resources/direct-fix.md" || fail "Alex Direct-Fix eligibility missing"

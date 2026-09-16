@@ -11,7 +11,7 @@ severity: low | medium | high | critical
 created: YYYY-MM-DD
 status: open | resolved
 owner: Rahat
-next_owner: Alex | Lance | Katrina | none
+next_owner: Alex | Lance | Katrina | Rahat | none
 ---
 
 ## Symptom
@@ -51,7 +51,7 @@ Context carrier for a declined Fix Election (or any handoff that must survive a 
 
 - Production fix needed: yes / no
 - Fix election: offered — accepted | declined | n/a
-- Next owner: Alex / Rahat / Lance / Katrina / none
+- Next owner: Alex / Lance / Katrina / Rahat / none
 - Required action: what must change and why
 - QA-owned work completed: tests, matrix updates, RCA evidence, or none
 

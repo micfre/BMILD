@@ -14,13 +14,13 @@ next_owner: Alex | Lance | Katrina | Rahat | none
 
 ## Findings Summary
 
-Found [N] High severity and [M] Medium severity issues within [review scope].
+Found [N] critical, [M] high, [K] medium, and [L] low severity issues within [review scope].
 
 ## Vulnerabilities
 
 ### Vuln 1: [Category]: `<file>:<line>`
 
-- **Severity:** High | Medium
+- **Severity:** low | medium | high | critical
 - **Confidence:** 0.8–1.0
 - **Description:** [Clear description of the vulnerability]
 - **Exploit path:** [Untrusted entry → boundary/sink → impact]

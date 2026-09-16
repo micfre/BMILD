@@ -18,7 +18,7 @@ scope: "<initiative-name>"
 ### H-001
 
 - Status: proposed | accepted | applied | closed | rejected | deferred | superseded
-- Target Artifact: `product-brief.md | prd.md | ux-design.md | system-design.md | slices.md | slice-<N>.md | verification-matrix.md | rca-<slug>.md | security-review-<slug>.md | context-map.md | DESIGN.md | adr/<NNNN-slug>.md`
+- Target Artifact: `product-brief.md | prd.md | ux-design.md | system-design.md | slices.md | slice-<N>.md | verification-matrix.md | rca-<slug>.md | security-review-<slug>.md | context.md | context-map.md | DESIGN.md | adr/<NNNN-slug>.md`
 - Target Owner: Faisal | Katrina | Lance | Sonia | Alex | Rahat
 - Raised By: [persona or user]
 - Type: source_defect | cross_artifact_conflict | promotion_request

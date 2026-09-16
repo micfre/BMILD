@@ -16,7 +16,7 @@ Repeat only for separately authorized outcomes. Preserve previous outcomes and e
 - Scope and deferred work: <observable outcome, exclusions, source links>
 - Contracts: <relevant committed source sections and delegated constraint envelopes; omit illustrative/observed content unless it is evidence>
 - Readiness: ready | partially_ready | blocked — <intent, constraints, unresolved dependencies; Sonia or Alex applying the same criteria>
-- Status: active | blocked | ready-for-review | done
+- Status: active | blocked | ready_for_review | done
 - Required review axes: functionality/completeness, security applicability, standards/spec fidelity, applicable scalability/maintainability
 - qa_status: not_started | ready_for_verification | verified | failed | blocked
 - security_status: not_reviewed | review_requested | findings_open | cleared | not_applicable

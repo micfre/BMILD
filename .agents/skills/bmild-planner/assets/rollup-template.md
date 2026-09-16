@@ -20,7 +20,7 @@ bearing_owner: Faisal (PM)
 ## Initiative Registry
 
 - Initiative: <initiative-name>
-  - Phase: MVP | Growth | full
+  - Phase: MVP | Growth | Vision
   - Status: active | complete | archived
   - Lead: Faisal | Lance | Katrina | Sonia
   - Last updated: YYYY-MM-DD

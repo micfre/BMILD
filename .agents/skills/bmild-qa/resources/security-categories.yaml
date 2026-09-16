@@ -103,6 +103,7 @@ filtering:
       "Below 0.7": Too speculative to report
 
   severity_guidelines:
+    critical: Direct exploitation crosses the trust boundary with full compromise — privileged code execution, complete data loss, or total authentication bypass
     high: Direct exploitation can produce code execution, data breach, or authentication bypass
     medium: Exploitation requires specific conditions but has significant impact
-    low: Defense-in-depth or lower-impact concern; do not persist as a vulnerability finding
+    low: Defense-in-depth or lower-impact concern; record only when it meets the confidence threshold and needs durable tracking — never blocks outcome acceptance

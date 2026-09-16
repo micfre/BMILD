@@ -127,7 +127,7 @@ timestamp: YYYY-MM-DD
 ```
 
 - `## Live` — filenames of artifacts currently in use. One per line, prefixed with `- `.
-- `## Archived` — filenames of terminal artifacts: completed Slices at `status: done` and superseded documents, same format. A Slice is archived only when Rahat marks it `done` — never at `ready-for-review` — so `## Archived` never mixes in-flight work with finished work.
+- `## Archived` — filenames of terminal artifacts: completed Slices at `status: done` and superseded documents, same format. A Slice is archived only when Rahat marks it `done` — never at `ready_for_review` — so `## Archived` never mixes in-flight work with finished work.
 - `## Stale` — filenames of artifacts that have been superseded mid-flight by an upstream change and must not be consumed as current truth until repaired. Each line names the artifact and the handoff item or `change-proposal-<slug>.md` driving the staleness. The owning persona moves the line out of `## Stale` and back to `## Live` when their patch is applied.
 - Frontmatter `scope` identifies the initiative.
 - Frontmatter `timestamp` is the date of the last change.
