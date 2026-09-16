@@ -10,6 +10,9 @@
 [![Release Status](https://github.com/micfre/BMILD/actions/workflows/release.yml/badge.svg)](https://github.com/micfre/BMILD/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+> [!TIP]
+> **Dev has moved from Slice-first to outcome-first!** Ask Alex to implement an approved phase/outcome directly; a Sonia planning session is optional. Bring Sonia in when readiness, requirement coverage, meaningful dependencies, or delivery strategy need attention. Alex owns and revises the internal decomposition inside the authorized MVP/Growth/Vision boundary. Ask Alex to **implement and verify** when you also want fresh-context independent review from Rahat in one-step. Existing Slice records remain as historical inputs -- there is no need to migrate them or create a new Slice first.
+
 BMILD is a small cross-functional team for your coding agent. It gives the agent durable roles, a shared working memory, and a way to move from an idea to verified code without turning your project into an Agile reenactment.
 
 Copy a handful of skill folders into your project. Talk to a persona when you need one. The work and its decisions live in normal Markdown beside your code. There is no service to run, no installer, no proprietary mediation layer. As the name suggests, there is also no prescribed ceremony to perform.
@@ -129,15 +132,13 @@ Consult agents are leaves. Owner consults may author anything they canonically o
 
 Outcome Development is the primary spec-backed path. The outcome section in `verification-matrix.md` records phase authorization, source requirements, implementation evidence, open obligations, and independent review. Alex owns task order and internal structure; forecasts and file inventories are not contracts. Sonia checks intent and coverage; Rahat checks correctness, completeness, security applicability, standards/spec fidelity, and relevant scalability and maintainability.
 
-Token estimation is retired. `slice_target`, `tokenizer_base`, and `tokenizer_multiplier` in existing configs are inert and can be removed. There is no fallback calculator or calibration task. Use the harness's context facilities and a concise durable checkpoint when needed. Old Slice files and estimates remain historical inputs; no bulk migration is required.
-
 A build-and-verify engagement can continue across contexts without user relays. Review requires a fresh context that did not implement the change or inherit its development transcript. You can explicitly choose a separate new review window. Where automatic isolated dispatch is unavailable, BMILD leaves acceptance pending and provides a concise transition grounded in artifacts. A reviewer-authored production fix needs another independent reviewer before acceptance. Review-only requests do not authorize production fixes.
 
 ## Why BMILD is different
 
 ### It is not a scripted workflow
 
-BMILD has a common path: frame, design, plan, implement, verify, but it is a map of ownership, not a funnel. Personas activate from the state of the work and the artifacts already present.
+BMILD has a common arc: frame, design, implement, independently verify—with planning when readiness or coordination benefits from it. It is a map of ownership, not a funnel. Personas activate from the state of the work and the artifacts already present.
 
 That matters in real repositories. Greenfield work may begin with product framing. Brownfield work may begin with a failing test, an undocumented architectural constraint, or a half-finished feature that needs a careful re-plan. You can run any number of initiatives in parallel. Each has its own folder and live artifact registry, while shared meaning and durable cross-project decisions remain visible at the project level.
 
@@ -209,7 +210,7 @@ The three interactive modes are available whenever they help. A persona may sugg
 > [!NOTE]
 > **Workflow visual placeholder**  --  will be replaced with a BMILD workflow image.
 
-The workflow is intentionally non-linear. You might start at Alex for a bounded direct-dev request or spike. Rahat may diagnose a failure and then either implement the confirmed fix or hand the RCA to Alex when you want a fresh window. Rahat may also surface a design flaw that needs Lance. An existing UX design may be enough to begin planning. Sonia may send a change upstream rather than papering over a gap. The important part is that the next move is based on the state of the work, not which box you were supposed to visit first. Agents are good about calling out next moves, if in doubt.
+The workflow is intentionally non-linear. You might start at Alex for a bounded direct-dev request or spike. Rahat may diagnose a failure and then either implement the confirmed fix or hand the RCA to Alex when you want a fresh window. Rahat may also surface a design flaw that needs Lance. An existing UX design may be enough to ground the next authorized outcome. Sonia may send a change upstream rather than papering over a gap. The important part is that the next move is based on the state of the work, not which box you were supposed to visit first. Agents are good about calling out next moves, if in doubt.
 
 ### Readiness and independent acceptance
 
@@ -343,8 +344,5 @@ BMILD is built upon and inspired by:
 - **[BMAD-METHOD](https://github.com/the-bmad-group/bmad)**: the persona archetypes and interactive patterns are adapted from BMAD.
 - **[SOUL.md](https://github.com/aaronjmars/soul.md)**: informed the shape to get the most distinctive persona voices.
 - **[Grill-with-Docs](https://github.com/mattpocock/skills/blob/main/skills/engineering/grill-with-docs/SKILL.md)**: the context and ADR log format is adapted from mattpocock's (wildly popular) skill.
-- **[GSD](https://github.com/gsd-build/get-shit-done)**: the Nyquist validation rule is adapted to specific skill behaviours.
-- **[Kilo Code](https://github.com/kilo-code)**: the QA debugging methodology is adapted from Kilo Code's Debug prompt.
-- **[Tokencast](https://github.com/krulewis/tokencast)**: the tokenizer algorithm used by the Planner was inspired by krulewis' implementation.
 
 All referenced materials are used in accordance with their respective MIT licenses.
