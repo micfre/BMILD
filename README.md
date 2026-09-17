@@ -238,6 +238,12 @@ Readiness checks whether the authorized outcome has coherent intent, usable cons
 
 Rahat checks the original spec rather than trusting only the matrix or Alex's tests. Every required review axis needs current evidence. Security `not_reviewed`, an omitted axis, or a passing test run without independent review cannot close an outcome. Relevant performance assumptions and maintainability are reviewed explicitly; unverified limits stay visible.
 
+### Optional artifact review, and how code review gets its teeth
+
+Sonia can run the optional **Artifact Reviewer Gate** over a live `prd.md`, `ux-design.md`, or `system-design.md` — an explicit, opt-in quality review, offered (never required) by Faisal, Katrina, and Lance when they finalize an artifact. Each baseline lens (an eight-dimension quality rubric plus an adversarial lens) runs in an isolated reviewer context that writes a full findings file and returns only a compact summary; Sonia consolidates into one overall result — `clear`, `findings_open`, or `incomplete` — with severity-ranked findings the artifact owner dispositions as `apply`, `discuss`, `defer`, or `ignore`. The result describes artifact quality only: it is not outcome readiness, not implementation authorization, and never a QA status. When isolated reviewers are unavailable, the run reports `incomplete` with continuation prompts for a fresh session rather than quietly approving anything.
+
+Rahat's code review, comprehensive review, and targeted verification apply two mechanical depth lenses. **Edge-Case Hunter** traces every branch and domain boundary — including implicit branches (the untouched members of a changed fixed set), handle lifetimes, call-site/callee mismatches, deletion effects, and author claims read strictly after the path trace — reporting unhandled paths as `location / trigger_condition / guard_snippet / potential_consequence`. **Verification-Gap** asks one question — if the behavior this change should produce broke where it's actually used, would verification fail? — and classifies regression, missing-adoption, and broken-verification gaps from tests actually read and repository searches actually run. Every lens and reviewer claim is then verdicted through findings triage: verify the claim and its reachable consequence before assigning `high | medium | low | false | maybe-false`, group survivors by root cause, and warn on failed layers instead of issuing a false clean review.
+
 ### Context has a cost
 
 BMILD uses more tokens than asking an agent for a one-shot patch. It spends them on role instructions, durable artifacts, and the evidence needed to make a decision or verify a result. That is intentional: the framework trades some up-front context for fewer rediscovered decisions, less drift, and less code built on an invented interpretation.
@@ -293,6 +299,8 @@ Lance, we need tenant-aware roles. Design the data and API contracts for it.
 
 Sonia, check readiness and coverage for the approved team-invites MVP.
 
+Sonia, run an artifact review of the live team-invites PRD.
+
 Alex, implement and verify the approved MVP for team-invites.
 
 Rahat, this intermittent invitation-email test is failing in CI. Diagnose it before changing code.
@@ -300,6 +308,8 @@ Rahat, this intermittent invitation-email test is failing in CI. Diagnose it bef
 Rahat, security-review the invitation acceptance endpoint and its trust boundaries.
 
 Rahat, code-review the team-invites MVP against repository standards and the specification.
+
+Rahat, verify the FR coverage of the team-invites invitation expiry behavior.
 
 Rahat, run a comprehensive review of the team-invites MVP in a fresh context.
 

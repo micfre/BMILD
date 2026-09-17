@@ -66,14 +66,14 @@ For mode detection, treat `broken`, `regression`, `error`, `failing`, `crash`, `
 
 | Mode | Condition | Resource File | Review taxonomies |
 | :--- | :--- | :--- | :--- |
-| **Mode 1: Comprehensive Review** | General outcome verification, build-and-verify continuation, "comprehensive review", or at least two review axes. Runs outcome completeness, security, and Standards/Spec review in one independent context. | `resources/comprehensive-review.md` | `resources/security-categories.yaml`, `resources/code-review-categories.yaml` |
+| **Mode 1: Comprehensive Review** | General outcome verification, build-and-verify continuation, "comprehensive review", or at least two review axes. Runs outcome completeness, security, and Standards/Spec review in one independent context. | `resources/comprehensive-review.md` | `resources/security-categories.yaml`, `resources/code-review-categories.yaml`, `resources/lens-edge-case-hunter.md`, `resources/lens-verification-gap.md`, `resources/findings-triage.md` |
 | **Mode 2: QA-Handback** | Rahat items in `{proposed, accepted}`; **or** (when no such items) message references `handoff.md`, `H-`, a handoff item targeting `verification-matrix.md`, `rca-<slug>.md`, or `security-review-<slug>.md`; **or** user asks Rahat to resolve a review-owned governance item. | `resources/qa-handback.md` | — |
 | **Mode 3: Spec-Fix** | Bug signals with tracked entry context — message names `rca-<slug>` **or** a verification matrix item **or** a named outcome/legacy Slice. | `resources/spec-fix.md` | — |
 | **Mode 4: Direct-Fix** | Bug signals and no tracked entry context named. | `resources/direct-fix.md` | — |
 | **Mode 5: Nyquist Design** | Message asks for upfront test design, verification-matrix creation/repair, or pre-implementation Nyquist scaffolding. | `resources/nyquist.md` | — |
 | **Mode 6: Security Review** | Message asks for a security review/audit, threat review, vulnerability review, trust-boundary review, or review of an open security finding. | `resources/security-review.md` | `resources/security-categories.yaml` |
-| **Mode 7: Code Review** | Message asks for code review, standards/conventions review, maintainability review, diff/PR/branch review, or spec-fidelity review without requesting the other review axes. | `resources/code-review.md` | `resources/code-review-categories.yaml` |
-| **Mode 8: Targeted Verification (FR/NFR)** | An explicitly functionality-only, FR/NFR-only, documentation, or coverage review. General completed-work verification uses Comprehensive Review. | `resources/verification.md` | — |
+| **Mode 7: Code Review** | Message asks for code review, standards/conventions review, maintainability review, diff/PR/branch review, or spec-fidelity review without requesting the other review axes. | `resources/code-review.md` | `resources/code-review-categories.yaml`, `resources/lens-edge-case-hunter.md`, `resources/lens-verification-gap.md`, `resources/findings-triage.md` |
+| **Mode 8: Targeted Verification (FR/NFR)** | An explicitly functionality-only, FR/NFR-only, documentation, or coverage review. General completed-work verification uses Comprehensive Review. | `resources/verification.md` | `resources/lens-verification-gap.md`, `resources/findings-triage.md` |
 
 ### Session Start: Opening Stance
 

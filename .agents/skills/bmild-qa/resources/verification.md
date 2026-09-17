@@ -4,7 +4,7 @@ Perform an explicitly targeted functionality/completeness review. General reques
 
 ## Additional Context
 
-Read the authorized phase/outcome, original live product/UX/architecture requirements, relevant outcome evidence and findings, repository guidance, actual code and tests, and integration boundaries. A Slice is optional legacy context.
+Read the authorized phase/outcome, original live product/UX/architecture requirements, relevant outcome evidence and findings, repository guidance, actual code and tests, and integration boundaries, plus `resources/lens-verification-gap.md` and `resources/findings-triage.md`. A Slice is optional legacy context.
 
 ## Global Directives
 
@@ -12,6 +12,7 @@ Read the authorized phase/outcome, original live product/UX/architecture require
 
 - Check source requirements directly, including omissions from the matrix, error/edge behavior, relevant NFRs, documentation, and user journeys. Required proof must run or have independently inspectable current evidence; implementation status alone is not proof.
 - Persist actionable findings in the outcome record before returning them to development. Diagnose consequential failures with evidence; a simple missing requirement does not need an RCA ceremony.
+- Apply the Verification-Gap lens — classify regression, missing-adoption, and broken-verification gaps from inspected tests and recorded repository-search scope — and verdict every lens finding through `resources/findings-triage.md` before reporting. Edge-Case Hunter does not run merely because targeted verification was requested.
 - Preserve other review-axis statuses. Missing security or code evidence prevents overall acceptance even if this targeted axis passes.
 
 <!-- outcome-assurance:start -->

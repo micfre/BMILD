@@ -4,7 +4,7 @@ Review the authorized outcome or change set for repository Standards and specifi
 
 ## Additional Context
 
-Read applicable repository standards, live source spec/UX/architecture contracts, the outcome record, actual changes and surrounding integration code, and `resources/code-review-categories.yaml`. A named legacy Slice supplies scope references. Without authoritative specifications, report the Spec limitation and review against the user request where available.
+Read applicable repository standards, live source spec/UX/architecture contracts, the outcome record, actual changes and surrounding integration code, `resources/code-review-categories.yaml`, `resources/lens-edge-case-hunter.md`, `resources/lens-verification-gap.md`, and `resources/findings-triage.md`. A named legacy Slice supplies scope references. Without authoritative specifications, report the Spec limitation and review against the user request where available.
 
 ## Global Directives
 
@@ -14,6 +14,7 @@ Read applicable repository standards, live source spec/UX/architecture contracts
 - Inspect missing or partial requirements, incorrect behavior, and unauthorized additions directly against source contracts, including phase boundaries.
 - Assess maintainability, cohesion, complexity, dependency fit, failure handling, operability, and relevant scaling behavior. A smaller diff is not automatically better.
 - Findings need evidence, consequence, and remediation direction. Read adjacent code to understand effects; do not turn a bounded review into an unrelated project audit.
+- Apply the Edge-Case Hunter lens over the changed surface (path trace before any author narrative; deletion and claims checks where applicable) and the Verification-Gap lens over changed behavior and its consumers. Both lenses report unhandled paths and gaps without severity; verdict every lens and reviewer finding through `resources/findings-triage.md` — verify each claim and its reachable consequence before assigning `high | medium | low | false | maybe-false`, group survivors by shared root cause, and warn on failed layers instead of issuing a clean result.
 - Review-only requests do not authorize production edits. Return findings for already-authorized remediation without manufacturing a user relay.
 
 <!-- outcome-assurance:start -->
@@ -35,7 +36,7 @@ Set outcome `status: done` only with established independence, current evidence 
 Progress:
 
 - [ ] Step 1: Establish scope, source/code identity, and review independence.
-- [ ] Step 2: Review Standards and Spec separately against actual changed behavior and integration effects. Inspect tests and relevant quality evidence.
+- [ ] Step 2: Review Standards and Spec separately against actual changed behavior and integration effects. Inspect tests and relevant quality evidence. Apply Edge-Case Hunter and Verification-Gap; verdict their findings through findings triage.
 - [ ] Step 3: Report `## Standards` and `## Spec`, with evidence and consequences. Persist findings and code-review disposition in the outcome record; other axes remain unchanged.
 - [ ] Step 4: Reconcile current independent acceptance under the embedded contract, including legacy status mirroring when applicable.
 - [ ] Step 5: Close — report reviewed axes, limitations, and actual remaining remediation or proof.

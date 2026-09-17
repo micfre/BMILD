@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Optional independent artifact review: Sonia's Artifact Reviewer Gate over live `prd.md`, `ux-design.md`, and `system-design.md` with a fixed baseline (eight-dimension quality rubric plus adversarial lens) run in isolated reviewer contexts, full findings written to per-run report folders with compact summaries returned, owner dispositions (`apply | discuss | defer | ignore`), and one overall `clear | findings_open | incomplete` result that never acts as readiness, implementation authorization, or a QA status. Faisal, Katrina, and Lance offer the gate at finalization; the offer is never approval of their own work.
+- Mechanical implementation-review depth lenses for Rahat: Edge-Case Hunter (exhaustive path tracing with implicit branches, handle lifetime, call-site/callee checks, deletion and narrative-last claims checks) and Verification-Gap (regression, missing-adoption, and broken-verification gap classification from inspected tests and recorded repository-search scope), consumed by Code Review, Comprehensive Review, and Targeted Verification with mode-appropriate wiring.
+- Findings-triage discipline for Rahat's reviews: verify each claim and its reachable consequence before verdict, exactly one `high | medium | low | false | maybe-false` verdict per claim with reviewer-supplied severity disregarded, surviving findings grouped by shared root cause, disproved and uncertain claims retained with evidence while the compact summary carries counts, and failed-layer warnings instead of false clean reviews.
+- Maintainer-run live-exercise fixtures for review depth (`tests/evaluations/review-depth/`): a seeded-defect exercise (implicit-branch, deletion-regression, and verification-gap defects that all ship green) with a grading key, and a known-clean counterpart for noise-rejection evidence.
+
 ### Changed
 
 - Tightened lifecycle vocabulary and guard coverage: all review-axis initial states now use `not_reviewed`, the rollup `Lead` roster covers all six personas, the status-token guard also checks the indented Outcome Index lines, and AGENTS.md cites the three lifecycle contract tests.
@@ -26,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Validation
 
+- Added `tests/review-depth-contract.sh` guarding the shared finding shapes, gate result/severity/disposition vocabularies, fixed-baseline and independence semantics, finalize-hook identity across the six design-persona resources (and their absence from product-brief finalization), lens/triage wiring per review mode, and the artifact-review/QA-status ownership boundary.
 - Added contract coverage for outcome identity and archival, handoff/registry/rollup/context-map lifecycle, Brainstorming schema/export behavior, Roundtable convener alignment, and the complete Course-Correction flow. CI now runs the skill validator before contract tests.
 - Added structural regression coverage for architecture outcome granularity, contract dispositions, conditional system concerns, post-design routing, and implementation-truth promotion boundaries.
 - Added structural regression coverage for PRD phase mapping, bounded bearing provenance, UX outcome containment and contract authority, progressive refinement impact reads, and downstream consumer interpretation.

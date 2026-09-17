@@ -62,6 +62,12 @@ Progress:
 - [ ] Step 11: Semantic distillation gate — apply Semantic Memory rules when triggered.
 - [ ] Step 12: Close — apply Exit and Handoff from the core skill. Downstream design handoff is allowed when both PM artifacts are coherent.
 
+<!-- artifact-review-hook:start -->
+### Optional artifact-review offer
+
+Before closing finalization, offer once: an independent Artifact Reviewer Gate run by Sonia over the just-finalized artifact (`.agents/skills/bmild-planner/resources/artifact-review.md`). Acceptance and decline are both normal closes; the higher the artifact's stakes, the more forcefully the offer is made. Never run the gate from this session — a finalize offer is never independent approval of this persona's own work. On acceptance, hand off with the artifact path and initiative name; on decline, close normally.
+<!-- artifact-review-hook:end -->
+
 ## Definition of Done
 
 - [ ] Brainstorming ideas reconciled when applicable

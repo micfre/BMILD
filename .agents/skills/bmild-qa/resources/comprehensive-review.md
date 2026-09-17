@@ -4,7 +4,7 @@ Verify the whole authorized outcome against its source specification, security o
 
 ## Additional Context
 
-Read live source requirements, UX states, architecture contracts, applicable ADRs, repository standards, the outcome evidence record, relevant findings, actual changed code, tests, and affected integration boundaries. Load `resources/security-categories.yaml` and `resources/code-review-categories.yaml`. Legacy Slice scope is an input, not a required artifact. Without an authoritative spec for a direct change, review against the user's request and observed evidence; state the Spec limitation honestly.
+Read live source requirements, UX states, architecture contracts, applicable ADRs, repository standards, the outcome evidence record, relevant findings, actual changed code, tests, and affected integration boundaries. Load `resources/security-categories.yaml`, `resources/code-review-categories.yaml`, `resources/lens-edge-case-hunter.md`, `resources/lens-verification-gap.md`, and `resources/findings-triage.md`. Legacy Slice scope is an input, not a required artifact. Without an authoritative spec for a direct change, review against the user's request and observed evidence; state the Spec limitation honestly.
 
 ## Global Directives
 
@@ -16,6 +16,7 @@ Read live source requirements, UX states, architecture contracts, applicable ADR
 - Assess relevant scalability from workload/resource assumptions, algorithmic/query behavior, and applicable performance proof. Review maintainability, cohesion, complexity, dependency fit, failure handling, and operability. A passing unit suite or smaller diff is not sufficient evidence for these claims.
 - Complete the requested audit before coordinating repairs. Review-only requests do not authorize production changes. For an authorized build-and-verify engagement, return actionable findings to development, then independently re-verify affected proof without requiring another user relay.
 - Apply security taxonomy and credible exploit tracing; retain the High/Medium confidence threshold for vulnerability findings. Missing required security proof is blocked evidence, not a fabricated vulnerability or a clean pass.
+- Apply the Edge-Case Hunter lens over the changed surface and the Verification-Gap lens over changed behavior and its consumers. The lenses report unhandled paths and gaps without severity; verdict every lens and reviewer finding through `resources/findings-triage.md` — verify each claim and its reachable consequence before assigning `high | medium | low | false | maybe-false`, group survivors by shared root cause, and warn on failed layers instead of issuing a clean result.
 
 <!-- outcome-assurance:start -->
 ### Independent acceptance
@@ -36,9 +37,9 @@ Set outcome `status: done` only with established independence, current evidence 
 Progress:
 
 - [ ] Step 1: Resolve scope and independence, then identify the source/code state being reviewed.
-- [ ] Step 2: Verify functionality and completeness from all source obligations, including omitted matrix entries, error/edge cases, docs, journeys, NFRs, and integration effects. Run or independently inspect the applicable reproducible evidence; report unavailable proof as blocked.
+- [ ] Step 2: Verify functionality and completeness from all source obligations, including omitted matrix entries, error/edge cases, docs, journeys, NFRs, and integration effects. Run or independently inspect the applicable reproducible evidence; report unavailable proof as blocked. Trace changed behavior to real consumers and inspected tests with the Verification-Gap lens.
 - [ ] Step 3: Establish security applicability, map trust boundaries and sensitive flows, and trace consequential exploit candidates. Record reasons for inapplicable areas.
-- [ ] Step 4: Review repository Standards and Spec fidelity separately, including meaningful scalability and maintainability evidence. Taxonomy smells are judgment prompts; omit tool-owned noise. Flag unauthorized future-phase behavior.
+- [ ] Step 4: Review repository Standards and Spec fidelity separately, including meaningful scalability and maintainability evidence. Taxonomy smells are judgment prompts; omit tool-owned noise. Flag unauthorized future-phase behavior. Walk the changed surface with the Edge-Case Hunter lens; verdict all lens findings through findings triage.
 - [ ] Step 5: Report `## Verification`, `## Security`, `## Standards`, and `## Spec` with evidence and pass/fail/blocked dispositions. Persist actionable findings once in the outcome record; use a security-review artifact only for actual vulnerabilities. Preserve independent per-axis statuses.
 - [ ] Step 6: Reconcile acceptance using the embedded contract. Continue authorized repairs through development and independent re-verification, or leave an actionable fresh-window transition. No fixed retry count substitutes for evidence of progress; stop an unchanged failing approach and identify the missing decision or capability.
 - [ ] Step 7: Close — distinguish independently accepted outcomes from advisory checks, blocked proof, and pending review. Name only genuine remaining work.
