@@ -53,3 +53,32 @@ jobs:
             echo "== ${s} =="
             bash "$s"
           done
+
+  # elicitation-refine NFR cross-OS behavioral parity: the native selector and
+  # prd-v1 linter run on each first-class OS. macOS proves the POSIX path under
+  # BSD awk; Windows runs the PowerShell path under both pwsh and Windows
+  # PowerShell 5.1 (the canonical PS gate per system-design §7).
+  native-serving:
+    name: Native Serving (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - name: POSIX serving and lint battery
+        if: runner.os != 'Windows'
+        run: |
+          set -euo pipefail
+          bash tests/method-serving-contract.sh
+          bash tests/prd-lint-contract.sh
+          bash tests/native-parity-contract.sh
+      - name: PowerShell battery (pwsh)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: tests/native-serving-lane.ps1
+      - name: Windows-native PowerShell 5.1 battery (canonical PS gate)
+        if: runner.os == 'Windows'
+        shell: powershell
+        run: tests/native-serving-lane.ps1

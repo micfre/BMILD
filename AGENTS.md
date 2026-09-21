@@ -30,6 +30,15 @@ BMILD skills must follow these API-like design principles:
 8. **Avoid fragile markdown tables in skill outputs**:
    Some harnesses render or parse tables poorly. Prefer compact bullet structures for conversational output and artifact templates unless a table is clearly more reliable in the target environment.
 
+## Skill-local deterministic tooling
+
+Two shipped capabilities run as native, install-less scripts inside their owning skill folders (ADR 0013):
+
+- `bmild-elicit/scripts/` serves the 71-method catalog (`resources/methods.yaml`): `methods.sh` + `serve-methods.awk` on POSIX hosts, `methods.ps1` on Windows-native hosts. The catalog is consumed only through bounded projections (categories, ≤2-category indexes, ≤4-record `show`, ≤12-row spread draws, explicit `list --all`); never add an interaction that exposes the catalog whole implicitly. Method numbers intentionally track BMAD-METHOD 6.13 order; names are the cross-version reference, and renumbering is a stated breaking change.
+- `bmild-pm/scripts/` carries the `prd-v1` PRD lint gate (`lint-prd.sh`/`lint-prd.awk`, `lint-prd.ps1`, `prd-v1-placeholders.txt`). The ruleset is closed: new triggers, exceptions, or severity changes require a new ruleset identifier and fixture updates — never extend `prd-v1` silently. Both native paths must emit the exact `bmild-artifact-lint/v1` JSON contract; shell string concatenation is not a JSON emitter, and every handled result exits 0.
+
+Governing tests: `tests/method-serving-contract.sh`, `tests/prd-lint-contract.sh`, `tests/native-parity-contract.sh`, plus the `tests/native-serving-lane.ps1` battery in the three-OS CI matrix. New fixtures belong under `tests/fixtures/prd-lint/` with expected rule/severity/line tuples. Self-containment is a hard constraint: no project-root helpers, dynamic dependency installation, or network access at runtime; repository-root test runners are development tools only. Growth extensions (other artifact types, registry validation, cross-artifact linting) need their own bounded source contract before any linter generalization.
+
 ## Target platforms
 
 First-class design targets:

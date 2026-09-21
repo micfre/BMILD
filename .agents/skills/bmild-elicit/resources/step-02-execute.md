@@ -9,7 +9,7 @@ Apply the selected method to the current working content, assess whether to appl
 - Selected primary method (carried from `step-01-select.md`).
 - 2–3 follow-up methods (carried from `step-01-select.md`).
 - Current working version of the content (use this version, not the original if already enhanced).
-- `./methods.yaml` — required for `[a] List all`.
+- The method catalog serving script (`scripts/methods.sh` on POSIX hosts, `scripts/methods.ps1` on Windows-native hosts) — required for `[r]` reshuffle draws and `[a]` List all. The catalog is never loaded whole except through an explicit `list --all`.
 - Convener identity and suspended session state from `step-01-select.md` when persona-convened.
 
 ## Global Directives
@@ -27,10 +27,10 @@ Apply the selected method to the current version of the content — not the orig
 1. **Number selection (1–3)** — When the user picks a numbered method:
    - [ ] Name the method at the top of your response: *"Applying: [Method Name]"*
    - [ ] Show the method output applied to the current content. Format depends on the method's pattern:
-     - Analysis methods (First Principles, 5 Whys, etc.): show the analysis first, then implications for the content
-     - Persona methods (Stakeholder Round Table, Expert Panel Review, Cross-Functional War Room, Security Audit Personas, and any method playing named BMILD personas): load each active persona's whole `<persona-skill-dir>/SOUL.md`, resolved relative to that persona's own skill directory, before speaking. The loaded SOUL is the sole voice source; do not add facilitator-authored impressions. If a debate session is active, use Faisal, Katrina, Lance, and Rahat. Label a speaker only when the speaker changes — do not repeat icon and name on every paragraph from the same speaker.
-     - Generative methods (SCAMPER, What If, etc.): produce the generated content or alternatives first, then identify what's worth keeping
-     - Competitive methods (Red Team, Shark Tank, etc.): run the adversarial scenario fully before proposing improvements
+      - Analysis methods (First Principles, 5 Whys, etc.): show the analysis first, then implications for the content
+      - Persona methods (Stakeholder Round Table, Expert Panel Review, Cross-Functional War Room, Security Audit Personas, and any method marked persona-cast — `cast` lists them all): load each active persona's whole `<persona-skill-dir>/SOUL.md`, resolved relative to that persona's own skill directory, before speaking. The loaded SOUL is the sole voice source; do not add facilitator-authored impressions. If a debate session is active, use Faisal, Katrina, Lance, and Rahat. Label a speaker only when the speaker changes — do not repeat icon and name on every paragraph from the same speaker.
+      - Generative methods (SCAMPER, What If, etc.): produce the generated content or alternatives first, then identify what's worth keeping
+      - Competitive methods (Red Team, Shark Tank, etc.): run the adversarial scenario fully before proposing improvements
    - [ ] Summarise what changed or was revealed in 2–3 bullets: what assumption was surfaced, what gap was found, what improvement is proposed
    - [ ] Apply or ask based on clarity:
 
@@ -51,15 +51,15 @@ Apply the selected method to the current version of the content — not the orig
      [r] Reshuffle  [a] List all  [x] Proceed
      ```
 
-2. **[r] Reshuffle** — Return to `./resources/step-01-select.md` for a fresh context analysis and method selection. Prioritise methods not yet used in this session; aim for diversity across categories. Re-present the menu with 2–3 new selections.
+2. **[r] Reshuffle** — Draw a fresh candidate pool with the serving script: `random -n 12 --spread --exclude <method names already offered this session>...` (a request above 12 is rejected by design; the pool excludes prior offers, draws distinct categories until diversity is exhausted, and clamps to the remaining eligible pool). Rank the compact candidate rows against the current weakness — strongest fit, at least one core or risk method, at least one different-angle follow-up, at least two categories — then `show` only the two or three methods you will offer. If the script returns `# insufficient_diversity`, do not present the residual rows as a compliant reshuffle: ask the operator to choose from prior options, explicitly reset exclusions, list all, or proceed. If serving fails outright, halt selection and only offer a full-catalog fallback when the operator explicitly approves it. Return to `./resources/step-01-select.md` for a fresh context analysis on the new pool; re-present the menu with 2–3 new selections.
 
-3. **[a] List all** — Read `./methods.yaml`. Group all entries by `category`. For each group:
+3. **[a] List all** — Run `list --all` (the only catalog interaction that returns every method; the user asked for it). Group the returned rows by `category`. For each group:
 
    ```
    ## All Elicitation Methods
 
    ### [Category]
-   [num]. [method_name] — [first sentence of description]
+   [num]. [method_name] — [gist]
    ...
    ```
 

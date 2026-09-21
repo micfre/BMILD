@@ -1,0 +1,33 @@
+# prd-v1 template-placeholder inventory.
+# Extracted from .agents/skills/bmild-pm/assets/prd-template.md at SHA-256
+# 2c9eb852832240f19f217a2a85450f1b05a44ecd96980eb287d02b8664abf594.
+# One literal per line; lines starting with "#" are comments.
+# A template revision never flows in implicitly: changing this inventory
+# requires a new ruleset identifier and fixture update (PRD "MVP PRD Lint
+# Rule Inventory", prd-v1).
+<short display name>
+<one-line summary>
+<initiative-name>
+[user_name]
+[Capability Area Name 1]
+[Actor]
+[capability]
+[Capability Area Name 2]
+[Named trigger and user type]
+[ordered sequence]
+[what done looks like]
+[acknowledged paths]
+[Which capability areas each journey reveals. Connects journey coverage to FRs above.]
+[Observable product outcome this phase establishes]
+[FR and journey IDs]
+[Post-MVP outcome]
+[Longer-horizon outcome, when useful]
+[FR and journey IDs, or omitted when not yet specified]
+[Category]
+[Threshold and the scenario that triggers it]
+[required | not required | deferred_by_user]
+[what or reason]
+[verifiable claim if required]
+[Description]
+[Low/Med/High]
+[Impact]

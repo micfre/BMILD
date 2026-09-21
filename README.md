@@ -252,6 +252,16 @@ It manages that cost through progressive disclosure [q.v.](https://agentskills.i
 
 There is an important safety exception. UX and Architecture may reuse artifact contents already visible in the conversation when they are still trustworthy, and the advanced modes prefer the current conversation unless files are needed to ground the question. Planner and Rahat deliberately reload relevant live artifacts from disk because stale planning, verification, code-review, or security context can do more damage than the extra tokens. In other words, BMILD optimizes context in a sensible way while not pretending it's free.
 
+### A 71-method elicitation bench, served on demand
+
+Advanced elicitation draws from a canonical catalog of 71 methods — the full BMAD-METHOD 6.13 bench, with BMILD's differentiation intact: methods that cast named personas (Stakeholder Round Table, Expert Panel Review, Cross-Functional War Room, Security Audit Personas) load each persona's canonical `SOUL.md` rather than facilitator-invented voices. The catalog is consumed through a skill-local serving script (`bmild-elicit/scripts/methods.sh` on POSIX hosts, `methods.ps1` on Windows), so a session sees category names and counts first, compact index rows for at most two candidate categories, complete records only for the one primary and up to three follow-up methods it actually selects, and a category-spread reshuffle draw bounded to twelve candidates that never repeats what was already offered. The complete catalog enters context only on an explicit list-all choice; if serving fails mid-session, the facilitator halts selection and a full-catalog fallback happens only with the operator's explicit approval.
+
+The method **numbers are intentionally breaking**: version 0.5.0 renumbered the catalog to match BMAD-METHOD 6.13 order exactly (Tree of Thoughts is 1 again, First Principles Analysis is now 24, Boundary & Edge Case Sweep is 71). Old numbers receive no aliases; **method names are the cross-version reference**.
+
+### Deterministic PRD linting before registration
+
+LLMs miscount IDs and miss literal placeholders; a script does not. Faisal's PRD write and refine paths now run a deterministic pre-registration lint gate (`bmild-pm/scripts/lint-prd.sh` on POSIX, `lint-prd.ps1` on Windows) over the candidate PRD: placeholders, frontmatter defects, duplicate or discontinuous FR/journey IDs, unresolved phase references, malformed assumption entries, and missing documentation-audience decisions, reported as one exact JSON object (`bmild-artifact-lint/v1`, ruleset `prd-v1`) with rule, severity, and source line for every finding. High- and medium-severity findings block registration; the reported SHA-256 identity binds the checked candidate to the exact bytes Faisal registers, and the gate re-runs after any change. This is an owner-governed workflow convention — the linter never edits anything and nothing is filesystem-enforced; it converts a class of silent mechanical defects into deterministic catches while semantic judgment stays with the responsible persona.
+
 ## Memory, without a platform
 
 By default, BMILD writes its durable project memory under `plans/`. The paths are relative to the project root and are ordinary Markdown files with frontmatter, so the material stays portable and reviewable.

@@ -67,10 +67,14 @@ Progress:
   - Any remaining ambiguity has a governed outcome: `handoff.md`, bounded assumption, or explicit defer/reject/supersede
   - Every in-scope section in `prd-completion-criteria.yaml` passes falsifiable / good_signal / weak_signal
 - [ ] Step 5: Pre-exit offer (declinable in one word) — name 1–2 session-appropriate bmild-elicit methods from this artifact's shortlist (**Pre-mortem Analysis**, **Challenge from Critical Perspective**), chosen by what was actually contentious: *"Before I write the PRD — I could run **Pre-mortem Analysis** or **Challenge from Critical Perspective** in a bmild-elicit session, or take anything to roundtable. Otherwise I'll proceed."* On acceptance, swap to `bmild-elicit` with the method pre-selected; offer roundtable per core Advanced Elicitation Triggers when trade-offs are still open. Any decline or proceed signal continues directly to the Write step in the same turn — no further confirmation.
-- [ ] Step 6: Write — write `[plan_folder]/<initiative-name>/prd.md` using `assets/prd-template.md`. Substitute `[user_name]` from `.bmild.toml`.
+- [ ] Step 6: Write — write `[plan_folder]/<initiative-name>/prd.md` using `assets/prd-template.md`. Substitute `[user_name]` from `.bmild.toml`. Do not add `prd.md` to `registry.md` yet — registration passes the deterministic lint gate in Step 8.
   - **Initiative naming.** Initiative names are lowercase-kebab-case identifiers (e.g. `py-tokenizer`) — safe across filesystems, shells, and links. If the user supplies a kebab-case-compliant slug, use it directly. Otherwise confirm a kebab-case slug with the user before writing; never silently transform a proposed name.
 - [ ] Step 7: Gate check — resolve product-domain ambiguity synchronously in chat and run UX/architecture gaps through the ladder. Do not leave durable question threads in `prd.md`.
-- [ ] Step 8: Register — add `prd.md` to `## Live` in `registry.md`. Archive any superseded predecessor.
+- [ ] Step 8: Lint gate and register — run the deterministic PRD lint gate, then register the exact checked candidate:
+  - Run the skill-local linter: `sh <skill-dir>/scripts/lint-prd.sh --root <project-root> --artifact <plan_folder>/<initiative-name>/prd.md` (POSIX hosts) or `powershell -File <skill-dir>\scripts\lint-prd.ps1 -root <project-root> -artifact <path>` (Windows-native). Every handled result exits 0 — inspect the structured JSON (`ruleset: prd-v1`, `status`, `blocking`, findings, and the candidate SHA-256), never the process status.
+  - Repair and rerun until no high- or medium-severity findings remain. Explicitly disposition every low-severity finding in the completion report, if any future ruleset defines one.
+  - Immediately before registering, recheck the candidate's SHA-256 against the lint result; rerun linting after any mismatch.
+  - Add `prd.md` to `## Live` in `registry.md` only for the exact checked identity. Archive any superseded predecessor. Execution failure (`status: error`) and `blocking: true` are unconditional stops for registration.
 - [ ] Step 9: Semantic distillation gate — apply Semantic Memory rules when triggered.
 - [ ] Step 10: Close — apply Exit and Handoff from the core skill. Downstream design handoff is allowed; `Next` may point to Katrina, Lance, or both.
 
@@ -86,6 +90,7 @@ Before closing finalization, offer once: an independent Artifact Reviewer Gate r
 - [ ] `prd-completion-criteria.yaml` verified for all in-scope sections
 - [ ] Remaining ambiguity resolved through the ladder, persisted asynchronously, or bounded explicitly — not embedded question sections
 - [ ] `prd.md` written to `[plan_folder]/<initiative-name>/`
+- [ ] Deterministic lint gate passed for the registered candidate: no high/medium findings, SHA-256 identity rechecked immediately before registration, workflow evidence carried in the close
 - [ ] `context.md` and/or `context-map.md` updated only if the semantic distillation gate fired
 - [ ] `registry.md` updated with `prd.md` in `## Live`
 - [ ] Close message: artifacts written, queued or deferred governance items, next owner
