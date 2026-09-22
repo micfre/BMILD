@@ -195,8 +195,12 @@ $rest = @($args | Select-Object -Skip 1)
 switch ($cmd) {
     'categories' {
         if ($rest.Count -gt 0) { Usage }
-        $records | Group-Object category | Sort-Object Name | ForEach-Object {
-            "{0}`t{1}" -f $_.Name, $_.Count
+        # Aggregate directly: Group-Object cannot bind -Property to hashtable
+        # records and collapses them into one ToString group.
+        $counts = @{}
+        foreach ($r in $records) { $counts[$r.category] = 1 + [int]$counts[$r.category] }
+        foreach ($name in @($counts.Keys | Sort-Object)) {
+            "{0}`t{1}" -f $name, $counts[$name]
         }
         exit 0
     }

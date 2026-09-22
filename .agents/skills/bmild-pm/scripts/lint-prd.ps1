@@ -1,4 +1,4 @@
-# BMILD PRD lint gate, ruleset prd-v1 (Windows-native, PowerShell 5.1).
+﻿# BMILD PRD lint gate, ruleset prd-v1 (Windows-native, PowerShell 5.1).
 # Deterministic mechanical checks over one PRD candidate; emits exactly one
 # compact bmild-artifact-lint/v1 JSON object on stdout. Every handled result
 # exits 0: inspect status/blocking/findings, never the process status.

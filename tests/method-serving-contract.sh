@@ -18,20 +18,22 @@ serve() { sh "$SERVE" "$@"; }
 # --- FR1: canonical catalog fidelity (BMAD-METHOD 6.13 order) -----------------
 
 if [[ -f "$BMAD_CSV" ]]; then
-    expected_nums=$(tail -n +2 "$BMAD_CSV" | cut -d, -f1 | paste -sd,)
-    expected_names=$(tail -n +2 "$BMAD_CSV" | cut -d, -f3 | paste -sd,)
+    expected_nums=$(tail -n +2 "$BMAD_CSV" | cut -d, -f1 | paste -sd, -)
+    expected_names=$(tail -n +2 "$BMAD_CSV" | cut -d, -f3 | paste -sd, -)
 else
     # CI checkouts may exclude external references; the 71-record order is
-    # asserted structurally and by the spot checks below.
-    expected_nums=$(seq -s, 1 71)
+    # asserted structurally and by the spot checks below. Built with awk, not
+    # seq, so every POSIX lane produces the identical expected string.
+    expected_nums=$(awk 'BEGIN{for(i=1;i<=71;i++){printf "%s%d",s,i;s=","}}')
     expected_names=""
 fi
 
-actual_nums=$(awk '/^- num:/{printf "%s%s", sep, $3; sep=","}' "$CATALOG")
-[[ "$actual_nums" == "$expected_nums" ]] || fail "catalog numbering diverges from BMAD-METHOD 6.13 order"
+actual_nums=$(awk '{sub(/\r$/,"")} /^- num:/{printf "%s%s", sep, $3; sep=","}' "$CATALOG")
+[[ "$actual_nums" == "$expected_nums" ]] ||
+    fail "catalog numbering diverges from BMAD-METHOD 6.13 order (expected ${expected_nums:0:32}... got ${actual_nums:0:32}...)"
 
 if [[ -n "$expected_names" ]]; then
-    actual_names=$(awk '/^  method_name:/{sub(/^  method_name: /,""); printf "%s%s", sep, $0; sep=","}' "$CATALOG")
+    actual_names=$(awk '{sub(/\r$/,"")} /^  method_name:/{sub(/^  method_name: /,""); printf "%s%s", sep, $0; sep=","}' "$CATALOG")
     [[ "$actual_names" == "$expected_names" ]] || fail "catalog method names/order diverge from BMAD-METHOD 6.13"
 fi
 
@@ -85,7 +87,7 @@ serve list --category nosuch >/dev/null 2>&1 && fail "unknown category must fail
 # --- FR3/FR2: persona-cast identification and served-field exclusion -------------
 
 serve cast >"$OUT/cast.txt"
-cast_names=$(awk -F'\t' '{print $3}' "$OUT/cast.txt" | paste -sd,)
+cast_names=$(awk -F'\t' '{print $3}' "$OUT/cast.txt" | paste -sd, -)
 [[ "$cast_names" == "Stakeholder Round Table,Expert Panel Review,Cross-Functional War Room,Security Audit Personas" ]] \
     || fail "persona_cast inventory wrong: $cast_names"
 
@@ -118,7 +120,7 @@ for seed in 1 7 42 99; do
     [[ "$nuniq" -eq 12 ]] || fail "seed $seed: spread draw repeated a method"
     cats=$(awk -F'\t' '{print $2}' "$OUT/spread-$seed.txt" | sort -u | wc -l)
     [[ "$cats" -eq 12 ]] || fail "seed $seed: spread draw used $cats categories, expected 12 distinct"
-    nres=$(awk -F'\t' '{print NF}' "$OUT/spread-$seed.txt" | sort -u | paste -sd,)
+    nres=$(awk -F'\t' '{print NF}' "$OUT/spread-$seed.txt" | sort -u | paste -sd, -)
     [[ "$nres" == "4" ]] || fail "seed $seed: compact rows must have exactly 4 fields"
 done
 
