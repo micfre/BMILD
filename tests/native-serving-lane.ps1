@@ -89,7 +89,7 @@ function Find-Line([string]$name, [string]$pattern) {
         $i++
         if ($line -cmatch $pattern) { return $i }
     }
-    Fail "pattern not found in $name: $pattern"
+    Fail "pattern not found in ${name}: $pattern"
     return 0
 }
 

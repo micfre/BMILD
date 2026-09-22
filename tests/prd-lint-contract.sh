@@ -315,6 +315,18 @@ for f in "$REPO_ROOT/.agents/skills/bmild-pm/scripts/"*; do
     grep -qE 'curl|wget|npm |pip |uv |python|node |gem |apt-get' "$f" && fail "$f references an external dependency"
 done
 
+# --- POSIX-portability smoke: no gawk-isms may enter the awk program ----------
+# The macOS lane runs BSD awk; gawk --posix approximates that strictness here.
+if command -v gawk >/dev/null 2>&1; then
+    clean_sha=$(hash_of "$FIX/clean.md")
+    printf 'lint\ntests/fixtures/prd-lint/clean.md\n%s\n%s\n' "$clean_sha" "$FIX/clean.md" |
+        gawk --posix -v ph="$REPO_ROOT/.agents/skills/bmild-pm/scripts/prd-v1-placeholders.txt" \
+            -f "$REPO_ROOT/.agents/skills/bmild-pm/scripts/lint-prd.awk" >"$OUT/posix.json" ||
+        fail "lint-prd.awk must run under gawk --posix (clean fixture)"
+    check_json "$OUT/posix.json"
+    assert_status "$OUT/posix.json" clean false
+fi
+
 if [ "$failures" -gt 0 ]; then
     echo "prd-lint-contract: $failures failure(s)" >&2
     exit 1

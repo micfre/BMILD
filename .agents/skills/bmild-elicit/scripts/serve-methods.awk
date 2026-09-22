@@ -436,7 +436,10 @@ BEGIN {
     Allowed["description"] = 1
     Allowed["output_pattern"] = 1
     Allowed["persona_cast"] = 1
-    srand((seed == "") ? systime() : seed + 0)
+    if (seed == "")
+        srand()
+    else
+        srand(seed + 0)
 
     getline cmd
     if (cmd == "")

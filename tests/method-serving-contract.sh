@@ -231,6 +231,21 @@ for sel in SEL001 SEL002 SEL003 SEL004 SEL005 SEL006; do
     serve show "${weakness_primary[$sel]}" >/dev/null 2>&1 || fail "$sel primary method not servable"
 done
 
+# --- POSIX-portability smoke: no gawk-isms may enter the awk program ----------
+# The macOS lane runs BSD awk; gawk --posix approximates that strictness here.
+if command -v gawk >/dev/null 2>&1; then
+    AWKPROG="$SKILL/scripts/serve-methods.awk"
+    printf 'categories\n' | gawk --posix -v catalog="$CATALOG" -f "$AWKPROG" >"$OUT/px-cats.txt" ||
+        fail "serve-methods.awk must run under gawk --posix (categories)"
+    [[ -s "$OUT/px-cats.txt" ]] || fail "posix categories smoke produced no output"
+    printf 'random\n5\n1\n' | gawk --posix -v catalog="$CATALOG" -v seed=3 -f "$AWKPROG" >"$OUT/px-rand.txt" ||
+        fail "serve-methods.awk must run under gawk --posix (seeded spread)"
+    [[ -s "$OUT/px-rand.txt" ]] || fail "posix random smoke produced no output"
+    printf 'show\n9\n' | gawk --posix -v catalog="$CATALOG" -f "$AWKPROG" >"$OUT/px-show.txt" ||
+        fail "serve-methods.awk must run under gawk --posix (show)"
+    grep -q '^# 9 |' "$OUT/px-show.txt" || fail "posix show smoke lost the record"
+fi
+
 if [ "$failures" -gt 0 ]; then
     echo "method-serving-contract: $failures failure(s)" >&2
     exit 1
