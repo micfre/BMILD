@@ -10,6 +10,43 @@ PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 # Grab version from VERSION file
 VERSION=$(cat "$PROJECT_ROOT/VERSION")
 
+# --- CHANGELOG Reconciliation (local lane only) ---
+# The release tag points at the current commit, so CHANGELOG.md must already
+# carry a dated release heading for VERSION. If only [Unreleased] exists,
+# promote it in place and stop: the promotion has to be committed and pushed
+# before tagging. With neither heading there is nothing promotable: fail.
+if [[ -z "${CI:-}" ]]; then
+    CHANGELOG_FILE="$PROJECT_ROOT/CHANGELOG.md"
+    if ! grep -qF "## [${VERSION}] - " "$CHANGELOG_FILE"; then
+        if grep -q '^## \[Unreleased\][[:space:]]*$' "$CHANGELOG_FILE"; then
+            RELEASE_DATE="$(date +%F)"
+            CHANGELOG_TMP="$(mktemp "${TMPDIR:-/tmp}/bmild-changelog.XXXXXX")"
+            if ! awk -v version="$VERSION" -v release_date="$RELEASE_DATE" '
+                !promoted && /^## \[Unreleased\][[:space:]]*$/ {
+                    print
+                    print ""
+                    print "## [" version "] - " release_date
+                    promoted = 1
+                    next
+                }
+                { print }
+                END { exit promoted ? 0 : 2 }
+            ' "$CHANGELOG_FILE" > "$CHANGELOG_TMP"; then
+                rm -f "$CHANGELOG_TMP"
+                echo "Error: failed to promote the Unreleased section in $CHANGELOG_FILE." >&2
+                exit 1
+            fi
+            mv "$CHANGELOG_TMP" "$CHANGELOG_FILE"
+            echo "Promoted CHANGELOG 'Unreleased' to '## [${VERSION}] - ${RELEASE_DATE}'."
+            echo "COMMIT and PUSH CHANGELOG.md, then re-run this script so the release tag includes it."
+            exit 1
+        else
+            echo "Error: CHANGELOG.md has no dated [${VERSION}] release and no [Unreleased] section to promote." >&2
+            exit 1
+        fi
+    fi
+fi
+
 # Define output directory and filename
 DIST_DIR="$PROJECT_ROOT/dist"
 FILENAME="release-v${VERSION}-linux-macos-dor_agents.tar.gz"
@@ -33,7 +70,9 @@ if [[ -z "${CI:-}" ]]; then
     echo ""
     echo "CRITICAL: Ensure you have COMMITTED and PUSHED all your changes"
     echo "to the current branch BEFORE continuing. Run scripts/version-sync.sh"
-    echo "separately if the skill metadata still needs to be synced."
+    echo "separately if the skill metadata still needs to be synced. A missing"
+    echo "CHANGELOG release is promoted automatically before this point;"
+    echo "commit and push that promotion, then re-run."
     echo "****************************************************************"
     read -r -p "Press Enter to continue or Ctrl+C to abort..." _
 fi

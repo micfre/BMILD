@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Release builds now maintain the CHANGELOG themselves: `scripts/build-releases.sh` reconciles `CHANGELOG.md` on the local lane before tagging — a pending `## [Unreleased]` section is promoted in place to a dated `## [<version>]` release heading and the script stops so the promotion is committed and pushed before the release tag is created, while a changelog with neither heading fails outright. A missing dated release can no longer tag silently or fall through to generic release notes.
+
+### Validation
+
+- Extended `tests/release-build-contract.sh` with fixture runs of the release build: `Unreleased` promotion (content and heading preserved, idempotent on re-run) and the unreconcilable-changelog error path.
+
+## [0.5.1] - 2026-09-22
+
 ### Added
 
 - Spec-authoring sharpenings (spec-sharpening O-001): Faisal's PRD journeys are applicability-gated with a captured-not-authored elicitation move — ask for a real session with a named protagonist first, shape only what was supplied into protagonist, inline context, ordered path, climax, success exit, and failure path, and label every journey Firsthand or Illustrative with its evidence gap recorded and preserved through Katrina's UX translation; success metrics in briefs and PRDs are paired with counter-metrics naming the harmful optimization each detects. Lance's drift-protection ADR template gains a required `Prevents` field naming the concrete future divergence (tautological restatements rejected), and system-design finalization gains a structural dimension sweep marking every applicable dimension decided, deferred with a reason, or an explicit open question — operational and environment dimensions included. Katrina's UX contract gains resolvable `{path.to.token}` DESIGN.md references, visual-plus-behavioral component rules (or named inherited sources), per-surface empty/cold-load/error/offline/permission-denied state walks, bidirectional need-to-surface closure with specific rationales for shared surfaces, and a mechanical-coverage-before-judgment two-pass validation.
