@@ -27,8 +27,8 @@ function jstr(s,    out, i, c, n) {
             out = out "\\\""
         else if (c == "\\")
             out = out "\\\\"
-        else if (c < "\030" || c == "\177") {
-            # control characters as \uXXXX (octal-safe via sprintf %04x path)
+        else if (c <= "\037" || c == "\177") {
+            # JSON-forbidden control characters (0x00-0x1F, DEL) as \uXXXX
             out = out sprintf("\\u%04x", chartobyte(c))
         } else
             out = out c

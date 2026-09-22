@@ -135,6 +135,8 @@ Expect-Findings 'prd006.md' @(
 $adv = Lint 'tests/fixtures/prd-lint/adversarial.md'
 $esc = @($adv.findings | Where-Object { $_.detail.Contains('quote') -and $_.detail.Contains([char]0x00FC) })
 if ($esc.Count -lt 1) { Fail "adversarial detail must round-trip quotes and unicode" }
+$ctl = @($adv.findings | Where-Object { $_.detail.Contains([char]0x18) -and $_.detail.Contains([char]0x1B) })
+if ($ctl.Count -lt 1) { Fail "adversarial detail must round-trip control bytes 0x18-0x1F escaped" }
 
 # determinism: identical bytes on repeated runs
 $a = Lint 'tests/fixtures/prd-lint/prd001.md'

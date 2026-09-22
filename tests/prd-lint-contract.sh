@@ -185,6 +185,13 @@ import json, sys
 d = json.load(open(sys.argv[1], encoding='utf-8'))
 assert any('quote' in f["detail"] and 'ü' in f["detail"] for f in d["findings"])
 PY
+python3 - "$OUT/adv.json" <<'PY' || fail "control bytes 0x18-0x1F in details must be \\u-escaped, not raw"
+import json, sys
+raw = open(sys.argv[1], encoding='utf-8').read()
+assert '\\u0018' in raw and '\\u001b' in raw, "raw JSON must carry the \\u0018/\\u001b escapes"
+d = json.loads(raw)
+assert any(chr(0x18) in f["detail"] and chr(0x1b) in f["detail"] for f in d["findings"])
+PY
 
 # unicode/space-bearing artifact path must round-trip as data
 mkdir -p "$OUT/ünïcode dir"

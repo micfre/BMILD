@@ -28,7 +28,7 @@ J1 covers FR1-FR2.
 ## Scope & Prioritization
 
 - **Phase 1 (MVP) outcome:** fixture outcome
-  - Includes: FR1-FR2, J1, FR"quote\back—ü
+  - Includes: FR1-FR2, J1, FR"quote\back—ü, FR9ctrl
 - **Explicitly Out of Scope:** Nothing beyond the fixture.
 
 Defining a phase does not authorize its implementation. The active user request or an
