@@ -62,7 +62,17 @@ $catv = @($spread | ForEach-Object { ($_ -split "`t")[1] } | Sort-Object -Unique
 if ($nums.Count -ne 12) { Fail "spread draw repeated a method" }
 if ($catv.Count -ne 12) { Fail "spread draw must use 12 distinct categories" }
 
-$rejected = & powershell -NoProfile -File (Join-Path $elicit "methods.ps1") random -n 13 2>$null
+# Windows PowerShell 5.1 wraps redirected native stderr (2>$null included) in
+# ErrorRecords, and EAP Stop makes the first one terminate the lane; pwsh 7
+# does not. The rejection diagnostic on stderr is designed child behaviour,
+# so suppress its stream escalation for this one call on every engine.
+$prevEap = $ErrorActionPreference
+$ErrorActionPreference = 'Continue'
+try {
+    $rejected = & powershell -NoProfile -File (Join-Path $elicit "methods.ps1") random -n 13 2>$null
+} finally {
+    $ErrorActionPreference = $prevEap
+}
 if ($LASTEXITCODE -ne 2) { Fail "random -n 13 must exit 2" }
 
 # --- linter battery: expected (rule, severity, line) tuples ------------------------
