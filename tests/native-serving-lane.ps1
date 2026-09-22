@@ -78,6 +78,7 @@ function Expect-Findings([string]$name, [object[]]$tuples) {
     $d = Lint "tests/fixtures/prd-lint/$name"
     if ($d.status -ne 'findings') { Fail "$name expected findings, got $($d.status)"; return }
     foreach ($t in $tuples) {
+        if (@($t).Count -lt 3) { Fail "$name tuple is not a (rule, severity, line) array: $t"; continue }
         $hit = @($d.findings | Where-Object { $_.rule_id -eq $t[0] -and $_.severity -eq $t[1] -and $_.location.line -eq [int]$t[2] })
         if ($hit.Count -lt 1) {
             Fail "$name expected $($t[0])/$($t[1]) at line $($t[2]); got: $(($d.findings | ForEach-Object { $_.rule_id + '/' + $_.severity + '@' + $_.location.line }) -join ', ')"
@@ -99,7 +100,7 @@ Expect-Clean 'clean.md'
 Expect-Clean 'prd001-negatives.md'
 
 $tbd = Find-Line 'prd001.md' 'The remaining plan is TBD overall'
-$actor = Find-Line 'prd001.md' [regex]::Escape('[Actor] can rely')
+$actor = Find-Line 'prd001.md' ([regex]::Escape('[Actor] can rely'))
 Expect-Findings 'prd001.md' @(
     @('PRD001', 'high', "$tbd"),
     @('PRD001', 'high', "$actor")
@@ -112,21 +113,31 @@ Expect-Findings 'prd002.md' @(
 )
 
 $dup = Find-Line 'prd003-duplicate.md' 'A duplicate journey appears'
-Expect-Findings 'prd003-duplicate.md' @('PRD003', 'high', "$dup")
+Expect-Findings 'prd003-duplicate.md' @(
+    @('PRD003', 'high', "$dup")
+)
 
 $gap = Find-Line 'prd003-gap.md' '^- FR3:'
-Expect-Findings 'prd003-gap.md' @('PRD003', 'medium', "$gap")
+Expect-Findings 'prd003-gap.md' @(
+    @('PRD003', 'medium', "$gap")
+)
 
 $inc = Find-Line 'prd004-unresolved.md' 'Includes: FR1-FR9, J1'
-Expect-Findings 'prd004-unresolved.md' @('PRD004', 'high', "$inc")
+Expect-Findings 'prd004-unresolved.md' @(
+    @('PRD004', 'high', "$inc")
+)
 
 $rep = Find-Line 'prd004-repeated.md' 'Includes: FR1$'
-Expect-Findings 'prd004-repeated.md' @('PRD004', 'medium', "$rep")
+Expect-Findings 'prd004-repeated.md' @(
+    @('PRD004', 'medium', "$rep")
+)
 
 $as = Find-Line 'prd005.md' 'The fixture structure is stable'
-Expect-Findings 'prd005.md' @('PRD005', 'medium', "$as")
+Expect-Findings 'prd005.md' @(
+    @('PRD005', 'medium', "$as")
+)
 
-$op = Find-Line 'prd006.md' [regex]::Escape('Operator docs: maybe')
+$op = Find-Line 'prd006.md' ([regex]::Escape('Operator docs: maybe'))
 $dh = Find-Line 'prd006.md' '^## Documentation Scope'
 Expect-Findings 'prd006.md' @(
     @('PRD006', 'medium', "$op"),
@@ -140,10 +151,13 @@ if ($esc.Count -lt 1) { Fail "adversarial detail must round-trip quotes and unic
 $ctl = @($adv.findings | Where-Object { $_.detail.Contains([char]0x18) -and $_.detail.Contains([char]0x1B) })
 if ($ctl.Count -lt 1) { Fail "adversarial detail must round-trip control bytes 0x18-0x1F escaped" }
 
-# determinism: identical bytes on repeated runs
+# determinism: identical bytes on repeated runs (object -eq is reference
+# equality; compare canonical re-serialization instead)
 $a = Lint 'tests/fixtures/prd-lint/prd001.md'
 $b = Lint 'tests/fixtures/prd-lint/prd001.md'
-if (-not ($a -eq $b)) { Fail "repeated lint must be semantically identical" }
+if (-not (($a | ConvertTo-Json -Compress -Depth 5) -ceq ($b | ConvertTo-Json -Compress -Depth 5))) {
+    Fail "repeated lint must be semantically identical"
+}
 if ($a.artifact.sha256 -ne (Get-FileHash -Algorithm SHA256 (Join-Path $fix 'prd001.md')).Hash.ToLower()) {
     Fail "reported sha256 must equal the candidate identity"
 }
