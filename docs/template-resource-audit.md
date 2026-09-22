@@ -115,6 +115,7 @@ Prior-art stances that apply across many entries, stated once:
 - **C-17 — Richer PRD validation checklist (reject-with-rationale).** The `prd-v1` ruleset is closed by design; extension requires a new bounded ruleset identifier and fixtures per AGENTS.md. Content-level checks live in the completion criteria, which this MVP sharpened. Evidence: `bmad-prd/assets/prd-validation-checklist.md`.
 - **C-18 — Analyst persona (reject-with-rationale).** Market/competitive research obligations are already carried by brief criteria (`competitive_context`); a ninth standard persona adds coordination cost without a load-bearing gap. Evidence: `bmad-agent-analyst`.
 - **C-19 — Review word-metrics/structure tooling (reject-with-rationale).** Scripted metrics require a runtime; BMILD's review depth is a fixed judgment baseline by `review-depth` design and ADR 0013. Evidence: `bmad-review/scripts/`, `bmad-review/references/structure-models.md`.
+- **C-20 — Audit data-contract guard (adapt).** Add mechanical assertions over `docs/template-resource-audit.md` to `tests/spec-sharpening-contract.sh`: the inventory denominator reconciles with the live count of `assets/` and `resources/` files across the nine in-scope skills; every inventoried file has a disposition entry; every candidate carries one of `adopt`/`adapt`/`reject-with-rationale`; the ranked backlog section is present. Owner: Alex. Fit: closes a real verification gap surfaced by Rahat's comprehensive review of `spec-sharpening` (M1) — the audit's data contract is committed in `system-design.md` §4 but currently relies on visual inspection; the guard would catch a future regression where the audit loses entries, candidates, or ranking during a BMAD re-baseline or audit refresh. No BMAD counterpart — BMAD's audits are tooling-based; BMILD's audit is a versioned, read-only `docs/` assessment, so the mechanical check belongs in BMILD's repo-root test layer, not as a runtime skill check (ADR 0013 honored). Boundary: assertions inside the existing repository-root `bash`+`python3` test; no new skill-runtime script; existing PR1-FR12 placement guards remain unchanged.
 
 ## Ranked backlog (by downstream consequence)
 
@@ -122,12 +123,13 @@ Prior-art stances that apply across many entries, stated once:
 2. **C-06 stable decision IDs** — affects cross-artifact reference precision (system-design ↔ ADR ↔ verification matrix); wrong references corrupt acceptance evidence. Owners: Lance, Sonia, Rahat.
 3. **C-09 test-first for code outcomes** — affects defect-escape rate for every implemented outcome; cheap to land. Owners: Alex, Rahat.
 4. **C-15 Course-Correction halts** — prevents unscoped impact analysis from running on vibes; low cost, guarded by an existing contract test. Owner: Sonia.
-5. **C-02 glossary discipline** — reduces term drift between PRD and downstream UX/arch artifacts; medium blast radius, low ceremony. Owner: Faisal.
-6. **C-01 journey scope dial** — proportionality for small products; prevents the journey shape becoming ceremony. Owner: Faisal.
-7. **C-10 DESIGN.md inheritance patterns** — matters only once consuming projects use platform/UI-system inheritance; template-only. Owner: Katrina.
-8. **C-11 worked UX example** — quality lift for mid-strength models; optional asset. Owner: Katrina.
-9. Rejected (C-03, C-04, C-05, C-07, C-12, C-13, C-16, C-17, C-18, C-19) — rationale recorded above; revisit triggers noted where a future condition could reopen them.
-10. **C-14 facilitator flows** — evidence bank for `elicitation-refine`; not implementable from this backlog.
+5. **C-20 audit data-contract guard** — guards the durability of the spec-sharpening O-001 audit's "70/70 dispositioned" guarantee; without it, a future BMAD re-baseline or audit refresh could silently lose entries, candidates, or ranking. Low cost, bounded to one repo-root test extension. Owner: Alex.
+6. **C-02 glossary discipline** — reduces term drift between PRD and downstream UX/arch artifacts; medium blast radius, low ceremony. Owner: Faisal.
+7. **C-01 journey scope dial** — proportionality for small products; prevents the journey shape becoming ceremony. Owner: Faisal.
+8. **C-10 DESIGN.md inheritance patterns** — matters only once consuming projects use platform/UI-system inheritance; template-only. Owner: Katrina.
+9. **C-11 worked UX example** — quality lift for mid-strength models; optional asset. Owner: Katrina.
+10. Rejected (C-03, C-04, C-05, C-07, C-12, C-13, C-16, C-17, C-18, C-19) — rationale recorded above; revisit triggers noted where a future condition could reopen them.
+11. **C-14 facilitator flows** — evidence bank for `elicitation-refine`; not implementable from this backlog.
 
 ## Completeness
 
