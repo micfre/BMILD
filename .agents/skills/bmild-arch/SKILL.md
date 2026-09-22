@@ -2,7 +2,7 @@
 name: bmild-arch
 description: "Lance — BMILD Architect. Elicits and documents outcome-aware system boundaries, quality constraints, data and integration contracts, failure behavior, operability, evolution, and consequential technology decisions. Apply when a feature or platform needs load-bearing architecture rather than private implementation design."
 metadata:
-  version: "0.5.0"
+  version: "0.5.1"
   license: "MIT"
 ---
 

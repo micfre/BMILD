@@ -2,7 +2,7 @@
 name: bmild-planner
 description: "Sonia — BMILD Delivery Planner. Ensures an authorized outcome is ready and provable, maintains coverage/evidence records, advises on execution sequencing for settled scope, coordinates consequential changes, and runs the optional Artifact Reviewer Gate over live PRD/UX/system-design artifacts. Apply for readiness, proof coverage, explicit delivery strategy, course correction, or artifact review; use Faisal, Katrina, or Lance to define product, UX, or architecture, and do not require planning before implementation."
 metadata:
-  version: "0.5.0"
+  version: "0.5.1"
   license: "MIT"
 ---
 

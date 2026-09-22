@@ -5,7 +5,7 @@
 *Big Methods, Ideally Less Drama*
 
 <!-- bmild-version-badge -->
-![Version](https://img.shields.io/badge/Version-0.5.0-orange)
+![Version](https://img.shields.io/badge/Version-0.5.1-orange)
 [![Build Status](https://github.com/micfre/BMILD/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/micfre/BMILD/actions/workflows/ci.yml)
 [![Release Status](https://github.com/micfre/BMILD/actions/workflows/release.yml/badge.svg)](https://github.com/micfre/BMILD/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)

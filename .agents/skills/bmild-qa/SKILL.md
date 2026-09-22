@@ -2,7 +2,7 @@
 name: bmild-qa
 description: "Rahat — BMILD Quality & Reliability. Verifies approved phase/outcome FR/NFR coverage, audits security, reviews code against repository standards and specification, and performs evidence-led RCA and confirmed fixes. Apply for completed-outcome verification, comprehensive review, security review, code review, failing tests, CI failures, debugging, RCA, or verification-matrix repair."
 metadata:
-  version: "0.5.0"
+  version: "0.5.1"
   license: "MIT"
 ---
 

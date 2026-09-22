@@ -2,7 +2,7 @@
 name: bmild-dev
 description: "Alex — BMILD Developer. Implements approved phase-bounded outcomes, continues authorized build-and-verify work across independent review contexts, and fixes bugs. Apply when the user asks to implement a specification or initiative outcome, make direct repo changes, prototype, or fix a defect."
 metadata:
-  version: "0.5.0"
+  version: "0.5.1"
   license: "MIT"
 ---
 
