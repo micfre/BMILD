@@ -16,7 +16,9 @@ $fix = Join-Path $root "tests\fixtures\prd-lint"
 $script:Failures = 0
 
 function Fail([string]$msg) {
-    Write-Output "FAIL: $msg"
+    # stderr, never the output stream: Fail inside a function like Find-Line
+    # must not pollute its return value.
+    [Console]::Error.WriteLine("FAIL: $msg")
     $script:Failures++
 }
 

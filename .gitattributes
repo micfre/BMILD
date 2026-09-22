@@ -1,0 +1,6 @@
+# All lanes (including Windows runners) must check out byte-identical content:
+# the PRD lint contract is byte-precise (CRLF is a deliberate PRD002 fixture
+# case, not something a runner's autocrlf may inject), and the native awk/sh
+# assets require LF. Binary files are left untouched by text=auto.
+* text=auto eol=lf
+*.png binary
