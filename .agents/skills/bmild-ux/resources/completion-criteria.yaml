@@ -68,14 +68,21 @@ sections:
       - prd.md
     falsifiable: >
       A tester can write a test script for the happy path and at least one error path
-      for each flow from this section alone.
+      for each flow from this section alone, and a reader can tell whether a flow
+      reflects firsthand or illustrative source evidence.
     good_signal: >
       Each flow names its trigger, each step, the success exit condition, and at least
-      one failure exit condition. Applicable empty and loading states are identified per
-      flow. Every binding flow identifies its authorized outcome or initiative-wide scope.
+      one failure exit condition. When a flow translates an applicable PRD journey, the
+      named protagonist, relevant inline context, climax, and failure path survive the
+      translation, and the source journey's Firsthand or Illustrative evidence label
+      is preserved — an illustrative source is never rewritten as observed behavior.
+      Applicable empty and loading states are identified per flow. Every binding flow
+      identifies its authorized outcome or initiative-wide scope.
     weak_signal: >
-      Flows cover only the happy path, or steps are described at a level of abstraction
-      that a developer would need to make UX decisions to implement.
+      Flows cover only the happy path, steps are described at a level of abstraction
+      that a developer would need to make UX decisions to implement, or a source
+      journey's protagonist, climax, failure path, or evidence label is silently
+      dropped in translation.
 
   - id: interaction_model
     required: true
@@ -121,14 +128,18 @@ sections:
       A QA engineer can test every applicable material edge state for the authorized outcome
       and can see why a normally relevant state was marked not applicable.
     good_signal: >
-      In-scope screens identify applicable empty, loading, error, and populated states.
-      Material non-applicability has a reason. Exact error copy is committed when wording
-      affects trust, recovery, compliance, or product meaning; otherwise message intent and
-      established content conventions are sufficient.
+      Each in-scope surface is walked through the applicable states among empty, cold-load,
+      error, offline, and permission-denied, plus populated where relevant. Each applicable
+      state records usable behavior, not just its name. Material non-applicability has a
+      reason; one identical reason may cover several surfaces only when those surfaces are
+      named and the reason genuinely applies to each. Exact error copy is committed when
+      wording affects trust, recovery, compliance, or product meaning; otherwise message
+      intent and established content conventions are sufficient.
     weak_signal: >
       Edge states mentioned in aggregate ("handle errors appropriately") rather than
-      per view, missing states silently ignored, or preference-level copy frozen without a
-      consequential reason.
+      per surface, a state named with no usable behavior, missing states silently ignored,
+      a blanket non-applicability claim that hides a material exception, or preference-level
+      copy frozen without a consequential reason.
 
   - id: accessibility
     required: false
@@ -180,9 +191,54 @@ sections:
       Every applicable user-facing FR or direct source requirement in the authorized outcome
       is addressed by a screen, flow, interaction, or state. Non-user-facing requirements may
       be marked no UX treatment required with rationale. Later-phase requirements remain
-      visibly deferred. A reviewer can trace coverage without treating deferred work as a
-      present gap or requiring a PRD for an otherwise sufficient direct UX contract.
+      visibly deferred. Surface closure runs in both directions: every user-facing need in
+      the authorized outcome traces to a serving surface, and every outcome surface traces
+      back to a journey that reaches it; a shared or supporting surface carries a specific
+      rationale instead of a forced artificial journey. A missing link is surfaced for
+      operator resolution — never resolved by inventing a screen. A reviewer can trace
+      coverage without treating deferred work as a present gap or requiring a PRD for an
+      otherwise sufficient direct UX contract.
     weak_signal: >
       Authorized user-facing requirements have no visible UX treatment, coverage is assumed
       without traceability, backend-only requirements generate invented UI, a missing PRD is
-      treated as a filename gate, or deferred requirements become current design obligations.
+      treated as a filename gate, deferred requirements become current design obligations,
+      or an orphaned need or unjustified surface passes silently.
+
+  - id: token_contract
+    required: false
+    stakes: medium
+    applies_when: the design depends on tokens defined in a project-root DESIGN.md
+    cross_ref:
+      - DESIGN.md
+    falsifiable: >
+      Every token the in-scope design depends on is referenced by its resolvable
+      `{path.to.token}` name, and the reference resolves against the project-root
+      DESIGN.md token structure.
+    good_signal: >
+      Token references use resolvable `{path.to.token}` names into DESIGN.md. An
+      unresolved or undefined token is surfaced as a finding for operator resolution;
+      the check never invents a token to make a reference resolve. When no DESIGN.md
+      exists and the design uses no tokens, the check has no entries and creates no
+      obligation to create one.
+    weak_signal: >
+      Tokens described by adjective ("the brand blue") instead of resolvable name,
+      references that cannot be followed to a defined token, or a token invented
+      during design instead of surfaced as missing.
+
+  - id: component_contract
+    required: false
+    stakes: medium
+    applies_when: the design names in-scope components beyond standard mechanics
+    cross_ref:
+      - DESIGN.md
+    falsifiable: >
+      For each named in-scope component, a reviewer can identify a visual rule and a
+      behavioral rule, or the established design-system rule that supplies either one.
+    good_signal: >
+      Every named in-scope component carries both a visual rule and a behavioral rule,
+      or names the inherited design-system rule (with its source) that supplies either.
+      An inherited claim without a source is a finding. Standard component mechanics
+      covered by established conventions may remain delegated rather than restated.
+    weak_signal: >
+      A component has only visual treatment with no behavior, only behavior with no
+      visual treatment, or an inherited rule asserted with no named source.

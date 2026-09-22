@@ -59,14 +59,42 @@ sections:
       - ux-design.md
     falsifiable: >
       A tester can write a test script for the happy path and at least one error path
-      for each journey from this section alone.
+      for each journey from this section alone, and a reader can tell whether each
+      journey reflects a confirmed firsthand account or an illustrative example.
     good_signal: >
-      At least one end-to-end sequence with a stable identifier: named trigger, actor, ordered steps, and success
-      exit. Edge or failure paths are acknowledged even if not fully specified. A journey
-      requirements summary connects journeys to capability areas named in the FRs.
+      At least one end-to-end sequence with a stable identifier: named trigger, ordered
+      steps, and success exit. The protagonist is a specific named person or precisely
+      identified role ("Mary, mom of three", "the on-call SRE for tier-1 alerts"), never
+      a generic "the user", with the context that matters carried inline at the steps
+      where it matters instead of a standalone persona section. Each journey has a
+      climax beat — the moment the value actually lands — and an explicit failure path
+      a reader can picture. Every journey carries an evidence status: Firsthand
+      (shaped from a confirmed real session) or Illustrative with the specific
+      firsthand evidence gap recorded. A journey requirements summary connects
+      journeys to capability areas named in the FRs.
     weak_signal: >
-      Only a feature description with no sequence, or a journey that starts and ends at
-      the happy path without identifying the trigger, actor, or what happens on failure.
+      A generic "the user" protagonist, persona context dumped into a standalone
+      section or absent, a journey with no climax or failure path, or no evidence
+      status. An illustrative journey whose label or evidence gap is missing is
+      treated as unverified: a well-written example never becomes firsthand through
+      detail alone.
+
+  - id: success_measures
+    required: false
+    stakes: medium
+    applies_when: the PRD records success metrics or measurable outcome signals
+    falsifiable: >
+      For each success metric, a reviewer can name the counter-signal that fires when
+      the metric is improved in a harmful way.
+    good_signal: >
+      Each success metric is paired with a counter-metric naming the specific harmful
+      optimization it detects (e.g., "search completion rate" paired with "result-set
+      abandonment"). When no PRD-level metric is recorded, the section is omitted
+      rather than padded with empty pairs.
+    weak_signal: >
+      Metrics that can be gamed with no counter-signal, counter-metrics that merely
+      restate the primary metric, or a metric whose counter-metric names no harmful
+      behavior.
 
   - id: scope_and_prioritization
     required: true

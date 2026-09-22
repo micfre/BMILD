@@ -7,7 +7,9 @@ scope: "<initiative-name> | _cross"
 status: "proposed | accepted | deprecated | superseded by ADR-NNNN"
 ---
 
-<One to three sentences stating the context, the decision, and the reason. That is the whole ADR — the value is recording *that* a decision was made and *why*, not filling out sections.>
+<One to three sentences stating the context, the decision, and the reason. Then the drift-protection line:>
+
+**Prevents:** <the specific divergence a future reader would cause by re-litigating or "fixing" this deliberate choice — what actually breaks or drifts if the decision is casually reversed. A `Prevents` that merely repeats the decision fails; name the real consequence.>
 
 ## Optional sections
 
@@ -30,3 +32,5 @@ All three must be true. If any is missing, skip the ADR — the decision belongs
 3. **The result of a real trade-off** — there were genuine alternatives and one was picked for specific reasons.
 
 What commonly qualifies: architectural shape; integration patterns between contexts; technology choices that carry lock-in; boundary and scope decisions (the explicit *no*s are as valuable as the *yes*s); deliberate deviations from the obvious path; constraints not visible in the code; rejected alternatives when the rejection is non-obvious. Cross-initiative commitments commonly qualify; an initiative-local decision that is surprising and hard to reverse also qualifies.
+
+Every drift-protection ADR carries a populated `Prevents` line naming the concrete future divergence it stops. The triple-axis gate decides *whether* an ADR exists; `Prevents` is the field a future reader needs before "fixing" a deliberate choice — an ADR whose `Prevents` restates its decision is incomplete.

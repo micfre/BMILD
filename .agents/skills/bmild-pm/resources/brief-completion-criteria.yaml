@@ -74,10 +74,13 @@ sections:
     good_signal: >
       Vision-level outcomes that would hold across multiple initiatives. At least one is
       measurable — a reviewer could check a running product or business metric and
-      determine pass or fail.
+      determine pass or fail. Each measurable criterion is paired with a counter-metric
+      naming the harmful way the primary metric could be gamed.
     weak_signal: >
       Criteria that restate features ("users can do X"), single-initiative goals that do
       not generalize, or qualitative claims so vague that two reviewers would disagree.
+      A metric with no counter-metric, or whose counter-metric names no harmful
+      optimization, is a finding — a gameable metric presented as finished.
 
   - id: scope
     required: true

@@ -27,7 +27,10 @@ author: "[user_name] + Faisal (PM)"
 
 ## Success Criteria
 
-[Vision-level outcomes that should hold across multiple initiatives. At least one must be measurable.]
+[Vision-level outcomes that should hold across multiple initiatives. At least one must be measurable. Pair each measurable criterion with a counter-metric naming the harmful way it could be gamed.]
+
+- **[Criterion]:** [Observable or measurable outcome]
+  - **Counter-metric:** [Signal that fires when the primary metric is improved harmfully]
 
 ## Scope
 

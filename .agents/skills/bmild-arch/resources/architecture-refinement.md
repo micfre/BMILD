@@ -48,7 +48,7 @@ Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth for **
 
 ## Distillation gates
 
-**Drift-protection ADR gate.** When a refined Key Decision in `system-design.md` §2 passes the triple-axis test (hard to reverse, surprising without context, real trade-off), extract a terse drift-protection ADR into `[plan_folder]/adr/` per the gate in `assets/adr-template.md`. Apply the same gate as Architecture-Design mode.
+**Drift-protection ADR gate.** When a refined Key Decision in `system-design.md` §2 passes the triple-axis test (hard to reverse, surprising without context, real trade-off), extract a terse drift-protection ADR into `[plan_folder]/adr/` per the gate in `assets/adr-template.md`. Apply the same gate as Architecture-Design mode, including the populated `Prevents` line naming the specific divergence reversing the decision would cause — a `Prevents` that restates the decision is repaired before the ADR is final. When a refinement changes or supersedes an existing ADR's decision, update that ADR's `Prevents` in the same pass rather than leaving stale drift protection.
 
 **Semantic Memory.** When refined initiative-local meaning becomes stable:
 - Update `[plan_folder]/<initiative-name>/context.md` for initiative-local terms, boundaries, relationships, and resolved ambiguities. Follow the authoring rules in `.agents/skills/bmild-pm/assets/context-template.md`.
@@ -66,7 +66,7 @@ Progress:
   - **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
 - [ ] Step 5: Preview the queue — name changed sections grouped by YAML `stakes` and approximate question count.
 - [ ] Step 6: Elicit refinements — apply Stakes-based elicitation to changed sections only.
-- [ ] Step 7: Consequence-check — verify changed sections, applicability/disposition labels, traceability to authorized source requirements, deferred-phase containment, and in-scope YAML sections.
+- [ ] Step 7: Consequence-check — verify changed sections, applicability/disposition labels, traceability to authorized source requirements, deferred-phase containment, in-scope YAML sections, and the structural dimension sweep for dimensions the refinement touches (a change that introduces or removes an operational, deployment, environment, or infrastructure consequence reopens the affected sweep line).
 - [ ] Step 8: Pre-exit offer (conditional, declinable in one word) — when any **consequential** section is being materially changed, offer once, naming 1–2 session-appropriate bmild-elicit methods from this artifact's shortlist (**Architecture Decision Records**, **Failure Mode Analysis**), chosen by what was actually contentious: *"Before I update the system design — I could run **Architecture Decision Records** or **Failure Mode Analysis** in a bmild-elicit session, or take anything to roundtable. Otherwise I'll proceed."* On acceptance, swap to `bmild-elicit` with the method pre-selected. Skip when only medium/low sections change or the session is a single-field alignment. Any decline or proceed signal continues directly to the update in the same turn — no further confirmation.
 - [ ] Step 9: Write — update `[plan_folder]/<initiative-name>/system-design.md` using `assets/system-design-template.md`. Preserve unchanged sections. Update `timestamp` frontmatter.
 - [ ] Step 10: Distillation gates — apply the Drift-protection ADR gate and Semantic Memory rules when triggered.
@@ -89,7 +89,7 @@ Before closing finalization, offer once: an independent Artifact Reviewer Gate r
 - [ ] `completion-criteria.yaml` verified for all in-scope sections
 - [ ] Relevant `handoff.md` items resolved, deferred, rejected, superseded, or kept open with clear next owner
 - [ ] `system-design.md` written with current `timestamp` date
-- [ ] Drift-protection ADR extracted into `[plan_folder]/adr/` only if the triple-axis gate fired
+- [ ] Drift-protection ADR extracted into `[plan_folder]/adr/` only if the triple-axis gate fired; each carries a populated `Prevents` naming the concrete divergence it stops
 - [ ] `context.md` and/or `context-map.md` updated only if the semantic gate fired
 - [ ] `registry.md` reflects current artifact state
 - [ ] Close message: what changed, trade-offs, queued or deferred governance items, next owner

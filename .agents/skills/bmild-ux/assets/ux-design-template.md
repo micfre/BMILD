@@ -38,6 +38,8 @@ Entry point → steps → exit condition. Include error paths and edge cases.
 
 - **Applies to:** <authorized outcome/phase | initiative-wide>
 - **Disposition:** <committed | delegated | illustrative | observed, only when needed>
+- **Source journey:** <PRD J-ID when this flow translates a journey, with the protagonist, inline context, climax, and failure path preserved>
+- **Evidence:** <Firsthand — confirmed account source | Illustrative — evidence gap recorded, when the source journey carries one>
 
 ## 4. Screens / Views
 
@@ -46,13 +48,25 @@ Entry point → steps → exit condition. Include error paths and edge cases.
 - **Layout Regions:** ...
 - **Data Displayed:** ...
 - **Available Actions:** ...
-- **States:** applicable loading / empty / error / populated states; identify a material state as not applicable with a reason
+- **States:** walk the applicable states among empty / cold-load / error / offline / permission-denied / populated; identify a material state as not applicable with a reason
+
+### Surface closure
+
+- **Needs → surfaces:** every user-facing need in the authorized outcome and its serving surface; a shared or supporting surface records its specific rationale
+- **Surfaces → journeys:** every outcome surface and the journey that reaches it
+- **Missing links:** <named orphans with their source, surfaced for operator resolution — none when closure holds>
 
 ## 5. Initiative-Specific Interaction Model
 
 Consequential or non-standard user-observable behaviour specific to this feature. State
 what triggers what and the visible response. Delegate standard component mechanics and
 private state handling when established conventions are sufficient.
+
+### Named components
+
+Per named in-scope component: a visual rule and a behavioral rule, or the established
+design-system rule (with source) that supplies either. Reference `DESIGN.md` tokens the
+design depends on by resolvable `{path.to.token}` name.
 
 ## 6. Bounded Assumptions
 

@@ -212,11 +212,33 @@ sections:
       satisfies, viable alternatives, why it was chosen, and what would reopen it.
     good_signal: >
       Each committed decision records context, evidence, viable alternatives with material
-      consequences, rationale, applicability, and a revisit trigger when useful. Preference-
-      level choices are delegated or illustrative rather than elevated into commitments.
+      consequences, rationale, applicability, and a revisit trigger when useful. A decision
+      passing the drift-protection gate names the specific future divergence reversing it
+      would cause — the divergence its ADR `Prevents` line carries. Preference-level
+      choices are delegated or illustrative rather than elevated into commitments.
     weak_signal: >
-      Rationale restates the choice, alternatives differ only cosmetically, or a reversible
-      implementation preference is treated as a one-way architectural door.
+      Rationale restates the choice, alternatives differ only cosmetically, a reversible
+      implementation preference is treated as a one-way architectural door, or a
+      qualifying decision's `Prevents` line merely repeats the decision instead of naming
+      a real consequence.
+
+  - id: dimension_sweep
+    required: true
+    stakes: medium
+    cross_ref: []
+    falsifiable: >
+      A reviewer can enumerate the applicable structural dimensions and find each one
+      decided (linked to its section), deferred with a reason, or an explicit open
+      question — with no applicable dimension silently absent.
+    good_signal: >
+      The finalize sweep covers every applicable structural dimension, explicitly
+      including the operational envelope: deployment and environments, infrastructure
+      provider, capacity, and operations and observability. A dimension that does not
+      apply is marked not applicable with its reason rather than omitted silently. The
+      sweep is coverage, not a mandate to commit architecture where nothing applies.
+    weak_signal: >
+      A whole dimension — typically deployment, environments, or operations — is
+      silently absent from the design with no decided/deferred/open-question record.
 
   - id: fr_coverage
     required: true

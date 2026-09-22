@@ -32,6 +32,8 @@ Per-section `stakes` in `prd-completion-criteria.yaml` sets elicitation depth. U
 
 - **Discovery before invention**: Before accepting a greenfield premise, verify repository reality. Scan the codebase when the initiative may be brownfield or when artifacts claim behaviour that code may already implement. Do not invent greenfield solutions in a brownfield environment.
 - **Diverge before converging.** Consequential sections from YAML first; medium and low sections synthesized for steering.
+- **Captured, not authored.** When `user_journeys` applies, ask for a real session first: one named person, their relevant context, what they did, the moment value should have landed, and what went wrong. Shape only what was supplied into protagonist, inline context, ordered path, climax, success exit, and failure path; show the structured account to the user for correction before treating it as firsthand. When no real account is available, offer a clearly labeled Illustrative journey and record the specific evidence gap — never present invented detail as observation. Reuse a confirmed account or recorded evidence gap already in a live source without re-asking for it; re-ask only when the source is absent, contradictory, or materially changed.
+- **Counter-metrics.** Every success metric recorded in this PRD is paired with a counter-metric naming the harmful way the primary metric could be gamed. A metric with no counter-signal is a finding, not a finished entry.
 - **Phase traceability without implied authority.** Give FRs and journeys stable IDs, map every phased item to those IDs, and name the observable product outcome for each phase. Defining MVP, Growth, or Vision scope does not authorize every phase; the active request or authoritative outcome record does.
 - **Naked assumptions are forbidden in artifacts.** Every documented assumption, deferral, and open question carries `Assumption` → `Confidence` → `Consequence if wrong`.
 - **Artifact-authority discipline.** `handoff.md` is for defects, cross-artifact conflicts, and promotion requests requiring another owner. Live elicitation stays in chat unless async continuity requires a governed handoff. Bounded assumptions only when low-risk and reversible.
@@ -52,7 +54,7 @@ Progress:
 - [ ] Step 2: Probe backward — review `product-brief.md` for unresolved assumptions, handoff items, or scope edges needing promotion. Route cross-artifact/source issues through `handoff.md` before proceeding.
 - [ ] Step 3: Elicit (diverge → synthesize → steer) — apply Stakes-based elicitation:
   - **Open with the PRD contour.** Name in-scope sections grouped by YAML `stakes` (respecting `stakes_note` overrides) and signal consequential depth vs synthesis for the rest.
-  - **Diverge on consequential sections.** One question at a time through `functional_requirements`, `user_journeys` (when applicable), and `scope_and_prioritization` until each passes its YAML weak_signal check.
+  - **Diverge on consequential sections.** One question at a time through `functional_requirements`, `user_journeys` (when applicable), and `scope_and_prioritization` until each passes its YAML weak_signal check. For `user_journeys`, the first probe is the captured-not-authored move: ask for the real session before shaping anything.
   - **Probe without scripting.** Alongside YAML weak-signal drivers, optionally use `solution-shaped`, `happy ears`, or `steelman the opposite` when they sharpen the question.
   - **Synthesize medium and low sections.** Draft `nfr` (when not elevated by `stakes_note`), `documentation_scope`, `assumptions`, and `ambiguity_disposition` in one block. Ask the user to redirect, accept, or escalate.
   - **Reopen only what the user steers.** Hedging or pushback promotes that section to consequential pacing.
@@ -63,6 +65,8 @@ Progress:
   - Every phased capability maps to stable FR and journey IDs, with later phases remaining non-authoritative until separately authorized
   - Explicitly out-of-scope items are listed
   - Non-functional requirements have thresholds, not just categories
+  - Each recorded success metric has a counter-metric naming the harmful optimization it detects
+  - When `user_journeys` applies: every journey has a named protagonist with inline context, a climax, a success exit, a failure path, and a Firsthand or Illustrative evidence status with gap recorded
   - Documentation scope has a decision for each audience (per completion criteria)
   - Any remaining ambiguity has a governed outcome: `handoff.md`, bounded assumption, or explicit defer/reject/supersede
   - Every in-scope section in `prd-completion-criteria.yaml` passes falsifiable / good_signal / weak_signal

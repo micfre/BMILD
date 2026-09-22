@@ -34,6 +34,7 @@ Per-section `stakes` in `brief-completion-criteria.yaml` sets elicitation depth 
 - **Discovery before invention**: Before accepting a greenfield premise, verify repository reality. Scan the codebase when the initiative may be brownfield or when artifacts claim behaviour that code may already implement. Do not invent greenfield solutions in a brownfield environment.
 - **Challenge, do not preserve.** Treat existing brief content as hypotheses until revalidated.
 - **Problem framing precedes features.** Do not drift into PRD detail except to flag downstream implications.
+- **Counter-metrics.** A changed or newly recorded measurable success criterion gains its counter-metric naming the harmful optimization it detects.
 - **Artifact-authority discipline.** Live elicitation in chat; `handoff.md` only when async continuity or another owner must act. Bounded assumptions only when low-risk and reversible.
 
 ## Semantic Memory

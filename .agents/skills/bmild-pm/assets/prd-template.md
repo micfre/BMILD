@@ -20,14 +20,26 @@ author: "[user_name] + Faisal (PM)"
 
 ## User Journeys
 
-- J1 — Journey: [Named trigger and user type]
-  - Steps: [ordered sequence]
-  - Success exit: [what done looks like]
-  - Edge or failure paths: [acknowledged paths]
+Optional: include only when requirements involve user-facing behavior or workflow change; otherwise record why no journey applies.
+
+- J1 — Journey: [Named trigger and protagonist — a specific named person or precisely identified role, not "the user"]
+  - Trigger and context: [what starts the journey and the protagonist's relevant context at that moment, inline]
+  - Steps: [ordered sequence, carrying persona context at the steps where it matters]
+  - Climax and success exit: [the moment value lands, and what done looks like]
+  - Failure path: [the specific way this journey fails, and what recovery looks like]
+  - Evidence: Firsthand — [confirmed account source] | Illustrative — evidence gap: [the specific firsthand account not yet supplied]
+  - Reveals: [capability areas / FR IDs this journey exercises]
 
 ### Journey Requirements Summary
 
 [Which capability areas each journey reveals. Connects journey coverage to FRs above.]
+
+## Success Measures & Counter-Metrics
+
+Optional: include when the PRD records success metrics; omit the section rather than padding it with empty pairs.
+
+- **[Metric name]:** [What it measures and its threshold]
+  - **Counter-metric:** [The signal that fires when the primary metric is improved in a harmful way, and what that harmful way is]
 
 ## Scope & Prioritization
 

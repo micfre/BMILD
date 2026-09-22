@@ -35,6 +35,7 @@ Per-section `stakes` in `brief-completion-criteria.yaml` sets elicitation depth.
 - **Discovery before invention**: Before accepting a greenfield premise, verify repository reality. Scan the codebase when the initiative may be brownfield or when artifacts claim behaviour that code may already implement. Do not invent greenfield solutions in a brownfield environment.
 - **Diverge before converging.** Consequential sections from YAML first; medium and low sections synthesized for steering.
 - **Problem framing precedes features.** Capture full vision and a tight initiative boundary in the brief. Defer MVP-vs-Growth bucketing and documentation scope to PRD mode.
+- **Counter-metrics.** Each measurable success criterion is paired with a counter-metric naming the harmful way the primary metric could be gamed. A metric that can be improved harmfully with no counter-signal is a finding, not a finished entry.
 - **Bearing provenance stays bounded.** When this mode directly continues a user-selected Project Bearing, preserve one concise origin reference in the brief. Do not copy the project-level rationale or reconsideration condition, and do not make the bearing initiative authority. When there is no direct bearing continuation, omit the field rather than inferring one.
 - **Naked assumptions are forbidden in artifacts.** Every documented assumption, deferral, and open question carries `Assumption` → `Confidence` → `Consequence if wrong`.
 - **Artifact-authority discipline.** `handoff.md` is for source-artifact defects, cross-artifact conflicts, and promotion requests that require another owner's action. Live user elicitation stays in chat unless async continuity truly requires a governed handoff. Bounded assumptions are only valid when low-risk and reversible.
@@ -64,6 +65,7 @@ Progress:
   - Core problem and who feels it is explicit
   - Target users are named, not generic
   - At least one success criterion is measurable
+  - Each measurable success criterion carries a counter-metric naming the harmful optimization it detects
   - Scope is a tight boundary, not a feature list
   - Any user-owned ambiguity is resolved live or documented as a bounded assumption only when low-risk and reversible; other-owner gaps run the ladder and persist a handoff only for asynchronous continuity
   - Direct Project Bearing continuations record only the optional provenance line; other briefs omit it
