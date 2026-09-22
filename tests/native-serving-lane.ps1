@@ -66,6 +66,9 @@ $rejected = & powershell -NoProfile -File (Join-Path $elicit "methods.ps1") rand
 if ($LASTEXITCODE -ne 2) { Fail "random -n 13 must exit 2" }
 
 # --- linter battery: expected (rule, severity, line) tuples ------------------------
+# Each tuple is a ,@(...) statement inside @(...): @() enumerates a lone nested
+# array into flat scalars, and the unary comma is the wrapper that survives it.
+# The shape guard below turns any future flat call into a loud failure.
 
 function Expect-Clean([string]$name) {
     $d = Lint "tests/fixtures/prd-lint/$name"
@@ -102,46 +105,46 @@ Expect-Clean 'prd001-negatives.md'
 $tbd = Find-Line 'prd001.md' 'The remaining plan is TBD overall'
 $actor = Find-Line 'prd001.md' ([regex]::Escape('[Actor] can rely'))
 Expect-Findings 'prd001.md' @(
-    @('PRD001', 'high', "$tbd"),
-    @('PRD001', 'high', "$actor")
+    ,@('PRD001', 'high', "$tbd");
+    ,@('PRD001', 'high', "$actor")
 )
 
 $ts = Find-Line 'prd002.md' 'timestamp: 2026-02-30'
 Expect-Findings 'prd002.md' @(
-    @('PRD002', 'high', "$ts"),
-    @('PRD002', 'high', '1')
+    ,@('PRD002', 'high', "$ts");
+    ,@('PRD002', 'high', '1')
 )
 
 $dup = Find-Line 'prd003-duplicate.md' 'A duplicate journey appears'
 Expect-Findings 'prd003-duplicate.md' @(
-    @('PRD003', 'high', "$dup")
+    ,@('PRD003', 'high', "$dup")
 )
 
 $gap = Find-Line 'prd003-gap.md' '^- FR3:'
 Expect-Findings 'prd003-gap.md' @(
-    @('PRD003', 'medium', "$gap")
+    ,@('PRD003', 'medium', "$gap")
 )
 
 $inc = Find-Line 'prd004-unresolved.md' 'Includes: FR1-FR9, J1'
 Expect-Findings 'prd004-unresolved.md' @(
-    @('PRD004', 'high', "$inc")
+    ,@('PRD004', 'high', "$inc")
 )
 
 $rep = Find-Line 'prd004-repeated.md' 'Includes: FR1$'
 Expect-Findings 'prd004-repeated.md' @(
-    @('PRD004', 'medium', "$rep")
+    ,@('PRD004', 'medium', "$rep")
 )
 
 $as = Find-Line 'prd005.md' 'The fixture structure is stable'
 Expect-Findings 'prd005.md' @(
-    @('PRD005', 'medium', "$as")
+    ,@('PRD005', 'medium', "$as")
 )
 
 $op = Find-Line 'prd006.md' ([regex]::Escape('Operator docs: maybe'))
 $dh = Find-Line 'prd006.md' '^## Documentation Scope'
 Expect-Findings 'prd006.md' @(
-    @('PRD006', 'medium', "$op"),
-    @('PRD006', 'medium', "$dh")
+    ,@('PRD006', 'medium', "$op");
+    ,@('PRD006', 'medium', "$dh")
 )
 
 # adversarial escaping round-trip
