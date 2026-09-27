@@ -42,8 +42,8 @@ Alex may author implementation-complete and review-requested states and propagat
 
 ## Examples
 
-- An unplanned internal helper preserving committed behavior needs no owner episode or new Slice; Alex implements and tests it.
+- An unplanned internal helper preserving committed behavior needs no owner episode or new Slice; Alex implements and tests it. For explicitly selected Slices, Sonia resolves changes to acceptance boundaries or dependencies; changing private structure needs no replanning.
 - An API contract change uses Lance's criteria and the required user decision; record the contract update and invalidate affected proof before continuing.
 - A source requirement omitted from a matrix is still binding. Add the obligation from the source and obtain its proof; never rewrite the spec to conceal an implementation miss.
-- A verified outcome's status can be mirrored mechanically into its legacy Slice registry without a Sonia handoff.
+- A Rahat-accepted Slice's status can be mirrored mechanically from parent outcome evidence into its Slice registry. A passing Slice never accepts the whole outcome.
 - A configured consult pair rejected by the harness leaves that episode pending; no silent model downgrade.

@@ -1,6 +1,6 @@
-# Nyquist
+# Nyquist Design
 
-Author or repair an upfront verification matrix. Backup and repair path — Sonia owns the default readiness-time matrix. Use when the matrix is missing, incomplete, stale, or explicitly requested as a QA-led pass.
+Design upfront proof or repair the verification matrix when requested. Sonia owns readiness-time coverage; this mode supplies test design and scaffolding, not completed-work acceptance. Comprehensive Review remains the default acceptance route.
 
 ## Additional Context
 

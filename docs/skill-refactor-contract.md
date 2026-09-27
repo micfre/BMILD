@@ -137,7 +137,7 @@ Coordinate changes across all affected skills when a shared contract changes; us
 | ux | ✓ | existing | — | DESIGN.md distillation in mode resources |
 | arch | ✓ | existing | — | adr/ promotion in mode resources |
 | qa | security modes | `security-categories.yaml` + `code-review-categories.yaml` | in resources | Review taxonomies, not completion-criteria shape |
-| planner | — | none | partial | Readiness default; optional strategy; no token budget or required Slices |
+| planner | — | none | partial | Readiness default; advisory strategy or explicit Slice Planning; no forecasts or required Slices |
 | dev | — | none | short block OK | No handback mode |
 | advanced | — | step catalogs only | — | Step resources are execution script |
 

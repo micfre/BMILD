@@ -4,7 +4,7 @@ Provide an execution strategy when requested or when a genuine coordination prob
 
 ## Additional Context
 
-Read current scope and source contracts, `registry.md`, and relevant outcome sections of `verification-matrix.md`. Inspect code and integration boundaries sufficient to identify real dependencies. Read named legacy Slices as inputs only.
+Read current scope and source contracts, `registry.md`, and relevant outcome sections of `verification-matrix.md`. Inspect code and integration boundaries sufficient to identify real dependencies. Read named Slices only when relevant. Requests to create or revise persistent Slices use Slice Planning.
 
 ## Global Directives
 

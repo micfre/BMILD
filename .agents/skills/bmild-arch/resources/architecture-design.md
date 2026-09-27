@@ -77,7 +77,7 @@ Progress:
 - [ ] Step 8: Distillation gates — apply the Drift-protection ADR gate and Semantic Memory rules when triggered.
 - [ ] Step 9: Register — open or create `[plan_folder]/<initiative-name>/registry.md` from `.agents/skills/bmild-pm/assets/registry-template.md`. Add `system-design.md` to `## Live`.
 - [ ] Step 10: Gate check — resolve architecture ambiguity in chat and run product/UX gaps through the ladder. Do not leave durable question threads in `system-design.md`.
-- [ ] Step 11: Close — apply Exit and Handoff from the core skill. Route directly to Alex when implementation is the authorized next move; use Sonia only for an actual readiness, coverage, coordination, or requested delivery-strategy question; route to Katrina when required UX input is missing.
+- [ ] Step 11: Close — apply Exit and Handoff from the core skill. Route directly to Alex when implementation is the authorized next move; use Sonia only for an actual readiness, coverage, coordination, or requested delivery-strategy or Slice Planning question; route to Katrina when required UX input is missing.
 
 <!-- artifact-review-hook:start -->
 ### Optional artifact-review offer

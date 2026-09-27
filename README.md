@@ -5,13 +5,13 @@
 *Big Methods, Ideally Less Drama*
 
 <!-- bmild-version-badge -->
-![Version](https://img.shields.io/badge/Version-0.5.1-orange)
+![Version](https://img.shields.io/badge/Version-0.6.0-orange)
 [![Build Status](https://github.com/micfre/BMILD/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/micfre/BMILD/actions/workflows/ci.yml)
 [![Release Status](https://github.com/micfre/BMILD/actions/workflows/release.yml/badge.svg)](https://github.com/micfre/BMILD/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 > [!TIP]
-> **Dev has moved from Slice-first to outcome-first!** Ask Alex to implement an approved phase/outcome directly; a Sonia planning session is optional. Bring Sonia in when readiness, requirement coverage, meaningful dependencies, or delivery strategy need attention. Alex owns and revises the internal decomposition inside the authorized MVP/Growth/Vision boundary. Ask Alex to **implement and verify** when you also want fresh-context independent review from Rahat in one-step. Existing Slice records remain as historical inputs -- there is no need to migrate them or create a new Slice first.
+> **Choose the development path that fits the request.** Spec-Dev implements an authorized outcome and continues through independent review and bounded repairs by default. Ask Sonia for Slice Planning when you want smaller sessions, then ask Alex for Slice-Dev. Direct-Dev remains available for prompt-grounded repo work. Existing Slices never override a clear outcome request.
 
 BMILD is a small cross-functional team for your coding agent. It gives the agent durable roles, a shared working memory, and a way to move from an idea to verified code without turning your project into an Agile reenactment.
 
@@ -128,13 +128,25 @@ The intelligence tiers are `design` (Faisal, Katrina, Lance), `planning` (Sonia)
 
 Consult agents are leaves. Owner consults may author anything they canonically own, including `DESIGN.md`, `context-map.md`, and ADRs. Release tarballs carry current definitions for Claude Code, Codex, and OpenCode under `harness/`; `scripts/generate-consult-agents.sh` regenerates them locally.
 
-### Outcome execution and continuity
+### Development paths and continuation
 
-Outcome Development is the primary spec-backed path. The outcome section in `verification-matrix.md` records phase authorization, source requirements, implementation evidence, open obligations, and independent review. Alex owns task order and internal structure; forecasts and file inventories are not contracts. Sonia checks intent and coverage; Rahat checks correctness, completeness, security applicability, standards/spec fidelity, and relevant scalability and maintainability.
+**Spec-Dev** is the default “write the spec, then develop the spec” path. Faisal, Katrina, and Lance settle the relevant contracts; Alex implements the authorized phase/outcome, then continues through Rahat's independent Comprehensive Review, bounded repairs, and independent re-verification. Implementation-only requests stop at review readiness. Existing Slices do not narrow an outcome request.
 
-Faisal's PRD maps stable requirement and journey IDs to phase outcomes; describing Growth or Vision does not authorize either phase. Katrina scopes binding UX to the authorized outcome while preserving initiative-wide interaction invariants. Observable behavior and applicable states bind implementation, while standard component mechanics may remain Alex's choice under established design conventions.
+**Slice Planning → Slice-Dev** is optional. Sonia creates lightweight `slices.md` and `slice-<N>.md` records from settled contracts when explicitly requested. Alex executes the named Slice or sole next eligible Slice; ambiguous selection needs clarification. One invocation handles one Slice unless you explicitly authorize a series. Alex controls private implementation; Sonia resolves changes to acceptance boundaries or dependencies. Delivery Strategy remains advisory sequencing without persistent Slices.
 
-A build-and-verify engagement can continue across contexts without user relays. Review requires a fresh context that did not implement the change or inherit its development transcript. You can explicitly choose a separate new review window. Where automatic isolated dispatch is unavailable, BMILD leaves acceptance pending and provides a concise transition grounded in artifacts. A reviewer-authored production fix needs another independent reviewer before acceptance. Review-only requests do not authorize production fixes.
+**Direct-Dev** implements a bounded prompt against repository groundtruth, with conditional memory reads, relevant tests, documentation, and durable-truth decisions. Its default closes after implementation and local checks; explicitly ask for independent verification when wanted. A discovered governing specification redirects to Spec-Dev while preserving your scope and explicit completion limits.
+
+The `verification-matrix.md` parent `O-###` owns implementation and independent evidence, including Slice-scoped proof. Slice records project that evidence; only Rahat accepts and archives them. All Slices passing alone never accepts the outcome: the last Slice review also reconciles current source requirements and integrated verification. Nyquist Design is upfront proof design. Targeted reviews contribute evidence without waiving other axes.
+
+Fix-only requests take precedence. Spec-Fix applies when a governing contract or tracked defect exists; Direct-Fix applies otherwise and can switch when context emerges. Bounded repairs resume the suspended development target without expanding scope. Review-only requests do not authorize production fixes.
+
+Review requires a fresh context that did not implement the changes or inherit the development transcript. You can request a separate window. When isolated dispatch is unavailable, acceptance stays pending with a concise continuation. A reviewer-authored production repair needs a different reviewer.
+
+### Complete examples
+
+- **Spec-Dev:** “Faisal, write the invitations MVP spec.” Resolve relevant UX and architecture, then: “Alex, implement the approved invitations MVP.” Alex implements, requests independent Comprehensive Review, repairs bounded findings, and obtains independent re-verification. To stop earlier: “Implement only; leave it ready for review.” In a fresh review window: “Rahat, comprehensively review invitations O-001 using its sources and current changes.” After findings: “Alex, repair O-001's findings and resume independent verification.” Growth and Vision remain deferred.
+- **Smaller sessions:** “Sonia, create lightweight Slices for invitations O-001 from the settled MVP contracts.” Then: “Alex, implement and verify Slice 1 of invitations.” Once independently accepted: “Alex, execute the next eligible Slice.” If two qualify, choose one; dependency readiness comes from current matrix evidence. “Continue the remaining series” authorizes further Slices. A boundary change returns to Sonia; a private refactor stays with Alex. The last Slice's review includes complete source coverage and integrated proof before O-001 can close.
+- **Direct-Dev:** “Alex, add a CSV export to this local utility using its existing conventions.” Alex grounds the prompt in code, implements, tests, and updates relevant docs. “Also independently verify it” adds Comprehensive Review against the prompt and actual changes. If it reveals a tracked defect: “Fix that defect and resume the export work and verification.” If isolated review is unavailable, use a fresh window with the recorded request, change identity, proof commands, and known issues; acceptance remains pending until then.
 
 ## Why BMILD is different
 
@@ -150,7 +162,7 @@ It also adapts to you. If you want help finding the questions, the design-tier p
 
 Epics, stories, sprints, and points were built to coordinate people and forecast human capacity. They can be useful in their setting. They are not a natural unit of work for a coding model.
 
-BMILD uses an **initiative** for a coherent piece of product or system work. Execution targets an authorized **phase/outcome**, with source requirements and demonstrable acceptance. The agent chooses useful internal work units; existing Slice records remain optional historical context.
+BMILD uses an **initiative** for a coherent piece of product or system work. Execution targets an authorized **phase/outcome**, with source requirements and demonstrable acceptance. The agent chooses useful internal work units; optional Slices provide explicit acceptance boundaries for smaller sessions without prescribing implementation details.
 
 This is the central design choice in BMILD. The framework keeps authorized scope, governing contracts, and proof obligations explicit while leaving internal decomposition to the executor. You can still use your existing issue tracker, sprint cadence, or team rituals if they serve people on your team. BMILD simply does not mistake them for the coding agent’s unit of work.
 
@@ -291,7 +303,7 @@ By default, BMILD writes its durable project memory under `plans/`. The paths ar
         ├── system-design.md
         ├── handoff.md
         ├── verification-matrix.md
-        ├── slices.md and slice-<N>.md  # legacy records, optional
+        ├── slices.md and slice-<N>.md  # optional Slice Planning outputs
         ├── rca-<slug>.md
         └── security-review-<slug>.md
 ```
@@ -367,13 +379,14 @@ Remove the `bmild-*` folders from your skills directory, and the `.bmild.toml` f
 ## Roadmap
 
 > [!TIP]
-> **You are here: v0.5.** Outcome execution preserves phase scope and independent assurance while leaving engineering strategy to the executor. Comparative model/harness performance remains an ongoing evaluation obligation.
+> **You are here: v0.6.** Spec-Dev, optional Slice Planning → Slice-Dev, and Direct-Dev preserve phase scope, implementation judgment, and independent acceptance. Comparative model/harness performance remains an ongoing evaluation obligation.
 
 - [x] **v0.1**  --  Initial commit
 - [x] **v0.2**  --  Persona scope stable
 - [x] **v0.3**  --  Context memory structure stable
 - [x] **v0.4**  --  Persona interactivity contracts
 - [x] **v0.5**  --  Outcome-based development and independent acceptance
+- [x] **v0.6**  --  Spec-Dev default review continuation and optional lightweight Slice-Dev
 
 ## Personal Note
 

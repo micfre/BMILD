@@ -62,10 +62,12 @@ for root in "${SKILL_ROOTS[@]}"; do
   rg -q -F 'qa_status: verified | failed | blocked' "${comprehensive}" || fail "${comprehensive}: no QA outcome writer"
 
   # 3. Review-requested writers (Alex).
-  spec_dev="${root}/bmild-dev/resources/spec-dev.md"
-  [ -f "${spec_dev}" ] || fail "missing ${spec_dev}"
-  rg -q -F 'qa_status: review_requested' "${spec_dev}" || fail "${spec_dev}: no QA review request writer"
-  rg -q -F 'code_review_status: review_requested' "${spec_dev}" || fail "${spec_dev}: no code-review request writer"
+  for mode in spec-dev slice-dev; do
+    resource="${root}/bmild-dev/resources/${mode}.md"
+    [ -f "${resource}" ] || fail "missing ${resource}"
+    rg -q -F 'qa_status: review_requested' "${resource}" || fail "${resource}: no QA review request writer"
+    rg -q -F 'code_review_status: review_requested' "${resource}" || fail "${resource}: no code-review request writer"
+  done
 
   # 4. status done writer (Rahat).
   qa_verification="${root}/bmild-qa/resources/verification.md"

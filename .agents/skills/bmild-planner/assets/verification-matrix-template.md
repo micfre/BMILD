@@ -41,6 +41,19 @@ Repeat only for separately authorized outcomes. Mint the next unused initiative-
   - Verification: pending | passed | failed | blocked — <Rahat's independently checked evidence and reviewed state>
   - Applicability: <Rahat's reason only when a review dimension does not apply>
 
+### Slice evidence (only when Slices are used)
+
+- Slice: [Slice <N>](slice-<N>.md) — <acceptance boundary and source references>
+  - Implementation status: todo | in_progress | blocked | ready_for_review | done
+  - Implementation evidence: <actual changes, commands/results, documentation>
+  - Review axes: <qa_status, security_status, code_review_status using the parent vocabulary; initially not_reviewed>
+  - Review independence and reviewed state: <fresh reviewer identity, code/source/environment identity>
+  - Findings / remaining proof: <scope-specific obligations; changes invalidate affected proof>
+  - Continuation: <next action or review link>
+- Integrated outcome verification: pending | passed | failed | blocked — <current source coverage and cross-Slice integration evidence>
+
+Slice status and registries project this evidence. Only Rahat writes Slice `done`; partial acceptance does not set parent readiness or verdicts. Do not create an outcome merely for each Slice. The last Slice review also checks whole-outcome source coverage and integrated verification; passing every Slice alone cannot close the outcome.
+
 ### Continuation and review follow-up
 
 - Current state / next action: <only what another context needs>

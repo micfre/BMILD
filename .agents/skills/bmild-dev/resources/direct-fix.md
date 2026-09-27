@@ -11,9 +11,11 @@ Load in this order:
 - Repo contributor guide
 - Project-root `DESIGN.md` if it exists — honor global UX patterns when the fix alters a user-visible surface (project-root repo context, not BMILD planning memory)
 
-Load relevant BMILD memory when the request names tracked work, depends on documented behavior, or could change durable understanding; re-evaluate against Spec-Fix when a governing contract is found. Purely local work otherwise needs no memory ceremony.
+Load relevant BMILD memory when the request names tracked work, depends on documented behavior, or could change durable understanding; continue in Spec-Fix when a governing contract or tracked defect context is found, retaining confirmed diagnosis and useful evidence. Purely local work otherwise needs no memory ceremony.
 
 ## Global Directives
+
+- **Continuation.** Preserve the suspended Spec-Dev, Slice-Dev, or Direct-Dev target and its completion boundary. After bounded repairs, resume development and any authorized independent re-verification. Explicit fix-only requests do not authorize broader development; repair authority never expands product scope.
 
 - **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
 
@@ -27,6 +29,8 @@ Load relevant BMILD memory when the request names tracked work, depends on docum
 
 <!-- commit-posture-preflight:start -->
 ### Commit-posture preflight
+
+Initialize once per user invocation. Mode switches, bounded repairs, authorized Slice series, and dispatched workers share the original baseline, path ledger, downgrade state, and commit-attempt flag. Workers return evidence and paths; only the coordinator commits. Re-entry reuses this state, never a fresh commit allowance.
 
 Before any edit, parse `.bmild.toml` under the core configuration contract. Posture `0` retains no posture state and performs no Git/format work. For non-zero posture, keep an exact touched-path ledger. Before any configured-posture-`1` mutation, discover active harness and applicable repository guidance (`AGENTS.md`, `CLAUDE.md`, `CONTRIBUTING*`, and known nested guidance). Denial, unreadable applicable guidance, unresolved conflict, or ambiguous authority downgrades the whole invocation to posture `2`; configured posture `1` satisfies explicit-request permission; per-invocation confirmation pauses before mutation. Authority never increases.
 
@@ -45,11 +49,11 @@ Progress:
 <!-- commit-posture-completion:start -->
 ### Commit-posture completion
 
-Run only after the mode-specific commit-ready gate. Non-ready work creates no commit and no normal proposed message. For a commit-ready non-zero posture, use explicit `conventional-commits` or inspect at most 10 locally reachable non-merge full messages. Ignore empty messages; require at least 3 usable and `ceil(60% × usable)` structural agreement. Record `explicit:conventional-commits`, `history:<matched>/<usable>`, or `fallback:<reason>`; never read remote history.
+Run only after the mode-specific commit-ready gate. Defer execution while authorized review, repairs, or further Slices remain; run at the final eligible invocation boundary using the accumulated ledger and final evidence. If a commit was already attempted in this invocation, skip Git mutation and preserve later changes uncommitted; never treat the resulting HEAD change as a new baseline. Non-ready work creates no commit and no normal proposed message. For a commit-ready non-zero posture, use explicit `conventional-commits` or inspect at most 10 locally reachable non-merge full messages. Ignore empty messages; require at least 3 usable and `ceil(60% × usable)` structural agreement. Record `explicit:conventional-commits`, `history:<matched>/<usable>`, or `fallback:<reason>`; never read remote history.
 
 Author the complete primary intent, attributable material changes, why when needed, and verification/unavailability. Conventional form is `<type>[optional scope][optional !]: <imperative description>`, body, `Tests:`, optional `Initiative:`, and optional `Slice:`. Exclude secrets and unrelated diff content. Transport messages and paths only as literal arguments, structured stdin, or a literal temporary file outside the worktree; never evaluate dynamic content as shell source.
 
-Before effective-posture-`1` execution, re-check guidance for final attributable paths and downgrade the whole invocation on denial/ambiguity. Require unchanged recorded `HEAD`. Reconcile the exact ledger with final NUL-safe status; every attributable path must be repository-relative, clean at baseline, changed now, and accounted for. Overlap or uncertainty downgrades to message-only. Use `git add --intent-to-add -- <paths>` only for recorded new files, capture `preCommitHead`, then execute exactly one normal-hook `git commit --only --file=- -- <literal paths>` with the exact message via stdin (or the safe temporary file).
+Before effective-posture-`1` execution, re-check guidance for final attributable paths and downgrade the whole invocation on denial/ambiguity. Require unchanged recorded `HEAD`. Reconcile the exact ledger with final NUL-safe status; every attributable path must be repository-relative, clean at baseline, changed now, and accounted for. Overlap or uncertainty downgrades to message-only. Use `git add --intent-to-add -- <paths>` only for recorded new files, capture `preCommitHead`, mark the invocation commit attempt consumed, then execute exactly one normal-hook `git commit --only --file=- -- <literal paths>` with the exact message via stdin (or the safe temporary file).
 
 On failure, preserve content and unrelated index state; restore only BMILD-created intent entries with `git restore --staged --source=HEAD -- <paths>`. On success, require changed `HEAD`, `HEAD^ = preCommitHead`, exact NUL-safe `git diff-tree --no-commit-id --name-only -r -z HEAD` path equality (including renames), clean task paths, and unchanged unrelated baseline state. An invariant breach is reported without history repair. Render the compact core commit line from Exit and Handoff. Never widen paths, reset, amend, revert, retry destructively, or perform network operations.
 <!-- commit-posture-completion:end -->

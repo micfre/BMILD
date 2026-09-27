@@ -60,4 +60,4 @@ Create a handoff only when work genuinely leaves the session because required ca
 
 ## RCA and delivery
 
-Historical `rca-<slug>.md` files receive dated addenda; do not rewrite evidence retrospectively. Delivery artifacts remain excluded unless explicitly authorized or Sonia is already presiding.
+Historical `rca-<slug>.md` files receive dated addenda; do not rewrite evidence retrospectively. Delivery artifacts remain excluded unless explicitly authorized or Sonia is already presiding. Within that authority, changed Slice acceptance boundaries or dependencies return to Sonia through Slice Planning; private implementation changes stay with Alex. Resume the suspended development path after promotion, preserving its review continuation and phase limits.

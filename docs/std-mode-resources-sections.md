@@ -50,7 +50,7 @@ Example shape:
 ```markdown
 ## Additional Context
 
-- Load the authorized outcome and relevant live source contracts; a named legacy Slice is optional scope context.
+- Load the authorized outcome and relevant live source contracts; a named Slice and its parent outcome supply scope for explicit Slice work.
 - Load relevant `verification-matrix.md` entries when present.
 - Read contributor guidance (`AGENTS.md`, `CONTRIBUTING.md`, or equivalent) before edits.
 - Absence of a Slice never blocks spec-backed work. Assess sufficient intent, constraints, phase authorization, and proof obligations.

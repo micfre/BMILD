@@ -7,11 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-09-27
+
 ### Changed
+
+- **Breaking:** Spec-Dev replaces the previous displayed spec-backed development mode without an alias and defaults to independent Comprehensive Review, bounded repairs, and independent re-verification; explicit implementation-only requests stop at review readiness.
+- Restored optional Slice Planning and Slice-Dev with lightweight OKF templates, existing numbering, stable acceptance boundaries/dependencies, and one-Slice continuation unless a series is authorized. Slice evidence belongs to its parent outcome; final acceptance includes current source coverage and integrated verification.
+- Simplified Direct-Dev discovery and removed mandatory work classification; preserved its completion default, conditional memory, and explicitly requested independent verification. Fix routes follow governing/tracked context, including discoveries, and resume suspended development after bounded repairs.
+- Aligned routing, handoffs, shared acceptance contracts, documentation, and commit-posture identity across the development paths. Prepared version 0.6.0 without publishing; amended local ADR 0012 while preserving historical evidence.
 
 - Release builds now maintain the CHANGELOG themselves: `scripts/build-releases.sh` reconciles `CHANGELOG.md` on the local lane before tagging — a pending `## [Unreleased]` section is promoted in place to a dated `## [<version>]` release heading and the script stops so the promotion is committed and pushed before the release tag is created, while a changelog with neither heading fails outright. A missing dated release can no longer tag silently or fall through to generic release notes.
 
 ### Validation
+
+- Added lightweight Slice contracts and expanded routing/lifecycle/review/commit guards and behavioral trial inputs. Structural checks and source-size comparisons are documented separately from live model/harness trials in `docs/development-loop-validation.md`.
 
 - Extended `tests/release-build-contract.sh` with fixture runs of the release build: `Unreleased` promotion (content and heading preserved, idempotent on re-run) and the unreconcilable-changelog error path.
 

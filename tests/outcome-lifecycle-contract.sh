@@ -50,7 +50,7 @@ require(
         "full `bmild-qa` Comprehensive Review",
         "does not substitute for full outcome acceptance",
     ],
-    "outcome development",
+    "Spec-Dev",
 )
 
 nyquist = read("bmild-qa/resources/nyquist.md")

@@ -11,7 +11,7 @@
         "Live coherent PRD/UX/system contracts; no Slice files."
       ],
       "checks": [
-        "Use primary Outcome Development without Slice/planning prerequisites.",
+        "Use primary Spec-Dev without Slice/planning prerequisites.",
         "Keep Growth/Vision deferred.",
         "Require independent current source-based acceptance."
       ]
@@ -178,6 +178,156 @@
         "Preserve unrelated changes.",
         "Normal hooks and exact attributable paths only.",
         "No remote operation or history rewriting."
+      ]
+    },
+    {
+      "id": "implementation_only",
+      "request": "Implement only the approved invitations MVP; leave it ready for review.",
+      "setup": [
+        "Live source contracts; no Slices."
+      ],
+      "checks": [
+        "Use Spec-Dev.",
+        "Record review readiness without dispatch or done."
+      ]
+    },
+    {
+      "id": "slice_planning",
+      "request": "Create lightweight Slices for invitations O-001 from its settled MVP spec.",
+      "setup": [
+        "Existing Slice 1 archived; Slice 2 live; no new phase authorized."
+      ],
+      "checks": [
+        "Use Slice Planning and continue at Slice 3 without renumbering.",
+        "Link parent/source/acceptance/dependencies/continuation with OKF metadata; no budgets or predicted file inventories.",
+        "Do not implement or mint an outcome per Slice."
+      ]
+    },
+    {
+      "id": "slice_dependency",
+      "request": "Execute the next eligible Slice for invitations.",
+      "setup": [
+        "Slice 1 has current independent acceptance; Slice 2 depends on 1; Slice 3 depends on 2."
+      ],
+      "checks": [
+        "Select Slice 2 without asking.",
+        "Implement, independently review, repair and re-verify only Slice 2; stop before 3."
+      ]
+    },
+    {
+      "id": "slice_ambiguous",
+      "request": "Execute the next Slice for invitations.",
+      "setup": [
+        "Slices 2 and 3 are both eligible, with no authoritative order or named selection."
+      ],
+      "checks": [
+        "Ask which one.",
+        "Do not choose by numeric order alone or execute both."
+      ]
+    },
+    {
+      "id": "slice_private_refactor",
+      "request": "Implement and verify Slice 2.",
+      "setup": [
+        "A shared private helper crosses historical predicted file boundaries; behavior and dependencies stay fixed."
+      ],
+      "checks": [
+        "Use Slice-Dev.",
+        "Implement/test helper without Sonia replanning."
+      ]
+    },
+    {
+      "id": "slice_boundary_revision",
+      "request": "Continue Slice 2.",
+      "setup": [
+        "Its promised result cannot be met without changing a prerequisite or acceptance boundary.",
+        "Phase/product commitments remain settled."
+      ],
+      "checks": [
+        "Resolve Slice boundary/dependency change with Sonia.",
+        "Keep internal design with Alex; preserve old evidence and invalidate affected proof.",
+        "Resume the same Slice after source update."
+      ]
+    },
+    {
+      "id": "slice_partial_acceptance",
+      "request": "Verify Slice 1 of O-001.",
+      "setup": [
+        "Slice 1 meets all axes; Slice 2 remains unimplemented."
+      ],
+      "checks": [
+        "Rahat accepts and archives only Slice 1.",
+        "Record scoped evidence under O-001; keep parent active and preserve other Slice evidence."
+      ]
+    },
+    {
+      "id": "slice_stale_dependency",
+      "request": "Execute Slice 2 which depends on Slice 1.",
+      "setup": [
+        "Slice 1 is marked done but its governing contract changed after acceptance."
+      ],
+      "checks": [
+        "Do not treat stale dependency proof as current eligibility.",
+        "Preserve historical acceptance, record affected pending proof, and arrange re-verification."
+      ]
+    },
+    {
+      "id": "slice_final_integration",
+      "request": "Comprehensively review the last implemented Slice of O-001.",
+      "setup": [
+        "Every Slice unit test passes.",
+        "The current source requires tenant isolation which no Slice covers; integration check fails."
+      ],
+      "checks": [
+        "Detect omission from source, not just matrix.",
+        "Keep parent unaccepted with source and integration gaps recorded.",
+        "Accept only genuinely proven Slice scope; final outcome requires integrated proof."
+      ]
+    },
+    {
+      "id": "direct_discovers_spec",
+      "request": "Implement only the local export helper.",
+      "setup": [
+        "Request starts with no known spec; repository inspection finds a governing live contract."
+      ],
+      "checks": [
+        "Continue Spec-Dev with existing scope and implementation-only boundary.",
+        "Reuse discovery; do not restart classification or broaden to entire initiative."
+      ]
+    },
+    {
+      "id": "fix_discovers_context",
+      "request": "Fix this crash only.",
+      "setup": [
+        "Initially untracked; investigation finds a security finding and linked O-001."
+      ],
+      "checks": [
+        "Switch Direct-Fix to Spec-Fix, carrying confirmed diagnosis.",
+        "Update tracked repair evidence; no broader development.",
+        "Independent reviewer closes finding."
+      ]
+    },
+    {
+      "id": "repair_and_resume",
+      "request": "Implement the approved MVP.",
+      "setup": [
+        "Independent review finds a bounded defect after implementation."
+      ],
+      "checks": [
+        "Spec-Dev includes review by default.",
+        "Use appropriate fix route without asking again for already authorized repair.",
+        "Resume the same outcome and independent re-verification without expanding phase scope."
+      ]
+    },
+    {
+      "id": "direct_independent_review",
+      "request": "Add CSV export and independently verify it.",
+      "setup": [
+        "No governing specification or initiative; review isolation unavailable."
+      ],
+      "checks": [
+        "Implement and test against prompt/groundtruth without inventing planning artifacts.",
+        "Leave acceptance pending with request/change/proof continuation for a fresh window."
       ]
     }
   ]

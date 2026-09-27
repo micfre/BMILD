@@ -13,7 +13,7 @@ Load in this order before proceeding:
 - Relevant `## Live` artifact sections (`product-brief.md`, `prd.md`, `ux-design.md`, `system-design.md` in particular)
 - `[plan_folder]/<initiative-name>/handoff.md`
 - Any existing `[plan_folder]/<initiative-name>/change-proposal-<slug>.md` for this initiative
-- Affected outcome records in `verification-matrix.md`; named legacy Slices only when implicated
+- Affected outcome records in `verification-matrix.md`; affected Slices only when implicated
 
 When this is a user-accepted Project Bearing continuation, also consume the in-conversation continuation packet after the normal reads. It is user authorization to enter Course-Correction, not a `handoff.md` item and not an excuse to skip the impact map.
 

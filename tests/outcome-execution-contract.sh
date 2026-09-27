@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Structural safeguards for Option C. These checks protect source contracts;
+# Structural safeguards for the development paths. These checks protect source contracts;
 # they do not claim to measure model compliance or end-to-end performance.
 set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -17,7 +17,7 @@ def require(body, terms):
         assert term in body, f'Missing contract: {term}'
 
 # Entry and evidence schema are phase/outcome based without a Slice prerequisite.
-require(text('bmild-dev/SKILL.md'), ['Mode 1: Outcome Development', '*(primary)*', 'several old Slices', 'authorized phase'])
+require(text('bmild-dev/SKILL.md'), ['Mode 1: Spec-Dev', '*(primary)*', 'several old Slices', 'authorized phase'])
 require(text('bmild-dev/resources/spec-dev.md'), ['MVP/Growth/Vision', 'A Slice, separate planner invocation', 'not an entry requirement', 'future-phase', 'fresh isolated context', 'do not fork the development transcript', 'Preserve other outcomes'])
 require(text('bmild-planner/assets/verification-matrix-template.md'), ['## Outcome Index', '## O-001', '- Phase:', '- Authorization:', '- Reviewed state:', '- Review independence:', 'Implementation: pending', 'Verification: pending', 'Multiple outcomes remain independent', '- Status: active | blocked | ready_for_review | done'])
 
@@ -48,7 +48,7 @@ for mode in ['spec-fix', 'direct-fix']:
     assert 'No Slice-scope expansion' not in body
 
 # Removing a fallback means removing its runtime surface, not just its entry route.
-for rel in ['bmild-planner/scripts/run-budget-slice.sh', 'bmild-planner/scripts/run-budget-slice.ps1', 'bmild-planner/assets/slice-template.md', 'bmild-planner/assets/slices-template.md', 'bmild-planner/resources/phase-scoped-planning.md', 'bmild-planner/resources/full-initiative-planning.md', 'bmild-planner/resources/replanning.md']:
+for rel in ['bmild-planner/scripts/run-budget-slice.sh', 'bmild-planner/scripts/run-budget-slice.ps1', 'bmild-planner/resources/phase-scoped-planning.md', 'bmild-planner/resources/full-initiative-planning.md', 'bmild-planner/resources/replanning.md']:
     assert not (skills / rel).exists(), rel
 for path in skills.rglob('*'):
     if not path.is_file():

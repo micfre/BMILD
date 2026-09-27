@@ -3,9 +3,10 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-# Alex Spec-Dev/Spec-Fix/Direct-Dev/Direct-Fix + Rahat Spec-Fix/Direct-Fix
+# Alex Spec-Dev/Slice-Dev/Spec-Fix/Direct-Dev/Direct-Fix + Rahat Spec-Fix/Direct-Fix
 POSTURE_FILES=(
     .agents/skills/bmild-dev/resources/spec-dev.md
+    .agents/skills/bmild-dev/resources/slice-dev.md
     .agents/skills/bmild-dev/resources/spec-fix.md
     .agents/skills/bmild-dev/resources/direct-dev.md
     .agents/skills/bmild-dev/resources/direct-fix.md
@@ -50,6 +51,14 @@ for rel in "${POSTURE_FILES[@]}"; do
     [ "$completion_line" -lt "$close_line" ] || fail "$file: completion is not before Close"
     ! rg -q 'resources/commit-posture\.md' "$file" || fail "$file: shared runtime indirection found"
     ! printf '%s\n%s\n' "$preflight" "$completion" | rg -qi 'git (fetch|pull|push|remote)\b' || fail "$file: network git operation in posture blocks"
+done
+
+# One invocation retains its allowance across mode switches and series.
+for token in 'Initialize once per user invocation' 'Workers return evidence and paths; only the coordinator commits' 'Re-entry reuses this state'; do
+    printf '%s\n' "$reference_preflight" | rg -q -F "$token" || fail "preflight continuity missing: $token"
+done
+for token in 'Defer execution while authorized review, repairs, or further Slices remain' 'If a commit was already attempted' 'mark the invocation commit attempt consumed'; do
+    printf '%s\n' "$reference_completion" | rg -q -F "$token" || fail "completion continuity missing: $token"
 done
 
 rg -q -F '`ready_for_review`' "${ROOT}/.agents/skills/bmild-dev/resources/spec-dev.md" || fail "Alex Spec-Dev eligibility missing"

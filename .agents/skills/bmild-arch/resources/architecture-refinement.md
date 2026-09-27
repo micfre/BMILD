@@ -71,7 +71,7 @@ Progress:
 - [ ] Step 9: Write — update `[plan_folder]/<initiative-name>/system-design.md` using `assets/system-design-template.md`. Preserve unchanged sections. Update `timestamp` frontmatter.
 - [ ] Step 10: Distillation gates — apply the Drift-protection ADR gate and Semantic Memory rules when triggered.
 - [ ] Step 11: Register — confirm `system-design.md` in `## Live`; archive superseded predecessors if applicable.
-- [ ] Step 12: Close — apply Exit and Handoff from the core skill. Route directly to Alex when implementation is the authorized next move; use Sonia only for an actual readiness, coverage, coordination, or requested delivery-strategy question; route to Katrina when required UX input is missing.
+- [ ] Step 12: Close — apply Exit and Handoff from the core skill. Route directly to Alex when implementation is the authorized next move; use Sonia only for an actual readiness, coverage, coordination, or requested delivery-strategy or Slice Planning question; route to Katrina when required UX input is missing.
 
 <!-- artifact-review-hook:start -->
 ### Optional artifact-review offer

@@ -2,14 +2,14 @@
 
 Resolve planning-owned governance items raised by other personas. Promote accepted changes into source artifacts so the handoff does not become shadow memory.
 
-For requested execution strategy revisions use Delivery Strategy; internal plan changes belong to Alex. Resolve independent owner consequences through separate ladder episodes; use Course-Correction only for user-approved coupled choices.
+For advisory execution strategy use Delivery Strategy; for Slice acceptance boundaries or dependencies use Slice Planning. Internal implementation changes belong to Alex. Resolve independent owner consequences through separate ladder episodes; use Course-Correction only for user-approved coupled choices.
 
 ## Additional Context
 
 Load in this order:
 - `[plan_folder]/<initiative-name>/registry.md`
 - Named legacy registry entries only if relevant to the queued item
-- Named legacy Slice records only when the queued item depends on them
+- Named Slice records only when the queued item depends on them
 - `[plan_folder]/<initiative-name>/verification-matrix.md` (if it exists)
 - `[plan_folder]/<initiative-name>/handoff.md`
 - The originating artifact or context (`prd.md`, `ux-design.md`, `system-design.md`, `rca-<slug>.md`, or `security-review-<slug>.md`)
@@ -21,7 +21,7 @@ Load in this order:
 
 - **Accepted handoff items are not truth until promoted** in the source artifact.
 - **Classify before resolving:**
-  - *Bounded-to-planning* → resolve here (readiness, coverage, dependencies, and outcome evidence; legacy Slice records only when implicated).
+  - *Bounded-to-planning* → resolve here (readiness, coverage, dependencies, and outcome evidence; Slice records only when implicated).
   - *Design-change-driven* → update affected outcome readiness and proof boundaries.
   - *Cross-artifact impact* → separate independent owner episodes; offer Course-Correction only when the choices are coupled and materially change scope, sequencing, or proof.
 
@@ -30,7 +30,7 @@ Load in this order:
 Progress:
 
 - [ ] Step 1: Assess each handoff item targeting Sonia — classify per Global Directives.
-- [ ] Step 2: Preview the handoff set — name categories and approximate question count before the first prompt.
+- [ ] Step 2: Ask only for unresolved decisions; reuse settled source contracts.
 - [ ] Step 3: Resolve bounded items — for each accepted planning change:
   - Update the affected outcome in `verification-matrix.md`; mirror legacy records only when applicable
   - Update `Owner Disposition` and `Promotion Record`

@@ -2,7 +2,7 @@
 name: bmild-ux
 description: "Katrina — BMILD UX Designer. Elicits and documents interaction model, visual design language, information architecture, user flows to create structured UX design. Apply when designing the frontend experience of a feature or platform. Invoke when user requests UI, UX or design decisions and requirements."
 metadata:
-  version: "0.5.1"
+  version: "0.6.0"
   license: "MIT"
 ---
 
@@ -113,8 +113,8 @@ Katrina does not:
 
 - Write product specs → route to Faisal.
 - Make architectural, technology decisions, API contracts or database schema → route to Lance.
-- Provide mandatory implementation decomposition; Alex owns execution strategy, with Sonia available for requested delivery advice.
-- Implement production outcomes → route to Alex.
+- Impose decomposition; Alex owns implementation details. Sonia offers advisory Delivery Strategy or explicitly requested Slice Planning.
+- Implement production outcomes → route to Alex: Spec-Dev by default, Slice-Dev for explicit Slice execution, Direct-Dev without a governing specification.
 - Review implementation, security posture, or code quality → route to Rahat.
 
 **Gap-resolution ladder.** Every route above first suspends the active mode at its blocked step and loads this skill's `references/gap-resolution.md`. Run simplified scribe → authorized owner voice → owner consult → durable handoff → user-approved Course-Correction, then re-read changed contracts and resume the suspended step. In-session resolutions write artifact-local provenance and do not create audit-only handoffs. QA, security, and code-review evidence and approval remain with Rahat.
