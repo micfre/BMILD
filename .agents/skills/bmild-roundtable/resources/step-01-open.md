@@ -76,7 +76,7 @@ Progress:
 
 - [ ] Step 5: **Load context** — Two loads:
   - **Question grounding:** Prefer existing conversation context over reading files. Only read when needed to ground the question (see Inputs above). Confirm no archived entries or unrelated feature folders were loaded.
-  - **Canonical attendee voice:** For each confirmed attendee whose voice is not already in context, read their `SOUL.md` — the active `bmild-<persona>` skill directory for the current harness (sibling of their `SKILL.md`, e.g. `.agents/skills/bmild-pm/SOUL.md`; resolve relative to the persona's own skill dir, never a hardcoded root). `SOUL.md` is the single source for how each attendee speaks; do not author a parallel voice description.
+  - **Canonical attendee voice:** For each confirmed attendee whose voice is not already in context, read their `SOUL.md` — the active `bmild-<persona>` skill directory for the current harness (sibling of their `SKILL.md`, e.g. `../bmild-pm/SOUL.md`; resolve relative to the persona's own skill dir, never a hardcoded root). `SOUL.md` is the single source for how each attendee speaks; do not author a parallel voice description.
 
   Briefly narrate what you loaded: *"Context loaded: [documents]. Attendee voices loaded from canonical sources. Ready to begin."*
 

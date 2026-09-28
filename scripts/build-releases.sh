@@ -47,9 +47,8 @@ if [[ -z "${CI:-}" ]]; then
     fi
 fi
 
-# Define output directory and filename
+# Define output directory
 DIST_DIR="$PROJECT_ROOT/dist"
-FILENAME="release-v${VERSION}-linux-macos-dor_agents.tar.gz"
 STAGING_DIR=$(mktemp -d)
 
 cleanup() {
@@ -99,24 +98,29 @@ fi
 
 echo "Packaging release v${VERSION}..."
 
-# Stage release contents
-cp -R "$PROJECT_ROOT/.agents" "$STAGING_DIR/.agents"
-
-# Generate the three first-class harness packages into the release.
-(
-    cd "$STAGING_DIR"
+# Every archive is rooted at the destination project. Skills and consult
+# definitions land in the paths discovered by that harness after one extract.
+for harness in codex claude-code opencode; do
+    package_root="$STAGING_DIR/$harness"
+    case "$harness" in
+        codex) skill_root=.agents/skills; agent_root=.codex ;;
+        claude-code) skill_root=.claude/skills; agent_root=.claude ;;
+        opencode) skill_root=.opencode/skills; agent_root=.opencode ;;
+    esac
+    mkdir -p "$package_root/$skill_root"
+    cp -R "$PROJECT_ROOT/.agents/skills"/bmild-* "$package_root/$skill_root/"
     bash "$PROJECT_ROOT/scripts/generate-consult-agents.sh" \
-        --skills-dir .agents/skills \
-        --out .
-)
-
-# Create the tarball
-# Includes .agents/ plus Claude Code, Codex, and OpenCode consult definitions.
-# Using tar with -z (gzip) and -c (create) -f (file)
-# We use relative paths to ensure the structure is preserved within the archive
-tar -czf "${DIST_DIR}/${FILENAME}" -C "$STAGING_DIR" .agents harness
-
-echo "Successfully created ${DIST_DIR}/${FILENAME}"
+        --skills-dir "$PROJECT_ROOT/.agents/skills" \
+        --out "$package_root" \
+        --harness "$harness"
+    filename="release-v${VERSION}-${harness}.tar.gz"
+    if [[ "${skill_root%%/*}" == "$agent_root" ]]; then
+        tar -czf "$DIST_DIR/$filename" -C "$package_root" "$agent_root"
+    else
+        tar -czf "$DIST_DIR/$filename" -C "$package_root" "${skill_root%%/*}" "$agent_root"
+    fi
+    echo "Successfully created $DIST_DIR/$filename"
+done
 
 # --- Git Integration ---
 # Skip git tagging/pushing if already in CI (avoids recursion)
@@ -139,5 +143,7 @@ if [[ -z "${CI:-}" ]]; then
     echo "Release workflow triggered on GitHub."
 fi
 
-echo "Contents of archive:"
-tar -tf "${DIST_DIR}/${FILENAME}"
+echo "Contents of archives:"
+for harness in codex claude-code opencode; do
+    tar -tf "$DIST_DIR/release-v${VERSION}-${harness}.tar.gz"
+done

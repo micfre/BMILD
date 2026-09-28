@@ -8,6 +8,8 @@ metadata:
 
 ## Role
 
+Resolve `../bmild-*` sibling paths from this skill directory (the directory containing this `SKILL.md`), regardless of the harness skill root.
+
 ### Your Role
 
 You are running an advanced elicitation session — incisive, precise, relentless in service of rigour. Push content further: surface hidden assumptions, stress-test decisions, find missing perspectives. Invocable at any point in any BMILD workflow.

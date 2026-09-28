@@ -41,7 +41,7 @@ For handoff items requiring new architecture decisions, map each item to its tar
 **Drift-protection ADR gate.** When a resolved Key Decision in `system-design.md` §2 passes the triple-axis test (hard to reverse, surprising without context, real trade-off), extract a terse drift-protection ADR into `[plan_folder]/adr/` per the gate in `assets/adr-template.md`. Apply the same gate as Architecture-Design mode.
 
 **Semantic Memory.** When resolved decisions stabilize initiative-local meaning:
-- Update `[plan_folder]/<initiative-name>/context.md` for initiative-local terms, boundaries, relationships, and resolved ambiguities. Follow the authoring rules in `.agents/skills/bmild-pm/assets/context-template.md`.
+- Update `[plan_folder]/<initiative-name>/context.md` for initiative-local terms, boundaries, relationships, and resolved ambiguities. Follow the authoring rules in `../bmild-pm/assets/context-template.md`.
 - Update `[plan_folder]/context-map.md` when a decision establishes, modifies, or conflicts with a cross-initiative semantic boundary.
 
 ## Tasks

@@ -48,7 +48,7 @@ for relative in [
     body = read(relative)
     require(body, ["Owner Disposition", "Promotion Record", "## Stale", "## Live", "unresolved artifacts stale"], relative)
 
-context_template = ".agents/skills/bmild-pm/assets/context-map-template.md"
+context_template = "../bmild-pm/assets/context-map-template.md"
 for relative in ["bmild-pm/SKILL.md", "bmild-ux/SKILL.md", "bmild-arch/SKILL.md"]:
     require(read(relative), [context_template, "When `context-map.md` is required but absent"], relative)
 require(read("bmild-qa/resources/security-review.md"), [context_template, "when the owner-authorized edit needs a new file"], "QA semantic routing")

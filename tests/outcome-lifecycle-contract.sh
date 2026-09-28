@@ -45,7 +45,7 @@ spec_dev = read("bmild-dev/resources/spec-dev.md")
 require(
     spec_dev,
     [
-        ".agents/skills/bmild-planner/resources/readiness-verification.md",
+        "../bmild-planner/resources/readiness-verification.md",
         "qa_status: review_requested",
         "full `bmild-qa` Comprehensive Review",
         "does not substitute for full outcome acceptance",

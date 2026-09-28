@@ -19,7 +19,7 @@ done < <(find "$REPO_ROOT/.agents/skills" -mindepth 2 -maxdepth 2 -name SKILL.md
 
 build="$REPO_ROOT/scripts/build-releases.sh"
 rg -q -F 'generate-consult-agents.sh' "$build" || fail "release build does not generate harness agents"
-rg -q -F '.agents harness' "$build" || fail "release archive does not package skills + harness definitions"
+rg -q -F 'for harness in codex claude-code opencode' "$build" || fail "release build does not package each harness"
 
 # --- CHANGELOG reconciliation by the release build (local lane) ---
 cl="$(mktemp -d)"
@@ -68,9 +68,50 @@ rm -rf "$cl"
 
 out="$(mktemp -d)"
 trap 'rm -rf "$out"' EXIT
-bash "$REPO_ROOT/scripts/generate-consult-agents.sh" --skills-dir "$REPO_ROOT/.agents/skills" --out "$out" >/dev/null
-actual="$(find "$out/harness" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort | paste -sd, -)"
-[ "$actual" = "claude-code,codex,opencode" ] || fail "release harness set is '$actual'"
+CI=1 bash "$build" >"$out/build.log" || fail "CI release build failed"
+for harness in codex claude-code opencode; do
+  archive="$REPO_ROOT/dist/release-v${VERSION}-${harness}.tar.gz"
+  project="$out/$harness"
+  mkdir -p "$project"
+  [ -s "$archive" ] || { fail "$harness archive missing"; continue; }
+  tar -xzf "$archive" -C "$project" || { fail "$harness archive cannot be extracted"; continue; }
+  case "$harness" in
+    codex) skill_root=.agents/skills; agent_root=.codex/agents; suffix=toml ;;
+    claude-code) skill_root=.claude/skills; agent_root=.claude/agents; suffix=md ;;
+    opencode) skill_root=.opencode/skills; agent_root=.opencode/agents; suffix=md ;;
+  esac
+  [ "$(find "$project/$skill_root" -mindepth 2 -maxdepth 2 -name SKILL.md | wc -l)" -eq 9 ] || fail "$harness missing skills"
+  [ "$(find "$project/$agent_root" -maxdepth 1 -name "bmild-*-consult.$suffix" | wc -l)" -eq 6 ] || fail "$harness missing consult agents"
+  [ ! -e "$project/.bmild.toml" ] || fail "$harness archive ships project preferences"
+  [ ! -e "$project/harness" ] || fail "$harness archive retains staging tree"
+  [ ! -e "$project/.codex/config.toml" ] || fail "$harness archive requires Codex config merge"
+  sh "$project/$skill_root/bmild-elicit/scripts/methods.sh" categories >/dev/null || fail "$harness selector failed after extraction"
+  cp "$REPO_ROOT/tests/fixtures/prd-lint/clean.md" "$project/prd.md"
+  sh "$project/$skill_root/bmild-pm/scripts/lint-prd.sh" --root "$project" --artifact prd.md >/dev/null || fail "$harness linter failed after extraction"
+  python3 - "$project" "$skill_root" "$agent_root" "$suffix" <<'CHECK' || fail "$harness installed paths invalid"
+from pathlib import Path
+import re, sys, tomllib
+project, skill_root, agent_root, suffix = sys.argv[1:]
+project = Path(project)
+skills = project / skill_root
+for skill in skills.glob('bmild-*'):
+    for file in skill.rglob('*.md'):
+        content = file.read_text()
+        assert '`.agents/skills/bmild-' not in content, file
+        for path in re.findall(r'`(\.\./bmild-[^`]+)`', content):
+            if '*' in path:
+                continue
+            assert (skill / path).exists(), (file, path)
+for agent in (project / agent_root).glob(f'bmild-*-consult.{suffix}'):
+    content = agent.read_text()
+    name = agent.stem.removesuffix('-consult')
+    assert f'Skill directory: {skill_root}/{name}' in content, agent
+    if suffix == 'toml':
+        data = tomllib.loads(content)
+        assert data['name'] == agent.stem and data['developer_instructions'].strip()
+        assert 'model' not in data and 'model_reasoning_effort' not in data
+CHECK
+done
 
 if [ "$failures" -gt 0 ]; then
   echo "release-build-contract: $failures failure(s)" >&2

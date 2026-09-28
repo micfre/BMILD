@@ -42,7 +42,7 @@ When resolved decisions qualify for project-root `DESIGN.md`, apply the same dis
 ## Semantic Memory
 
 When resolved decisions stabilize initiative-local meaning:
-- Update `[plan_folder]/<initiative-name>/context.md` for initiative-local terms, boundaries, relationships, and resolved ambiguities. Follow the authoring rules in `.agents/skills/bmild-pm/assets/context-template.md`.
+- Update `[plan_folder]/<initiative-name>/context.md` for initiative-local terms, boundaries, relationships, and resolved ambiguities. Follow the authoring rules in `../bmild-pm/assets/context-template.md`.
 - Update `[plan_folder]/context-map.md` when a decision establishes, modifies, or conflicts with a cross-initiative semantic boundary.
 
 ## Tasks

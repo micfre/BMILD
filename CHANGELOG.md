@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Release distribution now builds one project-root archive per first-class harness. Each archive contains all nine skills and its native consult agents at their discovery paths; Codex consults use standalone project agent files and need no `config.toml` merge. Shipped cross-skill references resolve relative to the active skill directory.
+
 ## [0.6.0] - 2026-09-27
 
 ### Changed

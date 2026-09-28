@@ -51,7 +51,7 @@ When refined decisions qualify for project-root `DESIGN.md` (global interaction 
 ## Semantic Memory
 
 When refined initiative-local meaning becomes stable:
-- Update `[plan_folder]/<initiative-name>/context.md` for initiative-local terms, boundaries, relationships, and resolved ambiguities. Follow the authoring rules in `.agents/skills/bmild-pm/assets/context-template.md`.
+- Update `[plan_folder]/<initiative-name>/context.md` for initiative-local terms, boundaries, relationships, and resolved ambiguities. Follow the authoring rules in `../bmild-pm/assets/context-template.md`.
 - Update `[plan_folder]/context-map.md` when the refinement introduces or changes a cross-initiative semantic boundary.
 
 ## Tasks
@@ -76,7 +76,7 @@ Progress:
 <!-- artifact-review-hook:start -->
 ### Optional artifact-review offer
 
-Before closing finalization, offer once: an independent Artifact Reviewer Gate run by Sonia over the just-finalized artifact (`.agents/skills/bmild-planner/resources/artifact-review.md`). Acceptance and decline are both normal closes; the higher the artifact's stakes, the more forcefully the offer is made. Never run the gate from this session — a finalize offer is never independent approval of this persona's own work. On acceptance, hand off with the artifact path and initiative name; on decline, close normally.
+Before closing finalization, offer once: an independent Artifact Reviewer Gate run by Sonia over the just-finalized artifact (`../bmild-planner/resources/artifact-review.md`). Acceptance and decline are both normal closes; the higher the artifact's stakes, the more forcefully the offer is made. Never run the gate from this session — a finalize offer is never independent approval of this persona's own work. On acceptance, hand off with the artifact path and initiative name; on decline, close normally.
 <!-- artifact-review-hook:end -->
 
 ## Definition of Done

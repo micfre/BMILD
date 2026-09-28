@@ -53,7 +53,7 @@ Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth. Use t
 **Drift-protection ADR gate.** When a Key Decision in `system-design.md` §2 passes the triple-axis test — hard to reverse, surprising without context, and the result of a real trade-off — extract a terse drift-protection ADR into `[plan_folder]/adr/` using `assets/adr-template.md` (set `scope:` to the initiative or `_cross`). Every drift-protection ADR carries a populated `Prevents` line naming the specific future divergence reversing the decision would cause; a `Prevents` that merely restates the decision is incomplete and is repaired before the ADR is final. Local endpoint shapes, initiative-specific data models, and one-off implementation choices do not qualify. Cross-initiative commitments commonly qualify; an initiative-local decision that is surprising and hard to reverse also qualifies. See the template for the full gate and what commonly qualifies.
 
 **Semantic Memory.** When initiative-local meaning becomes stable during this session:
-- Update `[plan_folder]/<initiative-name>/context.md` for initiative-local terms, boundaries, relationships, and resolved ambiguities. Follow the authoring rules in `.agents/skills/bmild-pm/assets/context-template.md`.
+- Update `[plan_folder]/<initiative-name>/context.md` for initiative-local terms, boundaries, relationships, and resolved ambiguities. Follow the authoring rules in `../bmild-pm/assets/context-template.md`.
 - Update `[plan_folder]/context-map.md` when this initiative establishes or changes a cross-initiative semantic boundary.
 
 ## Tasks
@@ -69,20 +69,20 @@ Progress:
   - **Open with the architecture contour.** Name in-scope sections grouped by YAML `stakes`.
   - **Diverge on consequential sections** one question per turn until each passes its YAML weak_signal check. Use compact option blocks for genuine trade-offs only.
   - **Synthesize medium and low sections** in one block; ask the user to redirect, accept, or escalate.
-  - **Reopen only what the user steers.** Route cross-artifact issues through `handoff.md` using `.agents/skills/bmild-pm/assets/handoff-template.md` when another owner must act.
+  - **Reopen only what the user steers.** Route cross-artifact issues through `handoff.md` using `../bmild-pm/assets/handoff-template.md` when another owner must act.
 - [ ] Step 5: Consequence-check — verify all in-scope YAML sections; confirm every architecture item has an outcome applicability and disposition, every authorized requirement has support, deferred requirements remain non-binding, applicable boundary, data, API, service, failure, operability, dependency, and evolution consequences are covered, and the structural dimension sweep marks every applicable dimension decided, deferred with a reason, or an explicit open question (including the operational envelope).
 - [ ] Step 6: Pre-exit offer (declinable in one word) — name 1–2 session-appropriate bmild-elicit methods from this artifact's shortlist (**Architecture Decision Records**, **Failure Mode Analysis**), chosen by what was actually contentious: *"Before I write the system design — I could run **Architecture Decision Records** or **Failure Mode Analysis** in a bmild-elicit session, or take anything to roundtable. Otherwise I'll proceed."* On acceptance, swap to `bmild-elicit` with the method pre-selected; offer roundtable per core Advanced Elicitation Triggers when trade-offs are still open. Any decline or proceed signal continues directly to the Write step in the same turn — no further confirmation.
 - [ ] Step 7: Write — write `[plan_folder]/<initiative-name>/system-design.md` using `assets/system-design-template.md`.
   - **Initiative naming.** Initiative names are lowercase-kebab-case identifiers (e.g. `py-tokenizer`) — safe across filesystems, shells, and links. If the user supplies a kebab-case-compliant slug, use it directly. Otherwise confirm a kebab-case slug with the user before writing; never silently transform a proposed name.
 - [ ] Step 8: Distillation gates — apply the Drift-protection ADR gate and Semantic Memory rules when triggered.
-- [ ] Step 9: Register — open or create `[plan_folder]/<initiative-name>/registry.md` from `.agents/skills/bmild-pm/assets/registry-template.md`. Add `system-design.md` to `## Live`.
+- [ ] Step 9: Register — open or create `[plan_folder]/<initiative-name>/registry.md` from `../bmild-pm/assets/registry-template.md`. Add `system-design.md` to `## Live`.
 - [ ] Step 10: Gate check — resolve architecture ambiguity in chat and run product/UX gaps through the ladder. Do not leave durable question threads in `system-design.md`.
 - [ ] Step 11: Close — apply Exit and Handoff from the core skill. Route directly to Alex when implementation is the authorized next move; use Sonia only for an actual readiness, coverage, coordination, or requested delivery-strategy or Slice Planning question; route to Katrina when required UX input is missing.
 
 <!-- artifact-review-hook:start -->
 ### Optional artifact-review offer
 
-Before closing finalization, offer once: an independent Artifact Reviewer Gate run by Sonia over the just-finalized artifact (`.agents/skills/bmild-planner/resources/artifact-review.md`). Acceptance and decline are both normal closes; the higher the artifact's stakes, the more forcefully the offer is made. Never run the gate from this session — a finalize offer is never independent approval of this persona's own work. On acceptance, hand off with the artifact path and initiative name; on decline, close normally.
+Before closing finalization, offer once: an independent Artifact Reviewer Gate run by Sonia over the just-finalized artifact (`../bmild-planner/resources/artifact-review.md`). Acceptance and decline are both normal closes; the higher the artifact's stakes, the more forcefully the offer is made. Never run the gate from this session — a finalize offer is never independent approval of this persona's own work. On acceptance, hand off with the artifact path and initiative name; on decline, close normally.
 <!-- artifact-review-hook:end -->
 
 ## Definition of Done

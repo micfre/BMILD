@@ -288,26 +288,27 @@ fi
 # OpenCode outputs with inherited defaults for every tier and explicit dispatch overrides.
 gen_out="$tmp_dir/consult-gen"
 if bash "$root/scripts/generate-consult-agents.sh" --skills-dir "$skills_dir" --out "$gen_out" >/dev/null 2>&1; then
-  gen_count="$(find "$gen_out/harness/claude-code/agents" -name 'bmild-*-consult.md' 2>/dev/null | wc -l | tr -d ' ')"
+  gen_count="$(find "$gen_out/.claude/agents" -name 'bmild-*-consult.md' 2>/dev/null | wc -l | tr -d ' ')"
   [[ "$gen_count" == "6" ]] || report "generator emitted $gen_count claude-code consult agents, expected 6"
   for persona in pm ux arch planner dev qa; do
-    rg -q '^model: inherit$' "$gen_out/harness/claude-code/agents/bmild-$persona-consult.md" 2>/dev/null \
+    rg -q '^model: inherit$' "$gen_out/.claude/agents/bmild-$persona-consult.md" 2>/dev/null \
       || report "generated claude-code consult for $persona missing 'model: inherit'"
-    if rg -q '^effort:' "$gen_out/harness/claude-code/agents/bmild-$persona-consult.md" 2>/dev/null; then
+    if rg -q '^effort:' "$gen_out/.claude/agents/bmild-$persona-consult.md" 2>/dev/null; then
       report "generated claude-code consult for $persona must inherit effort"
     fi
-    if rg -q '^model( |_)' "$gen_out/harness/codex/agents/bmild-$persona-consult.toml" 2>/dev/null; then
+    if rg -q '^model( |_)' "$gen_out/.codex/agents/bmild-$persona-consult.toml" 2>/dev/null; then
       report "generated codex consult for $persona must inherit model/effort"
     fi
   done
-  for file in "$gen_out"/harness/opencode/agent/*.md; do
-    rg -q '^  task: deny$' "$file" || report "$file missing OpenCode leaf task deny"
+  for file in "$gen_out"/.opencode/agents/*.md; do
+    rg -q '^  - action: subagent$' "$file" || report "$file missing OpenCode child delegation rule"
+    rg -q '^    effect: deny$' "$file" || report "$file does not deny child delegation"
     if rg -q '^(model|variant):' "$file"; then
       report "$file must inherit OpenCode model and variant"
     fi
   done
-  rg -q '^expose_spawn_agent_model_overrides = true$' "$gen_out/harness/codex/config.toml" \
-    || report "generated Codex config missing runtime override exposure"
+  [[ ! -e "$gen_out/.codex/config.toml" ]] \
+    || report "generated Codex agents must not require project config"
 else
   report "generate-consult-agents.sh failed against $skills_dir"
 fi

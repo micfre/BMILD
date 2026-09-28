@@ -8,7 +8,6 @@
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-SRC_ELICIT="$REPO_ROOT/.agents/skills/bmild-elicit"
 FIX="$REPO_ROOT/tests/fixtures/prd-lint"
 OUT="$(mktemp -d)"
 trap 'rm -rf "$OUT"' EXIT
@@ -106,9 +105,9 @@ cmp -s "$OUT/$baseline.lint" "$OUT/unpack.lint" || fail "unpacked release lint d
 
 # --- non-executable invocation is the supported path --------------------------------
 
-[[ -x "$SRC_ELICIT/scripts/methods.sh" ]] && chmod -x "$SRC_ELICIT/scripts/methods.sh"
-sh "$SRC_ELICIT/scripts/methods.sh" categories >/dev/null || fail "selector must not depend on the executable bit"
-chmod +x "$SRC_ELICIT/scripts/methods.sh"
+copied_selector="$OUT/layout-agents/.agents/skills/bmild-elicit/scripts/methods.sh"
+chmod -x "$copied_selector"
+sh "$copied_selector" categories >/dev/null || fail "selector must not depend on the executable bit"
 
 # --- PowerShell lane (when pwsh exists; CI covers Windows-native 5.1) ---------------
 

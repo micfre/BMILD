@@ -15,13 +15,13 @@
 
 BMILD is a small cross-functional team for your coding agent. It gives the agent durable roles, a shared working memory, and a way to move from an idea to verified code without turning your project into an Agile reenactment.
 
-Copy a handful of skill folders into your project. Talk to a persona when you need one. The work and its decisions live in normal Markdown beside your code. There is no service to run, no installer, no proprietary mediation layer. As the name suggests, there is also no prescribed ceremony to perform.
+Extract one harness archive into your project. Talk to a persona when you need one. The work and its decisions live in normal Markdown beside your code. There is no service to run, no installer, no proprietary mediation layer. As the name suggests, there is also no prescribed ceremony to perform.
 
 BMILD is for people who want the useful parts of spec-driven development: clearer intent, implementable decisions, adaptive execution, real verification, and a record of why things are the way they are.
 
 ## First two minutes with BMILD
 
-1. Put the `bmild-*` skill folders where your agent discovers skills.
+1. Extract the archive for your harness at your project root; create or update `.bmild.toml` there if you want preferences.
 2. Start your IDE or CLI and talk to one of the personas, most likely the first one you interact with will be Faisal, the BMILD PM.
 
 - Start where you actually are, not at a prescribed workflow starting point. For example: `Faisal, help me frame a feature for team invites.`
@@ -34,18 +34,17 @@ That is the whole idea: retain context and judgment while keeping the interactio
 
 ## Locations and initial steering
 
-BMILD is skill-native. Copy the folders from this repository into the skills directory for the repository you want to work in. You can vendor them, use a symlink, or distribute them through your normal team setup.
+BMILD is skill-native. Download the release archive for your harness and extract it at the root of the repository you want to work in. The archive places all nine skills and their consult agents where that harness discovers them. Create or update `.bmild.toml` at the same project root if you want preferences; no other setup is needed.
 
 ```sh
-mkdir -p .agents/skills
-cp -R /path/to/BMILD/.agents/skills/bmild-* .agents/skills/
+tar -xzf /path/to/release-vVERSION-codex.tar.gz -C /path/to/your-project
 ```
 
-Skill locations for harnesses are:
+Choose one archive for the harness you use:
 
-- **Codex:** `.agents/skills/`
-- **Claude Code:** `.claude/skills/`
-- **OpenCode:** `.opencode/skills/`
+- **Codex:** `release-vVERSION-codex.tar.gz` installs `.agents/skills/` and `.codex/agents/`.
+- **Claude Code:** `release-vVERSION-claude-code.tar.gz` installs `.claude/skills/` and `.claude/agents/`.
+- **OpenCode:** `release-vVERSION-opencode.tar.gz` installs `.opencode/skills/` and `.opencode/agents/`.
 
 Then open your project with a capable coding model and say one of these things:
 
@@ -126,7 +125,7 @@ The intelligence tiers are `design` (Faisal, Katrina, Lance), `planning` (Sonia)
 
 `ask-consult` pauses only before the consult rung. `handoff-only` still allows mechanical scribing but sends owner judgment to the durable queue. Legacy `consult`, `consult_model`, and `consult_effort` keys are rejected with migration guidance; BMILD never maps them silently. An invalid explicit model/effort pair is reported exactly once, is never retried or substituted, and leaves one durable handoff for that affected episode.
 
-Consult agents are leaves. Owner consults may author anything they canonically own, including `DESIGN.md`, `context-map.md`, and ADRs. Release tarballs carry current definitions for Claude Code, Codex, and OpenCode under `harness/`; `scripts/generate-consult-agents.sh` regenerates them locally.
+Consult agents are leaves. Owner consults may author anything they canonically own, including `DESIGN.md`, `context-map.md`, and ADRs. Each release archive includes the consult agents at that harness's project path; `scripts/generate-consult-agents.sh` regenerates them locally.
 
 ### Development paths and continuation
 
@@ -366,7 +365,7 @@ BMILD consists of 9 skills, sibling support files and subfolders within those sk
 
 ### Removing BMILD
 
-Remove the `bmild-*` folders from your skills directory, and the `.bmild.toml` file from project root if it exists. The Markdown memory remains in your project until you decide to delete it. There is no service, database, or hidden state to unwind.
+Remove the `bmild-*` folders from your harness's skills directory and the `bmild-*-consult` files from its agent directory. Remove `.bmild.toml` from the project root if it exists. The Markdown memory remains in your project until you decide to delete it. There is no service, database, or hidden state to unwind.
 
 ## What to look at next
 

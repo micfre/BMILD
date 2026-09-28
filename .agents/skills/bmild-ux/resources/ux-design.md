@@ -56,7 +56,7 @@ When this initiative's decisions establish interaction principles, visual langua
 ## Semantic Memory
 
 When initiative-local meaning becomes stable during this session:
-- Update `[plan_folder]/<initiative-name>/context.md` for initiative-local terms, boundaries, relationships, and resolved ambiguities. Follow the authoring rules in `.agents/skills/bmild-pm/assets/context-template.md`.
+- Update `[plan_folder]/<initiative-name>/context.md` for initiative-local terms, boundaries, relationships, and resolved ambiguities. Follow the authoring rules in `../bmild-pm/assets/context-template.md`.
 - Update `[plan_folder]/context-map.md` when this initiative establishes or changes a cross-initiative semantic boundary.
 
 ## Tasks
@@ -78,14 +78,14 @@ Progress:
 - [ ] Step 7: Write — write `[plan_folder]/<initiative-name>/ux-design.md` using `assets/ux-design-template.md`.
   - **Initiative naming.** Initiative names are lowercase-kebab-case identifiers (e.g. `py-tokenizer`) — safe across filesystems, shells, and links. If the user supplies a kebab-case-compliant slug, use it directly. Otherwise confirm a kebab-case slug with the user before writing; never silently transform a proposed name.
 - [ ] Step 8: Distillation gates — apply Global pattern distillation (DESIGN.md) and Semantic Memory (`context.md` / `context-map.md`) rules when triggered.
-- [ ] Step 9: Register — open or create `[plan_folder]/<initiative-name>/registry.md` from `.agents/skills/bmild-pm/assets/registry-template.md`. Add `ux-design.md` (and `DESIGN.md` if updated) to `## Live`.
+- [ ] Step 9: Register — open or create `[plan_folder]/<initiative-name>/registry.md` from `../bmild-pm/assets/registry-template.md`. Add `ux-design.md` (and `DESIGN.md` if updated) to `## Live`.
 - [ ] Step 10: Gate check — resolve UX ambiguity in chat and run product/architecture gaps through the ladder. Do not leave durable question threads in `ux-design.md`.
 - [ ] Step 11: Close — apply Exit and Handoff from the core skill.
 
 <!-- artifact-review-hook:start -->
 ### Optional artifact-review offer
 
-Before closing finalization, offer once: an independent Artifact Reviewer Gate run by Sonia over the just-finalized artifact (`.agents/skills/bmild-planner/resources/artifact-review.md`). Acceptance and decline are both normal closes; the higher the artifact's stakes, the more forcefully the offer is made. Never run the gate from this session — a finalize offer is never independent approval of this persona's own work. On acceptance, hand off with the artifact path and initiative name; on decline, close normally.
+Before closing finalization, offer once: an independent Artifact Reviewer Gate run by Sonia over the just-finalized artifact (`../bmild-planner/resources/artifact-review.md`). Acceptance and decline are both normal closes; the higher the artifact's stakes, the more forcefully the offer is made. Never run the gate from this session — a finalize offer is never independent approval of this persona's own work. On acceptance, hand off with the artifact path and initiative name; on decline, close normally.
 <!-- artifact-review-hook:end -->
 
 ## Definition of Done

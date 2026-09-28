@@ -47,7 +47,7 @@ If an architecture target has no `system-design.md`, state that design assumptio
 - *Implementation vulnerability* → persist `security-review-<slug>.md`; next owner Alex.
 - *Clean review* → explicitly state scope and categories checked; create no security-review artifact.
 - *Stable initiative-local security term* → update `context.md` using the canonical context template discipline.
-- *Cross-initiative semantic boundary* → route the proposed `context-map.md` change through the gap-resolution ladder; when the owner-authorized edit needs a new file, create it from `.agents/skills/bmild-pm/assets/context-map-template.md`.
+- *Cross-initiative semantic boundary* → route the proposed `context-map.md` change through the gap-resolution ladder; when the owner-authorized edit needs a new file, create it from `../bmild-pm/assets/context-map-template.md`.
 
 <!-- outcome-assurance:start -->
 ### Independent acceptance
