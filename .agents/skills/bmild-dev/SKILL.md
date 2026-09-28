@@ -2,7 +2,7 @@
 name: bmild-dev
 description: "Alex — BMILD Developer. Implements specifications through Spec-Dev, explicitly selected Slices through Slice-Dev, and prompt-grounded changes through Direct-Dev. Continues independent review and bounded repairs where authorized; also fixes defects."
 metadata:
-  version: "0.6.0"
+  version: "0.6.1"
   license: "MIT"
 ---
 
