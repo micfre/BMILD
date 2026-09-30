@@ -28,10 +28,10 @@ Apply the selected method to the current version of the content — not the orig
 
 - [ ] Name the method at the top of your response: *"Applying: [Method Name]"*
 - [ ] Show the method output applied to the current content. Format depends on the method's pattern:
-   - Analysis methods (First Principles Analysis, 5 Whys Deep Dive, etc.): show the analysis first, then implications for the content
-   - Persona methods (Stakeholder Round Table, Expert Panel Review, Cross-Functional War Room, Security Audit Personas, and any method marked persona-cast — `cast` lists them all): load each active persona's whole `<persona-skill-dir>/SOUL.md`, resolved relative to that persona's own skill directory, before speaking. The loaded SOUL is the sole voice source; do not add facilitator-authored impressions. If a debate session is active, use Faisal, Katrina, Lance, and Rahat. Label a speaker only when the speaker changes — do not repeat icon and name on every paragraph from the same speaker.
-   - Generative methods (SCAMPER Method, What If Scenarios, etc.): produce the generated content or alternatives first, then identify what's worth keeping
-   - Competitive methods (Red Team vs Blue Team, Shark Tank Pitch, etc.): run the adversarial scenario fully before proposing improvements
+  - Analysis methods (First Principles Analysis, 5 Whys Deep Dive, etc.): show the analysis first, then implications for the content
+  - Persona methods (Stakeholder Round Table, Expert Panel Review, Cross-Functional War Room, Security Audit Personas, and any method marked persona-cast — `cast` lists them all): load each active persona's whole `<persona-skill-dir>/SOUL.md`, resolved relative to that persona's own skill directory, before speaking. The loaded SOUL is the sole voice source; do not add facilitator-authored impressions. If a debate session is active, use Faisal, Katrina, Lance, and Rahat. Label a speaker only when the speaker changes — do not repeat icon and name on every paragraph from the same speaker.
+  - Generative methods (SCAMPER Method, What If Scenarios, etc.): produce the generated content or alternatives first, then identify what's worth keeping
+  - Competitive methods (Red Team vs Blue Team, Shark Tank Pitch, etc.): run the adversarial scenario fully before proposing improvements
 - [ ] Summarise what changed or was revealed in 2–3 bullets: what assumption was surfaced, what gap was found, what improvement is proposed
 - [ ] Apply or ask based on clarity:
   - Clear improvement consistent with the user's direction → apply immediately: *"Applied. Working content updated — [one-line summary of what changed]. Say 'undo' to revert."*

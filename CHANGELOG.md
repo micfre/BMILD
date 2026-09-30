@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-09-30
+
 ### Changed
 
 - **Breaking:** `bmild-elicit` is renamed `bmild-articulate`, with no alias. Articulation is for when the user already knows the answer and needs help drawing it out. Installations must replace the old skill folder; "elicit" and "elicitation" remain trigger phrases.
