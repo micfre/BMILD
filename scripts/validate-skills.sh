@@ -15,7 +15,7 @@ report() {
 
 is_advanced_skill_name() {
   local name="$1"
-  [[ "$name" == "bmild-brainstorming" || "$name" == "bmild-elicit" || "$name" == "bmild-roundtable" ]]
+  [[ "$name" == "bmild-brainstorming" || "$name" == "bmild-articulate" || "$name" == "bmild-roundtable" ]]
 }
 
 find_skill_markdown_files() {
@@ -243,7 +243,7 @@ while IFS= read -r -d '' md_file; do
   fi
 
   case "$md_file" in
-    */.agents/skills/bmild-brainstorming/resources/*.md|*/.agents/skills/bmild-elicit/resources/*.md|*/.agents/skills/bmild-roundtable/resources/*.md)
+    */.agents/skills/bmild-brainstorming/resources/*.md|*/.agents/skills/bmild-articulate/resources/*.md|*/.agents/skills/bmild-roundtable/resources/*.md)
       check_required_h2_order "$md_file" \
         "Purpose" \
         "Inputs" \

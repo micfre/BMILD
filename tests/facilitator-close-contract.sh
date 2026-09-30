@@ -2,7 +2,7 @@
 # Facilitator close-shape contract test.
 #
 # Guards the seamless facilitator return across the three advanced facilitators
-# (roundtable, elicit, brainstorming):
+# convened by a persona (roundtable, brainstorming):
 #   - each close resource carries the guarded in-turn resume branch
 #     (default when the convener's suspended session is present) AND the
 #     copy-ready fallback branch (fresh window), both grounded in the
@@ -19,13 +19,11 @@ set -euo pipefail
 
 CLOSE_RESOURCES=(
   "bmild-roundtable/resources/step-04-close.md"
-  "bmild-elicit/resources/step-02-execute.md"
   "bmild-brainstorming/resources/step-04-organise.md"
 )
 
 FACILITATOR_SKILLS=(
   "bmild-roundtable/SKILL.md"
-  "bmild-elicit/SKILL.md"
   "bmild-brainstorming/SKILL.md"
 )
 
@@ -84,6 +82,21 @@ for root in "${SKILL_ROOTS[@]}"; do
       fail "${file}: old anti-resume phrasing remains"
     fi
   done
+done
+
+# Articulation is persona-run: a standard persona applies its methods in its own voice, so
+# there is no facilitator suspension to resume. Standalone sessions keep the Facilitator close.
+for root in "${SKILL_ROOTS[@]}"; do
+  art="${root}/bmild-articulate"
+  rg -q -F "resources/persona-run.md" "${art}/SKILL.md" || fail "${art}/SKILL.md: persona-active routing to persona-run.md missing"
+  rg -q -F "do not become the facilitator" "${art}/SKILL.md" || fail "${art}/SKILL.md: mid-session load must stay in persona voice"
+  rg -q -F "Same-Session Resumption" "${art}/SKILL.md" || fail "${art}/SKILL.md: persona-run resume not grounded in Same-Session Resumption"
+  [ -f "${art}/resources/persona-run.md" ] || fail "missing ${art}/resources/persona-run.md"
+  rg -q -F -- "— Facilitator ⚡" "${art}/resources/step-02-execute.md" || fail "${art}: standalone close sign-off missing"
+  # Natural-language turns: no BMAD-style lettered menus.
+  if rg -q -F -e '[x]' -e '[r]' -e '[a]' -e '[y]' -e '[n]' "${art}/SKILL.md" "${art}/resources/step-01-select.md" "${art}/resources/step-02-execute.md" "${art}/resources/persona-run.md"; then
+    fail "${art}: lettered menu tokens remain; articulation uses natural-language turns"
+  fi
 done
 
 if [ "${failures}" -gt 0 ]; then

@@ -67,8 +67,12 @@ for persona in ['bmild-dev', 'bmild-qa']:
     require(read(f'{persona}/resources/spec-fix.md'), ['A governing source is sufficient entry'])
     for mode in ['spec-fix', 'direct-fix']:
         body = read(f'{persona}/resources/{mode}.md')
-        require(body, ['suspended Spec-Dev, Slice-Dev, or Direct-Dev', 'Explicit fix-only requests',
-                       'resume development', 'repair authority never expands product scope'])
+        require(body, ['Explicit fix-only requests', 'repair authority never expands product scope'])
+        if persona == 'bmild-dev':
+            require(body, ['suspended Spec-Dev, Slice-Dev, or Direct-Dev', 'resume development'])
+        else:
+            # Rahat never resumes a suspended Alex development target; Alex reaches Rahat only via consult or handoff.
+            assert 'suspended Spec-Dev' not in body, f'{persona}/{mode}: Rahat must not carry Alex continuation'
     require(read(f'{persona}/resources/direct-fix.md'), ['governing contract or tracked defect context is found', 'retaining confirmed diagnosis'])
 # Cases are bounded, machine-readable trial inputs; don't count them as executed trials.
 cases = json.loads((root / 'tests/evaluations/outcome-execution-cases.json').read_text())

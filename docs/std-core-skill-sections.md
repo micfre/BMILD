@@ -34,7 +34,7 @@ The persona's expanded one-line role (name, icon, title, expertise) followed by 
 
 ### SOUL.md
 
-Co-located sibling of `SKILL.md` (standard personas only); no frontmatter, for portability with third-party `SOUL.md` templates. Standard markdown H2 headings, in order: `## Identity` (Name / Role / Bio), `## What I believe`, `## My vocabulary`, `## My tensions`, `## What gets under my skin`, `## What shaped me`, `## My center of gravity`. This heading set is a **floor** (presence check, owned as an architectural contract — `plans/adr/0003-persona-soul-canonical-voice.md`). Consumers (e.g. `bmild-roundtable` attendee-voice loading) resolve `<skill-dir>/SOUL.md` relative to the persona's own skill dir. Advanced skills (`bmild-elicit`, `bmild-brainstorming`, `bmild-roundtable`) have no `SOUL.md`.
+Co-located sibling of `SKILL.md` (standard personas only); no frontmatter, for portability with third-party `SOUL.md` templates. Standard markdown H2 headings, in order: `## Identity` (Name / Role / Bio), `## What I believe`, `## My vocabulary`, `## My tensions`, `## What gets under my skin`, `## What shaped me`, `## My center of gravity`. This heading set is a **floor** (presence check, owned as an architectural contract — `plans/adr/0003-persona-soul-canonical-voice.md`). Consumers (e.g. `bmild-roundtable` attendee-voice loading) resolve `<skill-dir>/SOUL.md` relative to the persona's own skill dir. Advanced skills (`bmild-articulate`, `bmild-brainstorming`, `bmild-roundtable`) have no `SOUL.md`.
 
 ### NON-NEGOTIABLE
 
@@ -48,7 +48,7 @@ Personality substance stays in sibling `SOUL.md`. Core must not enumerate person
 
 ### Your Working Team
 
-Place in the value chain, teammate dependencies, when to suggest `bmild-roundtable`, `bmild-elicit`, or `bmild-brainstorming`, and the persona-name rule (never skill names in chat).
+Place in the value chain, teammate dependencies, when to suggest `bmild-roundtable`, `bmild-articulate`, or `bmild-brainstorming`, and the persona-name rule (never skill names in chat).
 
 ---
 
@@ -92,7 +92,9 @@ Do not wrap the opening in a code fence, blockquote, italics, or table. `tests/s
 
 ## Advanced Elicitation Triggers
 
-Facilitator skill offers only (`bmild-roundtable`, `bmild-brainstorming`, `bmild-elicit`). Do not swap skills without user consent.
+Facilitator skill offers only (`bmild-roundtable`, `bmild-brainstorming`). Do not swap skills without user consent.
+
+Articulation is not a facilitator offer. Each persona carries one byte-identical `inline-articulation` block after the offer phrasing, guarded by `tests/pre-exit-offer-contract.sh`. When the user plainly knows more than they have said, the persona applies one articulation method in its own voice via `../bmild-articulate/resources/persona-run.md`, then resumes. Pre-exit offers run the same way on acceptance. Why: articulation offered only at session end lands when the user is tired and ready to move on, and a skill switch mid-section is high-friction. The nameless Facilitator exists to manage several personas at a roundtable; it adds nothing when one persona already owns the content.
 
 **Not in core:** section-transition gates, cross-persona blocking rules, or mode-specific routing — those belong in mode resources (or a short **Routing heuristics** block in core for Dev/QA only).
 
@@ -170,8 +172,9 @@ Advanced elicitation skills use step resources the same way — core routes to s
 
 ---
 
-## Cross-cutting skills (roundtable, elicit, brainstorming)
+## Cross-cutting skills (roundtable, articulate, brainstorming)
 
 - Prefer conversation context; read BMILD memory only when the topic cannot be grounded from chat.
 - Step resources load lazy catalogs (`methods.yaml`, `brain-methods.yaml`) — never from core.
 - No completion-criteria YAML; no stakes pattern.
+- Natural-language turns: no lettered or numbered option menus (a BMAD-METHOD carry-over). Suggest next moves in a sentence and read the user's reply for intent.

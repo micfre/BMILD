@@ -17,12 +17,11 @@ Progress:
    ```
    **Brainstorming Technique Library**
 
-   [1] [Category Name] — [one-line description]
-       Examples: [technique_name], [technique_name], [technique_name]
+   - **[Category Name]** — [one-line description]
+     Examples: [technique_name], [technique_name], [technique_name]
+   - **[Category Name]** — ...
 
-   [2] [Category Name] — ...
-
-   Which category interests you? Enter a number, or describe what type of thinking you're after.
+   Which category interests you? Name one, or describe the kind of thinking you're after.
    ```
 
 - [ ] Step 2: **Show techniques in selected category** — For each technique in the category, from the YAML:
@@ -39,4 +38,4 @@ Progress:
 ## Next Step
 
 - On confirmation → load `resources/step-03-execute.md` carrying the selected technique names forward.
-- [Back] at any point → return to `resources/step-01-setup.md`.
+- The user wants a different way to pick techniques, at any point → return to `resources/step-01-setup.md`.

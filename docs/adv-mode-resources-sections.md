@@ -15,7 +15,7 @@ Requirements:
 - Use these H2 sections in order where they apply: `Purpose`, `Inputs`, `Procedure`, `Next Step`.
 - Add `Definition of Done` only for terminal or major completion steps where the step itself must be audited before close.
 - Use `Progress:` plus `- [ ] Step N: ...` for ordered step work.
-- Preserve explicit user-facing prompts, menu options, loop controls, and resource handoffs.
+- Preserve explicit user-facing prompts, loop controls, and resource handoffs. Offer choices as natural-language questions, not lettered or numbered menus.
 - Avoid markdown tables unless the target output genuinely requires them.
 
 Design guidance:
@@ -82,7 +82,7 @@ Progress:
 Contains:
 
 - Ordered execution steps.
-- User prompts and exact menus.
+- User prompts, phrased as natural-language questions.
 - Branch handling.
 - Retry loops and wait states.
 - Registry selection rules.
@@ -98,10 +98,10 @@ Forbidden:
 Design guidance:
 
 - Convert numbered workflows into `Progress:` checklists only when they are true ordered work.
-- Preserve exact options such as `[C]`, `[S]`, `[E]`, `[r]`, `[a]`, `[x]`, `[Back]`, `[Export]`, `[Keep going]`, and `[Done]`.
+- Do not use option codes such as `[C]`, `[S]`, `[r]`, `[x]`, or `[Back]`. They are BMAD-METHOD carry-overs; BMILD interaction is natural and semantic. Describe the available moves in a sentence and route on the intent of the user's reply, asking once when it is ambiguous.
 - Preserve roundtable speaker labelling, cross-talk, moderation, and direct-question pause behaviour.
 - Preserve brainstorming's volume, energy checkpoint, anti-clustering, and organise-only-when-ready behaviour.
-- Preserve elicitation's one-method-at-a-time loop, apply-or-ask rule, undo note, and final ownership handoff.
+- Preserve articulation's one-method-at-a-time loop, apply-or-ask rule, undo note, and final ownership handoff, and its persona-run path (`resources/persona-run.md`).
 
 ## Next Step
 
@@ -117,8 +117,8 @@ Contains:
 Examples:
 
 - `On confirmation, load resources/step-03-execute.md carrying selected technique names forward.`
-- `[x] Proceed -> close elicitation and return to the invoking context.`
-- `[S] Synthesise -> load resources/step-03-synthesise.md.`
+- `User signals they are done -> close articulation and return to the invoking context.`
+- `User is ready to synthesise -> load resources/step-03-synthesise.md.`
 
 Design guidance:
 

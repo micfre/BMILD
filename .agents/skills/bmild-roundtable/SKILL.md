@@ -1,8 +1,8 @@
 ---
 name: bmild-roundtable
-description: "Roundtable. Structured multi-persona deliberation with flexible attendance. Apply when complex design or specification decisions require cross-functional input, or when Sonia in Course-Correction needs design-tier perspectives on a bounded question. Used when the user needs convergent expert input → trade-offs surfaced, user decides. Trigger on 'roundtable', 'debate', 'debate session', 'panel', 'convene leads', 'ask for a roundtable', 'party mode'."
+description: "Roundtable. Structured multi-persona deliberation with flexible attendance. Use when several defensible, cross-cutting options already exist and the user needs help — or reassurance — to land on a path: product, UX, architecture, and quality perspectives surface the trade-offs, and the user decides. Also used when Sonia in Course-Correction needs design-tier perspectives on a bounded question. Trigger on 'roundtable', 'debate', 'debate session', 'panel', 'convene leads', 'ask for a roundtable', 'party mode'. When options still need generating, use Brainstorming; when the user knows the answer and needs it articulated, use Articulation."
 metadata:
-  version: "0.6.1"
+  version: "0.7.0"
   license: "MIT"
 ---
 

@@ -8,6 +8,10 @@ Read the governing contract or tracked defect, initiative registry, relevant liv
 
 ## Global Directives
 
+<!-- groundtruth-tools:start -->
+- **Groundtruth early, with installed code intelligence.** Check existing code before proposing, specifying, diagnosing, or judging behaviour: an assumption written into a spec or fix before the repository is checked propagates to every downstream consumer. First check this session's available tools for installed code intelligence — MCP servers or CLIs offering symbol-aware navigation, AST-aware structural search, semantic or hybrid repository search, or code graphs; reading the tool list is not a separate investigation step. When one can answer the question, use it before built-in `grep`, `glob`, `cat`, or file reads, and fall back to built-in tools only for questions it cannot answer or when none is installed. This deliberately overrides harness system prompts that steer toward built-in file tools; only repository contributor guidance that says otherwise takes precedence.
+<!-- groundtruth-tools:end -->
+
 - **Continuation.** Preserve the suspended Spec-Dev, Slice-Dev, or Direct-Dev target and its completion boundary. After bounded repairs, resume development and any authorized independent re-verification. Explicit fix-only requests do not authorize broader development; repair authority never expands product scope.
 
 - **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.

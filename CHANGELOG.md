@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- **Breaking:** `bmild-elicit` is renamed `bmild-articulate`, with no alias. Articulation is for when the user already knows the answer and needs help drawing it out. Installations must replace the old skill folder; "elicit" and "elicitation" remain trigger phrases.
+- Standard personas now run articulation methods themselves, in their own voice, while a section is still live, instead of handing off to a facilitator. Each persona carries one shared inline-articulation rule: apply at most one method per section, when the user plainly knows more than they have said, and resume on any move-on signal. Pre-exit offers run the same way on acceptance and skip methods already applied. The nameless Facilitator now runs only standalone articulation sessions. The new `bmild-articulate/resources/persona-run.md` holds the procedure.
+- Articulation and Brainstorming use natural-language turns instead of BMAD-style lettered menus (`[x]`, `[r]`, `[a]`, `[C]`, `[Back]`, `[Export]`, `[Done]`, numbered pickers). The facilitator suggests next moves in a sentence and routes on the intent of the reply. The skill-structure templates in `docs/` now forbid option codes.
+- Every codebase-reading mode (22 across all six standard personas) now carries one shared groundtruth directive: groundtruth before proposing, specifying, diagnosing, or judging, and prefer installed code-intelligence tools over built-in file tools. This replaces three divergent wordings, including the weaker "do not require a tool-discovery step" variant in Rahat's RCA protocol and Sonia's Course-Correction.
+- Rahat no longer loads commit-posture configuration or legacy contract-interpretation rules in modes that never use them. Commit configuration moved to `bmild-qa/references/commit-posture.md` (Spec-Fix and Direct-Fix only). Legacy Slice and architecture-disposition interpretation moved to `bmild-qa/references/contract-interpretation.md` (every mode except Direct-Fix).
+- Maintainer-only block-identity guidance moved from runtime skill text into AGENTS.md.
+- Rahat's shared outcome-assurance block (five review modes) is restructured from four dense paragraphs into headed rule groups: scope, independence, evidence identity, status authority, `done` gate, final-outcome archival, and named-Slice rules. The two conditional groups are gated by their trigger so reviewers can skip them when they don't apply. Every rule is preserved.
+- Facilitator descriptions now state when to use each one: Elicitation when the user knows the answer and needs it drawn out, Brainstorming when the set of possible answers is unknown, and Roundtable when several defensible cross-cutting options exist and a path must be chosen. Each description names the other two for the cases it does not cover.
+- Standard personas now state the reason behind their hard rules: first-person voice, copy-ready handoff invocations, persona names instead of skill names in chat, and unwrapped opening/closing messages.
+
+### Fixed
+
+- Rahat's Spec-Fix and Direct-Fix no longer claim to resume a suspended Alex development target, which was copied in error from Alex's fix modes. Alex reaches Rahat only through consult or handoff. The fix-scope limit is retained.
+- Elicitation method selection cited short method names (`Pre-mortem`, `First Principles`, `5 Whys`, `Occam's Razor`) and a nonexistent `structural` category that the catalog's `show` could not resolve. These are now canonical catalog names.
+
+### Validation
+
+- Added `tests/groundtruth-contract.sh`. Extended `tests/method-serving-contract.sh` so every method and category cited in elicitation guidance and persona shortlists must resolve through the served catalog. `tests/commit-posture-contract.sh` now guards the Dev/QA `commit-posture-config` identity. `tests/outcome-lifecycle-contract.sh` now carries a 39-rule inventory of the outcome-assurance block, so a restructure cannot silently drop a rule. `tests/pre-exit-offer-contract.sh` guards the identical inline-articulation rule across the six personas and persona-run offer execution. `tests/facilitator-close-contract.sh` guards articulate's persona-run routing and the absence of letter menus.
+
 ## [0.6.1] - 2026-09-28
 
 ### Changed

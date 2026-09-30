@@ -4,7 +4,7 @@
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-SKILL="$REPO_ROOT/.agents/skills/bmild-elicit"
+SKILL="$REPO_ROOT/.agents/skills/bmild-articulate"
 CATALOG="$SKILL/resources/methods.yaml"
 SERVE="$SKILL/scripts/methods.sh"
 BMAD_CSV="$REPO_ROOT/external_references/bmad-method/skills/bmad-advanced-elicitation/assets/methods.csv"
@@ -247,6 +247,34 @@ if command -v gawk >/dev/null 2>&1; then
         fail "serve-methods.awk must run under gawk --posix (show)"
     grep -q '^# 9 |' "$OUT/px-show.txt" || fail "posix show smoke lost the record"
 fi
+
+# Method and category names cited in skill prose must resolve through the served catalog.
+# Short names (e.g. "Pre-mortem" for "Pre-mortem Analysis") are reported `# not found`
+# by `show`, which pushes models toward inventing methods from memory.
+catalog_categories=$(sh "$SERVE" categories | cut -f1)
+check_cited_name() {
+    local name=$1 where=$2
+    [ -n "$name" ] || return 0
+    if printf '%s\n' "$catalog_categories" | grep -qxF "$name"; then return 0; fi
+    local shown
+    shown=$(sh "$SERVE" show "$name" 2>&1 || true)
+    case "$shown" in
+        '# not found'*) fail "$where: cited method/category '$name' does not resolve in the catalog" ;;
+    esac
+    return 0
+}
+# Parenthesized citation lists in the selection and execution guidance.
+for f in "$SKILL/resources/step-01-select.md" "$SKILL/resources/step-02-execute.md"; do
+    while IFS= read -r name; do check_cited_name "$name" "${f#"$REPO_ROOT"/}"; done < <(
+        grep -E 'Identify the most likely weakness|identify the content type|methods \(' "$f" |
+            grep -oE '\([^()`]*\)' | tr -d '()' | tr ';' ',' | tr ',' '\n' |
+            sed -e 's/^ *//' -e 's/ *$//' -e 's/^favour //' -e 's/^[a-z]*: *//' |
+            grep -v -e '^etc\.$' -e '^and ' -e '^$')
+done
+# Persona pre-exit elicit shortlists.
+while IFS= read -r name; do check_cited_name "$name" "persona elicit shortlist"; done < <(
+    grep -rhoE 'shortlist \([^)]*\)' "$REPO_ROOT/.agents/skills" --include='*.md' |
+        grep -oE '\*\*[^*]+\*\*' | tr -d '*' | sort -u)
 
 if [ "$failures" -gt 0 ]; then
     echo "method-serving-contract: $failures failure(s)" >&2

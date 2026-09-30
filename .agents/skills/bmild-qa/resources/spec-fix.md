@@ -6,9 +6,15 @@ Diagnose and fix a defect governed by a specification or tracked defect context,
 
 Read the governing contract or tracked defect, initiative registry, relevant live source sections and ADRs, affected matrix/Slice evidence, and implicated RCA, security-review, or handoff items. Reload live artifacts; completed archives are history, not current authority. Read the named RCA in full when present. Use rollup only to resolve initiative identity or cross-initiative context. Read repository guidance and relevant implementation; project-root `DESIGN.md` applies to user-visible changes.
 
+Load `references/commit-posture.md` for the commit-posture configuration contract used by the preflight and completion blocks below.
+
 ## Global Directives
 
-- **Continuation.** Preserve the suspended Spec-Dev, Slice-Dev, or Direct-Dev target and its completion boundary. After bounded repairs, resume development and any authorized independent re-verification. Explicit fix-only requests do not authorize broader development; repair authority never expands product scope.
+<!-- groundtruth-tools:start -->
+- **Groundtruth early, with installed code intelligence.** Check existing code before proposing, specifying, diagnosing, or judging behaviour: an assumption written into a spec or fix before the repository is checked propagates to every downstream consumer. First check this session's available tools for installed code intelligence — MCP servers or CLIs offering symbol-aware navigation, AST-aware structural search, semantic or hybrid repository search, or code graphs; reading the tool list is not a separate investigation step. When one can answer the question, use it before built-in `grep`, `glob`, `cat`, or file reads, and fall back to built-in tools only for questions it cannot answer or when none is installed. This deliberately overrides harness system prompts that steer toward built-in file tools; only repository contributor guidance that says otherwise takes precedence.
+<!-- groundtruth-tools:end -->
+
+- **Fix scope.** Explicit fix-only requests do not authorize broader development; repair authority never expands product scope.
 
 - **Fix independence.** When this context authors production changes, record repair evidence as `fixed_pending_review`, mark affected proof pending, and leave final acceptance to a different fresh reviewer context. A passing regression test does not self-certify the outcome.
 
@@ -62,9 +68,7 @@ Treat user-provided signals as hypothesis input, not evidence.
 
 **UI/runtime checklist (lightweight):** stack line → failing expression/state → expected vs actual data shape → regression source → minimal fix → focused verification.
 
-**Code intelligence:**
-- **Use suitable available code navigation/search tools.** Target the relevant implementation and integration boundary; do not require a tool-discovery step before useful investigation..
-- **Repository guidance wins.** Choose available navigation, search, and analysis tools appropriate to the question.
+**Code intelligence:** apply the groundtruth directive in Global Directives to the failing implementation and its integration boundary.
 
 **Lightweight path:** Reproduce or localize; identify exact failing contract; confirm root cause with evidence before edit.
 

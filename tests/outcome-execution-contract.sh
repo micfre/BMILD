@@ -62,7 +62,7 @@ for path in skills.rglob('*'):
         if any(c in rel for c in '*<>'):
             continue
         owner = skills / path.relative_to(skills).parts[0]
-        if owner.name in {'bmild-elicit', 'bmild-roundtable', 'bmild-brainstorming'} and rel == 'references/gap-resolution.md':
+        if owner.name in {'bmild-articulate', 'bmild-roundtable', 'bmild-brainstorming'} and rel == 'references/gap-resolution.md':
             continue  # Explicit reference to the presiding standard persona's copy.
         assert (owner / rel).exists(), f'{path}: broken local resource {rel}'
 ci = (root / '.github/workflows/ci.yml').read_text()

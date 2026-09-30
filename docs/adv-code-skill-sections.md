@@ -1,6 +1,6 @@
 # BMILD Advanced Core Skill Sections
 
-This document defines the go-forward structure for BMILD advanced facilitation `SKILL.md` files: `bmild-brainstorming`, `bmild-elicit`, and `bmild-roundtable`.
+This document defines the go-forward structure for BMILD advanced facilitation `SKILL.md` files: `bmild-brainstorming`, `bmild-articulate`, and `bmild-roundtable`.
 
 Advanced facilitation skills are cross-cutting team tools, not named personas. They do not own BMILD source artifacts, do not select among multiple modes, and do not use the named-persona operating stance format. Their core skill is the stable shell for facilitation identity, activation, single-session workflow, global facilitation norms, scope boundary, close shape, and gotchas. Step-specific execution remains in `resources/*.md`.
 
@@ -143,9 +143,9 @@ Use for:
 Design guidance:
 
 - Put true skill-wide rules here even if they also appear operationally in a resource step. In that case, the resource may keep the operational prompt or checklist while core keeps the durable invariant.
-- Do not move step-specific scripts, menus, or prompts into core.
+- Do not move step-specific scripts or prompts into core.
 - For brainstorming, preserve breadth-before-convergence and anti-clustering behaviour.
-- For elicitation, preserve one-primary-method-first, user-selected iteration, ownership preservation, and `[x]` exit behaviour.
+- For articulation, preserve one-primary-method-first, user-selected iteration, ownership preservation, persona-run routing when a standard persona is active, and exit when the user signals they are done.
 - For roundtable, preserve attendee selection, posture, flexible attendance, two invocation contexts, synthesis categories, and the no-recommendation rule.
 
 ### Trigger-Condition Rules

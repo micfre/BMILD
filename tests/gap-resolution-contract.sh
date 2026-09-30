@@ -19,7 +19,7 @@ for persona in "${PERSONAS[@]}"; do
   [ -f "$gap" ] || { fail "missing $gap"; continue; }
   cmp -s "$reference" "$gap" || fail "$gap: drifted from $reference"
   require_literal "$core" 'references/gap-resolution.md'
-  require_literal "$core" 'emit its exact migration message, and stop before mode detection; never map legacy values'
+  require_literal "$core" 'report the keys found and the supported replacements, and stop before mode detection; never map legacy values'
   require_literal "$agent" 'references/gap-resolution.md'
   require_literal "$agent" 'Never dispatch, guest-author, invoke Course-Correction'
 

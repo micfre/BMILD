@@ -82,7 +82,7 @@ for label, body in {
     "architecture core": arch_core,
     "developer core": dev_core,
     "planner readiness": read("bmild-planner/resources/readiness-verification.md"),
-    "reviewer core": read("bmild-qa/SKILL.md"),
+    "reviewer contract interpretation": read("bmild-qa/references/contract-interpretation.md"),
 }.items():
     lowered = body.lower()
     assert "legacy" in lowered, f"{label}: missing legacy disposition compatibility"
@@ -152,7 +152,7 @@ require(
     "planner architecture interpretation",
 )
 require(
-    read("bmild-qa/SKILL.md"),
+    read("bmild-qa/references/contract-interpretation.md"),
     ["Architecture contract interpretation", "`illustrative` content is non-binding", "`observed` content is evidence"],
     "reviewer architecture interpretation",
 )

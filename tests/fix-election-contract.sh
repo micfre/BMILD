@@ -68,7 +68,7 @@ for rel in "${QA_FIX_FILES[@]}"; do
   # Required RCA protocol semantics.
   printf '%s\n' "$protocol" | rg -q 'Develop plausible candidate causes from the evidence' || \
     fail "$file: rca-protocol missing full-RCA hypothesize step"
-  printf '%s\n' "$protocol" | rg -q 'Use suitable available code navigation/search tools' || \
+  printf '%s\n' "$protocol" | rg -q 'apply the groundtruth directive in Global Directives' || \
     fail "$file: rca-protocol missing code-intelligence directive"
 done
 

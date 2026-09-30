@@ -19,6 +19,10 @@ When this is a user-accepted Project Bearing continuation, also consume the in-c
 
 ## Global Directives
 
+<!-- groundtruth-tools:start -->
+- **Groundtruth early, with installed code intelligence.** Check existing code before proposing, specifying, diagnosing, or judging behaviour: an assumption written into a spec or fix before the repository is checked propagates to every downstream consumer. First check this session's available tools for installed code intelligence — MCP servers or CLIs offering symbol-aware navigation, AST-aware structural search, semantic or hybrid repository search, or code graphs; reading the tool list is not a separate investigation step. When one can answer the question, use it before built-in `grep`, `glob`, `cat`, or file reads, and fall back to built-in tools only for questions it cannot answer or when none is installed. This deliberately overrides harness system prompts that steer toward built-in file tools; only repository contributor guidance that says otherwise takes precedence.
+<!-- groundtruth-tools:end -->
+
 - **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
 
 - **User confirmation is an entry condition.** An existing request that authorizes the exact coupled change satisfies this condition. Otherwise explain its scope/sequencing/proof impact and ask once before creating or changing a proposal.
@@ -44,8 +48,7 @@ Progress:
 - [ ] Step 2: **Conflict-of-interest check** — apply Global Directives; recommend roundtable when Sonia is not neutral.
 - [ ] Step 3: **Pre-exit offer (declinable in one word)** — *"Before I populate the change proposal — anything you want to take to roundtable or examine from another angle first? Otherwise I'll proceed."*
 - [ ] Step 4: **Impact mapping.** Create or open `change-proposal-<slug>.md` from `assets/change-proposal-template.md` if needed. For each source artifact (`product-brief.md`, `prd.md`, `ux-design.md`, `system-design.md`, `slices.md`, `slice-<N>.md`, `verification-matrix.md`, `security-review-<slug>.md`), classify as `unaffected | mechanical | owner-decision | coupled-change | stale`. Use `AGENTS.md`'s cross-artifact flow as the dependency map.
-  - **Use suitable available code navigation/search tools.** Target the relevant implementation and integration boundary; do not require a tool-discovery step before useful investigation.
-  - **Repository guidance wins.** Choose available navigation, search, and analysis tools appropriate to the question.
+  - Groundtruth the affected implementation and integration boundaries per Global Directives before classifying impact.
 - [ ] Step 5: **Question decomposition.** Decompose into 1–N discrete, bounded questions. Each covers one trade-off, scoped to artifacts that share it, answerable in one roundtable session. Order by leverage.
 - [ ] Step 6: **Roundtable invocation** (per question, in order). For each bounded question:
 

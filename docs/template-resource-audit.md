@@ -88,10 +88,10 @@ Prior-art stances that apply across many entries, stated once:
 - `assets/rca-template.md` — no counterpart (BMAD has no RCA artifact). No gap: root-cause → Fix Election → close loop present.
 - `assets/security-review-template.md` — no counterpart. No gap.
 
-## Facilitators — bmild-brainstorming (8), bmild-elicit (3), bmild-roundtable (4)
+## Facilitators — bmild-brainstorming (8), bmild-articulate (3), bmild-roundtable (4)
 
 - bmild-brainstorming `resources/brain-methods.yaml` + `step-01-setup.md` … `step-04-organise.md` — vs `bmad-brainstorming` SKILL.md + `references/mode-*.md`, `converge.md`, `finalize.md`, `resume.md`, `assets/brain-methods.csv`. Gaps exist (three-stance model, aim-past-100 framing, memlog continuity, resume flow, in-chat techniques) but the interaction flows are owned by `elicitation-refine` → C-14 (rejected here for ownership, evidence recorded for that initiative).
-- bmild-elicit `resources/methods.yaml`, `step-01-select.md`, `step-02-execute.md` — vs `bmad-advanced-elicitation` SKILL.md + `assets/methods.csv`. No structural gap: bounded projections mirror BMAD's never-whole-catalog rule (`pick_methods.py categories/list/show/random` ≈ BMILD's categories/index/show/spread draws); method numbering intentionally tracks BMAD 6.13. Interaction-flow refinements owned by `elicitation-refine` → C-14.
+- bmild-articulate `resources/methods.yaml`, `step-01-select.md`, `step-02-execute.md` — vs `bmad-advanced-elicitation` SKILL.md + `assets/methods.csv`. No structural gap: bounded projections mirror BMAD's never-whole-catalog rule (`pick_methods.py categories/list/show/random` ≈ BMILD's categories/index/show/spread draws); method numbering intentionally tracks BMAD 6.13. Interaction-flow refinements owned by `elicitation-refine` → C-14.
 - bmild-roundtable `resources/step-01-open.md` … `step-04-close.md` — vs `bmad-party-mode` SKILL.md + `references/*`. Gaps exist (roster groups, scene/open-cast, party memory, "keep it a party" craft rules) but interaction flows are owned by `elicitation-refine` → C-14.
 
 ## Improvement candidates (fit verdicts)

@@ -5,8 +5,8 @@
 #   - every authoring/refinement pre-exit step carries the same-turn
 #     continuation rule (a decline or proceed signal continues to Write/update
 #     in the same turn — no second stop before authoring);
-#   - each resource carries an embedded bmild-elicit method shortlist whose
-#     names all exist in bmild-elicit/resources/methods.yaml (methods are never
+#   - each resource carries an embedded bmild-articulate method shortlist whose
+#     names all exist in bmild-articulate/resources/methods.yaml (methods are never
 #     invented from memory; the elicit skill itself is only loaded on
 #     acceptance — lazy loading preserved).
 #
@@ -49,7 +49,7 @@ fail() { echo "FAIL: $*" >&2; failures=$((failures + 1)); }
 for root in "${SKILL_ROOTS[@]}"; do
   echo "== pre-exit-offer contract: ${root} =="
 
-  methods_yaml="${root}/bmild-elicit/resources/methods.yaml"
+  methods_yaml="${root}/bmild-articulate/resources/methods.yaml"
   if [ ! -f "${methods_yaml}" ]; then
     fail "missing ${methods_yaml}"
     continue
@@ -83,9 +83,30 @@ for root in "${SKILL_ROOTS[@]}"; do
     while IFS= read -r name; do
       [ -n "${name}" ] || continue
       if ! rg -q -x -F "  method_name: ${name}" "${methods_yaml}"; then
-        fail "${file}: method '${name}' not found in bmild-elicit methods.yaml"
+        fail "${file}: method '${name}' not found in bmild-articulate methods.yaml"
       fi
     done <<< "${names}"
+  done
+done
+
+# Persona-run articulation: the offer is executed in the persona's own voice (no skill swap),
+# and every standard persona carries one byte-identical inline-articulation rule.
+for root in "${SKILL_ROOTS[@]}"; do
+  for rel in "${PLACEMENT_FILES[@]}"; do
+    file="${root}/${rel}"
+    rg -q -F '../bmild-articulate/resources/persona-run.md' "${file}" || fail "${file}: accepted offer must run persona-run articulation"
+    if rg -q -F 'swap to `bmild-articulate`' "${file}"; then fail "${file}: retired facilitator swap remains"; fi
+  done
+  reference=""
+  for persona in bmild-pm bmild-ux bmild-arch bmild-planner bmild-dev bmild-qa; do
+    file="${root}/${persona}/SKILL.md"
+    block=$(sed -n '/<!-- inline-articulation:start -->/,/<!-- inline-articulation:end -->/p' "${file}")
+    [ -n "${block}" ] || { fail "${file}: missing inline-articulation block"; continue; }
+    if [ -z "${reference}" ]; then reference="${block}"
+    elif [ "${block}" != "${reference}" ]; then fail "${file}: inline-articulation block drifted"; fi
+  done
+  for token in 'my own voice' 'persona-run.md' 'at most once per section' 'resume on any move-on signal'; do
+    printf '%s' "${reference}" | rg -q -i -F "${token}" || fail "inline-articulation block missing: ${token}"
   done
 done
 

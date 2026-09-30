@@ -19,11 +19,19 @@ for literal in \
   '**Mode 7: Code Review**' \
   '**Mode 8: Targeted Verification (FR/NFR)**' \
   '"comprehensive review"' \
-  '**Legacy Slice normalization.**' \
-  'A missing field is never implicitly terminal.' \
+  'references/contract-interpretation.md' \
   'Runs outcome completeness, security, and Standards/Spec review in one independent context'; do
   require_literal "$core" "$literal"
 done
+
+interpretation="$QA/references/contract-interpretation.md"
+for literal in \
+  '**Legacy Slice normalization.**' \
+  'A missing field is never implicitly terminal.' \
+  '**Architecture contract interpretation.**'; do
+  require_literal "$interpretation" "$literal"
+done
+! rg -q -F 'Legacy Slice normalization' "$core" || fail "$core: contract interpretation must load from references/, not the always-loaded core"
 
 for resource in verification security-review code-review comprehensive-review; do
   [ -f "$QA/resources/$resource.md" ] || fail "missing Rahat review resource: $resource.md"

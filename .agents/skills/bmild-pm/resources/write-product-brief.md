@@ -30,6 +30,10 @@ Per-section `stakes` in `brief-completion-criteria.yaml` sets elicitation depth.
 
 ## Global Directives
 
+<!-- groundtruth-tools:start -->
+- **Groundtruth early, with installed code intelligence.** Check existing code before proposing, specifying, diagnosing, or judging behaviour: an assumption written into a spec or fix before the repository is checked propagates to every downstream consumer. First check this session's available tools for installed code intelligence — MCP servers or CLIs offering symbol-aware navigation, AST-aware structural search, semantic or hybrid repository search, or code graphs; reading the tool list is not a separate investigation step. When one can answer the question, use it before built-in `grep`, `glob`, `cat`, or file reads, and fall back to built-in tools only for questions it cannot answer or when none is installed. This deliberately overrides harness system prompts that steer toward built-in file tools; only repository contributor guidance that says otherwise takes precedence.
+<!-- groundtruth-tools:end -->
+
 - **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
 
 - **Discovery before invention**: Before accepting a greenfield premise, verify repository reality. Scan the codebase when the initiative may be brownfield or when artifacts claim behaviour that code may already implement. Do not invent greenfield solutions in a brownfield environment.
@@ -52,8 +56,6 @@ When product/domain meaning becomes stable during this session:
 Progress:
 
 - [ ] Step 1: Groundtruth — verify repository reality per Global Directives before accepting any premise.
-  - **Query available code intelligence MCPs.** Determine available code intelligence tools such as symbol-aware navigation, AST-aware structural analysis, semantic or hybrid repository search, and code graphs
-  - **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
 - [ ] Step 2: Elicit (diverge → synthesize → steer) — apply Stakes-based elicitation:
   - **Open with the brief contour.** Name in-scope sections grouped by YAML `stakes` and signal that consequential sections get depth and medium/low sections will be synthesized — not a serial walk.
   - **Diverge on consequential sections.** Work `problem`, `target_users`, and `success_criteria` one question per turn until each passes its YAML weak_signal check.
@@ -70,7 +72,7 @@ Progress:
   - Any user-owned ambiguity is resolved live or documented as a bounded assumption only when low-risk and reversible; other-owner gaps run the ladder and persist a handoff only for asynchronous continuity
   - Direct Project Bearing continuations record only the optional provenance line; other briefs omit it
   - Every in-scope section in `brief-completion-criteria.yaml` passes falsifiable / good_signal / weak_signal
-- [ ] Step 4: Pre-exit offer (declinable in one word) — name 1–2 session-appropriate bmild-elicit methods from this artifact's shortlist (**Challenge from Critical Perspective**, **Shark Tank Pitch**), chosen by what was actually contentious: *"Before I write the brief — I could run **Challenge from Critical Perspective** or **Shark Tank Pitch** in a bmild-elicit session, or take anything to roundtable. Otherwise I'll proceed."* On acceptance, swap to `bmild-elicit` with the method pre-selected; offer roundtable per core Advanced Elicitation Triggers when trade-offs are still open. Any decline or proceed signal continues directly to the Write step in the same turn — no further confirmation.
+- [ ] Step 4: Pre-exit offer (declinable in one word) — name 1–2 session-appropriate articulation methods from this artifact's shortlist (**Challenge from Critical Perspective**, **Shark Tank Pitch**), chosen by what was actually contentious: *"Before I write the brief — I could run **Challenge from Critical Perspective** or **Shark Tank Pitch** on this now, or take anything to roundtable. Otherwise I'll proceed."* Skip a method already applied inline this session. On acceptance, run it in my own voice per `../bmild-articulate/resources/persona-run.md`; offer roundtable per core Advanced Elicitation Triggers when trade-offs are still open. Any decline or proceed signal continues directly to the Write step in the same turn — no further confirmation.
 - [ ] Step 5: Write — write `[plan_folder]/<initiative-name>/product-brief.md` using `assets/product-brief-template.md`. Substitute `[user_name]` from `.bmild.toml`.
   - **Initiative naming.** Initiative names are lowercase-kebab-case identifiers (e.g. `py-tokenizer`) — safe across filesystems, shells, and links. If the user supplies a kebab-case-compliant slug, use it directly. Otherwise confirm a kebab-case slug with the user before writing; never silently transform a proposed name.
 - [ ] Step 6: Semantic distillation gate — apply Semantic Memory rules when triggered.

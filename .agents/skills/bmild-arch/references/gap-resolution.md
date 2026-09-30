@@ -14,11 +14,7 @@ Resolve missing contracts while preserving the authorized phase/outcome and usef
 - If an explicit pair is rejected, report the exact pair and harness error; do not retry or substitute. Preserve one durable handoff for the affected episode and continue unaffected work.
 - Retired `slice_target`, `tokenizer_base`, and `tokenizer_multiplier` settings are inert. Their presence does not block work or trigger estimation.
 
-Legacy `consult`, `consult_model`, and `consult_effort` remain unsupported. Report:
-
-`Legacy consult configuration is unsupported in BMILD 0.4.2. Remove consult, consult_model, and consult_effort; use gap_resolution and [intelligence.<harness>.<tier>] instead.`
-
-Do not map, interpret, preserve, or combine legacy values with the new configuration.
+Legacy `consult`, `consult_model`, and `consult_effort` remain unsupported. Report which keys are present and direct the user to `gap_resolution` and `[intelligence.<harness>.<tier>]`. Do not map, interpret, preserve, or combine legacy values with the new configuration.
 
 ## Resolution ladder
 

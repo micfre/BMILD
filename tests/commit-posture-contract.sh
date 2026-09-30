@@ -70,7 +70,7 @@ rg -q -F 'confirmed root cause' "${ROOT}/.agents/skills/bmild-qa/resources/direc
 rg -q -F 'declined-election handoff' "${ROOT}/.agents/skills/bmild-qa/resources/spec-fix.md" || fail "Rahat Spec-Fix declined-election gate missing"
 rg -q -F 'declined-election handoff' "${ROOT}/.agents/skills/bmild-qa/resources/direct-fix.md" || fail "Rahat Direct-Fix declined-election gate missing"
 
-for file in .agents/skills/bmild-dev/SKILL.md .agents/skills/bmild-qa/SKILL.md README.md AGENTS.md; do
+for file in .agents/skills/bmild-dev/SKILL.md .agents/skills/bmild-qa/references/commit-posture.md README.md AGENTS.md; do
     for token in 'commit = 0' 'commit = 1' 'commit = 2' 'conventional-commits' 'branch'; do
         rg -q -F "$token" "${ROOT}/${file}" || fail "$file: missing aligned token '$token'"
     done
@@ -78,6 +78,21 @@ done
 rg -q '^commit = 0 .*0: off; 1: message .* local commit; 2: message only' "${ROOT}/.bmild.toml.example" || fail ".bmild.toml.example: posture values/default drift"
 rg -q '^# format = "conventional-commits"' "${ROOT}/.bmild.toml.example" || fail ".bmild.toml.example: format drift"
 rg -q '^branch = "current" .*current \| initiative' "${ROOT}/.bmild.toml.example" || fail ".bmild.toml.example: branch drift"
+
+# Configuration contract: Dev core and Rahat's fix-only reference carry one identical body;
+# Rahat's non-fix modes never load commit settings.
+dev_config=$(extract_block "${ROOT}/.agents/skills/bmild-dev/SKILL.md" commit-posture-config)
+qa_config=$(extract_block "${ROOT}/.agents/skills/bmild-qa/references/commit-posture.md" commit-posture-config)
+[ -n "$dev_config" ] || fail "Dev SKILL.md: missing commit-posture-config block"
+[ "$dev_config" = "$qa_config" ] || fail "Dev/QA commit-posture-config drift"
+for mode in spec-fix direct-fix; do
+    rg -q -F 'references/commit-posture.md' "${ROOT}/.agents/skills/bmild-qa/resources/${mode}.md" \
+        || fail "Rahat ${mode}: does not load references/commit-posture.md"
+done
+! rg -q -F 'commit = 1' "${ROOT}/.agents/skills/bmild-qa/SKILL.md" \
+    || fail "QA SKILL.md: commit configuration contract belongs in references/commit-posture.md"
+! rg -q -F 'runtime-loaded resource' "${ROOT}/.agents/skills/bmild-dev/SKILL.md" "${ROOT}/.agents/skills/bmild-qa/SKILL.md" \
+    || fail "maintainer-only block-identity guidance belongs in AGENTS.md, not runtime skill text"
 
 # Compact commit output: Dev/QA parity + terminal-state coverage; no field-dump close.
 dev_compact=$(extract_block "${ROOT}/.agents/skills/bmild-dev/SKILL.md" compact-commit-output)

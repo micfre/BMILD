@@ -11,7 +11,7 @@ set -euo pipefail
 
 FACILITATORS=(
   "bmild-roundtable"
-  "bmild-elicit"
+  "bmild-articulate"
   "bmild-brainstorming"
 )
 
@@ -20,8 +20,8 @@ LOAD_FILES=(
   "bmild-roundtable/SKILL.md"
   "bmild-roundtable/resources/step-03-synthesise.md"
   "bmild-roundtable/resources/step-04-close.md"
-  "bmild-elicit/SKILL.md"
-  "bmild-elicit/resources/step-02-execute.md"
+  "bmild-articulate/SKILL.md"
+  "bmild-articulate/resources/step-02-execute.md"
   "bmild-brainstorming/SKILL.md"
   "bmild-brainstorming/resources/step-04-organise.md"
 )
@@ -100,7 +100,7 @@ for root in "${SKILL_ROOTS[@]}"; do
     if ! rg -q 'references/promotion-protocol\.md' "${file}"; then
       fail "${file}: expected references/promotion-protocol.md"
     fi
-    if rg -q '\.\./bmild-(roundtable|elicit|brainstorming)/' "${file}"; then
+    if rg -q '\.\./bmild-(roundtable|articulate|brainstorming)/' "${file}"; then
       fail "${file}: cross-skill protocol path forbidden"
     fi
     if rg -q 'docs/promotion-protocol\.md' "${file}"; then

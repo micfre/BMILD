@@ -31,8 +31,7 @@ if rg -q '^[[:space:]]*(consult|consult_model|consult_effort)[[:space:]]*=' "$EX
   fail "example preserves a legacy consult assignment"
 fi
 
-migration='Legacy consult configuration is unsupported in BMILD 0.4.2. Remove consult, consult_model, and consult_effort; use gap_resolution and [intelligence.<harness>.<tier>] instead.'
-rg -q -F "$migration" "$REFERENCE" || fail "exact migration guidance missing"
+rg -q -F 'Report which keys are present and direct the user to `gap_resolution` and `[intelligence.<harness>.<tier>]`' "$REFERENCE" || fail "legacy configuration guidance missing"
 rg -q -F 'Do not map, interpret, preserve, or combine legacy values' "$REFERENCE" || fail "legacy no-mapping rule missing"
 rg -q -F 'do not retry or substitute' "$REFERENCE" || fail "invalid-pair no-retry rule missing"
 rg -q -F 'report the exact pair and harness error' "$REFERENCE" || fail "invalid-pair report rule missing"

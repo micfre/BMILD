@@ -36,10 +36,10 @@ Progress:
 
 - [ ] Step 3: **Offer control** — Ask: *"Ready for this creative adventure? Or want a different roll of the dice?"*
 
-   Options: [C] Start / [Shuffle] new random selection / [Details] explain a technique / [Back] return to approach selection.
+   Handle requests to explain a technique in place.
 
 ## Next Step
 
-- [C] or confirmed → load `resources/step-03-execute.md` carrying the selected technique names forward.
-- [Shuffle] → repeat Procedure from Step 1.
-- [Back] → return to `resources/step-01-setup.md`.
+- Confirmed → load `resources/step-03-execute.md` carrying the selected technique names forward.
+- Asks for a different draw → repeat Procedure from Step 1.
+- The user wants a different way to pick techniques → return to `resources/step-01-setup.md`.

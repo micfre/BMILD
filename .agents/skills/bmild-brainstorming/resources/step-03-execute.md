@@ -14,7 +14,7 @@ Facilitate the selected technique(s) as a creative coach — genuine back-and-fo
 - **Divergence guidance:** Explore breadth before organisation. First ~20 ideas are often obvious; continue into fresh territory when it adds value, rather than satisfying a numeric quota.
 - **Anti-bias protocol:** Consciously shift creative domain every 10 ideas — UX → business → technical constraints → social impact → edge cases.
 - **Organisation timing:** Offer organisation when the user explicitly requests it, or when breadth has been explored across fresh domains and energy is visibly depleted. Do not treat elapsed time or idea count as a gate.
-- **Elicitation suggestion:** Strong idea needing stress-test → suggest `bmild-elicit`; do not invoke autonomously.
+- **Articulation suggestion:** Strong idea needing stress-test → suggest `bmild-articulate`; do not invoke autonomously.
 
 ## Procedure
 
@@ -55,18 +55,15 @@ Progress:
 
 - [ ] Step 5: **Deep-dive option** — If a promising idea emerges that deserves rigorous treatment, offer:
 
-   > *"This idea is strong enough to stress-test. Want to run a quick elicitation on it? Invoke `bmild-elicit` and point it at this concept."*
+   > *"This idea is strong enough to stress-test. Want to run a quick articulation pass on it? Invoke `bmild-articulate` and point it at this concept."*
 
-   Do not invoke `bmild-elicit` autonomously — suggest it and wait for confirmation.
+   Do not invoke `bmild-articulate` autonomously — suggest it and wait for confirmation.
 
 - [ ] Step 6: **Completion check** — Offer to move to organisation when the user explicitly requests it, or when exploration has reached sufficient breadth and user energy is visibly depleted. When the user is ready:
 
-   > *"Ready to organise what we've got?*
-   >
-   > [K] Keep exploring
-   > [C] Move to organisation"*
+   > *"Ready to organise what we've got, or is there more to explore?"*
 
 ## Next Step
 
-- [C] → load `resources/step-04-organise.md`.
-- [K] → continue the current facilitation loop from Step 2.
+- Ready to organise → load `resources/step-04-organise.md`.
+- Wants to keep exploring → continue the current facilitation loop from Step 2.

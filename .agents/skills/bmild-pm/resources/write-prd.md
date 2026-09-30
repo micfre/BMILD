@@ -28,6 +28,10 @@ Per-section `stakes` in `prd-completion-criteria.yaml` sets elicitation depth. U
 
 ## Global Directives
 
+<!-- groundtruth-tools:start -->
+- **Groundtruth early, with installed code intelligence.** Check existing code before proposing, specifying, diagnosing, or judging behaviour: an assumption written into a spec or fix before the repository is checked propagates to every downstream consumer. First check this session's available tools for installed code intelligence — MCP servers or CLIs offering symbol-aware navigation, AST-aware structural search, semantic or hybrid repository search, or code graphs; reading the tool list is not a separate investigation step. When one can answer the question, use it before built-in `grep`, `glob`, `cat`, or file reads, and fall back to built-in tools only for questions it cannot answer or when none is installed. This deliberately overrides harness system prompts that steer toward built-in file tools; only repository contributor guidance that says otherwise takes precedence.
+<!-- groundtruth-tools:end -->
+
 - **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
 
 - **Discovery before invention**: Before accepting a greenfield premise, verify repository reality. Scan the codebase when the initiative may be brownfield or when artifacts claim behaviour that code may already implement. Do not invent greenfield solutions in a brownfield environment.
@@ -49,8 +53,6 @@ When product/domain meaning becomes stable during this session:
 Progress:
 
 - [ ] Step 1: Groundtruth — verify repository reality for any implementation relevant to the initiative.
-  - **Query available code intelligence MCPs.** Determine available code intelligence tools such as symbol-aware navigation, AST-aware structural analysis, semantic or hybrid repository search, and code graphs
-  - **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
 - [ ] Step 2: Probe backward — review `product-brief.md` for unresolved assumptions, handoff items, or scope edges needing promotion. Route cross-artifact/source issues through `handoff.md` before proceeding.
 - [ ] Step 3: Elicit (diverge → synthesize → steer) — apply Stakes-based elicitation:
   - **Open with the PRD contour.** Name in-scope sections grouped by YAML `stakes` (respecting `stakes_note` overrides) and signal consequential depth vs synthesis for the rest.
@@ -70,7 +72,7 @@ Progress:
   - Documentation scope has a decision for each audience (per completion criteria)
   - Any remaining ambiguity has a governed outcome: `handoff.md`, bounded assumption, or explicit defer/reject/supersede
   - Every in-scope section in `prd-completion-criteria.yaml` passes falsifiable / good_signal / weak_signal
-- [ ] Step 5: Pre-exit offer (declinable in one word) — name 1–2 session-appropriate bmild-elicit methods from this artifact's shortlist (**Pre-mortem Analysis**, **Challenge from Critical Perspective**), chosen by what was actually contentious: *"Before I write the PRD — I could run **Pre-mortem Analysis** or **Challenge from Critical Perspective** in a bmild-elicit session, or take anything to roundtable. Otherwise I'll proceed."* On acceptance, swap to `bmild-elicit` with the method pre-selected; offer roundtable per core Advanced Elicitation Triggers when trade-offs are still open. Any decline or proceed signal continues directly to the Write step in the same turn — no further confirmation.
+- [ ] Step 5: Pre-exit offer (declinable in one word) — name 1–2 session-appropriate articulation methods from this artifact's shortlist (**Pre-mortem Analysis**, **Challenge from Critical Perspective**), chosen by what was actually contentious: *"Before I write the PRD — I could run **Pre-mortem Analysis** or **Challenge from Critical Perspective** on this now, or take anything to roundtable. Otherwise I'll proceed."* Skip a method already applied inline this session. On acceptance, run it in my own voice per `../bmild-articulate/resources/persona-run.md`; offer roundtable per core Advanced Elicitation Triggers when trade-offs are still open. Any decline or proceed signal continues directly to the Write step in the same turn — no further confirmation.
 - [ ] Step 6: Write — write `[plan_folder]/<initiative-name>/prd.md` using `assets/prd-template.md`. Substitute `[user_name]` from `.bmild.toml`. Do not add `prd.md` to `registry.md` yet — registration passes the deterministic lint gate in Step 8.
   - **Initiative naming.** Initiative names are lowercase-kebab-case identifiers (e.g. `py-tokenizer`) — safe across filesystems, shells, and links. If the user supplies a kebab-case-compliant slug, use it directly. Otherwise confirm a kebab-case slug with the user before writing; never silently transform a proposed name.
 - [ ] Step 7: Gate check — resolve product-domain ambiguity synchronously in chat and run UX/architecture gaps through the ladder. Do not leave durable question threads in `prd.md`.

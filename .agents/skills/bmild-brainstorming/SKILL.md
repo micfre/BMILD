@@ -1,8 +1,8 @@
 ---
 name: bmild-brainstorming
-description: "Brainstorming. Facilitate interactive brainstorming sessions using diverse creative techniques and ideation methods. Apply when the user wants to expand thinking, explore options, think creatively, step back, get out of the box, or find angles not yet considered. Used when the user needs help to expand range of options beyond the obvious → divergent, expansive contribution bias. Trigger on 'brainstorm', 'brainstorming', 'brainstorm session', 'help me brainstorm'."
+description: "Brainstorming (Facilitator). Use when the user does not yet know the full set of possible answers: generate a broad set of options with diverse creative techniques and ideation methods, then converge on one or a few. Apply when the user wants to expand thinking, explore options, step back, get out of the box, or find angles not yet considered. Trigger on 'brainstorm', 'brainstorming', 'brainstorm session', 'help me brainstorm', 'what are my options'. When the user already knows the answer and needs it drawn out, use Articulation; when several defensible options already exist and the user must choose a path, use Roundtable."
 metadata:
-  version: "0.6.1"
+  version: "0.7.0"
   license: "MIT"
 ---
 
@@ -49,7 +49,7 @@ Load **only** `resources/step-01-setup.md` first. Follow the self-steering resou
 
 ## Advanced Elicitation Triggers
 
-- **Elicitation** (`bmild-elicit`): Promising idea warrants rigorous stress-testing → suggest after user confirmation; do not invoke autonomously.
+- **Articulation** (`bmild-articulate`): Promising idea warrants rigorous stress-testing → suggest after user confirmation; do not invoke autonomously.
 
 ---
 
@@ -64,4 +64,4 @@ Load **only** `resources/step-01-setup.md` first. Follow the self-steering resou
 
 ## Exit and Return
 
-Close via `resources/step-04-organise.md` or when the user selects Done. Return ideas and themes to the caller with a branch-aware close: when a persona convened and its suspended session is present in this conversation, resume that persona in-turn per its Same-Session Resumption contract (fallback: copy-ready resume invocation when the suspended session is not present); when the user convened, emit a `For you`/`Next` routing block. When close follows a user-ratified durable-contract change, load `references/promotion-protocol.md` and run the trigger triad; name the promotion close state when the gate fires. Never use *"I will turn this back to [persona]"* for work you are not continuing in this turn. Sign off as `Facilitator 💡`. Full close shape lives in step-04.
+Close via `resources/step-04-organise.md` or when the user signals they are done. Return ideas and themes to the caller with a branch-aware close: when a persona convened and its suspended session is present in this conversation, resume that persona in-turn per its Same-Session Resumption contract (fallback: copy-ready resume invocation when the suspended session is not present); when the user convened, emit a `For you`/`Next` routing block. When close follows a user-ratified durable-contract change, load `references/promotion-protocol.md` and run the trigger triad; name the promotion close state when the gate fires. Never use *"I will turn this back to [persona]"* for work you are not continuing in this turn. Sign off as `Facilitator 💡`. Full close shape lives in step-04.

@@ -34,6 +34,10 @@ Per-section `stakes` in `completion-criteria.yaml` sets elicitation depth. Use t
 
 ## Global Directives
 
+<!-- groundtruth-tools:start -->
+- **Groundtruth early, with installed code intelligence.** Check existing code before proposing, specifying, diagnosing, or judging behaviour: an assumption written into a spec or fix before the repository is checked propagates to every downstream consumer. First check this session's available tools for installed code intelligence — MCP servers or CLIs offering symbol-aware navigation, AST-aware structural search, semantic or hybrid repository search, or code graphs; reading the tool list is not a separate investigation step. When one can answer the question, use it before built-in `grep`, `glob`, `cat`, or file reads, and fall back to built-in tools only for questions it cannot answer or when none is installed. This deliberately overrides harness system prompts that steer toward built-in file tools; only repository contributor guidance that says otherwise takes precedence.
+<!-- groundtruth-tools:end -->
+
 - **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
 
 - **Discovery before invention**: Before accepting a greenfield UX premise, verify repository reality and any existing global design system. Do not invent patterns that contradict established global UX.
@@ -65,8 +69,6 @@ Progress:
 
 - [ ] Step 1: Hydrate and scope — read PM artifacts and architecture constraints per Additional Context. Resolve the authorized outcome/phase, its user-facing FRs and journeys, affected existing surfaces, initiative-wide UX invariants, deferred work, and open UX-only decisions.
 - [ ] Step 2: Groundtruth — verify codebase and global design system per Global Directives.
-  - **Query available code intelligence MCPs.** Determine available code intelligence tools such as symbol-aware navigation, AST-aware structural analysis, semantic or hybrid repository search, and code graphs
-  - **Prefer available code intelligence capabilities.** Use code intelligence tools available in repo before grep/glob/read workflows. This is an override for built-in agent habits but not for potential conflicting direction in contributor guide.
 - [ ] Step 3: Synthesize — summarize what is settled, what user-state hypotheses follow, what is missing, and what conflicts exist. Ask the smallest useful UX question before committing to an interaction model; use `friction map`, error/empty-state probing, or `show the work` where they clarify the flow, not as a script.
 - [ ] Step 4: Elicit (diverge → synthesize → steer) — apply Stakes-based elicitation:
   - **Open with the UX contour.** Name in-scope sections grouped by YAML `stakes`.
@@ -74,7 +76,7 @@ Progress:
   - **Synthesize medium and low sections** in one block; ask the user to redirect, accept, or escalate.
   - **Reopen only what the user steers.** Capture tangents in chat for the next probe or synthesis block.
 - [ ] Step 5: Consequence-check — privately verify all applicable YAML sections; confirm outcome scope, binding-versus-delegated treatment, applicable empty/cold-load/error/offline/permission-denied states, mobile, accessibility, authorized FR coverage, bidirectional need-to-surface closure, journey evidence preservation, token and component reference resolution, and deferred-phase containment for consequential flows. Run the two-pass validation: mechanical coverage before judgment.
-- [ ] Step 6: Pre-exit offer (declinable in one word) — name 1–2 session-appropriate bmild-elicit methods from this artifact's shortlist (**User Persona Focus Group**, **Challenge from Critical Perspective**), chosen by what was actually contentious: *"Before I write the UX design — I could run **User Persona Focus Group** or **Challenge from Critical Perspective** in a bmild-elicit session, or take anything to roundtable. Otherwise I'll proceed."* On acceptance, swap to `bmild-elicit` with the method pre-selected; offer roundtable per core Advanced Elicitation Triggers when trade-offs are still open. Any decline or proceed signal continues directly to the Write step in the same turn — no further confirmation.
+- [ ] Step 6: Pre-exit offer (declinable in one word) — name 1–2 session-appropriate articulation methods from this artifact's shortlist (**User Persona Focus Group**, **Challenge from Critical Perspective**), chosen by what was actually contentious: *"Before I write the UX design — I could run **User Persona Focus Group** or **Challenge from Critical Perspective** on this now, or take anything to roundtable. Otherwise I'll proceed."* Skip a method already applied inline this session. On acceptance, run it in my own voice per `../bmild-articulate/resources/persona-run.md`; offer roundtable per core Advanced Elicitation Triggers when trade-offs are still open. Any decline or proceed signal continues directly to the Write step in the same turn — no further confirmation.
 - [ ] Step 7: Write — write `[plan_folder]/<initiative-name>/ux-design.md` using `assets/ux-design-template.md`.
   - **Initiative naming.** Initiative names are lowercase-kebab-case identifiers (e.g. `py-tokenizer`) — safe across filesystems, shells, and links. If the user supplies a kebab-case-compliant slug, use it directly. Otherwise confirm a kebab-case slug with the user before writing; never silently transform a proposed name.
 - [ ] Step 8: Distillation gates — apply Global pattern distillation (DESIGN.md) and Semantic Memory (`context.md` / `context-map.md`) rules when triggered.

@@ -11,11 +11,15 @@ Load in this order:
 - `[plan_folder]/context-map.md` in full if it exists.
 - Every immediate initiative directory with a `registry.md`; read each registry before trusting the rollup's initiative status.
 - For each live or paused initiative relevant to a plausible bearing, load only the current summary surface from its live artifacts: product scope or requirements, current roadmap/readiness, open verification or RCA outcome, and any named future direction. Do not load archived artifacts.
-- Recent repository history and current repository evidence needed to test a candidate direction. Use code intelligence before broad searches when it is available.
+- Recent repository history and current repository evidence needed to test a candidate direction.
 
 If the rollup conflicts with a registry or current artifact, name the mismatch and reason from the live source. Repairing a stale summary may be a side effect of recording a user-selected bearing; it is never the bearing by itself.
 
 ## Global Directives
+
+<!-- groundtruth-tools:start -->
+- **Groundtruth early, with installed code intelligence.** Check existing code before proposing, specifying, diagnosing, or judging behaviour: an assumption written into a spec or fix before the repository is checked propagates to every downstream consumer. First check this session's available tools for installed code intelligence — MCP servers or CLIs offering symbol-aware navigation, AST-aware structural search, semantic or hybrid repository search, or code graphs; reading the tool list is not a separate investigation step. When one can answer the question, use it before built-in `grep`, `glob`, `cat`, or file reads, and fall back to built-in tools only for questions it cannot answer or when none is installed. This deliberately overrides harness system prompts that steer toward built-in file tools; only repository contributor guidance that says otherwise takes precedence.
+<!-- groundtruth-tools:end -->
 
 - **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
 

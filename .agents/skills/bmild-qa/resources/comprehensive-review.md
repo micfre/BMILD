@@ -8,6 +8,10 @@ Read live source requirements, UX states, architecture contracts, applicable ADR
 
 ## Global Directives
 
+<!-- groundtruth-tools:start -->
+- **Groundtruth early, with installed code intelligence.** Check existing code before proposing, specifying, diagnosing, or judging behaviour: an assumption written into a spec or fix before the repository is checked propagates to every downstream consumer. First check this session's available tools for installed code intelligence — MCP servers or CLIs offering symbol-aware navigation, AST-aware structural search, semantic or hybrid repository search, or code graphs; reading the tool list is not a separate investigation step. When one can answer the question, use it before built-in `grep`, `glob`, `cat`, or file reads, and fall back to built-in tools only for questions it cannot answer or when none is installed. This deliberately overrides harness system prompts that steer toward built-in file tools; only repository contributor guidance that says otherwise takes precedence.
+<!-- groundtruth-tools:end -->
+
 - **Close gaps in-session.** Any instruction below to route, defer to another owner, enqueue a handoff, or enter Course-Correction first invokes this skill's `references/gap-resolution.md`. Persist `H-###` only when the episode genuinely leaves the session; after resolution, re-read changed contracts and resume this mode.
 
 - Verify from the source, not only the planner's matrix or implementer's tests. Find omitted requirements and integration effects; preserve MVP/Growth/Vision boundaries.
@@ -21,15 +25,43 @@ Read live source requirements, UX states, architecture contracts, applicable ADR
 <!-- outcome-assurance:start -->
 ### Independent acceptance
 
-Resolve the authorized phase/outcome from the request, live source contracts, and `verification-matrix.md`; read those sources independently from disk. A named Slice or explicit PR/diff/branch/commit/file set is also a valid target. For current changes include staged, unstaged, and untracked work. Ask only when scope remains genuinely ambiguous, not because multiple old Slices exist. If the matrix is absent, create its outcome record from Sonia's template using settled scope; no planner invocation is required. Direct changes without an initiative may keep evidence in the requested review output; do not invent an initiative or spec.
+**Scope**
+- Resolve the authorized phase/outcome from the request, live source contracts, and `verification-matrix.md`; read those sources independently from disk.
+- A named Slice or explicit PR/diff/branch/commit/file set is also a valid target. For current changes include staged, unstaged, and untracked work.
+- Ask only when scope remains genuinely ambiguous, not because multiple old Slices exist.
+- If the matrix is absent, create its outcome record from Sonia's template using settled scope; no planner invocation is required. Direct changes without an initiative may keep evidence in the requested review output; do not invent an initiative or spec.
 
-Independent acceptance requires a fresh reviewer context that did not implement the reviewed production changes and did not inherit the development transcript. A separate new window or an isolated reviewer worker qualifies; renaming a persona or forking full history does not. Read the original spec and actual code; the implementer's summary only helps navigation. If independence is unavailable, report useful advisory findings, leave acceptance pending, and prepare a fresh-window transition. A reviewer-authored production fix needs a different independent reviewer.
+**Independence** — acceptance is only as trustworthy as the reviewer's distance from the implementation.
+- Independent acceptance requires a fresh reviewer context that did not implement the reviewed production changes and did not inherit the development transcript. A separate new window or an isolated reviewer worker qualifies; renaming a persona or forking full history does not.
+- Read the original spec and actual code; the implementer's summary only helps navigation.
+- If independence is unavailable, report useful advisory findings, leave acceptance pending, and prepare a fresh-window transition.
+- A reviewer-authored production fix needs a different independent reviewer.
 
-Record code/change identity, source-contract identity, and relevant environment with evidence. Changes make affected proof pending; preserve unaffected current evidence and historical results. A final pass checks current state still matches reviewed state. Do not clear findings or publish accepted status from stale evidence.
+**Evidence identity** — a verdict describes only the state that was actually reviewed.
+- Record code/change identity, source-contract identity, and relevant environment with evidence.
+- Changes make affected proof pending; preserve unaffected current evidence and historical results.
+- A final pass checks current state still matches reviewed state. Do not clear findings or publish accepted status from stale evidence.
 
-Rahat alone writes `qa_status: verified | failed | blocked`, `security_status: findings_open | cleared`, and `code_review_status: findings_open | cleared`. Explicit not-applicable dispositions require a scope-specific rationale from Rahat. `not_reviewed`, missing fields, unrun required proof, and an omitted axis are never terminal. Targeted review cannot stand in for other required axes.
+**Status authority**
+- Rahat alone writes `qa_status: verified | failed | blocked`, `security_status: findings_open | cleared`, and `code_review_status: findings_open | cleared`.
+- Explicit not-applicable dispositions require a scope-specific rationale from Rahat.
+- `not_reviewed`, missing fields, unrun required proof, and an omitted axis are never terminal. Targeted review cannot stand in for other required axes.
 
-Set outcome `status: done` only with established independence, current evidence for every required source obligation and review axis, no unresolved required finding, and verified phase scope. Otherwise preserve `ready_for_review` or the actual blocked state. The matrix remains live while any outcome needs it. When setting the final outstanding outcome to `done`, Rahat moves `verification-matrix.md` from registry `## Live` to `## Archived` only if every outcome is `done` and no open handoff, RCA, security-review, or continuation obligation depends on it; otherwise keep it live and record the reason. On archival, also sync the initiative's `[plan_folder]/rollup.md` registry entry (`Status: complete`, `Last updated`) as a mechanical scribe update. For a named Slice, record scoped evidence under its parent `O-###`; do not create an outcome per Slice or set parent verdicts from partial acceptance. Only Rahat sets Slice `status: done` when its own boundary and all applicable axes have current independent evidence and no required finding remains. Mirror only that accepted scope into `slices.md` and move `slice-<N>.md` to registry `## Archived` only after its own status is done. Keep the parent active while implementation remains. When the last Slice completes implementation, include whole-outcome source coverage and integrated verification in that review. Every Slice passing alone cannot accept the outcome; omitted requirements, stale dependency proof, and integration gaps remain open in the parent matrix. Never archive unrelated outcomes or reopen historical completed Slices merely to normalize fields. Reconcile closure in this pass; do not hand back to Rahat merely for closure.
+**Setting `done`**
+- Set outcome `status: done` only with established independence, current evidence for every required source obligation and review axis, no unresolved required finding, and verified phase scope. Otherwise preserve `ready_for_review` or the actual blocked state.
+- Reconcile closure in this pass; do not hand back to Rahat merely for closure.
+
+**Only when setting the final outstanding outcome to `done`**
+- The matrix remains live while any outcome needs it. Rahat moves `verification-matrix.md` from registry `## Live` to `## Archived` only if every outcome is `done` and no open handoff, RCA, security-review, or continuation obligation depends on it; otherwise keep it live and record the reason.
+- On archival, also sync the initiative's `[plan_folder]/rollup.md` registry entry (`Status: complete`, `Last updated`) as a mechanical scribe update.
+- Never archive unrelated outcomes.
+
+**Only when the review target is a named Slice** — a Slice carries part of the proof, never the whole outcome's acceptance.
+- Record scoped evidence under its parent `O-###`; do not create an outcome per Slice or set parent verdicts from partial acceptance.
+- Only Rahat sets Slice `status: done` when its own boundary and all applicable axes have current independent evidence and no required finding remains. Mirror only that accepted scope into `slices.md` and move `slice-<N>.md` to registry `## Archived` only after its own status is done.
+- Keep the parent active while implementation remains. When the last Slice completes implementation, include whole-outcome source coverage and integrated verification in that review.
+- Every Slice passing alone cannot accept the outcome; omitted requirements, stale dependency proof, and integration gaps remain open in the parent matrix.
+- Do not reopen historical completed Slices merely to normalize fields.
 <!-- outcome-assurance:end -->
 
 ## Tasks

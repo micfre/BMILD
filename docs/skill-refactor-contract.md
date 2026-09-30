@@ -42,7 +42,7 @@ Add to each migrated `SKILL.md` under Mode Lookup:
 | **bmild-qa** | `security-categories.yaml`, `code-review-categories.yaml` | Preserve as review taxonomies; do not add completion-criteria YAML |
 | **bmild-planner** | — | **No YAML.** Mode resources carry method and routing. |
 | **bmild-dev** | — | **No YAML.** |
-| **bmild-roundtable**, **bmild-elicit**, **bmild-brainstorming** | `methods.yaml` / `brain-methods.yaml` | Keep as lazy-loaded step catalogs; **do not** add completion-criteria files |
+| **bmild-roundtable**, **bmild-articulate**, **bmild-brainstorming** | `methods.yaml` / `brain-methods.yaml` | Keep as lazy-loaded step catalogs; **do not** add completion-criteria files |
 
 ---
 
@@ -79,7 +79,7 @@ Suggested consequential sections (review during migration):
 
 - NON-NEGOTIABLE early: **first-person voice + session wrappers** only in core. **Code intelligence + discovery-before-invention** (or planner file-intense equivalent) in mode-resource Global Directives for modes that groundtruth repositories (PM, UX, Arch, Dev, QA fix/review modes, planner readiness/delivery strategy/CC).
 - Mode Lookup as **sole authority** — fold handback scan into Mode 1 with **precedence** (scan wins; do not evaluate lower modes when queue matches).
-- **Advanced Elicitation Triggers** (facilitator offers: roundtable, elicit, brainstorming) — replaces generic Trigger-Condition Rules in core.
+- **Advanced Elicitation Triggers** (facilitator offers: roundtable, articulate, brainstorming) — replaces generic Trigger-Condition Rules in core.
 - Brief vs PRD (or persona-specific) **disambiguation** rules where ambiguous user intent is common.
 - Scope Boundary, Exit and Handoff.
 
@@ -122,7 +122,7 @@ Phase 1  bmild-ux ∥ bmild-arch   (stakes in YAML + skill thin)      ✓
 Phase 2  bmild-planner            (no YAML, no stakes)              ✓
 Phase 3  bmild-qa                    (security and code-review taxonomies; security stakes stay mode-local) ✓
 Phase 4  bmild-dev                (no YAML, no stakes)              ✓
-Phase 5  roundtable, elicit, brainstorming  (thin SKILL only)        ✓
+Phase 5  roundtable, articulate, brainstorming  (thin SKILL only)        ✓
 ```
 
 Coordinate changes across all affected skills when a shared contract changes; use isolated work and suitable checkpoints rather than a fixed one-skill limit.

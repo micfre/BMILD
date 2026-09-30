@@ -37,11 +37,11 @@ Progress:
 
 - [ ] Step 3: **Present the journey map** — Show all four phases together with total time, then ask: *"Does this flow work for your session? You can customise any phase, or I can suggest an alternative for any step."*
 
-   Options: [C] Start / [Customise] adjust phases / [Details] explain a phase or technique / [Back] return to approach selection.
+   Handle requests to explain a phase or technique in place.
 
 - [ ] Step 4: **Handle customisation** — If the user wants to swap a phase technique, load alternatives from the YAML for that category and let them pick.
 
 ## Next Step
 
-- [C] or confirmed → load `resources/step-03-execute.md` carrying all four technique names and their phase order forward.
-- [Back] → return to `resources/step-01-setup.md`.
+- Confirmed → load `resources/step-03-execute.md` carrying all four technique names and their phase order forward.
+- The user wants a different way to pick techniques → return to `resources/step-01-setup.md`.

@@ -36,9 +36,9 @@ Progress:
 
 - [ ] Step 3: **Confirm** — Ask: *"Does this approach sound right, or would you like to adjust any phase? You can also ask for details on any technique."*
 
-   Options: [C] Continue / [Modify] swap or drop a phase / [Details] explain a technique / [Back] return to approach selection.
+   Handle requests to swap or drop a phase, or to explain a technique, in place.
 
 ## Next Step
 
-- [C] or confirmed → load `resources/step-03-execute.md` carrying the selected technique names forward.
-- [Back] → return to `resources/step-01-setup.md`.
+- Confirmed → load `resources/step-03-execute.md` carrying the selected technique names forward.
+- The user wants a different way to pick techniques → return to `resources/step-01-setup.md`.

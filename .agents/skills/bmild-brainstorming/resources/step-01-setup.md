@@ -35,18 +35,15 @@ Progress:
 
    Wait for confirmation or refinement before continuing.
 
-- [ ] Step 3: **Offer approach** — Once the topic is confirmed, present the four technique options:
+- [ ] Step 3: **Offer approach** — Once the topic is confirmed, describe the four ways to pick techniques in one natural question (no numbered or lettered menu):
 
-   > *"How do you want to select which brainstorming technique(s) we use?*
-   >
-   > **[1] Browse techniques** — explore the full library by category and choose what appeals
-   > **[2] Get a recommendation** — I'll analyse your goals and suggest the best fit
-   > **[3] Random selection** — surprise yourself with an unexpected combination
-   > **[4] Progressive flow** — a structured journey from broad exploration to actionable ideas"*
+   > *"How would you like to pick our technique(s)? You can browse the library by category, I can recommend the best fit for your goals, I can draw a random combination to surprise you, or I can lay out a progressive journey from broad exploration to actionable ideas."*
 
 ## Next Step
 
-- [1] → load `resources/step-02a-browse.md`
-- [2] → load `resources/step-02b-recommend.md`
-- [3] → load `resources/step-02c-random.md`
-- [4] → load `resources/step-02d-progressive.md`
+Interpret the reply by intent; ask once if it is unclear.
+
+- Browse → load `resources/step-02a-browse.md`
+- Recommendation → load `resources/step-02b-recommend.md`
+- Random → load `resources/step-02c-random.md`
+- Progressive journey → load `resources/step-02d-progressive.md`

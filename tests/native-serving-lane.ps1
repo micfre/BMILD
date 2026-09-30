@@ -10,7 +10,7 @@ $ErrorActionPreference = "Stop"
 Set-StrictMode -Version 3.0
 
 $root = Split-Path -Parent $PSScriptRoot
-$elicit = Join-Path $root ".agents\skills\bmild-elicit\scripts"
+$elicit = Join-Path $root ".agents\skills\bmild-articulate\scripts"
 $pm = Join-Path $root ".agents\skills\bmild-pm\scripts"
 $fix = Join-Path $root "tests\fixtures\prd-lint"
 $script:Failures = 0
@@ -180,12 +180,12 @@ if ($a.artifact.sha256 -ne (Get-FileHash -Algorithm SHA256 (Join-Path $fix 'prd0
 $tmp = New-Item -ItemType Directory -Path (Join-Path $env:TEMP ("lane-" + [guid]::NewGuid().ToString('N')))
 try {
     New-Item -ItemType Directory -Path (Join-Path $tmp "relocated\skills") -Force | Out-Null
-    Copy-Item -Recurse (Join-Path $root ".agents\skills\bmild-elicit") (Join-Path $tmp "relocated\skills\bmild-elicit")
+    Copy-Item -Recurse (Join-Path $root ".agents\skills\bmild-articulate") (Join-Path $tmp "relocated\skills\bmild-articulate")
     Copy-Item -Recurse (Join-Path $root ".agents\skills\bmild-pm") (Join-Path $tmp "relocated\skills\bmild-pm")
     New-Item -ItemType Directory -Path (Join-Path $tmp "unrelated") -Force | Out-Null
     Push-Location (Join-Path $tmp "unrelated")
     try {
-        $iso = & powershell -NoProfile -File (Join-Path $tmp "relocated\skills\bmild-elicit\scripts\methods.ps1") categories
+        $iso = & powershell -NoProfile -File (Join-Path $tmp "relocated\skills\bmild-articulate\scripts\methods.ps1") categories
         if ($LASTEXITCODE -ne 0 -or @($iso).Count -ne 12) { Fail "isolated relocated copy failed to serve" }
         $isol = & powershell -NoProfile -File (Join-Path $tmp "relocated\skills\bmild-pm\scripts\lint-prd.ps1") -root $root -artifact tests/fixtures/prd-lint/clean.md
         $isol = ($isol | Out-String) | ConvertFrom-Json

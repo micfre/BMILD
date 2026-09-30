@@ -85,7 +85,7 @@ for harness in codex claude-code opencode; do
   [ ! -e "$project/.bmild.toml" ] || fail "$harness archive ships project preferences"
   [ ! -e "$project/harness" ] || fail "$harness archive retains staging tree"
   [ ! -e "$project/.codex/config.toml" ] || fail "$harness archive requires Codex config merge"
-  sh "$project/$skill_root/bmild-elicit/scripts/methods.sh" categories >/dev/null || fail "$harness selector failed after extraction"
+  sh "$project/$skill_root/bmild-articulate/scripts/methods.sh" categories >/dev/null || fail "$harness selector failed after extraction"
   cp "$REPO_ROOT/tests/fixtures/prd-lint/clean.md" "$project/prd.md"
   sh "$project/$skill_root/bmild-pm/scripts/lint-prd.sh" --root "$project" --artifact prd.md >/dev/null || fail "$harness linter failed after extraction"
   python3 - "$project" "$skill_root" "$agent_root" "$suffix" <<'CHECK' || fail "$harness installed paths invalid"

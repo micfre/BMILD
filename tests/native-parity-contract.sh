@@ -38,7 +38,7 @@ declare -a LAYOUTS=(
     "$OUT/relocated/arbitrary-root"
 )
 for l in "${LAYOUTS[@]}"; do
-    make_layout "$l" bmild-elicit bmild-pm
+    make_layout "$l" bmild-articulate bmild-pm
 done
 
 # unrelated working directory: the caller's cwd must not matter
@@ -48,7 +48,7 @@ cd "$OUT/unrelated-cwd"
 baseline=""
 for l in "${LAYOUTS[@]}"; do
     tag=$(basename "$(dirname "$l")")/$(basename "$l")
-    sel="$l/skills/bmild-elicit/scripts/methods.sh"
+    sel="$l/skills/bmild-articulate/scripts/methods.sh"
     lin="$l/skills/bmild-pm/scripts/lint-prd.sh"
 
     sh "$sel" categories >"$OUT/$tag.categories" || fail "$tag: categories failed"
@@ -87,10 +87,10 @@ mkdir -p "$UNPACK"
 tar -xzf "$OUT/release.tar.gz" -C "$UNPACK"
 
 for needed in \
-    .agents/skills/bmild-elicit/scripts/methods.sh \
-    .agents/skills/bmild-elicit/scripts/serve-methods.awk \
-    .agents/skills/bmild-elicit/scripts/methods.ps1 \
-    .agents/skills/bmild-elicit/resources/methods.yaml \
+    .agents/skills/bmild-articulate/scripts/methods.sh \
+    .agents/skills/bmild-articulate/scripts/serve-methods.awk \
+    .agents/skills/bmild-articulate/scripts/methods.ps1 \
+    .agents/skills/bmild-articulate/resources/methods.yaml \
     .agents/skills/bmild-pm/scripts/lint-prd.sh \
     .agents/skills/bmild-pm/scripts/lint-prd.awk \
     .agents/skills/bmild-pm/scripts/lint-prd.ps1 \
@@ -98,21 +98,21 @@ for needed in \
     [[ -f "$UNPACK/$needed" ]] || fail "release archive is missing $needed"
 done
 
-sh "$UNPACK/.agents/skills/bmild-elicit/scripts/methods.sh" random -n 5 --spread --seed 7 >"$OUT/unpack.random" || fail "unpacked selector failed"
+sh "$UNPACK/.agents/skills/bmild-articulate/scripts/methods.sh" random -n 5 --spread --seed 7 >"$OUT/unpack.random" || fail "unpacked selector failed"
 cmp -s "$OUT/$baseline.random" "$OUT/unpack.random" || fail "unpacked release draw diverges from repository behavior"
 sh "$UNPACK/.agents/skills/bmild-pm/scripts/lint-prd.sh" --root "$OUT/project" --artifact plans/demo-initiative/prd.md >"$OUT/unpack.lint" || fail "unpacked linter failed"
 cmp -s "$OUT/$baseline.lint" "$OUT/unpack.lint" || fail "unpacked release lint diverges from repository behavior"
 
 # --- non-executable invocation is the supported path --------------------------------
 
-copied_selector="$OUT/layout-agents/.agents/skills/bmild-elicit/scripts/methods.sh"
+copied_selector="$OUT/layout-agents/.agents/skills/bmild-articulate/scripts/methods.sh"
 chmod -x "$copied_selector"
 sh "$copied_selector" categories >/dev/null || fail "selector must not depend on the executable bit"
 
 # --- PowerShell lane (when pwsh exists; CI covers Windows-native 5.1) ---------------
 
 if command -v pwsh >/dev/null 2>&1; then
-    psel="$OUT/layout-agents/.agents/skills/bmild-elicit/scripts/methods.ps1"
+    psel="$OUT/layout-agents/.agents/skills/bmild-articulate/scripts/methods.ps1"
     plin="$OUT/layout-agents/.agents/skills/bmild-pm/scripts/lint-prd.ps1"
     pwsh -NoProfile -File "$psel" categories >"$OUT/ps.categories" || fail "pwsh categories failed"
     pwsh -NoProfile -File "$psel" list --category framing >"$OUT/ps.list" || fail "pwsh list failed"

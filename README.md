@@ -5,7 +5,7 @@
 *Big Methods, Ideally Less Drama*
 
 <!-- bmild-version-badge -->
-![Version](https://img.shields.io/badge/Version-0.6.1-orange)
+![Version](https://img.shields.io/badge/Version-0.7.0-orange)
 [![Build Status](https://github.com/micfre/BMILD/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/micfre/BMILD/actions/workflows/ci.yml)
 [![Release Status](https://github.com/micfre/BMILD/actions/workflows/release.yml/badge.svg)](https://github.com/micfre/BMILD/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -70,7 +70,7 @@ The first day should feel practical, not like onboarding for a project-managemen
 - **Ready to implement a written spec?** Ask Alex to implement and verify the approved phase/outcome. Alex checks sufficient readiness, uses Sonia for unresolved completeness questions, and preserves committed design constraints.
 - **Already have a plan or old Slices?** They remain useful context. Alex can execute the authorized outcome without re-planning it into Slices or selecting one merely because several exist.
 - **Fixing a bug or an awkward old area?** Start with Rahat. The point is to establish a cause and evidence before changing code, not force a greenfield process onto a maintenance task. Rahat is skilled with a breadth-first RCA approach; after confirmation, choose whether Rahat implements the fix or hands a context-rich RCA to Alex.
-- **Facing a real trade-off?** Ask for a Roundtable, or use Elicit to push a draft past its first plausible answer. You still make the call. Advanced elicitation modes are a real antidote to LLM sycophancy and goal-seeking behaviour.
+- **Facing a real trade-off?** Ask for a Roundtable. **Know more than you've written down?** Personas draw it out with articulation methods as you go, or you can ask for Articulate directly. You still make the call. Advanced elicitation modes are a real antidote to LLM sycophancy and goal-seeking behaviour.
 
 By the end of the first day using BMILD, you should have a small body of project memory that an agent can re-enter tomorrow: the current problem, a few decisions, what is live, what is stale, and what comes next. You do not need every artifact for every piece of work. If you forget where you left off, just ask Sonia, she knows.
 
@@ -212,10 +212,10 @@ BMILD has six standard personas and three interactive modes. They are deliberate
 - **Alex 🟪 -- Developer:** implements approved phase-bounded outcomes, bounded direct work, and fixes while respecting the project’s existing code and durable memory.
 - **Rahat 🟨 -- Quality & Reliability:** owns the complete independent review loop: outcome FR/NFR and completeness verification, high-confidence security review, and code review against repository standards and the governing specification. Ask for a **comprehensive review** to run all three from one context load and accept the outcome in the same pass when every axis is clear. Rahat also diagnoses before fixing and records durable RCAs. Existing repair authority or Fix Election permits a bounded fix, whose acceptance then belongs to another independent review context.
 
-The three interactive modes are available whenever they help. A persona may suggest one when the work would benefit from wider options, a stress test, or cross-functional trade-offs; you can also ask for one directly at any time. The calling session is suspended, not discarded, so the original persona resumes with the facilitator’s output and does not re-ask what you have already settled.
+The three interactive modes are available whenever they help. A persona may suggest Brainstorm or Roundtable when the work would benefit from wider options or cross-functional trade-offs; you can also ask for any mode directly. The calling session is suspended, not discarded, so the original persona resumes with the facilitator’s output and does not re-ask what you have already settled. Articulation needs no hand-off: the active persona applies its methods in its own voice while a section is still live, when the answers are fresher than at the end of a long session.
 
 - **Brainstorm:** expands the option space before convergence.
-- **Elicit:** strengthens a draft through structured questioning and challenge.
+- **Articulate:** for when you know the answer but need help drawing it out. It strengthens a draft through structured questioning and challenge, run by the active persona or, standalone, by the Facilitator.
 - **Roundtable:** brings the relevant perspectives to table, makes trade-offs visible, and leaves the decision with you. (Legacy note: `Debate` remains a valid trigger and `Party Mode` works, too.)
 
 ## What the work looks like
@@ -265,7 +265,7 @@ There is an important safety exception. UX and Architecture may reuse artifact c
 
 ### A 71-method elicitation bench, served on demand
 
-Advanced elicitation draws from a canonical catalog of 71 methods — the full BMAD-METHOD 6.13 bench, with BMILD's differentiation intact: methods that cast named personas (Stakeholder Round Table, Expert Panel Review, Cross-Functional War Room, Security Audit Personas) load each persona's canonical `SOUL.md` rather than facilitator-invented voices. The catalog is consumed through a skill-local serving script (`bmild-elicit/scripts/methods.sh` on POSIX hosts, `methods.ps1` on Windows), so a session sees category names and counts first, compact index rows for at most two candidate categories, complete records only for the one primary and up to three follow-up methods it actually selects, and a category-spread reshuffle draw bounded to twelve candidates that never repeats what was already offered. The complete catalog enters context only on an explicit list-all choice; if serving fails mid-session, the facilitator halts selection and a full-catalog fallback happens only with the operator's explicit approval.
+Advanced elicitation draws from a canonical catalog of 71 methods — the full BMAD-METHOD 6.13 bench, with BMILD's differentiation intact: methods that cast named personas (Stakeholder Round Table, Expert Panel Review, Cross-Functional War Room, Security Audit Personas) load each persona's canonical `SOUL.md` rather than facilitator-invented voices. The catalog is consumed through a skill-local serving script (`bmild-articulate/scripts/methods.sh` on POSIX hosts, `methods.ps1` on Windows), so a session sees category names and counts first, compact index rows for at most two candidate categories, complete records only for the one primary and up to three follow-up methods it actually selects, and a category-spread reshuffle draw bounded to twelve candidates that never repeats what was already offered. The complete catalog enters context only when you ask to see every method; if serving fails mid-session, the facilitator halts selection and a full-catalog fallback happens only with the operator's explicit approval.
 
 The method **numbers are intentionally breaking**: version 0.5.0 renumbered the catalog to match BMAD-METHOD 6.13 order exactly (Tree of Thoughts is 1 again, First Principles Analysis is now 24, Boundary & Edge Case Sweep is 71). Old numbers receive no aliases; **method names are the cross-version reference**.
 
