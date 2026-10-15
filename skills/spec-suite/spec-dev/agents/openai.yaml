@@ -1,0 +1,5 @@
+interface:
+  display_name: "Spec Dev"
+  short_description: "Develop a spec by guided interview"
+policy:
+  allow_implicit_invocation: false

@@ -216,6 +216,7 @@ When faced with an ambiguous skill design choice use these points to align decis
 There are 3rd-party references in `external_references/` which cover alternative and adjacent spec-driven agentic coding workflow implementations
 Ask for permission to access it when you need to, as it is ignored by default
 Do not make any modifications to any files in `external_references/` folders
+Each folder is a plain snapshot (no `.git`) of an upstream repository; refresh them with `scripts/update-external-references.sh`, which replaces a snapshot with the latest default branch from upstream
 
 ## Documentation
 

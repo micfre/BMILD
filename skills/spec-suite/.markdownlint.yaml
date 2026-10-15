@@ -1,0 +1,5 @@
+# spec-suite follows mattpocock/skills prose style: underscore emphasis.
+extends: ../../.markdownlint.yaml
+
+MD049:
+  style: underscore

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `scripts/update-external-references.sh` refreshes the third-party snapshots in `external_references/` (`bmad-method`, `mattpocock`) from the latest default branch of their upstream repositories, replacing each folder wholesale.
+
 ## [0.7.0] - 2026-09-30
 
 ### Changed
