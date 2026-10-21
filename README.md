@@ -10,8 +10,8 @@
 [![Release Status](https://github.com/micfre/BMILD/actions/workflows/release.yml/badge.svg)](https://github.com/micfre/BMILD/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-> [!TIP]
-> **Choose the development path that fits the request.** Spec-Dev implements an authorized outcome and continues through independent review and bounded repairs by default. Ask Sonia for Slice Planning when you want smaller sessions, then ask Alex for Slice-Dev. Direct-Dev remains available for prompt-grounded repo work. Existing Slices never override a clear outcome request.
+> [!IMPORTANT]
+> **This is the final version of BMILD.** Leaving repo up for posterity. Framework works exactly as designed, though it has grown too governance-heavy for efficient workflow.
 
 BMILD is a small cross-functional team for your coding agent. It gives the agent durable roles, a shared working memory, and a way to move from an idea to verified code without turning your project into an Agile reenactment.
 
