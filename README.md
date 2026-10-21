@@ -387,16 +387,6 @@ Remove the `bmild-*` folders from your harness's skills directory and the `bmild
 - [x] **v0.5**  --  Outcome-based development and independent acceptance
 - [x] **v0.6**  --  Spec-Dev default review continuation and optional lightweight Slice-Dev
 
-## Personal Note
-
-### Who am I?
-
-I am a career Product Manager, with many years in services and system development from mobile to Internet, with scope from UX to marketing on the consumer-facing side to rating and subscription in the backend and provisioning systems in the core. I have worked in waterfall and Agile environments, with teams that spanned time zones and continents. I have worked with some of the best system-minded people in the business. The names of the personas are picked from among these outstanding people.
-
-### What do I get out of releasing it?
-
-Simply, I built BMILD because it helps me with the work I am doing. It's fast, adaptive, effective and -- what is especially rewarding -- it's engaging and enjoyable to use. Yes, there are tens of thousands of projects like this, but there are definitely some novel ideas in here worth stealing if nothing else. Yours for the taking.
-
 ## Thanks
 
 BMILD is built upon and inspired by:
